@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treeline — AI Search Visibility Audit | genhance.ai</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0a1628 0%, #1a2744 50%, #0d1f3c 100%); padding: 50px 40px 40px; text-align: center; border-bottom: 3px solid #2d4a7a; }
+.header h1 { font-size: 32px; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #7ba4d4; font-size: 16px; }
+.header .genhance-badge { display: inline-block; background: rgba(123, 164, 212, 0.15); color: #7ba4d4; padding: 6px 18px; border-radius: 20px; font-size: 13px; margin-top: 12px; }
+.stats { display: flex; justify-content: center; gap: 24px; padding: 30px 40px; background: #0d1525; flex-wrap: wrap; }
+.stat-pill { background: linear-gradient(135deg, #1a2744, #0d1f3c); border: 1px solid #2d4a7a; border-radius: 12px; padding: 18px 28px; text-align: center; min-width: 140px; }
+.stat-pill .stat-value { font-size: 28px; font-weight: 700; color: #fff; }
+.stat-pill .stat-label { font-size: 12px; color: #7ba4d4; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+.alert { background: linear-gradient(135deg, #3d2a0a, #2a1f08); border: 1px solid #b8860b; border-radius: 10px; padding: 20px 28px; margin: 20px 40px; }
+.alert .alert-title { color: #ffb347; font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+.alert p { color: #e0c878; font-size: 14px; }
+.section { margin: 20px 40px; }
+.section h2 { color: #7ba4d4; font-size: 20px; border-bottom: 1px solid #1a2744; padding-bottom: 10px; margin-bottom: 18px; }
+.query-card { background: #0d1525; border: 1px solid #1a2744; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+.query-card .q-title { font-weight: 600; color: #fff; margin-bottom: 6px; }
+.query-card .q-query { color: #7ba4d4; font-size: 13px; margin-bottom: 8px; }
+.query-card .q-analysis { color: #94a3b8; font-size: 13px; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; margin-left: 8px; }
+.badge-present { background: #1a3a2a; color: #4ade80; border: 1px solid #2d6a4a; }
+.badge-weak { background: #3d2a0a; color: #fbbf24; border: 1px solid #7a5a10; }
+.competitor-card { background: #0d1525; border: 1px solid #1a2744; border-radius: 8px; padding: 14px 18px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+.comp-name { color: #fff; font-weight: 600; font-size: 14px; }
+.comp-desc { color: #94a3b8; font-size: 12px; }
+.cta { background: linear-gradient(135deg, #0a1628 0%, #162a4a 100%); border-radius: 12px; padding: 35px 40px; margin: 30px 40px 40px; border: 1px solid #2d4a7a; }
+.cta h2 { color: #fff; font-size: 22px; margin-bottom: 20px; border: none; }
+.plays { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.play-card { background: #0d1525; border: 1px solid #2d4a7a; border-radius: 8px; padding: 16px; }
+.play-card .play-num { color: #7ba4d4; font-size: 11px; letter-spacing: 1px; }
+.play-card .play-title { color: #fff; font-weight: 600; font-size: 14px; margin: 4px 0; }
+.play-card .play-desc { color: #94a3b8; font-size: 12px; }
+.footer { text-align: center; padding: 30px; color: #7ba4d4; font-size: 13px; border-top: 1px solid #1a2744; }
+.footer a { color: #7ba4d4; }
+@media (max-width: 600px) { .stats { flex-direction: column; gap: 12px; } .section, .alert, .cta { margin: 16px 16px; } .header { padding: 30px 20px; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <div class="subtitle">for Treeline — AI-Native IT Services / MSP</div>
+  <div class="genhance-badge">🔍 genhance.ai — Real-Time AI Search Intelligence</div>
+</div><div class="stats">
+  <div class="stat-pill"><div class="stat-value">$25M Series A (a16z)</div><div class="stat-label">Funding</div></div>
+  <div class="stat-pill"><div class="stat-value">☆☆☆☆☆</div><div class="stat-label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div>
+</div><div class="alert">
+  <div class="alert-title">⚠ KEY FINDING</div>
+  <p>Treeline is rebuilding the MSP category with AI — backed by a16z. Yet ZERO G2 reviews and ZERO Reddit threads. AI answers for 'best IT support for startups' cite Electric and purchased IT — Treeline is invisible despite massive funding.</p>
+</div><div class="section">
+  <h2>Company Profile</h2>
+  <p style="color:#94a3b8;font-size:14px"><strong>CEO:</strong> Not Found | <strong>Employees:</strong> 25-50 | <strong>HQ:</strong> San Francisco, CA<br>
+  <strong>Investors:</strong> Andreessen Horowitz (a16z)<br>
+  <strong>Category:</strong> AI-Native IT Services / MSP</p>
+</div><div class="section"><h2>5 AI Search Queries — Visibility Analysis</h2><div class="query-card">
+  <div class="q-title">best IT managed services for startups 2026 <span class="badge badge-weak">WEAK</span></div>
+  <div class="q-analysis">AI Overviews cite Electric, purchased IT, and Rippling IT. Treeline not mentioned despite a16z backing.</div>
+</div><div class="query-card">
+  <div class="q-title">AI IT support platform enterprise <span class="badge badge-weak">WEAK</span></div>
+  <div class="q-analysis">Enterprise IT support queries cite ServiceNow, Jira Service Management, and Freshservice. Treeline absent.</div>
+</div><div class="query-card">
+  <div class="q-title">IT security compliance for growing companies <span class="badge badge-weak">WEAK</span></div>
+  <div class="q-analysis">Security compliance queries cite Vanta, Drata, and Secureframe. Treeline's compliance module not in AI-cited sources.</div>
+</div><div class="query-card">
+  <div class="q-title">MSP vs internal IT for startups <span class="badge badge-weak">WEAK</span></div>
+  <div class="q-analysis">MSP comparison queries cite Electric and AllSafe IT. Treeline's AI-native approach not mentioned in Reddit discussions.</div>
+</div><div class="query-card">
+  <div class="q-title">what is Treeline AI <span class="badge badge-weak">WEAK</span></div>
+  <div class="q-analysis">Even direct queries return only PR/press coverage. Zero UGC — AI has no user-generated perspective to cite for Treeline.</div>
+</div></div><div class="section"><h2>Who AI Currently Cites — Your Competitors</h2><div class="competitor-card">
+  <div><div class="comp-name">Electric AI</div><div class="comp-desc">AI-powered IT support, 200+ G2 reviews, $100M+ raised</div></div>
+</div><div class="competitor-card">
+  <div><div class="comp-name">Rippling</div><div class="comp-desc">HR + IT platform, $13B val, IT module competes</div></div>
+</div><div class="competitor-card">
+  <div><div class="comp-name">ServiceNow</div><div class="comp-desc">Enterprise ITSM, public company, 2,000+ G2 reviews</div></div>
+</div></div><div class="cta">
+  <h2>How genhance.ai Closes Your AI Visibility Gap</h2>
+  <div class="plays">
+    <div class="play-card">
+      <div class="play-num">PLAY 1</div>
+      <div class="play-title">Reddit Thread Intelligence</div>
+      <div class="play-desc">Monitor and engage in existing Reddit threads that AI already cites for "best IT managed services for startups 2026" — one thoughtful comment shifts what AI says.</div>
+    </div>
+    <div class="play-card">
+      <div class="play-num">PLAY 2</div>
+      <div class="play-title">G2 Review Acceleration</div>
+      <div class="play-desc">Systematically build your G2 review corpus. At 0 reviews, every new review shifts 3-5% of your AI-search narrative.</div>
+    </div>
+    <div class="play-card">
+      <div class="play-num">PLAY 3</div>
+      <div class="play-title">YouTube Comment Presence</div>
+      <div class="play-desc">Niche creator videos on AI-Native IT Services / MSP drive AI Overviews. We find and engage on them — AI scrapes YouTube transcripts+comments heavily.</div>
+    </div>
+    <div class="play-card">
+      <div class="play-num">PLAY 4</div>
+      <div class="play-title">Before/After Tracking</div>
+      <div class="play-desc">DataForSEO-verified snapshots of what AI says about your category before and after genhance engagement. Prove ROI in 30 days.</div>
+    </div>
+  </div>
+  <p style="color:#94a3b8;font-size:14px">Want to see the AI answer change for "best IT managed services for startups 2026"? Let's talk.</p>
+</div>
+<div class="footer">
+  <p><strong>Rajesh Gautam, PhD</strong><br>Founder and CEO, genhance.ai</p>
+  <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+  <p style="margin-top: 10px; font-size: 11px; color: #64748b;">AI Search Visibility Audit — generated by genhance.ai. Data verified via web search August 2026.</p>
+</div>
+</body>
+</html>
