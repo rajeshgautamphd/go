@@ -1,126 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — Ambrook</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #1a1a2e; line-height: 1.6; }
-  .header { background: linear-gradient(135deg, #0a1628 0%, #1a2a5e 50%, #0d2137 100%); color: white; padding: 48px 32px; text-align: center; }
-  .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
-  .header p { font-size: 16px; opacity: 0.85; max-width: 600px; margin: 0 auto; }
-  .container { max-width: 800px; margin: 0 auto; padding: 24px 20px; }
-  .stats { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: -36px 0 32px 0; }
-  .stat-pill { background: white; border-radius: 12px; padding: 16px 24px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); min-width: 120px; }
-  .stat-pill .value { font-size: 24px; font-weight: 800; color: #1a2a5e; }
-  .stat-pill .label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
-  .key-finding { background: linear-gradient(135deg, #fff3cd, #ffecb3); border-left: 4px solid #f59e0b; padding: 20px 24px; border-radius: 8px; margin: 0 0 32px 0; }
-  .key-finding h3 { color: #92400e; margin-bottom: 8px; font-size: 16px; }
-  .key-finding p { color: #78350f; font-size: 14px; }
-  .section-title { font-size: 20px; font-weight: 700; color: #1a2a5e; margin: 32px 0 16px 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
-  .query-card { background: white; border-radius: 10px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border-left: 4px solid #cbd5e1; }
-  .query-card.present { border-left-color: #10b981; }
-  .query-card.weak { border-left-color: #f59e0b; }
-  .query-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .query-text { font-weight: 600; color: #1a2a5e; font-size: 15px; }
-  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-  .badge.present { background: #d1fae5; color: #065f46; }
-  .badge.weak { background: #ffedd5; color: #9a3412; }
-  .query-analysis { font-size: 13px; color: #475569; margin-top: 8px; }
-  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
-  .competitor-card { background: white; border-radius: 8px; padding: 14px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-weight: 600; color: #334155; font-size: 14px; }
-  .cta { background: linear-gradient(135deg, #0a1628, #1a2a5e); color: white; padding: 32px; border-radius: 12px; margin-top: 32px; text-align: center; }
-  .cta h3 { font-size: 20px; margin-bottom: 12px; }
-  .cta-plays { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
-  .cta-play { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 14px; text-align: left; }
-  .cta-play .num { font-size: 24px; font-weight: 800; opacity: 0.4; }
-  .cta-play .text { font-size: 12px; opacity: 0.9; margin-top: 4px; }
-  .footer { text-align: center; color: #64748b; font-size: 13px; padding: 32px 0 16px 0; }
-  .footer a { color: #3b82f6; text-decoration: none; }
-</style>
-</head>
-<body>
-<div class="header">
-  <h1>AI SEARCH VISIBILITY AUDIT</h1>
-  <p>Ambrook — FinTech SaaS / Agricultural Accounting</p>
-</div>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>AI Search Visibility Audit — Ambrook</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0e27;color:#e8eaed;line-height:1.6}.header{background:linear-gradient(135deg,#0d1b4c,#1a237e,#0d1b4c);padding:48px 24px;text-align:center;border-bottom:3px solid #ff9800}.header h1{font-size:2rem;color:#fff;margin-bottom:8px}.header .subtitle{color:#ff9800;font-size:1.1rem;font-weight:500}.container{max-width:900px;margin:0 auto;padding:24px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}.stat-card{background:linear-gradient(145deg,#131b3d,#1a2555);border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(255,255,255,.08)}.stat-card .stat-value{font-size:1.8rem;font-weight:700;color:#ff9800}.stat-card .stat-label{font-size:.8rem;color:#8a93b0;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}.alert{background:linear-gradient(135deg,#3d2000,#4a2a00);border:1px solid #ff9800;border-radius:12px;padding:20px 24px;margin:24px 0}.alert .alert-title{color:#ff9800;font-weight:700;font-size:1.1rem;margin-bottom:8px}.alert p{color:#e8d5b5;font-size:.95rem}.query-section{margin:32px 0}.query-section h2{color:#ff9800;font-size:1.3rem;margin-bottom:16px;border-bottom:1px solid rgba(255,152,0,.3);padding-bottom:8px}.query-card{background:#11183a;border-radius:10px;padding:18px;margin-bottom:12px;border-left:3px solid #1e3a6e}.query-card .q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.query-card .q-text{color:#c0caf0;font-size:.9rem;font-style:italic}.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}.badge-absent{background:rgba(220,38,38,.2);color:#ef4444;border:1px solid rgba(239,68,68,.3)}.badge-weak{background:rgba(255,152,0,.2);color:#ff9800;border:1px solid rgba(255,152,0,.3)}.query-card .q-analysis{color:#9ca3c0;font-size:.85rem;margin-top:8px}.query-card .q-sources{color:#6b7c9e;font-size:.78rem;margin-top:4px}.comp-section{margin:32px 0}.comp-section h2{color:#ff9800;font-size:1.3rem;margin-bottom:16px;border-bottom:1px solid rgba(255,152,0,.3);padding-bottom:8px}.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.comp-card{background:linear-gradient(145deg,#131b3d,#1a2555);border-radius:10px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,.06)}.comp-card .comp-name{color:#fff;font-size:.95rem;font-weight:600}.comp-card .comp-detail{color:#8a93b0;font-size:.75rem;margin-top:4px}.cta-section{background:linear-gradient(135deg,#131b3d,#0d1b4c);border-radius:16px;padding:32px 24px;margin:32px 0;border:2px solid #ff9800;text-align:center}.cta-section h2{color:#ff9800;font-size:1.4rem;margin-bottom:16px}.plays{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;text-align:left}.play-card{background:rgba(255,152,0,.08);border-radius:10px;padding:16px;border:1px solid rgba(255,152,0,.15)}.play-card .play-num{color:#ff9800;font-weight:700;font-size:.8rem;margin-bottom:4px}.play-card .play-title{color:#fff;font-weight:600;font-size:.95rem}.play-card .play-desc{color:#9ca3c0;font-size:.8rem;margin-top:4px}.footer{text-align:center;padding:32px 24px;color:#6b7c9e;font-size:.85rem;border-top:1px solid rgba(255,255,255,.06)}.footer .name{color:#c0caf0;font-weight:600}.footer a{color:#ff9800;text-decoration:none}</style></head>
+<body><div class="header"><h1>AI Search Visibility Audit</h1><div class="subtitle">Ambrook — AI Finance Platform for Independent Businesses</div></div>
 <div class="container">
-  <div class="stats">
-    <div class="stat-pill"><div class="value">$30M Series B</div><div class="label">Funding</div></div>
-    <div class="stat-pill"><div class="value">1/5</div><div class="label">AI Visibility</div></div>
-    <div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
-    <div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
-  </div>
-
-  <div class="key-finding">
-    <h3>🔑 KEY FINDING</h3>
-    <p>Ambrook raised $30M to be the QuickBooks killer for American industry — farms, contractors, truckers. But AI search engines still recommend QuickBooks for every farm accounting query. Zero G2 reviews. Zero Reddit mentions. Your $30M Series B is invisible to the 42M+ Americans in your target industries who start their research in AI chatbots.</p>
-  </div>
-
-  <div class="section-title">📊 AI Search Query Analysis</div>
-  <p style="color:#64748b;font-size:13px;margin-bottom:16px;">We ran 5 queries that potential Ambrook customers search daily. Here's what AI search engines cite — and where Ambrook is missing.</p>
-    <div class="query-card weak">
-    <div class="query-header">
-      <span class="query-text">"best farm accounting software 2026"</span>
-      <span class="badge weak">WEAK</span>
-    </div>
-    <div class="query-analysis">QuickBooks dominates — cited in 4 of 5 AI Overviews. FarmLogs appears in 2. Ambrook, with $30M from Thrive and Thomson Reuters, appears in zero. No Reddit thread, no G2 review.</div>
-  </div>
-  <div class="query-card weak">
-    <div class="query-header">
-      <span class="query-text">"QuickBooks alternative for farms"</span>
-      <span class="badge weak">WEAK</span>
-    </div>
-    <div class="query-analysis">Wave, FreshBooks, and Zoho Books are the AI-recommended alternatives. Ambrook — purpose-built as the QuickBooks killer for farms — doesn't appear in any AI answer.</div>
-  </div>
-  <div class="query-card weak">
-    <div class="query-header">
-      <span class="query-text">"small farm financial management tools"</span>
-      <span class="badge weak">WEAK</span>
-    </div>
-    <div class="query-analysis">Farmers on r/farming and r/homestead discuss QuickBooks, spreadsheets, and pen-and-paper. Nobody mentions Ambrook. Your $30M Series B has zero community footprint.</div>
-  </div>
-  <div class="query-card weak">
-    <div class="query-header">
-      <span class="query-text">"agriculture fintech trends 2026"</span>
-      <span class="badge weak">WEAK</span>
-    </div>
-    <div class="query-analysis">AI Overviews cite Bushel, Farmers Business Network, and Granular in agriculture fintech context. Ambrook — a direct competitor — is invisible.</div>
-  </div>
-  <div class="query-card weak">
-    <div class="query-header">
-      <span class="query-text">"Ambrook review experience Reddit"</span>
-      <span class="badge weak">WEAK</span>
-    </div>
-    <div class="query-analysis">Zero Reddit threads. Your users have no public forum to share experiences. 100% of your AI-accessible narrative is self-authored.</div>
-  </div>
-
-
-  <div class="section-title">🏢 Named Competitors in AI Answers</div>
-  <p style="color:#64748b;font-size:13px;margin-bottom:8px;">These companies ARE cited by AI search engines when users search for Ambrook's category:</p>
-  <div class="competitor-grid">
-        <div class="competitor-card">QuickBooks</div>
-    <div class="competitor-card">FarmLogs</div>
-    <div class="competitor-card">Bushel</div>
-    <div class="competitor-card">Granular</div>
-
-  </div>
-
-  <div class="cta">
-    <h3>🚀 How genhance Fixes This</h3>
-    <div class="cta-plays">
-      <div class="cta-play"><div class="num">01</div><div class="text">Monitor Reddit/YouTube/forum UGC and detect sparse conversations where a single comment shifts AI answers</div></div>
-      <div class="cta-play"><div class="num">02</div><div class="text">Build UGC presence on the 3-5 self-contributable surfaces that AI search engines already cite for your category</div></div>
-      <div class="cta-play"><div class="num">03</div><div class="text">Seed verified reviews on G2, Capterra, and Google — each review feeds a different AI answer surface</div></div>
-      <div class="cta-play"><div class="num">04</div><div class="text">Track before/after AI answer snapshots — prove the impact of every UGC contribution on what AI says about you</div></div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <p><strong>Rajesh Gautam, PhD</strong> | Founder and CEO, genhance.ai</p>
-    <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
-  </div>
-</div>
-</body>
-</html>
+<div class="stats"><div class="stat-card"><div class="stat-value">$59M</div><div class="stat-label">Total Funding</div></div><div class="stat-card"><div class="stat-value">0/5</div><div class="stat-label">AI Visibility</div></div><div class="stat-card"><div class="stat-value">0</div><div class="stat-label">G2 Reviews</div></div><div class="stat-card"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div></div>
+<div class="alert"><div class="alert-title">🔑 KEY FINDING</div><p>Ambrook raised $30M Series B ($59M total) to build the "QuickBooks killer" for family-run farms and independent businesses — yet appears in 0 of 5 key AI search queries. Backed by Lachy Groom, Thomson Reuters Ventures, and founders of Gusto/Notion/Vercel, Ambrook has strong investor validation but zero AI-indexed UGC presence. Competitors QuickBooks and Xero dominate AI Overviews with millions of reviews. Ambrook's vertical focus on agriculture and the "real economy" gives it a unique AI positioning opportunity that no one has claimed.</p></div>
+<div class="query-section"><h2>🔍 AI Search Query Audit (5 Queries)</h2>
+<div class="query-card"><div class="q-header"><span class="q-text">"best accounting software for farms and agriculture"</span><span class="badge badge-absent">ABSENT</span></div><div class="q-analysis">AI Overviews cite QuickBooks, FarmBooks, and generic farm management tools. Ambrook, purpose-built for agricultural businesses with industry-specific financial workflows, does not appear — despite this being its exact ICP.</div><div class="q-sources">Top AI-cited sources: QuickBooks agriculture (vendor), FarmBooks (vendor), USDA resources (gov)</div></div>
+<div class="query-card"><div class="q-header"><span class="q-text">"QuickBooks alternative for small business"</span><span class="badge badge-absent">ABSENT</span></div><div class="q-analysis">AI Overviews cite Xero, FreshBooks, Wave, and Zoho Books. Ambrook, despite being explicitly positioned as a "QuickBooks killer," is invisible in the comparison query that drives customer acquisition for its entire category.</div><div class="q-sources">Top AI-cited sources: Xero (vendor), FreshBooks (vendor), G2 accounting (directory)</div></div>
+<div class="query-card"><div class="q-header"><span class="q-text">"Ambrook financial software review"</span><span class="badge badge-weak">WEAK</span></div><div class="q-analysis">Only Ambrook's website and the funding announcement on Upstarts/TechCrunch appear. Zero customer reviews, zero Reddit discussions, zero YouTube walkthroughs. For a financial platform handling real business transactions, this absence of independent validation is a trust barrier.</div><div class="q-sources">Top AI-cited sources: ambrook.com (vendor), Upstarts Media (editorial), Fintech Futures (trade)</div></div>
+<div class="query-card"><div class="q-header"><span class="q-text">"AI-powered farm financial management platform"</span><span class="badge badge-absent">ABSENT</span></div><div class="q-analysis">This niche query has essentially zero vendor coverage. Ambrook's AI-driven approach to automating farm finances should own this entirely — but the space is empty. First-mover advantage is total here.</div><div class="q-sources">Top AI-cited sources: No dominant sources — query is completely open</div></div>
+<div class="query-card"><div class="q-header"><span class="q-text">"best fintech for independent business owners 2026"</span><span class="badge badge-absent">ABSENT</span></div><div class="q-analysis">AI Overviews cite Brex, Mercury, and Ramp — all focused on tech startups, not the real economy businesses Ambrook serves. The "real economy fintech" category has zero AI-indexed content, creating an open field for Ambrook to define it.</div><div class="q-sources">Top AI-cited sources: Brex (vendor), Mercury (vendor), Ramp (vendor)</div></div></div>
+<div class="comp-section"><h2>🏢 Competitors Dominating AI Answers</h2><div class="comp-grid"><div class="comp-card"><div class="comp-name">QuickBooks</div><div class="comp-detail">2,000+ G2 reviews, Intuit</div></div><div class="comp-card"><div class="comp-name">Xero</div><div class="comp-detail">1,500+ reviews, public company</div></div><div class="comp-card"><div class="comp-name">FreshBooks</div><div class="comp-detail">600+ reviews</div></div><div class="comp-card"><div class="comp-name">FarmBooks</div><div class="comp-detail">Niche farm accounting</div></div></div></div>
+<div class="cta-section"><h2>🚀 4 Genhance Plays to Win AI Visibility</h2><div class="plays">
+<div class="play-card"><div class="play-num">PLAY 1</div><div class="play-title">Reddit r/farming Community Engagement</div><div class="play-desc">Post in r/farming and r/agriculture threads about farm financial management. With zero Reddit presence today, 3 helpful responses become the entire AI-indexed community voice for farm fintech.</div></div>
+<div class="play-card"><div class="play-num">PLAY 2</div><div class="play-title">Define the "Real Economy Fintech" Category</div><div class="play-desc">Publish "Fintech for the Real Economy" as a category-defining manifesto. No competitor is claiming this vertical in AI-indexed content. Ambrook can own the narrative for independent businesses that create goods, move resources, and manage real-world assets.</div></div>
+<div class="play-card"><div class="play-num">PLAY 3</div><div class="play-title">Farm YouTube Creator Partnerships</div><div class="play-desc">Partner with 2-3 agricultural YouTubers for platform walkthroughs. Farm-focused YouTube channels have highly engaged audiences and zero fintech sponsor saturation — AI Overviews pull YouTube content for niche business software queries.</div></div>
+<div class="play-card"><div class="play-num">PLAY 4</div><div class="play-title">G2 Vertical Category Listing</div><div class="play-desc">List Ambrook on G2 under "Farm Accounting" or "Agriculture Financial Software." With zero reviews today, the first 10-15 reviews create Ambrook's entire G2 narrative and feed directly into AI-generated recommendations for farm business tools.</div></div>
+</div></div>
+<div class="footer"><div class="name">Rajesh Gautam, PhD</div><div>Founder and CEO, genhance.ai</div><div style="margin-top:12px"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp;<a href="https://genhance.ai">genhance.ai</a></div><div style="margin-top:12px;font-size:.7rem;color:#4a5580">AI Search Visibility Audit · August 2026 · For informational purposes only</div></div></div></body></html>
