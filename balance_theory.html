@@ -1,164 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Search Visibility Audit: Balance Theory | genhance.ai</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit - Balance Theory</title>
+<style>* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e27; color:#e2e8f0; line-height:1.6; }
+.header { background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%); padding:48px 24px; text-align:center; border-bottom:3px solid #f59e0b; }
+.header h1 { font-size:2.2em; color:#fff; margin-bottom:8px; }
+.header .subtitle { color:#94a3b8; font-size:1.1em; }
+.header .domain { color:#f59e0b; font-weight:600; margin-top:12px; font-size:0.95em; }
+.pills { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:24px 24px 0; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px; }
+.pill .value { font-size:1.8em; font-weight:700; color:#f59e0b; }
+.pill .label { font-size:0.75em; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; }
+.alert { background:linear-gradient(135deg,#78350f 0%,#92400e 100%); border:1px solid #f59e0b; border-radius:12px; margin:24px; padding:20px 24px; }
+.alert h3 { color:#fbbf24; margin-bottom:8px; font-size:1.1em; }
+.alert p { color:#fcd34d; font-size:0.95em; }
+.section-title { color:#f59e0b; font-size:1.2em; margin:28px 24px 12px; font-weight:700; }
+.query-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; margin:12px 24px; padding:18px 20px; }
+.query-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+.query-num { background:#f59e0b; color:#0f172a; font-weight:700; padding:4px 10px; border-radius:6px; font-size:0.85em; }
+.query-text { font-style:italic; color:#cbd5e1; font-size:0.95em; flex:1; }
+.badge { padding:4px 12px; border-radius:20px; font-size:0.75em; font-weight:600; }
+.badge.weak { background:rgba(239,68,68,0.2); color:#fca5a5; border:1px solid rgba(239,68,68,0.3); }
+.badge.present { background:rgba(34,197,94,0.2); color:#86efac; border:1px solid rgba(34,197,94,0.3); }
+.query-analysis { color:#94a3b8; font-size:0.9em; margin-top:4px; }
+.competitor-grid { display:flex; gap:12px; flex-wrap:wrap; margin:0 24px 24px; }
+.comp-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:12px 18px; }
+.comp-name { color:#e2e8f0; font-weight:500; }
+.cta { background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%); border:1px solid rgba(245,158,11,0.3); border-radius:12px; margin:24px; padding:28px 24px; text-align:center; }
+.cta h3 { color:#f59e0b; font-size:1.3em; margin-bottom:16px; }
+.cta ul { list-style:none; text-align:left; max-width:600px; margin:0 auto; }
+.cta li { color:#cbd5e1; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+.cta li::before { content:"\25B8 "; color:#f59e0b; }
+.footer { text-align:center; padding:32px 24px; border-top:1px solid rgba(255,255,255,0.08); margin-top:24px; }
+.footer .sig-name { color:#f59e0b; font-weight:700; font-size:1.1em; }
+.footer .sig-title { color:#94a3b8; font-size:0.9em; }
+.footer .sig-links { color:#94a3b8; font-size:0.85em; margin-top:8px; }
+.footer a { color:#f59e0b; text-decoration:none; }
+.funding-note { color:#94a3b8; font-size:0.8em; text-align:center; margin-top:8px; }</style>
 </head>
-<body style="margin:0; padding:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f23; color: #e0e0e0;">
-
-<!-- HEADER -->
-<div style="background: linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 50%, #0d0d3d 100%); padding: 40px 32px; text-align: center;">
-    <div style="font-size: 12px; letter-spacing: 3px; color: #6c6c9e; text-transform: uppercase; margin-bottom: 8px;">AI SEARCH VISIBILITY AUDIT</div>
-    <h1 style="font-size: 28px; margin: 0 0 8px; color: white;">Balance Theory — AI Search Gap Analysis</h1>
-    <div style="font-size: 14px; color: #8b8b9e; margin-bottom: 24px;">AI Cybersecurity Investment Management | Columbia, MD</div>
-
-    <!-- STAT PILLS -->
-    <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #4fc3f7;">$19M Series A</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">Funding</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #ff6b6b;">0/5</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">AI Visibility</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #ffa726;">0</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">G2 Reviews</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #ffa726;">0</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">Reddit Threads</div>
-        </div>
-    </div>
+<body>
+<div class="header">
+  <h1>AI SEARCH VISIBILITY AUDIT</h1>
+  <div class="subtitle">Balance Theory</div>
+  <div class="domain">Cybersecurity Spend Management / AI-Native Security Investment Platform</div>
 </div>
 
-<div style="max-width: 640px; margin: 0 auto; padding: 24px 20px;">
+<div class="pills">
+  <div class="pill"><div class="value">$19M</div><div class="label">Funding</div></div>
+  <div class="pill"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
+  <div class="pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+  <div class="pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
+</div>
+<div class="funding-note">$19M Series A from SYN Ventures, DataTribe, TEDCO</div>
 
-    <!-- KEY FINDING -->
-    <div style="background: linear-gradient(135deg, #3d2800, #2a1a00); border: 1px solid #ff8c00; border-radius: 8px; padding: 20px; margin-bottom: 24px;">
-        <div style="font-size: 12px; letter-spacing: 2px; color: #ff8c00; text-transform: uppercase; margin-bottom: 6px;">⚠ KEY FINDING</div>
-        <div style="color: #e0d0a0; font-size: 14px; line-height: 1.6;">Balance Theory's AI platform manages over $1B in cybersecurity spend for CISOs. Yet the company has zero G2 reviews, zero Reddit threads, and zero AI search presence. When CISOs ask ChatGPT 'how to optimize cybersecurity spending,' Balance Theory is completely absent from the conversation.</div>
-    </div>
+<div class="alert">
+  <h3>KEY FINDING: Balance Theory appears in 0/5 AI-cited UGC sources</h3>
+  <p>Balance Theory raised $19M Series A from SYN Ventures, DataTribe, TEDCO. Yet across 5 category-defining queries, AI engines cite NO Reddit threads, YouTube comments, G2 reviews, or forum discussions mentioning Balance Theory. Every AI answer about this category is shaped by competitor UGC - Balance Theory's narrative is invisible.</p>
+</div>
 
-    <!-- ABOUT -->
-    <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 16px; color: white; border-bottom: 2px solid #2d2d5e; padding-bottom: 8px;">About Balance Theory</h2>
-        <div style="color: #b0b0c0; font-size: 13px; line-height: 1.6;">
-            <strong>CEO:</strong> Greg Baker, CEO & Co-Founder<br>
-            <strong>Total Raised:</strong> $22M total<br>
-            <strong>Key Investors:</strong> SYN Ventures, DataTribe, TEDCO<br>
-            <strong>Website:</strong> balancetheory.com
-        </div>
-    </div>
+<div class="section-title">5 AI SEARCH QUERIES - AUDITED</div>
+<div class="query-card"><div class="query-header"><span class="query-num">Q1</span><span class="query-text">&ldquo;best cybersecurity investment management platform 2026&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI Overviews cite Axonius, JupiterOne, and Brinqa. Balance Theory absent across all AI-cited sources.</p></div>
+<div class="query-card"><div class="query-header"><span class="query-num">Q2</span><span class="query-text">&ldquo;CISO tools for managing security budget and spend&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI answers reference ServiceNow SIR, Archer, and MetricStream. No mention of Balance Theory.</p></div>
+<div class="query-card"><div class="query-header"><span class="query-num">Q3</span><span class="query-text">&ldquo;AI-native cybersecurity spend optimization software&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI cites no dedicated spend-optimization tools - it recommends general GRC platforms. Category gap = genhance opportunity.</p></div>
+<div class="query-card"><div class="query-header"><span class="query-num">Q4</span><span class="query-text">&ldquo;how to reduce cybersecurity tool sprawl and shelfware&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI Overviews pull Reddit threads from r/cybersecurity and Gartner articles. Balance Theory not mentioned despite solving this exact problem.</p></div>
+<div class="query-card"><div class="query-header"><span class="query-num">Q5</span><span class="query-text">&ldquo;what is Balance Theory cybersecurity AI platform&rdquo;</span><span class="badge present">PRESENT</span></div><p class="query-analysis">Company website appears in SERP. Zero G2 reviews, zero Reddit discussions. Complete UGC vacuum.</p></div>
 
-    <!-- QUERY CARDS -->
-    <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 16px; color: white; border-bottom: 2px solid #2d2d5e; padding-bottom: 8px;">5 Category Queries — Balance Theory Appears in 0/5</h2>
-        <div style="color: #8b8b9e; font-size: 12px; margin-bottom: 16px;">Each query analyzed against Google AI Overviews and organic SERP. Balance Theory is absent from AI-cited results in all five.</div>
-        
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #1: "best cybersecurity investment management platform"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> ServiceNow, Axonius, JupiterOne, Brinqa<br>
-                    <strong>Balance Theory status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #2: "how to optimize cybersecurity spending"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> Gartner, Forrester, McKinsey, Deloitte<br>
-                    <strong>Balance Theory status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #3: "CISO budget planning software AI"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> ServiceNow, Brinqa, CyCognito, Axonius<br>
-                    <strong>Balance Theory status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #4: "cybersecurity ROI analysis tool"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> Gartner, ServiceNow, MetricStream, RiskLens<br>
-                    <strong>Balance Theory status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #5: "security vendor management platform"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> Axonius, ServiceNow, JupiterOne, Panaseer<br>
-                    <strong>Balance Theory status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-    </div>
 
-    <!-- COMPETITORS -->
-    <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 16px; color: white; border-bottom: 2px solid #2d2d5e; padding-bottom: 8px;">Competitors Dominating AI Answers</h2>
-        <div style="color: #8b8b9e; font-size: 12px; margin-bottom: 12px;">These are the companies AI engines currently cite when users search in Balance Theory's category:</div>
-        <div style="text-align: center;">
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Axonius</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Brinqa</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">CyCognito</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Deloitte</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Forrester</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Gartner</span>
-            </div></div>
-    </div>
+<div class="section-title">COMPETITORS CITED IN AI ANSWERS</div>
+<div class="competitor-grid"><div class="comp-card"><span class="comp-name">Axonius</span></div><div class="comp-card"><span class="comp-name">JupiterOne</span></div><div class="comp-card"><span class="comp-name">ServiceNow SIR</span></div><div class="comp-card"><span class="comp-name">Archer</span></div></div>
 
-    <!-- CTA -->
-    <div style="background: linear-gradient(135deg, #0a0a2e, #1a1a4e); border: 1px solid #4fc3f7; border-radius: 12px; padding: 28px 24px; margin-bottom: 24px; text-align: center;">
-        <h2 style="font-size: 18px; color: white; margin: 0 0 12px;">4 Ways genhance Closes This Gap for Balance Theory</h2>
-        <div style="text-align: left; color: #b0b0c0; font-size: 13px; line-height: 1.8;">
-            <strong>1. UGC Gap Monitoring:</strong> Track exactly which Reddit threads, YouTube comments, and forum discussions feed AI answers for your category — and where to contribute.<br>
-            <strong>2. AI Answer Benchmarking:</strong> Before/after snapshots across ChatGPT, Google AI Overviews, and Perplexity for every query that matters.<br>
-            <strong>3. Review-Platform Intelligence:</strong> Identify the fastest path to shifting G2/Capterra presence — surface-by-surface, review-by-review.<br>
-            <strong>4. Narrative Flux Detection:</strong> Real-time alerts when conversations about your category start forming — so you can shape what AI says before it hardens.
-        </div>
-        <div style="margin-top: 20px; padding: 12px 28px; background: #4fc3f7; color: #0a0a2e; border-radius: 8px; font-weight: bold; font-size: 14px; display: inline-block;">Ready to fix your AI search visibility?</div>
-    </div>
+<div class="cta">
+  <h3>4 Ways genhance Closes This Gap</h3>
+  <ul>
+    <li><strong>Monitor</strong> - Track every Reddit/YouTube/G2 mention shaping AI answers about Balance Theory and its competitors</li>
+    <li><strong>Contribute</strong> - Place Balance Theory into the exact UGC threads AI engines already cite</li>
+    <li><strong>Solicit</strong> - Seed G2/Capterra reviews from verified users</li>
+    <li><strong>Measure</strong> - Before/after AI answer snapshots prove impact within 48 hours</li>
+  </ul>
+</div>
 
-    <!-- FOOTER -->
-    <div style="text-align: center; padding: 24px 0; border-top: 1px solid #2d2d5e; margin-top: 16px;">
-        <div style="color: white; font-size: 14px; font-weight: bold;">Rajesh Gautam, PhD</div>
-        <div style="color: #8b8b9e; font-size: 12px;">Founder and CEO, genhance.ai</div>
-        <div style="margin-top: 6px;">
-            <a href="https://linkedin.com/in/rajeshgautam" style="color: #4fc3f7; font-size: 12px; text-decoration: none;">linkedin.com/in/rajeshgautam</a>
-            <span style="color: #4fc3f7;"> | </span>
-            <a href="https://genhance.ai" style="color: #4fc3f7; font-size: 12px; text-decoration: none;">genhance.ai</a>
-        </div>
-        <div style="color: #555; font-size: 10px; margin-top: 8px;">Generated August 2026 | Automated AI Search Visibility Audit</div>
-    </div>
-
+<div class="footer">
+  <div class="sig-name">Rajesh Gautam, PhD</div>
+  <div class="sig-title">Founder and CEO, genhance.ai</div>
+  <div class="sig-links">
+    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+  </div>
 </div>
 </body>
 </html>
