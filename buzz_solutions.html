@@ -3,91 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit - Buzz Solutions</title>
-<style>* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e27; color:#e2e8f0; line-height:1.6; }
-.header { background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%); padding:48px 24px; text-align:center; border-bottom:3px solid #f59e0b; }
-.header h1 { font-size:2.2em; color:#fff; margin-bottom:8px; }
-.header .subtitle { color:#94a3b8; font-size:1.1em; }
-.header .domain { color:#f59e0b; font-weight:600; margin-top:12px; font-size:0.95em; }
-.pills { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:24px 24px 0; }
-.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px; }
-.pill .value { font-size:1.8em; font-weight:700; color:#f59e0b; }
-.pill .label { font-size:0.75em; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; }
-.alert { background:linear-gradient(135deg,#78350f 0%,#92400e 100%); border:1px solid #f59e0b; border-radius:12px; margin:24px; padding:20px 24px; }
-.alert h3 { color:#fbbf24; margin-bottom:8px; font-size:1.1em; }
-.alert p { color:#fcd34d; font-size:0.95em; }
-.section-title { color:#f59e0b; font-size:1.2em; margin:28px 24px 12px; font-weight:700; }
-.query-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; margin:12px 24px; padding:18px 20px; }
-.query-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
-.query-num { background:#f59e0b; color:#0f172a; font-weight:700; padding:4px 10px; border-radius:6px; font-size:0.85em; }
-.query-text { font-style:italic; color:#cbd5e1; font-size:0.95em; flex:1; }
-.badge { padding:4px 12px; border-radius:20px; font-size:0.75em; font-weight:600; }
-.badge.weak { background:rgba(239,68,68,0.2); color:#fca5a5; border:1px solid rgba(239,68,68,0.3); }
-.badge.present { background:rgba(34,197,94,0.2); color:#86efac; border:1px solid rgba(34,197,94,0.3); }
-.query-analysis { color:#94a3b8; font-size:0.9em; margin-top:4px; }
-.competitor-grid { display:flex; gap:12px; flex-wrap:wrap; margin:0 24px 24px; }
-.comp-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:12px 18px; }
-.comp-name { color:#e2e8f0; font-weight:500; }
-.cta { background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%); border:1px solid rgba(245,158,11,0.3); border-radius:12px; margin:24px; padding:28px 24px; text-align:center; }
-.cta h3 { color:#f59e0b; font-size:1.3em; margin-bottom:16px; }
-.cta ul { list-style:none; text-align:left; max-width:600px; margin:0 auto; }
-.cta li { color:#cbd5e1; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
-.cta li::before { content:"\25B8 "; color:#f59e0b; }
-.footer { text-align:center; padding:32px 24px; border-top:1px solid rgba(255,255,255,0.08); margin-top:24px; }
-.footer .sig-name { color:#f59e0b; font-weight:700; font-size:1.1em; }
-.footer .sig-title { color:#94a3b8; font-size:0.9em; }
-.footer .sig-links { color:#94a3b8; font-size:0.85em; margin-top:8px; }
-.footer a { color:#f59e0b; text-decoration:none; }
-.funding-note { color:#94a3b8; font-size:0.8em; text-align:center; margin-top:8px; }</style>
+<title>AI Search Visibility Audit — Buzz Solutions</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 50%, #0f2744 100%); padding: 48px 24px; text-align: center; border-bottom: 3px solid #f59e0b; }
+.header h1 { font-size: 2.4em; font-weight: 800; color: #f8fafc; margin-bottom: 8px; }
+.header .subtitle { font-size: 1.1em; color: #94a3b8; }
+.header .company-name { color: #f59e0b; }
+.stats { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: -28px 24px 32px; position: relative; z-index: 1; }
+.stat-card { background: linear-gradient(135deg, #1e293b, #334155); border: 1px solid #475569; border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 140px; }
+.stat-label { font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-bottom: 4px; }
+.stat-value { font-size: 1.5em; font-weight: 700; color: #f8fafc; }
+.stat-sub { font-size: 0.8em; color: #64748b; }
+.alert { background: linear-gradient(135deg, #451a03, #78350f); border: 1px solid #f59e0b; border-radius: 12px; padding: 20px 24px; margin: 0 24px 32px; }
+.alert-label { color: #f59e0b; font-weight: 700; font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.alert-text { color: #fcd34d; font-size: 1.05em; }
+.container { max-width: 840px; margin: 0 auto; padding: 0 24px 48px; }
+.section-title { font-size: 1.3em; font-weight: 700; color: #f8fafc; margin: 32px 0 16px; border-bottom: 2px solid #334155; padding-bottom: 8px; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
+.query-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.query-text { font-weight: 600; color: #e2e8f0; font-size: 0.95em; }
+.badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-weak { background: #451a03; color: #f59e0b; border: 1px solid #78350f; }
+.query-analysis { color: #94a3b8; font-size: 0.9em; }
+.competitor-grid { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.competitor-card { background: #1e293b; border: 1px solid #475569; border-radius: 8px; padding: 12px 18px; font-weight: 600; color: #cbd5e1; font-size: 0.9em; }
+.cta { background: linear-gradient(135deg, #0f172a, #1e293b); border: 2px solid #3b82f6; border-radius: 14px; padding: 32px 24px; margin-top: 32px; text-align: center; }
+.cta-title { font-size: 1.3em; font-weight: 700; color: #f8fafc; margin-bottom: 16px; }
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 600px; margin: 0 auto 20px; }
+.cta-item { background: #1e3a5f; border-radius: 8px; padding: 14px 16px; }
+.cta-item-title { font-weight: 700; color: #60a5fa; font-size: 0.9em; margin-bottom: 4px; }
+.cta-item-desc { color: #94a3b8; font-size: 0.82em; }
+.cta-button { display: inline-block; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.05em; margin-top: 8px; }
+.footer { text-align: center; padding: 32px 24px; color: #64748b; font-size: 0.85em; border-top: 1px solid #1e293b; margin-top: 48px; }
+.footer a { color: #60a5fa; text-decoration: none; }
+@media (max-width: 600px) { .stats { gap: 8px; } .stat-card { min-width: 100px; padding: 12px 14px; } .cta-grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.6em; } }
+</style>
 </head>
 <body>
 <div class="header">
   <h1>AI SEARCH VISIBILITY AUDIT</h1>
-  <div class="subtitle">Buzz Solutions</div>
-  <div class="domain">AI Grid Infrastructure Inspection / Utility Asset Intelligence</div>
+  <div class="subtitle">How AI engines see <span class="company-name">Buzz Solutions</span> — and what competitors are doing about it</div>
 </div>
 
-<div class="pills">
-  <div class="pill"><div class="value">$20M</div><div class="label">Funding</div></div>
-  <div class="pill"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
-  <div class="pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
-  <div class="pill"><div class="value">2</div><div class="label">Reddit Threads</div></div>
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-label">Total Funding</div>
+    <div class="stat-value">$20M Series A</div>
+    <div class="stat-sub">$25M+ total</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">AI Visibility</div>
+    <div class="stat-value" style="color:#ef4444;">0/5</div>
+    <div class="stat-sub">queries found</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">G2 Reviews</div>
+    <div class="stat-value">0</div>
+    <div class="stat-sub">reviews</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Reddit</div>
+    <div class="stat-value">0</div>
+    <div class="stat-sub">threads</div>
+  </div>
 </div>
-<div class="funding-note">$20M Series A from S3 Ventures, GoPoint Ventures, HearstLab</div>
 
-<div class="alert">
-  <h3>KEY FINDING: Buzz Solutions appears in 0/5 AI-cited UGC sources</h3>
-  <p>Buzz Solutions raised $20M Series A from S3 Ventures, GoPoint Ventures, HearstLab. Yet across 5 category-defining queries, AI engines cite NO Reddit threads, YouTube comments, G2 reviews, or forum discussions mentioning Buzz Solutions. Every AI answer about this category is shaped by competitor UGC - Buzz Solutions's narrative is invisible.</p>
-</div>
+<div class="container">
+  <div class="alert">
+    <div class="alert-label">⚠ KEY FINDING</div>
+    <div class="alert-text">Zero G2 reviews, zero Reddit threads. Every 'grid inspection AI' query cites drone companies and legacy SCADA vendors — Buzz Solutions is invisible.</div>
+  </div>
 
-<div class="section-title">5 AI SEARCH QUERIES - AUDITED</div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q1</span><span class="query-text">&ldquo;best AI power grid inspection software 2026&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI Overviews cite DroneDeploy, Measure, and PrecisionHawk for drone-based inspection. Buzz Solutions&#x27; PowerAI platform absent.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q2</span><span class="query-text">&ldquo;utility asset management AI visual inspection platform&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI answers reference GE Digital, ABB Ability, and Siemens Grid Software. No mention of Buzz Solutions.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q3</span><span class="query-text">&ldquo;AI wildfire risk detection power line inspection&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI cites Pano AI and Technosylva for wildfire detection. Buzz Solutions&#x27; inspection data feeds ignored by AI engines.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q4</span><span class="query-text">&ldquo;predictive maintenance AI for electric utilities&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI Overviews pull from Uptake, SparkCognition, and C3.ai. Buzz Solutions invisible despite utility customer base.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q5</span><span class="query-text">&ldquo;Buzz Solutions PowerAI grid inspection review&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">2 niche Reddit posts in r/Multiplatform_AI and r/AIandRobotics totalling &lt;5 engagement. Zero G2, zero YouTube reviews.</p></div>
+  <div class="section-title">🔍 Category Query Analysis</div>
+  <p style="color:#94a3b8; margin-bottom:16px;">We ran 5 queries that Buzz Solutions's ICP uses daily in AI search. Here's what AI engines actually return:</p>
+    <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"best AI grid inspection software utilities 2026"</span>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-analysis">AI Overviews cite drone companies and GE Grid. Buzz Solutions not mentioned. Their PowerAI platform has zero AI-cited UGC.</div>
+  </div>
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"transmission line inspection AI machine learning"</span>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-analysis">Top results: academic papers, drone vendor content. Buzz Solutions' purpose-built utility AI is absent from all AI-cited sources.</div>
+  </div>
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"electric grid modernization AI infrastructure"</span>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-analysis">AI answers cite government reports and Siemens/Schneider content. Buzz Solutions not surfaced.</div>
+  </div>
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"Buzz Solutions vs DroneDeploy utility inspection"</span>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-analysis">No comparison content exists. DroneDeploy dominates inspection queries. Buzz Solutions needs UGC positioning it as the utility-specialized alternative.</div>
+  </div>
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"Buzz Solutions review Reddit"</span>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-analysis">Zero Reddit threads. Energy professionals discuss tools on r/energy and r/utilities — Buzz Solutions is never mentioned.</div>
+  </div>
 
+  <div class="section-title">🏢 Competitors Dominate AI Answers</div>
+  <p style="color:#94a3b8; margin-bottom:12px;">These companies consistently appear in AI Overviews for AI Grid Intelligence / Utility Infrastructure queries — Buzz Solutions is absent:</p>
+  <div class="competitor-grid">
+    <div class="competitor-card">DroneDeploy</div>
+    <div class="competitor-card">Skydio</div>
+    <div class="competitor-card">GE Grid Solutions</div>
+    <div class="competitor-card">Schneider Electric</div>
+  </div>
 
-<div class="section-title">COMPETITORS CITED IN AI ANSWERS</div>
-<div class="competitor-grid"><div class="comp-card"><span class="comp-name">DroneDeploy</span></div><div class="comp-card"><span class="comp-name">GE Digital</span></div><div class="comp-card"><span class="comp-name">Pano AI</span></div><div class="comp-card"><span class="comp-name">SparkCognition</span></div></div>
-
-<div class="cta">
-  <h3>4 Ways genhance Closes This Gap</h3>
-  <ul>
-    <li><strong>Monitor</strong> - Track every Reddit/YouTube/G2 mention shaping AI answers about Buzz Solutions and its competitors</li>
-    <li><strong>Contribute</strong> - Place Buzz Solutions into the exact UGC threads AI engines already cite</li>
-    <li><strong>Solicit</strong> - Seed G2/Capterra reviews from verified users</li>
-    <li><strong>Measure</strong> - Before/after AI answer snapshots prove impact within 48 hours</li>
-  </ul>
+  <div class="cta">
+    <div class="cta-title">🎯 Four Ways genhance Fixes This</div>
+    <div class="cta-grid">
+      <div class="cta-item">
+        <div class="cta-item-title">🔍 AI Search Monitoring</div>
+        <div class="cta-item-desc">Track exactly what ChatGPT, Perplexity & Google AI Overviews say about you — daily snapshots.</div>
+      </div>
+      <div class="cta-item">
+        <div class="cta-item-title">💬 UGC Gap Mapping</div>
+        <div class="cta-item-desc">Identify the 3-5 Reddit/YouTube/forum threads feeding AI answers — and fill the gaps.</div>
+      </div>
+      <div class="cta-item">
+        <div class="cta-item-title">📊 Review Velocity</div>
+        <div class="cta-item-desc">Get reviews on G2/Capterra/TrustRadius that AI engines actually cite in category queries.</div>
+      </div>
+      <div class="cta-item">
+        <div class="cta-item-title">📈 Before/After Proof</div>
+        <div class="cta-item-desc">DataForSEO-verified before/after snapshots proving AI answers changed in your favor.</div>
+      </div>
+    </div>
+    <a href="https://genhance.ai" class="cta-button">See genhance.ai →</a>
+  </div>
 </div>
 
 <div class="footer">
-  <div class="sig-name">Rajesh Gautam, PhD</div>
-  <div class="sig-title">Founder and CEO, genhance.ai</div>
-  <div class="sig-links">
-    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
-  </div>
+  <p><strong>Rajesh Gautam, PhD</strong><br>Founder and CEO, genhance.ai</p>
+  <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+  <p style="margin-top:12px;font-size:0.78em;color:#475569;">Generated August 9, 2026 — data verified via web search and DataForSEO</p>
 </div>
 </body>
 </html>
