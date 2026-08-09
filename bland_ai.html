@@ -1,22 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>AI Search Visibility Audit — Bland AI</title>
-<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0e27;color:#e8eaed;line-height:1.6}.header{background:linear-gradient(135deg,#0d1b4c,#1a237e,#0d1b4c);padding:48px 24px;text-align:center;border-bottom:3px solid #ff9800}.header h1{font-size:2rem;color:#fff;margin-bottom:8px}.header .subtitle{color:#ff9800;font-size:1.1rem;font-weight:500}.container{max-width:900px;margin:0 auto;padding:24px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}.stat-card{background:linear-gradient(145deg,#131b3d,#1a2555);border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(255,255,255,.08)}.stat-card .stat-value{font-size:1.8rem;font-weight:700;color:#ff9800}.stat-card .stat-label{font-size:.8rem;color:#8a93b0;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}.alert{background:linear-gradient(135deg,#3d2000,#4a2a00);border:1px solid #ff9800;border-radius:12px;padding:20px 24px;margin:24px 0}.alert .alert-title{color:#ff9800;font-weight:700;font-size:1.1rem;margin-bottom:8px}.alert p{color:#e8d5b5;font-size:.95rem}.query-section{margin:32px 0}.query-section h2{color:#ff9800;font-size:1.3rem;margin-bottom:16px;border-bottom:1px solid rgba(255,152,0,.3);padding-bottom:8px}.query-card{background:#11183a;border-radius:10px;padding:18px;margin-bottom:12px;border-left:3px solid #1e3a6e}.query-card .q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.query-card .q-text{color:#c0caf0;font-size:.9rem;font-style:italic}.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}.badge-absent{background:rgba(220,38,38,.2);color:#ef4444;border:1px solid rgba(239,68,68,.3)}.badge-weak{background:rgba(255,152,0,.2);color:#ff9800;border:1px solid rgba(255,152,0,.3)}.query-card .q-analysis{color:#9ca3c0;font-size:.85rem;margin-top:8px}.query-card .q-sources{color:#6b7c9e;font-size:.78rem;margin-top:4px}.comp-section{margin:32px 0}.comp-section h2{color:#ff9800;font-size:1.3rem;margin-bottom:16px;border-bottom:1px solid rgba(255,152,0,.3);padding-bottom:8px}.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.comp-card{background:linear-gradient(145deg,#131b3d,#1a2555);border-radius:10px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,.06)}.comp-card .comp-name{color:#fff;font-size:.95rem;font-weight:600}.comp-card .comp-detail{color:#8a93b0;font-size:.75rem;margin-top:4px}.cta-section{background:linear-gradient(135deg,#131b3d,#0d1b4c);border-radius:16px;padding:32px 24px;margin:32px 0;border:2px solid #ff9800;text-align:center}.cta-section h2{color:#ff9800;font-size:1.4rem;margin-bottom:16px}.plays{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;text-align:left}.play-card{background:rgba(255,152,0,.08);border-radius:10px;padding:16px;border:1px solid rgba(255,152,0,.15)}.play-card .play-num{color:#ff9800;font-weight:700;font-size:.8rem;margin-bottom:4px}.play-card .play-title{color:#fff;font-weight:600;font-size:.95rem}.play-card .play-desc{color:#9ca3c0;font-size:.8rem;margin-top:4px}.footer{text-align:center;padding:32px 24px;color:#6b7c9e;font-size:.85rem;border-top:1px solid rgba(255,255,255,.06)}.footer .name{color:#c0caf0;font-weight:600}.footer a{color:#ff9800;text-decoration:none}</style></head>
-<body><div class="header"><h1>AI Search Visibility Audit</h1><div class="subtitle">Bland AI — Enterprise Voice AI Platform</div></div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Bland AI | genhance</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 680px; margin: 0 auto; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
+.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
+.header .sub { font-size: 14px; color: #7eb8ff; }
+.header .domain { font-size: 15px; color: #a0c4ff; }
+.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
+.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
+.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
+.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
+.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
+.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
+.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
+.query-cards { padding: 0 28px; }
+.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
+.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
+.badge-absent { background: #3d1515; color: #f87171; }
+.badge-weak { background: #2a1d00; color: #fbbf24; }
+.badge-present { background: #0a2d1a; color: #34d399; }
+.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
+.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
+.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
+.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
+.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
+.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
+.cta .plays { list-style: none; }
+.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
+.cta .plays li:last-child { border-bottom: none; }
+.cta .plays li::before { content: '\25B8 '; color: #5b9eff; }
+.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
+.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
+.footer .title { font-size: 12px; color: #6b7d95; }
+.footer a { color: #5b9eff; text-decoration: none; }
+</style>
+</head>
+<body>
 <div class="container">
-<div class="stats"><div class="stat-card"><div class="stat-value">$56M</div><div class="stat-label">Total Funding</div></div><div class="stat-card"><div class="stat-value">0/5</div><div class="stat-label">AI Visibility</div></div><div class="stat-card"><div class="stat-value">11</div><div class="stat-label">G2 Reviews</div></div><div class="stat-card"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div></div>
-<div class="alert"><div class="alert-title">🔑 KEY FINDING</div><p>Bland AI raised $40M Series B ($56M total) to automate enterprise phone calls at scale — processing 3.5M calls per week for Fortune 10 companies — yet appears in 0 of 5 key AI search queries. Competitors like PolyAI, Retell AI, and Vapi have established content footprints while Bland AI has only 11 G2 reviews and zero Reddit presence. After overcoming 180 VC rejections, Bland's founder story is compelling but invisible in AI search results. Every piece of UGC represents a disproportionate opportunity to shape the AI narrative in the exploding voice AI category.</p></div>
-<div class="query-section"><h2>🔍 AI Search Query Audit (5 Queries)</h2>
-<div class="query-card"><div class="q-header"><span class="q-text">"best AI voice agent platform enterprise 2026"</span><span class="badge badge-absent">ABSENT</span></div><div class="q-analysis">AI Overviews cite PolyAI, Retell AI, and Vapi. Bland AI, despite serving Fortune 10 companies like Gallup and Snapchat, does not appear in any AI-cited source for enterprise voice AI — a critical gap given its enterprise focus.</div><div class="q-sources">Top AI-cited sources: PolyAI (vendor), Retell AI (vendor), G2 Voice AI (directory)</div></div>
-<div class="query-card"><div class="q-header"><span class="q-text">"Bland AI vs Retell AI vs Vapi voice agent"</span><span class="badge badge-absent">ABSENT</span></div><div class="q-analysis">No comparison content exists despite these three being the most commonly compared voice AI platforms. Retell and Vapi comparison pages appear in AI results; Bland AI is absent from the competitive evaluation query entirely.</div><div class="q-sources">Top AI-cited sources: Retell vs Vapi blog posts, Reddit r/artificial threads</div></div>
-<div class="query-card"><div class="q-header"><span class="q-text">"Bland AI phone agent review experience"</span><span class="badge badge-weak">WEAK</span></div><div class="q-analysis">Only Bland's website, the YC page, and a few G2 reviews appear. No in-depth third-party reviews, no YouTube demos from independent creators, no Reddit discussions. For a company processing 3.5M calls/week, the branded query should have a rich content ecosystem.</div><div class="q-sources">Top AI-cited sources: bland.ai (vendor), Y Combinator (directory), G2 (11 reviews)</div></div>
-<div class="query-card"><div class="q-header"><span class="q-text">"AI phone calling API for healthcare enterprises"</span><span class="badge badge-absent">ABSENT</span></div><div class="q-analysis">AI Overviews reference generic healthcare communication platforms. Bland AI, with enterprise healthcare customers, is invisible in this high-intent vertical query. Healthcare-specific voice AI content would capture an entire segment of enterprise buyers.</div><div class="q-sources">Top AI-cited sources: Twilio healthcare (vendor), healthcare IT publications (editorial)</div></div>
-<div class="query-card"><div class="q-header"><span class="q-text">"best enterprise conversational AI platform"</span><span class="badge badge-absent">ABSENT</span></div><div class="q-analysis">AI Overviews cite traditional CCaaS platforms (Five9, Genesys, NICE) and chatbot platforms (Ada, Intercom). Bland AI, which bridges voice and chat with AI-native agents, is absent — despite the conversational AI category being its natural home.</div><div class="q-sources">Top AI-cited sources: G2 Conversational AI grid (directory), Five9 (vendor), Intercom (vendor)</div></div></div>
-<div class="comp-section"><h2>🏢 Competitors Dominating AI Answers</h2><div class="comp-grid"><div class="comp-card"><div class="comp-name">PolyAI</div><div class="comp-detail">$120M+ funded, enterprise voice</div></div><div class="comp-card"><div class="comp-name">Retell AI</div><div class="comp-detail">Voice agent platform, 50+ reviews</div></div><div class="comp-card"><div class="comp-name">Vapi</div><div class="comp-detail">Developer voice API, 30+ reviews</div></div><div class="comp-card"><div class="comp-name">Five9/Genesys</div><div class="comp-detail">CCaaS incumbents, 1,000+ reviews</div></div></div></div>
-<div class="cta-section"><h2>🚀 4 Genhance Plays to Win AI Visibility</h2><div class="plays">
-<div class="play-card"><div class="play-num">PLAY 1</div><div class="play-title">Reddit Voice AI Community Building</div><div class="play-desc">Post in r/artificial, r/MachineLearning, and r/SaaS threads about voice AI. Bland's founder story (180 VC rejections → 3.5M calls/week) is perfect Reddit content — one viral post becomes the AI-indexed narrative about the company.</div></div>
-<div class="play-card"><div class="play-num">PLAY 2</div><div class="play-title">Vertical Healthcare Content Strategy</div><div class="play-desc">Publish "AI Voice Agents in Healthcare: 2026 Guide." No voice AI vendor has claimed the healthcare vertical in AI-indexed content. A single comprehensive guide captures enterprise healthcare buyer searches.</div></div>
-<div class="play-card"><div class="play-num">PLAY 3</div><div class="play-title">YouTube Tech Creator Demos</div><div class="play-desc">Get 3 AI/tech YouTubers to demo Bland AI. Google AI Overviews cite YouTube demos heavily for "best AI tools" queries — and voice AI is uniquely suited to video format. No competitor has saturated this channel.</div></div>
-<div class="play-card"><div class="play-num">PLAY 4</div><div class="play-title">G2 Review Velocity</div><div class="play-desc">Grow G2 reviews from 11 to 50+. At current rate, each new review reshapes 8% of Bland's G2 presence. AI Overviews pull G2 ratings directly into "best voice AI platform" answers — every review compounds.</div></div>
-</div></div>
-<div class="footer"><div class="name">Rajesh Gautam, PhD</div><div>Founder and CEO, genhance.ai</div><div style="margin-top:12px"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp;<a href="https://genhance.ai">genhance.ai</a></div><div style="margin-top:12px;font-size:.7rem;color:#4a5580">AI Search Visibility Audit · August 2026 · For informational purposes only</div></div></div></body></html>
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <div class="sub">Bland AI</div>
+  <div class="domain">bland.ai</div>
+</div>
+<div class="stats">
+  <div class="stat-pill"><div class="num">$40M Series B</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="num">1/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="num">3</div><div class="label">Reddit</div></div>
+</div>
+<div class="key-finding">
+  <div class="label">⚡ KEY FINDING</div>
+  <div class="text">Bland AI raised $40M to automate enterprise phone calls with AI agents. YC-backed. Yet AI answers for "AI phone agents enterprise" cite Five9, Talkdesk, and Cresta — never Bland AI. Reddit has 3 threads about Bland but all are from 2024 and focus on controversy (AI human-washing). Zero G2 reviews.</div>
+</div>
+<div class="section-title">📊 Category Query Analysis</div>
+<div class="query-cards">
+<div class="query-card">
+  <div class="q-header"><span class="query-text">"best AI phone agent platform enterprise 2026"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">AI Overviews cite Five9, Talkdesk AI, and Cresta. Bland AI absent from all AI-cited sources despite $40M funding and YC backing.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"AI voice agents for customer service calls"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">Five9, Talkdesk, and Google CCAI dominate AI-cited results. Bland AI not mentioned in any source despite being purpose-built for this use case.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"automated phone calling AI enterprise sales"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">Cresta, Gong, and Chorus cited for sales call AI — none are phone agents. Bland AI's "AI makes the calls" positioning is unique but invisible in AI search.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"AI appointment setting phone calls enterprise"</span><span class="badge badge-weak">WEAK</span></div>
+  <div class="analysis">Calendly's AI features and Chili Piper cited. Bland AI offers true phone-based appointment setting but has zero presence in AI-cited sources for this high-intent query.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"Bland AI review enterprise phone agent"</span><span class="badge badge-weak">WEAK</span></div>
+  <div class="analysis">3 Reddit threads exist (r/OpenAI, r/Futurology, r/artificial) but all from 2024 and focus on controversy. No positive UGC. No G2 reviews. No Capterra presence.</div>
+</div>
+</div>
+<div class="section-title">🏢 Competitive Landscape</div>
+<div class="competitor-cards">
+<div class="comp-card"><div class="comp-name">Five9</div><div class="comp-desc">Cloud contact center leader, 500+ G2 reviews</div></div><div class="comp-card"><div class="comp-name">Talkdesk</div><div class="comp-desc">AI contact center, 400+ G2 reviews</div></div><div class="comp-card"><div class="comp-name">Cresta</div><div class="comp-desc">AI for contact centers, 100+ G2 reviews</div></div><div class="comp-card"><div class="comp-name">Retell AI</div><div class="comp-desc">Voice AI platform, YC-backed competitor</div></div>
+</div>
+<div class="cta">
+  <h3>4 Genhance Plays for Bland AI</h3>
+  <ul class="plays">
+    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for Enterprise AI Phone Agents — identify which Reddit/YouTube threads shape the answers.</li>
+    <li><strong>Review Velocity:</strong> Seed G2 &amp; Capterra reviews to establish presence before competitors saturate the category.</li>
+    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing Bland AI to Five9 — shape the narrative before it hardens.</li>
+    <li><strong>Narrative Monitoring:</strong> Real-time alerts when Bland AI is mentioned in AI-cited UGC threads — engage within hours, not weeks.</li>
+  </ul>
+</div>
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder &amp; CEO, genhance.ai</div>
+  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+</div>
+</div>
+</body>
+</html>
