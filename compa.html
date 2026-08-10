@@ -1,164 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Search Visibility Audit: Compa | genhance.ai</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Compa | genhance</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 680px; margin: 0 auto; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
+.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
+.header .sub { font-size: 14px; color: #7eb8ff; }
+.header .domain { font-size: 15px; color: #a0c4ff; }
+.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
+.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
+.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
+.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
+.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
+.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
+.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
+.query-cards { padding: 0 28px; }
+.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
+.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
+.badge-absent { background: #3d1515; color: #f87171; }
+.badge-weak { background: #2a1d00; color: #fbbf24; }
+.badge-present { background: #0a2d1a; color: #34d399; }
+.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
+.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
+.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
+.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
+.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
+.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
+.cta .plays { list-style: none; }
+.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
+.cta .plays li:last-child { border-bottom: none; }
+.cta .plays li::before { content: '\25B8 '; color: #5b9eff; }
+.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
+.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
+.footer .title { font-size: 12px; color: #6b7d95; }
+.footer a { color: #5b9eff; text-decoration: none; }
+</style>
 </head>
-<body style="margin:0; padding:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f23; color: #e0e0e0;">
-
-<!-- HEADER -->
-<div style="background: linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 50%, #0d0d3d 100%); padding: 40px 32px; text-align: center;">
-    <div style="font-size: 12px; letter-spacing: 3px; color: #6c6c9e; text-transform: uppercase; margin-bottom: 8px;">AI SEARCH VISIBILITY AUDIT</div>
-    <h1 style="font-size: 28px; margin: 0 0 8px; color: white;">Compa — AI Search Gap Analysis</h1>
-    <div style="font-size: 14px; color: #8b8b9e; margin-bottom: 24px;">AI Compensation Intelligence / HR Analytics | Newport Beach, CA</div>
-
-    <!-- STAT PILLS -->
-    <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #4fc3f7;">$35M Series B</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">Funding</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #ff6b6b;">0/5</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">AI Visibility</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #ffa726;">0</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">G2 Reviews</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #ffa726;">0</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">Reddit Threads</div>
-        </div>
-    </div>
+<body>
+<div class="container">
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <div class="sub">Compa</div>
+  <div class="domain">compa.ai</div>
 </div>
-
-<div style="max-width: 640px; margin: 0 auto; padding: 24px 20px;">
-
-    <!-- KEY FINDING -->
-    <div style="background: linear-gradient(135deg, #3d2800, #2a1a00); border: 1px solid #ff8c00; border-radius: 8px; padding: 20px; margin-bottom: 24px;">
-        <div style="font-size: 12px; letter-spacing: 2px; color: #ff8c00; text-transform: uppercase; margin-bottom: 6px;">⚠ KEY FINDING</div>
-        <div style="color: #e0d0a0; font-size: 14px; line-height: 1.6;">Compa is building AI that manages multi-billion-dollar compensation portfolios in real time. Yet when CHROs and compensation leaders ask AI 'best compensation benchmarking tool,' Compa does not appear — the answers default to legacy providers like Payscale and Radford.</div>
-    </div>
-
-    <!-- ABOUT -->
-    <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 16px; color: white; border-bottom: 2px solid #2d2d5e; padding-bottom: 8px;">About Compa</h2>
-        <div style="color: #b0b0c0; font-size: 13px; line-height: 1.6;">
-            <strong>CEO:</strong> Charlie Franklin, Co-Founder & CEO<br>
-            <strong>Total Raised:</strong> $35M+<br>
-            <strong>Key Investors:</strong> Jump Capital, Crosslink Capital, Storm Ventures<br>
-            <strong>Website:</strong> trycomp.com
-        </div>
-    </div>
-
-    <!-- QUERY CARDS -->
-    <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 16px; color: white; border-bottom: 2px solid #2d2d5e; padding-bottom: 8px;">5 Category Queries — Compa Appears in 0/5</h2>
-        <div style="color: #8b8b9e; font-size: 12px; margin-bottom: 16px;">Each query analyzed against Google AI Overviews and organic SERP. Compa is absent from AI-cited results in all five.</div>
-        
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #1: "best compensation benchmarking software 2026"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> Payscale, Radford, Salary.com<br>
-                    <strong>Compa status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #2: "AI compensation intelligence platform"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> Pave, OpenComp, Pequity<br>
-                    <strong>Compa status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #3: "real-time pay equity analysis software"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> Syndio, Trusaic, PayAnalytics<br>
-                    <strong>Compa status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #4: "enterprise compensation management AI"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> Workday, SAP SuccessFactors, Oracle HCM<br>
-                    <strong>Compa status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #5: "salary benchmarking for startups and enterprises"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> Payscale, Levels.fyi, Glassdoor<br>
-                    <strong>Compa status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-    </div>
-
-    <!-- COMPETITORS -->
-    <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 16px; color: white; border-bottom: 2px solid #2d2d5e; padding-bottom: 8px;">Competitors Dominating AI Answers</h2>
-        <div style="color: #8b8b9e; font-size: 12px; margin-bottom: 12px;">These are the companies AI engines currently cite when users search in Compa's category:</div>
-        <div style="text-align: center;">
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">OpenComp</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Workday</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Oracle HCM</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Pave</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">PayAnalytics</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Pequity</span>
-            </div></div>
-    </div>
-
-    <!-- CTA -->
-    <div style="background: linear-gradient(135deg, #0a0a2e, #1a1a4e); border: 1px solid #4fc3f7; border-radius: 12px; padding: 28px 24px; margin-bottom: 24px; text-align: center;">
-        <h2 style="font-size: 18px; color: white; margin: 0 0 12px;">4 Ways genhance Closes This Gap for Compa</h2>
-        <div style="text-align: left; color: #b0b0c0; font-size: 13px; line-height: 1.8;">
-            <strong>1. UGC Gap Monitoring:</strong> Track exactly which Reddit threads, YouTube comments, and forum discussions feed AI answers for your 5 category — and where to contribute.<br>
-            <strong>2. AI Answer Benchmarking:</strong> Before/after snapshots across ChatGPT, Google AI Overviews, and Perplexity for every query that matters.<br>
-            <strong>3. Review-Platform Intelligence:</strong> Identify the fastest path to shifting G2/Capterra presence — surface-by-surface, review-by-review.<br>
-            <strong>4. Narrative Flux Detection:</strong> Real-time alerts when conversations about your category start forming — so you can shape what AI says before it hardens.
-        </div>
-        <div style="margin-top: 20px; padding: 12px 28px; background: #4fc3f7; color: #0a0a2e; border-radius: 8px; font-weight: bold; font-size: 14px; display: inline-block;">Ready to fix your AI search visibility?</div>
-    </div>
-
-    <!-- FOOTER -->
-    <div style="text-align: center; padding: 24px 0; border-top: 1px solid #2d2d5e; margin-top: 16px;">
-        <div style="color: white; font-size: 14px; font-weight: bold;">Rajesh Gautam, PhD</div>
-        <div style="color: #8b8b9e; font-size: 12px;">Founder and CEO, genhance.ai</div>
-        <div style="margin-top: 6px;">
-            <a href="https://linkedin.com/in/rajeshgautam" style="color: #4fc3f7; font-size: 12px; text-decoration: none;">linkedin.com/in/rajeshgautam</a>
-            <span style="color: #4fc3f7;"> | </span>
-            <a href="https://genhance.ai" style="color: #4fc3f7; font-size: 12px; text-decoration: none;">genhance.ai</a>
-        </div>
-        <div style="color: #555; font-size: 10px; margin-top: 8px;">Generated August 4, 2026 | Automated AI Search Visibility Audit</div>
-    </div>
-
+<div class="stats">
+  <div class="stat-pill"><div class="num">$35M Series B</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="num">1/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="num">0</div><div class="label">Reddit</div></div>
+</div>
+<div class="key-finding">
+  <div class="label">⚡ KEY FINDING</div>
+  <div class="text">Compa raised $35M to bring AI-driven compensation intelligence to enterprise teams. Yet AI answers for "compensation intelligence platform" cite Payscale, Salary.com, and Radford — never Compa. Zero G2 reviews, zero Reddit threads. Jump Capital & Crosslink-backed, but invisible in AI.</div>
+</div>
+<div class="section-title">📊 Category Query Analysis</div>
+<div class="query-cards">
+<div class="query-card">
+  <div class="q-header"><span class="query-text">"best compensation intelligence software 2026"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">AI Overviews cite Payscale, Salary.com, and OpenComp. G2 Grid shows Payscale with 1,800+ reviews. Compa does not appear in any AI-cited source — despite having enterprise customers and a differentiated AI offering.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"AI compensation benchmarking platform enterprise"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">AI Overviews cite Radford (Aon), Mercer, and WTW compensation surveys. Compa's real-time, offers-based market data approach is not represented in AI-cited sources.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"pay equity analytics software AI"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">AI Overviews cite Syndio, Trusaic, and Payscale Pay Equity. Compa's compliance analytics are not mentioned in any AI-cited source despite the growing regulatory pressure around pay transparency.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"real-time compensation market data platform"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">AI Overviews cite Glassdoor, Levels.fyi, and LinkedIn Salary. Compa's live, offers-based data — a fundamentally different data source — has zero UGC footprint in AI answers.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"Compa AI compensation review experience"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">No Reddit threads, G2 reviews, or YouTube content mention Compa. The company's Crunchbase profile and press releases are the only AI-indexed sources. Zero UGC across all surfaces.</div>
+</div>
+</div>
+<div class="section-title">🏢 Competitive Landscape</div>
+<div class="competitor-cards">
+<div class="comp-card"><div class="comp-name">Payscale</div><div class="comp-desc">Compensation data, 1.8K+ G2 reviews</div></div><div class="comp-card"><div class="comp-name">Salary.com</div><div class="comp-desc">Compensation intelligence</div></div><div class="comp-card"><div class="comp-name">Radford (Aon)</div><div class="comp-desc">Compensation survey data</div></div><div class="comp-card"><div class="comp-name">OpenComp</div><div class="comp-desc">Compensation benchmarking</div></div>
+</div>
+<div class="cta">
+  <h3>4 Genhance Plays for Compa</h3>
+  <ul class="plays">
+    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for HR Tech / Compensation Intelligence — identify which Reddit/YouTube threads shape the answers.</li>
+    <li><strong>Review Velocity:</strong> Seed G2 &amp; Capterra reviews to establish presence before competitors saturate the category.</li>
+    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing Compa to Payscale — shape the narrative before it hardens.</li>
+    <li><strong>Narrative Monitoring:</strong> Real-time alerts when Compa is mentioned in AI-cited UGC threads — engage within hours, not weeks.</li>
+  </ul>
+</div>
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder &amp; CEO, genhance.ai</div>
+  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+</div>
 </div>
 </body>
 </html>
