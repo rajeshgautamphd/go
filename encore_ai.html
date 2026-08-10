@@ -3,101 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — Encore AI | genhance</title>
+<title>Encore AI — AI Search Visibility Audit | genhance</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
-.container { max-width: 680px; margin: 0 auto; }
-.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
-.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
-.header .sub { font-size: 14px; color: #7eb8ff; }
-.header .domain { font-size: 15px; color: #a0c4ff; }
-.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
-.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
-.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
-.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
-.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
-.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
-.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
-.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
-.query-cards { padding: 0 28px; }
-.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
-.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
-.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
-.badge-absent { background: #3d1515; color: #f87171; }
-.badge-weak { background: #2a1d00; color: #fbbf24; }
-.badge-present { background: #0a2d1a; color: #34d399; }
-.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
-.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
-.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
-.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
-.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
-.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
-.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
-.cta .plays { list-style: none; }
-.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
-.cta .plays li:last-child { border-bottom: none; }
-.cta .plays li::before { content: '\25B8 '; color: #5b9eff; }
-.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
-.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
-.footer .title { font-size: 12px; color: #6b7d95; }
-.footer a { color: #5b9eff; text-decoration: none; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#0a0e17;color:#e0e0e0;line-height:1.6}
+.header{background:linear-gradient(135deg,#0d1b3e 0%,#132347 50%,#0a1628 100%);padding:40px 20px;text-align:center;border-bottom:3px solid #1a3a6b}
+.header h1{color:#fff;font-size:2em;margin-bottom:5px}
+.header .subtitle{color:#6b8cce;font-size:1.1em}
+.stats{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;padding:25px;background:rgba(17,25,47,0.9)}
+.stat-pill{background:linear-gradient(135deg,#162042,#0f172e);border:1px solid #2a4480;border-radius:10px;padding:15px 20px;text-align:center;min-width:120px}
+.stat-pill .value{font-size:1.8em;font-weight:700;color:#4da8da}
+.stat-pill .label{font-size:0.7em;color:#7889b2;text-transform:uppercase;letter-spacing:1px}
+.alert{background:linear-gradient(135deg,#3d2900,#4a3100);border:1px solid #795b00;color:#ffb800;padding:15px;margin:20px;border-radius:8px;font-size:0.95em}
+.container{max-width:900px;margin:0 auto;padding:20px}
+.section-title{color:#4da8da;font-size:1.3em;margin:25px 0 15px 0;padding-bottom:8px;border-bottom:1px solid #1a3a6b}
+.query-card{background:#111827;border:1px solid #2a4480;border-radius:8px;padding:15px;margin:10px 0}
+.query-card .query-text{color:#fff;font-size:1em;margin-bottom:5px}
+.query-card .badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:0.75em;font-weight:600;margin-bottom:8px}
+.badge-weak{background:#3d2900;color:#ffb800;border:1px solid #795b00}
+.badge-present{background:#003d1a;color:#4dff88;border:1px solid #00cc44}
+.query-card .analysis{color:#9ab;font-size:0.9em}
+.comp-card{display:flex;align-items:center;gap:10px;padding:10px;background:#111827;border:1px solid #2a4480;border-radius:6px;margin:8px 0}
+.comp-card .comp-name{color:#fff;font-weight:600}
+.comp-card .comp-status{color:#ff6b6b;font-size:0.85em}
+.cta{background:linear-gradient(135deg,#0d1b3e,#132347);border:1px solid #2a4480;border-radius:10px;padding:25px;text-align:center;margin-top:30px}
+.cta h2{color:#fff;margin-bottom:10px}
+.cta p{color:#bcc8e0;margin:5px 0}
+.footer{margin-top:30px;padding:15px;text-align:center;color:#5a7ab0;font-size:0.8em;border-top:1px solid #1a3a6b}
+.footer a{color:#6b8cce}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="header">
-  <h1>AI Search Visibility Audit</h1>
-  <div class="sub">Encore AI</div>
-  <div class="domain">encore.ai</div>
+<h1>Encore AI</h1>
+<div class="subtitle">AI Search Visibility Audit — AI Revenue Platform</div>
 </div>
 <div class="stats">
-  <div class="stat-pill"><div class="num">$30M Series A</div><div class="label">Funding</div></div>
-  <div class="stat-pill"><div class="num">1/5</div><div class="label">AI Visibility</div></div>
-  <div class="stat-pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
-  <div class="stat-pill"><div class="num">0</div><div class="label">Reddit</div></div>
+<div class="stat-pill"><div class="value">$30M Series A</div><div class="label">Funding</div></div>
+<div class="stat-pill"><div class="value">1/5/5</div><div class="label">AI Visibility</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
 </div>
-<div class="key-finding">
-  <div class="label">⚡ KEY FINDING</div>
-  <div class="text">Encore AI raised $30M to build AI agents that learn from customer calls and generate revenue. Yet AI answers for "AI customer interaction platform" cite Intercom, Zendesk AI, and Ada — never Encore. Zero G2 reviews, zero Reddit threads. Complete UGC vacuum.</div>
+<div class="alert">
+<strong>KEY FINDING:</strong> Encore AI raised $30M from Team8, Planven, and The Garage to deploy the only enterprise AI platform that generates revenue from customer interactions. But every query returns Salesforce and HubSpot. Zero AI presence.
 </div>
-<div class="section-title">📊 Category Query Analysis</div>
-<div class="query-cards">
+<div class="section-title">Category Query Analysis</div>
 <div class="query-card">
-  <div class="q-header"><span class="query-text">"best AI customer service platform 2026"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI Overviews cite Intercom, Zendesk AI, Ada, and Kore.ai. G2 Grid shows Intercom with 3,000+ reviews dominating. Encore AI does not appear in any AI-cited source or organic result.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"AI voice agents for enterprise sales"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI Overviews cite Gong, Chorus, and Observe.ai. Encore's patented Interaction Mining technology — which studies successful calls to train agents — is not represented in any AI-cited source.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"AI agent that learns from customer interactions"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">No AI Overview for this specific query. Organic results are dominated by consulting firms' thought leadership. Encore's unique differentiator — learning from top-performing employee interactions — has zero UGC footprint.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"enterprise conversational AI platform financial services"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI Overviews cite Genesys, NICE, and Verint for contact center AI. Encore's 40+ enterprise customers (mostly financial institutions) are invisible in AI answers. No case studies appear in AI-cited sources.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"Encore AI review Insait IO experience"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">No Reddit threads, G2 reviews, or YouTube content exist. The rebrand from Insait IO means the company wiped its existing UGC and started fresh. Zero UGC across all surfaces — extreme sparsity, maximum leverage.</div>
+<div class="query-text">🔍 "best AI customer interaction platform enterprise"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Salesforce and HubSpot dominate AI Overviews. Encore AI's agentic platform has zero AI-cited mentions. 5/5 sources cite incumbents.</div>
 </div>
+<div class="query-card">
+<div class="query-text">🔍 "AI revenue agents for customer conversations"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">No established AI Overviews for this query — Encore AI is the first mover but has zero UGC to signal AI engines.</div>
 </div>
-<div class="section-title">🏢 Competitive Landscape</div>
-<div class="competitor-cards">
-<div class="comp-card"><div class="comp-name">Intercom</div><div class="comp-desc">Customer messaging, 3K+ G2 reviews</div></div><div class="comp-card"><div class="comp-name">Zendesk AI</div><div class="comp-desc">AI customer service platform</div></div><div class="comp-card"><div class="comp-name">Ada</div><div class="comp-desc">AI customer service automation</div></div><div class="comp-card"><div class="comp-name">Kore.ai</div><div class="comp-desc">Enterprise conversational AI</div></div>
+<div class="query-card">
+<div class="query-text">🔍 "best AI platform for sales team automation"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Gong, Outreach, and Salesforce dominate. Encore AI's revenue-driving AI agents are invisible to AI search. Zero Reddit threads.</div>
 </div>
+<div class="query-card">
+<div class="query-text">🔍 "enterprise conversational AI for revenue"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Emerging category. Encore AI is purpose-built but zero UGC exists. First-mover advantage if content is created now.</div>
+</div>
+<div class="query-card">
+<div class="query-text">🔍 "AI agents that learn from customer calls"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Zero AI Overviews. Encore AI's unique differentiator — AI that learns from real conversations — is undiscovered by AI search.</div>
+</div>
+<div class="section-title">Key Competitors in AI Search</div>
+<div class="comp-card"><span class="comp-name">Salesforce</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">HubSpot</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">Zendesk</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">Intercom</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
 <div class="cta">
-  <h3>4 Genhance Plays for Encore AI</h3>
-  <ul class="plays">
-    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for AI Customer Interaction / Conversational AI — identify which Reddit/YouTube threads shape the answers.</li>
-    <li><strong>Review Velocity:</strong> Seed G2 &amp; Capterra reviews to establish presence before competitors saturate the category.</li>
-    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing Encore AI to Intercom — shape the narrative before it hardens.</li>
-    <li><strong>Narrative Monitoring:</strong> Real-time alerts when Encore AI is mentioned in AI-cited UGC threads — engage within hours, not weeks.</li>
-  </ul>
+<h2>How genhance fixes this</h2>
+<p>📊 Real-time UGC monitoring across Reddit, G2, and YouTube</p>
+<p>🔍 AI Overview optimization for your category</p>
+<p>📈 Track competitors and measure share of AI voice</p>
+<p>⚡ Deploy in days, not months — no IT integration required</p>
 </div>
 <div class="footer">
-  <div class="name">Rajesh Gautam, PhD</div>
-  <div class="title">Founder &amp; CEO, genhance.ai</div>
-  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+<p>Generated by <strong>genhance.ai</strong> — AI Search Visibility Platform</p>
+<p>Contact: <a href="mailto:rajesh.gautam@genhance.ai">rajesh.gautam@genhance.ai</a> | <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a></p>
 </div>
 </div>
 </body>

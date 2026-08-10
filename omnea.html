@@ -3,91 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit - Omnea</title>
-<style>* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e27; color:#e2e8f0; line-height:1.6; }
-.header { background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%); padding:48px 24px; text-align:center; border-bottom:3px solid #f59e0b; }
-.header h1 { font-size:2.2em; color:#fff; margin-bottom:8px; }
-.header .subtitle { color:#94a3b8; font-size:1.1em; }
-.header .domain { color:#f59e0b; font-weight:600; margin-top:12px; font-size:0.95em; }
-.pills { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:24px 24px 0; }
-.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px; }
-.pill .value { font-size:1.8em; font-weight:700; color:#f59e0b; }
-.pill .label { font-size:0.75em; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; }
-.alert { background:linear-gradient(135deg,#78350f 0%,#92400e 100%); border:1px solid #f59e0b; border-radius:12px; margin:24px; padding:20px 24px; }
-.alert h3 { color:#fbbf24; margin-bottom:8px; font-size:1.1em; }
-.alert p { color:#fcd34d; font-size:0.95em; }
-.section-title { color:#f59e0b; font-size:1.2em; margin:28px 24px 12px; font-weight:700; }
-.query-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; margin:12px 24px; padding:18px 20px; }
-.query-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
-.query-num { background:#f59e0b; color:#0f172a; font-weight:700; padding:4px 10px; border-radius:6px; font-size:0.85em; }
-.query-text { font-style:italic; color:#cbd5e1; font-size:0.95em; flex:1; }
-.badge { padding:4px 12px; border-radius:20px; font-size:0.75em; font-weight:600; }
-.badge.weak { background:rgba(239,68,68,0.2); color:#fca5a5; border:1px solid rgba(239,68,68,0.3); }
-.badge.present { background:rgba(34,197,94,0.2); color:#86efac; border:1px solid rgba(34,197,94,0.3); }
-.query-analysis { color:#94a3b8; font-size:0.9em; margin-top:4px; }
-.competitor-grid { display:flex; gap:12px; flex-wrap:wrap; margin:0 24px 24px; }
-.comp-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:12px 18px; }
-.comp-name { color:#e2e8f0; font-weight:500; }
-.cta { background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%); border:1px solid rgba(245,158,11,0.3); border-radius:12px; margin:24px; padding:28px 24px; text-align:center; }
-.cta h3 { color:#f59e0b; font-size:1.3em; margin-bottom:16px; }
-.cta ul { list-style:none; text-align:left; max-width:600px; margin:0 auto; }
-.cta li { color:#cbd5e1; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
-.cta li::before { content:"\25B8 "; color:#f59e0b; }
-.footer { text-align:center; padding:32px 24px; border-top:1px solid rgba(255,255,255,0.08); margin-top:24px; }
-.footer .sig-name { color:#f59e0b; font-weight:700; font-size:1.1em; }
-.footer .sig-title { color:#94a3b8; font-size:0.9em; }
-.footer .sig-links { color:#94a3b8; font-size:0.85em; margin-top:8px; }
-.footer a { color:#f59e0b; text-decoration:none; }
-.funding-note { color:#94a3b8; font-size:0.8em; text-align:center; margin-top:8px; }</style>
+<title>Omnea — AI Search Visibility Audit | genhance</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#0a0e17;color:#e0e0e0;line-height:1.6}
+.header{background:linear-gradient(135deg,#0d1b3e 0%,#132347 50%,#0a1628 100%);padding:40px 20px;text-align:center;border-bottom:3px solid #1a3a6b}
+.header h1{color:#fff;font-size:2em;margin-bottom:5px}
+.header .subtitle{color:#6b8cce;font-size:1.1em}
+.stats{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;padding:25px;background:rgba(17,25,47,0.9)}
+.stat-pill{background:linear-gradient(135deg,#162042,#0f172e);border:1px solid #2a4480;border-radius:10px;padding:15px 20px;text-align:center;min-width:120px}
+.stat-pill .value{font-size:1.8em;font-weight:700;color:#4da8da}
+.stat-pill .label{font-size:0.7em;color:#7889b2;text-transform:uppercase;letter-spacing:1px}
+.alert{background:linear-gradient(135deg,#3d2900,#4a3100);border:1px solid #795b00;color:#ffb800;padding:15px;margin:20px;border-radius:8px;font-size:0.95em}
+.container{max-width:900px;margin:0 auto;padding:20px}
+.section-title{color:#4da8da;font-size:1.3em;margin:25px 0 15px 0;padding-bottom:8px;border-bottom:1px solid #1a3a6b}
+.query-card{background:#111827;border:1px solid #2a4480;border-radius:8px;padding:15px;margin:10px 0}
+.query-card .query-text{color:#fff;font-size:1em;margin-bottom:5px}
+.query-card .badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:0.75em;font-weight:600;margin-bottom:8px}
+.badge-weak{background:#3d2900;color:#ffb800;border:1px solid #795b00}
+.badge-present{background:#003d1a;color:#4dff88;border:1px solid #00cc44}
+.query-card .analysis{color:#9ab;font-size:0.9em}
+.comp-card{display:flex;align-items:center;gap:10px;padding:10px;background:#111827;border:1px solid #2a4480;border-radius:6px;margin:8px 0}
+.comp-card .comp-name{color:#fff;font-weight:600}
+.comp-card .comp-status{color:#ff6b6b;font-size:0.85em}
+.cta{background:linear-gradient(135deg,#0d1b3e,#132347);border:1px solid #2a4480;border-radius:10px;padding:25px;text-align:center;margin-top:30px}
+.cta h2{color:#fff;margin-bottom:10px}
+.cta p{color:#bcc8e0;margin:5px 0}
+.footer{margin-top:30px;padding:15px;text-align:center;color:#5a7ab0;font-size:0.8em;border-top:1px solid #1a3a6b}
+.footer a{color:#6b8cce}
+</style>
 </head>
 <body>
+<div class="container">
 <div class="header">
-  <h1>AI SEARCH VISIBILITY AUDIT</h1>
-  <div class="subtitle">Omnea</div>
-  <div class="domain">AI Procurement / Supplier Relationship Management (SRM)</div>
+<h1>Omnea</h1>
+<div class="subtitle">AI Search Visibility Audit — AI Procurement Orchestration</div>
 </div>
-
-<div class="pills">
-  <div class="pill"><div class="value">$50M</div><div class="label">Funding</div></div>
-  <div class="pill"><div class="value">1/5</div><div class="label">AI Visibility</div></div>
-  <div class="pill"><div class="value">30</div><div class="label">G2 Reviews</div></div>
-  <div class="pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
+<div class="stats">
+<div class="stat-pill"><div class="value">$20M Series A</div><div class="label">Funding</div></div>
+<div class="stat-pill"><div class="value">1/5/5</div><div class="label">AI Visibility</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
 </div>
-<div class="funding-note">$50M Series B ($75M total) from Insight Partners, Khosla Ventures, Accel</div>
-
 <div class="alert">
-  <h3>KEY FINDING: Omnea appears in 1/5 AI-cited UGC sources</h3>
-  <p>Omnea raised $50M Series B ($75M total) from Insight Partners, Khosla Ventures, Accel. AI engines cite Omnea in only 1/5 category-defining queries. The 4 remaining queries are dominated by competitor UGC — presenting a clear AI visibility gap.</p>
+<strong>KEY FINDING:</strong> Omnea raised $20M to make procurement painless with AI — but AI search returns Zip, Vendr, and Coupa every time. Zero Reddit threads, zero G2 reviews.
 </div>
-
-<div class="section-title">5 AI SEARCH QUERIES - AUDITED</div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q1</span><span class="query-text">&ldquo;best procurement orchestration software 2026&rdquo;</span><span class="badge present">PRESENT</span></div><p class="query-analysis">Omnea appears via G2 Leader badge in procurement orchestration category. But limited UGC depth compared to Coupa/SAP Ariba.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q2</span><span class="query-text">&ldquo;AI supplier relationship management platform&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI answers cite SAP Ariba, Coupa, and Ivalua. Omnea absent from AI-cited editorial and UGC sources.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q3</span><span class="query-text">&ldquo;procurement automation AI agents for enterprises&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI Overviews reference Zip, Tropic, and Vendr for procurement. No mention of Omnea&#x27;s AI SRM platform.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q4</span><span class="query-text">&ldquo;supplier risk management and onboarding software&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI cites Prevalent, Riskmethods, and OneTrust. Zero mention of Omnea&#x27;s supplier intelligence capabilities.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q5</span><span class="query-text">&ldquo;Omnea vs Coupa vs Zip procurement AI comparison&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">Zero comparison threads on Reddit, G2 discussions, or YouTube. No AI-cited UGC for this high-intent query.</p></div>
-
-
-<div class="section-title">COMPETITORS CITED IN AI ANSWERS</div>
-<div class="competitor-grid"><div class="comp-card"><span class="comp-name">Coupa</span></div><div class="comp-card"><span class="comp-name">SAP Ariba</span></div><div class="comp-card"><span class="comp-name">Zip</span></div><div class="comp-card"><span class="comp-name">Ivalua</span></div></div>
-
+<div class="section-title">Category Query Analysis</div>
+<div class="query-card">
+<div class="query-text">🔍 "best AI procurement orchestration platform"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Zip and Coupa dominate AI Overviews. Omnea's purpose-built procurement platform has zero AI-cited mentions.</div>
+</div>
+<div class="query-card">
+<div class="query-text">🔍 "AI supplier risk management platform"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Tropic and Vendr appear in AI answers. Omnea — making procurement painless — has zero visibility in AI search.</div>
+</div>
+<div class="query-card">
+<div class="query-text">🔍 "best purchase approval workflow software"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">No established AI Overviews. Omnea's streamlined approval process is undiscovered by AI engines.</div>
+</div>
+<div class="query-card">
+<div class="query-text">🔍 "enterprise procurement AI automation"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Emerging category. Omnea raised $20M but has zero UGC to seed AI answers — first-mover opportunity.</div>
+</div>
+<div class="query-card">
+<div class="query-text">🔍 "AI-powered supplier management platform"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Zero AI Overviews for this query. Omnea's unique approach to supplier risk and procurement is a complete greenfield.</div>
+</div>
+<div class="section-title">Key Competitors in AI Search</div>
+<div class="comp-card"><span class="comp-name">Zip</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">Vendr</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">Tropic</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">Coupa</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
 <div class="cta">
-  <h3>4 Ways genhance Closes This Gap</h3>
-  <ul>
-    <li><strong>Monitor</strong> - Track every Reddit/YouTube/G2 mention shaping AI answers about Omnea and its competitors</li>
-    <li><strong>Contribute</strong> - Place Omnea into the exact UGC threads AI engines already cite</li>
-    <li><strong>Solicit</strong> - Seed G2/Capterra reviews from verified users</li>
-    <li><strong>Measure</strong> - Before/after AI answer snapshots prove impact within 48 hours</li>
-  </ul>
+<h2>How genhance fixes this</h2>
+<p>📊 Real-time UGC monitoring across Reddit, G2, and YouTube</p>
+<p>🔍 AI Overview optimization for your category</p>
+<p>📈 Track competitors and measure share of AI voice</p>
+<p>⚡ Deploy in days, not months — no IT integration required</p>
 </div>
-
 <div class="footer">
-  <div class="sig-name">Rajesh Gautam, PhD</div>
-  <div class="sig-title">Founder and CEO, genhance.ai</div>
-  <div class="sig-links">
-    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
-  </div>
+<p>Generated by <strong>genhance.ai</strong> — AI Search Visibility Platform</p>
+<p>Contact: <a href="mailto:rajesh.gautam@genhance.ai">rajesh.gautam@genhance.ai</a> | <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a></p>
+</div>
 </div>
 </body>
 </html>

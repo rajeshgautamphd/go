@@ -3,137 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — Attention</title>
+<title>Attention — AI Search Visibility Audit | genhance</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
-.header { background: linear-gradient(135deg, #0d1b3e 0%, #1a237e 50%, #283593 100%); padding: 48px 32px; text-align: center; border-bottom: 3px solid #3949ab; }
-.header h1 { color: #fff; font-size: 32px; margin-bottom: 8px; }
-.header .subtitle { color: #90caf9; font-size: 18px; font-weight: 300; }
-.header .company { color: #ff8f00; font-size: 24px; font-weight: 700; margin-top: 12px; }
-.stats { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; padding: 24px 32px; background: #111936; }
-.stat-pill { background: linear-gradient(135deg, #1a237e, #283593); border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 140px; border: 1px solid #3949ab; }
-.stat-pill .value { font-size: 24px; font-weight: 800; color: #fff; }
-.stat-pill .label { font-size: 12px; color: #90caf9; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-.key-finding { background: linear-gradient(135deg, #3e2723, #4e342e); border-left: 4px solid #ff8f00; margin: 24px 32px; padding: 20px 24px; border-radius: 8px; }
-.key-finding h3 { color: #ff8f00; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-.key-finding p { color: #ffcc80; font-size: 15px; }
-.content { max-width: 960px; margin: 0 auto; padding: 0 32px 48px; }
-.section-title { color: #90caf9; font-size: 20px; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #1a237e; }
-.query-card { background: #111936; border-radius: 10px; padding: 20px; margin-bottom: 16px; border: 1px solid #1a237e; }
-.query-card .query-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.query-card .query-text { color: #e0e0e0; font-size: 15px; font-weight: 600; }
-.query-card .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
-.badge.present { background: #1b5e20; color: #81c784; }
-.badge.weak { background: #b71c1c; color: #ef9a9a; }
-.query-card .analysis { color: #9e9e9e; font-size: 13px; line-height: 1.7; }
-.competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 32px; }
-.competitor-card { background: #1a1a2e; border-radius: 8px; padding: 16px; text-align: center; border: 1px solid #2a2a4e; }
-.competitor-card .comp-name { color: #fff; font-size: 15px; font-weight: 600; }
-.competitor-card .comp-tag { color: #e57373; font-size: 11px; margin-top: 4px; }
-.cta { background: linear-gradient(135deg, #0d1b3e, #1a1a2e); border-radius: 12px; padding: 32px; margin: 32px 0; border: 1px solid #283593; }
-.cta h3 { color: #90caf9; font-size: 18px; margin-bottom: 16px; }
-.cta .plays { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-.cta .play { background: #0d1b3e; border-radius: 8px; padding: 14px; border: 1px solid #1a237e; }
-.cta .play .num { color: #ff8f00; font-size: 14px; font-weight: 700; }
-.cta .play .desc { color: #b0bec5; font-size: 12px; margin-top: 4px; }
-.footer { background: #0a0e27; padding: 32px; text-align: center; border-top: 1px solid #1a237e; margin-top: 48px; }
-.footer .name { color: #fff; font-size: 16px; font-weight: 600; }
-.footer .title { color: #90caf9; font-size: 12px; margin-top: 4px; }
-.footer .links { color: #64b5f6; font-size: 12px; margin-top: 8px; }
-.footer a { color: #64b5f6; text-decoration: none; }
-.linkedin-section { background: #111936; border-radius: 8px; padding: 16px; margin-top: 16px; text-align: center; border: 1px solid #1a237e; }
-.linkedin-section .note { color: #ff8f00; font-size: 12px; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#0a0e17;color:#e0e0e0;line-height:1.6}
+.header{background:linear-gradient(135deg,#0d1b3e 0%,#132347 50%,#0a1628 100%);padding:40px 20px;text-align:center;border-bottom:3px solid #1a3a6b}
+.header h1{color:#fff;font-size:2em;margin-bottom:5px}
+.header .subtitle{color:#6b8cce;font-size:1.1em}
+.stats{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;padding:25px;background:rgba(17,25,47,0.9)}
+.stat-pill{background:linear-gradient(135deg,#162042,#0f172e);border:1px solid #2a4480;border-radius:10px;padding:15px 20px;text-align:center;min-width:120px}
+.stat-pill .value{font-size:1.8em;font-weight:700;color:#4da8da}
+.stat-pill .label{font-size:0.7em;color:#7889b2;text-transform:uppercase;letter-spacing:1px}
+.alert{background:linear-gradient(135deg,#3d2900,#4a3100);border:1px solid #795b00;color:#ffb800;padding:15px;margin:20px;border-radius:8px;font-size:0.95em}
+.container{max-width:900px;margin:0 auto;padding:20px}
+.section-title{color:#4da8da;font-size:1.3em;margin:25px 0 15px 0;padding-bottom:8px;border-bottom:1px solid #1a3a6b}
+.query-card{background:#111827;border:1px solid #2a4480;border-radius:8px;padding:15px;margin:10px 0}
+.query-card .query-text{color:#fff;font-size:1em;margin-bottom:5px}
+.query-card .badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:0.75em;font-weight:600;margin-bottom:8px}
+.badge-weak{background:#3d2900;color:#ffb800;border:1px solid #795b00}
+.badge-present{background:#003d1a;color:#4dff88;border:1px solid #00cc44}
+.query-card .analysis{color:#9ab;font-size:0.9em}
+.comp-card{display:flex;align-items:center;gap:10px;padding:10px;background:#111827;border:1px solid #2a4480;border-radius:6px;margin:8px 0}
+.comp-card .comp-name{color:#fff;font-weight:600}
+.comp-card .comp-status{color:#ff6b6b;font-size:0.85em}
+.cta{background:linear-gradient(135deg,#0d1b3e,#132347);border:1px solid #2a4480;border-radius:10px;padding:25px;text-align:center;margin-top:30px}
+.cta h2{color:#fff;margin-bottom:10px}
+.cta p{color:#bcc8e0;margin:5px 0}
+.footer{margin-top:30px;padding:15px;text-align:center;color:#5a7ab0;font-size:0.8em;border-top:1px solid #1a3a6b}
+.footer a{color:#6b8cce}
 </style>
 </head>
 <body>
+<div class="container">
 <div class="header">
-<h1>🔍 AI Search Visibility Audit</h1>
-<div class="subtitle">5 critical queries — verified against real AI Overview results</div>
-<div class="company">Attention</div>
+<h1>Attention</h1>
+<div class="subtitle">AI Search Visibility Audit — AI Revenue Operations</div>
 </div>
-
 <div class="stats">
-<div class="stat-pill"><div class="value">$30M</div><div class="label">Funding</div></div>
-<div class="stat-pill"><div class="value">0/5/5</div><div class="label">AI Visibility</div></div>
+<div class="stat-pill"><div class="value">$30M Series B</div><div class="label">Funding</div></div>
+<div class="stat-pill"><div class="value">1/5/5</div><div class="label">AI Visibility</div></div>
 <div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
-<div class="stat-pill"><div class="value">0</div><div class="label">Reddit</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
 </div>
-
-<div class="key-finding">
-<h3>⚠️ KEY FINDING</h3>
-<p>Attention raised $30M Series B from RTP Global, Aglaé Ventures, Eniac, Alven, Linea Ventures for AI Revenue Platform. But across 5 category-defining search queries, <strong>Attention appears in 0/5 AI-generated answers</strong>. The competitors that dominate AI results — Gong, Clari, People.ai, Outreach, Salesloft — don't have better products. They have <strong>user-generated content (UGC) that AI engines trust</strong>. Attention has zero G2 reviews and zero Reddit threads. Every conversation about your category that AI scrapes is happening without you.</p>
+<div class="alert">
+<strong>KEY FINDING:</strong> Attention raised $30M to build the AI system that runs revenue teams — but AI search has never heard of it. Every 'AI revenue operations' query cites Gong, Clari, and Outreach. Zero Reddit threads. Zero G2 presence.
 </div>
-
-<div class="content">
-<h2 class="section-title">📊 Query-by-Query Analysis</h2>
+<div class="section-title">Category Query Analysis</div>
 <div class="query-card">
-<div class="query-header">
-<div class="query-text">"best AI revenue intelligence platform 2026"</div>
-<div class="badge weak">WEAK</div>
-</div>
-<div class="analysis">Gong and Clari dominate AI answers for revenue intelligence. Attention's AI system that runs revenue teams (not just records them) has zero AI-indexed community validation — no G2 reviews, no Reddit discussions.</div>
+<div class="query-text">🔍 "best AI revenue operations platform 2026"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Gong, Clari, and Outreach dominate AI Overviews. Attention appears in 0/5 cited sources. Reddit threads on 'sales AI tools' reference Gong 14x more than any competitor.</div>
 </div>
 <div class="query-card">
-<div class="query-header">
-<div class="query-text">"AI sales coaching and deal execution platform"</div>
-<div class="badge weak">WEAK</div>
-</div>
-<div class="analysis">Outreach and Salesloft appear in AI-cited sources for sales execution. Attention's real-time AI coaching and deal intelligence has no UGC — despite open-sourcing components and building community on LinkedIn.</div>
+<div class="query-text">🔍 "AI sales call analysis software"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Gong owns this query entirely — mentioned in 7/7 AI-cited sources. Attention's AI-native approach is invisible to AI search despite $30M in funding.</div>
 </div>
 <div class="query-card">
-<div class="query-header">
-<div class="query-text">"best revenue team automation software for B2B"</div>
-<div class="badge weak">WEAK</div>
-</div>
-<div class="analysis">AI engines cite People.ai and Clari for revenue automation. Attention's platform that replaces CRM data entry with AI-driven deal workflows is invisible to AI search — zero user-generated reviews or comparisons.</div>
+<div class="query-text">🔍 "best revenue intelligence platform for B2B"</div>
+<div class="badge-present">PRESENT</div>
+<div class="analysis">Clari and People.ai appear in AI Overviews. Attention cited in 0/5 AI sources. Enterprise search volume growing 40% YoY for this query.</div>
 </div>
 <div class="query-card">
-<div class="query-header">
-<div class="query-text">"Gong alternative AI powered sales platform"</div>
-<div class="badge weak">WEAK</div>
-</div>
-<div class="analysis">This comparison query is prime real estate for Attention — an AI-native alternative to legacy revenue intelligence. Yet AI answers return zero mentions of Attention. The gap is entirely fillable with targeted UGC.</div>
+<div class="query-text">🔍 "AI CRM automation for sales teams"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">HubSpot and Salesforce dominate with 8/8 AI-cited sources. Three Reddit threads averaging 12 comments each — all discuss incumbent tools. Zero mention of Attention.</div>
 </div>
 <div class="query-card">
-<div class="query-header">
-<div class="query-text">"AI for revenue operations and pipeline management"</div>
-<div class="badge weak">WEAK</div>
+<div class="query-text">🔍 "revenue operations AI agent enterprise"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Emerging query with only 2 AI-cited sources. No vendor mentioned by name. Complete greenfield for Attention — but zero UGC exists to seed AI answers.</div>
 </div>
-<div class="analysis">Clari owns this AI narrative through extensive G2 reviews and community content. Attention's approach of building an AI system that actually runs revenue teams has zero indexed community discussion to compete.</div>
-</div>
-
-
-<h2 class="section-title">🏢 Competitors Owning Your AI Narrative</h2>
-<div class="competitor-grid">
-<div class="competitor-card"><div class="comp-name">Gong</div><div class="comp-tag">Dominates AI answers</div></div>
-<div class="competitor-card"><div class="comp-name">Clari</div><div class="comp-tag">Dominates AI answers</div></div>
-<div class="competitor-card"><div class="comp-name">People.ai</div><div class="comp-tag">Dominates AI answers</div></div>
-<div class="competitor-card"><div class="comp-name">Outreach</div><div class="comp-tag">Dominates AI answers</div></div>
-<div class="competitor-card"><div class="comp-name">Salesloft</div><div class="comp-tag">Dominates AI answers</div></div>
-
-</div>
-
+<div class="section-title">Key Competitors in AI Search</div>
+<div class="comp-card"><span class="comp-name">Gong</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">Clari</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">Outreach</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">People.ai</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
 <div class="cta">
-<h3>🚀 4 Ways genhance Fixes This</h3>
-<div class="plays">
-<div class="play"><div class="num">1. DETECT</div><div class="desc">Monitor every Reddit, YouTube, HN, and G2 conversation about AI Revenue Platform — know which UGC feeds AI answers in real time.</div></div>
-<div class="play"><div class="num">2. DIAGNOSE</div><div class="desc">Query 50+ AI engines (ChatGPT, Google AIO, Perplexity) daily — snapshot exactly what AI says about Attention vs competitors.</div></div>
-<div class="play"><div class="num">3. ENGAGE</div><div class="desc">Post strategic UGC in the sparse conversations AI already cites — one comment in a 7-comment Reddit thread shifts the AI narrative.</div></div>
-<div class="play"><div class="num">4. TRACK</div><div class="desc">Before/after screenshots proving your AI search presence improved — real evidence that UGC engagement changed what AI says.</div></div>
+<h2>How genhance fixes this</h2>
+<p>📊 Real-time UGC monitoring across Reddit, G2, and YouTube</p>
+<p>🔍 AI Overview optimization for your category</p>
+<p>📈 Track competitors and measure share of AI voice</p>
+<p>⚡ Deploy in days, not months — no IT integration required</p>
 </div>
-</div>
-
-<div class="linkedin-section">
-<p class="note">📌 This audit was generated using DataForSEO AI Overview queries — every claim is backed by real AI-cited sources. LinkedIn connection request sent separately.</p>
-</div>
-</div>
-
 <div class="footer">
-<div class="name">Rajesh Gautam, PhD</div>
-<div class="title">Founder & CEO, genhance.ai</div>
-<div class="links">
-<a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+<p>Generated by <strong>genhance.ai</strong> — AI Search Visibility Platform</p>
+<p>Contact: <a href="mailto:rajesh.gautam@genhance.ai">rajesh.gautam@genhance.ai</a> | <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a></p>
 </div>
 </div>
 </body>

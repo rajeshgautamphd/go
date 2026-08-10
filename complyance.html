@@ -1,164 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Search Visibility Audit: Complyance | genhance.ai</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complyance — AI Search Visibility Audit | genhance</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#0a0e17;color:#e0e0e0;line-height:1.6}
+.header{background:linear-gradient(135deg,#0d1b3e 0%,#132347 50%,#0a1628 100%);padding:40px 20px;text-align:center;border-bottom:3px solid #1a3a6b}
+.header h1{color:#fff;font-size:2em;margin-bottom:5px}
+.header .subtitle{color:#6b8cce;font-size:1.1em}
+.stats{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;padding:25px;background:rgba(17,25,47,0.9)}
+.stat-pill{background:linear-gradient(135deg,#162042,#0f172e);border:1px solid #2a4480;border-radius:10px;padding:15px 20px;text-align:center;min-width:120px}
+.stat-pill .value{font-size:1.8em;font-weight:700;color:#4da8da}
+.stat-pill .label{font-size:0.7em;color:#7889b2;text-transform:uppercase;letter-spacing:1px}
+.alert{background:linear-gradient(135deg,#3d2900,#4a3100);border:1px solid #795b00;color:#ffb800;padding:15px;margin:20px;border-radius:8px;font-size:0.95em}
+.container{max-width:900px;margin:0 auto;padding:20px}
+.section-title{color:#4da8da;font-size:1.3em;margin:25px 0 15px 0;padding-bottom:8px;border-bottom:1px solid #1a3a6b}
+.query-card{background:#111827;border:1px solid #2a4480;border-radius:8px;padding:15px;margin:10px 0}
+.query-card .query-text{color:#fff;font-size:1em;margin-bottom:5px}
+.query-card .badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:0.75em;font-weight:600;margin-bottom:8px}
+.badge-weak{background:#3d2900;color:#ffb800;border:1px solid #795b00}
+.badge-present{background:#003d1a;color:#4dff88;border:1px solid #00cc44}
+.query-card .analysis{color:#9ab;font-size:0.9em}
+.comp-card{display:flex;align-items:center;gap:10px;padding:10px;background:#111827;border:1px solid #2a4480;border-radius:6px;margin:8px 0}
+.comp-card .comp-name{color:#fff;font-weight:600}
+.comp-card .comp-status{color:#ff6b6b;font-size:0.85em}
+.cta{background:linear-gradient(135deg,#0d1b3e,#132347);border:1px solid #2a4480;border-radius:10px;padding:25px;text-align:center;margin-top:30px}
+.cta h2{color:#fff;margin-bottom:10px}
+.cta p{color:#bcc8e0;margin:5px 0}
+.footer{margin-top:30px;padding:15px;text-align:center;color:#5a7ab0;font-size:0.8em;border-top:1px solid #1a3a6b}
+.footer a{color:#6b8cce}
+</style>
 </head>
-<body style="margin:0; padding:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f23; color: #e0e0e0;">
-
-<!-- HEADER -->
-<div style="background: linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 50%, #0d0d3d 100%); padding: 40px 32px; text-align: center;">
-    <div style="font-size: 12px; letter-spacing: 3px; color: #6c6c9e; text-transform: uppercase; margin-bottom: 8px;">AI SEARCH VISIBILITY AUDIT</div>
-    <h1 style="font-size: 28px; margin: 0 0 8px; color: white;">Complyance — AI Search Gap Analysis</h1>
-    <div style="font-size: 14px; color: #8b8b9e; margin-bottom: 24px;">AI-Native Enterprise GRC Platform | New York, NY</div>
-
-    <!-- STAT PILLS -->
-    <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #4fc3f7;">$20M Series A</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">Funding</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #ff6b6b;">0/5</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">AI Visibility</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #ffa726;">0</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">G2 Reviews</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; min-width: 120px;">
-            <div style="font-size: 22px; font-weight: bold; color: #ffa726;">0</div>
-            <div style="font-size: 11px; color: #8b8b9e; margin-top: 4px;">Reddit Threads</div>
-        </div>
-    </div>
+<body>
+<div class="container">
+<div class="header">
+<h1>Complyance</h1>
+<div class="subtitle">AI Search Visibility Audit — AI GRC Automation</div>
 </div>
-
-<div style="max-width: 640px; margin: 0 auto; padding: 24px 20px;">
-
-    <!-- KEY FINDING -->
-    <div style="background: linear-gradient(135deg, #3d2800, #2a1a00); border: 1px solid #ff8c00; border-radius: 8px; padding: 20px; margin-bottom: 24px;">
-        <div style="font-size: 12px; letter-spacing: 2px; color: #ff8c00; text-transform: uppercase; margin-bottom: 6px;">⚠ KEY FINDING</div>
-        <div style="color: #e0d0a0; font-size: 14px; line-height: 1.6;">Complyance deploys 30+ AI agents to automate manual GRC workflows for enterprises, backed by Google Ventures. Yet AI searches for 'best GRC platform 2026' return only legacy tools like ServiceNow GRC and Archer — Complyance's agentic approach is completely invisible to AI engines.</div>
-    </div>
-
-    <!-- ABOUT -->
-    <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 16px; color: white; border-bottom: 2px solid #2d2d5e; padding-bottom: 8px;">About Complyance</h2>
-        <div style="color: #b0b0c0; font-size: 13px; line-height: 1.6;">
-            <strong>CEO:</strong> Hari Krishnan, Co-Founder & CEO<br>
-            <strong>Total Raised:</strong> $20M+<br>
-            <strong>Key Investors:</strong> GV (Google Ventures), Creandum, HV Capital<br>
-            <strong>Website:</strong> complyance.com
-        </div>
-    </div>
-
-    <!-- QUERY CARDS -->
-    <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 16px; color: white; border-bottom: 2px solid #2d2d5e; padding-bottom: 8px;">5 Category Queries — Complyance Appears in 0/5</h2>
-        <div style="color: #8b8b9e; font-size: 12px; margin-bottom: 16px;">Each query analyzed against Google AI Overviews and organic SERP. Complyance is absent from AI-cited results in all five.</div>
-        
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #1: "best GRC platform for enterprises 2026"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> ServiceNow GRC, RSA Archer, LogicGate<br>
-                    <strong>Complyance status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #2: "AI-native compliance automation platform"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> Vanta, Drata, Secureframe<br>
-                    <strong>Complyance status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #3: "enterprise risk management with AI agents"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> ServiceNow IRM, AuditBoard, LogicGate<br>
-                    <strong>Complyance status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #4: "automated GRC workflow platform"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> AuditBoard, Workiva, Diligent<br>
-                    <strong>Complyance status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 8px; padding: 16px; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #ff4757; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">WEAK</span>
-                    <span style="color: #e0e0e0; font-size: 13px; font-weight: 500;">Query #5: "agentic AI for governance risk and compliance"</span>
-                </div>
-                <div style="color: #8b8b9e; font-size: 12px; margin-top: 8px;">
-                    <strong>AI-cited competitors:</strong> ServiceNow, RSA Archer, MetricStream<br>
-                    <strong>Complyance status:</strong> Not found in AI Overviews or top 10 organic results
-                </div>
-            </div>
-    </div>
-
-    <!-- COMPETITORS -->
-    <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 16px; color: white; border-bottom: 2px solid #2d2d5e; padding-bottom: 8px;">Competitors Dominating AI Answers</h2>
-        <div style="color: #8b8b9e; font-size: 12px; margin-bottom: 12px;">These are the companies AI engines currently cite when users search in Complyance's category:</div>
-        <div style="text-align: center;">
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Drata</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">AuditBoard</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Vanta</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">ServiceNow IRM</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">ServiceNow GRC</span>
-            </div>
-            <div style="background: #1a1a2e; border: 1px solid #2d2d5e; border-radius: 6px; padding: 10px 14px; display: inline-block; margin: 4px;">
-                <span style="color: #e0e0e0; font-size: 12px;">Workiva</span>
-            </div></div>
-    </div>
-
-    <!-- CTA -->
-    <div style="background: linear-gradient(135deg, #0a0a2e, #1a1a4e); border: 1px solid #4fc3f7; border-radius: 12px; padding: 28px 24px; margin-bottom: 24px; text-align: center;">
-        <h2 style="font-size: 18px; color: white; margin: 0 0 12px;">4 Ways genhance Closes This Gap for Complyance</h2>
-        <div style="text-align: left; color: #b0b0c0; font-size: 13px; line-height: 1.8;">
-            <strong>1. UGC Gap Monitoring:</strong> Track exactly which Reddit threads, YouTube comments, and forum discussions feed AI answers for your 5 category — and where to contribute.<br>
-            <strong>2. AI Answer Benchmarking:</strong> Before/after snapshots across ChatGPT, Google AI Overviews, and Perplexity for every query that matters.<br>
-            <strong>3. Review-Platform Intelligence:</strong> Identify the fastest path to shifting G2/Capterra presence — surface-by-surface, review-by-review.<br>
-            <strong>4. Narrative Flux Detection:</strong> Real-time alerts when conversations about your category start forming — so you can shape what AI says before it hardens.
-        </div>
-        <div style="margin-top: 20px; padding: 12px 28px; background: #4fc3f7; color: #0a0a2e; border-radius: 8px; font-weight: bold; font-size: 14px; display: inline-block;">Ready to fix your AI search visibility?</div>
-    </div>
-
-    <!-- FOOTER -->
-    <div style="text-align: center; padding: 24px 0; border-top: 1px solid #2d2d5e; margin-top: 16px;">
-        <div style="color: white; font-size: 14px; font-weight: bold;">Rajesh Gautam, PhD</div>
-        <div style="color: #8b8b9e; font-size: 12px;">Founder and CEO, genhance.ai</div>
-        <div style="margin-top: 6px;">
-            <a href="https://linkedin.com/in/rajeshgautam" style="color: #4fc3f7; font-size: 12px; text-decoration: none;">linkedin.com/in/rajeshgautam</a>
-            <span style="color: #4fc3f7;"> | </span>
-            <a href="https://genhance.ai" style="color: #4fc3f7; font-size: 12px; text-decoration: none;">genhance.ai</a>
-        </div>
-        <div style="color: #555; font-size: 10px; margin-top: 8px;">Generated August 4, 2026 | Automated AI Search Visibility Audit</div>
-    </div>
-
+<div class="stats">
+<div class="stat-pill"><div class="value">$20M Series A</div><div class="label">Funding</div></div>
+<div class="stat-pill"><div class="value">1/5/5</div><div class="label">AI Visibility</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
+</div>
+<div class="alert">
+<strong>KEY FINDING:</strong> Complyance raised $20M from GV, Creandum, and HV Capital to modernize GRC with agentic AI — but every query returns Vanta and Drata. Zero AI presence across all surfaces.
+</div>
+<div class="section-title">Category Query Analysis</div>
+<div class="query-card">
+<div class="query-text">🔍 "best AI GRC platform enterprise 2026"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Vanta and Drata dominate AI Overviews. Complyance's AI-native GRC platform has zero AI-cited mentions.</div>
+</div>
+<div class="query-card">
+<div class="query-text">🔍 "automated compliance management platform"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">OneTrust leads AI answers. Complyance — trusted by Fortune 500 companies — is invisible to AI search.</div>
+</div>
+<div class="query-card">
+<div class="query-text">🔍 "AI governance risk and compliance software"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">anecdotes appears in AI Overviews. Complyance has zero Reddit threads, zero G2 reviews.</div>
+</div>
+<div class="query-card">
+<div class="query-text">🔍 "enterprise risk management AI platform"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Emerging category. Complyance raised $20M from GV but has zero UGC to seed AI answers.</div>
+</div>
+<div class="query-card">
+<div class="query-text">🔍 "best compliance automation software 2026"</div>
+<div class="badge-weak">WEAK</div>
+<div class="analysis">Zero AI Overviews. Complyance's AI-first approach to GRC is undiscovered by AI search engines.</div>
+</div>
+<div class="section-title">Key Competitors in AI Search</div>
+<div class="comp-card"><span class="comp-name">Vanta</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">Drata</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">OneTrust</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="comp-card"><span class="comp-name">anecdotes</span><span class="comp-status">DOMINATING AI ANSWERS</span></div>
+<div class="cta">
+<h2>How genhance fixes this</h2>
+<p>📊 Real-time UGC monitoring across Reddit, G2, and YouTube</p>
+<p>🔍 AI Overview optimization for your category</p>
+<p>📈 Track competitors and measure share of AI voice</p>
+<p>⚡ Deploy in days, not months — no IT integration required</p>
+</div>
+<div class="footer">
+<p>Generated by <strong>genhance.ai</strong> — AI Search Visibility Platform</p>
+<p>Contact: <a href="mailto:rajesh.gautam@genhance.ai">rajesh.gautam@genhance.ai</a> | <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a></p>
+</div>
 </div>
 </body>
 </html>
