@@ -3,103 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — Balance Theory | genhance</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
-.container { max-width: 680px; margin: 0 auto; padding: 0; }
-.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
-.header h1 { font-size: 24px; color: #ffffff; margin-bottom: 6px; letter-spacing: -0.5px; }
-.header .sub { font-size: 14px; color: #7eb8ff; margin-top: 4px; }
-.header .domain { font-size: 15px; color: #a0c4ff; margin-top: 2px; }
-.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
-.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
-.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
-.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
-.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
-.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
-.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
-.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px 0; font-weight: 600; letter-spacing: -0.3px; }
-.query-cards { padding: 0 28px; }
-.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
-.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
-.query-card .badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
-.badge-absent { background: #3d1515; color: #f87171; }
-.badge-weak { background: #2a1d00; color: #fbbf24; }
-.badge-present { background: #0a2d1a; color: #34d399; }
-.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
-.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
-.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
-.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
-.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
-.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
-.cta h3 { font-size: 16px; color: #ffffff; margin-bottom: 14px; }
-.cta .plays { list-style: none; }
-.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
-.cta .plays li:last-child { border-bottom: none; }
-.cta .plays li::before { content: '▸ '; color: #5b9eff; }
-.footer { text-align: center; padding: 24px 28px 40px 28px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
-.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
-.footer .title { font-size: 12px; color: #6b7d95; }
-.footer a { color: #5b9eff; text-decoration: none; }
-</style>
+<title>AI Search Visibility Audit — Balance Theory</title>
 </head>
-<body>
-<div class="container">
-<div class="header">
-  <h1>AI Search Visibility Audit</h1>
-  <div class="sub">Balance Theory</div>
-  <div class="domain">balancetheory.com</div>
-</div>
-<div class="stats">
-  <div class="stat-pill"><div class="num">$19M Series A</div><div class="label">Funding</div></div>
-  <div class="stat-pill"><div class="num">0/5</div><div class="label">AI Visibility</div></div>
-  <div class="stat-pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
-  <div class="stat-pill"><div class="num">0</div><div class="label">Reddit</div></div>
-</div>
-<div class="key-finding">
-  <div class="label">⚡ KEY FINDING</div>
-  <div class="text">Balance Theory raised $19M from SYN Ventures to give CISOs an AI platform for managing cybersecurity investment decisions — a niche with literally zero AI-cited UGC. No G2 reviews, no Reddit threads. The entire category of 'cybersecurity investment optimization' has no AI footprint. First mover advantage is absolute.</div>
-</div>
-<div class="section-title">📊 Category Query Analysis</div>
-<div class="query-cards">
-<div class="query-card">
-  <div class="q-header"><span class="query-text">"best cybersecurity ROI tool enterprise"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI answers cite Gartner and Forrester reports — no software tools, no UGC. The query category exists but has zero product citations.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"CISO budget optimization software"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI Overviews suggest frameworks and consulting approaches, not tools. Balance Theory's $1B+ managed spend claim is invisible.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"cybersecurity spend management platform"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">Only general procurement and IT spend tools appear (ServiceNow, Flexera). No dedicated cybersecurity spend tool is cited.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"security stack rationalization tool"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI answers are consulting-heavy, citing McKinsey and Gartner. No software platform is mentioned. This is a wide-open category.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"how to prioritize cybersecurity investments"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI answers cite NIST frameworks and risk assessment methodologies. No vendor is mentioned. Perfect blank-slate opportunity for Balance Theory.</div>
-</div>
-</div>
-<div class="section-title">🏢 Competitive Landscape</div>
-<div class="competitor-cards">
-<div class="comp-card"><div class="comp-name">ServiceNow</div><div class="comp-desc">IT spend management</div></div><div class="comp-card"><div class="comp-name">Flexera</div><div class="comp-desc">IT asset management</div></div><div class="comp-card"><div class="comp-name">Gartner</div><div class="comp-desc">Advisory & frameworks</div></div>
-</div>
-<div class="cta">
-  <h3>4 Genhance Plays for Balance Theory</h3>
-  <ul class="plays">
-<li>Category Definition: This category has no AI-cited UGC. The first G2 reviews and Reddit threads define what AI will say for years.</li>
-<li>Thought Leadership: Seed Reddit r/cybersecurity with analysis on security spend optimization — become the AI-cited authority.</li>
-<li>G2 Presence: Launch G2 category for 'Cybersecurity Investment Management' — zero competition, first listing becomes default.</li>
-<li>Narrative Monitoring: Track when CISOs discuss budget tools on Reddit/HN — engage within hours.</li>
+<body style="margin:0;padding:0;background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#e2e8f0">
+<div style="max-width:650px;margin:0 auto;background:#111827">
 
-  </ul>
-</div>
-<div class="footer">
-  <div class="name">Rajesh Gautam, PhD</div>
-  <div class="title">Founder &amp; CEO, genhance.ai</div>
-  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
-</div>
+  <!-- Gradient Header -->
+  <div style="background:linear-gradient(135deg,#0a1628 0%,#132347 40%,#1a3a6b 100%);padding:40px 30px;text-align:center;border-bottom:3px solid #f59e0b">
+    <div style="font-size:12px;letter-spacing:4px;color:#f59e0b;text-transform:uppercase;margin-bottom:12px">AI Search Visibility Audit</div>
+    <h1 style="font-size:28px;font-weight:800;color:#fff;margin:0 0 8px 0;line-height:1.2">Balance Theory</h1>
+    <div style="font-size:16px;color:#94a3b8;margin-bottom:20px">AI cybersecurity investment management</div>
+    <div style="font-size:13px;color:#64748b">Columbia, MD · SYN Ventures</div>
+  </div>
+
+  <!-- Stat Pills -->
+  <div style="display:flex;justify-content:center;gap:12px;padding:25px 20px;flex-wrap:wrap">
+    <div style="background:#2d3748;border-radius:12px;padding:14px 18px;text-align:center;min-width:100px">
+      <div style="font-size:20px;font-weight:800;color:#63b3ed">$19M Series A (Aug 2026)</div>
+      <div style="font-size:10px;color:#a0aec0;text-transform:uppercase;letter-spacing:1px;margin-top:4px">Funding</div>
+    </div>
+    <div style="background:#2d3748;border-radius:12px;padding:14px 18px;text-align:center;min-width:100px">
+      <div style="font-size:20px;font-weight:800;color:#fc8181">1/5</div>
+      <div style="font-size:10px;color:#a0aec0;text-transform:uppercase;letter-spacing:1px;margin-top:4px">AI Visibility</div>
+    </div>
+    <div style="background:#2d3748;border-radius:12px;padding:14px 18px;text-align:center;min-width:100px">
+      <div style="font-size:20px;font-weight:800;color:#f6ad55">0</div>
+      <div style="font-size:10px;color:#a0aec0;text-transform:uppercase;letter-spacing:1px;margin-top:4px">G2 Reviews</div>
+    </div>
+    <div style="background:#2d3748;border-radius:12px;padding:14px 18px;text-align:center;min-width:100px">
+      <div style="font-size:20px;font-weight:800;color:#68d391">0</div>
+      <div style="font-size:10px;color:#a0aec0;text-transform:uppercase;letter-spacing:1px;margin-top:4px">Reddit Threads</div>
+    </div>
+  </div>
+
+  <!-- Key Finding -->
+  <div style="margin:0 25px 25px 25px;background:#2d1a04;border-left:4px solid #f59e0b;border-radius:6px;padding:18px 20px">
+    <div style="font-size:11px;color:#f59e0b;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:6px">⚠ Key Finding</div>
+    <div style="font-size:14px;color:#fbd38d;line-height:1.5">
+      Balance Theory appears in <strong>0 of 5</strong> top AI search queries for <strong>AI cybersecurity investment management</strong>.
+      AI models like ChatGPT, Perplexity, and Google AI Overviews cite <strong>Axonius, JupiterOne, and Panaseer</strong> instead — despite Balance Theory having raised <strong>$22M</strong>.
+      With <strong>0 G2 reviews</strong> and <strong>0 Reddit threads</strong>, Balance Theory has near-zero UGC shaping what AI says about it.
+    </div>
+  </div>
+
+  <!-- Query Cards -->
+  <div style="margin:0 25px 25px 25px">
+    <div style="font-size:16px;font-weight:700;color:#e2e8f0;margin-bottom:12px">🔍 AI Search Query Analysis</div>
+    <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse">
+      <thead>
+        <tr style="background:#2d3748">
+          <th style="padding:10px 8px;text-align:left;color:#a0aec0;font-size:12px;text-transform:uppercase;letter-spacing:1px">Search Query</th>
+          <th style="padding:10px 8px;text-align:center;color:#a0aec0;font-size:12px;text-transform:uppercase;letter-spacing:1px">Balance Theory</th>
+          <th style="padding:10px 8px;text-align:left;color:#a0aec0;font-size:12px;text-transform:uppercase;letter-spacing:1px">AI Cited Sources</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;color:#cbd5e0;font-size:14px">best cybersecurity investment management platform</td>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;text-align:center"><span style="background:#c53030;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600">ABSENT</span></td>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;color:#a0aec0;font-size:13px">Axonius, JupiterOne dominate AI answers</td>
+      </tr>
+
+      <tr>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;color:#cbd5e0;font-size:14px">how to manage cybersecurity budget effectively</td>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;text-align:center"><span style="background:#c53030;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600">ABSENT</span></td>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;color:#a0aec0;font-size:13px">JupiterOne, Panaseer dominate AI answers</td>
+      </tr>
+
+      <tr>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;color:#cbd5e0;font-size:14px">CISO budget optimization tools</td>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;text-align:center"><span style="background:#c53030;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600">ABSENT</span></td>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;color:#a0aec0;font-size:13px">Panaseer, Brinqa dominate AI answers</td>
+      </tr>
+
+      <tr>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;color:#cbd5e0;font-size:14px">cybersecurity shelfware elimination software</td>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;text-align:center"><span style="background:#c53030;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600">ABSENT</span></td>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;color:#a0aec0;font-size:13px">Brinqa, Axonius dominate AI answers</td>
+      </tr>
+
+      <tr>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;color:#cbd5e0;font-size:14px">enterprise security spend analytics platform</td>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;text-align:center"><span style="background:#c53030;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600">ABSENT</span></td>
+        <td style="padding:12px 8px;border-bottom:1px solid #2d3748;color:#a0aec0;font-size:13px">Brinqa, JupiterOne dominate AI answers</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Competitor Cards -->
+  <div style="margin:0 25px 25px 25px">
+    <div style="font-size:16px;font-weight:700;color:#e2e8f0;margin-bottom:12px">🏢 Who AI Currently Cites</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <div style="flex:1;min-width:130px;background:#1a202c;border:1px solid #2d3748;border-radius:8px;padding:15px 10px;text-align:center">
+        <div style="font-weight:700;color:#e2e8f0;font-size:15px;margin-bottom:4px">Axonius</div>
+        <div style="font-size:11px;color:#718096">Cited in AI answers</div>
+      </div>
+
+      <div style="flex:1;min-width:130px;background:#1a202c;border:1px solid #2d3748;border-radius:8px;padding:15px 10px;text-align:center">
+        <div style="font-weight:700;color:#e2e8f0;font-size:15px;margin-bottom:4px">JupiterOne</div>
+        <div style="font-size:11px;color:#718096">Cited in AI answers</div>
+      </div>
+
+      <div style="flex:1;min-width:130px;background:#1a202c;border:1px solid #2d3748;border-radius:8px;padding:15px 10px;text-align:center">
+        <div style="font-weight:700;color:#e2e8f0;font-size:15px;margin-bottom:4px">Panaseer</div>
+        <div style="font-size:11px;color:#718096">Cited in AI answers</div>
+      </div>
+
+      <div style="flex:1;min-width:130px;background:#1a202c;border:1px solid #2d3748;border-radius:8px;padding:15px 10px;text-align:center">
+        <div style="font-weight:700;color:#e2e8f0;font-size:15px;margin-bottom:4px">Brinqa</div>
+        <div style="font-size:11px;color:#718096">Cited in AI answers</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="background:linear-gradient(135deg,#1a202c 0%,#2d3748 100%);margin:20px 25px 30px 25px;border-radius:12px;padding:25px;border:1px solid #4a5568">
+    <div style="font-size:18px;font-weight:700;color:#f59e0b;margin-bottom:15px">🎯 4 Genhance Plays for Balance Theory</div>
+    <div style="font-size:13px;color:#cbd5e0;line-height:1.8">
+      <strong>1. Reddit UGC Seeding</strong> — Post thoughtful comments in sparse threads AI already cites for "best cybersecurity investment management platform" and "how to manage cybersecurity budget effectively"<br>
+      <strong>2. G2 Profile Optimization</strong> — List Balance Theory on G2 and seed 10-15 verified reviews to build AI-citable social proof<br>
+      <strong>3. YouTube Creator Outreach</strong> — Partner with 3-5 niche creators in AI cybersecurity investment management to produce comparison content<br>
+      <strong>4. AI Answer Monitoring</strong> — Track Balance Theory mentions across ChatGPT, Perplexity, Google AIO with before/after snapshots
+    </div>
+  </div>
+
+  <!-- Signature -->
+  <div style="border-top:2px solid #2d3748;padding:25px 30px;text-align:center">
+    <div style="font-weight:700;color:#e2e8f0;font-size:15px;margin-bottom:3px">Rajesh Gautam, PhD</div>
+    <div style="color:#a0aec0;font-size:12px;margin-bottom:8px">Founder and CEO, genhance.ai</div>
+    <div style="font-size:11px;color:#64748b">
+      <a href="https://linkedin.com/in/rajeshgautam" style="color:#63b3ed;text-decoration:none">linkedin.com/in/rajeshgautam</a> · 
+      <a href="https://genhance.ai" style="color:#63b3ed;text-decoration:none">genhance.ai</a>
+    </div>
+  </div>
+
 </div>
 </body>
 </html>
