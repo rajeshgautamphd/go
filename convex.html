@@ -3,146 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Convex — AI Search Visibility Audit | genhance.ai</title>
+<title>AI Search Visibility Audit — Convex | genhance</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 680px; margin: 0 auto; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
+.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
+.header .sub { font-size: 14px; color: #7eb8ff; }
+.header .domain { font-size: 15px; color: #a0c4ff; }
+.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
+.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
+.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
+.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
+.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
+.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
+.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
+.query-cards { padding: 0 28px; }
+.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
+.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
+.badge-absent { background: #3d1515; color: #f87171; }
+.badge-weak { background: #2a1d00; color: #fbbf24; }
+.badge-present { background: #0a2d1a; color: #34d399; }
+.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
+.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
+.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
+.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
+.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
+.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
+.cta .plays { list-style: none; }
+.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
+.cta .plays li:last-child { border-bottom: none; }
+.cta .plays li::before { content: '\25B8 '; color: #5b9eff; }
+.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
+.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
+.footer .title { font-size: 12px; color: #6b7d95; }
+.footer a { color: #5b9eff; text-decoration: none; }
+</style>
 </head>
-<body style="margin:0;padding:0;background:#f0f0f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
-<div style="max-width:680px;margin:0 auto;background:#fff;">
-
-<!-- Header -->
-<div style="background:linear-gradient(135deg,#0a0a2e 0%,#16213e 50%,#0f3460 100%);padding:40px 30px;text-align:center;">
-    <h1 style="color:#fff;font-size:26px;margin:0 0 8px 0;letter-spacing:-0.5px;">AI SEARCH VISIBILITY AUDIT</h1>
-    <p style="color:#8892b0;font-size:15px;margin:0;">Convex — Reactive Backend & Database Platform</p>
+<body>
+<div class="container">
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <div class="sub">Convex</div>
+  <div class="domain">convex.dev</div>
 </div>
-
-<!-- Stat Pills -->
-<div style="background:#1a1a2e;padding:25px 20px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
-    <div style="background:linear-gradient(135deg,#0f3460,#1a1a3e);padding:14px 20px;border-radius:10px;text-align:center;min-width:120px;">
-        <div style="color:#8892b0;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Funding</div>
-        <div style="color:#64ffda;font-size:20px;font-weight:700;margin-top:4px;">$57M Series B ($110.5M total)</div>
-    </div>
-    <div style="background:linear-gradient(135deg,#0f3460,#1a1a3e);padding:14px 20px;border-radius:10px;text-align:center;min-width:120px;">
-        <div style="color:#8892b0;font-size:11px;text-transform:uppercase;letter-spacing:1px;">AI Visibility</div>
-        <div style="color:#ff6b35;font-size:20px;font-weight:700;margin-top:4px;">0/5</div>
-    </div>
-    <div style="background:linear-gradient(135deg,#0f3460,#1a1a3e);padding:14px 20px;border-radius:10px;text-align:center;min-width:120px;">
-        <div style="color:#8892b0;font-size:11px;text-transform:uppercase;letter-spacing:1px;">G2 Reviews</div>
-        <div style="color:#ff6b35;font-size:20px;font-weight:700;margin-top:4px;">0</div>
-    </div>
-    <div style="background:linear-gradient(135deg,#0f3460,#1a1a3e);padding:14px 20px;border-radius:10px;text-align:center;min-width:120px;">
-        <div style="color:#8892b0;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Reddit</div>
-        <div style="color:#ff6b35;font-size:20px;font-weight:700;margin-top:4px;">1</div>
-    </div>
+<div class="stats">
+  <div class="stat-pill"><div class="num">$57M Series B</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="num">2/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="num">2</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="num">2</div><div class="label">Reddit</div></div>
 </div>
-
-<!-- Key Finding -->
-<div style="padding:25px 30px;">
-    <div style="background:#3d2000;border:1px solid #ff6b35;border-radius:10px;padding:20px;">
-        <div style="color:#ff6b35;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">⚠ KEY FINDING</div>
-        <p style="color:#ffcc80;font-size:15px;line-height:1.6;margin:0;">
-            <strong>Convex</strong> raised <strong>$57M Series B ($110.5M total)</strong> from Insight Partners, a16z, Spark Capital — 
-            yet appears in <strong>0/5</strong> category-defining AI search queries. 
-            With <strong>0 G2 reviews</strong> and <strong>1 Reddit threads</strong>, 
-            AI engines have <strong>zero context</strong> about Convex in reactive backend & database platform. 
-            Every review, every discussion thread, every comparison article you generate 
-            <strong>IS</strong> the AI narrative about your company.
-        </p>
-    </div>
+<div class="key-finding">
+  <div class="label">KEY FINDING</div>
+  <div class="text">Convex raised $57M to build the reliable backend for AI agents. But AI answers for "best backend for AI agents" cite Firebase, Supabase, and AWS Lambda -- rarely Convex. Reddit posts about Convex exist but are sparse (2 threads). G2 AI Marketplace lists Convex with minimal reviews.</div>
 </div>
-
-<!-- Query Cards -->
-<div style="padding:0 30px 25px 30px;">
-    <h3 style="color:#1a1a2e;font-size:17px;margin:0 0 15px 0;">Category-Defining AI Search Queries</h3>
-    
-            <div style="background:#2d2d44;border-radius:10px;padding:18px;margin:12px 0;border-left:4px solid #ff6b35;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                    <strong style="color:#fff;font-size:15px;">Q1: "best backend platform for web developers 2026"</strong>
-                    <span style="background:#ff6b35;color:#fff;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">WEAK</span>
-                </div>
-                <p style="color:#c0c0d0;font-size:13px;line-height:1.5;margin:8px 0 0 0;">AI Overviews cite Firebase, Supabase, and Vercel. Convex absent despite $110.5M in total funding from Insight/a16z.</p>
-            </div>
-        
-            <div style="background:#2d2d44;border-radius:10px;padding:18px;margin:12px 0;border-left:4px solid #ff6b35;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                    <strong style="color:#fff;font-size:15px;">Q2: "reactive database TypeScript backend AI agents"</strong>
-                    <span style="background:#ff6b35;color:#fff;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">WEAK</span>
-                </div>
-                <p style="color:#c0c0d0;font-size:13px;line-height:1.5;margin:8px 0 0 0;">Google AIO mentions Supabase and Neon. Convex's TypeScript-typed reactive database not surfaced.</p>
-            </div>
-        
-            <div style="background:#2d2d44;border-radius:10px;padding:18px;margin:12px 0;border-left:4px solid #ff6b35;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                    <strong style="color:#fff;font-size:15px;">Q3: "backend platform for AI generated code development"</strong>
-                    <span style="background:#ff6b35;color:#fff;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">WEAK</span>
-                </div>
-                <p style="color:#c0c0d0;font-size:13px;line-height:1.5;margin:8px 0 0 0;">SERP includes Vercel and Netlify. Convex's AI-assisted software development positioning invisible.</p>
-            </div>
-        
-            <div style="background:#2d2d44;border-radius:10px;padding:18px;margin:12px 0;border-left:4px solid #ff6b35;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                    <strong style="color:#fff;font-size:15px;">Q4: "real-time database sync TypeScript ACID transactions"</strong>
-                    <span style="background:#ff6b35;color:#fff;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">WEAK</span>
-                </div>
-                <p style="color:#c0c0d0;font-size:13px;line-height:1.5;margin:8px 0 0 0;">Firebase and Supabase dominate. Convex's live sync and ACID transactions not cited in AI answers.</p>
-            </div>
-        
-            <div style="background:#2d2d44;border-radius:10px;padding:18px;margin:12px 0;border-left:4px solid #ff6b35;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                    <strong style="color:#fff;font-size:15px;">Q5: "developer platform backend database file storage workflow"</strong>
-                    <span style="background:#ff6b35;color:#fff;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">WEAK</span>
-                </div>
-                <p style="color:#c0c0d0;font-size:13px;line-height:1.5;margin:8px 0 0 0;">AWS Amplify and Supabase consistently referenced. Convex's all-in-one TypeScript backend platform has zero AI voice.</p>
-            </div>
-        
+<div class="section-title">Category Query Analysis</div>
+<div class="query-cards">
+<div class="query-card">
+  <div class="q-header"><span class="query-text">"best backend platform for AI agents 2026"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">AI Overviews cite Firebase, Supabase, and AWS Amplify. Convex does not appear despite being purpose-built for agent workloads.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"reactive backend as a service for AI apps"</span><span class="badge badge-weak">WEAK</span></div>
+  <div class="analysis">Firebase and Supabase dominate. Convex reactive-first architecture is virtually invisible to AI search engines.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"developer platform for agentic applications"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">LangChain, CrewAI, and AutoGen are the AI-cited leaders for agent frameworks. Convex backend angle is lost.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"Convex vs Firebase for AI agents"</span><span class="badge badge-present">PRESENT</span></div>
+  <div class="analysis">A Reddit thread (r/developersIndia) discusses Convex with 8 comments. This is Convex ONLY AI-cited UGC. More developer community content needed.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"best database for realtime AI applications"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">Supabase, PlanetScale, and Neon are the AI-cited leaders. Convex realtime DB is invisible.</div>
 </div>
-
-<!-- Competitors -->
-<div style="padding:0 30px 25px 30px;">
-    <h3 style="color:#1a1a2e;font-size:17px;margin:0 0 15px 0;">Competitors Dominating AI Answers</h3>
-    <div style="background:#f5f5fa;border-radius:10px;padding:20px;">
-        <span style="display:inline-block;background:#1a1a2e;color:#e0e0e0;padding:8px 14px;border-radius:6px;margin:4px;font-size:14px;">Firebase</span><span style="display:inline-block;background:#1a1a2e;color:#e0e0e0;padding:8px 14px;border-radius:6px;margin:4px;font-size:14px;">Supabase</span><span style="display:inline-block;background:#1a1a2e;color:#e0e0e0;padding:8px 14px;border-radius:6px;margin:4px;font-size:14px;">Neon</span><span style="display:inline-block;background:#1a1a2e;color:#e0e0e0;padding:8px 14px;border-radius:6px;margin:4px;font-size:14px;">PlanetScale</span>
-    </div>
 </div>
-
-<!-- CTA -->
-<div style="background:linear-gradient(135deg,#0a0a2e 0%,#1a1a3e 100%);padding:35px 30px;text-align:center;">
-    <h2 style="color:#64ffda;font-size:20px;margin:0 0 15px 0;">4 Ways genhance Puts Convex in AI Answers</h2>
-    <div style="text-align:left;max-width:500px;margin:0 auto;">
-        <div style="display:flex;align-items:flex-start;margin:12px 0;">
-            <span style="background:#64ffda;color:#0a0a2e;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;margin-right:12px;">1</span>
-            <p style="color:#c0c0d0;font-size:14px;line-height:1.5;margin:0;"><strong style="color:#64ffda;">UGC Gap Mapping</strong> — We identify exactly which Reddit, YouTube, and forum threads AI engines cite for your category queries.</p>
-        </div>
-        <div style="display:flex;align-items:flex-start;margin:12px 0;">
-            <span style="background:#64ffda;color:#0a0a2e;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;margin-right:12px;">2</span>
-            <p style="color:#c0c0d0;font-size:14px;line-height:1.5;margin:0;"><strong style="color:#64ffda;">Review Platform Activation</strong> — Strategic G2/Capterra review solicitation from your existing customer base (0→20 reviews flips AI narratives).</p>
-        </div>
-        <div style="display:flex;align-items:flex-start;margin:12px 0;">
-            <span style="background:#64ffda;color:#0a0a2e;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;margin-right:12px;">3</span>
-            <p style="color:#c0c0d0;font-size:14px;line-height:1.5;margin:0;"><strong style="color:#64ffda;">AI Answer Tracking</strong> — Before/after snapshots proving your AI visibility improvement across ChatGPT, Google AIO, and Perplexity.</p>
-        </div>
-        <div style="display:flex;align-items:flex-start;margin:12px 0;">
-            <span style="background:#64ffda;color:#0a0a2e;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;margin-right:12px;">4</span>
-            <p style="color:#c0c0d0;font-size:14px;line-height:1.5;margin:0;"><strong style="color:#64ffda;">Competitive Intelligence</strong> — Real-time monitoring of how competitors move in AI search, so you never fall behind.</p>
-        </div>
-    </div>
-    <p style="color:#8892b0;font-size:14px;margin:25px 0 0 0;">Want to see what AI says about Convex? Let's talk.</p>
+<div class="section-title">Competitive Landscape</div>
+<div class="competitor-cards">
+<div class="comp-card"><div class="comp-name">Firebase</div><div class="comp-desc">Google BaaS platform</div></div><div class="comp-card"><div class="comp-name">Supabase</div><div class="comp-desc">Open-source Firebase alt</div></div><div class="comp-card"><div class="comp-name">Neon</div><div class="comp-desc">Serverless Postgres</div></div><div class="comp-card"><div class="comp-name">AWS Lambda</div><div class="comp-desc">Serverless compute</div></div>
 </div>
-
-<!-- Signature -->
-<div style="background:#0d0d1a;padding:25px 30px;border-top:1px solid #1a1a3e;">
-    <table style="width:100%;">
-        <tr>
-            <td>
-                <p style="color:#64ffda;font-size:15px;font-weight:700;margin:0;">Rajesh Gautam, PhD</p>
-                <p style="color:#8892b0;font-size:13px;margin:4px 0 0 0;">Founder and CEO, genhance.ai</p>
-                <p style="color:#8892b0;font-size:12px;margin:8px 0 0 0;">
-                    <a href="https://linkedin.com/in/rajeshgautam" style="color:#64ffda;text-decoration:none;">linkedin.com/in/rajeshgautam</a> | 
-                    <a href="https://genhance.ai" style="color:#64ffda;text-decoration:none;">genhance.ai</a>
-                </p>
-            </td>
-        </tr>
-    </table>
+<div class="cta">
+  <h3>4 Genhance Plays for Convex</h3>
+  <ul class="plays">
+    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for Backend Platform for AI Agents identify which Reddit/YouTube threads shape the answers.</li>
+    <li><strong>Review Velocity:</strong> Seed G2 Capterra reviews to establish presence before competitors saturate the category.</li>
+    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing Convex to Firebase shape the narrative before it hardens.</li>
+    <li><strong>Narrative Monitoring:</strong> Real-time alerts when Convex is mentioned in AI-cited UGC threads engage within hours not weeks.</li>
+  </ul>
 </div>
-
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder CEO, genhance.ai</div>
+  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+</div>
 </div>
 </body>
 </html>
