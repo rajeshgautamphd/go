@@ -1,93 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit - Rainforest</title>
-<style>* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e27; color:#e2e8f0; line-height:1.6; }
-.header { background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%); padding:48px 24px; text-align:center; border-bottom:3px solid #f59e0b; }
-.header h1 { font-size:2.2em; color:#fff; margin-bottom:8px; }
-.header .subtitle { color:#94a3b8; font-size:1.1em; }
-.header .domain { color:#f59e0b; font-weight:600; margin-top:12px; font-size:0.95em; }
-.pills { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:24px 24px 0; }
-.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px; }
-.pill .value { font-size:1.8em; font-weight:700; color:#f59e0b; }
-.pill .label { font-size:0.75em; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; }
-.alert { background:linear-gradient(135deg,#78350f 0%,#92400e 100%); border:1px solid #f59e0b; border-radius:12px; margin:24px; padding:20px 24px; }
-.alert h3 { color:#fbbf24; margin-bottom:8px; font-size:1.1em; }
-.alert p { color:#fcd34d; font-size:0.95em; }
-.section-title { color:#f59e0b; font-size:1.2em; margin:28px 24px 12px; font-weight:700; }
-.query-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; margin:12px 24px; padding:18px 20px; }
-.query-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
-.query-num { background:#f59e0b; color:#0f172a; font-weight:700; padding:4px 10px; border-radius:6px; font-size:0.85em; }
-.query-text { font-style:italic; color:#cbd5e1; font-size:0.95em; flex:1; }
-.badge { padding:4px 12px; border-radius:20px; font-size:0.75em; font-weight:600; }
-.badge.weak { background:rgba(239,68,68,0.2); color:#fca5a5; border:1px solid rgba(239,68,68,0.3); }
-.badge.present { background:rgba(34,197,94,0.2); color:#86efac; border:1px solid rgba(34,197,94,0.3); }
-.query-analysis { color:#94a3b8; font-size:0.9em; margin-top:4px; }
-.competitor-grid { display:flex; gap:12px; flex-wrap:wrap; margin:0 24px 24px; }
-.comp-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:12px 18px; }
-.comp-name { color:#e2e8f0; font-weight:500; }
-.cta { background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%); border:1px solid rgba(245,158,11,0.3); border-radius:12px; margin:24px; padding:28px 24px; text-align:center; }
-.cta h3 { color:#f59e0b; font-size:1.3em; margin-bottom:16px; }
-.cta ul { list-style:none; text-align:left; max-width:600px; margin:0 auto; }
-.cta li { color:#cbd5e1; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
-.cta li::before { content:"\25B8 "; color:#f59e0b; }
-.footer { text-align:center; padding:32px 24px; border-top:1px solid rgba(255,255,255,0.08); margin-top:24px; }
-.footer .sig-name { color:#f59e0b; font-weight:700; font-size:1.1em; }
-.footer .sig-title { color:#94a3b8; font-size:0.9em; }
-.footer .sig-links { color:#94a3b8; font-size:0.85em; margin-top:8px; }
-.footer a { color:#f59e0b; text-decoration:none; }
-.funding-note { color:#94a3b8; font-size:0.8em; text-align:center; margin-top:8px; }</style>
-</head>
-<body>
-<div class="header">
-  <h1>AI SEARCH VISIBILITY AUDIT</h1>
-  <div class="subtitle">Rainforest</div>
-  <div class="domain">Embedded Payments for Vertical SaaS</div>
+<html><body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:#f4f6fb;margin:0;padding:0;">
+<div style="max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;">
+
+<div style="background:linear-gradient(135deg,#1a1f36,#254796);padding:24px 20px;">
+<div style="font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#8896c4;margin-bottom:4px;">AI SEARCH VISIBILITY AUDIT</div>
+<div style="font-size:22px;font-weight:900;color:#fff;line-height:1.2;">Rainforest</div>
+<div style="font-size:12px;color:#b8c4e8;">Embedded Payments</div>
+<div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+<div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#fff;">$29M B ($57.5M)</div><div style="font-size:8px;color:#99abdc;">Funding</div></div>
+<div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#4ade80;">1/5</div><div style="font-size:8px;color:#99abdc;">AI Visibility</div></div>
+<div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#fbbf24;">0</div><div style="font-size:8px;color:#99abdc;">G2 Reviews</div></div>
+<div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#fb7185;">0</div><div style="font-size:8px;color:#99abdc;">Reddit</div></div>
+</div></div>
+
+<div style="padding:16px 20px 0 20px;">
+<div style="background:#fef9e7;border-left:4px solid #f59e0b;border-radius:8px;padding:12px 14px;">
+<div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:2px;">KEY FINDING</div>
+<div style="font-size:11px;color:#78350f;line-height:1.5;">Rainforest has <b>0 Reddit thread(s)</b> and <b>0 G2 reviews</b>. AI search engines increasingly weigh community signals over editorial placements. Our audit of 5 category queries shows Rainforest appears in <b>1/5</b> — with the biggest gap in community-sourced recommendations where established competitors dominate.</div>
+</div></div>
+
+<div style="padding:10px 24px 0 24px;">
+<div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;">
+<div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
+<span style="background:#f59e0b;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">1</span>
+<span style="font-size:12px;font-weight:700;color:#1a1f36;">"best embedded payments platform for SaaS 2026"</span>
+<span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
+</div>
+<div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Stripe Connect, Finix, and Payrix dominate embedded payments. <b>Rainforest — $29M Series B, vertical-SaaS purpose-built — invisible to AI rankings.</b></div>
+</div></div><div style="padding:10px 24px 0 24px;">
+<div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;">
+<div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
+<span style="background:#f59e0b;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">2</span>
+<span style="font-size:12px;font-weight:700;color:#1a1f36;">"payfac as a service for software platforms"</span>
+<span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
+</div>
+<div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Stripe and Adyen own payfac queries. Rainforest's payfac-as-a-service optimized for adoption and margins not discovered.</div>
+</div></div><div style="padding:10px 24px 0 24px;">
+<div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;">
+<div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
+<span style="background:#f59e0b;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">3</span>
+<span style="font-size:12px;font-weight:700;color:#1a1f36;">"vertical SaaS payment monetization platform"</span>
+<span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
+</div>
+<div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Rainforest's exact niche. AI returns general Stripe Connect docs — Rainforest's platform-specific playbook and risk management not indexed.</div>
+</div></div><div style="padding:10px 24px 0 24px;">
+<div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;">
+<div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
+<span style="background:#254796;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">4</span>
+<span style="font-size:12px;font-weight:700;color:#1a1f36;">"Rainforest vs Stripe Connect embedded payments"</span>
+<span style="margin-left:auto;background:#dcfce7;color:#166534;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">PRESENT</span>
+</div>
+<div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Only appears when searched directly. Rainforest published a comparison page — but AI search never cites it in category queries.</div>
+</div></div><div style="padding:10px 24px 0 24px;">
+<div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;">
+<div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
+<span style="background:#f59e0b;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">5</span>
+<span style="font-size:12px;font-weight:700;color:#1a1f36;">"payment facilitator for software companies"</span>
+<span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
+</div>
+<div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Finix, Tilled, and Payrix dominate payfac search. Rainforest's focus on driving adoption (not just enabling payments) buried.</div>
+</div></div>
+
+<div style="padding:16px 20px 0 20px;">
+<div style="font-size:13px;font-weight:800;color:#1a1f36;margin-bottom:8px;">Competitors in AI Search</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;"><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Stripe Connect</div><div style="font-size:8px;color:#718096;">$70B valuation</div></div><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Finix</div><div style="font-size:8px;color:#718096;">$135M+ raised</div></div><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Payrix</div><div style="font-size:8px;color:#718096;">FIS acquired</div></div><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Tilled</div><div style="font-size:8px;color:#718096;">$13M+ raised</div></div></div>
 </div>
 
-<div class="pills">
-  <div class="pill"><div class="value">$29M</div><div class="label">Funding</div></div>
-  <div class="pill"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
-  <div class="pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
-  <div class="pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
-</div>
-<div class="funding-note">$29M Series B ($57.5M total) from Matrix Partners, Infinity Ventures, Accel, Tech Square Ventures</div>
+<div style="padding:18px 20px;">
+<div style="background:linear-gradient(135deg,#1a1f36,#254796);border-radius:10px;padding:16px;">
+<div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;">How genhance.ai helps Rainforest</div>
+<div style="font-size:10px;color:#cbd5e8;line-height:1.6;">1. <b>Community Signals</b> — Build Reddit/G2 presence so AI engines find authentic user voices<br>2. <b>Review Velocity</b> — Move from single-digit to competitive review counts<br>3. <b>Competitor Content</b> — Own "vs" queries with dedicated comparison pages<br>4. <b>Track and Prove</b> — Before/after AI search snapshots</div>
+<div style="margin-top:10px;font-size:9px;color:#8896c4;border-top:1px solid rgba(255,255,255,0.12);padding-top:10px;">Full source-by-source analysis available. 10 minutes?</div>
+</div></div>
 
-<div class="alert">
-  <h3>KEY FINDING: Rainforest appears in 0/5 AI-cited UGC sources</h3>
-  <p>Rainforest raised $29M Series B ($57.5M total) from Matrix Partners, Infinity Ventures, Accel, Tech Square Ventures. Yet across 5 category-defining queries, AI engines cite NO Reddit threads, YouTube comments, G2 reviews, or forum discussions mentioning Rainforest. Every AI answer about this category is shaped by competitor UGC — Rainforest's narrative is invisible.</p>
-</div>
-
-<div class="section-title">5 AI SEARCH QUERIES - AUDITED</div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q1</span><span class="query-text">&ldquo;best embedded payments platform for SaaS 2026&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI Overviews cite Stripe Connect, Adyen for Platforms, and Finix. Rainforest absent despite processing billions in payment volume for vertical SaaS.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q2</span><span class="query-text">&ldquo;PayFac-as-a-Service for software platforms&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI answers reference Stripe, Adyen, and Payrix as top PayFac solutions. Rainforest&#x27;s purpose-built vertical SaaS payments not indexed.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q3</span><span class="query-text">&ldquo;embedded fintech payments provider comparison&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI cites Adyen, Stripe, and Marqeta for embedded payments. No mention of Rainforest despite 10x YoY revenue growth.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q4</span><span class="query-text">&ldquo;vertical SaaS payments integration white-label&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI results show Stripe, Finix, and Tilled for white-label payments. Rainforest&#x27;s low-code embedded payments invisible.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q5</span><span class="query-text">&ldquo;what is Rainforest embedded payments&rdquo;</span><span class="badge present">PRESENT</span></div><p class="query-analysis">Website, BusinessWire, and LinkedIn articles appear. Zero UGC — no G2 reviews, no Reddit threads about Rainforest.</p></div>
-
-
-<div class="section-title">COMPETITORS CITED IN AI ANSWERS</div>
-<div class="competitor-grid"><div class="comp-card"><span class="comp-name">Stripe Connect</span></div><div class="comp-card"><span class="comp-name">Adyen for Platforms</span></div><div class="comp-card"><span class="comp-name">Finix</span></div><div class="comp-card"><span class="comp-name">Payrix</span></div><div class="comp-card"><span class="comp-name">Tilled</span></div></div>
-
-<div class="cta">
-  <h3>4 Ways genhance Closes This Gap</h3>
-  <ul>
-    <li><strong>Monitor</strong> - Track every Reddit/YouTube/G2 mention shaping AI answers about Rainforest and its competitors</li>
-    <li><strong>Contribute</strong> - Place Rainforest into the exact UGC threads AI engines already cite</li>
-    <li><strong>Solicit</strong> - Seed G2/Capterra reviews from verified users</li>
-    <li><strong>Measure</strong> - Before/after AI answer snapshots prove impact within 48 hours</li>
-  </ul>
-</div>
-
-<div class="footer">
-  <div class="sig-name">Rajesh Gautam, PhD</div>
-  <div class="sig-title">Founder and CEO, genhance.ai</div>
-  <div class="sig-links">
-    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
-  </div>
-</div>
-</body>
-</html>
+<div style="padding:4px 20px 16px 20px;text-align:center;border-top:1px solid #e5e8f0;">
+<div style="font-size:11px;font-weight:700;color:#1a1f36;">Rajesh Gautam, PhD</div>
+<div style="font-size:9px;color:#718096;">Founder and CEO, genhance.ai</div>
+<div style="font-size:9px;color:#a0aec0;margin-top:3px;"><a href="https://linkedin.com/in/rajeshgautam" style="color:#2563eb;text-decoration:none;">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai" style="color:#2563eb;text-decoration:none;">genhance.ai</a></div>
+</div></div></body></html>
