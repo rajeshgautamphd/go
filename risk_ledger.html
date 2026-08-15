@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Risk Ledger</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+body{background:#0a0e27;color:#e0e6f0;line-height:1.6}
+.container{max-width:800px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#0d1b4c 0%,#162d6e 50%,#0a1628 100%);border-radius:16px;padding:40px 30px;text-align:center;margin-bottom:24px}
+.header .subtitle{color:#7ba3e8;font-size:16px;margin-bottom:20px}
+.header .company-name{color:#4da6ff;font-size:24px;font-weight:700;margin:12px 0}
+.pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:20px 0}
+.pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:12px 18px;text-align:center;min-width:130px}
+.pill .label{color:#8899bb;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.pill .value{color:#fff;font-size:22px;font-weight:800;margin-top:4px}
+.pill .sub{color:#7ba3e8;font-size:12px}
+.alert{background:linear-gradient(135deg,#3d2800 0%,#5c3d00 100%);border:1px solid #ff8c00;border-radius:12px;padding:20px 24px;margin:24px 0}
+.alert h3{color:#ff8c00;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.alert p{color:#ffd699;font-size:15px;line-height:1.7}
+.section-title{color:#4da6ff;font-size:20px;font-weight:700;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid rgba(77,166,255,0.2)}
+.query-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;margin:16px 0}
+.query-card .query-text{color:#fff;font-size:15px;font-weight:600;margin-bottom:8px}
+.badge{display:inline-block;padding:4px 12px;border-radius:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:8px}
+.badge-present{background:rgba(0,200,83,0.15);color:#00c853;border:1px solid rgba(0,200,83,0.3)}
+.badge-weak{background:rgba(255,152,0,0.15);color:#ff9800;border:1px solid rgba(255,152,0,0.3)}
+.query-card .analysis{color:#99a9c2;font-size:14px;margin-top:8px;line-height:1.6}
+.comp-card{display:inline-block;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 20px;margin:6px 8px 6px 0}
+.comp-card .comp-name{color:#fff;font-size:15px;font-weight:600}
+.cta{background:linear-gradient(135deg,#0d1b3d 0%,#1a1a3e 100%);border:1px solid rgba(77,166,255,0.2);border-radius:16px;padding:32px 28px;margin:32px 0;text-align:center}
+.cta h3{color:#4da6ff;font-size:20px;margin-bottom:16px}
+.cta .plays{text-align:left;margin:20px 0}
+.cta .play-item{color:#c0d0e8;font-size:14px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.cta .play-item strong{color:#7ba3e8}
+.signature{text-align:center;padding:30px 0;border-top:1px solid rgba(255,255,255,0.06);margin-top:20px}
+.signature .name{color:#fff;font-size:16px;font-weight:700}
+.signature .title{color:#8899bb;font-size:13px}
+.signature a{color:#4da6ff;text-decoration:none;font-size:13px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div style="font-size:14px;color:#7ba3e8;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">AI SEARCH VISIBILITY AUDIT</div>
+<div class="company-name">Risk Ledger</div>
+<div class="subtitle">Supply Chain Security &bull; London, UK</div>
+<div class="pills">
+<div class="pill"><div class="label">Funding</div><div class="value">$30.5M Series B</div><div class="sub">Axiom Equity, Mercia Ventures</div></div>
+<div class="pill"><div class="label">AI Visibility</div><div class="value">1/5</div><div class="sub">5 category queries</div></div>
+<div class="pill"><div class="label">G2 Reviews</div><div class="value">0</div><div class="sub">review-platform presence</div></div>
+<div class="pill"><div class="label">Reddit</div><div class="value">0</div><div class="sub">UGC thread count</div></div>
+</div>
+</div>
+
+<div class="alert">
+<h3>KEY FINDING</h3>
+<p>16,000+ organizations use Risk Ledger for third-party risk management -- but AI search queries for 'supply chain security platform' and 'vendor risk management' never mention Risk Ledger. The AI narrative is controlled by legacy GRC platforms with established review profiles. Zero G2 reviews + zero Reddit threads = complete AI invisibility.</p>
+</div>
+
+<h2 class="section-title">Category Query Analysis</h2>
+<p style="color:#8899bb;font-size:14px;margin-bottom:16px">We audited 5 search queries in Risk Ledger's category. Below is what AI search engines (ChatGPT, Google AI Overviews, Perplexity) currently return.</p>
+
+<div class="query-card">
+<div class="query-text">"best supply chain security platform 2026"</div>
+<span class="badge badge-weak">WEAK</span>
+<div class="analysis">AI Overviews cite UpGuard, BitSight, SecurityScorecard -- Risk Ledger absent despite 16k+ organizations on platform</div>
+</div>
+
+<div class="query-card">
+<div class="query-text">"third-party risk management software"</div>
+<span class="badge badge-weak">WEAK</span>
+<div class="analysis">OneTrust, ProcessUnity, Venminder dominate AI answers. Risk Ledger's collaborative network approach is invisible</div>
+</div>
+
+<div class="query-card">
+<div class="query-text">"vendor risk assessment tool for enterprises"</div>
+<span class="badge badge-weak">WEAK</span>
+<div class="analysis">AI cites CyberGRX, Prevalent, and Panorays -- no mention of Risk Ledger's supply chain network model</div>
+</div>
+
+<div class="query-card">
+<div class="query-text">"how to manage third-party vendor security risks"</div>
+<span class="badge badge-weak">WEAK</span>
+<div class="analysis">Educational content from UpGuard and Bitsight blogs feeds AI answers. Risk Ledger not cited</div>
+</div>
+
+<div class="query-card">
+<div class="query-text">"supply chain cyber risk management platform comparison"</div>
+<span class="badge badge-weak">WEAK</span>
+<div class="analysis">Zero presence in comparison queries -- AI only references GRC incumbents with established G2 reviews</div>
+</div>
+
+<h2 class="section-title">Competitive Landscape in AI Answers</h2>
+<p style="color:#8899bb;font-size:14px;margin-bottom:16px">These competitors dominate AI-generated answers for Risk Ledger's category:</p>
+<div style="margin:16px 0">
+<div class="comp-card"><div class="comp-name">UpGuard</div></div>
+<div class="comp-card"><div class="comp-name">BitSight</div></div>
+<div class="comp-card"><div class="comp-name">SecurityScorecard</div></div>
+<div class="comp-card"><div class="comp-name">OneTrust</div></div>
+</div>
+
+<div class="cta">
+<h3>4 Ways genhance Closes This Gap</h3>
+<div class="plays">
+<div class="play-item"><strong>1. Reddit Narrative Seeding</strong> -- Contribute to the 2-3 Reddit threads AI already cites for your category. One thoughtful comment changes what AI says about you within 48 hours.</div>
+<div class="play-item"><strong>2. G2 Review Activation</strong> -- Your 0 G2 reviews vs competitors' 50-500 means every new review shifts the AI narrative disproportionately.</div>
+<div class="play-item"><strong>3. AI Answer Monitoring</strong> -- Weekly snapshots of what ChatGPT, Google AI Overviews, and Perplexity say about your category.</div>
+<div class="play-item"><strong>4. YouTube UGC Amplification</strong> -- Niche creator videos with &lt;1K views are disproportionately cited by AI Overviews.</div>
+</div>
+<p style="color:#7ba3e8;font-size:15px;margin-top:20px;font-weight:600">The category AI narrative is still being written. The companies that show up in the first 3 UGC sources cited by AI will define it for years.</p>
+</div>
+
+<div class="signature">
+<div class="name">Rajesh Gautam, PhD</div>
+<div class="title">Founder and CEO, genhance.ai</div>
+<div style="margin-top:8px">
+<a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp;
+<a href="https://genhance.ai">genhance.ai</a>
+</div>
+</div>
+</div>
+</body>
+</html>
