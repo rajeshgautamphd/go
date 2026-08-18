@@ -1,104 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — Flagler Health | genhance</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
-.container { max-width: 680px; margin: 0 auto; }
-.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
-.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
-.header .sub { font-size: 14px; color: #7eb8ff; }
-.header .domain { font-size: 15px; color: #a0c4ff; }
-.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
-.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
-.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
-.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
-.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
-.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
-.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
-.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
-.query-cards { padding: 0 28px; }
-.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
-.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
-.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
-.badge-absent { background: #3d1515; color: #f87171; }
-.badge-weak { background: #2a1d00; color: #fbbf24; }
-.badge-present { background: #0a2d1a; color: #34d399; }
-.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
-.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
-.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
-.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
-.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
-.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
-.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
-.cta .plays { list-style: none; }
-.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
-.cta .plays li:last-child { border-bottom: none; }
-.cta .plays li::before { content: '\25B8 '; color: #5b9eff; }
-.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
-.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
-.footer .title { font-size: 12px; color: #6b7d95; }
-.footer a { color: #5b9eff; text-decoration: none; }
-</style>
-</head>
-<body>
-<div class="container">
-<div class="header">
-  <h1>AI Search Visibility Audit</h1>
-  <div class="sub">Flagler Health</div>
-  <div class="domain">flaglerhealth.com</div>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Search Visibility Audit — Flagler Health</title></head>
+<body style="margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#f1f5f9;line-height:1.6">
+<div style="max-width:700px;margin:0 auto;background:#0f172a">
+
+<!-- HEADER -->
+<div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%);padding:40px 25px;text-align:center;border-bottom:2px solid #f59e0b">
+  <h1 style="font-size:28px;font-weight:800;margin:0 0 5px 0;letter-spacing:-0.5px">AI SEARCH VISIBILITY AUDIT</h1>
+  <p style="font-size:16px;color:#94a3b8;margin:5px 0">Flagler Health — AI Operating System for Musculoskeletal Care</p>
 </div>
-<div class="stats">
-  <div class="stat-pill"><div class="num">$50M Series B</div><div class="label">Funding</div></div>
-  <div class="stat-pill"><div class="num">1/5</div><div class="label">AI Visibility</div></div>
-  <div class="stat-pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
-  <div class="stat-pill"><div class="num">0</div><div class="label">Reddit</div></div>
+
+<!-- STAT PILLS -->
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:20px 15px;background:#1a2740">
+  <div style="background:#1e3a5f;border-radius:10px;padding:12px 16px;text-align:center;min-width:80px"><div style="font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:1px">Funding</div><div style="font-size:18px;font-weight:700;color:#38bdf8;margin-top:4px">$50M Series B</div></div>
+  <div style="background:#1e3a5f;border-radius:10px;padding:12px 16px;text-align:center;min-width:80px"><div style="font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:1px">AI Visibility</div><div style="font-size:18px;font-weight:700;color:#ef4444;margin-top:4px">0/5 ⚠️</div></div>
+  <div style="background:#1e3a5f;border-radius:10px;padding:12px 16px;text-align:center;min-width:80px"><div style="font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:1px">G2 Reviews</div><div style="font-size:18px;font-weight:700;color:#f59e0b;margin-top:4px">0</div></div>
+  <div style="background:#1e3a5f;border-radius:10px;padding:12px 16px;text-align:center;min-width:80px"><div style="font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:1px">Reddit</div><div style="font-size:18px;font-weight:700;color:#f59e0b;margin-top:4px">0</div></div>
 </div>
-<div class="key-finding">
-  <div class="label">KEY FINDING</div>
-  <div class="text">Flagler Health raised $50M led by Bessemer to build an AI OS for musculoskeletal care. Yet AI answers for "best MSK practice management" cite Athenahealth, AdvancedMD, and Kareo -- never Flagler. Zero G2, zero Reddit. The $400B MSK market has almost no AI-indexed UGC.</div>
+
+<!-- COMPANY INFO -->
+<div style="padding:20px 25px;background:#0f172a">
+  <p style="color:#e2e8f0;font-size:14px;margin:0 0 10px 0">AI-native operating system for musculoskeletal healthcare practices, automating clinical workflows and generating $164K average additional revenue per provider.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:#94a3b8">
+    <span>📍 New York, NY</span><span>👥 51-200 employees</span><span>💰 $63M total</span>
+  </div>
+  <div style="font-size:12px;color:#64748b;margin-top:8px">Investors: Bessemer Venture Partners, SignalFire, Alumni Ventures, Tribeca Venture Partners</div>
 </div>
-<div class="section-title">Category Query Analysis</div>
-<div class="query-cards">
-<div class="query-card">
-  <div class="q-header"><span class="query-text">"best musculoskeletal practice management software 2026"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI Overviews cite Athenahealth, AdvancedMD, and NextGen Healthcare. Flagler not mentioned in any source.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"AI for orthopedic practice management"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">No AI-native solutions appear in AI answers. Kareo and DrChrono cited. Huge gap for Flagler to fill as first mover.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"musculoskeletal care AI platform"</span><span class="badge badge-weak">WEAK</span></div>
-  <div class="analysis">Hinge Health and Sword Health appear for MSK digital therapeutics. Flagler could differentiate on practice operations vs. patient care.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"best EHR for orthopedic clinics"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">Athenahealth, Epic, and Cerner dominate. No AI-native MSK-specific platform appears in AI-cited sources.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"revenue cycle management for physical therapy practices"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">WebPT, Kareo, and AdvancedMD cited. Flagler AI-native RCM differentiator is invisible to AI search.</div>
+
+<!-- KEY FINDING -->
+<div style="margin:0 25px;background:linear-gradient(135deg,#451a03,#78350f);border:1px solid #f59e0b;border-radius:10px;padding:20px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+    <span style="font-size:20px">🔍</span>
+    <strong style="color:#f59e0b;font-size:15px;text-transform:uppercase;letter-spacing:1px">KEY FINDING</strong>
+  </div>
+  <p style="color:#fbbf24;font-size:14px;margin:0;line-height:1.6">Zero AI-cited UGC in a $400B market. Every 'best orthopedic EHR' or 'MSK practice management' query pulls from athenahealth, ModMed, and NextGen — all with sparse UGC. The first 3 Reddit comments shape what AI tells 50,000+ orthopedic practices.</p>
 </div>
+
+<!-- QUERY CARDS -->
+<div style="padding:25px">
+  <h2 style="font-size:18px;color:#f1f5f9;margin:0 0 15px 0">5 Category Queries — AI Visibility Scan</h2>
+  <p style="color:#94a3b8;font-size:12px;margin:-10px 0 15px 0">Each query represents a real search where AI Overviews or ChatGPT citations determine which vendor is recommended</p>
+  
+        <div style="background:#1e293b;border-radius:8px;padding:15px;margin:10px 0;border-left:3px solid #f59e0b">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <strong style="color:#f1f5f9;font-size:14px">1. best musculoskeletal EHR software 2026</strong>
+            <span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">ABSENT</span>
+          </div>
+          <p style="color:#94a3b8;font-size:12px;margin:5px 0 0 0;line-height:1.5">AI Overviews cite athenahealth, ModMed Orthopedics, and NextGen. Flagler Health — despite $63M funding and $164K/provider revenue gains — is absent.</p>
+        </div>
+        <div style="background:#1e293b;border-radius:8px;padding:15px;margin:10px 0;border-left:3px solid #f59e0b">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <strong style="color:#f1f5f9;font-size:14px">2. AI practice management orthopedic</strong>
+            <span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">ABSENT</span>
+          </div>
+          <p style="color:#94a3b8;font-size:12px;margin:5px 0 0 0;line-height:1.5">Orthopedic-specific AI query with zero UGC. No Reddit threads, no G2 reviews, no YouTube reviews. Flagler's AI OS positioning is undiscovered by AI.</p>
+        </div>
+        <div style="background:#1e293b;border-radius:8px;padding:15px;margin:10px 0;border-left:3px solid #f59e0b">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <strong style="color:#f1f5f9;font-size:14px">3. MSK care platform AI automation</strong>
+            <span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">ABSENT</span>
+          </div>
+          <p style="color:#94a3b8;font-size:12px;margin:5px 0 0 0;line-height:1.5">Emerging category query. AI answers pull from Hinge Health and Sword Health (digital MSK) — not practice management. Flagler can own this intersection.</p>
+        </div>
+        <div style="background:#1e293b;border-radius:8px;padding:15px;margin:10px 0;border-left:3px solid #f59e0b">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <strong style="color:#f1f5f9;font-size:14px">4. orthopedic practice revenue optimization AI</strong>
+            <span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">ABSENT</span>
+          </div>
+          <p style="color:#94a3b8;font-size:12px;margin:5px 0 0 0;line-height:1.5">Pain-point query with $164K/provider data point. AI has NO answer for this — the first source to appear controls the narrative for 12+ months.</p>
+        </div>
+        <div style="background:#1e293b;border-radius:8px;padding:15px;margin:10px 0;border-left:3px solid #f59e0b">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <strong style="color:#f1f5f9;font-size:14px">5. Bessemer portfolio healthcare AI 2026</strong>
+            <span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">ABSENT</span>
+          </div>
+          <p style="color:#94a3b8;font-size:12px;margin:5px 0 0 0;line-height:1.5">Investor-driven discovery query. AI answers list Bessemer's health portfolio but miss Flagler. A single Bessemer blog post + Reddit mention fixes this.</p>
+        </div>
 </div>
-<div class="section-title">Competitive Landscape</div>
-<div class="competitor-cards">
-<div class="comp-card"><div class="comp-name">Athenahealth</div><div class="comp-desc">Cloud EHR and practice mgmt</div></div><div class="comp-card"><div class="comp-name">Hinge Health</div><div class="comp-desc">Digital MSK care</div></div><div class="comp-card"><div class="comp-name">WebPT</div><div class="comp-desc">PT-focused EHR</div></div><div class="comp-card"><div class="comp-name">Kareo</div><div class="comp-desc">Independent practice platform</div></div>
+
+<!-- COMPETITOR CARDS -->
+<div style="padding:0 25px 25px 25px">
+  <h2 style="font-size:18px;color:#f1f5f9;margin:0 0 12px 0">Competitors Currently Cited by AI</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:8px">
+    <div style="background:#1e293b;border-radius:6px;padding:10px 14px;text-align:center;color:#e2e8f0;font-size:13px;font-weight:500">athenahealth</div><div style="background:#1e293b;border-radius:6px;padding:10px 14px;text-align:center;color:#e2e8f0;font-size:13px;font-weight:500">ModMed Orthopedics</div><div style="background:#1e293b;border-radius:6px;padding:10px 14px;text-align:center;color:#e2e8f0;font-size:13px;font-weight:500">NextGen Healthcare</div><div style="background:#1e293b;border-radius:6px;padding:10px 14px;text-align:center;color:#e2e8f0;font-size:13px;font-weight:500">Hinge Health</div><div style="background:#1e293b;border-radius:6px;padding:10px 14px;text-align:center;color:#e2e8f0;font-size:13px;font-weight:500">Sword Health</div>
+  </div>
 </div>
-<div class="cta">
-  <h3>4 Genhance Plays for Flagler Health</h3>
-  <ul class="plays">
-    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for AI-Powered MSK Healthcare identify which Reddit/YouTube threads shape the answers.</li>
-    <li><strong>Review Velocity:</strong> Seed G2 Capterra reviews to establish presence before competitors saturate the category.</li>
-    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing Flagler Health to Athenahealth shape the narrative before it hardens.</li>
-    <li><strong>Narrative Monitoring:</strong> Real-time alerts when Flagler Health is mentioned in AI-cited UGC threads engage within hours not weeks.</li>
-  </ul>
+
+<!-- CTA -->
+<div style="background:linear-gradient(135deg,#1e293b,#0f172a);padding:30px 25px;margin:0 15px 25px 15px;border-radius:12px;border:1px solid #334155">
+  <h2 style="font-size:18px;color:#f59e0b;margin:0 0 15px 0">4 Plays to Fix Flagler Health's AI Visibility</h2>
+  <div style="display:grid;gap:12px">
+    <div style="background:#1e3a5f;border-radius:8px;padding:14px"><strong style="color:#38bdf8">🎯 Play 1: Reddit Thread Contribution</strong><p style="color:#cbd5e1;font-size:13px;margin:6px 0 0 0">Find 3-5 sparse Reddit threads (AI Operating System subreddits) where AI already cites UGC. One thoughtful comment = permanent AI citation.</p></div>
+    <div style="background:#1e3a5f;border-radius:8px;padding:14px"><strong style="color:#38bdf8">📹 Play 2: YouTube Review Seeding</strong><p style="color:#cbd5e1;font-size:13px;margin:6px 0 0 0">Identify 2-3 niche tech/industry YouTube creators with <10K subs reviewing AI Operating System tools. A single review video transcript feeds AI for years.</p></div>
+    <div style="background:#1e3a5f;border-radius:8px;padding:14px"><strong style="color:#38bdf8">⭐ Play 3: G2 Category Listing</strong><p style="color:#cbd5e1;font-size:13px;margin:6px 0 0 0">List Flagler Health on G2 in the AI Operating System category. Even 5 verified reviews shift AI recommendation patterns within 2-3 weeks.</p></div>
+    <div style="background:#1e3a5f;border-radius:8px;padding:14px"><strong style="color:#38bdf8">🔗 Play 4: AI Answer Monitoring</strong><p style="color:#cbd5e1;font-size:13px;margin:6px 0 0 0">Track before/after snapshots of AI answers for these 5 queries. Measure exactly which UGC contributions moved the needle — prove ROI on AI visibility investment.</p></div>
+  </div>
 </div>
-<div class="footer">
-  <div class="name">Rajesh Gautam, PhD</div>
-  <div class="title">Founder CEO, genhance.ai</div>
-  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+
+<!-- SIGNATURE -->
+<div style="padding:25px;text-align:center;border-top:1px solid #1e293b;background:#0a0f1a">
+  <p style="color:#94a3b8;font-size:13px;margin:0 0 5px 0">Prepared by</p>
+  <p style="color:#f1f5f9;font-size:15px;font-weight:600;margin:0">Rajesh Gautam, PhD</p>
+  <p style="color:#64748b;font-size:12px;margin:4px 0">Founder & CEO, genhance.ai</p>
+  <div style="margin-top:12px">
+    <a href="https://linkedin.com/in/rajeshgautam" style="color:#38bdf8;text-decoration:none;font-size:12px">linkedin.com/in/rajeshgautam</a>
+    <span style="color:#475569;margin:0 8px">|</span>
+    <a href="https://genhance.ai" style="color:#38bdf8;text-decoration:none;font-size:12px">genhance.ai</a>
+  </div>
 </div>
-</div>
-</body>
-</html>
+
+</div></body></html>
