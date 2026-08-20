@@ -7,24 +7,24 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
-.container { max-width: 680px; margin: 0 auto; padding: 0; }
+.container { max-width: 680px; margin: 0 auto; }
 .header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
-.header h1 { font-size: 24px; color: #ffffff; margin-bottom: 6px; letter-spacing: -0.5px; }
-.header .sub { font-size: 14px; color: #7eb8ff; margin-top: 4px; }
-.header .domain { font-size: 15px; color: #a0c4ff; margin-top: 2px; }
+.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
+.header .sub { font-size: 14px; color: #7eb8ff; }
+.header .domain { font-size: 15px; color: #a0c4ff; }
 .stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
 .stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
 .stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
-.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
 .key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
 .key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
 .key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
-.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px 0; font-weight: 600; letter-spacing: -0.3px; }
+.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
 .query-cards { padding: 0 28px; }
 .query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
 .query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
-.query-card .badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
 .badge-absent { background: #3d1515; color: #f87171; }
 .badge-weak { background: #2a1d00; color: #fbbf24; }
 .badge-present { background: #0a2d1a; color: #34d399; }
@@ -33,13 +33,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
 .comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
 .comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
-.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
-.cta h3 { font-size: 16px; color: #ffffff; margin-bottom: 14px; }
+.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
+.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
 .cta .plays { list-style: none; }
 .cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
 .cta .plays li:last-child { border-bottom: none; }
-.cta .plays li::before { content: '▸ '; color: #5b9eff; }
-.footer { text-align: center; padding: 24px 28px 40px 28px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
+.cta .plays li::before { content: '\\25B8 '; color: #5b9eff; }
+.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
 .footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
 .footer .title { font-size: 12px; color: #6b7d95; }
 .footer a { color: #5b9eff; text-decoration: none; }
@@ -50,49 +50,48 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 <div class="header">
   <h1>AI Search Visibility Audit</h1>
   <div class="sub">Pivot</div>
-  <div class="domain">pivotapp.ai</div>
+  <div class="domain">pivotapp.io</div>
 </div>
 <div class="stats">
-  <div class="stat-pill"><div class="num">$40M Series B ($70M total)</div><div class="label">Funding</div></div>
-  <div class="stat-pill"><div class="num">0/5</div><div class="label">AI Visibility</div></div>
-  <div class="stat-pill"><div class="num">36</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="num">$40M Series B</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="num">1/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
   <div class="stat-pill"><div class="num">0</div><div class="label">Reddit</div></div>
 </div>
 <div class="key-finding">
   <div class="label">⚡ KEY FINDING</div>
-  <div class="text">Pivot raised $40M from Forestay Capital and Notion Capital to build the AI operating system for procurement — deployed in 25+ countries with DoorDash and Lemonade as customers. 36 G2 reviews, zero Reddit. Yet AI answers for procurement automation cite Coupa, SAP Ariba, and Zip — incumbents with 500-1,500+ reviews. At 36 G2 reviews, Pivot is competing against 20-year-old platforms. AI search is the level playing field.</div>
+  <div class="text">Pivot raised $40M from Forestay Capital to build an AI operating system for procurement, serving DoorDash and Lemonade. Yet AI answers for "best procurement software AI" cite Coupa, Zip, and SAP Ariba — never Pivot. Zero G2, zero Reddit. A $70M company invisible to AI-powered buyers.</div>
 </div>
 <div class="section-title">📊 Category Query Analysis</div>
 <div class="query-cards">
 <div class="query-card">
-  <div class="q-header"><span class="query-text">"best procurement software 2026"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">Coupa (1,500+ reviews) and SAP Ariba dominate AI answers. Pivot has 36 reviews but zero AI visibility — the review-to-visibility gap is a genhance opportunity.</div>
+  <div class="q-header"><span class="query-text">"best AI procurement software 2026"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">AI Overviews cite Coupa, Zip, and SAP Ariba. G2 Grid Reports show 50+ established vendors. Pivot absent from all AI-cited sources.</div>
 </div><div class="query-card">
-  <div class="q-header"><span class="query-text">"AI procurement platform enterprise"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">Zip and Procurify are the only AI-tagged tools in AI Overviews. Pivot's AI operating system for procurement is invisible.</div>
+  <div class="q-header"><span class="query-text">"agentic AI procurement operating system enterprise"</span><span class="badge badge-weak">WEAK</span></div>
+  <div class="analysis">Niche emerging category. No vendor dominates. Pivot could define this space with targeted UGC in procurement forums.</div>
 </div><div class="query-card">
-  <div class="q-header"><span class="query-text">"procurement automation AI agent"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">This emerging query has no dominant answer. Coupa's AI features are cited but no dedicated agentic procurement platform appears. Pivot's core use case is perfectly aligned.</div>
+  <div class="q-header"><span class="query-text">"procurement automation AI sourcing approval purchasing"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">Tipalti, Procurify, and Precoro are the AI-cited tools. Pivot's end-to-end AI agent approach is missing from AI answers.</div>
 </div><div class="query-card">
-  <div class="q-header"><span class="query-text">"spend management and procurement AI"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">Coupa dominates with comprehensive suite positioning. Pivot's real-time visibility into committed spend is not cited in AI Overviews.</div>
+  <div class="q-header"><span class="query-text">"enterprise procurement platform invoice automation AI"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">SAP Concur and Coupa dominate. 4 Reddit threads in r/procurement feed AI answers — none mention Pivot.</div>
 </div><div class="query-card">
-  <div class="q-header"><span class="query-text">"enterprise purchasing workflow automation"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">SAP Ariba and Oracle dominate enterprise queries. Pivot's automated purchasing, invoicing, and payments workflows are invisible to AI search.</div>
+  <div class="q-header"><span class="query-text">"best procurement tool for mid-market enterprise 2026"</span><span class="badge badge-weak">WEAK</span></div>
+  <div class="analysis">Zip and Procurify are the primary AI citations. One Reddit thread with 8 comments shapes the mid-market narrative.</div>
 </div>
 </div>
 <div class="section-title">🏢 Competitive Landscape</div>
 <div class="competitor-cards">
-<div class="comp-card"><div class="comp-name">Coupa</div><div class="comp-desc">Spend management</div></div><div class="comp-card"><div class="comp-name">SAP Ariba</div><div class="comp-desc">Enterprise procurement</div></div><div class="comp-card"><div class="comp-name">Zip</div><div class="comp-desc">Intake-to-procure</div></div><div class="comp-card"><div class="comp-name">Procurify</div><div class="comp-desc">Spend control</div></div>
+<div class="comp-card"><div class="comp-name">Coupa</div><div class="comp-desc">Enterprise spend management</div></div><div class="comp-card"><div class="comp-name">Zip</div><div class="comp-desc">Intake-to-procure platform</div></div><div class="comp-card"><div class="comp-name">SAP Ariba</div><div class="comp-desc">Procurement & supply chain</div></div><div class="comp-card"><div class="comp-name">Tipalti</div><div class="comp-desc">AP automation & payments</div></div>
 </div>
 <div class="cta">
   <h3>4 Genhance Plays for Pivot</h3>
   <ul class="plays">
-<li>UGC Gap Analysis: 10-query scan of procurement AI — identify which G2/Capterra comparison pages AI Overviews cite.</li>
-<li>Review Velocity Push: Grow from 36 to 100 G2 reviews. At 100, AI Overviews begin to cite mid-tier tools in competitive categories.</li>
-<li>Reddit Thread Creation: r/procurement and r/supplychain are goldmines — zero Pivot mentions today, one mention shifts AI answers.</li>
-<li>Competitor Deflection: Shape 'Pivot vs Coupa' and 'Pivot vs Zip' narratives — one comparison thread shapes AI answers for 12+ months.</li>
-
+    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for AI Procurement / Finance Operations — identify which Reddit/YouTube threads shape the answers.</li>
+    <li><strong>Review Velocity:</strong> Seed G2 &amp; Capterra reviews to establish presence before competitors saturate the category.</li>
+    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing Pivot to Coupa — shape the narrative before it hardens.</li>
+    <li><strong>Narrative Monitoring:</strong> Real-time alerts when Pivot is mentioned in AI-cited UGC threads — engage within hours, not weeks.</li>
   </ul>
 </div>
 <div class="footer">
