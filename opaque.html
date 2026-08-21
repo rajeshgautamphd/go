@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPAQUE — Genhance AI Visibility Audit</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f4f5f7; color: #1a1f36; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #1a1f36 0%, #254796 100%); color: #fff; padding: 60px 40px; text-align: center; }
+  .header h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 4px; }
+  .header .sub { font-size: 1.1rem; opacity: 0.85; }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+  .stat-pills { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px; }
+  .pill { background: #fff; border-radius: 12px; padding: 16px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-align: center; min-width: 140px; }
+  .pill .num { font-size: 1.6rem; font-weight: 700; color: #254796; }
+  .pill .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: #6b7280; margin-top: 2px; }
+  .alert { background: #fff7ed; border-left: 5px solid #f59e0b; border-radius: 10px; padding: 20px 24px; margin-bottom: 36px; }
+  .alert h3 { color: #b45309; font-size: 1rem; margin-bottom: 6px; }
+  .alert p { font-size: 0.95rem; color: #78350f; }
+  .section-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; color: #1a1f36; }
+  .query-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+  .query-card { background: #fff; border-radius: 12px; padding: 18px 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .query-card .q { font-size: 0.95rem; font-weight: 600; color: #1a1f36; }
+  .query-card .detail { font-size: 0.85rem; color: #6b7280; margin-top: 4px; }
+  .badge { display: inline-block; padding: 5px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  .badge-weak { background: #fee2e2; color: #b91c1c; }
+  .badge-present { background: #d1fae5; color: #065f46; }
+  .competitors { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .comp-card { background: #fff; border-radius: 12px; padding: 16px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .comp-card .name { font-weight: 700; font-size: 1rem; color: #1a1f36; }
+  .comp-card .detail { font-size: 0.82rem; color: #6b7280; margin-top: 4px; }
+  .cta { background: linear-gradient(135deg, #1a1f36 0%, #162544 100%); border-radius: 16px; padding: 40px 32px; color: #fff; margin-bottom: 40px; }
+  .cta h2 { font-size: 1.5rem; margin-bottom: 20px; }
+  .cta .plays { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cta .play { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 16px 20px; }
+  .cta .play .num { font-size: 0.75rem; color: #93c5fd; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .cta .play .title { font-weight: 700; font-size: 1rem; }
+  .cta .play .desc { font-size: 0.82rem; opacity: 0.75; margin-top: 4px; }
+  .footer { text-align: center; padding: 30px 24px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.85rem; }
+  .footer .sig { font-weight: 600; color: #1a1f36; }
+  @media (max-width: 600px) { .cta .plays { grid-template-columns: 1fr; } .header { padding: 40px 20px; } .header h1 { font-size: 1.8rem; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>OPAQUE</h1>
+  <div class="sub">B2B Confidential AI / Enterprise Security — AI Visibility Audit</div>
+</div>
+<div class="container">
+
+  <div class="stat-pills">
+    <div class="pill"><div class="num">$55.5M</div><div class="label">Total Funding</div></div>
+    <div class="pill"><div class="num">0/5</div><div class="label">AI Visibility</div></div>
+    <div class="pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
+    <div class="pill"><div class="num">0</div><div class="label">Reddit Mentions</div></div>
+  </div>
+
+  <div class="alert">
+    <h3>⚠️ KEY FINDING</h3>
+    <p>OPAQUE has zero community signals — 0 G2 reviews, 0 Reddit threads. AI engines cite community sources for confidential-computing recommendations. Our audit of 5 confidential-AI queries shows OPAQUE appears in 0/5 — invisible despite $55.5M total funding.</p>
+  </div>
+
+  <div class="section-title">🔍 Genhance Query Audit</div>
+  <div class="query-cards">
+    <div class="query-card">
+      <div>
+        <div class="q">"best confidential AI platform 2026"</div>
+        <div class="detail">AI Overviews cite Microsoft Azure Confidential, Fortanix, and Anjuna. OPAQUE absent.</div>
+      </div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-card">
+      <div>
+        <div class="q">"confidential computing for enterprise AI"</div>
+        <div class="detail">Top results are Intel SGX/TDX ecosystem, Google Confidential VMs, and IBM. OPAQUE not cited.</div>
+      </div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-card">
+      <div>
+        <div class="q">"secure AI inference platform data privacy"</div>
+        <div class="detail">AI answers cite NVIDIA Confidential Computing, AMD SEV, and Edgeless Systems. No OPAQUE.</div>
+      </div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-card">
+      <div>
+        <div class="q">"confidential AI Reddit recommendations"</div>
+        <div class="detail">Reddit threads reference Fortanix, Anjuna, and cloud-native TEE options. Zero OPAQUE mentions.</div>
+      </div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-card">
+      <div>
+        <div class="q">"OPAQUE vs Fortanix confidential computing"</div>
+        <div class="detail">No comparison content exists. Fortanix dominates all confidential-computing comparison searches.</div>
+      </div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+  </div>
+
+  <div class="section-title">🏆 Competitive Landscape</div>
+  <div class="competitors">
+    <div class="comp-card"><div class="name">Fortanix</div><div class="detail">$100M+ | Category leader</div></div>
+    <div class="comp-card"><div class="name">Anjuna Security</div><div class="detail">$70M+ | Growing presence</div></div>
+    <div class="comp-card"><div class="name">Microsoft Azure Confidential</div><div class="detail">Cloud-native TEE leader</div></div>
+    <div class="comp-card"><div class="name">Intel SGX/TDX</div><div class="detail">Hardware ecosystem dominant</div></div>
+  </div>
+
+  <div class="cta">
+    <h2>🚀 4 Genhance Plays to Win AI Visibility</h2>
+    <div class="plays">
+      <div class="play">
+        <div class="num">Play 1</div>
+        <div class="title">Build Category Authority Content</div>
+        <div class="desc">OPAQUE is invisible despite $55.5M funding. Create definitive guides on confidential AI — "Confidential AI 101," enterprise TEE comparisons, and white papers that teach AI engines.</div>
+      </div>
+      <div class="play">
+        <div class="num">Play 2</div>
+        <div class="title">Launch G2 Category from Scratch</div>
+        <div class="desc">0 reviews is a critical gap for enterprise security buyers. Target 30+ reviews by Q4 2026 with a customer advocacy program targeting early enterprise adopters.</div>
+      </div>
+      <div class="play">
+        <div class="num">Play 3</div>
+        <div class="title">Seed Reddit with Confidential AI Discussions</div>
+        <div class="desc">AI engines weight Reddit for security tool recommendations. Launch authentic threads on r/cybersecurity, r/MachineLearning, and r/devops.</div>
+      </div>
+      <div class="play">
+        <div class="num">Play 4</div>
+        <div class="title">Build Comparison Pages vs Fortanix & Anjuna</div>
+        <div class="desc">Create dedicated "OPAQUE vs Fortanix" and "OPAQUE vs Anjuna" comparison pages optimized for AI crawling. Capture comparison-intent traffic in the confidential-computing space.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="sig">Rajesh Gautam, PhD</div>
+    <div>Genhance AI Visibility Audits — genhance.com</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Visibility Audit — InsightFinder | Genhance</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #f4f6fb; color: #1a1f36; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+.header { background: linear-gradient(135deg, #1a1f36 0%, #254796 100%); padding: 60px 0 50px; color: #fff; }
+.header-content { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.header h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.5px; }
+.header .subtitle { font-size: 1.05rem; opacity: 0.85; font-weight: 400; margin-bottom: 6px; }
+.header .meta { font-size: 0.9rem; opacity: 0.7; margin-top: 2px; }
+.header .badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; margin-top: 12px; font-weight: 500; }
+
+.stat-pills { display: flex; gap: 16px; flex-wrap: wrap; margin: 32px 0 24px; }
+.stat-pill { background: #fff; border-radius: 12px; padding: 20px 24px; flex: 1 1 180px; min-width: 160px; box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 2px 12px rgba(0,0,0,0.04); text-align: center; }
+.stat-pill .value { font-size: 1.5rem; font-weight: 800; color: #1a1f36; margin-bottom: 2px; }
+.stat-pill .label { font-size: 0.78rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+.stat-pill.warn .value { color: #d97706; }
+.stat-pill.good .value { color: #059669; }
+
+.alert { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 1px solid #f59e0b; border-left: 5px solid #f59e0b; border-radius: 10px; padding: 20px 24px; margin: 24px 0; }
+.alert .alert-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #b45309; margin-bottom: 8px; }
+.alert p { color: #78350f; font-size: 0.93rem; line-height: 1.7; }
+
+.section-title { font-size: 1.15rem; font-weight: 700; color: #1a1f36; margin: 36px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e5e7eb; }
+
+.query-card { background: #fff; border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.05), 0 2px 8px rgba(0,0,0,0.03); display: flex; align-items: flex-start; gap: 16px; }
+.query-card .query-text { font-weight: 600; font-size: 0.95rem; color: #1a1f36; flex: 1; }
+.query-card .badge-pill { display: inline-block; padding: 3px 12px; border-radius: 14px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+.badge-present { background: #d1fae5; color: #065f46; }
+.badge-weak { background: #fee2e2; color: #991b1b; }
+.query-card .detail { font-size: 0.84rem; color: #6b7280; margin-top: 4px; line-height: 1.5; }
+
+.comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 12px; }
+.comp-card { background: #fff; border-radius: 10px; padding: 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); text-align: center; }
+.comp-card .comp-name { font-weight: 700; font-size: 0.95rem; color: #1a1f36; }
+.comp-card .comp-detail { font-size: 0.78rem; color: #6b7280; margin-top: 4px; }
+
+.cta { background: linear-gradient(135deg, #1a1f36 0%, #0f1324 100%); border-radius: 12px; padding: 40px 36px; margin: 36px 0; color: #fff; }
+.cta h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 20px; }
+.cta .play-list { list-style: none; }
+.cta .play-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.92rem; display: flex; align-items: flex-start; gap: 10px; }
+.cta .play-list li:last-child { border-bottom: none; }
+.cta .play-num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.15); font-weight: 700; font-size: 0.75rem; flex-shrink: 0; margin-top: 1px; }
+
+.footer { text-align: center; padding: 36px 0 40px; font-size: 0.85rem; color: #6b7280; border-top: 1px solid #e5e7eb; }
+.footer .name { font-weight: 700; color: #1a1f36; }
+.footer .sig { font-style: italic; margin-top: 6px; color: #9ca3af; }
+
+@media (max-width: 640px) {
+  .stat-pills { flex-direction: column; }
+  .query-card { flex-direction: column; gap: 8px; }
+  .header h1 { font-size: 1.6rem; }
+  .cta { padding: 28px 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-content">
+    <h1>InsightFinder — AI Visibility Audit</h1>
+    <div class="subtitle">B2B AIOps / AI Observability</div>
+    <div class="meta">CEO: Helen Gu &nbsp;|&nbsp; Raleigh, NC &nbsp;|&nbsp; ~30 employees</div>
+    <div class="badge">Audit Date: August 2026</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="stat-pills">
+    <div class="stat-pill good"><div class="value">$35M</div><div class="label">Total Funding</div></div>
+    <div class="stat-pill warn"><div class="value">1/5</div><div class="label">AI Visibility</div></div>
+    <div class="stat-pill warn"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+    <div class="stat-pill warn"><div class="value">1*</div><div class="label">Reddit Threads</div></div>
+  </div>
+
+  <p style="color:#6b7280;font-size:0.85rem;margin-top:-8px;">Investors: Yu Galaxy &nbsp;|&nbsp; Last Round: $15M Series B (Apr 2026) &nbsp;|&nbsp; *1 Reddit post = 4-year-old TechCrunch repost (effectively 0)</p>
+
+  <div class="alert">
+    <div class="alert-title">🔶 Key Finding</div>
+    <p>InsightFinder has nearly <strong>0 community presence</strong> — 1 old Reddit post from 4 years ago, 0 G2 reviews. AI engines now cite Reddit, G2, and community signals to answer "best AI observability" queries. Our audit shows InsightFinder appears in <strong>1/5</strong> queries.</p>
+  </div>
+
+  <div class="section-title">AI Search Query Audit (5 Queries)</div>
+
+  <div class="query-card">
+    <span class="badge-pill badge-weak">WEAK</span>
+    <div>
+      <div class="query-text">"best AI observability platform 2026"</div>
+      <div class="detail">AI Overviews cite Arize AI, Datadog, and Dynatrace. InsightFinder absent.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge-pill badge-present">PRESENT</span>
+    <div>
+      <div class="query-text">"predictive AIOps platform anomaly detection"</div>
+      <div class="detail">InsightFinder appears in organic SERP for niche AIOps queries — its strongest query.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge-pill badge-weak">WEAK</span>
+    <div>
+      <div class="query-text">"AI observability Reddit recommendations 2026"</div>
+      <div class="detail">Reddit threads reference Arize, Weights &amp; Biases, and LangSmith. Zero InsightFinder mentions.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge-pill badge-weak">WEAK</span>
+    <div>
+      <div class="query-text">"best ML monitoring production AI models"</div>
+      <div class="detail">AI answers cite Evidently AI, Fiddler AI, and WhyLabs. No InsightFinder.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge-pill badge-weak">WEAK</span>
+    <div>
+      <div class="query-text">"InsightFinder vs Datadog AI observability"</div>
+      <div class="detail">No comparison content exists. Datadog dominates all observability comparison searches.</div>
+    </div>
+  </div>
+
+  <div class="section-title">Competitive Landscape</div>
+  <div class="comp-grid">
+    <div class="comp-card"><div class="comp-name">Arize AI</div><div class="comp-detail">$100M+ funded, strong G2 presence</div></div>
+    <div class="comp-card"><div class="comp-name">Datadog</div><div class="comp-detail">Public company, dominant</div></div>
+    <div class="comp-card"><div class="comp-name">Dynatrace</div><div class="comp-detail">Public company, established</div></div>
+    <div class="comp-card"><div class="comp-name">Weights &amp; Biases</div><div class="comp-detail">$250M+ funded</div></div>
+  </div>
+
+  <div class="cta">
+    <h2>🔧 4 Genhance Plays to Win AI Visibility</h2>
+    <ul class="play-list">
+      <li><span class="play-num">1</span><strong>Build G2 Review Program from Scratch</strong> — 0 reviews is a critical vulnerability. Launch a customer review program targeting 20+ reviews within 90 days. AI engines now weigh G2 signals heavily.</li>
+      <li><span class="play-num">2</span><strong>Own the "Predictive AIOps" Niche on Reddit</strong> — Seed authentic discussions on r/devops, r/MachineLearning, and r/sre. InsightFinder's strongest query is predictive AIOps — double down here.</li>
+      <li><span class="play-num">3</span><strong>Publish Comparison Content</strong> — Create "InsightFinder vs Datadog" and "InsightFinder vs Arize AI" pages. AI Overviews cite comparison content for evaluative queries.</li>
+      <li><span class="play-num">4</span><strong>Technical Thought Leadership</strong> — Publish benchmark reports, anomaly detection case studies, and ML monitoring guides with schema.org markup. Target LLM-ingestible content formats.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p>Audit prepared by <span class="name">Genhance</span> — AI Visibility Platform for B2B SaaS</p>
+    <p class="sig">Rajesh Gautam, PhD &nbsp;—&nbsp; Founder, Genhance</p>
+  </div>
+
+</div>
+</body>
+</html>

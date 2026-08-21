@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Definely — Genhance AI Visibility Audit</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f4f5f7; color: #1a1f36; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #1a1f36 0%, #254796 100%); color: #fff; padding: 60px 40px; text-align: center; }
+  .header h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 4px; }
+  .header .sub { font-size: 1.1rem; opacity: 0.85; }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+  .stat-pills { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px; }
+  .pill { background: #fff; border-radius: 12px; padding: 16px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-align: center; min-width: 140px; }
+  .pill .num { font-size: 1.6rem; font-weight: 700; color: #254796; }
+  .pill .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: #6b7280; margin-top: 2px; }
+  .alert { background: #fff7ed; border-left: 5px solid #f59e0b; border-radius: 10px; padding: 20px 24px; margin-bottom: 36px; }
+  .alert h3 { color: #b45309; font-size: 1rem; margin-bottom: 6px; }
+  .alert p { font-size: 0.95rem; color: #78350f; }
+  .section-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; color: #1a1f36; }
+  .query-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+  .query-card { background: #fff; border-radius: 12px; padding: 18px 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .query-card .q { font-size: 0.95rem; font-weight: 600; color: #1a1f36; }
+  .query-card .detail { font-size: 0.85rem; color: #6b7280; margin-top: 4px; }
+  .badge { display: inline-block; padding: 5px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  .badge-weak { background: #fee2e2; color: #b91c1c; }
+  .badge-present { background: #d1fae5; color: #065f46; }
+  .competitors { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .comp-card { background: #fff; border-radius: 12px; padding: 16px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .comp-card .name { font-weight: 700; font-size: 1rem; color: #1a1f36; }
+  .comp-card .detail { font-size: 0.82rem; color: #6b7280; margin-top: 4px; }
+  .cta { background: linear-gradient(135deg, #1a1f36 0%, #162544 100%); border-radius: 16px; padding: 40px 32px; color: #fff; margin-bottom: 40px; }
+  .cta h2 { font-size: 1.5rem; margin-bottom: 20px; }
+  .cta .plays { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cta .play { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 16px 20px; }
+  .cta .play .num { font-size: 0.75rem; color: #93c5fd; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .cta .play .title { font-weight: 700; font-size: 1rem; }
+  .cta .play .desc { font-size: 0.82rem; opacity: 0.75; margin-top: 4px; }
+  .footer { text-align: center; padding: 30px 24px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.85rem; }
+  .footer .sig { font-weight: 600; color: #1a1f36; }
+  @media (max-width: 600px) { .cta .plays { grid-template-columns: 1fr; } .header { padding: 40px 20px; } .header h1 { font-size: 1.8rem; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Definely</h1>
+  <div class="sub">B2B AI Legal Tech / Contract Review — AI Visibility Audit</div>
+</div>
+<div class="container">
+
+  <div class="stat-pills">
+    <div class="pill"><div class="num">~$37M</div><div class="label">Total Funding</div></div>
+    <div class="pill"><div class="num">0/5</div><div class="label">AI Visibility</div></div>
+    <div class="pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
+    <div class="pill"><div class="num">0</div><div class="label">Reddit Mentions</div></div>
+  </div>
+
+  <div class="alert">
+    <h3>⚠️ KEY FINDING</h3>
+    <p>Definely has zero community signals across all surfaces — 0 G2 reviews, 0 Reddit threads. Legal buyers increasingly use AI to evaluate vendors, and UGC signals dominate AI answers. Our audit of 5 legal-tech queries shows Definely appears in 0/5.</p>
+  </div>
+
+  <div class="section-title">🔍 Genhance Query Audit</div>
+  <div class="query-cards">
+    <div class="query-card">
+      <div>
+        <div class="q">"best AI contract review tool for lawyers 2026"</div>
+        <div class="detail">AI Overviews cite Ironclad, Spellbook, and Luminance. Definely absent.</div>
+      </div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-card">
+      <div>
+        <div class="q">"AI legal document analysis platform Reddit"</div>
+        <div class="detail">Reddit threads reference Harvey AI, CoCounsel, and Robin AI. Zero Definely mentions.</div>
+      </div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-card">
+      <div>
+        <div class="q">"legal tech for contract drafting and review"</div>
+        <div class="detail">AI answers cite Legartis, Lawgeex, and ThoughtRiver. Definely not cited.</div>
+      </div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-card">
+      <div>
+        <div class="q">"Definely vs Spellbook legal AI"</div>
+        <div class="detail">No comparison content exists. Spellbook dominates legal AI comparison searches.</div>
+      </div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="query-card">
+      <div>
+        <div class="q">"AI for complex contract review accessibility legal tech"</div>
+        <div class="detail">Definely's accessibility-origin story (co-founder registered blind) is unique but not surfaced in AI answers.</div>
+      </div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+  </div>
+
+  <div class="section-title">🏆 Competitive Landscape</div>
+  <div class="competitors">
+    <div class="comp-card"><div class="name">Ironclad</div><div class="detail">$500M+ | 500+ G2 reviews | Dominant</div></div>
+    <div class="comp-card"><div class="name">Spellbook</div><div class="detail">$33M+ | Strong community signals</div></div>
+    <div class="comp-card"><div class="name">Harvey AI</div><div class="detail">$200M+ | High-profile legal AI</div></div>
+    <div class="comp-card"><div class="name">Luminance</div><div class="detail">$60M+ | Growing presence</div></div>
+  </div>
+
+  <div class="cta">
+    <h2>🚀 4 Genhance Plays to Win AI Visibility</h2>
+    <div class="plays">
+      <div class="play">
+        <div class="num">Play 1</div>
+        <div class="title">Amplify the Accessibility Story</div>
+        <div class="desc">Definely's origin story (co-founder registered blind) is uniquely compelling. Create structured content that teaches AI engines this narrative — founders' stories, accessibility guides, and thought leadership.</div>
+      </div>
+      <div class="play">
+        <div class="num">Play 2</div>
+        <div class="title">Build G2 Presence from Zero</div>
+        <div class="desc">0 reviews is a critical gap for legal tech buyers who rely on peer validation. Target 30+ reviews by Q4 2026 with a structured customer advocacy program.</div>
+      </div>
+      <div class="play">
+        <div class="num">Play 3</div>
+        <div class="title">Seed Reddit with Legal Tech Discussions</div>
+        <div class="desc">AI engines heavily weight Reddit for legal tech recommendations. Launch authentic threads on r/LawFirm, r/legaltech, and r/uklaw (London HQ).</div>
+      </div>
+      <div class="play">
+        <div class="num">Play 4</div>
+        <div class="title">Build Comparison Pages vs Spellbook & Ironclad</div>
+        <div class="desc">Create dedicated "Definely vs Spellbook" and "Definely vs Ironclad" comparison pages optimized for AI crawling to capture comparison-intent traffic.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="sig">Rajesh Gautam, PhD</div>
+    <div>Genhance AI Visibility Audits — genhance.com</div>
+  </div>
+
+</div>
+</body>
+</html>
