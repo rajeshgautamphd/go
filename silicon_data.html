@@ -3,13 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Axle — AI Visibility Audit | genhance</title>
+<title>Silicon Data — AI Visibility Audit | genhance</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e1a; color: #e2e8f0; line-height: 1.6; }
 .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-
-/* Header */
 .header { background: linear-gradient(135deg, #0b1a3b 0%, #0d2547 30%, #112d5c 60%, #0b1a3b 100%); padding: 60px 0 50px; text-align: center; border-bottom: 2px solid rgba(59,130,246,0.2); }
 .header .badge { display: inline-block; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); color: #60a5fa; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; padding: 5px 16px; border-radius: 20px; margin-bottom: 16px; }
 .header h1 { font-size: 2.6rem; font-weight: 800; color: #ffffff; margin-bottom: 6px; letter-spacing: -0.02em; }
@@ -18,24 +16,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .header .meta { margin-top: 16px; font-size: 0.85rem; color: #64748b; }
 .header .meta a { color: #60a5fa; text-decoration: none; }
 .header .meta span { margin: 0 8px; opacity: 0.4; }
-
-/* Stats */
 .stats { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: -28px auto 0; padding: 0 24px; position: relative; z-index: 2; }
 .stat-pill { background: #111d36; border: 1px solid rgba(59,130,246,0.25); border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 140px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
 .stat-pill .value { font-size: 1.5rem; font-weight: 700; color: #ffffff; }
 .stat-pill .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; margin-top: 2px; }
 .stat-pill.danger .value { color: #f87171; }
 .stat-pill.warning .value { color: #fbbf24; }
-
-/* Key Finding */
 .key-finding { background: linear-gradient(135deg, #3d2805 0%, #4a3108 100%); border: 1px solid rgba(245,158,11,0.35); border-radius: 14px; padding: 24px 28px; margin: 32px auto 40px; max-width: 860px; box-shadow: 0 4px 24px rgba(245,158,11,0.08); }
 .key-finding .kf-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; color: #fbbf24; font-weight: 700; margin-bottom: 8px; }
 .key-finding .kf-text { font-size: 0.98rem; color: #fef3c7; line-height: 1.65; font-weight: 500; }
-
-/* Section title */
 .section-title { font-size: 1.3rem; font-weight: 700; color: #e2e8f0; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(59,130,246,0.15); }
-
-/* Query Cards */
 .queries { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
 .query-card { background: #111827; border: 1px solid rgba(75,85,99,0.3); border-radius: 12px; padding: 20px 24px; display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; transition: border-color 0.2s; }
 .query-card:hover { border-color: rgba(59,130,246,0.4); }
@@ -44,15 +34,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .query-card .q-text .q-analysis { font-size: 0.85rem; color: #9ca3af; line-height: 1.55; }
 .query-card .badge { flex-shrink: 0; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 5px 12px; border-radius: 6px; }
 .badge-absent { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
-.badge-weak { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
-
-/* Competitors */
 .competitors { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
 .comp-card { background: #111827; border: 1px solid rgba(75,85,99,0.25); border-radius: 10px; padding: 16px 22px; text-align: center; min-width: 130px; flex: 1; box-shadow: 0 2px 12px rgba(0,0,0,0.2); }
 .comp-card .comp-name { font-size: 0.95rem; font-weight: 700; color: #e2e8f0; }
 .comp-card .comp-type { font-size: 0.72rem; color: #6b7280; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
-
-/* CTA */
 .cta { background: linear-gradient(135deg, #0b1a3b 0%, #0f2044 50%, #0b1a3b 100%); border: 1px solid rgba(59,130,246,0.25); border-radius: 16px; padding: 36px 32px; margin: 40px 0; box-shadow: 0 6px 30px rgba(0,0,0,0.4); }
 .cta h2 { font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
 .cta .cta-sub { font-size: 0.9rem; color: #94a3b8; margin-bottom: 24px; }
@@ -60,8 +45,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .cta-play { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 10px; padding: 16px 18px; }
 .cta-play .play-num { font-size: 0.7rem; font-weight: 700; color: #60a5fa; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
 .cta-play .play-title { font-size: 0.95rem; font-weight: 600; color: #f1f5f9; }
-
-/* Footer */
 .footer { text-align: center; padding: 32px 0 40px; border-top: 1px solid rgba(59,130,246,0.12); margin-top: 20px; }
 .footer .sig-name { font-size: 1rem; font-weight: 700; color: #e2e8f0; }
 .footer .sig-role { font-size: 0.8rem; color: #64748b; margin-top: 2px; }
@@ -73,13 +56,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
 <header class="header">
   <div class="badge">AI Visibility Audit</div>
-  <h1>Axle</h1>
-  <div class="domain">axle.insure</div>
-  <p class="tagline">AI-native insurance clearinghouse — the Plaid for insurance</p>
+  <h1>Silicon Data</h1>
+  <div class="domain">silicon data</div>
+  <p class="tagline">AI compute benchmarking, GPU pricing index, market intelligence</p>
   <p class="meta">
-    CEO: Cameron Duncan
+    CEO: Carmen Li
     <span>|</span>
-    <a href="https://linkedin.com/in/cam-duncan" target="_blank">linkedin.com/in/cam-duncan</a>
+    <a href="https://linkedin.com/in/carmenrli" target="_blank">linkedin.com/in/carmenrli</a>
     <span>|</span>
     New York, NY
   </p>
@@ -89,11 +72,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
   <div class="stats">
     <div class="stat-pill">
-      <div class="value">$21.5M</div>
-      <div class="label">Total Funding</div>
+      <div class="value">$30.5M</div>
+      <div class="label">Series A</div>
     </div>
-    <div class="stat-pill warning">
-      <div class="value">1 / 5</div>
+    <div class="stat-pill danger">
+      <div class="value">0 / 5</div>
       <div class="label">AI Visibility</div>
     </div>
     <div class="stat-pill danger">
@@ -108,7 +91,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
   <div class="key-finding">
     <div class="kf-label">🔑 Key Finding</div>
-    <div class="kf-text">Axle clears $100B+ in coverage annually for 4,000+ customers — yet AI answers for "best insurance API" / "insurance data platform" cite Verisk, Duck Creek, and Applied Systems, never Axle.</div>
+    <div class="kf-text">CME Group is launching GPU compute futures contracts using Silicon Data as the reference price — yet AI answers for "GPU benchmark" / "AI compute pricing" cite Vast.ai, RunPod, and Lambda, never Silicon Data.</div>
   </div>
 
   <div class="section-title">📋 Query Analysis — AI Answer Engine Presence</div>
@@ -117,72 +100,72 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
     <div class="query-card">
       <div class="badge badge-absent">ABSENT</div>
       <div class="q-text">
-        <div class="q-query">"best insurance API platform 2026"</div>
-        <div class="q-analysis">Verisk, Duck Creek, and Guidewire completely dominate AI-generated responses for this high-intent query. Axle is nowhere in the results despite offering a modern API-first approach to insurance data. This is a direct loss of qualified pipeline to legacy incumbents.</div>
+        <div class="q-query">"GPU cloud pricing comparison 2026"</div>
+        <div class="q-analysis">Vast.ai and RunPod are the default recommendations when buyers search for GPU pricing comparisons. Silicon Data — despite being the reference price for CME's GPU futures — is completely absent from the most commercially valuable query in the GPU compute market.</div>
       </div>
     </div>
 
     <div class="query-card">
       <div class="badge badge-absent">ABSENT</div>
       <div class="q-text">
-        <div class="q-query">"insurance data clearinghouse AI"</div>
-        <div class="q-analysis">IVANS and Vertafore are cited as the go-to clearinghouse solutions by AI answer engines, completely overlooking Axle's AI-native architecture. Buyers searching for modern clearinghouse alternatives are being routed to 30-year-old platforms.</div>
-      </div>
-    </div>
-
-    <div class="query-card">
-      <div class="badge badge-weak">WEAK</div>
-      <div class="q-text">
-        <div class="q-query">"Plaid for insurance"</div>
-        <div class="q-analysis">Axle successfully branded this category and earns a single mention — but that's it. There's no depth, no supporting content reinforcing the positioning. A competitor could easily capture this analogy-driven search with dedicated content.</div>
+        <div class="q-query">"AI compute benchmark platform"</div>
+        <div class="q-analysis">MLPerf and Geekbench dominate benchmark-related queries. Silicon Data's benchmarking intelligence — which powers institutional-grade pricing decisions — is invisible to AI answer engines. Buyers researching compute performance never encounter Silicon Data's data.</div>
       </div>
     </div>
 
     <div class="query-card">
       <div class="badge badge-absent">ABSENT</div>
       <div class="q-text">
-        <div class="q-query">"insurance verification API enterprise"</div>
-        <div class="q-analysis">Evident and Certificial own this space in AI-generated answers. Enterprise buyers looking for verification APIs never discover Axle, even though Axle's clearinghouse inherently solves verification at scale.</div>
+        <div class="q-query">"GPU rental rate index"</div>
+        <div class="q-analysis">Vast.ai's marketplace pricing is cited as the de facto rate index. Silicon Data, which provides the actual reference rate for the world's largest derivatives exchange, has zero AI visibility for its core value proposition.</div>
       </div>
     </div>
 
     <div class="query-card">
       <div class="badge badge-absent">ABSENT</div>
       <div class="q-text">
-        <div class="q-query">"AI insurance automation platform"</div>
-        <div class="q-analysis">Shift Technology and Planck are the AI names that surface here. Axle's AI-native processing engine is entirely invisible to buyers searching for AI-driven insurance automation — a massive missed category.</div>
+        <div class="q-query">"cloud GPU cost optimization enterprise"</div>
+        <div class="q-analysis">Lambda and CoreWeave are cited for enterprise GPU cost optimization — these are infrastructure providers, not pricing intelligence platforms. Silicon Data's market intelligence for optimizing GPU spend at scale is entirely missing from the conversation.</div>
+      </div>
+    </div>
+
+    <div class="query-card">
+      <div class="badge badge-absent">ABSENT</div>
+      <div class="q-text">
+        <div class="q-query">"AI infrastructure pricing data"</div>
+        <div class="q-analysis">SemiAnalysis and Liftr Insights capture the analyst mindshare for AI infrastructure pricing. Silicon Data's institutional-grade pricing data — trusted by CME for futures settlement — doesn't appear in any AI-generated answer for this query.</div>
       </div>
     </div>
   </div>
 
   <div class="section-title">🏢 Competitors Occupying AI Mindshare</div>
   <div class="competitors">
-    <div class="comp-card"><div class="comp-name">Verisk</div><div class="comp-type">Incumbent</div></div>
-    <div class="comp-card"><div class="comp-name">Duck Creek Technologies</div><div class="comp-type">Incumbent</div></div>
-    <div class="comp-card"><div class="comp-name">Guidewire</div><div class="comp-type">Incumbent</div></div>
-    <div class="comp-card"><div class="comp-name">IVANS</div><div class="comp-type">Clearinghouse</div></div>
-    <div class="comp-card"><div class="comp-name">Evident</div><div class="comp-type">Verification</div></div>
+    <div class="comp-card"><div class="comp-name">Vast.ai</div><div class="comp-type">GPU Marketplace</div></div>
+    <div class="comp-card"><div class="comp-name">RunPod</div><div class="comp-type">GPU Cloud</div></div>
+    <div class="comp-card"><div class="comp-name">Lambda Labs</div><div class="comp-type">GPU Cloud</div></div>
+    <div class="comp-card"><div class="comp-name">CoreWeave</div><div class="comp-type">GPU Cloud</div></div>
+    <div class="comp-card"><div class="comp-name">MLPerf</div><div class="comp-type">Benchmarking</div></div>
   </div>
 
   <div class="cta">
     <h2>🚀 How genhance Fixes This</h2>
-    <p class="cta-sub">4 plays to make Axle the default AI answer for insurance infrastructure</p>
+    <p class="cta-sub">4 plays to make Silicon Data the default AI answer for GPU pricing and benchmarks</p>
     <div class="cta-plays">
       <div class="cta-play">
         <div class="play-num">Play 1</div>
-        <div class="play-title">Category Authority Content: Own "insurance API" with comparison guides, benchmarks, and technical deep-dives that AI models crawl.</div>
+        <div class="play-title">CME Narrative Amplification: Publish structured content about the GPU futures partnership — "Silicon Data: The Bloomberg Terminal for GPU Compute" — optimized for LLM ingestion.</div>
       </div>
       <div class="cta-play">
         <div class="play-num">Play 2</div>
-        <div class="play-title">Competitor Displacement Pages: "Axle vs. Verisk," "Axle vs. Duck Creek" — structured for LLM ingestion with factual differentiation.</div>
+        <div class="play-title">GPU Pricing Index Pages: Create public-facing pricing comparison tools and indices that AI models can crawl and cite directly in response to pricing queries.</div>
       </div>
       <div class="cta-play">
         <div class="play-num">Play 3</div>
-        <div class="play-title">Analyst & Media Surge: Place Axle in G2, Gartner peer insights, and insurance-tech roundups that AI training pipelines source from.</div>
+        <div class="play-title">Benchmark Authority Content: "Silicon Data vs. MLPerf," "How GPU benchmarks actually work" — technical deep-dives that establish Silicon Data as the authoritative source.</div>
       </div>
       <div class="cta-play">
         <div class="play-num">Play 4</div>
-        <div class="play-title">Community Activation: Seed Reddit, Hacker News, and insurance-tech forums with genuine Axle use-cases and integration stories.</div>
+        <div class="play-title">Financial & Tech Media Surge: Place Silicon Data in Bloomberg, WSJ, and tech press coverage of GPU markets. Seed r/MachineLearning and Hacker News with pricing analysis.</div>
       </div>
     </div>
   </div>
