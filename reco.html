@@ -3,102 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — Reco | genhance</title>
+<title>AI Search Visibility Audit — Reco</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
-.container { max-width: 680px; margin: 0 auto; }
-.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
-.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
-.header .sub { font-size: 14px; color: #7eb8ff; }
-.header .domain { font-size: 15px; color: #a0c4ff; }
-.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
-.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
-.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
-.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
-.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
-.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
-.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
-.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
-.query-cards { padding: 0 28px; }
-.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
-.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
-.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
-.badge-absent { background: #3d1515; color: #f87171; }
-.badge-weak { background: #2a1d00; color: #fbbf24; }
-.badge-present { background: #0a2d1a; color: #34d399; }
-.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
-.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
-.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
-.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
-.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
-.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
-.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
-.cta .plays { list-style: none; }
-.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
-.cta .plays li:last-child { border-bottom: none; }
-.cta .plays li::before { content: '\25B8 '; color: #5b9eff; }
-.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
-.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
-.footer .title { font-size: 12px; color: #6b7d95; }
-.footer a { color: #5b9eff; text-decoration: none; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1a2744 100%); padding: 60px 40px; text-align: center; border-bottom: 3px solid #3b82f6; }
+.header h1 { font-size: 2.4em; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #94a3b8; font-size: 1.1em; }
+.stats { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 30px 40px; background: #111827; }
+.stat-pill { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 20px 28px; text-align: center; min-width: 150px; }
+.stat-pill .value { font-size: 1.8em; font-weight: 700; color: #60a5fa; }
+.stat-pill .label { color: #94a3b8; font-size: 0.85em; margin-top: 4px; }
+.alert { background: linear-gradient(135deg, #78350f, #451a03); border: 1px solid #d97706; margin: 0 40px; padding: 20px 30px; border-radius: 10px; }
+.alert h3 { color: #fbbf24; margin-bottom: 8px; }
+.alert p { color: #fcd34d; }
+.container { max-width: 900px; margin: 0 auto; padding: 30px 40px; }
+.section-title { font-size: 1.5em; color: #f1f5f9; border-bottom: 2px solid #334155; padding-bottom: 8px; margin: 30px 0 20px; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+.query-card .query-text { font-size: 1.1em; color: #93c5fd; margin-bottom: 12px; font-weight: 600; }
+.query-card .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 700; margin-right: 10px; }
+.badge-absent { background: #7f1d1d; color: #fca5a5; }
+.badge-weak { background: #78350f; color: #fcd34d; }
+.query-card .analysis { color: #cbd5e1; font-size: 0.95em; margin-top: 8px; }
+.competitor-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.comp-card { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px; text-align: center; }
+.comp-card .cname { color: #e2e8f0; font-weight: 600; }
+.comp-card .cdesc { color: #64748b; font-size: 0.8em; margin-top: 4px; }
+.cta { background: linear-gradient(135deg, #0f172a, #1e293b); border: 2px solid #3b82f6; border-radius: 12px; padding: 30px; margin-top: 30px; text-align: center; }
+.cta h3 { color: #60a5fa; font-size: 1.3em; margin-bottom: 15px; }
+.plays { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; text-align: left; }
+.play { background: #1e293b; border-radius: 8px; padding: 14px; }
+.play .num { color: #3b82f6; font-weight: 700; font-size: 1.2em; }
+.play .desc { color: #cbd5e1; font-size: 0.9em; }
+.footer { text-align: center; padding: 30px; color: #64748b; font-size: 0.9em; border-top: 1px solid #1e293b; margin-top: 40px; }
+.footer a { color: #60a5fa; }
 </style>
 </head>
 <body>
-<div class="container">
 <div class="header">
-  <h1>AI Search Visibility Audit</h1>
-  <div class="sub">Reco</div>
-  <div class="domain">reco.ai</div>
+  <h1>AI SEARCH VISIBILITY AUDIT</h1>
+  <div class="subtitle">Reco — AI SaaS Security Platform</div>
 </div>
 <div class="stats">
-  <div class="stat-pill"><div class="num">$30M Series B ($85M total)</div><div class="label">Funding</div></div>
-  <div class="stat-pill"><div class="num">1/5</div><div class="label">AI Visibility</div></div>
-  <div class="stat-pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
-  <div class="stat-pill"><div class="num">0</div><div class="label">Reddit</div></div>
+  <div class="stat-pill"><div class="value">$30M</div><div class="label">Series B ($85M total)</div></div>
+  <div class="stat-pill"><div class="value">0/5</div><div class="label">AI Visibility Score</div></div>
+  <div class="stat-pill"><div class="value">&lt;20</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
 </div>
-<div class="key-finding">
-  <div class="label">⚡ KEY FINDING</div>
-  <div class="text">Reco raised $30M ($85M total) to secure AI-driven SaaS environments. Yet AI answers for "SaaS security platform" cite Netskope, Zscaler, and AppOmni — never Reco. Zero G2 reviews, zero Reddit threads. The AI SaaS security category is forming — and Reco has zero UGC in it.</div>
+<div class="alert">
+  <h3>🔑 KEY FINDING</h3>
+  <p>Reco raised $85M total from Insight Partners, Zeev Ventures, and boldstart to secure AI agent sprawl — yet AI search engines cite Netskope, Zscaler, and CrowdStrike for every SaaS security query. Reco appears in <strong>0 of 5</strong> AI search results. With 225+ app integrations and a first-of-its-kind AI agent security capability, Reco's story is AI-invisible — no Reddit threads, minimal G2 presence.</p>
 </div>
-<div class="section-title">📊 Category Query Analysis</div>
-<div class="query-cards">
-<div class="query-card">
-  <div class="q-header"><span class="query-text">"best SaaS security platform enterprise 2026"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI Overviews cite Netskope, Zscaler, AppOmni, and Obsidian Security. G2 Grid shows Netskope with 1,000+ reviews. Reco does not appear in any AI-cited source despite $85M in funding.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"shadow AI detection SaaS security"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI Overviews cite Zscaler, Netskope, and cybersecurity analyst reports. Reco's specific competency — detecting shadow AI usage across approved SaaS apps — is not mentioned in any AI-cited source.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"AI SaaS security posture management"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">No dominant AI Overview for this emerging term. Organic results show AppOmni, Obsidian, and cybersecurity blogs. Reco does not appear. The term SSPM (SaaS Security Posture Management) is rising — Reco should own the AI answer before competitors claim it.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"enterprise AI agent SaaS security platform"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">No AI Overview exists for this niche. Organic results show general AI security articles. Reco's focus on securing AI agents operating across SaaS is a unique differentiator with zero UGC footprint — being the first voice here means defining the AI answer.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"Reco AI security review experience 2026"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">No Reddit threads, G2 reviews, or YouTube content mention Reco. Complete UGC vacuum. The company's press releases and Crunchbase are the only AI-indexed sources. Every UGC contribution directly shapes what AI will say.</div>
-</div>
-</div>
-<div class="section-title">🏢 Competitive Landscape</div>
-<div class="competitor-cards">
-<div class="comp-card"><div class="comp-name">Netskope</div><div class="comp-desc">SASE & cloud security, 1K+ G2 reviews</div></div><div class="comp-card"><div class="comp-name">Zscaler</div><div class="comp-desc">Zero trust cloud security</div></div><div class="comp-card"><div class="comp-name">AppOmni</div><div class="comp-desc">SaaS security management</div></div><div class="comp-card"><div class="comp-name">Obsidian Security</div><div class="comp-desc">SaaS security posture</div></div>
-</div>
-<div class="cta">
-  <h3>4 Genhance Plays for Reco</h3>
-  <ul class="plays">
-    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for SaaS Security / AI Security — identify which Reddit/YouTube threads shape the answers.</li>
-    <li><strong>Review Velocity:</strong> Seed G2 &amp; Capterra reviews to establish presence before competitors saturate the category.</li>
-    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing Reco to Netskope — shape the narrative before it hardens.</li>
-    <li><strong>Narrative Monitoring:</strong> Real-time alerts when Reco is mentioned in AI-cited UGC threads — engage within hours, not weeks.</li>
-  </ul>
+<div class="container">
+  <div class="section-title">5 Category Queries — AI Search Analysis</div>
+
+  <div class="query-card">
+    <div class="query-text">"best SaaS security platform 2026"</div>
+    <span class="badge badge-absent">ABSENT</span>
+    <div class="analysis">AI Overviews cite Netskope, BetterCloud, and Zscaler. Reco's identity-centric approach and AI agent detection are not in any AI-cited source.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"AI agent security solution enterprise"</div>
+    <span class="badge badge-absent">ABSENT</span>
+    <div class="analysis">This emerging category has zero established AI voices. The first company to build UGC here defines the narrative for years.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"SSPM vs CASB comparison 2026"</div>
+    <span class="badge badge-absent">ABSENT</span>
+    <div class="analysis">G2 comparison grids cite Netskope, McAfee MVISION, and Bitglass. Reco (SSPM + AI agent security) is not in any comparison.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"how to secure ChatGPT enterprise SaaS"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">A Reddit thread with 12 comments dominates AI answers — none mention Reco's purpose-built AI agent discovery.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"SaaS app sprawl security tool"</div>
+    <span class="badge badge-absent">ABSENT</span>
+    <div class="analysis">AI cites BetterCloud and Torii for SaaS management, missing Reco's 225+ app security integration play entirely.</div>
+  </div>
+
+  <div class="section-title">Competitors Dominating AI Search</div>
+  <div class="competitor-cards">
+    <div class="comp-card"><div class="cname">Netskope</div><div class="cdesc">SASE/SSPM leader, 500+ G2 reviews</div></div>
+    <div class="comp-card"><div class="cname">Zscaler</div><div class="cdesc">Zero trust/SaaS security, 400+ G2 reviews</div></div>
+    <div class="comp-card"><div class="cname">BetterCloud</div><div class="cdesc">SaaS management, 800+ G2 reviews</div></div>
+    <div class="comp-card"><div class="cname">CrowdStrike</div><div class="cdesc">Falcon Shield for SaaS, massive G2 presence</div></div>
+  </div>
+
+  <div class="cta">
+    <h3>4 Genhance Plays to Own the AI Narrative</h3>
+    <div class="plays">
+      <div class="play"><div class="num">1</div><div class="desc">Create Reddit thread on r/cybersecurity about "AI agent sprawl" — zero competition for this keyword today</div></div>
+      <div class="play"><div class="num">2</div><div class="desc">Get 10 G2 reviews: "AI agent security" has no G2 category yet — you define it</div></div>
+      <div class="play"><div class="num">3</div><div class="desc">YouTube cybersecurity creators reviewing SSPM tools have <10 comments — contribute insights</div></div>
+      <div class="play"><div class="num">4</div><div class="desc">Hacker News Show HN: "We built the first AI agent security platform" — 3 comments can define the category</div></div>
+    </div>
+  </div>
 </div>
 <div class="footer">
-  <div class="name">Rajesh Gautam, PhD</div>
-  <div class="title">Founder &amp; CEO, genhance.ai</div>
-  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
-</div>
+  <strong>Rajesh Gautam, PhD</strong><br>
+  Founder and CEO, genhance.ai<br>
+  <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
 </div>
 </body>
 </html>

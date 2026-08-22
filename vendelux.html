@@ -5,145 +5,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Search Visibility Audit — Vendelux</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0e27;color:#e8eaed;line-height:1.6}
-.header{background:linear-gradient(135deg,#0d1b4c,#1a237e,#0d1b4c);padding:48px 24px;text-align:center;border-bottom:3px solid #ff9800}
-.header h1{font-size:2rem;color:#fff;margin-bottom:8px}
-.header .subtitle{color:#ff9800;font-size:1.1rem;font-weight:500}
-.container{max-width:900px;margin:0 auto;padding:24px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}
-.stat-card{background:linear-gradient(145deg,#131b3d,#1a2555);border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(255,255,255,.08)}
-.stat-card .stat-value{font-size:1.8rem;font-weight:700;color:#ff9800}
-.stat-card .stat-label{font-size:.8rem;color:#8a93b0;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
-.alert{background:linear-gradient(135deg,#3d2000,#4a2a00);border:1px solid #ff9800;border-radius:12px;padding:20px 24px;margin:24px 0}
-.alert .alert-title{color:#ff9800;font-weight:700;font-size:1.1rem;margin-bottom:8px}
-.alert p{color:#e8d5b5;font-size:.95rem}
-.query-section{margin:32px 0}
-.query-section h2{color:#ff9800;font-size:1.3rem;margin-bottom:16px;border-bottom:1px solid rgba(255,152,0,.3);padding-bottom:8px}
-.query-card{background:#11183a;border-radius:10px;padding:18px;margin-bottom:12px;border-left:3px solid #1e3a6e}
-.query-card .q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.query-card .q-text{color:#c0caf0;font-size:.9rem;font-style:italic}
-.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-.badge-absent{background:rgba(220,38,38,.2);color:#ef4444;border:1px solid rgba(239,68,68,.3)}
-.badge-weak{background:rgba(255,152,0,.2);color:#ff9800;border:1px solid rgba(255,152,0,.3)}
-.badge-present{background:rgba(34,197,94,.2);color:#22c55e;border:1px solid rgba(34,197,94,.3)}
-.query-card .q-analysis{color:#9ca3c0;font-size:.85rem;margin-top:8px}
-.query-card .q-sources{color:#6b7c9e;font-size:.78rem;margin-top:4px}
-.comp-section{margin:32px 0}
-.comp-section h2{color:#ff9800;font-size:1.3rem;margin-bottom:16px;border-bottom:1px solid rgba(255,152,0,.3);padding-bottom:8px}
-.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-.comp-card{background:linear-gradient(145deg,#131b3d,#1a2555);border-radius:10px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,.06)}
-.comp-card .comp-name{color:#fff;font-size:.95rem;font-weight:600}
-.comp-card .comp-detail{color:#8a93b0;font-size:.75rem;margin-top:4px}
-.cta-section{background:linear-gradient(135deg,#131b3d,#0d1b4c);border-radius:16px;padding:32px 24px;margin:32px 0;border:2px solid #ff9800;text-align:center}
-.cta-section h2{color:#ff9800;font-size:1.4rem;margin-bottom:16px}
-.plays{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;text-align:left}
-.play-card{background:rgba(255,152,0,.08);border-radius:10px;padding:16px;border:1px solid rgba(255,152,0,.15)}
-.play-card .play-num{color:#ff9800;font-weight:700;font-size:.8rem;margin-bottom:4px}
-.play-card .play-title{color:#fff;font-weight:600;font-size:.95rem}
-.play-card .play-desc{color:#9ca3c0;font-size:.8rem;margin-top:4px}
-.footer{text-align:center;padding:32px 24px;color:#6b7c9e;font-size:.85rem;border-top:1px solid rgba(255,255,255,.06)}
-.footer .name{color:#c0caf0;font-weight:600}
-.footer a{color:#ff9800;text-decoration:none}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1a2744 100%); padding: 60px 40px; text-align: center; border-bottom: 3px solid #3b82f6; }
+.header h1 { font-size: 2.4em; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #94a3b8; font-size: 1.1em; }
+.stats { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 30px 40px; background: #111827; }
+.stat-pill { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 20px 28px; text-align: center; min-width: 150px; }
+.stat-pill .value { font-size: 1.8em; font-weight: 700; color: #60a5fa; }
+.stat-pill .label { color: #94a3b8; font-size: 0.85em; margin-top: 4px; }
+.alert { background: linear-gradient(135deg, #78350f, #451a03); border: 1px solid #d97706; margin: 0 40px; padding: 20px 30px; border-radius: 10px; }
+.alert h3 { color: #fbbf24; margin-bottom: 8px; }
+.alert p { color: #fcd34d; }
+.container { max-width: 900px; margin: 0 auto; padding: 30px 40px; }
+.section-title { font-size: 1.5em; color: #f1f5f9; border-bottom: 2px solid #334155; padding-bottom: 8px; margin: 30px 0 20px; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+.query-card .query-text { font-size: 1.1em; color: #93c5fd; margin-bottom: 12px; font-weight: 600; }
+.query-card .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 700; margin-right: 10px; }
+.badge-absent { background: #7f1d1d; color: #fca5a5; }
+.badge-weak { background: #78350f; color: #fcd34d; }
+.query-card .analysis { color: #cbd5e1; font-size: 0.95em; margin-top: 8px; }
+.competitor-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.comp-card { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px; text-align: center; }
+.comp-card .cname { color: #e2e8f0; font-weight: 600; }
+.comp-card .cdesc { color: #64748b; font-size: 0.8em; margin-top: 4px; }
+.cta { background: linear-gradient(135deg, #0f172a, #1e293b); border: 2px solid #3b82f6; border-radius: 12px; padding: 30px; margin-top: 30px; text-align: center; }
+.cta h3 { color: #60a5fa; font-size: 1.3em; margin-bottom: 15px; }
+.plays { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; text-align: left; }
+.play { background: #1e293b; border-radius: 8px; padding: 14px; }
+.play .num { color: #3b82f6; font-weight: 700; font-size: 1.2em; }
+.play .desc { color: #cbd5e1; font-size: 0.9em; }
+.footer { text-align: center; padding: 30px; color: #64748b; font-size: 0.9em; border-top: 1px solid #1e293b; margin-top: 40px; }
+.footer a { color: #60a5fa; }
 </style>
 </head>
 <body>
 <div class="header">
-<h1>AI Search Visibility Audit</h1>
-<div class="subtitle">Vendelux — B2B Event Intelligence Platform</div>
+  <h1>AI SEARCH VISIBILITY AUDIT</h1>
+  <div class="subtitle">Vendelux — B2B Event Intelligence AI</div>
+</div>
+<div class="stats">
+  <div class="stat-pill"><div class="value">$50M</div><div class="label">Series B ($71M total)</div></div>
+  <div class="stat-pill"><div class="value">0/5</div><div class="label">AI Visibility Score</div></div>
+  <div class="stat-pill"><div class="value">~8</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
+</div>
+<div class="alert">
+  <h3>🔑 KEY FINDING</h3>
+  <p>Vendelux raised $50M Series B ($71M total) to power B2B event intelligence — yet AI search engines cite Cvent, Bizzabo, Splash, and Zoom Events for every B2B event query. Vendelux appears in <strong>0 of 5</strong> category-defining AI search results. The AI narrative about "best B2B event tools" is being written by competitors with established G2/Reddit presence — but Vendelux's AI-tracked 250K+ events story is completely invisible.</p>
 </div>
 <div class="container">
-<div class="stats">
-<div class="stat-card"><div class="stat-value">$71M</div><div class="stat-label">Total Funding</div></div>
-<div class="stat-card"><div class="stat-value">0/5</div><div class="stat-label">AI Visibility</div></div>
-<div class="stat-card"><div class="stat-value">9</div><div class="stat-label">G2 Reviews</div></div>
-<div class="stat-card"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div>
-</div>
+  <div class="section-title">5 Category Queries — AI Search Analysis</div>
 
-<div class="alert">
-<div class="alert-title">🔑 KEY FINDING</div>
-<p>Vendelux raised $50M Series B ($71M total) to power B2B event intelligence — yet appears in 0 of 5 category-defining AI search queries. Competitors Cvent, Bizzabo, and Splash dominate AI Overviews, while Vendelux is invisible. With only 9 G2 reviews and zero Reddit presence, every new piece of UGC shifts the AI narrative in the B2B event-tech category.</p>
-</div>
+  <div class="query-card">
+    <div class="query-text">"best B2B event marketing software 2026"</div>
+    <span class="badge badge-absent">ABSENT</span>
+    <div class="analysis">AI Overviews cite Bizzabo, Cvent, Splash, and Hubilo. No mention of Vendelux despite its 250K+ event coverage.</div>
+  </div>
 
-<div class="query-section">
-<h2>🔍 AI Search Query Audit (5 Queries)</h2>
+  <div class="query-card">
+    <div class="query-text">"event intelligence platform B2B"</div>
+    <span class="badge badge-absent">ABSENT</span>
+    <div class="analysis">AI answers reference RainFocus, Bizzabo, and Cvent's attendee intelligence features. Vendelux's event ROI analytics are invisible.</div>
+  </div>
 
-<div class="query-card">
-<div class="q-header"><span class="q-text">"best B2B event intelligence platform 2026"</span><span class="badge badge-absent">ABSENT</span></div>
-<div class="q-analysis">AI Overviews cite Cvent, Bizzabo, and Splash as the top event platforms. Vendelux does not appear in any AI-cited source for this core category query — zero organic presence in the AI answer stack.</div>
-<div class="q-sources">Top AI-cited sources: Cvent.com (editorial), Bizzabo.com (vendor), G2 Grid Report (directory)</div>
-</div>
+  <div class="query-card">
+    <div class="query-text">"conference sponsorship ROI tool"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">Sparse AI results — a Reddit thread with 8 comments dominates. One thoughtful comment naming Vendelux could define this query.</div>
+  </div>
 
-<div class="query-card">
-<div class="q-header"><span class="q-text">"AI event marketing software ROI"</span><span class="badge badge-absent">ABSENT</span></div>
-<div class="q-analysis">AI Overviews reference Cvent's analytics, Bizzabo's KPI dashboard, and G2 comparison pages. No Vendelux mention despite its AI-native attendee intelligence and ROI measurement features.</div>
-<div class="q-sources">Top AI-cited sources: Cvent blog (editorial), G2 event management (directory), Bizzabo ROI guide (vendor)</div>
-</div>
+  <div class="query-card">
+    <div class="query-text">"B2B event data platform for marketers"</div>
+    <span class="badge badge-absent">ABSENT</span>
+    <div class="analysis">AI cites ZoomInfo and event-specific directories. Vendelux's 65M+ event data points are not in any AI-indexed source.</div>
+  </div>
 
-<div class="query-card">
-<div class="q-header"><span class="q-text">"Vendelux vs Cvent event platform"</span><span class="badge badge-weak">WEAK</span></div>
-<div class="q-analysis">No direct comparison page indexed. Cvent and Bizzabo comparison pages dominate, leaving Vendelux without a search presence in competitive evaluation queries. A single comparison article or Reddit thread would shift this dramatically.</div>
-<div class="q-sources">Top AI-cited sources: G2 comparisons, TrustRadius vendor pages, Capterra event software list</div>
-</div>
+  <div class="query-card">
+    <div class="query-text">"trade show attendee tracking software"</div>
+    <span class="badge badge-absent">ABSENT</span>
+    <div class="analysis">G2 grid results dominate, featuring Cvent and Bizzabo. Vendelux needs G2 reviews to enter this AI conversation.</div>
+  </div>
 
-<div class="query-card">
-<div class="q-header"><span class="q-text">"how to measure B2B event ROI with AI"</span><span class="badge badge-absent">ABSENT</span></div>
-<div class="q-analysis">This how-to query shows AI Overviews citing general marketing blogs and Cvent's measurement tools. Vendelux, which built its entire platform around AI-driven event ROI measurement, is completely absent — a major missed opportunity for category ownership.</div>
-<div class="q-sources">Top AI-cited sources: HubSpot blog (editorial), Cvent resource center (vendor), Forbes marketing (editorial)</div>
-</div>
+  <div class="section-title">Competitors Dominating AI Search</div>
+  <div class="competitor-cards">
+    <div class="comp-card"><div class="cname">Cvent</div><div class="cdesc">Enterprise event management, 1,800+ G2 reviews</div></div>
+    <div class="comp-card"><div class="cname">Bizzabo</div><div class="cdesc">Event experience OS, 1,200+ G2 reviews</div></div>
+    <div class="comp-card"><div class="cname">Splash</div><div class="cdesc">Event marketing platform, 600+ G2 reviews</div></div>
+    <div class="comp-card"><div class="cname">RainFocus</div><div class="cdesc">Enterprise event intelligence, G2 presence</div></div>
+  </div>
 
-<div class="query-card">
-<div class="q-header"><span class="q-text">"B2B event platform for enterprise 2026"</span><span class="badge badge-absent">ABSENT</span></div>
-<div class="q-analysis">AI sources recommend Cvent (enterprise), Bizzabo, and RainFocus. Vendelux, tracking 250K+ global events with Fortune 500 customers, is absent from the AI-generated enterprise recommendation stack. Enterprise buyers start in AI chatbots — and never see Vendelux.</div>
-<div class="q-sources">Top AI-cited sources: G2 Enterprise Grid, Cvent enterprise page (vendor), Bizzabo case studies (vendor)</div>
+  <div class="cta">
+    <h3>4 Genhance Plays to Own the AI Narrative</h3>
+    <div class="plays">
+      <div class="play"><div class="num">1</div><div class="desc">Seed 10 G2 reviews from existing customers — each review becomes AI training data</div></div>
+      <div class="play"><div class="num">2</div><div class="desc">Contribute to 3 sparse Reddit threads AI already cites for event-tech queries</div></div>
+      <div class="play"><div class="num">3</div><div class="desc">Comment on YouTube creator videos about event marketing tools (sparse comment sections)</div></div>
+      <div class="play"><div class="num">4</div><div class="desc">Launch on Product Hunt with the "250K events tracked" narrative to seed AI-indexed UGC</div></div>
+    </div>
+  </div>
 </div>
-</div>
-
-<div class="comp-section">
-<h2>🏢 Competitors Dominating AI Answers</h2>
-<div class="comp-grid">
-<div class="comp-card"><div class="comp-name">Cvent</div><div class="comp-detail">1,500+ G2 reviews, 20+ years</div></div>
-<div class="comp-card"><div class="comp-name">Bizzabo</div><div class="comp-detail">800+ G2 reviews, Series E</div></div>
-<div class="comp-card"><div class="comp-name">Splash</div><div class="comp-detail">300+ G2 reviews</div></div>
-<div class="comp-card"><div class="comp-name">RainFocus</div><div class="comp-detail">Enterprise event platform</div></div>
-</div>
-</div>
-
-<div class="cta-section">
-<h2>🚀 4 Genhance Plays to Win AI Visibility</h2>
-<div class="plays">
-<div class="play-card">
-<div class="play-num">PLAY 1</div>
-<div class="play-title">Reddit Thought Leadership</div>
-<div class="play-desc">Post 3 comments in existing "best event platform" Reddit threads that AI already cites. Each comment represents 15-25% of the AI-indexed UGC corpus for event-tech queries.</div>
-</div>
-<div class="play-card">
-<div class="play-num">PLAY 2</div>
-<div class="play-title">G2 Review Mobilization</div>
-<div class="play-desc">Mobilize 10-15 verified customers to post G2 reviews focusing on AI-driven attendee intelligence and ROI measurement. Shifts G2 from 9 → 24 reviews.</div>
-</div>
-<div class="play-card">
-<div class="play-num">PLAY 3</div>
-<div class="play-title">Category Comparison Content</div>
-<div class="play-desc">Publish "Vendelux vs Cvent" comparison content on your domain and third-party platforms. AI Overviews for competitive queries cite comparison content heavily.</div>
-</div>
-<div class="play-card">
-<div class="play-num">PLAY 4</div>
-<div class="play-title">YouTube Creator Outreach</div>
-<div class="play-desc">Identify 3 niche event-tech YouTube creators and comment on their videos. Google AI Overviews cite YouTube comments more than medical websites — a massive untapped lever for B2B categories.</div>
-</div>
-</div>
-</div>
-
 <div class="footer">
-<div class="name">Rajesh Gautam, PhD</div>
-<div>Founder and CEO, genhance.ai</div>
-<div style="margin-top:12px">
-<a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp;
-<a href="https://genhance.ai">genhance.ai</a>
-</div>
-<div style="margin-top:12px;font-size:.7rem;color:#4a5580">AI Search Visibility Audit · August 2026 · For informational purposes only</div>
-</div>
+  <strong>Rajesh Gautam, PhD</strong><br>
+  Founder and CEO, genhance.ai<br>
+  <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
 </div>
 </body>
 </html>
