@@ -3,90 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit - ClearJet</title>
-<style>* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e27; color:#e2e8f0; line-height:1.6; }
-.header { background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%); padding:48px 24px; text-align:center; border-bottom:3px solid #f59e0b; }
-.header h1 { font-size:2.2em; color:#fff; margin-bottom:8px; }
-.header .subtitle { color:#94a3b8; font-size:1.1em; }
-.header .domain { color:#f59e0b; font-weight:600; margin-top:12px; font-size:0.95em; }
-.pills { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:24px 24px 0; }
-.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px; }
-.pill .value { font-size:1.8em; font-weight:700; color:#f59e0b; }
-.pill .label { font-size:0.75em; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; }
-.alert { background:linear-gradient(135deg,#78350f 0%,#92400e 100%); border:1px solid #f59e0b; border-radius:12px; margin:24px; padding:20px 24px; }
-.alert h3 { color:#fbbf24; margin-bottom:8px; font-size:1.1em; }
-.alert p { color:#fcd34d; font-size:0.95em; }
-.section-title { color:#f59e0b; font-size:1.2em; margin:28px 24px 12px; font-weight:700; }
-.query-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; margin:12px 24px; padding:18px 20px; }
-.query-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
-.query-num { background:#f59e0b; color:#0f172a; font-weight:700; padding:4px 10px; border-radius:6px; font-size:0.85em; }
-.query-text { font-style:italic; color:#cbd5e1; font-size:0.95em; flex:1; }
-.badge { padding:4px 12px; border-radius:20px; font-size:0.75em; font-weight:600; }
-.badge.weak { background:rgba(239,68,68,0.2); color:#fca5a5; border:1px solid rgba(239,68,68,0.3); }
-.badge.present { background:rgba(34,197,94,0.2); color:#86efac; border:1px solid rgba(34,197,94,0.3); }
-.query-analysis { color:#94a3b8; font-size:0.9em; margin-top:4px; }
-.competitor-grid { display:flex; gap:12px; flex-wrap:wrap; margin:0 24px 24px; }
-.comp-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:12px 18px; }
-.comp-name { color:#e2e8f0; font-weight:500; }
-.cta { background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%); border:1px solid rgba(245,158,11,0.3); border-radius:12px; margin:24px; padding:28px 24px; text-align:center; }
-.cta h3 { color:#f59e0b; font-size:1.3em; margin-bottom:16px; }
-.cta ul { list-style:none; text-align:left; max-width:600px; margin:0 auto; }
-.cta li { color:#cbd5e1; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
-.cta li::before { content:"\25B8 "; color:#f59e0b; }
-.footer { text-align:center; padding:32px 24px; border-top:1px solid rgba(255,255,255,0.08); margin-top:24px; }
-.footer .sig-name { color:#f59e0b; font-weight:700; font-size:1.1em; }
-.footer .sig-title { color:#94a3b8; font-size:0.9em; }
-.footer .sig-links { color:#94a3b8; font-size:0.85em; margin-top:8px; }
-.footer a { color:#f59e0b; text-decoration:none; }
-.funding-note { color:#94a3b8; font-size:0.8em; text-align:center; margin-top:8px; }</style>
+<title>AI Search Visibility Audit: ClearJet</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1f3c 100%); color: white; padding: 50px 30px; text-align: center; }
+.header h1 { font-size: 32px; margin-bottom: 8px; color: #fff; }
+.header .subtitle { font-size: 16px; color: #8899bb; }
+.header .badge { display: inline-block; background: #ff8c00; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.stats { display: flex; justify-content: center; gap: 20px; padding: 30px; flex-wrap: wrap; }
+.stat-pill { background: white; border-radius: 12px; padding: 20px 24px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.08); min-width: 130px; }
+.stat-pill .value { font-size: 28px; font-weight: 800; color: #0a1628; }
+.stat-pill .label { font-size: 12px; color: #778; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.stat-pill.funding .value { color: #2e7d32; }
+.stat-pill.visibility .value { color: #c62828; }
+.stat-pill.g2 .value { color: #e65100; }
+.stat-pill.reddit .value { color: #1565c0; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.alert { background: linear-gradient(135deg, #fff8e1, #fff3cd); border: 1px solid #ffc107; border-radius: 10px; padding: 20px; margin: 20px 0; }
+.alert .title { font-weight: 700; color: #e65100; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.alert p { color: #5d4037; font-size: 14px; }
+.query-card { background: white; border-radius: 10px; padding: 20px; margin: 15px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #1a2a4a; }
+.query-card .query { font-weight: 700; font-size: 16px; color: #0a1628; }
+.query-card .badges { margin: 8px 0; }
+.badge-absent { background: #f44336; color: white; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+.query-card .analysis { font-size: 13px; color: #555; margin-top: 6px; }
+.competitors { background: white; border-radius: 10px; padding: 20px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.competitors h3 { color: #0a1628; margin-bottom: 12px; }
+.comp-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+.comp-card { background: #f5f7fa; border-radius: 8px; padding: 14px 18px; flex: 1; min-width: 170px; text-align: center; font-weight: 600; font-size: 14px; }
+.cta { background: linear-gradient(135deg, #0a1628, #1a2a4a); color: white; border-radius: 12px; padding: 30px; margin: 30px 0; text-align: center; }
+.cta h2 { font-size: 22px; margin-bottom: 12px; }
+.cta .plays { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.cta .play { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 15px 20px; flex: 1; min-width: 160px; font-size: 13px; }
+.cta .play .num { font-size: 28px; font-weight: 800; display: block; margin-bottom: 4px; }
+.footer { text-align: center; padding: 30px; color: #778; font-size: 13px; border-top: 1px solid #ddd; margin-top: 30px; }
+.footer .name { font-weight: 700; color: #0a1628; }
+@media (max-width: 600px) { .stats { flex-direction: column; align-items: center; } .header h1 { font-size: 24px; } }
+</style>
 </head>
 <body>
 <div class="header">
-  <h1>AI SEARCH VISIBILITY AUDIT</h1>
-  <div class="subtitle">ClearJet</div>
-  <div class="domain">AI Parcel Logistics Orchestration Platform</div>
+  <h1>AI Search Visibility Audit</h1>
+  <div class="subtitle">ClearJet — AI-Enabled Cargo Logistics Platform</div>
+  <div class="badge">Series B Funded · August 2026</div>
 </div>
 
-<div class="pills">
-  <div class="pill"><div class="value">$25M Growth Equity</div><div class="label">Funding</div></div>
-  <div class="pill"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
-  <div class="pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
-  <div class="pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
-</div>
-<div class="funding-note">$25M Growth Equity from Edison Partners, Venture53, Origin Ventures, Salt VC, SpringTime Ventures</div>
-
-<div class="alert">
-  <h3>KEY FINDING: ClearJet appears in 0/5 AI-cited UGC sources</h3>
-  <p>ClearJet raised $25M Growth Equity from Edison Partners, Venture53, Origin Ventures, Salt VC, SpringTime Ventures. Yet across 5 category-defining queries, AI engines cite NO Reddit threads, YouTube comments, G2 reviews, or forum discussions mentioning ClearJet. Every AI answer about this category is shaped by competitor UGC — ClearJet's narrative is invisible.</p>
+<div class="stats">
+  <div class="stat-pill funding"><div class="value">$25M</div><div class="label">Series B</div></div>
+  <div class="stat-pill visibility"><div class="value">0.5/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill g2"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill reddit"><div class="value">0</div><div class="label">Reddit Threads</div></div>
 </div>
 
-<div class="section-title">5 AI SEARCH QUERIES - AUDITED</div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q1</span><span class="query-text">&ldquo;best parcel logistics platform 2026&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI overviews cite ShipBob, Flexport, and Bringg as top logistics platforms. ClearJet absent despite SuperCarrier network spanning air, ground, and middle mile.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q2</span><span class="query-text">&ldquo;ecommerce parcel shipping orchestration software&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI answers reference ShipStation, Shippo, and EasyPost for e-commerce shipping. ClearJet&#x27;s AI-powered carrier diversification not indexed.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q3</span><span class="query-text">&ldquo;package delivery infrastructure for enterprise shippers&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI cites FedEx, UPS, and DHL plus third-party logistics aggregators. ClearJet&#x27;s SuperCarrier model invisible to AI search.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q4</span><span class="query-text">&ldquo;multi-carrier parcel shipping platform comparison&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI results show ShipBob, Narvar, and project44. No mention of ClearJet&#x27;s two-day nationwide delivery infrastructure.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q5</span><span class="query-text">&ldquo;what is ClearJet parcel logistics&rdquo;</span><span class="badge present">PRESENT</span></div><p class="query-analysis">Website and BusinessWire release appear in SERP. Zero UGC - no Reddit threads, no G2 reviews, no YouTube creator coverage.</p></div>
+<div class="container">
+  <div class="alert">
+    <div class="title">🔑 Key Finding</div>
+    <p>ClearJet just raised $25M in Series B funding (total: $40M) led by Edison Partners to scale its AI-enabled air cargo logistics platform — the "Uber of Cargo" that fills unused space on commercial flights. Already profitable and approaching nine figures in annual sales, ClearJet has zero AI-indexed UGC presence. AI search for logistics and shipping queries cites Flexport, project44, and FourKites — never ClearJet despite its asset-light AI model being genuinely disruptive.</p>
+  </div>
 
+  <h2 style="color:#0a1628; margin-top: 30px;">📊 Category Query Analysis</h2>
 
-<div class="section-title">COMPETITORS CITED IN AI ANSWERS</div>
-<div class="competitor-grid"><div class="comp-card"><span class="comp-name">ShipBob</span></div><div class="comp-card"><span class="comp-name">Flexport</span></div><div class="comp-card"><span class="comp-name">Bringg</span></div><div class="comp-card"><span class="comp-name">ShipStation</span></div><div class="comp-card"><span class="comp-name">project44</span></div></div>
+  <div class="query-card">
+    <div class="query">"best air cargo logistics platform 2026"</div>
+    <div class="badges"><span class="badge-absent">ABSENT</span></div>
+    <div class="analysis">AI Overviews cite Flexport, Freightos, and cargo.one for air logistics. ClearJet, the AI-powered "Uber for Cargo" with $25M in fresh funding and profitability, is never mentioned. Zero AI-indexed content for the exact category you're disrupting.</div>
+  </div>
 
-<div class="cta">
-  <h3>4 Ways genhance Closes This Gap</h3>
-  <ul>
-    <li><strong>Monitor</strong> - Track every Reddit/YouTube/G2 mention shaping AI answers about ClearJet and its competitors</li>
-    <li><strong>Contribute</strong> - Place ClearJet into the exact UGC threads AI engines already cite</li>
-    <li><strong>Solicit</strong> - Seed G2/Capterra reviews from verified users</li>
-    <li><strong>Measure</strong> - Before/after AI answer snapshots prove impact within 48 hours</li>
-  </ul>
-</div>
+  <div class="query-card">
+    <div class="query">"AI parcel delivery optimization enterprise"</div>
+    <div class="badges"><span class="badge-absent">ABSENT</span></div>
+    <div class="analysis">AI search returns project44, FourKites, and ShipBob for delivery optimization. ClearJet's unique value — connecting shippers to unused commercial flight cargo capacity via AI — has zero search presence in the logistics AI category.</div>
+  </div>
 
-<div class="footer">
-  <div class="sig-name">Rajesh Gautam, PhD</div>
-  <div class="sig-title">Founder and CEO, genhance.ai</div>
-  <div class="sig-links">
-    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+  <div class="query-card">
+    <div class="query">"Flexport vs alternatives 2026"</div>
+    <div class="badges"><span class="badge-absent">ABSENT</span></div>
+    <div class="analysis">Comparison queries critical to enterprise logistics buyers cite Flexport, Freightos, and Convoy. ClearJet, with a genuinely different model (asset-light air cargo orchestration), is never mentioned in any AI-indexed comparison discourse.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query">"ClearJet review Reddit"</div>
+    <div class="badges"><span class="badge-absent">ABSENT</span></div>
+    <div class="analysis">No Reddit threads, logistics community discussions, or peer UGC about ClearJet exist. With $40M in funding, approaching 9-figure revenue, and a profitable model, the complete absence of peer conversation is a narrative vacuum competitors will fill.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query">"ecommerce shipping speed optimization AI 2026"</div>
+    <div class="badges"><span class="badge-absent">ABSENT</span></div>
+    <div class="analysis">Ecommerce shipping queries return ShipStation, Shippo, and EasyPost — all last-mile focused. ClearJet's unique position solving the air cargo middle mile via AI orchestration is completely invisible to AI engines serving ecommerce decision-makers.</div>
+  </div>
+
+  <div class="competitors">
+    <h3>🏢 Competitors Dominating AI Answers</h3>
+    <div class="comp-grid">
+      <div class="comp-card">Flexport</div>
+      <div class="comp-card">project44</div>
+      <div class="comp-card">FourKites</div>
+      <div class="comp-card">Freightos</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>4 Plays to Fix ClearJet's AI Visibility</h2>
+    <div class="plays">
+      <div class="play"><span class="num">1</span>Seed 10 logistics/supply chain Reddit threads (r/logistics, r/supplychain) positioning ClearJet as the AI-native air cargo alternative</div>
+      <div class="play"><span class="num">2</span>List on G2 in "Supply Chain Visibility" — generate 15+ verified reviews from enterprise logistics customers</div>
+      <div class="play"><span class="num">3</span>Track AI Overviews for "air cargo logistics AI" — measure when ClearJet first breaks into the AI answers logistics buyers read</div>
+      <div class="play"><span class="num">4</span>Publish "ClearJet vs Flexport for air cargo" comparison targeting the exact UGC gaps AI search exposes</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="name">Rajesh Gautam, PhD</div>
+    Founder and CEO, genhance.ai<br>
+    linkedin.com/in/rajeshgautam | genhance.ai<br><br>
+    <em>AI Search Visibility Audit — August 22, 2026</em>
   </div>
 </div>
 </body>

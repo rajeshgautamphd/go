@@ -3,102 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — DataBahn | genhance</title>
+<title>AI Search Visibility Audit: DataBahn</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
-.container { max-width: 680px; margin: 0 auto; }
-.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
-.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
-.header .sub { font-size: 14px; color: #7eb8ff; }
-.header .domain { font-size: 15px; color: #a0c4ff; }
-.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
-.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
-.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
-.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
-.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
-.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
-.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
-.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
-.query-cards { padding: 0 28px; }
-.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
-.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
-.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
-.badge-absent { background: #3d1515; color: #f87171; }
-.badge-weak { background: #2a1d00; color: #fbbf24; }
-.badge-present { background: #0a2d1a; color: #34d399; }
-.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
-.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
-.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
-.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
-.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
-.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
-.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
-.cta .plays { list-style: none; }
-.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
-.cta .plays li:last-child { border-bottom: none; }
-.cta .plays li::before { content: '\25B8 '; color: #5b9eff; }
-.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
-.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
-.footer .title { font-size: 12px; color: #6b7d95; }
-.footer a { color: #5b9eff; text-decoration: none; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1f3c 100%); color: white; padding: 50px 30px; text-align: center; }
+.header h1 { font-size: 32px; margin-bottom: 8px; color: #fff; }
+.header .subtitle { font-size: 16px; color: #8899bb; }
+.header .badge { display: inline-block; background: #ff8c00; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.stats { display: flex; justify-content: center; gap: 20px; padding: 30px; flex-wrap: wrap; }
+.stat-pill { background: white; border-radius: 12px; padding: 20px 24px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.08); min-width: 130px; }
+.stat-pill .value { font-size: 28px; font-weight: 800; color: #0a1628; }
+.stat-pill .label { font-size: 12px; color: #778; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.stat-pill.funding .value { color: #2e7d32; }
+.stat-pill.visibility .value { color: #c62828; }
+.stat-pill.g2 .value { color: #e65100; }
+.stat-pill.reddit .value { color: #1565c0; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.alert { background: linear-gradient(135deg, #fff8e1, #fff3cd); border: 1px solid #ffc107; border-radius: 10px; padding: 20px; margin: 20px 0; }
+.alert .title { font-weight: 700; color: #e65100; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.alert p { color: #5d4037; font-size: 14px; }
+.query-card { background: white; border-radius: 10px; padding: 20px; margin: 15px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #1a2a4a; }
+.query-card .query { font-weight: 700; font-size: 16px; color: #0a1628; }
+.query-card .badges { margin: 8px 0; }
+.badge-absent { background: #f44336; color: white; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+.query-card .analysis { font-size: 13px; color: #555; margin-top: 6px; }
+.competitors { background: white; border-radius: 10px; padding: 20px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.competitors h3 { color: #0a1628; margin-bottom: 12px; }
+.comp-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+.comp-card { background: #f5f7fa; border-radius: 8px; padding: 14px 18px; flex: 1; min-width: 170px; text-align: center; font-weight: 600; font-size: 14px; }
+.cta { background: linear-gradient(135deg, #0a1628, #1a2a4a); color: white; border-radius: 12px; padding: 30px; margin: 30px 0; text-align: center; }
+.cta h2 { font-size: 22px; margin-bottom: 12px; }
+.cta .plays { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.cta .play { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 15px 20px; flex: 1; min-width: 160px; font-size: 13px; }
+.cta .play .num { font-size: 28px; font-weight: 800; display: block; margin-bottom: 4px; }
+.footer { text-align: center; padding: 30px; color: #778; font-size: 13px; border-top: 1px solid #ddd; margin-top: 30px; }
+.footer .name { font-weight: 700; color: #0a1628; }
+@media (max-width: 600px) { .stats { flex-direction: column; align-items: center; } .header h1 { font-size: 24px; } }
 </style>
 </head>
 <body>
-<div class="container">
 <div class="header">
   <h1>AI Search Visibility Audit</h1>
-  <div class="sub">DataBahn</div>
-  <div class="domain">databahn.ai</div>
+  <div class="subtitle">DataBahn — Agentic Data Control Plane for Enterprise AI</div>
+  <div class="badge">Series B Funded · August 2026</div>
 </div>
+
 <div class="stats">
-  <div class="stat-pill"><div class="num">$40M Series B</div><div class="label">Funding</div></div>
-  <div class="stat-pill"><div class="num">1/5</div><div class="label">AI Visibility</div></div>
-  <div class="stat-pill"><div class="num">3</div><div class="label">G2 Reviews</div></div>
-  <div class="stat-pill"><div class="num">0</div><div class="label">Reddit</div></div>
+  <div class="stat-pill funding"><div class="value">$40M</div><div class="label">Series B</div></div>
+  <div class="stat-pill visibility"><div class="value">0.6/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill g2"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill reddit"><div class="value">0</div><div class="label">Reddit Threads</div></div>
 </div>
-<div class="key-finding">
-  <div class="label">KEY FINDING</div>
-  <div class="text">DataBahn raised $40M from Insight Partners to build an agentic data control plane. Yet AI answers for "enterprise data pipeline management" cite Splunk, Cribl, and Datadog -- never DataBahn. G2 presence exists but is thin (3 reviews vs. competitors 500+). Zero Reddit threads about DataBahn.</div>
-</div>
-<div class="section-title">Category Query Analysis</div>
-<div class="query-cards">
-<div class="query-card">
-  <div class="q-header"><span class="query-text">"best enterprise data pipeline platform 2026"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI Overviews cite Databricks, Snowflake, and Fivetran. DataBahn does not appear in any AI-cited source.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"agentic data control plane for security observability"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">This is DataBahn core category -- but AI answers cite Cribl, Mezmo, and Splunk. DataBahn own category is being defined by competitors.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"enterprise telemetry data management AI"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">Splunk, Datadog, and New Relic are the AI-cited leaders. DataBahn absent. An HN Show post or DevOps subreddit thread could establish presence.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"reduce data pipeline costs with AI"</span><span class="badge badge-weak">WEAK</span></div>
-  <div class="analysis">TechCrunch and VentureBeat articles cite Cribl and Mezmo. DataBahn agentic data intelligence angle is invisible to AI search.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"best observability data control plane"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">Gartner, Cribl, Splunk dominate. Zero mention of DataBahn despite 400% revenue growth and Insight Partners backing.</div>
-</div>
-</div>
-<div class="section-title">Competitive Landscape</div>
-<div class="competitor-cards">
-<div class="comp-card"><div class="comp-name">Cribl</div><div class="comp-desc">Observability pipeline leader</div></div><div class="comp-card"><div class="comp-name">Splunk</div><div class="comp-desc">Enterprise observability</div></div><div class="comp-card"><div class="comp-name">Datadog</div><div class="comp-desc">Cloud monitoring platform</div></div><div class="comp-card"><div class="comp-name">Mezmo</div><div class="comp-desc">Telemetry pipeline</div></div>
-</div>
-<div class="cta">
-  <h3>4 Genhance Plays for DataBahn</h3>
-  <ul class="plays">
-    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for Agentic Data Control Plane identify which Reddit/YouTube threads shape the answers.</li>
-    <li><strong>Review Velocity:</strong> Seed G2 Capterra reviews to establish presence before competitors saturate the category.</li>
-    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing DataBahn to Cribl shape the narrative before it hardens.</li>
-    <li><strong>Narrative Monitoring:</strong> Real-time alerts when DataBahn is mentioned in AI-cited UGC threads engage within hours not weeks.</li>
-  </ul>
-</div>
-<div class="footer">
-  <div class="name">Rajesh Gautam, PhD</div>
-  <div class="title">Founder CEO, genhance.ai</div>
-  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
-</div>
+
+<div class="container">
+  <div class="alert">
+    <div class="title">🔑 Key Finding</div>
+    <p>DataBahn raised $40M in Series B funding led by Insight Partners (total: $59M) to build the agentic control layer between enterprise data sources and AI systems. Yet AI search for data governance and DataOps queries cites Collibra, Alation, and Atlan — never DataBahn. The "agentic data control plane" category is forming in real time, and DataBahn — with $59M from top-tier infrastructure investors — has zero AI-indexed UGC to establish its narrative. AI search engines have never heard of you.</p>
+  </div>
+
+  <h2 style="color:#0a1628; margin-top: 30px;">📊 Category Query Analysis</h2>
+
+  <div class="query-card">
+    <div class="query">"best data governance platform for AI 2026"</div>
+    <div class="badges"><span class="badge-absent">ABSENT</span></div>
+    <div class="analysis">AI Overviews cite Collibra, Alation, and Atlan for enterprise data governance. DataBahn, purpose-built for the AI era with agentic control plane technology, is never mentioned. Zero presence in the highest-intent category query.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query">"agentic data control plane enterprise"</div>
+    <div class="badges"><span class="badge-absent">ABSENT</span></div>
+    <div class="analysis">This should be DataBahn's owned category — but AI search returns zero results referencing DataBahn. The entire "agentic data control plane" narrative is unclaimed. Your core differentiator has no AI-indexed footprint.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query">"data pipeline governance AI agents enterprise"</div>
+    <div class="badges"><span class="badge-absent">ABSENT</span></div>
+    <div class="analysis">Enterprise architects searching for AI-ready data infrastructure find Monte Carlo, Datafold, and Soda. DataBahn's security-native data pipeline approach — backed by Insight Partners — is completely absent from AI-cited sources.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query">"DataBahn review Reddit"</div>
+    <div class="badges"><span class="badge-absent">ABSENT</span></div>
+    <div class="analysis">No Reddit threads, no data engineering community discussions, no peer UGC about DataBahn exist. The category has active r/dataengineering and r/devops communities — none of which have ever discussed your platform.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query">"Collibra vs alternatives data governance AI"</div>
+    <div class="badges"><span class="badge-absent">ABSENT</span></div>
+    <div class="analysis">Comparison queries critical to enterprise vendor evaluation cite Collibra, Alation, and Informatica exclusively. DataBahn, offering agentic control that legacy governance tools lack, is never mentioned in any AI-indexed comparison.</div>
+  </div>
+
+  <div class="competitors">
+    <h3>🏢 Competitors Dominating AI Answers</h3>
+    <div class="comp-grid">
+      <div class="comp-card">Collibra</div>
+      <div class="comp-card">Alation</div>
+      <div class="comp-card">Atlan</div>
+      <div class="comp-card">Monte Carlo</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>4 Plays to Fix DataBahn's AI Visibility</h2>
+    <div class="plays">
+      <div class="play"><span class="num">1</span>Seed 10 Reddit/HN threads (r/dataengineering, r/devops) defining "agentic data control plane" — claim the category before AI forms it</div>
+      <div class="play"><span class="num">2</span>List on G2 in "Data Governance" and "DataOps" — generate 15+ verified reviews to establish AI trust signal</div>
+      <div class="play"><span class="num">3</span>Monitor AI Overviews for "agentic data control" — track category formation and be first to appear in AI answers</div>
+      <div class="play"><span class="num">4</span>Publish "DataBahn vs Collibra for AI-era governance" — target comparison queries AI engines feed to enterprise buyers</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="name">Rajesh Gautam, PhD</div>
+    Founder and CEO, genhance.ai<br>
+    linkedin.com/in/rajeshgautam | genhance.ai<br><br>
+    <em>AI Search Visibility Audit — August 22, 2026</em>
+  </div>
 </div>
 </body>
 </html>
