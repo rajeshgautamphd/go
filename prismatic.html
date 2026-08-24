@@ -25,71 +25,79 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
 .badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
-.badge-absent { background: #3d1010; color: #ff6b6b; }
-.badge-weak { background: #3d2a00; color: #f59e0b; }
-.badge-present { background: #0d3d1a; color: #4ade80; }
-.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 8px; line-height: 1.5; }
-.competitor-cards { padding: 0 28px; }
-.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
-.comp-card .name { font-size: 14px; color: #c8d6e5; }
-.comp-card .desc { font-size: 11px; color: #8899bb; }
-.cta { margin: 28px; padding: 28px 22px; background: linear-gradient(135deg, #0d1b3e, #0f2045); border: 1px solid #1e3a6e; border-radius: 12px; text-align: center; }
-.cta h3 { font-size: 17px; color: #fff; margin-bottom: 14px; }
-.cta .plays { text-align: left; }
-.cta .play { font-size: 13px; color: #a0c4ff; margin-bottom: 8px; padding-left: 16px; position: relative; }
-.cta .play::before { content: '▶'; position: absolute; left: 0; color: #5b9eff; font-size: 10px; top: 2px; }
-.footer { padding: 20px 28px 32px; text-align: center; font-size: 12px; color: #556; border-top: 1px solid #1e3a6e; margin-top: 10px; }
+.badge-absent { background: #3d1515; color: #f87171; }
+.badge-weak { background: #2a1d00; color: #fbbf24; }
+.badge-present { background: #0a2d1a; color: #34d399; }
+.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
+.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
+.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
+.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
+.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
+.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
+.cta .plays { list-style: none; }
+.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
+.cta .plays li:last-child { border-bottom: none; }
+.cta .plays li::before { content: '\\25B8 '; color: #5b9eff; }
+.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
+.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
+.footer .title { font-size: 12px; color: #6b7d95; }
 .footer a { color: #5b9eff; text-decoration: none; }
 </style>
 </head>
 <body>
 <div class="container">
 <div class="header">
-<h1>AI Search Visibility Audit</h1>
-<div class="sub">Prismatic — Embedded iPaaS for B2B SaaS</div>
-<div class="domain">prismatic.io</div>
+  <h1>AI Search Visibility Audit</h1>
+  <div class="sub">Prismatic</div>
+  <div class="domain">prismatic.io</div>
 </div>
 <div class="stats">
-<div class="stat-pill"><div class="num">$22M Series B</div><div class="label">FUNDING</div></div>
-<div class="stat-pill"><div class="num">1/5</div><div class="label">AI VISIBILITY</div></div>
-<div class="stat-pill"><div class="num">~40</div><div class="label">G2 REVIEWS</div></div>
-<div class="stat-pill"><div class="num">1</div><div class="label">REDDIT</div></div>
+  <div class="stat-pill"><div class="num">$22M Series B</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="num">2/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="num">~40</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="num">0</div><div class="label">Reddit</div></div>
 </div>
 <div class="key-finding">
-<div class="label">⚡ KEY FINDING</div>
-<div class="text">Prismatic raised $22M from Five Elms Capital to simplify integrations for B2B SaaS companies. While Prismatic has G2 presence (Leader in Embedded iPaaS), AI search engines for 'best embedded iPaaS' cite Workato, Tray.io, and Zapier — rarely Prismatic. The Reddit conversation is nearly empty (1 thread), and AI-cited UGC about embedded integration platforms overwhelmingly references competitors.</div>
+  <div class="label">⚡ KEY FINDING</div>
+  <div class="text">Prismatic raised $22M from Five Elms Capital to build the leading embedded iPaaS for B2B SaaS. Named a G2 Leader in embedded integration, yet AI answers for "best embedded iPaaS" cite Workato, Paragon, and Merge — rarely Prismatic. Zero Reddit threads means AI has no community-sourced opinion of Prismatic.</div>
 </div>
-<div class="section-title">🔍 AI Search Query Audit (5 Category Queries)</div>
+<div class="section-title">📊 Category Query Analysis</div>
 <div class="query-cards">
-<div class="query-card"><div class="q-header"><span class="query-text">best embedded iPaaS platform 2026</span><span class="badge badge-weak">WEAK</span></div><div class="analysis">AI Overviews cite Workato, Tray.io, and Boomi. Prismatic appears in some comparison articles but not in AI direct answers.</div></div>
-<div class="query-card"><div class="q-header"><span class="query-text">embedded integration platform for SaaS companies</span><span class="badge badge-weak">WEAK</span></div><div class="analysis">Paragon, Nango, and Workato dominate AI citations. Prismatic is listed in comparison pages but not AI-cited directly.</div></div>
-<div class="query-card"><div class="q-header"><span class="query-text">B2B SaaS integration platform Reddit</span><span class="badge badge-absent">ABSENT</span></div><div class="analysis">Only 1 Reddit thread mentions Prismatic. Competitor mentions (Zapier, Make) appear in dozens of threads.</div></div>
-<div class="query-card"><div class="q-header"><span class="query-text">best iPaaS for multi-tenant SaaS</span><span class="badge badge-absent">ABSENT</span></div><div class="analysis">AI engines cite Workato Embedded and Tray.io. Prismatic is completely absent from the AI narrative.</div></div>
-<div class="query-card"><div class="q-header"><span class="query-text">low-code integration builder for SaaS</span><span class="badge badge-weak">WEAK</span></div><div class="analysis">Citations go to Zapier, Make, and Pipedream. Prismatic's low-code designer appears in one comparison article.</div></div>
-
+<div class="query-card">
+  <div class="q-header"><span class="query-text">"best embedded iPaaS for B2B SaaS 2026"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">AI Overviews cite Paragon, Workato, Merge, and Cyclr. Prismatic's G2 Leadership is invisible to AI overviews without community discussion.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"B2B SaaS integration platform comparison"</span><span class="badge badge-weak">WEAK</span></div>
+  <div class="analysis">One comparison article mentions Prismatic alongside Workato. No Reddit or forum UGC exists for this query.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"embedded integration platform vs unified API"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">AI answers cite Merge, Apideck, and Paragon for this architectural decision. Prismatic's embedded iPaaS approach is not discussed.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"best low-code integration builder"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">Zapier, Make, and Tray.io dominate this query. Prismatic's low-code designer is not indexed in AI answers for this category.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"Prismatic vs Workato integration platform"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">No direct comparison or user discussion exists. AI cannot answer "which is better" because no UGC exists to cite.</div>
 </div>
-<div class="section-title">🏢 What AI Answers Cite Instead</div>
+</div>
+<div class="section-title">🏢 Competitive Landscape</div>
 <div class="competitor-cards">
-<div class="comp-card"><div><span class="name">Workato</span><br><span class="desc">Enterprise iPaaS with massive AI search presence and G2 reviews</span></div></div>
-<div class="comp-card"><div><span class="name">Tray.io</span><br><span class="desc">General iPaaS cited in every integration platform query</span></div></div>
-<div class="comp-card"><div><span class="name">Paragon</span><br><span class="desc">Embedded iPaaS competitor with strong content marketing</span></div></div>
-<div class="comp-card"><div><span class="name">Zapier</span><br><span class="desc">Consumer/SMB automation — cited in all simple-integration AI queries</span></div></div>
-
+<div class="comp-card"><div class="comp-name">Workato</div><div class="comp-desc">Enterprise iPaaS, 500+ G2 reviews</div></div><div class="comp-card"><div class="comp-name">Paragon</div><div class="comp-desc">Embedded iPaaS, strong HN presence</div></div><div class="comp-card"><div class="comp-name">Merge</div><div class="comp-desc">Unified API, active Reddit threads</div></div><div class="comp-card"><div class="comp-name">Cyclr</div><div class="comp-desc">UK embedded iPaaS, G2 presence</div></div>
 </div>
 <div class="cta">
-<h3>4 genhance Plays for Prismatic</h3>
-<div class="plays">
-<div class="play">Reddit: Post in r/SaaS, r/devops about embedded integrations — Prismatic has only 1 Reddit mention</div>
-<div class="play">YouTube: Create a 'build vs buy integrations' video — zero competitors have technical YT content</div>
-<div class="play">G2: Solicit reviews from existing 200+ SaaS customers — Prismatic already has a G2 page</div>
-<div class="play">HN: Tech-focused Show HN about Prismatic's developer experience — dev tool posts perform well</div>
-
-</div>
+  <h3>4 Genhance Plays for Prismatic</h3>
+  <ul class="plays">
+    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for Embedded iPaaS / B2B Integrations — identify which Reddit/YouTube threads shape the answers.</li>
+    <li><strong>Review Velocity:</strong> Seed G2 &amp; Capterra reviews to establish presence before competitors saturate the category.</li>
+    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing Prismatic to Workato — shape the narrative before it hardens.</li>
+    <li><strong>Narrative Monitoring:</strong> Real-time alerts when Prismatic is mentioned in AI-cited UGC threads — engage within hours, not weeks.</li>
+  </ul>
 </div>
 <div class="footer">
-Rajesh Gautam, PhD<br>
-Founder &amp; CEO, genhance.ai<br>
-<a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder &amp; CEO, genhance.ai</div>
+  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
 </div>
 </div>
 </body>
