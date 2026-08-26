@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Quincus | genhance</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 680px; margin: 0 auto; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
+.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
+.header .sub { font-size: 14px; color: #7eb8ff; }
+.header .domain { font-size: 15px; color: #a0c4ff; }
+.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
+.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
+.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
+.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
+.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
+.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
+.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
+.query-cards { padding: 0 28px; }
+.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
+.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
+.badge-absent { background: #3d1515; color: #f87171; }
+.badge-weak { background: #2a1d00; color: #fbbf24; }
+.badge-present { background: #0a2d1a; color: #34d399; }
+.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
+.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
+.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
+.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
+.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
+.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
+.cta .plays { list-style: none; }
+.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
+.cta .plays li:last-child { border-bottom: none; }
+.cta .plays li::before { content: '\25B8 '; color: #5b9eff; }
+.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
+.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
+.footer .title { font-size: 12px; color: #6b7d95; }
+.footer a { color: #5b9eff; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <div class="sub">Quincus</div>
+  <div class="domain">quincus.com</div>
+</div>
+<div class="stats">
+  <div class="stat-pill"><div class="num">$100M+ Series B</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="num">1/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="num">0</div><div class="label">Reddit</div></div>
+</div>
+<div class="key-finding">
+  <div class="label">⚡ KEY FINDING</div>
+  <div class="text">Quincus raised over $100M (UP.Partners, GGV Capital) to solve enterprise supply chain challenges — but has zero G2 reviews, zero Reddit presence, and zero YouTube mentions. AI answers about supply chain SaaS cite project44, FourKites, and Blue Yonder — Quincus is completely invisible.</div>
+</div>
+<div class="section-title">📊 Category Query Analysis</div>
+<div class="query-cards">
+  <div class="query-card">
+    <div class="q-header">
+      <div class="query-text">"best supply chain management software 2026"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">AI Overviews cite Blue Yonder, SAP, Oracle SCM. Reddit threads in r/supplychain mention project44 and FourKites — never Quincus.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="query-text">"AI supply chain optimization platform"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">project44 and FourKites dominate AI-cited UGC. Quincus absent from all search results and AI answers.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="query-text">"enterprise logistics SaaS Singapore"</div>
+      <div class="badge badge-weak">WEAK</div>
+    </div>
+    <div class="analysis">Quincus appears in editorial coverage about Singapore startups but zero UGC threads. AI Overviews don't cite these articles.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="query-text">"supply chain visibility platform review"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">FourKites and project44 dominate. Zero Quincus mentions across any UGC surface.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="query-text">"Quincus vs project44 supply chain"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">No comparison content exists anywhere. AI defaults to project44 as the category reference.</div>
+  </div>
+</div>
+<div class="section-title">🏢 Competitive Landscape</div>
+<div class="competitor-cards">
+    <div class="comp-card"><div class="comp-name">project44</div><div class="comp-desc">Supply chain visibility leader</div></div>
+    <div class="comp-card"><div class="comp-name">FourKites</div><div class="comp-desc">Real-time tracking platform</div></div>
+    <div class="comp-card"><div class="comp-name">Blue Yonder</div><div class="comp-desc">Enterprise supply chain</div></div>
+    <div class="comp-card"><div class="comp-name">SAP SCM</div><div class="comp-desc">Legacy supply chain ERP</div></div>
+</div>
+<div class="cta">
+  <h3>4 Genhance Plays for Quincus</h3>
+  <ul class="plays">
+    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of supply chain SaaS queries — identify which Reddit/forum sources AI Overviews cite.</li>
+    <li><strong>Reddit Strategy:</strong> r/supplychain has 50K+ subscribers with threads averaging 5-12 comments — one contribution mentioning Quincus shifts the AI narrative.</li>
+    <li><strong>G2 Launch:</strong> List on G2 immediately — supply chain SaaS category has room for new entrants with strong funding stories.</li>
+    <li><strong>Comparison Content:</strong> Create "Quincus vs project44" comparison pages — AI Overviews will cite these for comparison queries where currently no content exists.</li>
+  </ul>
+</div>
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder and CEO, genhance.ai</div>
+  <div style="margin-top:8px"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Warp | genhance</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 680px; margin: 0 auto; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
+.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
+.header .sub { font-size: 14px; color: #7eb8ff; }
+.header .domain { font-size: 15px; color: #a0c4ff; }
+.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
+.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
+.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
+.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
+.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
+.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
+.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
+.query-cards { padding: 0 28px; }
+.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
+.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
+.badge-absent { background: #3d1515; color: #f87171; }
+.badge-weak { background: #2a1d00; color: #fbbf24; }
+.badge-present { background: #0a2d1a; color: #34d399; }
+.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
+.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
+.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
+.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
+.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
+.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
+.cta .plays { list-style: none; }
+.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
+.cta .plays li:last-child { border-bottom: none; }
+.cta .plays li::before { content: '\25B8 '; color: #5b9eff; }
+.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
+.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
+.footer .title { font-size: 12px; color: #6b7d95; }
+.footer a { color: #5b9eff; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <div class="sub">Warp</div>
+  <div class="domain">warp.com</div>
+</div>
+<div class="stats">
+  <div class="stat-pill"><div class="num">$60M Series B</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="num">1/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="num">0</div><div class="label">Reddit</div></div>
+</div>
+<div class="key-finding">
+  <div class="label">⚡ KEY FINDING</div>
+  <div class="text">Warp raised $60M Series B (Battery Ventures, Peak XV) for AI-native payroll, compliance, and benefits — but has zero G2 reviews and zero Reddit presence. AI answers for HR/payroll tools cite Gusto, Rippling, Deel, and Justworks. Warp is completely invisible in AI search.</div>
+</div>
+<div class="section-title">📊 Category Query Analysis</div>
+<div class="query-cards">
+  <div class="query-card">
+    <div class="q-header">
+      <div class="query-text">"best payroll software for startups 2026"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">AI Overviews cite Gusto, Rippling, and Justworks from Reddit threads. Warp absent — zero UGC exists.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="query-text">"AI payroll compliance automation platform"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">Emerging category — no dedicated AI payroll tool cited. Rippling and Gusto dominate AI answers for adjacent queries.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="query-text">"Warp payroll review Reddit experience"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">Zero Reddit threads about Warp exist. Zero user experiences. AI has no UGC to scrape.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="query-text">"best HR compliance and benefits platform"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">Rippling and Gusto dominate. Reddit threads cite Deel for international compliance. Warp absent from all UGC sources.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="query-text">"AI-native payroll benefits for SMB"</div>
+      <div class="badge badge-weak">WEAK</div>
+    </div>
+    <div class="analysis">Category is nascent — no dedicated AI-native payroll tools in AI Overviews yet. First-mover opportunity exists.</div>
+  </div>
+</div>
+<div class="section-title">🏢 Competitive Landscape</div>
+<div class="competitor-cards">
+    <div class="comp-card"><div class="comp-name">Gusto</div><div class="comp-desc">SMB payroll & HR leader</div></div>
+    <div class="comp-card"><div class="comp-name">Rippling</div><div class="comp-desc">Unified HR, IT & finance</div></div>
+    <div class="comp-card"><div class="comp-name">Deel</div><div class="comp-desc">Global payroll & compliance</div></div>
+    <div class="comp-card"><div class="comp-name">Justworks</div><div class="comp-desc">PEO & payroll for SMB</div></div>
+</div>
+<div class="cta">
+  <h3>4 Genhance Plays for Warp</h3>
+  <ul class="plays">
+    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan mapping every Reddit/YouTube source feeding AI answers for payroll/HR queries.</li>
+    <li><strong>Category Definition:</strong> Warp is "AI-native payroll" — own this narrative before incumbents co-opt it. One Reddit comment defining the category becomes the AI reference.</li>
+    <li><strong>G2 Launch:</strong> List on G2 immediately — payroll category is dominated by Gusto/Rippling but no AI-native entrant exists yet.</li>
+    <li><strong>Reddit Strategy:</strong> r/smallbusiness and r/startups (1M+ combined) have weekly payroll threads with 10-25 comments — one mention shifts AI narrative.</li>
+  </ul>
+</div>
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder and CEO, genhance.ai</div>
+  <div style="margin-top:8px"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+</div>
+</div>
+</body>
+</html>
