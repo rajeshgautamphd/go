@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Comulate</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+  .header { background: linear-gradient(135deg, #0a1628 0%, #0f2247 40%, #162d5a 100%); padding: 56px 0 44px; text-align: center; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 50%, rgba(0,163,255,0.08) 0%, transparent 70%); }
+  .header h1 { font-size: 2.4rem; font-weight: 800; color: #ffffff; position: relative; z-index: 1; letter-spacing: -0.5px; }
+  .header h1 span { color: #00a3ff; }
+  .header .subtitle { color: #8b9db5; margin-top: 8px; font-size: 1.05rem; position: relative; z-index: 1; }
+  .stats-row { display: flex; justify-content: center; gap: 16px; margin-top: 28px; flex-wrap: wrap; position: relative; z-index: 1; }
+  .stat-pill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 40px; padding: 10px 22px; text-align: center; backdrop-filter: blur(8px); }
+  .stat-pill .value { font-size: 1.25rem; font-weight: 700; color: #ffffff; }
+  .stat-pill .label { font-size: 0.72rem; color: #8b9db5; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+  .stat-pill.danger .value { color: #f85149; }
+  .stat-pill.warn .value { color: #d2991d; }
+  .key-finding { background: linear-gradient(135deg, #3d2200 0%, #2a1800 100%); border: 1px solid #d2991d40; border-radius: 12px; padding: 24px 28px; margin: 36px 0 32px; }
+  .key-finding .label { color: #d2991d; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+  .key-finding p { color: #ffd58c; font-size: 0.98rem; line-height: 1.7; }
+  .section-title { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 2px solid #1e293b; }
+  .query-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; display: flex; align-items: flex-start; gap: 16px; transition: border-color 0.2s; }
+  .query-card:hover { border-color: #30363d; }
+  .query-card .rank { color: #8b9db5; font-weight: 600; font-size: 0.85rem; min-width: 28px; }
+  .query-card .content { flex: 1; }
+  .query-card .query-text { font-weight: 600; color: #e6edf3; margin-bottom: 6px; font-size: 0.97rem; }
+  .query-card .analysis { color: #8b9db5; font-size: 0.87rem; line-height: 1.6; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-left: 10px; }
+  .badge.absent { background: #f8514920; color: #f85149; border: 1px solid #f8514940; }
+  .badge.weak { background: #d2991d20; color: #d2991d; border: 1px solid #d2991d40; }
+  .badge.present { background: #3fb95020; color: #3fb950; border: 1px solid #3fb95040; }
+  .competitors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; margin-bottom: 36px; }
+  .competitor-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 18px 20px; text-align: center; }
+  .competitor-card .name { font-weight: 700; color: #e6edf3; font-size: 0.95rem; }
+  .competitor-card .threat { font-size: 0.75rem; color: #d2991d; margin-top: 4px; }
+  .cta { background: linear-gradient(135deg, #0f2247 0%, #162d5a 50%, #0a1628 100%); border: 1px solid #1e3a6e; border-radius: 14px; padding: 40px 32px; margin: 40px 0 48px; text-align: center; }
+  .cta h2 { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
+  .cta .sub { color: #8b9db5; margin-bottom: 28px; font-size: 0.95rem; }
+  .plays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; text-align: left; }
+  .play-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px 20px; }
+  .play-card .num { color: #00a3ff; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .play-card .title { color: #ffffff; font-weight: 700; font-size: 0.93rem; margin-bottom: 4px; }
+  .play-card .desc { color: #8b9db5; font-size: 0.8rem; line-height: 1.5; }
+  .footer { text-align: center; padding: 32px 0 48px; border-top: 1px solid #1e293b; }
+  .footer .name { color: #ffffff; font-weight: 700; font-size: 1rem; }
+  .footer .creds { color: #8b9db5; font-size: 0.82rem; margin-top: 4px; }
+  .footer a { color: #00a3ff; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .header h1 { font-size: 1.7rem; }
+    .stats-row { gap: 8px; }
+    .stat-pill { padding: 8px 14px; }
+    .stat-pill .value { font-size: 1.05rem; }
+    .query-card { flex-direction: column; gap: 8px; }
+    .competitors-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>AI SEARCH VISIBILITY AUDIT: <span>Comulate</span></h1>
+    <p class="subtitle">comulate.com &mdash; Accounting Automation / Insurance AI</p>
+    <div class="stats-row">
+      <div class="stat-pill">
+        <div class="value">$25M</div>
+        <div class="label">Total Funding</div>
+      </div>
+      <div class="stat-pill danger">
+        <div class="value">0 / 5</div>
+        <div class="label">AI Visibility</div>
+      </div>
+      <div class="stat-pill danger">
+        <div class="value">0</div>
+        <div class="label">G2 Reviews</div>
+      </div>
+      <div class="stat-pill danger">
+        <div class="value">0</div>
+        <div class="label">Reddit Threads</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="key-finding">
+    <div class="label">⚠ KEY FINDING</div>
+    <p>Comulate's $20M Series B from BOND targets an underserved intersection of accounting AI and insurance. With <strong>zero G2 reviews</strong> and no AI answer presence, every insurance-specific accounting query returns either generic enterprise tools or legacy insurance software — Comulate is invisible to AI-assisted buyers.</p>
+  </div>
+
+  <h2 class="section-title">Company Profile</h2>
+  <div style="background:#161b22; border:1px solid #21262d; border-radius:10px; padding:20px 24px; margin-bottom:24px;">
+    <table style="width:100%; border-collapse:collapse; font-size:0.93rem;">
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0; width:160px;">Headquarters</td><td style="color:#e6edf3; padding:6px 0;">San Francisco, CA</td></tr>
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0;">Founded</td><td style="color:#e6edf3; padding:6px 0;">2022</td></tr>
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0;">Employees</td><td style="color:#e6edf3; padding:6px 0;">~40</td></tr>
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0;">CEO</td><td style="color:#e6edf3; padding:6px 0;">Jordan Katz</td></tr>
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0;">Funding</td><td style="color:#e6edf3; padding:6px 0;">$20M Series B (Feb 2025), total ~$25M</td></tr>
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0;">Investors</td><td style="color:#e6edf3; padding:6px 0;">BOND, Workday Ventures</td></tr>
+    </table>
+  </div>
+
+  <h2 class="section-title">AI Search Query Analysis</h2>
+
+  <div class="query-card">
+    <div class="rank">Q1</div>
+    <div class="content">
+      <div class="query-text">"best insurance accounting software 2026" <span class="badge absent">ABSENT</span></div>
+      <div class="analysis">Vertafore and Applied Epic dominate insurance accounting searches; Comulate absent.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="rank">Q2</div>
+    <div class="content">
+      <div class="query-text">"insurance broker accounting automation" <span class="badge absent">ABSENT</span></div>
+      <div class="analysis">Broker automation queries return NowCerts and EZLynx; no Comulate.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="rank">Q3</div>
+    <div class="content">
+      <div class="query-text">"AI accounting platform for insurance 2026" <span class="badge absent">ABSENT</span></div>
+      <div class="analysis">AI accounting searches cite FloQast and BlackLine generally; insurance-specific gap exists.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="rank">Q4</div>
+    <div class="content">
+      <div class="query-text">"revenue recognition software for insurance brokers" <span class="badge absent">ABSENT</span></div>
+      <div class="analysis">Revenue recognition queries dominated by NetSuite and Sage Intacct; insurance vertical underserved.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="rank">Q5</div>
+    <div class="content">
+      <div class="query-text">"insurance back-office automation 2026" <span class="badge absent">ABSENT</span></div>
+      <div class="analysis">InsurTech back-office searches return Duck Creek and Guidewire; no Comulate.</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Competitor Landscape</h2>
+  <div class="competitors-grid">
+    <div class="competitor-card">
+      <div class="name">FloQast</div>
+      <div class="threat">● Accounting AI leader</div>
+    </div>
+    <div class="competitor-card">
+      <div class="name">BlackLine</div>
+      <div class="threat">● Enterprise R2R dominance</div>
+    </div>
+    <div class="competitor-card">
+      <div class="name">Sage Intacct</div>
+      <div class="threat">● Mid-market accounting</div>
+    </div>
+    <div class="competitor-card">
+      <div class="name">Oracle NetSuite</div>
+      <div class="threat">● ERP + accounting leader</div>
+    </div>
+    <div class="competitor-card">
+      <div class="name">Vertafore</div>
+      <div class="threat">● Insurance-specific tech</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Close the Visibility Gap</h2>
+    <p class="sub">Comulate needs to claim the insurance accounting AI niche before competitors do</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="num">Play 01</div>
+        <div class="title">Claim the "AI Accounting for Insurance" Category</div>
+        <div class="desc">Publish definitive category-creation content that AI engines will cite when answering insurance accounting queries.</div>
+      </div>
+      <div class="play-card">
+        <div class="num">Play 02</div>
+        <div class="title">Build G2 & Peer Review Momentum</div>
+        <div class="desc">Launch a verified review program with insurance brokers and finance teams to establish AI-crawlable social proof.</div>
+      </div>
+      <div class="play-card">
+        <div class="num">Play 03</div>
+        <div class="title">Target Insurance Media & Analyst Coverage</div>
+        <div class="desc">Secure placements in Insurance Journal, PropertyCasualty360, and Gartner to build the external signals AI engines trust.</div>
+      </div>
+      <div class="play-card">
+        <div class="num">Play 04</div>
+        <div class="title">Develop Insurance-Specific Comparison Content</div>
+        <div class="desc">Create detailed guides: "Comulate vs. Vertafore" and "Why generic ERP fails insurance brokers" to intercept comparison queries.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="name">Rajesh Gautam, PhD</div>
+    <div class="creds">Founder and CEO, <a href="https://genhance.ai" target="_blank">genhance.ai</a></div>
+    <div class="creds" style="margin-top:4px;">
+      <a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a> &bull; <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

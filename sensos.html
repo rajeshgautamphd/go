@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Sensos</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+  .header { background: linear-gradient(135deg, #0a1628 0%, #0f2247 40%, #162d5a 100%); padding: 56px 0 44px; text-align: center; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 50%, rgba(0,163,255,0.08) 0%, transparent 70%); }
+  .header h1 { font-size: 2.4rem; font-weight: 800; color: #ffffff; position: relative; z-index: 1; letter-spacing: -0.5px; }
+  .header h1 span { color: #00a3ff; }
+  .header .subtitle { color: #8b9db5; margin-top: 8px; font-size: 1.05rem; position: relative; z-index: 1; }
+  .stats-row { display: flex; justify-content: center; gap: 16px; margin-top: 28px; flex-wrap: wrap; position: relative; z-index: 1; }
+  .stat-pill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 40px; padding: 10px 22px; text-align: center; backdrop-filter: blur(8px); }
+  .stat-pill .value { font-size: 1.25rem; font-weight: 700; color: #ffffff; }
+  .stat-pill .label { font-size: 0.72rem; color: #8b9db5; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+  .stat-pill.danger .value { color: #f85149; }
+  .stat-pill.warn .value { color: #d2991d; }
+  .key-finding { background: linear-gradient(135deg, #3d2200 0%, #2a1800 100%); border: 1px solid #d2991d40; border-radius: 12px; padding: 24px 28px; margin: 36px 0 32px; }
+  .key-finding .label { color: #d2991d; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+  .key-finding p { color: #ffd58c; font-size: 0.98rem; line-height: 1.7; }
+  .section-title { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 2px solid #1e293b; }
+  .query-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; display: flex; align-items: flex-start; gap: 16px; transition: border-color 0.2s; }
+  .query-card:hover { border-color: #30363d; }
+  .query-card .rank { color: #8b9db5; font-weight: 600; font-size: 0.85rem; min-width: 28px; }
+  .query-card .content { flex: 1; }
+  .query-card .query-text { font-weight: 600; color: #e6edf3; margin-bottom: 6px; font-size: 0.97rem; }
+  .query-card .analysis { color: #8b9db5; font-size: 0.87rem; line-height: 1.6; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-left: 10px; }
+  .badge.absent { background: #f8514920; color: #f85149; border: 1px solid #f8514940; }
+  .badge.weak { background: #d2991d20; color: #d2991d; border: 1px solid #d2991d40; }
+  .badge.present { background: #3fb95020; color: #3fb950; border: 1px solid #3fb95040; }
+  .competitors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; margin-bottom: 36px; }
+  .competitor-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 18px 20px; text-align: center; }
+  .competitor-card .name { font-weight: 700; color: #e6edf3; font-size: 0.95rem; }
+  .competitor-card .threat { font-size: 0.75rem; color: #d2991d; margin-top: 4px; }
+  .cta { background: linear-gradient(135deg, #0f2247 0%, #162d5a 50%, #0a1628 100%); border: 1px solid #1e3a6e; border-radius: 14px; padding: 40px 32px; margin: 40px 0 48px; text-align: center; }
+  .cta h2 { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
+  .cta .sub { color: #8b9db5; margin-bottom: 28px; font-size: 0.95rem; }
+  .plays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; text-align: left; }
+  .play-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px 20px; }
+  .play-card .num { color: #00a3ff; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .play-card .title { color: #ffffff; font-weight: 700; font-size: 0.93rem; margin-bottom: 4px; }
+  .play-card .desc { color: #8b9db5; font-size: 0.8rem; line-height: 1.5; }
+  .footer { text-align: center; padding: 32px 0 48px; border-top: 1px solid #1e293b; }
+  .footer .name { color: #ffffff; font-weight: 700; font-size: 1rem; }
+  .footer .creds { color: #8b9db5; font-size: 0.82rem; margin-top: 4px; }
+  .footer a { color: #00a3ff; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .header h1 { font-size: 1.7rem; }
+    .stats-row { gap: 8px; }
+    .stat-pill { padding: 8px 14px; }
+    .stat-pill .value { font-size: 1.05rem; }
+    .query-card { flex-direction: column; gap: 8px; }
+    .competitors-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>AI SEARCH VISIBILITY AUDIT: <span>Sensos</span></h1>
+    <p class="subtitle">sensos.io &mdash; Supply Chain Visibility / IoT Smart Labels</p>
+    <div class="stats-row">
+      <div class="stat-pill">
+        <div class="value">$20M</div>
+        <div class="label">Total Funding</div>
+      </div>
+      <div class="stat-pill danger">
+        <div class="value">0 / 5</div>
+        <div class="label">AI Visibility</div>
+      </div>
+      <div class="stat-pill danger">
+        <div class="value">0</div>
+        <div class="label">G2 Reviews</div>
+      </div>
+      <div class="stat-pill danger">
+        <div class="value">0</div>
+        <div class="label">Reddit Threads</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="key-finding">
+    <div class="label">⚠ KEY FINDING</div>
+    <p>Sensos, a Sony Semiconductor spin-off with unique degradable IoT smart label technology, has <strong>zero AI search presence</strong>. Every supply chain visibility query returns competitors with G2 reviews and market reports — Sensos appears in 0 of 5 queries despite its $20M Series A.</p>
+  </div>
+
+  <h2 class="section-title">Company Profile</h2>
+  <div style="background:#161b22; border:1px solid #21262d; border-radius:10px; padding:20px 24px; margin-bottom:24px;">
+    <table style="width:100%; border-collapse:collapse; font-size:0.93rem;">
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0; width:160px;">Headquarters</td><td style="color:#e6edf3; padding:6px 0;">Tel Aviv, Israel</td></tr>
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0;">Founded</td><td style="color:#e6edf3; padding:6px 0;">2022</td></tr>
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0;">Employees</td><td style="color:#e6edf3; padding:6px 0;">~25</td></tr>
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0;">CEO</td><td style="color:#e6edf3; padding:6px 0;">Aviv Castro</td></tr>
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0;">Funding</td><td style="color:#e6edf3; padding:6px 0;">$20M Series A (Feb 2024)</td></tr>
+      <tr><td style="color:#8b9db5; padding:6px 12px 6px 0;">Investors</td><td style="color:#e6edf3; padding:6px 0;">Magenta Venture Partners; Sony Semiconductor Israel spin-off</td></tr>
+    </table>
+  </div>
+
+  <h2 class="section-title">AI Search Query Analysis</h2>
+
+  <div class="query-card">
+    <div class="rank">Q1</div>
+    <div class="content">
+      <div class="query-text">"best supply chain visibility software 2026" <span class="badge absent">ABSENT</span></div>
+      <div class="analysis">project44 and FourKites own visibility AI Overviews; Sensos absent.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="rank">Q2</div>
+    <div class="content">
+      <div class="query-text">"real-time shipment tracking platform 2026" <span class="badge absent">ABSENT</span></div>
+      <div class="analysis">Real-time tracking queries return Roambee and Tive; no Sensos.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="rank">Q3</div>
+    <div class="content">
+      <div class="query-text">"cold chain monitoring solutions 2026" <span class="badge absent">ABSENT</span></div>
+      <div class="analysis">Cold chain searches cite Sensitech and Controlant; Sensos invisible.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="rank">Q4</div>
+    <div class="content">
+      <div class="query-text">"IoT logistics tracking 2026" <span class="badge absent">ABSENT</span></div>
+      <div class="analysis">IoT logistics results dominated by Samsara and Roambee; Sensos not indexed.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="rank">Q5</div>
+    <div class="content">
+      <div class="query-text">"top supply chain visibility platforms 2026" <span class="badge absent">ABSENT</span></div>
+      <div class="analysis">Gartner and G2 quadrant reports list incumbents only; Sensos has no profile.</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Competitor Landscape</h2>
+  <div class="competitors-grid">
+    <div class="competitor-card">
+      <div class="name">project44</div>
+      <div class="threat">● Dominates visibility AI</div>
+    </div>
+    <div class="competitor-card">
+      <div class="name">FourKites</div>
+      <div class="threat">● High AI search presence</div>
+    </div>
+    <div class="competitor-card">
+      <div class="name">TrusTrace</div>
+      <div class="threat">● Supply chain traceability</div>
+    </div>
+    <div class="competitor-card">
+      <div class="name">Trackonomy</div>
+      <div class="threat">● IoT tracking presence</div>
+    </div>
+    <div class="competitor-card">
+      <div class="name">Sourcemap</div>
+      <div class="threat">● Visibility market share</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Close the Visibility Gap</h2>
+    <p class="sub">Sensos needs an AI search strategy to bring its IoT smart label innovation to logistics buyers</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="num">Play 01</div>
+        <div class="title">Establish G2 & Peer Review Presence</div>
+        <div class="desc">Launch a G2 profile and generate 40+ verified reviews to signal category relevance to AI search engines.</div>
+      </div>
+      <div class="play-card">
+        <div class="num">Play 02</div>
+        <div class="title">Publish Cold Chain & IoT Thought Leadership</div>
+        <div class="desc">Create data-rich articles on IoT smart labels and cold chain monitoring optimized for AI answer extraction.</div>
+      </div>
+      <div class="play-card">
+        <div class="num">Play 03</div>
+        <div class="title">Leverage Sony Heritage for Credibility</div>
+        <div class="desc">Build content highlighting the Sony Semiconductor lineage to differentiate from competitors in AI-crawled sources.</div>
+      </div>
+      <div class="play-card">
+        <div class="num">Play 04</div>
+        <div class="title">Target Analyst & Media Coverage</div>
+        <div class="desc">Secure Gartner Cool Vendor recognition and logistics trade media features to build third-party validation signals.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="name">Rajesh Gautam, PhD</div>
+    <div class="creds">Founder and CEO, <a href="https://genhance.ai" target="_blank">genhance.ai</a></div>
+    <div class="creds" style="margin-top:4px;">
+      <a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a> &bull; <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Gravity Climate</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0e17; color: #e2e8f0; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  .header { background: linear-gradient(135deg, #0a1628 0%, #0f1f3d 40%, #15294d 100%); padding: 60px 0 50px; text-align: center; border-bottom: 1px solid #1e3a5f; }
+  .header h1 { font-size: 2.4rem; font-weight: 800; color: #ffffff; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .header .subtitle { font-size: 1.05rem; color: #8899b4; font-weight: 400; }
+
+  .stats-row { display: flex; justify-content: center; gap: 20px; margin: -28px auto 40px; flex-wrap: wrap; padding: 0 24px; max-width: 960px; }
+  .stat-pill { background: linear-gradient(135deg, #111b2e, #1a2844); border: 1px solid #243a5c; border-radius: 14px; padding: 18px 28px; text-align: center; min-width: 140px; box-shadow: 0 4px 24px rgba(0,0,0,0.35); }
+  .stat-pill .stat-value { font-size: 1.65rem; font-weight: 800; color: #ffffff; }
+  .stat-pill .stat-label { font-size: 0.75rem; color: #8899b4; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+  .stat-pill.visibility .stat-value { color: #ef4444; }
+  .stat-pill.reviews .stat-value, .stat-pill.reddit .stat-value { color: #f59e0b; }
+
+  .key-finding { background: linear-gradient(135deg, #2d1a0e, #3d2615); border: 1px solid #b45309; border-radius: 16px; padding: 28px 32px; margin-bottom: 44px; }
+  .key-finding .badge { display: inline-block; background: #b45309; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 6px; margin-bottom: 12px; }
+  .key-finding h3 { font-size: 1.1rem; color: #fbbf24; margin-bottom: 8px; }
+  .key-finding p { color: #e2c8a0; font-size: 0.95rem; }
+
+  .section-title { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #1e3a5f; }
+  .query-cards { display: flex; flex-direction: column; gap: 16px; margin-bottom: 44px; }
+  .query-card { background: #111b2e; border: 1px solid #1e3a5f; border-radius: 14px; padding: 24px 28px; display: flex; align-items: flex-start; gap: 18px; transition: border-color 0.2s; }
+  .query-card:hover { border-color: #2d4a7a; }
+  .query-num { font-size: 0.8rem; color: #4a6a96; font-weight: 700; min-width: 24px; margin-top: 3px; }
+  .query-body { flex: 1; }
+  .query-text { font-size: 1rem; color: #c8d6e5; font-weight: 600; margin-bottom: 8px; }
+  .query-analysis { font-size: 0.875rem; color: #8899b4; line-height: 1.55; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+  .badge-weak { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+  .badge-present { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+
+  .competitors { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+  .competitor-card { background: #111b2e; border: 1px solid #1e3a5f; border-radius: 12px; padding: 16px 22px; text-align: center; min-width: 130px; }
+  .competitor-card .comp-name { font-size: 0.95rem; color: #e2e8f0; font-weight: 600; }
+  .competitor-card .comp-label { font-size: 0.7rem; color: #4a6a96; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+
+  .cta-section { background: linear-gradient(135deg, #0f1f3d 0%, #15294d 50%, #0f1f3d 100%); border: 1px solid #1e3a5f; border-radius: 20px; padding: 44px 36px; margin-bottom: 50px; text-align: center; }
+  .cta-section h2 { font-size: 1.5rem; color: #ffffff; font-weight: 700; margin-bottom: 10px; }
+  .cta-section .cta-subtitle { color: #8899b4; margin-bottom: 32px; font-size: 0.95rem; }
+  .plays { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin-bottom: 36px; }
+  .play-card { background: rgba(255,255,255,0.04); border: 1px solid #243a5c; border-radius: 12px; padding: 22px 18px; text-align: left; }
+  .play-card .play-num { font-size: 0.7rem; color: #60a5fa; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .play-card .play-text { font-size: 0.9rem; color: #c8d6e5; }
+  .cta-button { display: inline-block; background: linear-gradient(135deg, #2563eb, #3b82f6); color: #fff; text-decoration: none; padding: 14px 36px; border-radius: 10px; font-weight: 700; font-size: 0.95rem; transition: transform 0.15s; }
+  .cta-button:hover { transform: translateY(-1px); }
+
+  .footer { text-align: center; padding: 30px 0 40px; border-top: 1px solid #1e3a5f; }
+  .footer .name { font-size: 1rem; color: #e2e8f0; font-weight: 600; }
+  .footer .title { font-size: 0.8rem; color: #8899b4; margin-top: 2px; }
+  .footer .links { margin-top: 8px; }
+  .footer .links a { color: #60a5fa; text-decoration: none; font-size: 0.8rem; margin: 0 8px; }
+  .footer .links a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .header h1 { font-size: 1.6rem; }
+    .stats-row { gap: 10px; }
+    .stat-pill { padding: 14px 16px; min-width: 100px; }
+    .stat-pill .stat-value { font-size: 1.3rem; }
+    .query-card { flex-direction: column; gap: 10px; }
+    .plays { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI SEARCH VISIBILITY AUDIT: GRAVITY CLIMATE</h1>
+  <p class="subtitle">Carbon Accounting / ESG Reporting — How AI search engines see this company vs. competitors</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-pill">
+    <div class="stat-value">$20M</div>
+    <div class="stat-label">Funding</div>
+  </div>
+  <div class="stat-pill visibility">
+    <div class="stat-value">0 / 5</div>
+    <div class="stat-label">AI Visibility</div>
+  </div>
+  <div class="stat-pill reviews">
+    <div class="stat-value">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill reddit">
+    <div class="stat-value">0</div>
+    <div class="stat-label">Reddit Threads</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="key-finding">
+    <span class="badge">⚠ Critical Finding</span>
+    <h3>Completely AI-invisible in the $20B carbon accounting market</h3>
+    <p>With zero G2 reviews and no Reddit presence, Gravity Climate is AI-invisible in the $20B carbon accounting market. Every category query returns competitors with established UGC presence — Gravity appears in 0 of 5 queries.</p>
+  </div>
+
+  <h2 class="section-title">Category Query Analysis</h2>
+  <div class="query-cards">
+    <div class="query-card">
+      <span class="query-num">Q1</span>
+      <div class="query-body">
+        <div class="query-text">"best carbon accounting software 2026"</div>
+        <span class="badge badge-weak">WEAK</span>
+        <p class="query-analysis">Watershed and Persefoni dominate AI Overviews; Gravity absent from all search results.</p>
+      </div>
+    </div>
+    <div class="query-card">
+      <span class="query-num">Q2</span>
+      <div class="query-body">
+        <div class="query-text">"top ESG reporting platforms for enterprises 2026"</div>
+        <span class="badge badge-weak">WEAK</span>
+        <p class="query-analysis">Enterprise buyers see Persefoni, Workiva, and Salesforce Net Zero cited in AI answers.</p>
+      </div>
+    </div>
+    <div class="query-card">
+      <span class="query-num">Q3</span>
+      <div class="query-body">
+        <div class="query-text">"carbon management platform comparison 2026"</div>
+        <span class="badge badge-weak">WEAK</span>
+        <p class="query-analysis">Comparison articles list Watershed vs Persefoni vs Sweep — Gravity never mentioned.</p>
+      </div>
+    </div>
+    <div class="query-card">
+      <span class="query-num">Q4</span>
+      <div class="query-body">
+        <div class="query-text">"enterprise sustainability reporting tools 2026"</div>
+        <span class="badge badge-weak">WEAK</span>
+        <p class="query-analysis">G2 and Capterra grids populated by incumbents; Gravity has zero G2 presence.</p>
+      </div>
+    </div>
+    <div class="query-card">
+      <span class="query-num">Q5</span>
+      <div class="query-body">
+        <div class="query-text">"scope 3 emissions tracking software 2026"</div>
+        <span class="badge badge-weak">WEAK</span>
+        <p class="query-analysis">Specialized players like Normative and Plan A dominate scope 3 queries; Gravity invisible.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Competitors Dominating AI Visibility</h2>
+  <div class="competitors">
+    <div class="competitor-card">
+      <div class="comp-name">Watershed</div>
+      <div class="comp-label">Carbon Accounting</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Persefoni</div>
+      <div class="comp-label">ESG Reporting</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Plan A</div>
+      <div class="comp-label">Decarbonization</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Sweep</div>
+      <div class="comp-label">Carbon Management</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Normative</div>
+      <div class="comp-label">Scope 3 Tracking</div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Close the AI Visibility Gap with Genhance</h2>
+    <p class="cta-subtitle">Put Gravity Climate in front of buyers using AI search — across ChatGPT, Perplexity, Google AI Overviews, and more.</p>
+    <div class="plays">
+      <div class="play-card">
+        <div class="play-num">Play 1</div>
+        <div class="play-text">Monitor what AI says about your category.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 2</div>
+        <div class="play-text">Identify the UGC sources feeding AI answers.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 3</div>
+        <div class="play-text">Deploy strategic UGC to get cited by AI engines.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 4</div>
+        <div class="play-text">Track before/after AI answer changes.</div>
+      </div>
+    </div>
+    <a href="https://genhance.ai" class="cta-button">Get an AI Visibility Audit →</a>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder and CEO, genhance.ai</div>
+  <div class="links">
+    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a>
+    <span style="color:#4a6a96;">|</span>
+    <a href="https://genhance.ai">genhance.ai</a>
+  </div>
+</div>
+
+</body>
+</html>
