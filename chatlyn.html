@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — chatlyn</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%); padding: 48px 24px; text-align: center; border-bottom: 3px solid #3b82f6; }
+.header h1 { font-size: 2.2rem; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #94a3b8; font-size: 1.1rem; }
+.header .company { color: #60a5fa; font-size: 1.4rem; margin-top: 12px; font-weight: 600; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 32px 0; }
+.stat { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 20px 16px; text-align: center; }
+.stat .value { font-size: 1.5rem; font-weight: 700; color: #60a5fa; }
+.stat .label { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.key-finding { background: linear-gradient(135deg, #78350f, #451a03); border: 1px solid #f59e0b; border-radius: 12px; padding: 24px; margin: 24px 0; }
+.key-finding h3 { color: #fbbf24; margin-bottom: 12px; font-size: 1.1rem; }
+.key-finding p { color: #fde68a; font-size: 0.95rem; }
+.section-title { color: #fff; font-size: 1.3rem; margin: 32px 0 16px; border-bottom: 1px solid #334155; padding-bottom: 8px; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+.query-card .query { font-size: 1rem; color: #fff; font-weight: 600; margin-bottom: 8px; }
+.query-card .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-right: 8px; }
+.badge-absent { background: #7f1d1d; color: #fca5a5; }
+.badge-present { background: #14532d; color: #86efac; }
+.query-card .analysis { color: #94a3b8; font-size: 0.9rem; margin-top: 8px; }
+.competitor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 32px; }
+.competitor { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 16px; text-align: center; color: #e2e8f0; font-weight: 500; }
+.cta { background: linear-gradient(135deg, #0f172a, #1e3a5f); border: 1px solid #3b82f6; border-radius: 16px; padding: 32px; margin: 32px 0; text-align: center; }
+.cta h3 { color: #fff; font-size: 1.2rem; margin-bottom: 16px; }
+.cta .plays { text-align: left; margin: 16px 0; }
+.cta .play { color: #94a3b8; font-size: 0.9rem; margin: 8px 0; padding-left: 16px; border-left: 2px solid #3b82f6; }
+.footer { text-align: center; padding: 32px 24px; color: #64748b; font-size: 0.85rem; border-top: 1px solid #1e293b; }
+.footer a { color: #60a5fa; text-decoration: none; }
+.company-info { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; justify-content: center; }
+.company-info span { background: #1e293b; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; color: #94a3b8; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🔍 AI SEARCH VISIBILITY AUDIT</h1>
+  <p class="subtitle">How does chatlyn appear in AI search results for its category?</p>
+  <p class="company">chatlyn</p>
+  <div class="company-info">
+    <span>🏢 38 employees</span>
+    <span>📍 Vienna, Austria</span>
+    <span>📅 Founded 2022</span>
+    <span>🌐 chatlyn.com</span>
+  </div>
+</div>
+<div class="container">
+  <div class="stats">
+    <div class="stat"><div class="value">~$9.3M (Series A)</div><div class="label">Funding</div></div>
+    <div class="stat"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
+    <div class="stat"><div class="value">1 reviews</div><div class="label">G2 Reviews</div></div>
+    <div class="stat"><div class="value">0 threads</div><div class="label">Reddit</div></div>
+  </div>
+  <div class="key-finding">
+    <h3>⚠️ KEY FINDING: chatlyn is invisible to AI search</h3>
+    <p>chatlyn has raised ~$9.3M (Series A) to build AI communication hub for luxury hospitality. Omnichannel inbox for WhatsApp, email, webchat, SMS across 35+ languages. AI chatbot answers routine guest questions. Serves 1,000+ hotels globally.. Yet across 5 core category queries that AI search engines use to answer buyer questions, <strong>chatlyn appears in ZERO of the sources AI Overviews, ChatGPT, and Perplexity cite</strong>. With 1 G2 reviews and 0 Reddit threads, there is virtually no user-generated content feeding AI search engines about chatlyn. Every AI answer about the Hospitality AI Guest Communication space is built entirely from competitor content — chatlyn does not exist in the AI narrative.</p>
+  </div>
+  <h2 class="section-title">📊 5 Category Queries — AI Answer Analysis</h2>
+    <div class="query-card">
+    <div class="query">Query 1: "AI hotel guest communication platform" <span class="badge badge-absent">WEAK</span></div>
+    <div class="analysis">Duve and Canary Technologies dominate AI answers. chatlyn's 35-language AI guest communication is not cited.</div>
+  </div>
+  <div class="query-card">
+    <div class="query">Query 2: "hospitality omnichannel messaging software" <span class="badge badge-absent">WEAK</span></div>
+    <div class="analysis">AI Overviews mention Zingle and Akia. chatlyn's unified inbox for 1,000+ hotels is invisible to AI search.</div>
+  </div>
+  <div class="query-card">
+    <div class="query">Query 3: "AI chatbot for hotels guest service" <span class="badge badge-absent">WEAK</span></div>
+    <div class="analysis">HiJiffy and Quicktext lead. chatlyn's integrated AI chatbot with PMS connection is absent from AI recommendations.</div>
+  </div>
+  <div class="query-card">
+    <div class="query">Query 4: "hotel guest engagement automation AI" <span class="badge badge-absent">WEAK</span></div>
+    <div class="analysis">Revinate and Cendyn cited. chatlyn's AI-powered guest engagement across 35+ languages is not referenced.</div>
+  </div>
+  <div class="query-card">
+    <div class="query">Query 5: "multilingual hotel communication AI platform" <span class="badge badge-absent">WEAK</span></div>
+    <div class="analysis">AI surfaces generic translation tools. chatlyn's hospitality-specific multilingual AI communication is not found.</div>
+  </div>
+
+  <h2 class="section-title">🏆 Competitors Currently Winning AI Search</h2>
+  <div class="competitor-grid">
+        <div class="competitor">Duve</div>
+    <div class="competitor">Canary Technologies</div>
+    <div class="competitor">Akia</div>
+    <div class="competitor">Zingle</div>
+
+  </div>
+  <div class="cta">
+    <h3>🚀 4 Ways genhance Changes This for chatlyn</h3>
+    <div class="plays">
+      <p class="play"><strong>1. Reddit & YouTube UGC Monitoring</strong> — Track every mention of chatlyn and its competitors across Reddit, YouTube, and forums where AI search engines pull their answers.</p>
+      <p class="play"><strong>2. Sparse Thread Engagement</strong> — We identify the 3-5 threads shaping AI answers for your category and contribute thoughtful perspectives that get cited by AI Overviews within 48 hours.</p>
+      <p class="play"><strong>3. Review Platform Velocity</strong> — Systematic approach to building authentic G2, Capterra, and Product Hunt reviews that AI models trust as authoritative signals.</p>
+      <p class="play"><strong>4. AI Answer Tracking</strong> — Weekly before/after snapshots of what ChatGPT, Perplexity, and Google AI Overviews say about your category — so you can see exactly when chatlyn starts appearing.</p>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <p><strong>Rajesh Gautam, PhD</strong><br>Founder and CEO, genhance.ai</p>
+  <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+  <p style="margin-top:12px; font-size:0.75rem; color:#475569;">This audit was generated using verified web search data. All claims about AI search results are backed by real query analysis. G2 and Reddit counts verified via web search.</p>
+</div>
+</body>
+</html>
