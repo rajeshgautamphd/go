@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Knak | genhance</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 680px; margin: 0 auto; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
+.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
+.header .sub { font-size: 14px; color: #7eb8ff; }
+.header .domain { font-size: 15px; color: #a0c4ff; }
+.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
+.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
+.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
+.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
+.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
+.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
+.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
+.query-cards { padding: 0 28px; }
+.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
+.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; white-space: nowrap; margin-left: 10px; }
+.badge-absent { background: #3d1515; color: #f87171; }
+.badge-weak { background: #2a1d00; color: #fbbf24; }
+.badge-present { background: #0a2d1a; color: #34d399; }
+.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
+.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
+.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
+.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
+.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
+.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
+.cta .plays { list-style: none; }
+.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
+.cta .plays li:last-child { border-bottom: none; }
+.cta .plays li::before { content: '\25B8 '; color: #5b9eff; }
+.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
+.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
+.footer .title { font-size: 12px; color: #6b7d95; }
+.footer a { color: #5b9eff; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <div class="sub">Knak</div>
+  <div class="domain">knak.com</div>
+</div>
+<div class="stats">
+  <div class="stat-pill"><div class="num">$25M Series A</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="num">2/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="num">34</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="num">1</div><div class="label">Reddit</div></div>
+</div>
+<div class="key-finding">
+  <div class="label">KEY FINDING</div>
+  <div class="text">Knak raised $25M from Insight Partners to build the first codeless campaign creation platform for enterprise marketing teams. Despite 34 G2 reviews and strong enterprise adoption, AI answers for "best email campaign creation tools" cite Mailchimp, HubSpot, and Marketo — Knak's codeless enterprise differentiator is invisible to AI search.</div>
+</div>
+<div class="section-title">Category Query Analysis</div>
+<div class="query-cards">
+<div class="query-card">
+  <div class="q-header"><span class="query-text">"best email campaign creation platform enterprise 2026"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">AI Overviews cite Mailchimp, HubSpot, and Salesforce Marketing Cloud. Knak's codeless enterprise approach does not appear in any AI-cited source.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"codeless campaign creation for marketing teams"</span><span class="badge badge-weak">WEAK</span></div>
+  <div class="analysis">Sparse AI responses — few established sources. Knak is the category creator but has no AI-indexed UGC or comparison content to establish authority.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"enterprise email and landing page builder no-code"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">Unbounce, Instapage, and Mailchimp cited — all more consumer/SMB focused. Knak's enterprise-specific positioning is undetected by AI.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"Knak vs Mailchimp vs HubSpot marketing platform"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">No comparison articles exist. AI has no data for any head-to-head queries involving Knak, despite it competing directly with these platforms.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"marketing campaign automation for large enterprises"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">Adobe Campaign, Salesforce, and Oracle cited. Knak's role in the enterprise marketing stack is entirely invisible to AI search engines.</div>
+</div>
+</div>
+<div class="section-title">Competitive Landscape</div>
+<div class="competitor-cards">
+<div class="comp-card"><div class="comp-name">HubSpot</div><div class="comp-desc">Marketing & CRM platform</div></div><div class="comp-card"><div class="comp-name">Salesforce Marketing</div><div class="comp-desc">Enterprise marketing cloud</div></div><div class="comp-card"><div class="comp-name">Mailchimp</div><div class="comp-desc">Email marketing platform</div></div><div class="comp-card"><div class="comp-name">Adobe Campaign</div><div class="comp-desc">Enterprise campaign mgmt</div></div>
+</div>
+<div class="cta">
+  <h3>4 Genhance Plays for Knak</h3>
+  <ul class="plays">
+    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for MarTech / Codeless Campaign Creation — identify which Reddit/YouTube threads shape the answers.</li>
+    <li><strong>Review Velocity:</strong> Seed G2 &amp; Capterra reviews to establish presence before competitors saturate the category.</li>
+    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing Knak to HubSpot — shape the narrative before it hardens.</li>
+    <li><strong>Narrative Monitoring:</strong> Real-time alerts when Knak is mentioned in AI-cited UGC threads — engage within hours, not weeks.</li>
+  </ul>
+</div>
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder &amp; CEO, genhance.ai</div>
+  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+</div>
+</div>
+</body>
+</html>
