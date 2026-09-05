@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leena AI — AI Visibility Audit | genhance</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; color: #1e293b; line-height: 1.6; background: #f1f5f9; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero Header */
+  .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f3460 100%); color: #fff; padding: 60px 0 48px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%); border-radius: 50%; }
+  .hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%); border-radius: 50%; }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-badge { display: inline-block; background: rgba(59,130,246,0.2); border: 1px solid rgba(59,130,246,0.3); border-radius: 100px; padding: 6px 16px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; color: #93c5fd; margin-bottom: 20px; }
+  .hero h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .hero .tagline { font-size: 1.15rem; color: #94a3b8; font-weight: 400; margin-bottom: 6px; }
+  .hero .subtitle { font-size: 0.95rem; color: #64748b; margin-bottom: 24px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.85rem; color: #94a3b8; }
+  .hero-meta span { background: rgba(255,255,255,0.06); border-radius: 8px; padding: 5px 12px; }
+
+  /* Stat Pills */
+  .stats-row { display: flex; gap: 16px; margin-top: -30px; position: relative; z-index: 5; flex-wrap: wrap; }
+  .stat-pill { flex: 1; min-width: 140px; background: #fff; border-radius: 14px; padding: 20px 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); border: 1px solid #e2e8f0; text-align: center; }
+  .stat-pill .value { font-size: 1.7rem; font-weight: 800; color: #0f172a; line-height: 1.2; }
+  .stat-pill .label { font-size: 0.8rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+  .stat-pill.visibility .value { color: #b45309; }
+
+  /* Key Finding Box */
+  .key-finding { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1.5px solid #f59e0b; border-radius: 14px; padding: 22px 26px; margin: 36px 0 28px; }
+  .key-finding h2 { color: #92400e; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+  .key-finding p { color: #78350f; font-size: 1.05rem; font-weight: 500; line-height: 1.55; }
+
+  /* Query Cards */
+  .section-title { font-size: 1.35rem; font-weight: 700; color: #0f172a; margin-bottom: 18px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+  .query-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+  .query-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); transition: box-shadow 0.2s; }
+  .query-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .query-num { font-weight: 800; font-size: 0.8rem; color: #94a3b8; min-width: 24px; }
+  .query-text { flex: 1; font-size: 0.95rem; color: #334155; font-weight: 500; }
+  .query-badge { font-size: 0.75rem; font-weight: 700; padding: 5px 14px; border-radius: 100px; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge-absent { background: #fee2e2; color: #991b1b; }
+  .badge-weak { background: #fef3c7; color: #92400e; }
+  .badge-present { background: #d1fae5; color: #065f46; }
+
+  /* Competitor Grid */
+  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 36px; }
+  .competitor-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.04); transition: box-shadow 0.2s; }
+  .competitor-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .competitor-card .comp-name { font-weight: 700; font-size: 1.05rem; color: #0f172a; margin-bottom: 4px; }
+  .competitor-card .comp-threat { font-size: 0.8rem; color: #dc2626; font-weight: 600; }
+
+  /* CTA */
+  .cta-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 16px; padding: 40px 36px; margin: 36px 0 48px; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; top: -30%; right: -15%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%); border-radius: 50%; }
+  .cta-section h2 { position: relative; z-index: 1; font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+  .cta-section .cta-subtitle { position: relative; z-index: 1; color: #94a3b8; margin-bottom: 24px; font-size: 0.95rem; }
+  .plays-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+  .play-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 16px; }
+  .play-item .play-icon { font-size: 1.3rem; margin-bottom: 6px; }
+  .play-item .play-title { font-weight: 700; font-size: 0.9rem; color: #e2e8f0; margin-bottom: 4px; }
+  .play-item .play-desc { font-size: 0.8rem; color: #94a3b8; }
+
+  /* Footer */
+  .footer { border-top: 1px solid #e2e8f0; padding: 32px 0 40px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; }
+  .footer .brand { font-weight: 800; font-size: 1.1rem; color: #0f172a; }
+  .footer .brand span { color: #2563eb; }
+  .footer .contact { text-align: right; font-size: 0.85rem; color: #64748b; }
+  .footer .contact strong { color: #1e293b; }
+  .footer a { color: #2563eb; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 1.8rem; }
+    .stats-row { gap: 10px; }
+    .stat-pill { padding: 14px 10px; }
+    .stat-pill .value { font-size: 1.3rem; }
+    .cta-section { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container hero-content">
+    <div class="hero-badge">AI Visibility Audit</div>
+    <h1>Leena AI</h1>
+    <div class="tagline">Conversational AI for HR — Employee Experience Platform</div>
+    <div class="subtitle">HR Tech • Series B • Founded 2018</div>
+    <div class="hero-meta">
+      <span>📍 NYC / Delhi</span>
+      <span>👤 CEO: Adit Jain</span>
+      <span>💰 $30M Series B</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- STAT PILLS -->
+  <div class="stats-row">
+    <div class="stat-pill">
+      <div class="value">$30M</div>
+      <div class="label">Total Funding</div>
+    </div>
+    <div class="stat-pill visibility">
+      <div class="value">2/5</div>
+      <div class="label">AI Visibility</div>
+    </div>
+    <div class="stat-pill">
+      <div class="value">0</div>
+      <div class="label">G2 Reviews (est.)</div>
+    </div>
+    <div class="stat-pill">
+      <div class="value">0</div>
+      <div class="label">Reddit Mentions (est.)</div>
+    </div>
+  </div>
+
+  <!-- KEY FINDING -->
+  <div class="key-finding">
+    <h2>🔑 Key Finding</h2>
+    <p>ServiceNow and Moveworks dominate AI answers for HR service delivery — Leena AI absent from 3/5 queries despite $30M raise.</p>
+  </div>
+
+  <!-- INVESTORS -->
+  <div style="margin-bottom: 28px; padding: 18px 20px; background: #f8fafc; border-radius: 10px; border: 1px solid #e2e8f0;">
+    <strong style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b;">Investors</strong>
+    <p style="margin-top: 6px; color: #334155; font-size: 0.9rem;">Bessemer Venture Partners, Greycroft, B Capital Group</p>
+  </div>
+
+  <!-- QUERY CARDS -->
+  <div class="section-title">🔍 AI Query Analysis — 5 High-Intent Buyer Queries</div>
+  <div class="query-grid">
+    <div class="query-card">
+      <span class="query-num">Q1</span>
+      <span class="query-text">best HR chatbot AI employee experience</span>
+      <span class="query-badge badge-present">Present</span>
+    </div>
+    <div class="query-card">
+      <span class="query-num">Q2</span>
+      <span class="query-text">conversational AI for HR service desk</span>
+      <span class="query-badge badge-present">Present</span>
+    </div>
+    <div class="query-card">
+      <span class="query-num">Q3</span>
+      <span class="query-text">employee experience automation platform comparison</span>
+      <span class="query-badge badge-absent">Absent</span>
+    </div>
+    <div class="query-card">
+      <span class="query-num">Q4</span>
+      <span class="query-text">AI-powered HR helpdesk software reviews</span>
+      <span class="query-badge badge-absent">Absent</span>
+    </div>
+    <div class="query-card">
+      <span class="query-num">Q5</span>
+      <span class="query-text">enterprise HR virtual assistant solutions</span>
+      <span class="query-badge badge-absent">Absent</span>
+    </div>
+  </div>
+
+  <!-- COMPETITOR CARDS -->
+  <div class="section-title">🏆 Competitor Landscape — Who's Winning AI Visibility</div>
+  <div class="competitor-grid">
+    <div class="competitor-card">
+      <div class="comp-name">ServiceNow HR Service Delivery</div>
+      <div class="comp-threat">⚠ Dominant — Appears in all queries</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Moveworks</div>
+      <div class="comp-threat">⚠ Dominant — AI-first HR automation leader</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Zendesk for HR</div>
+      <div class="comp-threat">⚠ Active — Ticketing + HR crossover</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Espressive</div>
+      <div class="comp-threat">⚠ Active — Employee self-service AI</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>🚀 Ready to Win AI Visibility?</h2>
+    <p class="cta-subtitle">genhance helps B2B SaaS companies dominate AI-generated answers and capture buyer intent before competitors do.</p>
+    <div class="plays-grid">
+      <div class="play-item">
+        <div class="play-icon">📝</div>
+        <div class="play-title">AI Answer Optimization</div>
+        <div class="play-desc">Content engineered for AI citations — get your brand into LLM responses.</div>
+      </div>
+      <div class="play-item">
+        <div class="play-icon">🔗</div>
+        <div class="play-title">Authority Building</div>
+        <div class="play-desc">Structured digital footprint that AI models trust and cite.</div>
+      </div>
+      <div class="play-item">
+        <div class="play-icon">📊</div>
+        <div class="play-title">Visibility Monitoring</div>
+        <div class="play-desc">Track your AI visibility score vs competitors across 100+ buyer queries.</div>
+      </div>
+      <div class="play-item">
+        <div class="play-icon">🎯</div>
+        <div class="play-title">Competitor Displacement</div>
+        <div class="play-desc">Systematic strategy to replace competitors in AI-generated recommendations.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="brand">gen<span>hance</span>.ai</div>
+      <div style="font-size:0.8rem;color:#94a3b8;margin-top:2px;">AI Visibility for B2B SaaS</div>
+    </div>
+    <div class="contact">
+      <strong>Rajesh Gautam, PhD</strong><br>
+      Founder &amp; CEO, genhance.ai<br>
+      <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai">genhance.ai</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

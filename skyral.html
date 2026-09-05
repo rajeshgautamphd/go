@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genhance AI Visibility Audit — Skyral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e17;
+    --surface: #111827;
+    --surface2: #1a2332;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --amber: #f59e0b;
+    --amber-bg: rgba(245, 158, 11, 0.08);
+    --amber-border: rgba(245, 158, 11, 0.25);
+    --green: #10b981;
+    --red: #ef4444;
+    --blue: #3b82f6;
+    --purple: #8b5cf6;
+    --gradient-start: #0f172a;
+    --gradient-mid: #1e3a5f;
+    --gradient-end: #0f172a;
+    --pill-bg: rgba(59, 130, 246, 0.12);
+    --pill-border: rgba(59, 130, 246, 0.25);
+    --card-bg: #111827;
+    --card-border: rgba(255,255,255,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(160deg, #0a0f1e 0%, #0f1f3d 30%, #0d1b35 60%, #0b1320 100%);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    padding: 64px 0 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: ''; position: absolute; top: -180px; right: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: ''; position: absolute; bottom: -100px; left: -80px;
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-content { position: relative; z-index: 1; }
+  .badge {
+    display: inline-block; padding: 5px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3);
+    margin-bottom: 16px;
+  }
+  .header h1 { font-size: 42px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .header .subtitle { font-size: 16px; color: var(--text-muted); margin-bottom: 8px; }
+  .header .ceo { font-size: 14px; color: #64748b; }
+  .header .ceo span { color: #60a5fa; font-weight: 500; }
+
+  /* STAT PILLS */
+  .stat-pills {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin: -24px 0 40px; position: relative; z-index: 2;
+  }
+  .stat-pill {
+    background: var(--pill-bg);
+    border: 1px solid var(--pill-border);
+    border-radius: 14px; padding: 16px 22px;
+    min-width: 140px; flex: 1;
+    backdrop-filter: blur(10px);
+  }
+  .stat-pill .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; }
+  .stat-pill .value { font-size: 26px; font-weight: 800; color: #fff; }
+  .stat-pill .sub { font-size: 12px; color: #60a5fa; margin-top: 2px; }
+  .stat-pill.visibility .value { background: linear-gradient(135deg, #f59e0b, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* KEY FINDING */
+  .key-finding {
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-left: 4px solid var(--amber);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .key-finding .icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .key-finding .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--amber); font-weight: 700; margin-bottom: 4px; }
+  .key-finding .text { font-size: 15px; color: #fde68a; line-height: 1.5; font-weight: 500; }
+
+  /* SECTION TITLES */
+  .section-title {
+    font-size: 20px; font-weight: 700; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 8px;
+    background: rgba(59,130,246,0.15); color: #60a5fa;
+    font-size: 14px; font-weight: 700;
+  }
+
+  /* QUERY CARDS */
+  .query-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
+  .query-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px; padding: 18px 22px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; transition: border-color 0.2s;
+  }
+  .query-card:hover { border-color: rgba(59,130,246,0.25); }
+  .query-card .query-text { font-size: 15px; font-weight: 500; flex: 1; }
+  .query-card .badge-status {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .badge-status.present { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+  .badge-status.weak { background: rgba(239,68,68,0.10); color: #f87171; border: 1px solid rgba(239,68,68,0.20); }
+  .badge-status .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .badge-status.present .dot { background: #34d399; }
+  .badge-status.weak .dot { background: #f87171; }
+
+  /* COMPETITORS */
+  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 48px; }
+  .competitor-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px; padding: 20px;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .competitor-card:hover { border-color: rgba(239,68,68,0.3); transform: translateY(-2px); }
+  .competitor-card .comp-name { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .competitor-card .comp-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(160deg, #0a0f1e 0%, #141e33 40%, #0d1629 100%);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 16px; padding: 40px 36px; margin-bottom: 48px;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; top: -60px; right: -40px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(139,92,246,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cta-section h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; position: relative; z-index: 1; }
+  .cta-section .cta-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; position: relative; z-index: 1; }
+  .play-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; position: relative; z-index: 1; }
+  .play-card {
+    background: rgba(17,24,39,0.7); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px; padding: 20px;
+  }
+  .play-card .play-num { font-size: 28px; font-weight: 900; color: rgba(59,130,246,0.2); margin-bottom: 6px; }
+  .play-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: #fff; }
+  .play-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 20px;
+  }
+  .footer .name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .footer .title { font-size: 13px; color: var(--text-muted); margin-bottom: 2px; }
+  .footer .links { font-size: 13px; }
+  .footer .links a { color: #60a5fa; text-decoration: none; }
+  .footer .links a:hover { text-decoration: underline; }
+  .footer .links span { color: #475569; margin: 0 8px; }
+
+  @media (max-width: 640px) {
+    .header h1 { font-size: 30px; }
+    .stat-pills { flex-direction: column; }
+    .query-card { flex-direction: column; align-items: flex-start; }
+    .cta-section { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container header-content">
+    <div class="badge">AI Visibility Audit</div>
+    <h1>Skyral</h1>
+    <p class="subtitle">Govtech / Defence AI Simulation</p>
+    <p class="ceo">CEO: <span>Naomi Hulme</span></p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- STAT PILLS -->
+  <div class="stat-pills">
+    <div class="stat-pill">
+      <div class="label">Funding</div>
+      <div class="value">$20M</div>
+      <div class="sub">Series A</div>
+    </div>
+    <div class="stat-pill visibility">
+      <div class="label">AI Visibility</div>
+      <div class="value">1 / 5</div>
+      <div class="sub">Critically Low</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">G2 Reviews</div>
+      <div class="value">0</div>
+      <div class="sub">No presence</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Reddit Threads</div>
+      <div class="value">0</div>
+      <div class="sub">No discussions</div>
+    </div>
+  </div>
+
+  <!-- KEY FINDING -->
+  <div class="key-finding">
+    <div class="icon">⚠️</div>
+    <div>
+      <div class="label">Key Finding</div>
+      <div class="text">AI answers for govtech/defense simulation pull from Palantir and Improbable — Skyral absent from all 5 queries.</div>
+    </div>
+  </div>
+
+  <!-- AI-POWERED SEARCH QUERIES -->
+  <div class="section-title">
+    <span class="num">1</span> AI-Powered Search Queries
+  </div>
+  <div class="query-grid">
+    <div class="query-card">
+      <span class="query-text">government digital twin simulation</span>
+      <span class="badge-status weak"><span class="dot"></span> Weak</span>
+    </div>
+    <div class="query-card">
+      <span class="query-text">defense AI decision support</span>
+      <span class="badge-status weak"><span class="dot"></span> Weak</span>
+    </div>
+    <div class="query-card">
+      <span class="query-text">federal cloud simulation SaaS</span>
+      <span class="badge-status weak"><span class="dot"></span> Weak</span>
+    </div>
+    <div class="query-card">
+      <span class="query-text">national security modeling software</span>
+      <span class="badge-status weak"><span class="dot"></span> Weak</span>
+    </div>
+    <div class="query-card">
+      <span class="query-text">government synthetic environment training</span>
+      <span class="badge-status weak"><span class="dot"></span> Weak</span>
+    </div>
+  </div>
+
+  <!-- COMPETITORS DOMINATING AI ANSWERS -->
+  <div class="section-title">
+    <span class="num">2</span> Competitors Dominating AI Answers
+  </div>
+  <div class="competitor-grid">
+    <div class="competitor-card">
+      <div class="comp-name">🏛️ Improbable</div>
+      <div class="comp-desc">UK-based metaverse & defence simulation platform. Massive government contracts; consistently cited in AI-generated answers for synthetic environments and digital twins.</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">🛡️ Palantir</div>
+      <div class="comp-desc">Dominates AI-cited answers for defence and national security analytics. Foundry and Gotham platforms are the default AI recommendation for government AI/ML workflows.</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">🎮 Bohemia Interactive</div>
+      <div class="comp-desc">VBS (Virtual Battlespace) simulation widely cited in military training AI answers. Deeply embedded in NATO and allied defence procurement ecosystems.</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">☁️ Hadean</div>
+      <div class="comp-desc">Cloud-native spatial simulation for defence. Frequently surfaced in AI answers for large-scale distributed simulation and cloud-based defence platforms.</div>
+    </div>
+  </div>
+
+  <!-- CTA: GENHANCE PLAYS -->
+  <div class="cta-section">
+    <h3>🚀 Skyral Genhance Plays</h3>
+    <p class="cta-sub">4 AI visibility moves to break through the Palantir-Improbable duopoly</p>
+    <div class="play-grid">
+      <div class="play-card">
+        <div class="play-num">01</div>
+        <h4>Technical Whitepaper Blitz</h4>
+        <p>Publish 3 deep-dive whitepapers on "AI-native defence simulation" and "government digital twin architecture." Seed on arXiv, defence tech blogs, and LinkedIn to get indexed by AI crawlers.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-num">02</div>
+        <h4>Government Case Study Pipeline</h4>
+        <p>Produce 2–3 sanitized public case studies with named government agencies. AI models heavily weight .gov citations and named institutional references in defence verticals.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-num">03</div>
+        <h4>Defence Conference Content Play</h4>
+        <p>Secure speaking slots at DSEI, I/ITSEC, and IT²EC. Publish talk summaries, slide decks, and video clips — AI models index conference content as authority signals.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-num">04</div>
+        <h4>SEO Authority Stack for Govtech</h4>
+        <p>Build a technical blog targeting long-tail defence simulation keywords. Cross-link to NATO, MOD, and industry frameworks. Establish domain authority that AI summarizers recognize.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="name">Rajesh Gautam, PhD</div>
+    <div class="title">Founder and CEO, genhance.ai</div>
+    <div class="links">
+      <a href="https://linkedin.com/in/rajeshgautam" target="_blank" rel="noopener">linkedin.com/in/rajeshgautam</a>
+      <span>|</span>
+      <a href="https://genhance.ai" target="_blank" rel="noopener">genhance.ai</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
