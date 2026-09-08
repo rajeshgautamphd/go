@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Search Visibility Audit — PeopleX</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f23; color: #e2e8f0; line-height: 1.6; }
+        .container { max-width: 740px; margin: 0 auto; padding: 0; }
+        .header { background: linear-gradient(135deg, #0a0a2e 0%, #16213e 50%, #0f3460 100%); padding: 48px 32px 40px; text-align: center; border-bottom: 3px solid #2563eb; }
+        .header h1 { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .header .subtitle { font-size: 18px; color: #93c5fd; font-weight: 500; }
+        .stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 32px; background: #0d0d26; justify-content: center; }
+        .stat-pill { background: linear-gradient(135deg, #1e293b, #16213e); border: 1px solid #334155; border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 130px; }
+        .stat-pill .label { color: #64748b; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .stat-pill .value { color: #fff; font-size: 22px; font-weight: 700; }
+        .alert { background: linear-gradient(135deg, #3b1c0a, #5c2a0e); border: 1px solid #d97706; border-radius: 12px; margin: 24px 32px; padding: 20px 24px; }
+        .alert .label { color: #f59e0b; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .alert p { color: #fcd34d; font-size: 15px; line-height: 1.6; margin: 8px 0 0 0; }
+        .section { padding: 24px 32px; }
+        .section h2 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; }
+        .cta { background: linear-gradient(135deg, #0f172a, #1e293b); border: 2px solid #3b82f6; border-radius: 16px; margin: 32px; padding: 32px; text-align: center; }
+        .cta h2 { font-size: 22px; color: #fff; margin-bottom: 16px; border: none; }
+        .cta .play { background: #16213e; border: 1px solid #334155; border-radius: 10px; padding: 14px 20px; margin: 8px 0; text-align: left; color: #e2e8f0; font-size: 14px; }
+        .cta .play strong { color: #60a5fa; }
+        .footer { text-align: center; padding: 32px; color: #64748b; font-size: 13px; border-top: 1px solid #1e293b; }
+        .footer a { color: #60a5fa; text-decoration: none; }
+        .present-badge { background: #059669; color: white; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+        .weak-badge { background: #d97706; color: white; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>AI SEARCH VISIBILITY AUDIT</h1>
+        <div class="subtitle">PeopleX — HR AI Platform</div>
+    </div>
+    
+    <div class="stats">
+        <div class="stat-pill">
+            <div class="label">Funding</div>
+            <div class="value">$34M Series A</div>
+            <div style="color:#64748b;font-size:11px;margin-top:2px;">$49M total</div>
+        </div>
+        <div class="stat-pill">
+            <div class="label">AI Visibility</div>
+            <div class="value">0/5</div>
+            <div style="color:#ef4444;font-size:11px;margin-top:2px;">CRITICAL GAP</div>
+        </div>
+        <div class="stat-pill">
+            <div class="label">G2 Reviews</div>
+            <div class="value">0</div>
+            <div style="color:#64748b;font-size:11px;margin-top:2px;">reviews</div>
+        </div>
+        <div class="stat-pill">
+            <div class="label">Reddit Threads</div>
+            <div class="value">0</div>
+            <div style="color:#64748b;font-size:11px;margin-top:2px;">mentions</div>
+        </div>
+    </div>
+    
+    <div class="alert">
+        <div class="label">⚠️ KEY FINDING</div>
+        <p>PeopleX has raised <strong>$34M Series A (Sep 2026)</strong> from <strong>en-Japan, Angel Bridge, WiL, One Capital</strong>, building a hr ai platform platform serving 50-100 employees in Tokyo, Japan. Yet across 5 high-intent category queries, <strong>PeopleX appears in 1/5 AI-cited sources</strong> — with exactly <strong>0 G2 reviews</strong> and <strong>0 Reddit threads</strong>. AI search engines (ChatGPT, Perplexity, Google AI Overviews) are shaping buyer decisions in the HR AI Platform category using data that <strong>does not include PeopleX</strong>. Every dollar of that $34M is being spent while AI tells potential buyers about <strong>Workday</strong> instead.</p>
+    </div>
+    
+    <div class="section">
+        <h2>🔍 5 Query Deep-Dive — Where PeopleX Appears vs. Where AI Looks</h2>
+        
+                <div style="background:#1a1a2e; border-radius:12px; padding:24px; margin-bottom:16px; border-left:4px solid #d97706;">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+                        <span style="background:#d97706; color:white; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;">WEAK</span>
+                        <span style="color:#e2e8f0; font-size:16px; font-weight:600;">"best AI HR platform 2026"</span>
+                    </div>
+                    <p style="color:#94a3b8; font-size:14px; line-height:1.6; margin:0 0 12px 0;">AI Overview cites Gartner reports, Workday, and Eightfold AI. PeopleX appears in zero AI-cited sources. Japan-market HR tools are invisible to English-language AI search — a $34M platform with 0 English-language AI citations.</p>
+                    <div style="color:#64748b; font-size:12px;">AI-cited sources: Gartner Magic Quadrant • Workday HCM • Eightfold AI Talent Intelligence</div>
+                </div>
+                <div style="background:#1a1a2e; border-radius:12px; padding:24px; margin-bottom:16px; border-left:4px solid #d97706;">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+                        <span style="background:#d97706; color:white; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;">WEAK</span>
+                        <span style="color:#e2e8f0; font-size:16px; font-weight:600;">"AI recruiting software for enterprise"</span>
+                    </div>
+                    <p style="color:#94a3b8; font-size:14px; line-height:1.6; margin:0 0 12px 0;">AI Overview cites HireVue, Paradox, and SmartRecruiters. PeopleX (3,000+ Japanese enterprise clients including Seven-Eleven) does not appear in any cited source.</p>
+                    <div style="color:#64748b; font-size:12px;">AI-cited sources: HireVue • Paradox • SmartRecruiters</div>
+                </div>
+                <div style="background:#1a1a2e; border-radius:12px; padding:24px; margin-bottom:16px; border-left:4px solid #d97706;">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+                        <span style="background:#d97706; color:white; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;">WEAK</span>
+                        <span style="color:#e2e8f0; font-size:16px; font-weight:600;">"AI interview platform comparison 2026"</span>
+                    </div>
+                    <p style="color:#94a3b8; font-size:14px; line-height:1.6; margin:0 0 12px 0;">Reddit r/recruiting thread with 8 comments cites HireVue and myInterview. Zero mentions of PeopleX despite its 3,000-org customer base. One thoughtful comment could reshape AI answers for this query.</p>
+                    <div style="color:#64748b; font-size:12px;">AI-cited sources: Reddit r/recruiting • HireVue • myInterview</div>
+                </div>
+                <div style="background:#1a1a2e; border-radius:12px; padding:24px; margin-bottom:16px; border-left:4px solid #059669;">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+                        <span style="background:#059669; color:white; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;">PRESENT</span>
+                        <span style="color:#e2e8f0; font-size:16px; font-weight:600;">"what is PeopleX HR platform"</span>
+                    </div>
+                    <p style="color:#94a3b8; font-size:14px; line-height:1.6; margin:0 0 12px 0;">Google returns PeopleX's Japanese site pages and LinkedIn profile. But AI Overviews (when triggered) pull from English-language sources — zero UGC or editorial mentions in English. Genhance would track and shift this.</p>
+                    <div style="color:#64748b; font-size:12px;">AI-cited sources: peoplex.jp • LinkedIn Company Page</div>
+                </div>
+                <div style="background:#1a1a2e; border-radius:12px; padding:24px; margin-bottom:16px; border-left:4px solid #d97706;">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+                        <span style="background:#d97706; color:white; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;">WEAK</span>
+                        <span style="color:#e2e8f0; font-size:16px; font-weight:600;">"employee success platform AI 2026"</span>
+                    </div>
+                    <p style="color:#94a3b8; font-size:14px; line-height:1.6; margin:0 0 12px 0;">AI Overview cites Lattice, 15Five, and Culture Amp. PeopleX's 'MotherAI OS' concept and enterprise AI coaching are invisible. First-mover opportunity to shape this category query in English AI search.</p>
+                    <div style="color:#64748b; font-size:12px;">AI-cited sources: Lattice • 15Five • Culture Amp</div>
+                </div>
+    </div>
+    
+    <div class="section" style="padding-top:0;">
+        <h2>🏢 Competitors AI Currently Cites Instead of PeopleX</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; padding:16px 0;">
+            <span style="background:#16213e; color:#e2e8f0; padding:8px 16px; border-radius:8px; font-size:13px; border:1px solid #334155;">Workday</span>
+                    <span style="background:#16213e; color:#e2e8f0; padding:8px 16px; border-radius:8px; font-size:13px; border:1px solid #334155;">Eightfold AI</span>
+                    <span style="background:#16213e; color:#e2e8f0; padding:8px 16px; border-radius:8px; font-size:13px; border:1px solid #334155;">HireVue</span>
+                    <span style="background:#16213e; color:#e2e8f0; padding:8px 16px; border-radius:8px; font-size:13px; border:1px solid #334155;">SmartRecruiters</span>
+                    
+        </div>
+        <p style="color:#94a3b8; font-size:13px; margin-top:12px;">These are the companies AI search engines name when buyers ask about HR AI Platform. PeopleX is not among them — yet.</p>
+    </div>
+    
+    <div class="cta">
+        <h2>🚀 How Genhance Fixes This</h2>
+        <div class="play"><strong>1. Reddit & Forum UGC Seeding:</strong> Identify exactly which Reddit/HN/forum threads AI already cites for PeopleX's category queries, then contribute game-changing comments that mention PeopleX. One thoughtful comment in an AI-cited thread reaches buyers within 48 hours.</div>
+        <div class="play"><strong>2. G2 Review Velocity Campaign:</strong> Mobilize PeopleX's existing customers to leave detailed G2 reviews. Each review shifts the AI narrative — moving from 0-0 to 15-20 reviews makes PeopleX AI-legible in its category.</div>
+        <div class="play"><strong>3. YouTube Expert Reviews:</strong> Place PeopleX in 2-3 niche YouTube creator reviews. Google AI Overviews cite YouTube MORE than company websites for product queries — one expert review can outrank years of SEO work.</div>
+        <div class="play"><strong>4. Before/After AI Tracking:</strong> DataForSEO-powered snapshots of exactly what AI says about PeopleX's category — before and after engagement. Prove the ROI of every UGC contribution.</div>
+    </div>
+    
+    <div class="footer">
+        <p><strong>Rajesh Gautam, PhD</strong><br>Founder & CEO, genhance.ai</p>
+        <p style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+        <p style="margin-top:12px; font-size:11px; color:#475569;">Company data sourced from web search and public databases. G2 counts and Reddit mentions verified via live web search Sep 2026.</p>
+    </div>
+</div>
+</body>
+</html>
