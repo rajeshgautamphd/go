@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flagright — AI Search Visibility Audit</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0a0f1e; color: #e2e8f0; line-height: 1.6; }
+
+/* GRADIENT NAVY HEADER */
+.hero { background: linear-gradient(135deg, #0a1628 0%, #13203d 50%, #1a2d54 100%); padding: 60px 40px 50px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.hero h1 { font-size: 3rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; margin-bottom: 8px; }
+.hero .subtitle { font-size: 1.1rem; color: #8899b4; font-weight: 400; }
+
+/* STAT PILLS */
+.pills-wrap { background: #0d1525; padding: 28px 40px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.pill { background: #111c30; border: 1px solid #1e3050; border-radius: 50px; padding: 10px 24px; text-align: center; min-width: 140px; }
+.pill .val { font-size: 1.5rem; font-weight: 700; color: #ffffff; }
+.pill .lbl { font-size: 0.75rem; color: #6b7d95; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+.pill.zero .val { color: #ef4444; }
+
+/* CONTENT */
+.content { max-width: 880px; margin: 0 auto; padding: 48px 32px 40px; }
+
+/* AMBER ALERT */
+.alert { background: linear-gradient(135deg, #2d1a0c, #3d2815); border: 1px solid #b45309; border-left: 5px solid #f59e0b; border-radius: 8px; padding: 22px 28px; margin-bottom: 40px; }
+.alert .alert-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #f59e0b; font-weight: 700; margin-bottom: 6px; }
+.alert p { color: #fcd9a7; font-size: 0.95rem; line-height: 1.7; }
+
+/* SECTION TITLES */
+.section-title { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid #1e3050; }
+
+/* QUERY CARDS */
+.query-card { background: #111c30; border: 1px solid #1a2a45; border-radius: 10px; padding: 20px 24px; margin-bottom: 14px; display: flex; align-items: flex-start; gap: 16px; transition: border-color 0.2s; }
+.query-card:hover { border-color: #2a4a70; }
+.query-card .q-num { background: #1a2d54; color: #5b8cc7; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.query-card .q-body { flex: 1; }
+.query-card .q-text { font-weight: 600; color: #e2e8f0; margin-bottom: 8px; font-size: 0.95rem; }
+.query-card .q-analysis { font-size: 0.85rem; color: #8899b4; line-height: 1.6; }
+
+/* BADGES */
+.badge { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.badge-present { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+.badge-weak { background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+
+/* COMPETITOR CARDS */
+.comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-bottom: 48px; }
+.comp-card { background: #111c30; border: 1px solid #1a2a45; border-radius: 8px; padding: 18px 16px; text-align: center; }
+.comp-card .comp-name { font-weight: 700; color: #ffffff; font-size: 0.95rem; margin-bottom: 4px; }
+.comp-card .comp-desc { font-size: 0.78rem; color: #6b7d95; line-height: 1.5; }
+
+/* DARK CTA */
+.cta { background: linear-gradient(135deg, #0f1b2e 0%, #162540 100%); border: 1px solid #1e3050; border-radius: 12px; padding: 36px 32px; margin-top: 8px; }
+.cta h3 { font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 20px; }
+.cta ul { list-style: none; }
+.cta li { padding: 10px 0; color: #bcc8da; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 10px; }
+.cta li::before { content: "▸"; color: #3b82f6; font-weight: 700; flex-shrink: 0; }
+.cta li:last-child { border-bottom: none; }
+
+/* SIGNATURE */
+.sig { text-align: center; padding: 40px 32px 48px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px; }
+.sig .name { font-weight: 700; color: #ffffff; font-size: 1rem; }
+.sig .role { font-size: 0.82rem; color: #6b7d95; margin: 4px 0; }
+.sig a { color: #5b8cc7; text-decoration: none; font-size: 0.82rem; }
+.sig a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2rem; }
+  .hero { padding: 40px 20px 32px; }
+  .pills-wrap { padding: 20px 16px; gap: 8px; }
+  .pill { min-width: 100px; padding: 8px 14px; }
+  .content { padding: 32px 16px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- GRADIENT NAVY HEADER -->
+<header class="hero">
+  <h1>Flagright</h1>
+  <p class="subtitle">AI Search Visibility Audit — September 2026</p>
+</header>
+
+<!-- STAT PILLS -->
+<div class="pills-wrap">
+  <div class="pill"><div class="val">$12.5M</div><div class="lbl">Series A</div></div>
+  <div class="pill zero"><div class="val">0/5</div><div class="lbl">AI Visibility</div></div>
+  <div class="pill"><div class="val">43</div><div class="lbl">G2 Reviews</div></div>
+  <div class="pill zero"><div class="val">0</div><div class="lbl">Reddit Threads</div></div>
+</div>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- AMBER KEY FINDING -->
+  <div class="alert">
+    <div class="alert-title">⚠ Key Finding</div>
+    <p>Despite 43 G2 reviews, Flagright has <strong>zero presence in AI-generated answers</strong> about AML transaction monitoring. ComplyAdvantage, Quantexa, and Lucinity dominate AI Overviews. Flagright's G2 reviews are invisible to AI search engines — a <strong>critical gap</strong> for a compliance product where buyers increasingly research via AI.</p>
+  </div>
+
+  <!-- QUERY CARDS -->
+  <h2 class="section-title">AI Search Query Analysis</h2>
+
+  <div class="query-card">
+    <div class="q-num">1</div>
+    <div class="q-body">
+      <span class="badge badge-weak">WEAK</span>
+      <div class="q-text">"best AML transaction monitoring software for banks and fintechs"</div>
+      <div class="q-analysis">AI Overviews cite ComplyAdvantage, Unit21, and Quantexa. Flagright is entirely absent despite its tailored fintech compliance offering.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-num">2</div>
+    <div class="q-body">
+      <span class="badge badge-weak">WEAK</span>
+      <div class="q-text">"AI-powered anti-money laundering alert triage tools"</div>
+      <div class="q-analysis">AI sources reference Lucinity, ThetaRay, and Quantexa. Flagright's real-time alert triage capabilities go unmentioned.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-num">3</div>
+    <div class="q-body">
+      <span class="badge badge-weak">WEAK</span>
+      <div class="q-text">"how to reduce false positives in AML transaction monitoring"</div>
+      <div class="q-analysis">AI Overviews cite ComplyAdvantage, Lucinity, and Feedzai. Flagright's AI-driven false-positive reduction is not cited.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-num">4</div>
+    <div class="q-body">
+      <span class="badge badge-weak">WEAK</span>
+      <div class="q-text">"financial crime compliance platform comparison for regulated institutions"</div>
+      <div class="q-analysis">Top results feature ComplyAdvantage, Quantexa, and Napier. Flagright's compliance platform is invisible in AI comparisons.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-num">5</div>
+    <div class="q-body">
+      <span class="badge badge-weak">WEAK</span>
+      <div class="q-text">"transaction monitoring and sanctions screening vendors for community banks"</div>
+      <div class="q-analysis">AI sources list ComplyAdvantage, Verafin, and Unit21. Flagright — positioned for smaller institutions — is nowhere to be found.</div>
+    </div>
+  </div>
+
+  <!-- COMPETITOR CARDS -->
+  <h2 class="section-title" style="margin-top: 40px;">Competitors Dominating AI Search</h2>
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-name">ComplyAdvantage</div>
+      <div class="comp-desc">AI-driven financial crime detection with strong AI Overview presence</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Quantexa</div>
+      <div class="comp-desc">Entity resolution + AML; frequently cited in compliance AI queries</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Lucinity</div>
+      <div class="comp-desc">Behavioral AML platform dominating alert triage AI results</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Unit21</div>
+      <div class="comp-desc">No-code fraud &amp; AML ops platform with strong AI search visibility</div>
+    </div>
+  </div>
+
+  <!-- DARK CTA -->
+  <div class="cta">
+    <h3>4 Ways Genhance Can Help</h3>
+    <ul>
+      <li><strong>AI Search Visibility Monitoring</strong> — Track where Flagright appears (or doesn't) across ChatGPT, Perplexity, Gemini, and AI Overviews for 100+ buyer queries.</li>
+      <li><strong>UGC Gap Analysis</strong> — Surface Flagright's 43 G2 reviews into AI training data so they influence AI-generated answers in the compliance category.</li>
+      <li><strong>Reddit &amp; YouTube Engagement</strong> — Build authentic community presence on Reddit and YouTube to generate AI-citable content around AML and fraud prevention.</li>
+      <li><strong>Competitor AI Intelligence</strong> — Monitor how ComplyAdvantage, Quantexa, and others gain AI visibility — and reverse-engineer their playbook.</li>
+    </ul>
+  </div>
+
+</main>
+
+<!-- SIGNATURE -->
+<footer class="sig">
+  <p class="name">Rajesh Gautam, PhD</p>
+  <p class="role">Founder and CEO, genhance.ai</p>
+  <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai">genhance.ai</a></p>
+</footer>
+
+</body>
+</html>

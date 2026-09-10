@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalepa — AI Search Visibility Audit</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif;background:#0a1628;color:#e2e8f0;line-height:1.6}
+.header{background:linear-gradient(135deg,#0a1628 0%,#112240 50%,#1a365d 100%);padding:60px 40px;text-align:center;border-bottom:3px solid #d97706}
+.header h1{font-size:3rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:8px}
+.header .subtitle{font-size:1.15rem;color:#94a3b8;font-weight:400;letter-spacing:0.5px}
+.container{max-width:960px;margin:0 auto;padding:40px 24px}
+/* Stat Pills */
+.pills-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:44px}
+.pill{background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:40px;padding:14px 28px;text-align:center;min-width:150px}
+.pill .label{font-size:0.75rem;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;margin-bottom:6px}
+.pill .value{font-size:1.5rem;font-weight:700;color:#f8fafc}
+.pill .value.warn{color:#f59e0b}
+/* Alert Box */
+.alert{background:linear-gradient(135deg,rgba(217,119,6,0.15),rgba(180,83,9,0.1));border:1px solid rgba(217,119,6,0.35);border-radius:14px;padding:28px 32px;margin-bottom:44px;position:relative}
+.alert::before{content:'⚠';position:absolute;top:20px;left:20px;font-size:1.4rem}
+.alert .alert-title{font-size:1.1rem;font-weight:700;color:#fbbf24;margin-bottom:10px;margin-left:28px}
+.alert .alert-body{font-size:0.95rem;color:#cbd5e1;margin-left:28px;line-height:1.7}
+/* Section Titles */
+.section-title{font-size:1.35rem;font-weight:700;color:#f1f5f9;margin-bottom:24px;padding-bottom:10px;border-bottom:2px solid #1e3a5f;display:flex;align-items:center;gap:10px}
+.section-title .icon{font-size:1.2rem}
+/* Query Cards */
+.query-card{background:linear-gradient(135deg,#1a2740,#0f1d2e);border:1px solid #243b5e;border-radius:12px;padding:22px 26px;margin-bottom:16px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:16px}
+.query-card .query-num{background:#1e3a5f;color:#60a5fa;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0}
+.query-card .query-body{flex:1;min-width:220px}
+.query-card .query-text{font-weight:600;color:#e2e8f0;font-size:0.95rem;margin-bottom:6px}
+.query-card .query-analysis{font-size:0.85rem;color:#94a3b8;line-height:1.6}
+.badge{display:inline-block;padding:6px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;flex-shrink:0;margin-top:4px}
+.badge.weak{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3)}
+.badge.present{background:rgba(34,197,94,0.15);color:#4ade80;border:1px solid rgba(34,197,94,0.3)}
+/* Competitor Cards */
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:44px}
+.comp-card{background:linear-gradient(135deg,#1a2740,#0f1d2e);border:1px solid #243b5e;border-radius:12px;padding:20px;text-align:center}
+.comp-card .comp-name{font-weight:700;color:#f8fafc;font-size:1.05rem;margin-bottom:6px}
+.comp-card .comp-desc{font-size:0.82rem;color:#94a3b8;line-height:1.5}
+/* CTA Section */
+.cta{background:linear-gradient(135deg,#0f1d2e,#0a1628);border:1px solid #1e3a5f;border-radius:16px;padding:36px 32px;margin-bottom:40px}
+.cta h3{font-size:1.3rem;font-weight:700;color:#fbbf24;margin-bottom:8px}
+.cta .cta-sub{font-size:0.9rem;color:#94a3b8;margin-bottom:24px}
+.cta ul{list-style:none;padding:0}
+.cta ul li{padding:12px 0;border-bottom:1px solid #1e3050;font-size:0.92rem;color:#cbd5e1;display:flex;align-items:flex-start;gap:10px}
+.cta ul li:last-child{border-bottom:none}
+.cta ul li::before{content:'▸';color:#f59e0b;font-weight:700;flex-shrink:0}
+/* Signature */
+.signature{text-align:center;padding:30px 0 50px;border-top:1px solid #1e3050;margin-top:20px}
+.signature .name{font-weight:700;color:#f8fafc;font-size:1.05rem}
+.signature .title{font-size:0.82rem;color:#94a3b8;margin:4px 0}
+.signature .links{font-size:0.8rem;color:#64748b}
+.signature .links a{color:#60a5fa;text-decoration:none}
+.signature .links a:hover{text-decoration:underline}
+.sep{color:#475569;margin:0 8px}
+.footnote{text-align:center;font-size:0.72rem;color:#475569;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>Kalepa</h1>
+<p class="subtitle">AI Search Visibility Audit — September 2026</p>
+</div>
+<div class="container">
+
+<!-- Stat Pills -->
+<div class="pills-row">
+<div class="pill"><div class="label">Funding</div><div class="value">$14M</div></div>
+<div class="pill"><div class="label">AI Visibility</div><div class="value warn">0 / 5</div></div>
+<div class="pill"><div class="label">G2 Reviews</div><div class="value">0</div></div>
+<div class="pill"><div class="label">Reddit Threads</div><div class="value">1</div></div>
+</div>
+
+<!-- Key Finding -->
+<div class="alert">
+<div class="alert-title">Key Finding</div>
+<div class="alert-body">Kalepa's AI underwriting platform has zero presence in AI-generated answers about commercial insurance technology. Their competitors — Planck, Cytora, Federato, and Gradient AI — dominate what ChatGPT, Perplexity, and Google AI Overviews cite when insurers search for AI underwriting tools. With no G2 reviews and only a single Reddit mention, Kalepa has virtually no AI-citable user-generated content to influence how AI search engines evaluate and recommend commercial insurance solutions.</div>
+</div>
+
+<!-- Query Cards -->
+<h2 class="section-title"><span class="icon">🔍</span> Search Query Analysis</h2>
+
+<div class="query-card">
+<div class="query-num">1</div>
+<div class="query-body">
+<div class="query-text">"AI commercial insurance underwriting software for carriers"</div>
+<div class="query-analysis">AI Overviews cite Planck, Cytora, and Federato as the go-to platforms for carrier-grade AI underwriting. Kalepa is entirely absent from these AI-generated recommendations despite its direct product fit.</div>
+</div>
+<span class="badge weak">WEAK</span>
+</div>
+
+<div class="query-card">
+<div class="query-num">2</div>
+<div class="query-body">
+<div class="query-text">"automated risk assessment platform for P&C underwriters"</div>
+<div class="query-analysis">Top AI-generated results surface Planck, Gradient AI, and Zesty.ai as leading automated risk assessment solutions. Kalepa is not mentioned in any AI search result for this high-intent query.</div>
+</div>
+<span class="badge weak">WEAK</span>
+</div>
+
+<div class="query-card">
+<div class="query-num">3</div>
+<div class="query-body">
+<div class="query-text">"best insurtech decision support for commercial lines underwriting"</div>
+<div class="query-analysis">AI sources consistently recommend Cytora, Federato, and Planck when users ask about decision-support tools for commercial underwriting. Kalepa is not cited in any AI Overview or chatbot response.</div>
+</div>
+<span class="badge weak">WEAK</span>
+</div>
+
+<div class="query-card">
+<div class="query-num">4</div>
+<div class="query-body">
+<div class="query-text">"AI submission triage software for insurance MGAs"</div>
+<div class="query-analysis">AI Overviews point directly to Planck and Cytora for submission triage capabilities. Kalepa, which offers exactly this functionality, is completely absent from AI-generated recommendations.</div>
+</div>
+<span class="badge weak">WEAK</span>
+</div>
+
+<div class="query-card">
+<div class="query-num">5</div>
+<div class="query-body">
+<div class="query-text">"machine learning risk selection tool property casualty insurance"</div>
+<div class="query-analysis">Top AI results highlight Gradient AI, Zesty.ai, and Verisk for ML-driven risk selection in P&C lines. Kalepa does not appear in any AI-generated search results for this query.</div>
+</div>
+<span class="badge weak">WEAK</span>
+</div>
+
+<!-- Competitor Cards -->
+<h2 class="section-title"><span class="icon">🏢</span> Competitors Dominating AI Search</h2>
+<div class="comp-grid">
+<div class="comp-card">
+<div class="comp-name">Planck</div>
+<div class="comp-desc">AI data platform for commercial insurance — provides instant, accurate underwriting insights from vast datasets</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">Cytora</div>
+<div class="comp-desc">Risk digitization platform that helps insurers streamline underwriting workflows with AI-powered data enrichment</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">Federato</div>
+<div class="comp-desc">Risk portfolio optimization platform using AI to help underwriters prioritize and manage risk portfolios</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">Gradient AI</div>
+<div class="comp-desc">Claims and underwriting AI — predictive models for workers' comp, P&C, and health insurance</div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+<h3>4 Ways Genhance Can Help</h3>
+<p class="cta-sub">Kalepa has the product — now it needs AI search visibility to match.</p>
+<ul>
+<li><span>Build authoritative technical content that AI models cite when answering commercial insurance underwriting queries</span></li>
+<li><span>Generate structured, AI-optimized documentation that establishes Kalepa as a primary source for LLM training data</span></li>
+<li><span>Develop a review generation program to populate G2 and trusted third-party sites that AI search engines scrape for recommendations</span></li>
+<li><span>Create and distribute comparison content that positions Kalepa alongside Planck, Cytora, and Federato in AI-crawled resources</span></li>
+</ul>
+</div>
+
+<!-- Signature -->
+<div class="signature">
+<div class="name">Rajesh Gautam, PhD</div>
+<div class="title">Founder and CEO, Genhance</div>
+<div class="links">
+<a href="https://genhance.ai">genhance.ai</a>
+<span class="sep">|</span>
+<a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a>
+</div>
+<div class="footnote">Generated by Genhance · AI Search Visibility Intelligence</div>
+</div>
+
+</div>
+</body>
+</html>

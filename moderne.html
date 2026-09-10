@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderne — AI Search Visibility Audit</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#0d1117;color:#c9d1d9;line-height:1.6}
+.header{background:linear-gradient(135deg,#0a1628 0%,#132742 50%,#1a3360 100%);padding:60px 24px 48px;text-align:center;border-bottom:1px solid rgba(99,146,217,0.15)}
+.header h1{font-size:2.8rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:6px}
+.header .subtitle{font-size:1.05rem;color:#8b9bb4;font-weight:400}
+.stats-bar{background:#0d1525;padding:28px 24px;display:flex;justify-content:center;flex-wrap:wrap;gap:14px;border-bottom:1px solid rgba(99,146,217,0.08)}
+.stat-pill{background:linear-gradient(135deg,#111d32,#182940);border:1px solid rgba(99,146,217,0.2);border-radius:40px;padding:12px 26px;text-align:center;min-width:130px}
+.stat-pill .value{font-size:1.35rem;font-weight:700;color:#e6edf3}
+.stat-pill .label{font-size:0.72rem;color:#6e7b91;text-transform:uppercase;letter-spacing:0.8px;margin-top:2px}
+.stat-pill.zero .value{color:#f0883e}
+.alert{background:linear-gradient(135deg,rgba(240,136,62,0.12),rgba(240,136,62,0.05));border:1px solid rgba(240,136,62,0.35);border-radius:12px;margin:32px 24px;padding:22px 28px;max-width:900px;margin-left:auto;margin-right:auto}
+.alert .alert-icon{display:inline-block;width:22px;height:22px;background:#f0883e;border-radius:50%;text-align:center;line-height:22px;font-size:13px;font-weight:700;color:#0a1628;margin-right:10px;vertical-align:middle}
+.alert .alert-title{display:inline;font-weight:700;color:#f0883e;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.5px;vertical-align:middle}
+.alert .alert-text{margin-top:10px;color:#c9d1d9;font-size:0.95rem;line-height:1.55}
+.section-title{font-size:1.3rem;font-weight:700;color:#e6edf3;margin:40px 24px 18px;max-width:900px;margin-left:auto;margin-right:auto}
+.queries{max-width:920px;margin:0 auto;padding:0 24px}
+.query-card{background:linear-gradient(135deg,#111d32,#161e33);border:1px solid rgba(99,146,217,0.12);border-radius:10px;padding:18px 22px;margin-bottom:12px;display:flex;gap:16px;align-items:flex-start}
+.query-card .badge{flex-shrink:0;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:5px 12px;border-radius:20px}
+.badge.weak{background:rgba(240,136,62,0.18);color:#f0883e;border:1px solid rgba(240,136,62,0.3)}
+.badge.present{background:rgba(63,185,80,0.18);color:#3fb950;border:1px solid rgba(63,185,80,0.3)}
+.query-card .query-body{flex:1}
+.query-card .query-text{font-weight:600;color:#e6edf3;font-size:0.9rem;margin-bottom:4px}
+.query-card .query-analysis{font-size:0.82rem;color:#8b9bb4;line-height:1.5}
+.competitors{max-width:920px;margin:0 auto;padding:0 24px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.comp-card{background:linear-gradient(135deg,#111d32,#161e33);border:1px solid rgba(99,146,217,0.12);border-radius:10px;padding:18px 20px}
+.comp-card .comp-name{font-weight:700;color:#79c0ff;font-size:0.92rem;margin-bottom:4px}
+.comp-card .comp-desc{font-size:0.78rem;color:#6e7b91;line-height:1.45}
+.cta{background:linear-gradient(135deg,#0a1628,#132742 60%,#0d1a33);border-top:1px solid rgba(99,146,217,0.2);padding:44px 24px;text-align:center}
+.cta h2{font-size:1.55rem;font-weight:700;color:#fff;margin-bottom:22px}
+.cta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:880px;margin:0 auto 30px}
+.cta-item{background:rgba(255,255,255,0.03);border:1px solid rgba(99,146,217,0.15);border-radius:10px;padding:18px 16px;text-align:left}
+.cta-item .cta-num{display:inline-block;width:24px;height:24px;border-radius:50%;background:rgba(99,146,217,0.2);color:#79c0ff;text-align:center;line-height:24px;font-size:0.75rem;font-weight:700;margin-bottom:8px}
+.cta-item .cta-title{font-weight:700;color:#e6edf3;font-size:0.88rem;margin-bottom:4px}
+.cta-item .cta-desc{font-size:0.76rem;color:#6e7b91;line-height:1.45}
+.signature{text-align:center;padding:32px 24px 44px;color:#6e7b91;font-size:0.82rem;line-height:1.7}
+.signature .name{font-weight:700;color:#c9d1d9;font-size:0.92rem}
+.signature a{color:#79c0ff;text-decoration:none}
+.signature a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>Moderne</h1>
+  <p class="subtitle">AI Search Visibility Audit — September 2026</p>
+</header>
+
+<div class="stats-bar">
+  <div class="stat-pill">
+    <div class="value">$50M</div>
+    <div class="label">Total Funding</div>
+  </div>
+  <div class="stat-pill zero">
+    <div class="value">0/5</div>
+    <div class="label">AI Visibility</div>
+  </div>
+  <div class="stat-pill zero">
+    <div class="value">0</div>
+    <div class="label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill zero">
+    <div class="value">0</div>
+    <div class="label">Reddit Threads</div>
+  </div>
+</div>
+
+<div class="alert">
+  <span class="alert-icon">!</span>
+  <span class="alert-title">Key Finding</span>
+  <p class="alert-text">Moderne has raised $50M to automate code migration at scale — yet has zero AI search visibility. vFunction and Mechanical Orchard dominate AI-generated answers about code modernization. With 0 G2 reviews and 0 Reddit mentions, Moderne is completely invisible to AI-assisted developer research.</p>
+</div>
+
+<div class="section-title">🔍 AI Search Query Analysis</div>
+<div class="queries">
+
+  <div class="query-card">
+    <span class="badge weak">WEAK</span>
+    <div class="query-body">
+      <div class="query-text">"automated legacy code migration and modernization platforms"</div>
+      <div class="query-analysis">AI Overviews cite vFunction, Mechanical Orchard, and IBM watsonx Code Assistant. Moderne is completely absent from AI-generated responses for this high-intent buyer query.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge weak">WEAK</span>
+    <div class="query-body">
+      <div class="query-text">"how to modernize a large Java codebase across thousands of repositories"</div>
+      <div class="query-analysis">AI sources reference vFunction, Amazon Q Developer, and OpenRewrite — Moderne's own open-source project gets cited, but Moderne the company does not appear in AI answers.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge weak">WEAK</span>
+    <div class="query-body">
+      <div class="query-text">"AI code refactoring tools for technical debt remediation at scale"</div>
+      <div class="query-analysis">AI Overviews prominently cite vFunction, Snyk Code, and Sonar for technical debt remediation. Moderne has no presence in AI-generated responses for this category-defining query.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge weak">WEAK</span>
+    <div class="query-body">
+      <div class="query-text">"mainframe and COBOL to cloud migration software vendors"</div>
+      <div class="query-analysis">Top AI-generated results name Mechanical Orchard, Astadia, and Micro Focus as the go-to vendors. Moderne is entirely absent despite its modernization platform capabilities.</div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge weak">WEAK</span>
+    <div class="query-body">
+      <div class="query-text">"automated dependency upgrade and framework migration tools for enterprises"</div>
+      <div class="query-analysis">AI sources surface Dependabot, Renovate, and vFunction as the leading solutions. Moderne fails to appear in AI-generated answers for this core use case.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="section-title">🏢 Competitors Appearing in AI Results</div>
+<div class="competitors">
+  <div class="comp-card">
+    <div class="comp-name">vFunction</div>
+    <div class="comp-desc">AI-driven architecture modernization platform that automatically extracts, analyzes, and refactors legacy Java and .NET applications.</div>
+  </div>
+  <div class="comp-card">
+    <div class="comp-name">Mechanical Orchard</div>
+    <div class="comp-desc">Mainframe-to-cloud migration specialist helping enterprises modernize COBOL and legacy systems to modern cloud infrastructure.</div>
+  </div>
+  <div class="comp-card">
+    <div class="comp-name">IBM watsonx Code Assistant</div>
+    <div class="comp-desc">AI-powered code transformation and modernization tool backed by IBM's enterprise reach and watsonx AI platform.</div>
+  </div>
+  <div class="comp-card">
+    <div class="comp-name">Snyk</div>
+    <div class="comp-desc">Developer security platform with code analysis and remediation capabilities frequently cited in AI responses for code quality and refactoring queries.</div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>4 Ways Genhance Can Help</h2>
+  <div class="cta-grid">
+    <div class="cta-item">
+      <div class="cta-num">1</div>
+      <div class="cta-title">AI Search Visibility Monitoring</div>
+      <div class="cta-desc">Track where Moderne appears — and doesn't appear — across ChatGPT, Claude, Gemini, Perplexity, and other AI platforms your prospects use to research code modernization solutions.</div>
+    </div>
+    <div class="cta-item">
+      <div class="cta-num">2</div>
+      <div class="cta-title">UGC Gap Analysis</div>
+      <div class="cta-desc">Identify critical gaps in G2 reviews, Reddit discussions, and developer community content that AI models rely on when generating recommendations for code migration tools.</div>
+    </div>
+    <div class="cta-item">
+      <div class="cta-num">3</div>
+      <div class="cta-title">Reddit & YouTube Engagement</div>
+      <div class="cta-desc">Surface the Reddit threads and YouTube content that feed AI training data, and build a strategic presence in the developer communities shaping AI-generated answers.</div>
+    </div>
+    <div class="cta-item">
+      <div class="cta-num">4</div>
+      <div class="cta-title">Competitor AI Intelligence</div>
+      <div class="cta-desc">Monitor how vFunction, Mechanical Orchard, and other competitors are winning AI visibility so Moderne can close the gap and capture AI-driven buyer research.</div>
+    </div>
+  </div>
+</div>
+
+<div class="signature">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div>Founder and CEO, genhance.ai</div>
+  <div><a href="https://linkedin.com/in/rajeshgautam" target="_blank" rel="noopener">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai" target="_blank" rel="noopener">genhance.ai</a></div>
+</div>
+
+</body>
+</html>
