@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dispatch — AI Search Visibility Audit | genhance.ai</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%); padding: 40px 30px; border-radius: 16px; margin-bottom: 24px; text-align: center; border: 1px solid #1e3a5f; }
+.header h1 { font-size: 2em; color: #f0f6fc; margin-bottom: 8px; }
+.header .subtitle { font-size: 1.1em; color: #7dd3fc; margin-bottom: 4px; }
+.header .company-name { font-size: 1.6em; font-weight: 700; color: #38bdf8; }
+.stats-row { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; justify-content: center; }
+.stat-pill { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 130px; flex: 1; max-width: 180px; }
+.stat-pill .stat-value { font-size: 1.5em; font-weight: 700; color: #38bdf8; }
+.stat-pill .stat-label { font-size: 0.75em; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+.key-finding { background: linear-gradient(135deg, #422006, #1a0e00); border: 1px solid #d97706; border-radius: 12px; padding: 20px 24px; margin: 20px 0; }
+.key-finding h3 { color: #f59e0b; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.key-finding p { color: #fcd34d; font-size: 0.95em; line-height: 1.5; }
+.section-title { font-size: 1.2em; font-weight: 700; color: #e2e8f0; margin: 28px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #1e3a5f; }
+.query-card { background: #111827; border: 1px solid #1e293b; border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
+.query-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.query-number { background: #1e3a5f; color: #7dd3fc; padding: 3px 8px; border-radius: 6px; font-size: 0.8em; font-weight: 600; }
+.query-text { color: #e2e8f0; font-weight: 600; font-size: 0.92em; }
+.badge { padding: 3px 10px; border-radius: 20px; font-size: 0.7em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.badge.absent { background: #7f1d1d; color: #fca5a5; }
+.badge.present { background: #14532d; color: #86efac; }
+.query-analysis { color: #94a3b8; font-size: 0.85em; line-height: 1.6; }
+.competitors-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.competitor-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 10px 16px; }
+.comp-name { color: #94a3b8; font-size: 0.9em; font-weight: 500; }
+.cta { background: linear-gradient(135deg, #0f172a, #1e3a5f); border: 1px solid #334155; border-radius: 14px; padding: 30px 24px; margin: 28px 0; text-align: center; }
+.cta h3 { color: #7dd3fc; font-size: 1.1em; margin-bottom: 16px; }
+.cta-plays { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: left; }
+@media (max-width: 500px) { .cta-plays { grid-template-columns: 1fr; } }
+.cta-play { background: #1e293b; border-radius: 8px; padding: 12px 14px; font-size: 0.8em; color: #94a3b8; }
+.cta-play strong { color: #38bdf8; display: block; margin-bottom: 4px; font-size: 0.95em; }
+.cta-btn { display: inline-block; background: linear-gradient(135deg, #0284c7, #38bdf8); color: #0f172a; font-weight: 700; padding: 14px 32px; border-radius: 10px; text-decoration: none; margin-top: 20px; font-size: 1em; }
+.footer { text-align: center; padding: 30px 0; color: #64748b; font-size: 0.85em; border-top: 1px solid #1e293b; margin-top: 20px; }
+.footer a { color: #7dd3fc; text-decoration: none; }
+.footer .name { color: #e2e8f0; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="subtitle">AI SEARCH VISIBILITY AUDIT</div>
+        <div class="company-name">Dispatch</div>
+        <div style="color:#94a3b8;margin-top:6px;">AI Data Orchestration for Financial Advisors</div>
+    </div>
+
+    <div class="stats-row">
+        <div class="stat-pill">
+            <div class="stat-value">$30.3M</div>
+            <div class="stat-label">Total Funding</div>
+        </div>
+        <div class="stat-pill">
+            <div class="stat-value">0 / 5</div>
+            <div class="stat-label">AI Visibility Score</div>
+        </div>
+        <div class="stat-pill">
+            <div class="stat-value">0</div>
+            <div class="stat-label">G2 Reviews</div>
+        </div>
+        <div class="stat-pill">
+            <div class="stat-value">0</div>
+            <div class="stat-label">Reddit Threads</div>
+        </div>
+    </div>
+
+    <div class="key-finding">
+        <h3>⚡ KEY FINDING</h3>
+        <p>Dispatch appears in <strong>0 of 5</strong> category-defining AI search queries. With $30.3M in funding and 0 G2 reviews, it is completely invisible to AI engines (ChatGPT, Perplexity, Google AI Overviews) that enterprise buyers use to evaluate Data Orchestration for Financial Advisors solutions. Every AI-generated recommendation, comparison, and "best of" answer in this category is shaped by competitors — Dispatch's narrative in AI search is <strong>currently non-existent</strong>.</p>
+    </div>
+
+    <div class="section-title">🔍 5 AI SEARCH QUERIES — WHERE DISPATCH IS INVISIBLE</div>
+    
+                    <div class="query-card">
+                        <div class="query-header">
+                            <span class="query-number">Q1</span>
+                            <span class="query-text">"best financial advisor technology platform 2026"</span>
+                            <span class="badge absent">ABSENT</span>
+                        </div>
+                        <div class="query-analysis">AI Overviews cite Orion, Envestnet, and Addepar — established platforms with decades of market presence. Dispatch's AI-native data orchestration platform, automating client onboarding and account opening for RIAs, is invisible to AI-generated advisor tech recommendations.</div>
+                    </div>
+                    <div class="query-card">
+                        <div class="query-header">
+                            <span class="query-number">Q2</span>
+                            <span class="query-text">"RIA client data automation onboarding software"</span>
+                            <span class="badge absent">ABSENT</span>
+                        </div>
+                        <div class="query-analysis">AI answers surface custodian-provided tools and generic CRM recommendations. Dispatch's purpose-built data orchestration for wealth management — syncing client data across custodians — does not appear in any AI-generated response.</div>
+                    </div>
+                    <div class="query-card">
+                        <div class="query-header">
+                            <span class="query-number">Q3</span>
+                            <span class="query-text">"wealth management account opening automation AI"</span>
+                            <span class="badge absent">ABSENT</span>
+                        </div>
+                        <div class="query-analysis">AI recommendations focus on digital account opening for banking/retail, not wealth management. Dispatch's specialized RIA onboarding workflow, which accelerates AUM growth through faster transitions, has zero AI search visibility.</div>
+                    </div>
+                    <div class="query-card">
+                        <div class="query-header">
+                            <span class="query-number">Q4</span>
+                            <span class="query-text">"Dispatch vs Envestnet vs Orion advisor tech"</span>
+                            <span class="badge absent">ABSENT</span>
+                        </div>
+                        <div class="query-analysis">Comparison queries return Envestnet vs Orion content from wealth management publications and G2 reviews. Dispatch — despite $30M from F-Prime Capital — does not appear in any AI-generated advisor technology comparison.</div>
+                    </div>
+                    <div class="query-card">
+                        <div class="query-header">
+                            <span class="query-number">Q5</span>
+                            <span class="query-text">"Dispatch.io financial advisor review Reddit"</span>
+                            <span class="badge absent">ABSENT</span>
+                        </div>
+                        <div class="query-analysis">Zero Reddit threads mention Dispatch. The wealth management tech conversation on Reddit (r/CFP, r/FinancialCareers) is shaped by ~10 threads about incumbents. Dispatch has no user-generated voice in the AI-indexed advisor technology conversation.</div>
+                    </div>
+
+    <div class="section-title">🏢 WHO CONTROLS THE AI NARRATIVE</div>
+    <div class="competitors-row">
+        <div class="competitor-card"><span class="comp-name">Orion Advisor Tech</span></div><div class="competitor-card"><span class="comp-name">Envestnet</span></div><div class="competitor-card"><span class="comp-name">Addepar</span></div><div class="competitor-card"><span class="comp-name">Altruist</span></div>
+    </div>
+    <div style="color:#64748b;font-size:0.82em;margin-top:12px;">These competitors define what AI engines say about "AI Data Orchestration for Financial Advisors." Dispatch is absent from every comparison.</div>
+
+    <div class="cta">
+        <h3>4 Ways genhance Can Fix Dispatch's AI Visibility</h3>
+        <div class="cta-plays">
+            <div class="cta-play"><strong>1. UGC Gap Mapping</strong>Identify the exact Reddit threads, YouTube comments, and forum discussions AI engines already cite — and where a single contribution shifts the narrative.</div>
+            <div class="cta-play"><strong>2. AI Answer Engineering</strong>Get cited in AI Overviews within 4-8 weeks through strategic UGC placement in sources AI engines already trust.</div>
+            <div class="cta-play"><strong>3. Review Velocity Management</strong>Seed authentic G2/Capterra reviews that build the review corpus AI engines need to form balanced answers about Dispatch.</div>
+            <div class="cta-play"><strong>4. Before/After Tracking</strong>DataForSEO-powered AI answer snapshots — prove the ROI of AI search visibility with screenshots of what AI said before vs. after genhance engagement.</div>
+        </div>
+        <a href="https://genhance.ai" class="cta-btn">Get an AI Visibility Audit for Dispatch →</a>
+    </div>
+
+    <div class="footer">
+        <div class="name">Rajesh Gautam, PhD</div>
+        <div>Founder and CEO, genhance.ai</div>
+        <div><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+        <div style="margin-top:8px;font-size:0.75em;">Audit generated 2022-present. Data: web-search verified G2, Reddit, AI Overview queries. Funded: $18M Series A (Sep 2025) led by F-Prime Capital and Brewer Lane Ventures; $12.3M prior seed rounds.</div>
+    </div>
+</div>
+</body>
+</html>
