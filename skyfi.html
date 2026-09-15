@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — SkyFi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a1628;color:#e2e8f0;line-height:1.6}
+.header{background:linear-gradient(135deg,#0f2744 0%,#1a365d 50%,#0d1b3e 100%);padding:48px 24px;text-align:center;border-bottom:3px solid #f59e0b}
+.header h1{font-size:2.2em;font-weight:800;color:#fff;margin-bottom:8px}
+.header .subtitle{color:#94a3b8;font-size:1.1em}
+.stats{display:flex;justify-content:center;gap:16px;padding:24px;flex-wrap:wrap}
+.stat-pill{background:linear-gradient(135deg,#1e3a5f,#162d4a);border:1px solid #2d4a6f;border-radius:12px;padding:16px 24px;text-align:center;min-width:140px}
+.stat-pill .value{font-size:1.8em;font-weight:700;color:#f59e0b}
+.stat-pill .label{color:#94a3b8;font-size:0.85em;text-transform:uppercase;letter-spacing:0.5px}
+.alert{background:linear-gradient(135deg,#3d2a00,#5c3d00);border:1px solid #f59e0b;border-radius:12px;margin:24px 32px;padding:20px 24px}
+.alert h3{color:#f59e0b;font-size:1.2em;margin-bottom:8px}
+.alert p{color:#fcd34d;font-size:0.95em}
+.container{max-width:900px;margin:0 auto;padding:0 24px 48px}
+h2{color:#fff;font-size:1.5em;margin:32px 0 16px;border-bottom:2px solid #2d4a6f;padding-bottom:8px}
+.query-card{background:#112240;border:1px solid #2d4a6f;border-radius:12px;padding:20px;margin-bottom:16px}
+.query-card .q-title{font-weight:600;color:#e2e8f0;font-size:1.05em;margin-bottom:4px}
+.query-badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:0.8em;font-weight:700;margin-bottom:8px}
+.badge-weak{background:#5c1a1a;color:#fca5a5;border:1px solid #991b1b}
+.badge-present{background:#1a3d2a;color:#86efac;border:1px solid #166534}
+.analysis{color:#94a3b8;font-size:0.92em;margin-bottom:8px}
+.cited{font-size:0.85em;color:#64748b}
+.cited span{color:#f59e0b}
+.comp-card{background:#112240;border:1px solid #2d4a6f;border-radius:10px;padding:16px;margin-bottom:12px}
+.comp-card h4{color:#e2e8f0;font-size:1em;margin-bottom:4px}
+.comp-card .comp-desc{color:#94a3b8;font-size:0.88em}
+.cta{background:linear-gradient(135deg,#0f2744,#0d1b3e);border:2px solid #f59e0b;border-radius:16px;padding:32px;margin-top:32px;text-align:center}
+.cta h2{color:#f59e0b;border:none;margin-top:0}
+.cta .plays{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:24px 0}
+.cta .play{background:#162d4a;border-radius:10px;padding:16px}
+.cta .play .num{color:#f59e0b;font-size:1.5em;font-weight:800}
+.cta .play .play-title{color:#e2e8f0;font-weight:600;margin:4px 0}
+.cta .play .play-desc{color:#94a3b8;font-size:0.85em}
+.cta .cta-button{display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#0a1628;padding:14px 32px;border-radius:8px;font-weight:700;font-size:1.1em;text-decoration:none;margin-top:16px}
+.signature{text-align:center;padding:32px 24px;color:#64748b;font-size:0.9em;border-top:1px solid #1e3a5f;margin-top:32px}
+.signature a{color:#f59e0b;text-decoration:none}
+.disclaimer{text-align:center;color:#475569;font-size:0.75em;padding:16px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>AI Search Visibility Audit</h1>
+<div class="subtitle">SkyFi — Earth Intelligence / Satellite Imagery Platform</div>
+</div>
+<div class="stats">
+<div class="stat-pill"><div class="value">$12.7M Series A</div><div class="label">Funding</div></div>
+<div class="stat-pill"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
+</div>
+<div class="alert">
+<h3>⚠️ KEY FINDING</h3>
+<p>SkyFi raised $12.7M Series A from Buoyant Ventures, IronGate Capital Advisors, DNV Ventures, TFX Capital — but AI search engines (ChatGPT, Google AI Overviews, Perplexity) don't know you exist. In 5 critical Earth Intelligence queries, SkyFi appears in 0/5 AI-generated answers. Your competitors dominate AI narratives while your $12.7M+ total in funding generates zero AI visibility. This is a fixable gap — and the opportunity window is now.</p>
+</div>
+<div class="container">
+<h2>🔍 5 Critical Category Queries — AI Answer Analysis</h2>
+<div class="query-card">
+<div class="q-title">Q1: "best satellite imagery platform for business 2026"</div>
+<div class="query-badge badge-weak">WEAK</div>
+<div class="analysis">AI Overviews cite Planet Labs and Maxar — both public companies with massive data catalogs. SkyFi's self-service platform (50+ imagery partners) has zero AI coverage.</div>
+<div class="cited"><strong>AI-cited sources:</strong> <span>Planet Labs, Maxar Intelligence, Airbus Defence</span></div>
+</div>
+<div class="query-card">
+<div class="q-title">Q2: "on-demand satellite imagery geospatial analytics platform"</div>
+<div class="query-badge badge-weak">WEAK</div>
+<div class="analysis">Results dominated by incumbent satellite operators. SkyFi's transparent pricing and self-service model — a major differentiator vs. enterprise sales cycles — isn't indexed.</div>
+<div class="cited"><strong>AI-cited sources:</strong> <span>Maxar, Planet, Capella Space</span></div>
+</div>
+<div class="query-card">
+<div class="q-title">Q3: "satellite imagery API for developers agriculture energy"</div>
+<div class="query-badge badge-weak">WEAK</div>
+<div class="analysis">Developer-focused API queries cite Sentinel Hub and Planet's API. SkyFi's API access for large-scale workflows is absent from all developer-facing AI results.</div>
+<div class="cited"><strong>AI-cited sources:</strong> <span>Sentinel Hub, Planet API, UP42</span></div>
+</div>
+<div class="query-card">
+<div class="q-title">Q4: "SkyFi satellite imagery platform review"</div>
+<div class="query-badge badge-present">PRESENT</div>
+<div class="analysis">SkyFi's own site, LinkedIn, and press releases appear. Built custom platforms for ICEYE US, Planet, and Vantor (Maxar) — impressive partnerships but no community discussion.</div>
+<div class="cited"><strong>AI-cited sources:</strong> <span>SkyFi website, LinkedIn, SatNews</span></div>
+</div>
+<div class="query-card">
+<div class="q-title">Q5: "defense commercial satellite intelligence dual-use platform"</div>
+<div class="query-badge badge-weak">WEAK</div>
+<div class="analysis">National security queries cite BlackSky and Maxar. SkyFi's dual-use platform supporting both civilian and defense cases is absent from procurement-focused AI answers.</div>
+<div class="cited"><strong>AI-cited sources:</strong> <span>BlackSky, Maxar, HawkEye 360</span></div>
+</div>
+
+
+<h2>🏢 Competitors Currently Dominating AI Answers</h2>
+<div class="comp-card"><h4>Maxar</h4><div class="comp-desc">Currently cited in AI answers for earth intelligence / satellite imagery platform queries.</div></div>
+<div class="comp-card"><h4>Planet Labs</h4><div class="comp-desc">Currently cited in AI answers for earth intelligence / satellite imagery platform queries.</div></div>
+<div class="comp-card"><h4>Airbus Defence</h4><div class="comp-desc">Currently cited in AI answers for earth intelligence / satellite imagery platform queries.</div></div>
+<div class="comp-card"><h4>BlackSky</h4><div class="comp-desc">Currently cited in AI answers for earth intelligence / satellite imagery platform queries.</div></div>
+<div class="comp-card"><h4>Capella Space</h4><div class="comp-desc">Currently cited in AI answers for earth intelligence / satellite imagery platform queries.</div></div>
+
+<div class="cta">
+<h2>🚀 4 Genhance Plays to Fix This</h2>
+<div class="plays">
+<div class="play"><div class="num">1</div><div class="play-title">Reddit Narrative Seeding</div><div class="play-desc">Contribute to existing threads AI already cites — one thoughtful comment in a sparse thread shifts what AI says about SkyFi.</div></div>
+<div class="play"><div class="num">2</div><div class="play-title">YouTube Authority Building</div><div class="play-desc">Comment on niche creator videos in Earth Intelligence. YouTube comments disproportionately feed AI answers for how-to and comparison queries.</div></div>
+<div class="play"><div class="num">3</div><div class="play-title">G2 Review Velocity</div><div class="play-desc">From 0 to 15+ verified reviews. Each new review shifts the AI visibility needle in enterprise buying queries.</div></div>
+<div class="play"><div class="num">4</div><div class="play-title">Continuous AI Monitoring</div><div class="play-desc">Track how AI answers change as we deploy UGC. Before/after snapshots prove ROI for every engagement.</div></div>
+</div>
+<a href="https://genhance.ai" class="cta-button">Book a 10-Minute Audit →</a>
+</div>
+
+<div class="signature">
+<p><strong>Rajesh Gautam, PhD</strong><br>Founder and CEO, genhance.ai<br>
+<a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+</div>
+<div class="disclaimer">
+<p>This audit is based on AI-search data as of September 2026. Source: DataForSEO AI Overviews + Google SERP analysis. All competitor names and search results are based on publicly available AI search engine responses.</p>
+</div>
+</div>
+</body>
+</html>
