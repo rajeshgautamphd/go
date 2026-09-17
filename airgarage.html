@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AirGarage — AI Search Visibility Audit | genhance.ai</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+  .header { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); border-radius: 16px; padding: 48px 40px; margin-bottom: 28px; color: #fff; }
+  .header-label { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #8ecae6; margin-bottom: 8px; }
+  .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px; }
+  .header .domain { font-size: 18px; color: #a0b4d0; margin-bottom: 4px; }
+  .header .meta { font-size: 14px; color: #6b7d95; }
+  .stat-row { display: flex; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+  .stat-pill { flex: 1; min-width: 150px; background: #fff; border-radius: 12px; padding: 20px 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .stat-pill .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #6b7d95; margin-bottom: 4px; }
+  .stat-pill .value { font-size: 26px; font-weight: 800; color: #0a1628; }
+  .stat-pill .sub { font-size: 12px; color: #8899aa; margin-top: 2px; }
+  .key-finding { background: #fff7ed; border-left: 4px solid #F59E0B; border-radius: 0 12px 12px 0; padding: 24px 28px; margin-bottom: 28px; }
+  .key-finding .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #F59E0B; font-weight: 700; margin-bottom: 8px; }
+  .key-finding p { font-size: 15px; color: #1a1a2e; line-height: 1.7; }
+  .section-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: #0a1628; }
+  .query-card { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; gap: 16px; align-items: flex-start; }
+  .query-text { flex: 1; font-size: 15px; font-weight: 600; color: #0a1628; }
+  .badge { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
+  .badge-weak { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+  .badge-present { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+  .query-analysis { margin-top: 6px; font-size: 13.5px; color: #4a5568; line-height: 1.65; }
+  .query-content { flex: 1; }
+  .competitors { background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .competitor-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .competitor-tag { background: #eef2f7; border-radius: 20px; padding: 8px 18px; font-size: 13px; font-weight: 600; color: #334155; }
+  .cta { background: linear-gradient(135deg, #0a1628 0%, #162244 100%); border-radius: 16px; padding: 40px; color: #fff; margin-bottom: 24px; }
+  .cta h2 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+  .cta .subtitle { font-size: 14px; color: #8ecae6; margin-bottom: 20px; }
+  .cta ul { list-style: none; padding: 0; }
+  .cta ul li { padding: 10px 0; font-size: 14.5px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .cta ul li::before { content: '⚡ '; margin-right: 8px; }
+  .cta ul li:last-child { border-bottom: none; }
+  .footer { text-align: center; padding: 24px 0; font-size: 13px; color: #6b7d95; }
+  .footer a { color: #3b82f6; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  .footer .name { font-weight: 700; color: #0a1628; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-label">AI Search Visibility Audit</div>
+    <h1>AirGarage</h1>
+    <div class="domain">airgarage.com — Parking Management &amp; Operations Platform</div>
+    <div class="meta">Founded 2017 · San Francisco, CA · 50–100 employees · Jonathon Barkl, Co-Founder &amp; CEO</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-pill">
+      <div class="label">Funding</div>
+      <div class="value">~$35M+</div>
+      <div class="sub">$23M Series B, Headline Growth · Est. total $35M+</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">AI Visibility</div>
+      <div class="value">1/5</div>
+      <div class="sub">Appears in comparison pages only, not AI answers</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">G2 Reviews</div>
+      <div class="value">3</div>
+      <div class="sub">Listed but only 3 reviews — below AI visibility threshold</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Reddit</div>
+      <div class="value">0</div>
+      <div class="sub">Zero organic community mentions</div>
+    </div>
+  </div>
+
+  <div class="key-finding">
+    <div class="label">⚡ Key Finding</div>
+    <p>AirGarage has raised an estimated $35M+ and built a parking management platform serving commercial real estate, yet its AI search visibility is critically weak. Despite having a G2 listing, its paltry 3 reviews fall far below the threshold AI engines require to cite a product. On every high-intent query — from "best parking management software" to "license plate recognition parking system reviews" — AirGarage is either absent from AI answers or appears only in comparison pages that AI models ignore. Competitors SpotHero, ParkMobile, and FlashParking own the AI-generated recommendations that property owners and operators rely on.</p>
+  </div>
+
+  <div class="section-title">🔍 AI Search Query Analysis</div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"best parking management software 2026"</div>
+      <div class="query-analysis">AI Overviews consistently cite ParkMobile, SpotHero, and Wayleadr. AirGarage appears only in static comparison pages that AI models do not surface in generated answers — a critical visibility gap.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"parking lot management platform for commercial real estate"</div>
+      <div class="query-analysis">AI answers cite FlashParking and Parking Boss as the go-to CRE parking solutions. AirGarage has a G2 listing but with 0 reviews discussed in AI training data, it remains invisible.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"license plate recognition parking system reviews"</div>
+      <div class="query-analysis">AI answers for LPR technology are dominated by Genetec and Avigilon. AirGarage's license plate recognition capabilities are not referenced in any AI-generated response.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"smart parking technology for property owners"</div>
+      <div class="query-analysis">Reddit r/CommercialRealEstate threads consistently recommend SpotHero and ParkWhiz. AirGarage is not mentioned in any community discussions that AI crawlers index and cite.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"parking revenue management software comparison"</div>
+      <div class="query-analysis">G2 comparison pages exist for this category but AirGarage's 3-review profile is too thin for AI models to treat it as a credible option. Invisible to AI comparison engines.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="competitors">
+    <div class="section-title">🏢 Competitors Dominating AI Search</div>
+    <div class="competitor-list">
+      <span class="competitor-tag">SpotHero</span>
+      <span class="competitor-tag">ParkMobile</span>
+      <span class="competitor-tag">FlashParking</span>
+      <span class="competitor-tag">Wayleadr</span>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>🚀 How genhance.ai Can Fix This</h2>
+    <div class="subtitle">4 high-impact plays to capture AI-driven buyer traffic within 90 days</div>
+    <ul>
+      <li><strong>AI Answer Engine Optimization:</strong> Build structured, citation-worthy content targeting the exact queries where AirGarage is currently invisible — optimized for AI Overviews, ChatGPT, Perplexity, and Gemini.</li>
+      <li><strong>Review Velocity Program:</strong> Accelerate G2, Capterra, and Product Hunt review generation from existing customers — 3 reviews is far below the AI visibility threshold of ~30+.</li>
+      <li><strong>Community Presence Engineering:</strong> Seed and cultivate Reddit r/CommercialRealEstate, LinkedIn, and property management forums that AI crawlers use as trust signals.</li>
+      <li><strong>Competitor Displacement Content:</strong> Create comparison pages and technical content that positions AirGarage against SpotHero and FlashParking on the exact AI-visible queries property owners use.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <span class="name">Rajesh Gautam, PhD</span> &nbsp;|&nbsp; Founder &amp; CEO, genhance.ai &nbsp;|&nbsp; <a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+  </div>
+
+</div>
+</body>
+</html>

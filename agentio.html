@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Agentio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f1f5f9; color: #1e293b; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); padding: 48px 24px; text-align: center; }
+  .header h1 { color: #fff; font-size: 2rem; font-weight: 700; letter-spacing: 0.5px; }
+  .header .subtitle { color: #94a3b8; font-size: 0.95rem; margin-top: 6px; }
+  .header .domain { color: #60a5fa; font-size: 1.1rem; margin-top: 4px; font-weight: 500; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 20px; }
+  .stat-pills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: -28px 0 32px; }
+  .pill { background: #fff; border-radius: 12px; padding: 14px 22px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); text-align: center; min-width: 130px; }
+  .pill .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; }
+  .pill .value { font-size: 1.45rem; font-weight: 700; color: #0f172a; margin-top: 2px; }
+  .key-finding { background: #fffbeb; border-left: 5px solid #F59E0B; border-radius: 8px; padding: 18px 22px; margin-bottom: 28px; }
+  .key-finding h2 { color: #b45309; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+  .key-finding p { color: #78350f; font-size: 0.95rem; }
+  .section-title { font-size: 1.2rem; font-weight: 700; color: #0f172a; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+  .query-card { background: #fff; border-radius: 10px; padding: 18px 22px; margin-bottom: 14px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+  .query-card .q-text { font-weight: 600; font-size: 0.95rem; color: #1e293b; margin-bottom: 8px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge-weak { background: #fef2f2; color: #dc2626; }
+  .badge-present { background: #f0fdf4; color: #16a34a; }
+  .query-card .analysis { color: #475569; font-size: 0.88rem; margin-top: 6px; }
+  .competitor-section { background: #fff; border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+  .competitor-section h3 { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+  .competitor-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .competitor-tag { background: #e0e7ff; color: #3730a3; padding: 6px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 500; }
+  .cta-box { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); border-radius: 12px; padding: 28px 28px; margin-bottom: 28px; color: #fff; }
+  .cta-box h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
+  .cta-box ul { list-style: none; padding: 0; }
+  .cta-box ul li { padding: 8px 0; font-size: 0.92rem; color: #cbd5e1; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .cta-box ul li:last-child { border-bottom: none; }
+  .cta-box ul li::before { content: "▸ "; color: #60a5fa; font-weight: 700; }
+  .footer { text-align: center; padding: 24px 20px; color: #64748b; font-size: 0.82rem; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+  .footer strong { color: #334155; }
+  .footer a { color: #3b82f6; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI SEARCH VISIBILITY AUDIT</h1>
+  <div class="subtitle">Agentio — AI Influencer Marketing &amp; Creator Ad Platform</div>
+  <div class="domain">agentio.com</div>
+</div>
+
+<div class="container">
+
+  <div class="stat-pills">
+    <div class="pill"><div class="label">Funding</div><div class="value">$52M+</div></div>
+    <div class="pill"><div class="label">AI Visibility</div><div class="value">0/5</div></div>
+    <div class="pill"><div class="label">G2 Reviews</div><div class="value">0</div></div>
+    <div class="pill"><div class="label">Reddit</div><div class="value">0</div></div>
+  </div>
+
+  <div class="key-finding">
+    <h2>⚠ Key Finding</h2>
+    <p>Agentio has raised $52M+ from Benchmark, Craft Ventures, and AlleyCorp and claims 15x better ROAS than alternatives, yet has <strong>zero AI search visibility</strong>. AI Overviews and comparison pages consistently cite Grin (600+ G2 reviews), Upfluence, Aspire, and CreatorIQ — completely omitting Agentio despite its YouTube-first model and proprietary AI-driven brand safety review. The company is invisible across all five critical buyer queries, missing the brands actively searching for creator ad platforms.</p>
+  </div>
+
+  <h2 class="section-title">AI Search Query Analysis</h2>
+
+  <div class="query-card">
+    <div class="q-text">"AI influencer marketing platform for YouTube ads"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">AI Overviews cite Grin and Upfluence for influencer marketing. Agentio's differentiated YouTube-first ad model is completely absent from all AI-generated answers despite being its core differentiator.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"creator ad marketplace for brands 2026"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">AI answers cite Aspire and CreatorIQ in all marketplace comparisons. Agentio is absent despite claiming 15x better ROAS — a powerful value proposition that AI engines never surface.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"best platform to buy YouTube creator sponsorships"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">Reddit r/YouTube threads mention Grapevine and the now-defunct FameBit. Agentio is never discussed in any community forum despite being purpose-built for exactly this use case.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"brand safety AI for influencer content review"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">Agentio's AI draft review and brand safety checklist is a category-leading feature, yet it is completely invisible in AI answers — a missed opportunity to own a critical trust-and-safety query.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"influencer marketing platform comparison 2026 reviews"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">G2 category lists are dominated by Grin with 600+ reviews. Agentio has zero reviews across all platforms, making it invisible to AI recommendation engines that heavily weight review data.</div>
+  </div>
+
+  <div class="competitor-section">
+    <h3>🔍 Competitors Capturing AI Visibility</h3>
+    <div class="competitor-grid">
+      <span class="competitor-tag">Grin</span>
+      <span class="competitor-tag">Upfluence</span>
+      <span class="competitor-tag">Aspire</span>
+      <span class="competitor-tag">CreatorIQ</span>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>🚀 genhance Plays to Win AI Visibility</h3>
+    <ul>
+      <li>Build an authoritative "YouTube Creator Ad Marketplace" comparison hub with schema markup, case studies, and ROAS data to capture high-intent buyer queries</li>
+      <li>Launch a G2/Capterra review program targeting early brand customers to close the 600-review gap with Grin and establish third-party validation</li>
+      <li>Activate Reddit communities (r/YouTube, r/influencermarketing) with AMAs and case studies from the Benchmark-backed team to generate authentic UGC signals</li>
+      <li>Publish an annual "State of AI in Creator Advertising" report with proprietary data to earn backlinks from AdWeek, TechCrunch, and marketing trade publications</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  <strong>Rajesh Gautam, PhD</strong> &nbsp;|&nbsp; Founder &amp; CEO, genhance.ai &nbsp;|&nbsp; <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai">genhance.ai</a>
+</div>
+
+</body>
+</html>

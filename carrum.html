@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Carrum Mobility</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f1f5f9; color: #1e293b; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); padding: 48px 24px; text-align: center; }
+  .header h1 { color: #fff; font-size: 2rem; font-weight: 700; letter-spacing: 0.5px; }
+  .header .subtitle { color: #94a3b8; font-size: 0.95rem; margin-top: 6px; }
+  .header .domain { color: #60a5fa; font-size: 1.1rem; margin-top: 4px; font-weight: 500; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 20px; }
+  .stat-pills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: -28px 0 32px; }
+  .pill { background: #fff; border-radius: 12px; padding: 14px 22px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); text-align: center; min-width: 130px; }
+  .pill .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; }
+  .pill .value { font-size: 1.45rem; font-weight: 700; color: #0f172a; margin-top: 2px; }
+  .key-finding { background: #fffbeb; border-left: 5px solid #F59E0B; border-radius: 8px; padding: 18px 22px; margin-bottom: 28px; }
+  .key-finding h2 { color: #b45309; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+  .key-finding p { color: #78350f; font-size: 0.95rem; }
+  .section-title { font-size: 1.2rem; font-weight: 700; color: #0f172a; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+  .query-card { background: #fff; border-radius: 10px; padding: 18px 22px; margin-bottom: 14px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+  .query-card .q-text { font-weight: 600; font-size: 0.95rem; color: #1e293b; margin-bottom: 8px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge-weak { background: #fef2f2; color: #dc2626; }
+  .badge-present { background: #f0fdf4; color: #16a34a; }
+  .query-card .analysis { color: #475569; font-size: 0.88rem; margin-top: 6px; }
+  .competitor-section { background: #fff; border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+  .competitor-section h3 { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+  .competitor-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .competitor-tag { background: #e0e7ff; color: #3730a3; padding: 6px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 500; }
+  .cta-box { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); border-radius: 12px; padding: 28px 28px; margin-bottom: 28px; color: #fff; }
+  .cta-box h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
+  .cta-box ul { list-style: none; padding: 0; }
+  .cta-box ul li { padding: 8px 0; font-size: 0.92rem; color: #cbd5e1; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .cta-box ul li:last-child { border-bottom: none; }
+  .cta-box ul li::before { content: "▸ "; color: #60a5fa; font-weight: 700; }
+  .footer { text-align: center; padding: 24px 20px; color: #64748b; font-size: 0.82rem; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+  .footer strong { color: #334155; }
+  .footer a { color: #3b82f6; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI SEARCH VISIBILITY AUDIT</h1>
+  <div class="subtitle">Carrum Mobility — EV Fleet Management &amp; Sustainable Mobility</div>
+  <div class="domain">carrum.co.in</div>
+</div>
+
+<div class="container">
+
+  <div class="stat-pills">
+    <div class="pill"><div class="label">Funding</div><div class="value">~$17M</div></div>
+    <div class="pill"><div class="label">AI Visibility</div><div class="value">0/5</div></div>
+    <div class="pill"><div class="label">G2 Reviews</div><div class="value">0</div></div>
+    <div class="pill"><div class="label">Reddit</div><div class="value">0</div></div>
+  </div>
+
+  <div class="key-finding">
+    <h2>⚠ Key Finding</h2>
+    <p>Carrum Mobility has raised ~$17M, including a $10M Series B from Uber, and operates 5,100+ vehicles across an 18,000-driver network — yet has <strong>zero AI search visibility</strong>. AI Overviews consistently cite Zypp Electric, BluSmart, and Euler Motors for Indian EV fleet management, completely omitting Carrum. As a category-creating company bridging ride-hailing fleet management with EV/CNG operations, Carrum faces a unique visibility challenge: no structured third-party content exists for its niche, leaving AI models with nothing to cite. The Uber backing is a powerful signal that remains untapped in AI search.</p>
+  </div>
+
+  <h2 class="section-title">AI Search Query Analysis</h2>
+
+  <div class="query-card">
+    <div class="q-text">"EV fleet management platform India"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">AI Overviews cite Zypp Electric, BluSmart, and Euler Motors. Carrum is absent despite operating 5,100+ vehicles — missing the highest-intent category query in its core market.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"B2B fleet electrification software Asia"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">AI answers cite Evera and Lithium Urban for Asian fleet electrification. Carrum's Uber-backed model is not in any AI summaries, leaving its most powerful validation signal unused.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"ride-hailing fleet management SaaS CNG EV"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">This niche category has zero structured AI answers — Carrum is effectively category-creating with no third-party content for AI models to reference. Both a threat and an opportunity.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"fleet sustainability platform carbon tracking India"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">AI Overviews cite general fleet tools for sustainability tracking. Carrum's 18,000-driver network and emissions data is not referenced, missing the sustainability-focused buyer segment.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"electric vehicle fleet operations platform for Uber"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">AI answers cite Moove (Africa) and Zypp (India) for Uber fleet operations. Carrum is not in comparison content despite direct Uber backing — a critical gap for Uber fleet partner discovery.</div>
+  </div>
+
+  <div class="competitor-section">
+    <h3>🔍 Competitors Capturing AI Visibility</h3>
+    <div class="competitor-grid">
+      <span class="competitor-tag">Zypp Electric</span>
+      <span class="competitor-tag">BluSmart</span>
+      <span class="competitor-tag">Evera</span>
+      <span class="competitor-tag">Euler Motors</span>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>🚀 genhance Plays to Win AI Visibility</h3>
+    <ul>
+      <li>Create a "Guide to EV Fleet Management in India" with schema markup, Uber partnership data, and fleet electrification case studies to own the category-defining query</li>
+      <li>Leverage the Uber investment to co-publish thought leadership and earn backlinks from TechCrunch, Economic Times, and YourStory — signals AI models heavily weight</li>
+      <li>Define the "ride-hailing fleet management SaaS" category with original content, glossary pages, and data reports that become the primary AI reference source</li>
+      <li>Build a developer/API documentation hub and fleet operator community to generate structured technical content that AI crawlers can ingest and cite</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  <strong>Rajesh Gautam, PhD</strong> &nbsp;|&nbsp; Founder &amp; CEO, genhance.ai &nbsp;|&nbsp; <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai">genhance.ai</a>
+</div>
+
+</body>
+</html>

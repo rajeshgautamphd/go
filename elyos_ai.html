@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elyos AI — AI Search Visibility Audit | genhance.ai</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+  /* Header */
+  .header { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); border-radius: 16px; padding: 48px 40px; margin-bottom: 28px; color: #fff; }
+  .header-label { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #8ecae6; margin-bottom: 8px; }
+  .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px; }
+  .header .domain { font-size: 18px; color: #a0b4d0; margin-bottom: 4px; }
+  .header .meta { font-size: 14px; color: #6b7d95; }
+  /* Stat Pills */
+  .stat-row { display: flex; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+  .stat-pill { flex: 1; min-width: 150px; background: #fff; border-radius: 12px; padding: 20px 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .stat-pill .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #6b7d95; margin-bottom: 4px; }
+  .stat-pill .value { font-size: 26px; font-weight: 800; color: #0a1628; }
+  .stat-pill .sub { font-size: 12px; color: #8899aa; margin-top: 2px; }
+  /* Key Finding */
+  .key-finding { background: #fff7ed; border-left: 4px solid #F59E0B; border-radius: 0 12px 12px 0; padding: 24px 28px; margin-bottom: 28px; }
+  .key-finding .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #F59E0B; font-weight: 700; margin-bottom: 8px; }
+  .key-finding p { font-size: 15px; color: #1a1a2e; line-height: 1.7; }
+  /* Query Cards */
+  .section-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: #0a1628; }
+  .query-card { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; gap: 16px; align-items: flex-start; }
+  .query-text { flex: 1; font-size: 15px; font-weight: 600; color: #0a1628; }
+  .badge { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
+  .badge-weak { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+  .badge-present { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+  .query-analysis { margin-top: 6px; font-size: 13.5px; color: #4a5568; line-height: 1.65; }
+  .query-content { flex: 1; }
+  /* Competitors */
+  .competitors { background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .competitor-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .competitor-tag { background: #eef2f7; border-radius: 20px; padding: 8px 18px; font-size: 13px; font-weight: 600; color: #334155; }
+  /* CTA */
+  .cta { background: linear-gradient(135deg, #0a1628 0%, #162244 100%); border-radius: 16px; padding: 40px; color: #fff; margin-bottom: 24px; }
+  .cta h2 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+  .cta .subtitle { font-size: 14px; color: #8ecae6; margin-bottom: 20px; }
+  .cta ul { list-style: none; padding: 0; }
+  .cta ul li { padding: 10px 0; font-size: 14.5px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .cta ul li::before { content: '⚡ '; margin-right: 8px; }
+  .cta ul li:last-child { border-bottom: none; }
+  /* Footer */
+  .footer { text-align: center; padding: 24px 0; font-size: 13px; color: #6b7d95; }
+  .footer a { color: #3b82f6; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  .footer .name { font-weight: 700; color: #0a1628; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-label">AI Search Visibility Audit</div>
+    <h1>Elyos AI</h1>
+    <div class="domain">elyos.ai — Field Service Management AI</div>
+    <div class="meta">Founded 2023 · London, UK · 29 employees · Philippa Brown, Co-Founder</div>
+  </div>
+
+  <!-- STAT PILLS -->
+  <div class="stat-row">
+    <div class="stat-pill">
+      <div class="label">Funding</div>
+      <div class="value">$16M</div>
+      <div class="sub">Series A, Blackbird Ventures · YC S23</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">AI Visibility</div>
+      <div class="value">0/5</div>
+      <div class="sub">Not cited in any AI-generated answers</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">G2 Reviews</div>
+      <div class="value">0</div>
+      <div class="sub">No G2 profile or reviews indexed</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Reddit</div>
+      <div class="value">0</div>
+      <div class="sub">Zero organic community mentions</div>
+    </div>
+  </div>
+
+  <!-- KEY FINDING -->
+  <div class="key-finding">
+    <div class="label">⚡ Key Finding</div>
+    <p>Despite raising $16M from top-tier investors including Blackbird Ventures and graduating Y Combinator S23, Elyos AI has virtually zero presence in AI-generated search results for its core category. Every high-intent buyer query — from "AI field service management software" to "autonomous AI agents for trades businesses" — is dominated by well-funded incumbents like ServiceTitan ($3.8B valuation, 4,500+ G2 reviews) and Jobber (1,200+ G2 reviews). Elyos has no G2 profile, no Reddit discussions, and no indexed reviews, rendering it invisible to the AI-powered search engines that modern buyers rely on.</p>
+  </div>
+
+  <!-- QUERY CARDS -->
+  <div class="section-title">🔍 AI Search Query Analysis</div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"AI field service management software"</div>
+      <div class="query-analysis">Elyos not cited in any AI Overviews or chatbot answers. ServiceTitan (4,500+ G2 reviews) and Jobber (1,200+ G2 reviews) completely dominate the AI-generated responses for this high-volume commercial query.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"autonomous AI agents for trades businesses"</div>
+      <div class="query-analysis">AI Overviews consistently cite Jobber and Housecall Pro as the go-to platforms for AI-powered trade business automation. Elyos is entirely absent from all AI-generated answers despite being purpose-built for this exact use case.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"best AI scheduling tool for electricians plumbers HVAC"</div>
+      <div class="query-analysis">AI answers are heavily dominated by ServiceTitan ($3.8B valuation) and Workiz. Elyos is missing from every AI-cited source, including comparison pages, review sites, and community discussions.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"field service automation platform AI 2026"</div>
+      <div class="query-analysis">Reddit threads consistently recommend Housecall Pro and Jobber. AI overviews pull from G2 category lists where Elyos is entirely unlisted. Zero presence in the sources that feed AI answer engines.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"AI phone answering for trades businesses"</div>
+      <div class="query-analysis">Consumer-facing searches in this adjacent category are fully owned by Ruby, AnswerConnect, and CallRail. Elyos has no SEO presence for AI voice/phone agent queries despite offering this capability.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <!-- COMPETITORS -->
+  <div class="competitors">
+    <div class="section-title">🏢 Competitors Dominating AI Search</div>
+    <div class="competitor-list">
+      <span class="competitor-tag">ServiceTitan</span>
+      <span class="competitor-tag">Jobber</span>
+      <span class="competitor-tag">Housecall Pro</span>
+      <span class="competitor-tag">Workiz</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>🚀 How genhance.ai Can Fix This</h2>
+    <div class="subtitle">4 high-impact plays to capture AI-driven buyer traffic within 90 days</div>
+    <ul>
+      <li><strong>AI Answer Engine Optimization:</strong> Build structured, citation-worthy content targeting the exact queries where Elyos is currently invisible — optimized for AI Overviews, ChatGPT, Perplexity, and Gemini.</li>
+      <li><strong>Review Velocity Program:</strong> Launch and accelerate G2, Capterra, and Product Hunt profiles with verified customer reviews to become indexable by AI comparison engines.</li>
+      <li><strong>Community Presence Engineering:</strong> Seed and cultivate Reddit, LinkedIn, and trade forum discussions that AI crawlers use as trust signals for domain authority.</li>
+      <li><strong>Competitor Displacement Content:</strong> Create comparison pages and technical content that positions Elyos against ServiceTitan and Jobber on the exact AI-visible comparison queries buyers use.</li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="name">Rajesh Gautam, PhD</span> &nbsp;|&nbsp; Founder &amp; CEO, genhance.ai &nbsp;|&nbsp; <a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Predium</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f1f5f9; color: #1e293b; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); padding: 48px 24px; text-align: center; }
+  .header h1 { color: #fff; font-size: 2rem; font-weight: 700; letter-spacing: 0.5px; }
+  .header .subtitle { color: #94a3b8; font-size: 0.95rem; margin-top: 6px; }
+  .header .domain { color: #60a5fa; font-size: 1.1rem; margin-top: 4px; font-weight: 500; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 20px; }
+  .stat-pills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: -28px 0 32px; }
+  .pill { background: #fff; border-radius: 12px; padding: 14px 22px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); text-align: center; min-width: 130px; }
+  .pill .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; }
+  .pill .value { font-size: 1.45rem; font-weight: 700; color: #0f172a; margin-top: 2px; }
+  .key-finding { background: #fffbeb; border-left: 5px solid #F59E0B; border-radius: 8px; padding: 18px 22px; margin-bottom: 28px; }
+  .key-finding h2 { color: #b45309; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+  .key-finding p { color: #78350f; font-size: 0.95rem; }
+  .section-title { font-size: 1.2rem; font-weight: 700; color: #0f172a; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+  .query-card { background: #fff; border-radius: 10px; padding: 18px 22px; margin-bottom: 14px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+  .query-card .q-text { font-weight: 600; font-size: 0.95rem; color: #1e293b; margin-bottom: 8px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge-weak { background: #fef2f2; color: #dc2626; }
+  .badge-present { background: #f0fdf4; color: #16a34a; }
+  .query-card .analysis { color: #475569; font-size: 0.88rem; margin-top: 6px; }
+  .competitor-section { background: #fff; border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+  .competitor-section h3 { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+  .competitor-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .competitor-tag { background: #e0e7ff; color: #3730a3; padding: 6px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 500; }
+  .cta-box { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); border-radius: 12px; padding: 28px 28px; margin-bottom: 28px; color: #fff; }
+  .cta-box h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
+  .cta-box ul { list-style: none; padding: 0; }
+  .cta-box ul li { padding: 8px 0; font-size: 0.92rem; color: #cbd5e1; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .cta-box ul li:last-child { border-bottom: none; }
+  .cta-box ul li::before { content: "▸ "; color: #60a5fa; font-weight: 700; }
+  .footer { text-align: center; padding: 24px 20px; color: #64748b; font-size: 0.82rem; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+  .footer strong { color: #334155; }
+  .footer a { color: #3b82f6; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI SEARCH VISIBILITY AUDIT</h1>
+  <div class="subtitle">Predium — Proptech ESG &amp; Carbon Management</div>
+  <div class="domain">predium.com</div>
+</div>
+
+<div class="container">
+
+  <div class="stat-pills">
+    <div class="pill"><div class="label">Funding</div><div class="value">€20M</div></div>
+    <div class="pill"><div class="label">AI Visibility</div><div class="value">0/5</div></div>
+    <div class="pill"><div class="label">G2 Reviews</div><div class="value">0</div></div>
+    <div class="pill"><div class="label">Reddit</div><div class="value">0</div></div>
+  </div>
+
+  <div class="key-finding">
+    <h2>⚠ Key Finding</h2>
+    <p>Predium has raised €20M and leads the German market for real estate ESG management, yet has <strong>zero AI search visibility</strong> across all five critical buyer queries. AI Overviews consistently cite Measurabl, Deepki, and Persefoni ($125M+ raised) for ESG and carbon accounting — completely omitting Predium despite its EU-focused CSRD compliance product. With no G2 reviews or Reddit discussions, Predium is invisible to AI recommendation engines precisely when EU property owners are actively searching for CSRD compliance solutions.</p>
+  </div>
+
+  <h2 class="section-title">AI Search Query Analysis</h2>
+
+  <div class="query-card">
+    <div class="q-text">"ESG management platform for real estate"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">AI Overviews cite Measurabl, Deepki, and EVORA. Predium is absent despite being the German market leader in real estate ESG — a critical gap in the most important category-defining query.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"carbon accounting software for commercial buildings"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">AI answers cite Persefoni ($125M+ raised) and Sweep. Predium does not appear in any comparison pages or AI-generated lists for carbon accounting solutions.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"CSRD compliance platform for property owners"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">This niche, high-intent query is dominated by Position Green and Greenomy. Predium is not cited despite offering a purpose-built EU CSRD compliance product — a missed opportunity for regulation-driven demand.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"real estate decarbonization software Europe"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">AI-cited Reddit threads mention Deepki and Plan A when discussing European decarbonization tools. Predium is absent from all user-generated content and community discussions.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="q-text">"proptech sustainability platform comparison 2026"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="analysis">G2 and Capterra have zero Predium reviews, making it completely invisible to AI recommendation engines that source comparison data from review aggregators.</div>
+  </div>
+
+  <div class="competitor-section">
+    <h3>🔍 Competitors Capturing AI Visibility</h3>
+    <div class="competitor-grid">
+      <span class="competitor-tag">Measurabl</span>
+      <span class="competitor-tag">Deepki</span>
+      <span class="competitor-tag">Persefoni</span>
+      <span class="competitor-tag">Plan A</span>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>🚀 genhance Plays to Win AI Visibility</h3>
+    <ul>
+      <li>Create comprehensive "ESG Platform for European Real Estate" comparison content with schema markup optimized for AI extraction and CSRD regulation keywords</li>
+      <li>Launch a G2/Capterra profile and drive customer reviews to establish the third-party validation signals AI engines require for inclusion</li>
+      <li>Seed r/Proptech, r/sustainability, and European real estate forums with authentic case studies and technical discussions to generate discoverable UGC</li>
+      <li>Publish original EU-focused regulatory guides (CSRD compliance for property owners) as gated assets to earn backlinks from real estate and sustainability media outlets</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  <strong>Rajesh Gautam, PhD</strong> &nbsp;|&nbsp; Founder &amp; CEO, genhance.ai &nbsp;|&nbsp; <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai">genhance.ai</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vend Park — AI Search Visibility Audit | genhance.ai</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+  .header { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); border-radius: 16px; padding: 48px 40px; margin-bottom: 28px; color: #fff; }
+  .header-label { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #8ecae6; margin-bottom: 8px; }
+  .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px; }
+  .header .domain { font-size: 18px; color: #a0b4d0; margin-bottom: 4px; }
+  .header .meta { font-size: 14px; color: #6b7d95; }
+  .stat-row { display: flex; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+  .stat-pill { flex: 1; min-width: 150px; background: #fff; border-radius: 12px; padding: 20px 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .stat-pill .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #6b7d95; margin-bottom: 4px; }
+  .stat-pill .value { font-size: 26px; font-weight: 800; color: #0a1628; }
+  .stat-pill .sub { font-size: 12px; color: #8899aa; margin-top: 2px; }
+  .key-finding { background: #fff7ed; border-left: 4px solid #F59E0B; border-radius: 0 12px 12px 0; padding: 24px 28px; margin-bottom: 28px; }
+  .key-finding .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #F59E0B; font-weight: 700; margin-bottom: 8px; }
+  .key-finding p { font-size: 15px; color: #1a1a2e; line-height: 1.7; }
+  .section-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: #0a1628; }
+  .query-card { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; gap: 16px; align-items: flex-start; }
+  .query-text { flex: 1; font-size: 15px; font-weight: 600; color: #0a1628; }
+  .badge { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
+  .badge-weak { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+  .badge-present { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+  .query-analysis { margin-top: 6px; font-size: 13.5px; color: #4a5568; line-height: 1.65; }
+  .query-content { flex: 1; }
+  .competitors { background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .competitor-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .competitor-tag { background: #eef2f7; border-radius: 20px; padding: 8px 18px; font-size: 13px; font-weight: 600; color: #334155; }
+  .cta { background: linear-gradient(135deg, #0a1628 0%, #162244 100%); border-radius: 16px; padding: 40px; color: #fff; margin-bottom: 24px; }
+  .cta h2 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+  .cta .subtitle { font-size: 14px; color: #8ecae6; margin-bottom: 20px; }
+  .cta ul { list-style: none; padding: 0; }
+  .cta ul li { padding: 10px 0; font-size: 14.5px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .cta ul li::before { content: '⚡ '; margin-right: 8px; }
+  .cta ul li:last-child { border-bottom: none; }
+  .footer { text-align: center; padding: 24px 0; font-size: 13px; color: #6b7d95; }
+  .footer a { color: #3b82f6; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  .footer .name { font-weight: 700; color: #0a1628; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-label">AI Search Visibility Audit</div>
+    <h1>Vend Park</h1>
+    <div class="domain">vendpark.io — AI Parking Operations &amp; Technology</div>
+    <div class="meta">Founded 2023 (est.) · Boston, MA · 20–40 employees · Michael Miele, CEO</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-pill">
+      <div class="label">Funding</div>
+      <div class="value">~$21M</div>
+      <div class="sub">$17.5M Series A, Blue Heron Capital · Nuveen Real Asset</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">AI Visibility</div>
+      <div class="value">0/5</div>
+      <div class="sub">Not cited in any AI-generated answers</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">G2 Reviews</div>
+      <div class="value">0</div>
+      <div class="sub">No G2, Capterra, or Product Hunt presence</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Reddit</div>
+      <div class="value">0</div>
+      <div class="sub">Zero organic community mentions</div>
+    </div>
+  </div>
+
+  <div class="key-finding">
+    <div class="label">⚡ Key Finding</div>
+    <p>Vend Park has raised ~$21M and claims 35x growth with a novel "dual-vendor replacement" model for parking operations, yet it has absolutely zero AI search visibility. On every query that matters — "AI parking operations platform," "digital parking infrastructure for office buildings," "parking revenue optimization AI" — Vend is invisible. Competitors like Metropolis ($1.5B+ valuation), AirGarage, and FlashParking own the AI-generated recommendations. With no G2 reviews, no Capterra profile, no Reddit discussions, and no indexed comparison content, Vend Park is undiscoverable by the AI-powered search tools that commercial real estate owners use to evaluate parking technology vendors.</p>
+  </div>
+
+  <div class="section-title">🔍 AI Search Query Analysis</div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"AI parking operations platform commercial real estate"</div>
+      <div class="query-analysis">AI Overviews cite SpotHero for Business and AirGarage as the go-to CRE parking platforms. Vend Park is absent from all cited sources despite being purpose-built for this exact use case.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"parking technology that replaces traditional operators"</div>
+      <div class="query-analysis">Reddit threads discussing operator-replacement parking tech consistently mention AirGarage and Metropolis. Vend's "dual-vendor replacement" model — its core differentiator — is never cited.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"digital parking infrastructure for office buildings"</div>
+      <div class="query-analysis">AI answers cite FlashParking and SKIDATA as the standard for office building parking infrastructure. Vend is not mentioned despite reporting 35x growth in this segment.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"best parking management platform for CRE owners 2026"</div>
+      <div class="query-analysis">Zero reviews on G2, Capterra, or Product Hunt. AI comparison engines have no data to index, making Vend completely invisible to commercial real estate owners searching for parking solutions.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-content">
+      <div class="query-text">"parking revenue optimization AI platform"</div>
+      <div class="query-analysis">This niche is dominated by Metropolis ($1.5B+ valuation) and ParkJockey. Vend's AI-powered operations team is not referenced in any AI-generated answer for revenue optimization queries.</div>
+    </div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="competitors">
+    <div class="section-title">🏢 Competitors Dominating AI Search</div>
+    <div class="competitor-list">
+      <span class="competitor-tag">AirGarage</span>
+      <span class="competitor-tag">Metropolis</span>
+      <span class="competitor-tag">FlashParking</span>
+      <span class="competitor-tag">SpotHero</span>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>🚀 How genhance.ai Can Fix This</h2>
+    <div class="subtitle">4 high-impact plays to capture AI-driven buyer traffic within 90 days</div>
+    <ul>
+      <li><strong>AI Answer Engine Optimization:</strong> Build structured, citation-worthy content targeting the exact queries where Vend is currently invisible — optimized for AI Overviews, ChatGPT, Perplexity, and Gemini.</li>
+      <li><strong>Review Velocity Program:</strong> Launch G2, Capterra, and Product Hunt profiles from scratch and accelerate verified customer reviews to cross the AI visibility threshold.</li>
+      <li><strong>Community Presence Engineering:</strong> Seed and cultivate Reddit r/CommercialRealEstate, LinkedIn, and property management forums that AI crawlers use as trust signals for domain authority.</li>
+      <li><strong>Competitor Displacement Content:</strong> Create comparison pages and technical content that positions Vend against Metropolis and AirGarage — highlighting the dual-vendor replacement model on AI-visible queries.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <span class="name">Rajesh Gautam, PhD</span> &nbsp;|&nbsp; Founder &amp; CEO, genhance.ai &nbsp;|&nbsp; <a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+  </div>
+
+</div>
+</body>
+</html>
