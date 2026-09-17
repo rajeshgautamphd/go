@@ -3,124 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — Jedify</title>
+<title>Jedify — AI Search Visibility Audit | genhance.ai</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #1a1a2e; line-height: 1.6; }
-  .header { background: linear-gradient(135deg, #0a1628 0%, #1a2a5e 50%, #0d2137 100%); color: white; padding: 48px 32px; text-align: center; }
-  .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
-  .header p { font-size: 16px; opacity: 0.85; max-width: 600px; margin: 0 auto; }
-  .container { max-width: 800px; margin: 0 auto; padding: 24px 20px; }
-  .stats { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: -36px 0 32px 0; }
-  .stat-pill { background: white; border-radius: 12px; padding: 16px 24px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); min-width: 120px; }
-  .stat-pill .value { font-size: 24px; font-weight: 800; color: #1a2a5e; }
-  .stat-pill .label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
-  .key-finding { background: linear-gradient(135deg, #fff3cd, #ffecb3); border-left: 4px solid #f59e0b; padding: 20px 24px; border-radius: 8px; margin: 0 0 32px 0; }
-  .key-finding h3 { color: #92400e; margin-bottom: 8px; font-size: 16px; }
-  .key-finding p { color: #78350f; font-size: 14px; }
-  .section-title { font-size: 20px; font-weight: 700; color: #1a2a5e; margin: 32px 0 16px 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
-  .query-card { background: white; border-radius: 10px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border-left: 4px solid #cbd5e1; }
-  .query-card.present { border-left-color: #10b981; }
-  .query-card.weak { border-left-color: #f59e0b; }
-  .query-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .query-text { font-weight: 600; color: #1a2a5e; font-size: 15px; }
-  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-  .badge.present { background: #d1fae5; color: #065f46; }
-  .badge.weak { background: #ffedd5; color: #9a3412; }
-  .query-analysis { font-size: 13px; color: #475569; margin-top: 8px; }
-  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
-  .competitor-card { background: white; border-radius: 8px; padding: 14px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-weight: 600; color: #334155; font-size: 14px; }
-  .cta { background: linear-gradient(135deg, #0a1628, #1a2a5e); color: white; padding: 32px; border-radius: 12px; margin-top: 32px; text-align: center; }
-  .cta h3 { font-size: 20px; margin-bottom: 12px; }
-  .cta-plays { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
-  .cta-play { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 14px; text-align: left; }
-  .cta-play .num { font-size: 24px; font-weight: 800; opacity: 0.4; }
-  .cta-play .text { font-size: 12px; opacity: 0.9; margin-top: 4px; }
-  .footer { text-align: center; color: #64748b; font-size: 13px; padding: 32px 0 16px 0; }
-  .footer a { color: #3b82f6; text-decoration: none; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1724; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+.header { background: linear-gradient(135deg, #0a1628 0%, #15294a 40%, #1a3a6b 70%, #0f2744 100%); padding: 60px 0 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.header h1 { font-size: 2.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #94a3b8; font-size: 1rem; letter-spacing: 0.5px; }
+.header-badge { display: inline-block; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); color: #60a5fa; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 16px; }
+
+.stats-row { display: flex; gap: 16px; margin: -28px 0 32px; flex-wrap: wrap; }
+.stat-pill { flex: 1; min-width: 160px; background: linear-gradient(145deg, #1a2744, #162038); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px 18px; text-align: center; }
+.stat-pill .stat-value { font-size: 1.6rem; font-weight: 700; color: #fff; }
+.stat-pill .stat-label { font-size: 0.78rem; color: #64748b; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.6px; }
+.stat-pill .stat-detail { font-size: 0.7rem; color: #475569; margin-top: 2px; }
+
+.alert-box { background: linear-gradient(135deg, #3d2a0a, #2d1f08); border: 1px solid #f59e0b40; border-left: 4px solid #f59e0b; border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
+.alert-box .alert-title { color: #fbbf24; font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+.alert-box .alert-body { color: #fcd34d; font-size: 0.9rem; }
+
+.section-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+.query-card { background: linear-gradient(145deg, #1a2744, #162038); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px; }
+.query-card .badge { flex-shrink: 0; padding: 5px 12px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+.badge-present { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+.badge-weak { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+.query-card .query-content { flex: 1; }
+.query-card .query-text { font-weight: 600; color: #e2e8f0; font-size: 0.95rem; margin-bottom: 6px; }
+.query-card .query-analysis { font-size: 0.83rem; color: #94a3b8; }
+
+.competitors-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 32px; }
+.competitor-card { background: linear-gradient(145deg, #1e2d4a, #152038); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 16px; text-align: center; }
+.competitor-card .comp-name { font-weight: 700; color: #e2e8f0; font-size: 1rem; }
+.competitor-card .comp-desc { font-size: 0.75rem; color: #64748b; margin-top: 4px; }
+
+.cta-section { background: linear-gradient(135deg, #0a1628 0%, #15294a 50%, #1a3a6b 100%); border: 1px solid rgba(59,130,246,0.2); border-radius: 16px; padding: 36px 32px; margin: 32px 0; }
+.cta-section h3 { color: #fff; font-size: 1.3rem; margin-bottom: 20px; }
+.cta-plays { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.cta-play { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 16px; }
+.cta-play .play-num { font-size: 0.7rem; color: #60a5fa; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+.cta-play .play-title { font-weight: 600; color: #e2e8f0; font-size: 0.9rem; margin-bottom: 4px; }
+.cta-play .play-desc { font-size: 0.78rem; color: #94a3b8; }
+
+.footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 24px 0; margin-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer .footer-name { font-weight: 700; color: #e2e8f0; font-size: 0.9rem; }
+.footer .footer-title { font-size: 0.78rem; color: #64748b; }
+.footer .footer-links { font-size: 0.78rem; color: #60a5fa; }
+.footer .footer-links a { color: #60a5fa; text-decoration: none; }
 </style>
 </head>
 <body>
-<div class="header">
-  <h1>AI SEARCH VISIBILITY AUDIT</h1>
-  <p>Jedify — Enterprise AI Context Graphs</p>
-</div>
+
+<header class="header">
+  <div class="container">
+    <div class="header-badge">AI SEARCH VISIBILITY AUDIT</div>
+    <h1>Jedify — AI Search Visibility Audit</h1>
+    <p class="subtitle">How visible is Jedify across AI-powered search engines, LLMs, and community platforms?</p>
+  </div>
+</header>
+
 <div class="container">
-  <div class="stats">
-    <div class="stat-pill"><div class="value">$24M Series A ($48M total)</div><div class="label">Funding</div></div>
-    <div class="stat-pill"><div class="value">1/5</div><div class="label">AI Visibility</div></div>
-    <div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
-    <div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
-  </div>
 
-  <div class="key-finding">
-    <h3>🔑 KEY FINDING</h3>
-    <p>Jedify raised $24M from Norwest and Snowflake to build 'context graphs' — the missing layer that lets AI agents understand enterprise businesses. But AI search engines recommend Neo4j and LangChain for agent memory. Zero G2 reviews, zero Reddit mentions. The entire 'context graph for AI agents' category narrative is yours to define.</p>
-  </div>
-
-  <div class="section-title">📊 AI Search Query Analysis</div>
-  <p style="color:#64748b;font-size:13px;margin-bottom:16px;">We ran 5 queries that potential Jedify customers search daily. Here's what AI search engines cite — and where Jedify is missing.</p>
-    <div class="query-card weak">
-    <div class="query-header">
-      <span class="query-text">"best context graph enterprise AI"</span>
-      <span class="badge weak">WEAK</span>
+  <div class="stats-row">
+    <div class="stat-pill">
+      <div class="stat-value">$33M</div>
+      <div class="stat-label">Funding</div>
+      <div class="stat-detail">Series A · New York</div>
     </div>
-    <div class="query-analysis">A category Jedify is defining — 'context graphs for AI agents.' Neo4j and knowledge graphs appear in AI-cited sources, but Jedify's purpose-built Semantic Fusion platform is invisible.</div>
-  </div>
-  <div class="query-card weak">
-    <div class="query-header">
-      <span class="query-text">"enterprise AI agent memory platform"</span>
-      <span class="badge weak">WEAK</span>
+    <div class="stat-pill">
+      <div class="stat-value">1.0/5</div>
+      <div class="stat-label">AI Visibility</div>
+      <div class="stat-detail">LLM + search presence</div>
     </div>
-    <div class="query-analysis">AI answers for 'agent memory' cite LangChain, Pinecone, and Chroma. Jedify — building the memory layer for enterprise AI — doesn't appear.</div>
-  </div>
-  <div class="query-card weak">
-    <div class="query-header">
-      <span class="query-text">"Semantic Fusion enterprise data layer"</span>
-      <span class="badge weak">WEAK</span>
+    <div class="stat-pill">
+      <div class="stat-value">0</div>
+      <div class="stat-label">G2 Reviews</div>
+      <div class="stat-detail">No community presence</div>
     </div>
-    <div class="query-analysis">This is Jedify's proprietary technology language — but search engines have no indexed content for it. Your core IP has zero AI footprint.</div>
-  </div>
-  <div class="query-card weak">
-    <div class="query-header">
-      <span class="query-text">"Jedify review Reddit AI context"</span>
-      <span class="badge weak">WEAK</span>
+    <div class="stat-pill">
+      <div class="stat-value">0</div>
+      <div class="stat-label">Reddit Mentions</div>
+      <div class="stat-detail">Untapped community</div>
     </div>
-    <div class="query-analysis">Zero Reddit threads. Zero G2 reviews. Your $24M Series A from Norwest and Snowflake has generated zero community discussion.</div>
-  </div>
-  <div class="query-card present">
-    <div class="query-header">
-      <span class="query-text">"enterprise data platform for AI agents"</span>
-      <span class="badge present">PRESENT</span>
-    </div>
-    <div class="query-analysis">Databricks and Snowflake dominate this query. Jedify's CEO was featured on Snowflake's Startup Spotlight — but that single piece of editorial content isn't enough to shift AI answers.</div>
   </div>
 
-
-  <div class="section-title">🏢 Named Competitors in AI Answers</div>
-  <p style="color:#64748b;font-size:13px;margin-bottom:8px;">These companies ARE cited by AI search engines when users search for Jedify's category:</p>
-  <div class="competitor-grid">
-        <div class="competitor-card">Neo4j</div>
-    <div class="competitor-card">TigerGraph</div>
-    <div class="competitor-card">Databricks</div>
-    <div class="competitor-card">Microsoft Purview</div>
-
+  <div class="alert-box">
+    <div class="alert-title">⚠️ Critical UGC Gap Detected</div>
+    <div class="alert-body">
+      Jedify has raised $33M to build an Autonomous Context Graph for Enterprise AI Agents — a deeply technical product at the frontier of AI infrastructure. Yet it has zero presence on G2 and zero Reddit mentions. This is particularly damaging because AI agent platforms are discovered primarily through technical communities: developers on r/MachineLearning, r/LocalLLaMA, and Hacker News; enterprise architects on G2; and AI practitioners on GitHub. Competitors like LangChain, CrewAI, AutoGen, and Moveworks all maintain strong community footprints — LangChain and CrewAI through open-source communities, Moveworks through enterprise G2 reviews. Jedify is invisible on every channel that AI search engines use to rank and recommend AI agent infrastructure tools.
+    </div>
   </div>
 
-  <div class="cta">
-    <h3>🚀 How genhance Fixes This</h3>
+  <h2 class="section-title">🔍 Category Query Performance</h2>
+
+  <div class="query-card">
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-content">
+      <div class="query-text">"best AI agent platform enterprise 2026"</div>
+      <div class="query-analysis">
+        Moveworks dominates enterprise AI agent queries in AI search results, backed by its strong G2 presence with hundreds of verified enterprise reviews. LangChain surfaces for developer-oriented agent queries due to its massive open-source community and documentation footprint. Jedify — despite building specifically for the enterprise AI agent context problem — does not appear because it has no third-party content corroborating its enterprise readiness.
+      </div>
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-text">"enterprise context graph AI"</div>
+    <div class="query-analysis">
+      This is Jedify's category-defining query — "Autonomous Context Graph" is Jedify's core innovation. Yet no AI search engine returns Jedify for this query because no indexed content outside jedify.com references the concept. LangChain's "LangGraph" and AutoGen's agent graph concepts surface for adjacent queries due to their community documentation and GitHub presence, capturing the mindshare Jedify needs to own.
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-text">"AI agent orchestration tools"</div>
+    <div class="query-analysis">
+      LangChain and CrewAI split this query entirely, dominating both traditional SEO and AI-generated search results. CrewAI's "orchestration" messaging and LangChain's "LangGraph" product are deeply embedded in LLM training data through documentation, tutorials, and community content. AutoGen (Microsoft) also surfaces due to its GitHub star count and research paper citations. Jedify has no comparable community content layer.
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-text">"best enterprise AI infrastructure"</div>
+    <div class="query-analysis">
+      This broad infrastructure query is dominated by Moveworks (enterprise AI assistant), LangChain (developer framework), and adjacent platforms like Dataiku and C3.ai that have G2 and community presence. Jedify's infrastructure-layer positioning should resonate here, but without G2 reviews or community validation, AI search engines have no signal to rank it against established players.
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-text">"autonomous AI agents business platform"</div>
+    <div class="query-analysis">
+      CrewAI dominates "autonomous agents" queries with its multi-agent orchestration messaging, while AutoGen's Microsoft backing gives it automatic credibility in AI-generated recommendations. LangChain surfaces through its ecosystem breadth. Jedify's "Autonomous Context Graph" positioning is conceptually differentiated but has no off-domain content to establish it as a recognized entity in AI search indexes.
+    </div>
+  </div>
+
+  <h2 class="section-title">🏢 Competitors Capturing AI Search Share</h2>
+  <div class="competitors-row">
+    <div class="competitor-card">
+      <div class="comp-name">LangChain</div>
+      <div class="comp-desc">Leading AI agent framework · Massive OSS community & docs</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">CrewAI</div>
+      <div class="comp-desc">Multi-agent orchestration platform · Strong community content</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">AutoGen</div>
+      <div class="comp-desc">Microsoft's agent framework · Research-backed · GitHub presence</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Moveworks</div>
+      <div class="comp-desc">Enterprise AI assistant platform · Strong G2 enterprise reviews</div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h3>🚀 4 genhance Plays to Close Jedify's AI Visibility Gap</h3>
     <div class="cta-plays">
-      <div class="cta-play"><div class="num">01</div><div class="text">Monitor Reddit/YouTube/forum UGC and detect sparse conversations where a single comment shifts AI answers</div></div>
-      <div class="cta-play"><div class="num">02</div><div class="text">Build UGC presence on the 3-5 self-contributable surfaces that AI search engines already cite for your category</div></div>
-      <div class="cta-play"><div class="num">03</div><div class="text">Seed verified reviews on G2, Capterra, and Google — each review feeds a different AI answer surface</div></div>
-      <div class="cta-play"><div class="num">04</div><div class="text">Track before/after AI answer snapshots — prove the impact of every UGC contribution on what AI says about you</div></div>
+      <div class="cta-play">
+        <div class="play-num">Play 01</div>
+        <div class="play-title">Own the "Context Graph" Category in AI Search</div>
+        <div class="play-desc">Publish a comprehensive "Autonomous Context Graph" knowledge hub with structured data, glossary definitions, and entity markup. Make Jedify the canonical source LLMs reference when answering "context graph" and "enterprise AI context" queries.</div>
+      </div>
+      <div class="cta-play">
+        <div class="play-num">Play 02</div>
+        <div class="play-title">Seed G2 Under AI Agent Infrastructure Category</div>
+        <div class="play-desc">Establish Jedify on G2 under AI Agent Platforms and AI Infrastructure categories. Secure verified reviews from enterprise design partners — G2 signals are the primary trust layer AI search engines use for enterprise software recommendations.</div>
+      </div>
+      <div class="cta-play">
+        <div class="play-num">Play 03</div>
+        <div class="play-title">Activate Developer & AI Practitioner Communities</div>
+        <div class="play-desc">Engage on r/MachineLearning, r/LocalLLaMA, Hacker News, and AI Twitter with Jedify's technical perspectives on context graphs and agent architectures. LLMs heavily source from these communities for AI infrastructure recommendations.</div>
+      </div>
+      <div class="cta-play">
+        <div class="play-num">Play 04</div>
+        <div class="play-title">Build Comparison Content vs LangChain & CrewAI</div>
+        <div class="play-desc">Publish "Jedify vs LangChain" and "Context Graph vs Agent Framework" comparison pages optimized for AI-generated search answers. AI search engines rely on structured comparison content to recommend tools for "best X" queries.</div>
+      </div>
     </div>
   </div>
 
-  <div class="footer">
-    <p><strong>Rajesh Gautam, PhD</strong> | Founder and CEO, genhance.ai</p>
-    <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
-  </div>
 </div>
+
+<footer class="footer container">
+  <div>
+    <div class="footer-name">Rajesh Gautam, PhD</div>
+    <div class="footer-title">Founder and CEO, genhance.ai</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp;
+    <a href="https://genhance.ai">genhance.ai</a>
+  </div>
+</footer>
+
 </body>
 </html>

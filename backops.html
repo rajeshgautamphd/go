@@ -3,34 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lightfield — AI Search Visibility Audit | genhance.ai</title>
+<title>BackOps — AI Search Visibility Audit | genhance.ai</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1724; color: #e2e8f0; line-height: 1.6; }
 .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
-/* Header */
 .header { background: linear-gradient(135deg, #0a1628 0%, #15294a 40%, #1a3a6b 70%, #0f2744 100%); padding: 60px 0 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .header h1 { font-size: 2.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
 .header .subtitle { color: #94a3b8; font-size: 1rem; letter-spacing: 0.5px; }
 .header-badge { display: inline-block; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); color: #60a5fa; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 16px; }
 
-/* Stat Pills */
 .stats-row { display: flex; gap: 16px; margin: -28px 0 32px; flex-wrap: wrap; }
 .stat-pill { flex: 1; min-width: 160px; background: linear-gradient(145deg, #1a2744, #162038); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px 18px; text-align: center; }
 .stat-pill .stat-value { font-size: 1.6rem; font-weight: 700; color: #fff; }
 .stat-pill .stat-label { font-size: 0.78rem; color: #64748b; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.6px; }
 .stat-pill .stat-detail { font-size: 0.7rem; color: #475569; margin-top: 2px; }
 
-/* Alert Box */
 .alert-box { background: linear-gradient(135deg, #3d2a0a, #2d1f08); border: 1px solid #f59e0b40; border-left: 4px solid #f59e0b; border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
 .alert-box .alert-title { color: #fbbf24; font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
 .alert-box .alert-body { color: #fcd34d; font-size: 0.9rem; }
 
-/* Section Title */
 .section-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.06); }
 
-/* Query Cards */
 .query-card { background: linear-gradient(145deg, #1a2744, #162038); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px; }
 .query-card .badge { flex-shrink: 0; padding: 5px 12px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
 .badge-present { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
@@ -39,13 +34,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .query-card .query-text { font-weight: 600; color: #e2e8f0; font-size: 0.95rem; margin-bottom: 6px; }
 .query-card .query-analysis { font-size: 0.83rem; color: #94a3b8; }
 
-/* Competitor Cards */
 .competitors-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 32px; }
 .competitor-card { background: linear-gradient(145deg, #1e2d4a, #152038); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 16px; text-align: center; }
 .competitor-card .comp-name { font-weight: 700; color: #e2e8f0; font-size: 1rem; }
 .competitor-card .comp-desc { font-size: 0.75rem; color: #64748b; margin-top: 4px; }
 
-/* CTA Section */
 .cta-section { background: linear-gradient(135deg, #0a1628 0%, #15294a 50%, #1a3a6b 100%); border: 1px solid rgba(59,130,246,0.2); border-radius: 16px; padding: 36px 32px; margin: 32px 0; }
 .cta-section h3 { color: #fff; font-size: 1.3rem; margin-bottom: 20px; }
 .cta-plays { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
@@ -54,7 +47,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .cta-play .play-title { font-weight: 600; color: #e2e8f0; font-size: 0.9rem; margin-bottom: 4px; }
 .cta-play .play-desc { font-size: 0.78rem; color: #94a3b8; }
 
-/* Footer */
 .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 24px 0; margin-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
 .footer .footer-name { font-weight: 700; color: #e2e8f0; font-size: 0.9rem; }
 .footer .footer-title { font-size: 0.78rem; color: #64748b; }
@@ -64,33 +56,31 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 </head>
 <body>
 
-<!-- Header -->
 <header class="header">
   <div class="container">
     <div class="header-badge">AI SEARCH VISIBILITY AUDIT</div>
-    <h1>Lightfield — AI Search Visibility Audit</h1>
-    <p class="subtitle">How visible is Lightfield across AI-powered search engines, LLMs, and community platforms?</p>
+    <h1>BackOps — AI Search Visibility Audit</h1>
+    <p class="subtitle">How visible is BackOps across AI-powered search engines, LLMs, and community platforms?</p>
   </div>
 </header>
 
 <div class="container">
 
-  <!-- Stat Pills -->
   <div class="stats-row">
     <div class="stat-pill">
-      <div class="stat-value">$47M</div>
+      <div class="stat-value">$68M</div>
       <div class="stat-label">Funding</div>
-      <div class="stat-detail">Series A · a16z</div>
+      <div class="stat-detail">Series B · Insight Partners</div>
     </div>
     <div class="stat-pill">
-      <div class="stat-value">1.2/5</div>
+      <div class="stat-value">0.8/5</div>
       <div class="stat-label">AI Visibility</div>
       <div class="stat-detail">LLM + search presence</div>
     </div>
     <div class="stat-pill">
-      <div class="stat-value">2</div>
+      <div class="stat-value">0</div>
       <div class="stat-label">G2 Reviews</div>
-      <div class="stat-detail">0.0 community presence</div>
+      <div class="stat-detail">No community presence</div>
     </div>
     <div class="stat-pill">
       <div class="stat-value">0</div>
@@ -99,114 +89,105 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
     </div>
   </div>
 
-  <!-- Alert Box -->
   <div class="alert-box">
     <div class="alert-title">⚠️ Critical UGC Gap Detected</div>
     <div class="alert-body">
-      Lightfield has raised $47M from a16z and signed over 5,000 companies, yet has virtually zero presence on G2 (2 reviews) and Reddit (0 organic mentions). AI search engines and LLMs increasingly weight user-generated content, community discussions, and review signals when ranking tools in category queries like "best AI CRM." Without a robust UGC footprint, Lightfield is invisible to buyers using AI-native search — ceding ground to Salesforce, HubSpot, Attio, and folk, all of which have deep G2 and Reddit presence in these exact query surfaces.
+      BackOps has raised $68M total ($42M Series B from Insight Partners) to build AI-powered supply chain operations, yet it has zero presence on G2 and zero Reddit mentions. This is a significant liability in the supply chain software market, where logistics professionals actively use G2, Capterra, and Reddit (r/supplychain, r/logistics) to evaluate and compare tools. Competitors like Flexport, project44, FourKites, and Shipwell all maintain active G2 profiles with verified reviews — giving them structural advantages in AI-generated search results for "best AI supply chain software" and related queries. BackOps is invisible to AI-mediated buyer journeys despite having more than enough funding to compete on UGC.
     </div>
   </div>
 
-  <!-- Query Analysis -->
   <h2 class="section-title">🔍 Category Query Performance</h2>
 
   <div class="query-card">
     <span class="badge badge-weak">WEAK</span>
     <div class="query-content">
-      <div class="query-text">"best AI CRM software 2026"</div>
+      <div class="query-text">"best AI supply chain software 2026"</div>
       <div class="query-analysis">
-        Salesforce and HubSpot dominate AI-generated answers for this query, with Attio and folk appearing in LLM responses due to strong G2 review volumes and blog content. Lightfield does not appear in top 10 results across ChatGPT, Perplexity, or Google AI Overviews. Despite being purpose-built as an AI-native CRM, the lack of third-party reviews and comparison content blocks discovery.
+        Flexport and project44 dominate this query in AI-generated search results, backed by strong G2 review volumes and active content marketing. FourKites also surfaces due to its visibility-focused positioning. BackOps does not appear in any AI-generated response — it has no reviews, no comparison content, and no community presence to anchor its AI-powered supply chain capabilities.
       </div>
     </div>
   </div>
 
   <div class="query-card">
     <span class="badge badge-weak">WEAK</span>
-    <div class="query-content">
-      <div class="query-text">"AI sales automation platform"</div>
-      <div class="query-analysis">
-        Clay dominates this query in AI search results, leveraging its strong content marketing engine and active LinkedIn community. HubSpot's Sales Hub also surfaces frequently. Lightfield's AI-native automation capabilities are undifferentiated in search because no comparison pages, review-site content, or community threads exist to anchor its position.
-      </div>
-    </div>
-  </div>
-
-  <div class="query-card">
-    <span class="badge badge-weak">WEAK</span>
-    <div class="query-content">
-      <div class="query-text">"CRM with AI agents"</div>
-      <div class="query-analysis">
-        This is Lightfield's strongest conceptual match — yet Salesforce Agentforce and HubSpot Breeze AI capture nearly all LLM-generated recommendations. Salesforce's massive content footprint, G2 category leadership, and active Trailblazer community give it an insurmountable UGC advantage. Lightfield has no content indexed that maps "AI agents" to its CRM.
-      </div>
-    </div>
-  </div>
-
-  <div class="query-card">
-    <span class="badge badge-weak">WEAK</span>
-    <div class="query-text">"Salesforce alternative AI native"</div>
+    <div class="query-text">"logistics automation AI platform"</div>
     <div class="query-analysis">
-        Attio and folk both appear in AI search results for "Salesforce alternative" queries, backed by comparison blog posts and G2 alternative pages. Lightfield, despite being a genuine AI-native alternative to Salesforce, is entirely absent from these results. No "Lightfield vs Salesforce" comparison content exists on any indexed domain.
+      Shipwell and project44 capture AI search attention for logistics automation queries, with Shipwell's platform positioning ("supply chain efficiency at scale") resonating in LLM-generated recommendations. FourKites' real-time visibility content also surfaces. BackOps has no indexed content mapping its AI operations platform to logistics automation use cases.
     </div>
   </div>
 
   <div class="query-card">
     <span class="badge badge-weak">WEAK</span>
-    <div class="query-text">"best CRM for AI-first companies"</div>
+    <div class="query-text">"supply chain visibility AI tools"</div>
     <div class="query-analysis">
-      This long-tail query represents Lightfield's ideal buyer intent — yet Attio (positioned as "CRM for the next generation") and folk capture this traffic through SEO-optimized landing pages and G2 category presence. Lightfield's website mentions AI-native positioning, but without off-domain corroboration from reviews and community discussions, AI search engines do not surface it.
+      This is FourKites' and project44's core territory — both companies have built their G2 categories, content engines, and community presence around "supply chain visibility." LLMs consistently recommend them as the default choices. BackOps' AI operations angle is undifferentiated in the visibility conversation because no third-party content validates its capabilities.
     </div>
   </div>
 
-  <!-- Competitors -->
+  <div class="query-card">
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-text">"freight automation software AI"</div>
+    <div class="query-analysis">
+      Flexport's freight forwarding heritage gives it an automatic advantage in AI search results for freight-related queries, amplified by its significant G2 presence and brand recognition. Shipwell also surfaces for freight automation queries. BackOps has no content connecting its AI supply chain platform to freight automation workflows.
+    </div>
+  </div>
+
+  <div class="query-card">
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-text">"best supply chain management AI"</div>
+    <div class="query-analysis">
+      This broad category query is split among Flexport, project44, FourKites, and legacy players with substantial review footprints. BackOps — despite having raised $68M specifically for AI-powered supply chain operations — is entirely absent because it has no UGC layer. AI search engines have no third-party signal to validate its claims.
+    </div>
+  </div>
+
   <h2 class="section-title">🏢 Competitors Capturing AI Search Share</h2>
   <div class="competitors-row">
     <div class="competitor-card">
-      <div class="comp-name">Salesforce</div>
-      <div class="comp-desc">Enterprise CRM with Agentforce AI · Massive G2 & community presence</div>
+      <div class="comp-name">Flexport</div>
+      <div class="comp-desc">Digital freight forwarder & supply chain platform · Strong G2 presence</div>
     </div>
     <div class="competitor-card">
-      <div class="comp-name">HubSpot</div>
-      <div class="comp-desc">All-in-one CRM platform · Breeze AI · 10K+ G2 reviews</div>
+      <div class="comp-name">project44</div>
+      <div class="comp-desc">Real-time supply chain visibility · Market leader · Active G2 reviews</div>
     </div>
     <div class="competitor-card">
-      <div class="comp-name">Attio</div>
-      <div class="comp-desc">AI-native CRM for next-gen revenue teams · Strong G2 presence</div>
+      <div class="comp-name">FourKites</div>
+      <div class="comp-desc">AI-powered supply chain visibility · Strong content & community</div>
     </div>
     <div class="competitor-card">
-      <div class="comp-name">Clay</div>
-      <div class="comp-desc">AI-powered sales automation & enrichment · Dominant content engine</div>
+      <div class="comp-name">Shipwell</div>
+      <div class="comp-desc">Connected supply chain platform · Growing G2 & content presence</div>
     </div>
   </div>
 
-  <!-- CTA Section -->
   <div class="cta-section">
-    <h3>🚀 4 genhance Plays to Close Lightfield's AI Visibility Gap</h3>
+    <h3>🚀 4 genhance Plays to Close BackOps's AI Visibility Gap</h3>
     <div class="cta-plays">
       <div class="cta-play">
         <div class="play-num">Play 01</div>
-        <div class="play-title">Seed G2 with Authenticated Reviews</div>
-        <div class="play-desc">Launch a structured G2 review campaign targeting Lightfield's 5,000+ signed companies. AI search engines weight G2 signals heavily for "best CRM" category queries.</div>
+        <div class="play-title">Launch G2 Review Program for Supply Chain Buyers</div>
+        <div class="play-desc">Build BackOps's G2 profile under Supply Chain Visibility and TMS categories. Target early enterprise customers for verified reviews — AI search engines require this foundational UGC to surface BackOps for category queries.</div>
       </div>
       <div class="cta-play">
         <div class="play-num">Play 02</div>
-        <div class="play-title">Build Comparison Landing Pages</div>
-        <div class="play-desc">Publish "Lightfield vs Salesforce," "Lightfield vs Attio," and "Lightfield vs HubSpot" pages optimized for AI-generated search answers with structured pros/cons data.</div>
+        <div class="play-title">Publish AI Supply Chain Thought Leadership</div>
+        <div class="play-desc">Create a definitive content hub on "AI supply chain operations" with structured data, schema markup, and entity optimization. Position BackOps as the canonical source LLMs reference for this emerging category.</div>
       </div>
       <div class="cta-play">
         <div class="play-num">Play 03</div>
-        <div class="play-title">Activate Reddit & Community Presence</div>
-        <div class="play-desc">Engage in r/CRM, r/sales, and r/SaaS with genuine product discussions. Reddit is the fastest-growing source for LLM training data and is directly cited in AI-generated answers.</div>
+        <div class="play-title">Build Comparison Pages vs Flexport & project44</div>
+        <div class="play-desc">Publish detailed "BackOps vs Flexport" and "BackOps vs project44" comparison pages optimized for AI search. LLMs heavily weight structured comparison content when answering "best X tool" queries.</div>
       </div>
       <div class="cta-play">
         <div class="play-num">Play 04</div>
-        <div class="play-title">Deploy AI-Optimized Content Cluster</div>
-        <div class="play-desc">Create a content hub around "AI-native CRM" with structured FAQ, schema markup, and entity optimization so LLMs can ingest and surface Lightfield for category-defining queries.</div>
+        <div class="play-title">Activate r/supplychain and Logistics Communities</div>
+        <div class="play-desc">Engage authentically on r/supplychain, r/logistics, and LinkedIn supply chain groups. Reddit is a primary training source for LLMs answering B2B software questions, and zero presence = zero AI citations.</div>
       </div>
     </div>
   </div>
 
 </div>
 
-<!-- Footer -->
 <footer class="footer container">
   <div>
     <div class="footer-name">Rajesh Gautam, PhD</div>
