@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Tana</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+.header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1a1a3e 100%); padding: 48px 0 36px; text-align: center; border-bottom: 1px solid #1e3a5f; }
+.header h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.header .subtitle { font-size: 16px; color: #93c5fd; font-weight: 500; }
+.header .company-name { font-size: 20px; color: #fbbf24; margin-top: 6px; }
+.stats { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 32px 0; }
+.stat-pill { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 130px; }
+.stat-pill .stat-value { font-size: 24px; font-weight: 700; color: #fbbf24; }
+.stat-pill .stat-label { font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.key-finding { background: linear-gradient(135deg, #451a03, #3b1502); border: 1px solid #f59e0b; border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
+.key-finding .label { font-size: 12px; color: #f59e0b; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 8px; }
+.key-finding p { font-size: 14px; color: #fef3c7; line-height: 1.7; }
+.section-title { font-size: 18px; font-weight: 700; color: #e2e8f0; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #f59e0b; display: inline-block; }
+.query-card { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 10px; padding: 18px 20px; margin: 12px 0; }
+.query-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+.query-text { font-size: 15px; font-weight: 600; color: #e2e8f0; }
+.badge { font-size: 11px; padding: 4px 12px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+.badge-weak { background: #451a03; color: #f59e0b; border: 1px solid #92400e; }
+.badge-present { background: #052e16; color: #22c55e; border: 1px solid #166534; }
+.query-analysis { font-size: 13px; color: #94a3b8; line-height: 1.7; margin-bottom: 6px; }
+.query-competitors { font-size: 12px; color: #64748b; }
+.comp-cards { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
+.comp-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 8px 14px; font-size: 13px; color: #94a3b8; }
+.cta { background: linear-gradient(135deg, #0f172a 0%, #1a1a3e 100%); border: 1px solid #312e81; border-radius: 12px; padding: 28px 24px; margin: 32px 0 48px; text-align: center; }
+.cta h3 { font-size: 18px; color: #fff; margin-bottom: 8px; }
+.cta p { font-size: 13px; color: #93c5fd; margin-bottom: 20px; }
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: left; max-width: 500px; margin: 0 auto; }
+.cta-item { background: #1e293b; border-radius: 8px; padding: 12px 14px; }
+.cta-item .cta-num { font-size: 20px; font-weight: 700; color: #fbbf24; }
+.cta-item .cta-desc { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+.footer { text-align: center; padding: 32px 0 48px; border-top: 1px solid #1e3a5f; margin-top: 16px; }
+.footer .signature { font-size: 16px; font-weight: 600; color: #e2e8f0; }
+.footer .details { font-size: 13px; color: #64748b; margin-top: 4px; }
+.footer .links { font-size: 13px; color: #93c5fd; margin-top: 4px; }
+.footer a { color: #93c5fd; text-decoration: none; }
+@media (max-width: 600px) {
+    .stats { flex-direction: column; gap: 8px; }
+    .stat-pill { min-width: unset; }
+    .cta-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <h1>AI Search Visibility Audit</h1>
+        <div class="subtitle">How AI Overviews and chatbot answers portray Tana</div>
+        <div class="company-name">Tana — AI Knowledge Management & Enterprise Search</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="stats">
+        <div class="stat-pill">
+            <div class="stat-value">$25M Series A</div>
+            <div class="stat-label">Funding</div>
+        </div>
+        <div class="stat-pill">
+            <div class="stat-value">2/5</div>
+            <div class="stat-label">AI Visibility</div>
+        </div>
+        <div class="stat-pill">
+            <div class="stat-value">37</div>
+            <div class="stat-label">G2 Reviews</div>
+        </div>
+        <div class="stat-pill">
+            <div class="stat-value">1</div>
+            <div class="stat-label">Reddit Threads</div>
+        </div>
+    </div>
+
+    <div class="key-finding">
+        <div class="label">⚠ KEY FINDING</div>
+        <p>Tana has 37 G2 reviews (4.5★) and 160K+ waitlist — more UGC than most Series A startups. But across 5 knowledge management queries, AI Overviews still default to Notion, Glean, and Obsidian. Tana's AI-native knowledge graph approach is underrepresented in the AI corpus, giving competitors with years of indexed content an unearned advantage.</p>
+    </div>
+
+    <div class="section-title">5 Category Queries — AI Search Analysis</div>
+    
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-text">"AI knowledge management workspace platform"</span>
+                    <span class="badge badge-weak">WEAK</span>
+                </div>
+                <p class="query-analysis">Notion and Obsidian dominate AI Overviews with massive indexed content. Tana appears only in niche knowledge management forums but not in top-5 AI-cited sources despite 37 G2 reviews.</p>
+                <p class="query-competitors"><strong>AI-cited competitors:</strong> Notion, Obsidian, Mem.ai</p>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-text">"AI note-taking software with knowledge graph"</span>
+                    <span class="badge badge-weak">WEAK</span>
+                </div>
+                <p class="query-analysis">Roam Research controls AI answers for knowledge graph tools with 3+ years of indexed blog posts and community content. Tana's Supertag-based graph system surfaces in r/TanaInc discussions but not in AI Overviews.</p>
+                <p class="query-competitors"><strong>AI-cited competitors:</strong> Roam Research, Logseq, Reflect</p>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-text">"AI-powered meeting notes automation"</span>
+                    <span class="badge badge-weak">WEAK</span>
+                </div>
+                <p class="query-analysis">Fathom and Otter.ai dominate AI answers with massive review volumes. Tana's voice-to-structured-knowledge capture is referenced in community content but absent from AI-cited comparison articles.</p>
+                <p class="query-competitors"><strong>AI-cited competitors:</strong> Fathom, Otter.ai, Fireflies.ai</p>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-text">"AI knowledge graph for enterprise"</span>
+                    <span class="badge badge-weak">WEAK</span>
+                </div>
+                <p class="query-analysis">Glean and Hebbia control enterprise AI search answers with Series C+ funding and enterprise case studies. Tana's enterprise offering is not indexed in the AI corpus despite 37 verified G2 reviews.</p>
+                <p class="query-competitors"><strong>AI-cited competitors:</strong> Glean, Hebbia, Dashworks</p>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-text">"AI voice-powered workflow automation"</span>
+                    <span class="badge badge-weak">WEAK</span>
+                </div>
+                <p class="query-analysis">Supernormal and Krisp reviews feed AI answers. Tana's voice-to-structured-output with AI command capabilities has no presence in AI-cited UGC or editorial content.</p>
+                <p class="query-competitors"><strong>AI-cited competitors:</strong> Supernormal, Krisp, tl;dv</p>
+            </div>
+
+    <div class="section-title">AI-Cited Competitors</div>
+    <div class="comp-cards">
+        <div class="comp-card">Notion</div>
+<div class="comp-card">Obsidian</div>
+<div class="comp-card">Mem.ai</div>
+<div class="comp-card">Roam Research</div>
+<div class="comp-card">Logseq</div>
+<div class="comp-card">Reflect</div>
+
+    </div>
+
+    <div class="cta">
+        <h3>How genhance fixes this — in 14 days</h3>
+        <p>Four AI-native plays to put Tana in the answers that matter</p>
+        <div class="cta-grid">
+            <div class="cta-item">
+                <div class="cta-num">01</div>
+                <div class="cta-desc">AI-Native UGC Deployment — seed Reddit, Product Hunt, and YouTube with content AI engines index</div>
+            </div>
+            <div class="cta-item">
+                <div class="cta-num">02</div>
+                <div class="cta-desc">G2 Review Velocity Program — structured solicitation to build the review corpus AI expects</div>
+            </div>
+            <div class="cta-item">
+                <div class="cta-num">03</div>
+                <div class="cta-desc">AI Answer Monitoring — daily snapshots of what AI says about your category, competitors, and you</div>
+            </div>
+            <div class="cta-item">
+                <div class="cta-num">04</div>
+                <div class="cta-desc">Category Narrative Engineering — shape the AI corpus for emerging queries before competitors do</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="signature">Rajesh Gautam, PhD</div>
+        <div class="details">Founder and CEO, genhance.ai</div>
+        <div class="links">
+            <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

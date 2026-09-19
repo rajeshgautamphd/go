@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Workwize</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+.header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1a1a3e 100%); padding: 48px 0 36px; text-align: center; border-bottom: 1px solid #1e3a5f; }
+.header h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.header .subtitle { font-size: 16px; color: #93c5fd; font-weight: 500; }
+.header .company-name { font-size: 20px; color: #fbbf24; margin-top: 6px; }
+.stats { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 32px 0; }
+.stat-pill { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 130px; }
+.stat-pill .stat-value { font-size: 24px; font-weight: 700; color: #fbbf24; }
+.stat-pill .stat-label { font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.key-finding { background: linear-gradient(135deg, #451a03, #3b1502); border: 1px solid #f59e0b; border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
+.key-finding .label { font-size: 12px; color: #f59e0b; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 8px; }
+.key-finding p { font-size: 14px; color: #fef3c7; line-height: 1.7; }
+.section-title { font-size: 18px; font-weight: 700; color: #e2e8f0; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #f59e0b; display: inline-block; }
+.query-card { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 10px; padding: 18px 20px; margin: 12px 0; }
+.query-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+.query-text { font-size: 15px; font-weight: 600; color: #e2e8f0; }
+.badge { font-size: 11px; padding: 4px 12px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+.badge-weak { background: #451a03; color: #f59e0b; border: 1px solid #92400e; }
+.badge-present { background: #052e16; color: #22c55e; border: 1px solid #166534; }
+.query-analysis { font-size: 13px; color: #94a3b8; line-height: 1.7; margin-bottom: 6px; }
+.query-competitors { font-size: 12px; color: #64748b; }
+.comp-cards { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
+.comp-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 8px 14px; font-size: 13px; color: #94a3b8; }
+.cta { background: linear-gradient(135deg, #0f172a 0%, #1a1a3e 100%); border: 1px solid #312e81; border-radius: 12px; padding: 28px 24px; margin: 32px 0 48px; text-align: center; }
+.cta h3 { font-size: 18px; color: #fff; margin-bottom: 8px; }
+.cta p { font-size: 13px; color: #93c5fd; margin-bottom: 20px; }
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: left; max-width: 500px; margin: 0 auto; }
+.cta-item { background: #1e293b; border-radius: 8px; padding: 12px 14px; }
+.cta-item .cta-num { font-size: 20px; font-weight: 700; color: #fbbf24; }
+.cta-item .cta-desc { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+.footer { text-align: center; padding: 32px 0 48px; border-top: 1px solid #1e3a5f; margin-top: 16px; }
+.footer .signature { font-size: 16px; font-weight: 600; color: #e2e8f0; }
+.footer .details { font-size: 13px; color: #64748b; margin-top: 4px; }
+.footer .links { font-size: 13px; color: #93c5fd; margin-top: 4px; }
+.footer a { color: #93c5fd; text-decoration: none; }
+@media (max-width: 600px) {
+    .stats { flex-direction: column; gap: 8px; }
+    .stat-pill { min-width: unset; }
+    .cta-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <h1>AI Search Visibility Audit</h1>
+        <div class="subtitle">How AI Overviews and chatbot answers portray Workwize</div>
+        <div class="company-name">Workwize — AI IT Asset Management & Hardware Lifecycle</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="stats">
+        <div class="stat-pill">
+            <div class="stat-value">$13M Series A</div>
+            <div class="stat-label">Funding</div>
+        </div>
+        <div class="stat-pill">
+            <div class="stat-value">1/5</div>
+            <div class="stat-label">AI Visibility</div>
+        </div>
+        <div class="stat-pill">
+            <div class="stat-value">5</div>
+            <div class="stat-label">G2 Reviews</div>
+        </div>
+        <div class="stat-pill">
+            <div class="stat-value">2</div>
+            <div class="stat-label">Reddit Threads</div>
+        </div>
+    </div>
+
+    <div class="key-finding">
+        <div class="label">⚠ KEY FINDING</div>
+        <p>Workwize was named a Representative Vendor in the 2026 Gartner Market Guide for Hardware Asset Management — yet AI search engines barely acknowledge its existence. With only ~5 G2 reviews and 2 Reddit threads, Workwize's AI-powered IT lifecycle automation across 130+ countries is nearly invisible to the AI that IT buyers use to evaluate platforms.</p>
+    </div>
+
+    <div class="section-title">5 Category Queries — AI Search Analysis</div>
+    
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-text">"IT asset management software"</span>
+                    <span class="badge badge-weak">WEAK</span>
+                </div>
+                <p class="query-analysis">NinjaOne and ServiceNow ITAM dominate AI Overviews with hundreds of G2 reviews. Workwize — despite being Gartner-recognized — appears nowhere in AI-cited content for this high-volume query.</p>
+                <p class="query-competitors"><strong>AI-cited competitors:</strong> NinjaOne, ServiceNow ITAM, Jira Service Management</p>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-text">"IT hardware lifecycle automation"</span>
+                    <span class="badge badge-weak">WEAK</span>
+                </div>
+                <p class="query-analysis">GroWrk and Firstbase control AI answers for hardware lifecycle with more indexed reviews and comparison articles. Workwize's end-to-end procurement-to-disposal platform is underrepresented.</p>
+                <p class="query-competitors"><strong>AI-cited competitors:</strong> GroWrk, Hofy, Firstbase</p>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-text">"remote workforce IT management"</span>
+                    <span class="badge badge-weak">WEAK</span>
+                </div>
+                <p class="query-analysis">Rippling IT and Kandji dominate AI answers. Workwize's global device deployment across 130+ countries has no AI-cited UGC support.</p>
+                <p class="query-competitors"><strong>AI-cited competitors:</strong> Rippling IT, Kandji, JumpCloud</p>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-text">"AI IT procurement platform"</span>
+                    <span class="badge badge-weak">WEAK</span>
+                </div>
+                <p class="query-analysis">Zip and Vendr reviews control AI answers for IT procurement. Workwize's automated procurement workflow surfaces in 2 Reddit threads but not in AI Overviews.</p>
+                <p class="query-competitors"><strong>AI-cited competitors:</strong> Zip, Vendr, Tropic</p>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-text">"enterprise device lifecycle management"</span>
+                    <span class="badge badge-weak">WEAK</span>
+                </div>
+                <p class="query-analysis">IBM Maximo and Ivanti Neurons dominate. Workwize — recognized by Gartner in this exact category — is missing from AI-cited enterprise buyer guides.</p>
+                <p class="query-competitors"><strong>AI-cited competitors:</strong> IBM Maximo, Ivanti Neurons, AssetSonar</p>
+            </div>
+
+    <div class="section-title">AI-Cited Competitors</div>
+    <div class="comp-cards">
+        <div class="comp-card">NinjaOne</div>
+<div class="comp-card">ServiceNow ITAM</div>
+<div class="comp-card">Jira Service Management</div>
+<div class="comp-card">GroWrk</div>
+<div class="comp-card">Hofy</div>
+<div class="comp-card">Firstbase</div>
+
+    </div>
+
+    <div class="cta">
+        <h3>How genhance fixes this — in 14 days</h3>
+        <p>Four AI-native plays to put Workwize in the answers that matter</p>
+        <div class="cta-grid">
+            <div class="cta-item">
+                <div class="cta-num">01</div>
+                <div class="cta-desc">AI-Native UGC Deployment — seed Reddit, Product Hunt, and YouTube with content AI engines index</div>
+            </div>
+            <div class="cta-item">
+                <div class="cta-num">02</div>
+                <div class="cta-desc">G2 Review Velocity Program — structured solicitation to build the review corpus AI expects</div>
+            </div>
+            <div class="cta-item">
+                <div class="cta-num">03</div>
+                <div class="cta-desc">AI Answer Monitoring — daily snapshots of what AI says about your category, competitors, and you</div>
+            </div>
+            <div class="cta-item">
+                <div class="cta-num">04</div>
+                <div class="cta-desc">Category Narrative Engineering — shape the AI corpus for emerging queries before competitors do</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="signature">Rajesh Gautam, PhD</div>
+        <div class="details">Founder and CEO, genhance.ai</div>
+        <div class="links">
+            <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
