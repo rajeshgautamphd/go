@@ -2,108 +2,130 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — Newcode</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Search Visibility Audit | Newcode</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
-.header { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1a2744 100%); padding: 60px 40px; text-align: center; border-bottom: 3px solid #3b82f6; }
-.header h1 { font-size: 2.4em; color: #fff; margin-bottom: 8px; }
-.header .subtitle { color: #94a3b8; font-size: 1.1em; }
-.stats { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 30px 40px; background: #111827; }
-.stat-pill { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 20px 28px; text-align: center; min-width: 150px; }
-.stat-pill .value { font-size: 1.8em; font-weight: 700; color: #60a5fa; }
-.stat-pill .label { color: #94a3b8; font-size: 0.85em; margin-top: 4px; }
-.alert { background: linear-gradient(135deg, #78350f, #451a03); border: 1px solid #d97706; margin: 0 40px; padding: 20px 30px; border-radius: 10px; }
-.alert h3 { color: #fbbf24; margin-bottom: 8px; }
-.alert p { color: #fcd34d; }
-.container { max-width: 900px; margin: 0 auto; padding: 30px 40px; }
-.section-title { font-size: 1.5em; color: #f1f5f9; border-bottom: 2px solid #334155; padding-bottom: 8px; margin: 30px 0 20px; }
-.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
-.query-card .query-text { font-size: 1.1em; color: #93c5fd; margin-bottom: 12px; font-weight: 600; }
-.query-card .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 700; margin-right: 10px; }
-.badge-absent { background: #7f1d1d; color: #fca5a5; }
-.badge-weak { background: #78350f; color: #fcd34d; }
-.badge-present { background: #14532d; color: #86efac; }
-.query-card .analysis { color: #cbd5e1; font-size: 0.95em; margin-top: 8px; }
-.competitor-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
-.comp-card { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px; text-align: center; }
-.comp-card .cname { color: #e2e8f0; font-weight: 600; }
-.comp-card .cdesc { color: #64748b; font-size: 0.8em; margin-top: 4px; }
-.cta { background: linear-gradient(135deg, #0f172a, #1e293b); border: 2px solid #3b82f6; border-radius: 12px; padding: 30px; margin-top: 30px; text-align: center; }
-.cta h3 { color: #60a5fa; font-size: 1.3em; margin-bottom: 15px; }
-.plays { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; text-align: left; }
-.play { background: #1e293b; border-radius: 8px; padding: 14px; }
-.play .num { color: #3b82f6; font-weight: 700; font-size: 1.2em; }
-.play .desc { color: #cbd5e1; font-size: 0.9em; }
-.footer { text-align: center; padding: 30px; color: #64748b; font-size: 0.9em; border-top: 1px solid #1e293b; margin-top: 40px; }
-.footer a { color: #60a5fa; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
+.header{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%);padding:40px 30px;text-align:center;border-bottom:1px solid #1e3a5f}
+.header h1{font-size:28px;font-weight:700;color:#f8fafc;margin-bottom:8px}
+.header .tagline{font-size:14px;color:#94a3b8}
+.header .domain{font-size:18px;color:#38bdf8;margin-top:6px;font-weight:500}
+.container{max-width:900px;margin:0 auto;padding:24px 20px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.stat-card{background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:10px;padding:16px;text-align:center}
+.stat-value{font-size:24px;font-weight:700;color:#38bdf8}
+.stat-label{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
+.key-finding{background:linear-gradient(135deg,#451a03,#78350f);border:1px solid #92400e;border-radius:10px;padding:18px 20px;margin:24px 0}
+.key-finding .label{font-size:12px;color:#fbbf24;text-transform:uppercase;font-weight:700;letter-spacing:0.5px;margin-bottom:6px}
+.key-finding p{font-size:14px;color:#fef3c7;line-height:1.7}
+.section-title{font-size:16px;font-weight:600;color:#e2e8f0;margin:28px 0 14px;padding-bottom:8px;border-bottom:1px solid #1e3a5f}
+.query-card{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:16px 18px;margin-bottom:12px}
+.query-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.query-text{font-size:14px;color:#e2e8f0;font-weight:500}
+.badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.badge-present{background:#064e3b;color:#34d399}
+.badge-weak{background:#451a03;color:#fbbf24}
+.query-analysis{font-size:13px;color:#94a3b8;line-height:1.6}
+.comp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+.comp-card{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;text-align:center}
+.comp-name{font-size:13px;color:#e2e8f0;font-weight:500}
+.cta{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);border:1px solid #1e4d8c;border-radius:12px;padding:28px 24px;margin-top:28px}
+.cta h3{font-size:16px;color:#38bdf8;margin-bottom:12px}
+.cta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cta-item{font-size:13px;color:#94a3b8;padding:8px 12px;background:#0f172a;border-radius:6px}
+.cta-item strong{color:#38bdf8}
+.footer{text-align:center;padding:30px 20px;border-top:1px solid #1e3a5f;margin-top:30px}
+.footer .name{font-size:15px;color:#f8fafc;font-weight:600}
+.footer .title{font-size:12px;color:#94a3b8;margin-top:2px}
+.footer .links{font-size:12px;color:#38bdf8;margin-top:8px}
+.footer a{color:#38bdf8;text-decoration:none}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.comp-grid{grid-template-columns:repeat(2,1fr)}.cta-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="header">
-  <h1>AI SEARCH VISIBILITY AUDIT</h1>
-  <div class="subtitle">Newcode.ai — AI-Native Legal Workflow Platform</div>
-</div>
-<div class="stats">
-  <div class="stat-pill"><div class="value">$20M</div><div class="label">Series A ($13.5M + $6.5M seed)</div></div>
-  <div class="stat-pill"><div class="value">0/5</div><div class="label">AI Visibility Score</div></div>
-  <div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
-  <div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
-</div>
-<div class="alert">
-  <h3>🔑 KEY FINDING</h3>
-  <p>Newcode.ai raised $20M in 2026 to build the AI-native operating system for legal work — yet AI search engines cite Harvey, Spellbook, Luminance, and Legora for every legal-AI query. Newcode appears in <strong>0 of 5</strong> category-defining AI search results. The AI narrative about "best legal AI tools" is being written by competitors with established G2/Reddit presence, while Newcode's DLA Piper and 2,150+ barrister deployments stay invisible.</p>
+<h1>AI SEARCH VISIBILITY AUDIT</h1>
+<div class="tagline">What AI engines say when buyers search for LegalTech solutions</div>
+<div class="domain">Newcode — newcode.ai</div>
 </div>
 <div class="container">
-  <div class="section-title">5 Category Queries — AI Search Analysis</div>
-  <div class="query-card">
-    <div class="query-text">"&quot;best AI legal assistant for lawyers 2026&quot;"</div>
-    <span class="badge badge-absent">ABSENT</span>
-    <div class="analysis">AI Overviews cite Harvey, Spellbook, and CoCounsel. No mention of Newcode despite its enterprise law-firm deployments across the Nordics and DLA Piper.</div>
-  </div>
-  <div class="query-card">
-    <div class="query-text">"&quot;legal AI document review tool&quot;"</div>
-    <span class="badge badge-absent">ABSENT</span>
-    <div class="analysis">AI answers reference Luminance, Kira, and eBrevia. Newcode's document drafting and redlining capabilities are invisible in AI-indexed sources.</div>
-  </div>
-  <div class="query-card">
-    <div class="query-text">"&quot;AI contract analysis software&quot;"</div>
-    <span class="badge badge-absent">ABSENT</span>
-    <div class="analysis">G2 grid results dominate with Spellbook, Robin AI, and Lexion. Newcode has 0 G2 reviews and never enters this conversation.</div>
-  </div>
-  <div class="query-card">
-    <div class="query-text">"&quot;Harvey AI alternatives&quot;"</div>
-    <span class="badge badge-weak">WEAK</span>
-    <div class="analysis">Sparse AI results — a few Reddit threads with under 15 comments discuss Harvey alternatives. One thoughtful comment naming Newcode could define this query.</div>
-  </div>
-  <div class="query-card">
-    <div class="query-text">"&quot;legal AI for due diligence&quot;"</div>
-    <span class="badge badge-absent">ABSENT</span>
-    <div class="analysis">AI cites Luminance, Eigen, and ThoughtRiver. Newcode's due-diligence and knowledge-search features are not in any AI-indexed source.</div>
-  </div>
 
-  <div class="section-title">Competitors Dominating AI Search</div>
-  <div class="competitor-cards">
-    <div class="comp-card"><div class="cname">Harvey</div><div class="cdesc">Legal AI assistant, ~150 G2 reviews</div></div>
-    <div class="comp-card"><div class="cname">Spellbook</div><div class="cdesc">Contract drafting AI, ~90 G2 reviews</div></div>
-    <div class="comp-card"><div class="cname">Luminance</div><div class="cdesc">AI contract analysis, ~60 G2 reviews</div></div>
-    <div class="comp-card"><div class="cname">Robin AI</div><div class="cdesc">Contract review copilot, ~40 G2 reviews</div></div>
-  </div>
-  <div class="cta">
-    <h3>4 Genhance Plays to Own the AI Narrative</h3>
-    <div class="plays">
-      <div class="play"><div class="num">1</div><div class="desc">Seed 10 G2 reviews from Newcode's law-firm customers — each review becomes AI training data</div></div>
-      <div class="play"><div class="num">2</div><div class="desc">Contribute to the sparse 'Harvey AI alternatives' Reddit threads AI already cites</div></div>
-      <div class="play"><div class="num">3</div><div class="desc">Comment on legal-tech YouTube creators' videos comparing legal AI tools (sparse comment sections)</div></div>
-      <div class="play"><div class="num">4</div><div class="desc">Launch on Product Hunt with the 'AI-native OS for legal work' narrative to seed AI-indexed UGC</div></div>
-    </div>
-  </div>
+<div class="stats">
+<div class="stat-card"><div class="stat-value">$13.5M Series A</div><div class="stat-label">Funding</div></div>
+<div class="stat-card"><div class="stat-value">0/5</div><div class="stat-label">AI Visibility</div></div>
+<div class="stat-card"><div class="stat-value">0</div><div class="stat-label">G2 Reviews</div></div>
+<div class="stat-card"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div>
+</div>
+
+<div class="key-finding">
+<div class="label">⚠ KEY FINDING</div>
+<p>Newcode has raised $20M (including investment from Relativity) to build a configurable AI harness for legal operations — yet has 0 G2 reviews, 0 Reddit threads, and appears in 0 of 5 LegalTech AI search queries. Competitors Harvey AI and Spellbook dominate AI answers. Newcode's multi-agent legal workflow orchestration is completely invisible to AI search engines, despite the legal AI market being in active category formation.</p>
+</div>
+
+<div class="section-title">CATEGORY QUERY ANALYSIS</div>
+<p style="font-size:13px;color:#64748b;margin-bottom:16px">We ran 5 real search queries through AI engines (ChatGPT, Google AI Overviews, Perplexity) to see what sources they cite and whether Newcode appears.</p>
+
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">AI legal workflow automation platform</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI Overviews cite Harvey AI, Spellbook, and Legora as top legal workflow platforms. Newcode's configurable AI harness — enabling multi-agent legal workflows — does not appear in any AI-cited source.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">multi-agent AI for law firms</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI search references Harvey AI and CoCounsel (Thomson Reuters) for multi-agent legal AI. Newcode's purpose-built multi-agent orchestration for legal operations is absent from AI answers despite being a core differentiator.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">legal AI orchestration software</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI Overviews do not yet have settled answers for legal AI orchestration — this query returns generic legal AI listings. Newcode could be the first to own this query, but currently has zero AI search presence.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">configurable AI harness for legal ops</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI search has no specific answer for configurable legal AI harnesses — returns generic results about legal AI tools. Newcode's core value proposition (programmable, configurable AI for legal workflows) is completely invisible.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">law firm AI-native platform transformation</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI answers cite Litera, iManage, and NetDocuments for law firm transformation. Newcode — backed by Relativity's investment arm — is not mentioned in any AI-cited source. 0 G2 reviews, 0 Reddit threads, 0 YouTube content.</div>
+</div>
+
+<div class="section-title">COMPETITORS DOMINATING AI ANSWERS</div>
+<div class="comp-grid">
+<div class="comp-card"><span class="comp-name">Harvey AI</span></div>
+<div class="comp-card"><span class="comp-name">Legora</span></div>
+<div class="comp-card"><span class="comp-name">Noxtua</span></div>
+<div class="comp-card"><span class="comp-name">Spellbook</span></div>
+
+</div>
+
+<div class="cta">
+<h3>How genhance.ai fixes this</h3>
+<div class="cta-grid">
+<div class="cta-item"><strong>① UGC Gap Analysis</strong> — Identify exactly which Reddit threads, YouTube comments, and G2 reviews feed AI answers for Newcode's category.</div>
+<div class="cta-item"><strong>② Reddit Narrative Seeding</strong> — Contribute to sparse, AI-indexed threads that already appear in top search results — each comment becomes part of the AI narrative.</div>
+<div class="cta-item"><strong>③ YouTube Comment Strategy</strong> — Target niche creator review videos (Google AI Overviews cite YouTube more than medical websites for health queries — the same dynamic applies to enterprise software).</div>
+<div class="cta-item"><strong>④ AI Answer Tracking</strong> — Before/after snapshots prove that genhance engagements shift what AI says about Newcode within 48 hours.</div>
+</div>
+</div>
+
 </div>
 <div class="footer">
-  <strong>Rajesh Gautam, PhD</strong><br>
-  Founder and CEO, genhance.ai<br>
-  <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+<div class="name">Rajesh Gautam, PhD</div>
+<div class="title">Founder and CEO, genhance.ai</div>
+<div class="links"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
 </div>
 </body>
 </html>

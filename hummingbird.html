@@ -2,108 +2,130 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — Hummingbird</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Search Visibility Audit | Hummingbird</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
-.header { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1a2744 100%); padding: 60px 40px; text-align: center; border-bottom: 3px solid #3b82f6; }
-.header h1 { font-size: 2.4em; color: #fff; margin-bottom: 8px; }
-.header .subtitle { color: #94a3b8; font-size: 1.1em; }
-.stats { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 30px 40px; background: #111827; }
-.stat-pill { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 20px 28px; text-align: center; min-width: 150px; }
-.stat-pill .value { font-size: 1.8em; font-weight: 700; color: #60a5fa; }
-.stat-pill .label { color: #94a3b8; font-size: 0.85em; margin-top: 4px; }
-.alert { background: linear-gradient(135deg, #78350f, #451a03); border: 1px solid #d97706; margin: 0 40px; padding: 20px 30px; border-radius: 10px; }
-.alert h3 { color: #fbbf24; margin-bottom: 8px; }
-.alert p { color: #fcd34d; }
-.container { max-width: 900px; margin: 0 auto; padding: 30px 40px; }
-.section-title { font-size: 1.5em; color: #f1f5f9; border-bottom: 2px solid #334155; padding-bottom: 8px; margin: 30px 0 20px; }
-.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
-.query-card .query-text { font-size: 1.1em; color: #93c5fd; margin-bottom: 12px; font-weight: 600; }
-.query-card .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 700; margin-right: 10px; }
-.badge-absent { background: #7f1d1d; color: #fca5a5; }
-.badge-weak { background: #78350f; color: #fcd34d; }
-.badge-present { background: #14532d; color: #86efac; }
-.query-card .analysis { color: #cbd5e1; font-size: 0.95em; margin-top: 8px; }
-.competitor-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
-.comp-card { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px; text-align: center; }
-.comp-card .cname { color: #e2e8f0; font-weight: 600; }
-.comp-card .cdesc { color: #64748b; font-size: 0.8em; margin-top: 4px; }
-.cta { background: linear-gradient(135deg, #0f172a, #1e293b); border: 2px solid #3b82f6; border-radius: 12px; padding: 30px; margin-top: 30px; text-align: center; }
-.cta h3 { color: #60a5fa; font-size: 1.3em; margin-bottom: 15px; }
-.plays { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; text-align: left; }
-.play { background: #1e293b; border-radius: 8px; padding: 14px; }
-.play .num { color: #3b82f6; font-weight: 700; font-size: 1.2em; }
-.play .desc { color: #cbd5e1; font-size: 0.9em; }
-.footer { text-align: center; padding: 30px; color: #64748b; font-size: 0.9em; border-top: 1px solid #1e293b; margin-top: 40px; }
-.footer a { color: #60a5fa; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
+.header{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%);padding:40px 30px;text-align:center;border-bottom:1px solid #1e3a5f}
+.header h1{font-size:28px;font-weight:700;color:#f8fafc;margin-bottom:8px}
+.header .tagline{font-size:14px;color:#94a3b8}
+.header .domain{font-size:18px;color:#38bdf8;margin-top:6px;font-weight:500}
+.container{max-width:900px;margin:0 auto;padding:24px 20px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.stat-card{background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:10px;padding:16px;text-align:center}
+.stat-value{font-size:24px;font-weight:700;color:#38bdf8}
+.stat-label{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
+.key-finding{background:linear-gradient(135deg,#451a03,#78350f);border:1px solid #92400e;border-radius:10px;padding:18px 20px;margin:24px 0}
+.key-finding .label{font-size:12px;color:#fbbf24;text-transform:uppercase;font-weight:700;letter-spacing:0.5px;margin-bottom:6px}
+.key-finding p{font-size:14px;color:#fef3c7;line-height:1.7}
+.section-title{font-size:16px;font-weight:600;color:#e2e8f0;margin:28px 0 14px;padding-bottom:8px;border-bottom:1px solid #1e3a5f}
+.query-card{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:16px 18px;margin-bottom:12px}
+.query-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.query-text{font-size:14px;color:#e2e8f0;font-weight:500}
+.badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.badge-present{background:#064e3b;color:#34d399}
+.badge-weak{background:#451a03;color:#fbbf24}
+.query-analysis{font-size:13px;color:#94a3b8;line-height:1.6}
+.comp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+.comp-card{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;text-align:center}
+.comp-name{font-size:13px;color:#e2e8f0;font-weight:500}
+.cta{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);border:1px solid #1e4d8c;border-radius:12px;padding:28px 24px;margin-top:28px}
+.cta h3{font-size:16px;color:#38bdf8;margin-bottom:12px}
+.cta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cta-item{font-size:13px;color:#94a3b8;padding:8px 12px;background:#0f172a;border-radius:6px}
+.cta-item strong{color:#38bdf8}
+.footer{text-align:center;padding:30px 20px;border-top:1px solid #1e3a5f;margin-top:30px}
+.footer .name{font-size:15px;color:#f8fafc;font-weight:600}
+.footer .title{font-size:12px;color:#94a3b8;margin-top:2px}
+.footer .links{font-size:12px;color:#38bdf8;margin-top:8px}
+.footer a{color:#38bdf8;text-decoration:none}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.comp-grid{grid-template-columns:repeat(2,1fr)}.cta-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="header">
-  <h1>AI SEARCH VISIBILITY AUDIT</h1>
-  <div class="subtitle">Hummingbird — AI-Native AML & Financial Crime Platform</div>
-</div>
-<div class="stats">
-  <div class="stat-pill"><div class="value">$30M</div><div class="label">Series B ($41.8M total)</div></div>
-  <div class="stat-pill"><div class="value">0/5</div><div class="label">AI Visibility Score</div></div>
-  <div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
-  <div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
-</div>
-<div class="alert">
-  <h3>🔑 KEY FINDING</h3>
-  <p>Hummingbird raised $30M Series B led by Battery Ventures to modernize anti-money-laundering compliance — yet AI search engines cite Unit21, Alloy, ComplyAdvantage, and ThetaRay for every AML-software query. Hummingbird appears in <strong>0 of 5</strong> category-defining AI search results. A platform founded by former regulators is invisible to the AI that compliance teams consult.</p>
+<h1>AI SEARCH VISIBILITY AUDIT</h1>
+<div class="tagline">What AI engines say when buyers search for GovTech / RegTech solutions</div>
+<div class="domain">Hummingbird — hummingbird.co</div>
 </div>
 <div class="container">
-  <div class="section-title">5 Category Queries — AI Search Analysis</div>
-  <div class="query-card">
-    <div class="query-text">"&quot;best AML compliance software 2026&quot;"</div>
-    <span class="badge badge-absent">ABSENT</span>
-    <div class="analysis">AI Overviews cite Unit21, ComplyAdvantage, and Verafin. No mention of Hummingbird despite Battery Ventures backing and fintech awards.</div>
-  </div>
-  <div class="query-card">
-    <div class="query-text">"&quot;AI anti-money laundering tools&quot;"</div>
-    <span class="badge badge-absent">ABSENT</span>
-    <div class="analysis">AI answers reference ThetaRay, Feedzai, and Unit21. Hummingbird's AI case-management platform is invisible in AI-indexed sources.</div>
-  </div>
-  <div class="query-card">
-    <div class="query-text">"&quot;transaction monitoring software&quot;"</div>
-    <span class="badge badge-absent">ABSENT</span>
-    <div class="analysis">G2 grid results dominate with Actimize, ComplyAdvantage, and Unit21. Hummingbird has 0 G2 reviews and never enters this conversation.</div>
-  </div>
-  <div class="query-card">
-    <div class="query-text">"&quot;SAR filing automation&quot;"</div>
-    <span class="badge badge-weak">WEAK</span>
-    <div class="analysis">Sparse AI results — a few Reddit threads discuss SAR filing pain. One thoughtful comment naming Hummingbird's FinCEN-trained model could define this query.</div>
-  </div>
-  <div class="query-card">
-    <div class="query-text">"&quot;fintech AML compliance platform&quot;"</div>
-    <span class="badge badge-absent">ABSENT</span>
-    <div class="analysis">AI cites Unit21 and Alloy. Hummingbird's regulator-founded platform is not in any AI-indexed source.</div>
-  </div>
 
-  <div class="section-title">Competitors Dominating AI Search</div>
-  <div class="competitor-cards">
-    <div class="comp-card"><div class="cname">Unit21</div><div class="cdesc">FinCrime infrastructure, ~80 G2 reviews</div></div>
-    <div class="comp-card"><div class="cname">ComplyAdvantage</div><div class="cdesc">AML screening, ~100 G2 reviews</div></div>
-    <div class="comp-card"><div class="cname">ThetaRay</div><div class="cdesc">AI transaction monitoring, ~30 G2 reviews</div></div>
-    <div class="comp-card"><div class="cname">Alloy</div><div class="cdesc">Identity + fraud, ~200 G2 reviews</div></div>
-  </div>
-  <div class="cta">
-    <h3>4 Genhance Plays to Own the AI Narrative</h3>
-    <div class="plays">
-      <div class="play"><div class="num">1</div><div class="desc">Seed 10 G2 reviews from Hummingbird's fintech/bank customers — each review becomes AI training data</div></div>
-      <div class="play"><div class="num">2</div><div class="desc">Contribute to sparse Reddit threads on SAR filing and AML tooling AI already cites</div></div>
-      <div class="play"><div class="num">3</div><div class="desc">Comment on compliance YouTube creators' videos (sparse comment sections)</div></div>
-      <div class="play"><div class="num">4</div><div class="desc">Publish the 'regulator-founded AML platform' narrative on Product Hunt to seed AI-indexed UGC</div></div>
-    </div>
-  </div>
+<div class="stats">
+<div class="stat-card"><div class="stat-value">$30M Series B</div><div class="stat-label">Funding</div></div>
+<div class="stat-card"><div class="stat-value">1/5</div><div class="stat-label">AI Visibility</div></div>
+<div class="stat-card"><div class="stat-value">2</div><div class="stat-label">G2 Reviews</div></div>
+<div class="stat-card"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div>
+</div>
+
+<div class="key-finding">
+<div class="label">⚠ KEY FINDING</div>
+<p>Hummingbird has raised $41.8M to build an AI compliance platform — yet appears in only 1 of 5 core category queries, and even that presence is thin (a single G2 listing). With 2 G2 reviews and 0 Reddit threads, Hummingbird's AI narrative is effectively a blank slate. Competitors ComplyAdvantage, Unit21, and SEON dominate every relevant AI search query.</p>
+</div>
+
+<div class="section-title">CATEGORY QUERY ANALYSIS</div>
+<p style="font-size:13px;color:#64748b;margin-bottom:16px">We ran 5 real search queries through AI engines (ChatGPT, Google AI Overviews, Perplexity) to see what sources they cite and whether Hummingbird appears.</p>
+
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">AI AML compliance platform for banks</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI Overviews cite ComplyAdvantage, Unit21, and SEON as the top AML platforms. Hummingbird does not appear in any AI-cited source despite 2 G2 reviews and a dedicated AML investigation product.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">anti-money laundering investigation software</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI search pulls from NICE Actimize, Fenergo, and LexisNexis Risk Solutions for AML investigations. Hummingbird's unified case management and investigation workflow is absent from AI answers.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">regtech compliance automation SaaS</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI answers reference Ascent, ComplyAdvantage, and CUBE for regtech automation. Hummingbird — which automates compliance workflows end-to-end — has zero AI search visibility for this category query.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">financial crime detection AI platform</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI Overviews cite Feedzai, ThetaRay, and ComplyAdvantage for AI-driven financial crime detection. Hummingbird's AI-powered risk scoring and suspicious activity detection is invisible in AI search.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">risk and compliance CRM for fintech</span>
+<span class="badge badge-present">PRESENT</span>
+</div>
+<div class="query-analysis">Hummingbird appears in one G2 listing for compliance CRM, which AI search may reference for niche queries. However, the single source has minimal depth — no Reddit threads, no YouTube reviews, no case studies feed the AI narrative.</div>
+</div>
+
+<div class="section-title">COMPETITORS DOMINATING AI ANSWERS</div>
+<div class="comp-grid">
+<div class="comp-card"><span class="comp-name">Relativity</span></div>
+<div class="comp-card"><span class="comp-name">SEON</span></div>
+<div class="comp-card"><span class="comp-name">ComplyAdvantage</span></div>
+<div class="comp-card"><span class="comp-name">Unit21</span></div>
+
+</div>
+
+<div class="cta">
+<h3>How genhance.ai fixes this</h3>
+<div class="cta-grid">
+<div class="cta-item"><strong>① UGC Gap Analysis</strong> — Identify exactly which Reddit threads, YouTube comments, and G2 reviews feed AI answers for Hummingbird's category.</div>
+<div class="cta-item"><strong>② Reddit Narrative Seeding</strong> — Contribute to sparse, AI-indexed threads that already appear in top search results — each comment becomes part of the AI narrative.</div>
+<div class="cta-item"><strong>③ YouTube Comment Strategy</strong> — Target niche creator review videos (Google AI Overviews cite YouTube more than medical websites for health queries — the same dynamic applies to enterprise software).</div>
+<div class="cta-item"><strong>④ AI Answer Tracking</strong> — Before/after snapshots prove that genhance engagements shift what AI says about Hummingbird within 48 hours.</div>
+</div>
+</div>
+
 </div>
 <div class="footer">
-  <strong>Rajesh Gautam, PhD</strong><br>
-  Founder and CEO, genhance.ai<br>
-  <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+<div class="name">Rajesh Gautam, PhD</div>
+<div class="title">Founder and CEO, genhance.ai</div>
+<div class="links"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
 </div>
 </body>
 </html>

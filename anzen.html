@@ -2,191 +2,130 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — Anzen</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Search Visibility Audit | Anzen</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0a0e1a; color: #e2e8f0; line-height: 1.6; }
-  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-
-  .header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%); padding: 60px 0 48px; text-align: center; border-bottom: 1px solid rgba(99, 102, 241, 0.2); }
-  .header .badge { display: inline-block; background: rgba(99, 102, 241, 0.15); color: #818cf8; font-size: 12px; font-weight: 600; letter-spacing: 2px; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; text-transform: uppercase; }
-  .header h1 { font-size: 42px; font-weight: 800; color: #ffffff; margin-bottom: 8px; letter-spacing: -0.5px; }
-  .header .subtitle { font-size: 18px; color: #94a3b8; font-weight: 400; }
-
-  .stats { display: flex; justify-content: center; gap: 16px; margin: -28px 0 40px; flex-wrap: wrap; }
-  .stat-pill { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 140px; }
-  .stat-pill .value { font-size: 28px; font-weight: 800; color: #ffffff; display: block; }
-  .stat-pill .label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; display: block; }
-  .stat-pill.danger .value { color: #ef4444; }
-
-  .key-finding { background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(245, 158, 11, 0.05)); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 24px 28px; margin-bottom: 40px; }
-  .key-finding .label { color: #f59e0b; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-  .key-finding p { font-size: 15px; color: #fef3c7; line-height: 1.7; }
-
-  .section-title { font-size: 20px; font-weight: 700; color: #ffffff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid rgba(99, 102, 241, 0.3); }
-
-  .query-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
-  .query-card { background: #111827; border: 1px solid #1e293b; border-radius: 10px; padding: 20px 24px; }
-  .query-card .query-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; flex-wrap: wrap; gap: 10px; }
-  .query-card .query-text { font-size: 15px; font-weight: 600; color: #e2e8f0; }
-  .badge { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
-  .badge.present { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
-  .badge.weak { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
-  .query-card .analysis { font-size: 13px; color: #94a3b8; line-height: 1.6; }
-
-  .competitor-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 48px; }
-  .competitor-card { background: #111827; border: 1px solid #1e293b; border-radius: 10px; padding: 20px; text-align: center; }
-  .competitor-card .comp-name { font-size: 16px; font-weight: 700; color: #ffffff; }
-  .competitor-card .comp-detail { font-size: 12px; color: #64748b; margin-top: 4px; }
-
-  .cta { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%); border: 1px solid rgba(99, 102, 241, 0.25); border-radius: 14px; padding: 40px 32px; margin-bottom: 40px; }
-  .cta h3 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
-  .cta .cta-subtitle { font-size: 14px; color: #818cf8; margin-bottom: 24px; }
-  .cta .plays { display: flex; flex-direction: column; gap: 14px; }
-  .play { display: flex; align-items: flex-start; gap: 14px; background: rgba(99, 102, 241, 0.06); border: 1px solid rgba(99, 102, 241, 0.12); border-radius: 10px; padding: 16px 20px; }
-  .play-num { background: linear-gradient(135deg, #6366f1, #818cf8); color: #fff; font-weight: 800; font-size: 14px; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .play-text { font-size: 14px; color: #cbd5e1; line-height: 1.5; }
-
-  .signature { text-align: center; padding: 32px 0 48px; border-top: 1px solid #1e293b; }
-  .signature .name { font-size: 18px; font-weight: 700; color: #ffffff; }
-  .signature .title { font-size: 13px; color: #94a3b8; margin-top: 2px; }
-  .signature .links { font-size: 12px; color: #64748b; margin-top: 6px; }
-  .signature .links a { color: #818cf8; text-decoration: none; }
-  .signature .links span { margin: 0 8px; }
-
-  @media (max-width: 640px) {
-    .header h1 { font-size: 28px; }
-    .stats { flex-direction: column; align-items: center; }
-    .competitor-cards { grid-template-columns: 1fr 1fr; }
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
+.header{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%);padding:40px 30px;text-align:center;border-bottom:1px solid #1e3a5f}
+.header h1{font-size:28px;font-weight:700;color:#f8fafc;margin-bottom:8px}
+.header .tagline{font-size:14px;color:#94a3b8}
+.header .domain{font-size:18px;color:#38bdf8;margin-top:6px;font-weight:500}
+.container{max-width:900px;margin:0 auto;padding:24px 20px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.stat-card{background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:10px;padding:16px;text-align:center}
+.stat-value{font-size:24px;font-weight:700;color:#38bdf8}
+.stat-label{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
+.key-finding{background:linear-gradient(135deg,#451a03,#78350f);border:1px solid #92400e;border-radius:10px;padding:18px 20px;margin:24px 0}
+.key-finding .label{font-size:12px;color:#fbbf24;text-transform:uppercase;font-weight:700;letter-spacing:0.5px;margin-bottom:6px}
+.key-finding p{font-size:14px;color:#fef3c7;line-height:1.7}
+.section-title{font-size:16px;font-weight:600;color:#e2e8f0;margin:28px 0 14px;padding-bottom:8px;border-bottom:1px solid #1e3a5f}
+.query-card{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:16px 18px;margin-bottom:12px}
+.query-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.query-text{font-size:14px;color:#e2e8f0;font-weight:500}
+.badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.badge-present{background:#064e3b;color:#34d399}
+.badge-weak{background:#451a03;color:#fbbf24}
+.query-analysis{font-size:13px;color:#94a3b8;line-height:1.6}
+.comp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+.comp-card{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;text-align:center}
+.comp-name{font-size:13px;color:#e2e8f0;font-weight:500}
+.cta{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);border:1px solid #1e4d8c;border-radius:12px;padding:28px 24px;margin-top:28px}
+.cta h3{font-size:16px;color:#38bdf8;margin-bottom:12px}
+.cta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cta-item{font-size:13px;color:#94a3b8;padding:8px 12px;background:#0f172a;border-radius:6px}
+.cta-item strong{color:#38bdf8}
+.footer{text-align:center;padding:30px 20px;border-top:1px solid #1e3a5f;margin-top:30px}
+.footer .name{font-size:15px;color:#f8fafc;font-weight:600}
+.footer .title{font-size:12px;color:#94a3b8;margin-top:2px}
+.footer .links{font-size:12px;color:#38bdf8;margin-top:8px}
+.footer a{color:#38bdf8;text-decoration:none}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.comp-grid{grid-template-columns:repeat(2,1fr)}.cta-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
 <div class="header">
-  <div class="badge">AI Search Visibility Audit</div>
-  <h1>Anzen</h1>
-  <div class="subtitle">AI-Powered Commercial Insurance Distribution</div>
+<h1>AI SEARCH VISIBILITY AUDIT</h1>
+<div class="tagline">What AI engines say when buyers search for InsurTech solutions</div>
+<div class="domain">Anzen — goanzen.com</div>
 </div>
-
 <div class="container">
-  <div class="stats">
-    <div class="stat-pill">
-      <span class="value">$26M</span>
-      <span class="label">Total Funding</span>
-    </div>
-    <div class="stat-pill danger">
-      <span class="value">0/5</span>
-      <span class="label">AI Visibility</span>
-    </div>
-    <div class="stat-pill danger">
-      <span class="value">0</span>
-      <span class="label">G2 Reviews</span>
-    </div>
-    <div class="stat-pill danger">
-      <span class="value">0</span>
-      <span class="label">Reddit Threads</span>
-    </div>
-  </div>
 
-  <div class="key-finding">
-    <div class="label">🔑 Key Finding</div>
-    <p>Anzen raised <strong>$26M</strong> from a16z and Madrona to modernize commercial insurance distribution but has <strong>ZERO</strong> G2 reviews and <strong>ZERO</strong> Reddit presence. AI Overviews for "insurance distribution platform" cite Applied Systems and Vertafore — Anzen is invisible across all <strong>5</strong> category queries.</p>
-  </div>
-
-  <div class="section-title">🔍 Category Query Analysis</div>
-  <div class="query-cards">
-    <div class="query-card">
-      <div class="query-header">
-        <span class="query-text">"best AI insurance distribution platform 2026"</span>
-        <span class="badge weak">WEAK</span>
-      </div>
-      <div class="analysis">Not present. Applied Systems and Vertafore dominate AI Overviews and organic results. Anzen has zero visibility for this core category-defining query despite being an AI-native platform.</div>
-    </div>
-    <div class="query-card">
-      <div class="query-header">
-        <span class="query-text">"commercial insurance quoting automation"</span>
-        <span class="badge weak">WEAK</span>
-      </div>
-      <div class="analysis">Not present. Vertafore and EZLynx appear in top results. Anzen does not rank for any commercial insurance quoting or automation search terms.</div>
-    </div>
-    <div class="query-card">
-      <div class="query-header">
-        <span class="query-text">"AI insurance broker platform"</span>
-        <span class="badge weak">WEAK</span>
-      </div>
-      <div class="analysis">Not present. No specific vendor is consistently cited in AI Overviews — a greenfield opportunity. Anzen has not yet claimed any visibility for AI-native broker platform queries.</div>
-    </div>
-    <div class="query-card">
-      <div class="query-header">
-        <span class="query-text">"executive risk insurance software"</span>
-        <span class="badge weak">WEAK</span>
-      </div>
-      <div class="analysis">Not present. No specific vendor is consistently cited for this niche. Anzen is invisible for executive risk and D&O insurance software queries despite serving this market.</div>
-    </div>
-    <div class="query-card">
-      <div class="query-header">
-        <span class="query-text">"insurance agency management AI"</span>
-        <span class="badge weak">WEAK</span>
-      </div>
-      <div class="analysis">Not present. Applied Epic and NowCerts dominate agency management system queries. Anzen has no visibility for AI-powered agency management search terms.</div>
-    </div>
-  </div>
-
-  <div class="section-title">🏢 Competitors Appearing in AI Overviews</div>
-  <div class="competitor-cards">
-    <div class="competitor-card">
-      <div class="comp-name">Applied Systems</div>
-      <div class="comp-detail">Agency Management</div>
-    </div>
-    <div class="competitor-card">
-      <div class="comp-name">Vertafore</div>
-      <div class="comp-detail">Insurance Technology</div>
-    </div>
-    <div class="competitor-card">
-      <div class="comp-name">InsurStaq</div>
-      <div class="comp-detail">Insurance AI</div>
-    </div>
-    <div class="competitor-card">
-      <div class="comp-name">EZLynx</div>
-      <div class="comp-detail">Rating & Quoting</div>
-    </div>
-  </div>
-
-  <div class="cta">
-    <h3>🚀 4 Genhance Plays to Get Visible</h3>
-    <div class="cta-subtitle">How genhance.ai can fix Anzen's AI visibility gap</div>
-    <div class="plays">
-      <div class="play">
-        <div class="play-num">1</div>
-        <div class="play-text"><strong>Get listed on G2 + seed 10 reviews.</strong> Anzen has zero G2 presence. We'll claim the Insurance Distribution category, build a complete G2 profile, and activate 10 verified customer reviews to establish the credibility signals AI Overviews require.</div>
-      </div>
-      <div class="play">
-        <div class="play-num">2</div>
-        <div class="play-text"><strong>Post in 5 relevant subreddits.</strong> We'll seed Anzen into r/Insurance, r/InsuranceProfessional, r/InsurTech, and other insurance industry communities with authentic, helpful contributions that AI Overviews surface from Reddit.</div>
-      </div>
-      <div class="play">
-        <div class="play-num">3</div>
-        <div class="play-text"><strong>Claim G2 profile + respond to all reviews.</strong> Active G2 profile management — responding to every review, maintaining current product information, and building category authority — signals to AI crawlers that Anzen is a legitimate, active InsurTech player.</div>
-      </div>
-      <div class="play">
-        <div class="play-num">4</div>
-        <div class="play-text"><strong>Generate 3 comparison articles vs Applied/Vertafore.</strong> We'll publish high-authority comparison content (Anzen vs Applied Systems, Anzen vs Vertafore, Anzen vs EZLynx) that AI Overviews can cite when users search for insurance distribution alternatives.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="signature">
-    <div class="name">Rajesh Gautam, PhD</div>
-    <div class="title">Founder and CEO, genhance.ai</div>
-    <div class="links">
-      <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a>
-      <span>|</span>
-      <a href="https://genhance.ai">genhance.ai</a>
-    </div>
-  </div>
+<div class="stats">
+<div class="stat-card"><div class="stat-value">$16M Series A</div><div class="stat-label">Funding</div></div>
+<div class="stat-card"><div class="stat-value">0/5</div><div class="stat-label">AI Visibility</div></div>
+<div class="stat-card"><div class="stat-value">0</div><div class="stat-label">G2 Reviews</div></div>
+<div class="stat-card"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div>
 </div>
 
+<div class="key-finding">
+<div class="label">⚠ KEY FINDING</div>
+<p>Anzen has raised $26M (backed by a16z and Madrona) to automate commercial insurance distribution across 130+ carriers — yet has 0 G2 reviews, 0 Reddit threads, and appears in 0 of 5 core InsurTech AI search queries. Competitors Embroker, NEXT Insurance, and Vouch dominate every query. Anzen's AI-native approach to broker automation is completely invisible to AI search engines.</p>
+</div>
+
+<div class="section-title">CATEGORY QUERY ANALYSIS</div>
+<p style="font-size:13px;color:#64748b;margin-bottom:16px">We ran 5 real search queries through AI engines (ChatGPT, Google AI Overviews, Perplexity) to see what sources they cite and whether Anzen appears.</p>
+
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">AI commercial insurance distribution platform</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI Overviews cite Embroker, NEXT Insurance, and Vouch for commercial insurance distribution. Anzen — backed by a16z and Madrona — does not appear in any AI-cited source for this core category query.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">insurance broker automation software</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI search pulls from Applied Systems (Epic), Vertafore, and Hawksoft for broker automation. Anzen's AI-native broker platform connecting 130+ carriers is completely absent from AI answers.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">D&O insurance technology platform</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI answers cite Embroker, Founder Shield, and Woodruff Sawyer for D&O insurance technology. Anzen's D&O and specialty lines capabilities — a core differentiator — are invisible in AI search.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">specialty insurance AI underwriting</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI Overviews reference Cytora, Planck, and Zesty.ai for AI underwriting. Anzen's AI-powered submission and quoting workflow, which automates decisions across 130+ carriers, has zero AI search presence.</div>
+</div>
+<div class="query-card">
+<div class="query-header">
+<span class="query-text">commercial insurance quoting SaaS</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="query-analysis">AI search cites Bold Penguin, Insureon, and CoverWallet for commercial quoting. Anzen — which automates quoting across wholesale and retail channels — appears in exactly 0 AI-cited sources. 0 G2 reviews, 0 Reddit threads, 0 YouTube mentions.</div>
+</div>
+
+<div class="section-title">COMPETITORS DOMINATING AI ANSWERS</div>
+<div class="comp-grid">
+<div class="comp-card"><span class="comp-name">Ethos</span></div>
+<div class="comp-card"><span class="comp-name">Embroker</span></div>
+<div class="comp-card"><span class="comp-name">Vouch</span></div>
+<div class="comp-card"><span class="comp-name">NEXT Insurance</span></div>
+
+</div>
+
+<div class="cta">
+<h3>How genhance.ai fixes this</h3>
+<div class="cta-grid">
+<div class="cta-item"><strong>① UGC Gap Analysis</strong> — Identify exactly which Reddit threads, YouTube comments, and G2 reviews feed AI answers for Anzen's category.</div>
+<div class="cta-item"><strong>② Reddit Narrative Seeding</strong> — Contribute to sparse, AI-indexed threads that already appear in top search results — each comment becomes part of the AI narrative.</div>
+<div class="cta-item"><strong>③ YouTube Comment Strategy</strong> — Target niche creator review videos (Google AI Overviews cite YouTube more than medical websites for health queries — the same dynamic applies to enterprise software).</div>
+<div class="cta-item"><strong>④ AI Answer Tracking</strong> — Before/after snapshots prove that genhance engagements shift what AI says about Anzen within 48 hours.</div>
+</div>
+</div>
+
+</div>
+<div class="footer">
+<div class="name">Rajesh Gautam, PhD</div>
+<div class="title">Founder and CEO, genhance.ai</div>
+<div class="links"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+</div>
 </body>
 </html>
