@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Search Visibility Audit — Luzern Risk</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%); padding: 60px 40px; text-align: center; border-bottom: 3px solid #3b82f6; }
+        .header h1 { font-size: 2.2em; color: #f8fafc; margin-bottom: 8px; }
+        .header .subtitle { font-size: 1.1em; color: #94a3b8; }
+        .header .company-name { color: #60a5fa; font-weight: 700; }
+        .container { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+        .stat-pills { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin: -30px 0 30px 0; }
+        .stat-pill { background: linear-gradient(135deg, #1e293b, #334155); border: 1px solid #475569; border-radius: 12px; padding: 16px 22px; text-align: center; min-width: 140px; }
+        .stat-pill .stat-value { font-size: 1.8em; font-weight: 800; color: #60a5fa; }
+        .stat-pill .stat-label { font-size: 0.8em; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .key-finding { background: linear-gradient(135deg, #451a03, #78350f); border: 1px solid #f59e0b; border-radius: 12px; padding: 20px 24px; margin-bottom: 30px; }
+        .key-finding h3 { color: #fbbf24; margin-bottom: 8px; }
+        .key-finding p { color: #fcd34d; font-size: 0.95em; }
+        .section-title { font-size: 1.3em; color: #f8fafc; margin: 30px 0 15px 0; border-bottom: 2px solid #334155; padding-bottom: 8px; }
+        .query-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 16px 20px; margin-bottom: 14px; }
+        .query-badge { display: inline-block; background: #3b82f6; color: #fff; padding: 3px 10px; border-radius: 6px; font-size: 0.75em; font-weight: 700; margin-bottom: 8px; }
+        .query-text { font-size: 0.95em; color: #cbd5e1; margin-bottom: 8px; font-style: italic; }
+        .query-result { font-size: 0.88em; color: #94a3b8; }
+        .badge-absent { background: #dc2626; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; font-weight: 700; }
+        .competitor-section { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px 24px; margin-bottom: 30px; }
+        .competitor-section h3 { color: #f8fafc; margin-bottom: 12px; }
+        .comp-tag { display: inline-block; background: #312e81; color: #c7d2fe; padding: 6px 14px; border-radius: 20px; margin: 4px 6px; font-size: 0.85em; }
+        .cta { background: linear-gradient(135deg, #0f172a, #1e293b); border: 2px solid #3b82f6; border-radius: 12px; padding: 28px 24px; margin-top: 30px; text-align: center; }
+        .cta h3 { color: #60a5fa; margin-bottom: 10px; }
+        .cta .plays { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+        .cta .play { background: #1e3a5f; padding: 12px; border-radius: 8px; font-size: 0.85em; color: #bfdbfe; }
+        .footer { text-align: center; padding: 30px 20px; border-top: 1px solid #334155; margin-top: 30px; color: #64748b; font-size: 0.85em; }
+        .footer a { color: #60a5fa; text-decoration: none; }
+        .footer .sig-name { color: #f8fafc; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 AI SEARCH VISIBILITY AUDIT</h1>
+        <div class="subtitle">for <span class="company-name">Luzern Risk</span> — Captive Insurance / Risk</div>
+    </div>
+    
+    <div class="container">
+        <div class="stat-pills">
+            <div class="stat-pill"><div class="stat-value">$45M Series B</div><div class="stat-label">Funding</div></div>
+            <div class="stat-pill"><div class="stat-value" style="color:#f59e0b">0/5</div><div class="stat-label">AI Visibility</div></div>
+            <div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">G2 Reviews</div></div>
+            <div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div>
+        </div>
+        
+        <div class="key-finding">
+            <h3>⚠️ KEY FINDING</h3>
+            <p>Luzern Risk has raised <strong>$45M Series B (Sep 2026), $57M total</strong> but appears in <strong>0 of 5</strong> key category queries that feed AI search results (ChatGPT, Google AI Overviews, Perplexity). With <strong>0 G2 reviews</strong> and <strong>0 Reddit threads</strong>, the company is effectively <strong>AI-invisible</strong> — prospects searching for Captive Insurance / Risk solutions on AI-powered platforms will never discover Luzern Risk.</p>
+        </div>
+        
+        <div class="section-title">📊 5 Category Queries — AI Search Analysis</div>
+        
+                <div class="query-card">
+                    <div class="query-badge">QUERY 1</div>
+                    <div class="query-text">"AI captive insurance management platform"</div>
+                    <div class="query-result"><span class="badge badge-absent">ABSENT</span> Luzern Risk does not appear in AI-cited sources for this query.</div>
+                </div>
+                <div class="query-card">
+                    <div class="query-badge">QUERY 2</div>
+                    <div class="query-text">"alternative risk solutions technology platform"</div>
+                    <div class="query-result"><span class="badge badge-absent">ABSENT</span> Luzern Risk does not appear in AI-cited sources for this query.</div>
+                </div>
+                <div class="query-card">
+                    <div class="query-badge">QUERY 3</div>
+                    <div class="query-text">"captive insurance formation and management software"</div>
+                    <div class="query-result"><span class="badge badge-absent">ABSENT</span> Luzern Risk does not appear in AI-cited sources for this query.</div>
+                </div>
+                <div class="query-card">
+                    <div class="query-badge">QUERY 4</div>
+                    <div class="query-text">"digital risk financing captive optimization tool"</div>
+                    <div class="query-result"><span class="badge badge-absent">ABSENT</span> Luzern Risk does not appear in AI-cited sources for this query.</div>
+                </div>
+                <div class="query-card">
+                    <div class="query-badge">QUERY 5</div>
+                    <div class="query-text">"AI-powered captive insurance for mid-market companies"</div>
+                    <div class="query-result"><span class="badge badge-absent">ABSENT</span> Luzern Risk does not appear in AI-cited sources for this query.</div>
+                </div>
+        
+        <div class="competitor-section">
+            <h3>🏢 Competitors Currently Cited by AI</h3>
+            <p style="color:#94a3b8;margin-bottom:12px;font-size:0.9em;">These competitors appear in AI Overviews and AI chatbot answers for Captive Insurance / Risk queries — Luzern Risk does not.</p>
+            <span class="comp-tag">Marsh Captive Solutions</span><span class="comp-tag">Aon Captive</span><span class="comp-tag">Willis Towers Watson</span><span class="comp-tag">Strategic Risk Solutions</span>
+        </div>
+        
+        <div class="cta">
+            <h3>🚀 What genhance.ai Can Do for Luzern Risk</h3>
+            <p style="color:#94a3b8;margin-bottom:8px;">Four plays to fix AI search invisibility:</p>
+            <div class="plays">
+                <div class="play"><strong>1. UGC Gap Analysis</strong><br>Map exactly which Reddit, YouTube, and forum threads feed AI answers in your category.</div>
+                <div class="play"><strong>2. Narrative Shaping</strong><br>Contribute to sparse threads AI already cites — one comment can shift what AI says about your category.</div>
+                <div class="play"><strong>3. Review Velocity</strong><br>Seed your G2/TrustRadius presence with real customer voices — 10 reviews changes AI recommendations.</div>
+                <div class="play"><strong>4. AI Answer Monitoring</strong><br>Track before/after snapshots to prove ROI — see exactly when your visibility flips.</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p><span class="sig-name">Rajesh Gautam, PhD</span><br>Founder and CEO, genhance.ai</p>
+        <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+    </div>
+</body>
+</html>
