@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Andera</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e6f0; line-height: 1.6; }
+.container { max-width: 720px; margin: 0 auto; padding: 0; }
+.header { background: linear-gradient(135deg, #0d1b4a 0%, #1a237e 50%, #283593 100%); padding: 40px 32px 32px; text-align: center; }
+.header h1 { color: #ffffff; font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
+.header .subtitle { color: #90a4d4; font-size: 14px; margin-top: 8px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 24px 32px 0; background: linear-gradient(135deg, #0d1b4a 0%, #1a237e 50%, #283593 100%); }
+.stat { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 16px 10px; text-align: center; }
+.stat .label { color: #90a4d4; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.stat .value { color: #ffffff; font-size: 18px; font-weight: 700; }
+.content { padding: 28px 32px 40px; background: #111633; }
+.alert { background: linear-gradient(135deg, #3d2800, #5c3d00); border-left: 4px solid #ff9800; border-radius: 8px; padding: 18px 20px; margin-bottom: 28px; }
+.alert .label { color: #ff9800; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+.alert p { color: #ffe0a0; font-size: 14px; line-height: 1.6; }
+.section-title { color: #90a4d4; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin: 28px 0 14px; }
+.query-card { background: #161b3a; border-radius: 10px; padding: 18px 20px; margin-bottom: 12px; border: 1px solid #1e2456; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.query-card .q-text { color: #e0e6f0; font-size: 15px; font-weight: 600; flex: 1; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 10px; white-space: nowrap; }
+.badge-weak { background: rgba(244,67,54,0.15); color: #f44336; }
+.badge-present { background: rgba(76,175,80,0.15); color: #4caf50; }
+.query-card .q-analysis { color: #8899bc; font-size: 13px; line-height: 1.6; }
+.comp-card { background: #161b3a; border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; border: 1px solid #1e2456; display: flex; justify-content: space-between; align-items: center; }
+.comp-card .comp-name { color: #e0e6f0; font-size: 14px; font-weight: 600; }
+.comp-card .comp-detail { color: #8899bc; font-size: 12px; }
+.cta { background: linear-gradient(135deg, #0d1b4a 0%, #1a237e 50%, #283593 100%); border-radius: 12px; padding: 28px 24px; margin-top: 28px; text-align: center; }
+.cta h3 { color: #ffffff; font-size: 17px; font-weight: 700; margin-bottom: 12px; }
+.cta p { color: #90a4d4; font-size: 13px; margin-bottom: 8px; }
+.cta .plays { text-align: left; display: inline-block; }
+.cta .play { color: #64b5f6; font-size: 13px; padding: 4px 0; }
+.footer { background: #0a0e27; padding: 24px 32px; text-align: center; border-top: 1px solid #1e2456; }
+.footer .name { color: #e0e6f0; font-size: 14px; font-weight: 600; }
+.footer .title { color: #8899bc; font-size: 12px; }
+.footer .link { color: #64b5f6; font-size: 12px; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>AI SEARCH VISIBILITY AUDIT</h1>
+<div class="subtitle">How AI Search Engines See Andera — and Where They Don't</div>
+</div>
+<div class="stats">
+<div class="stat"><div class="label">Funding</div><div class="value">$37M Series A</div></div>
+<div class="stat"><div class="label">AI Visibility</div><div class="value">0/5</div></div>
+<div class="stat"><div class="label">G2 Reviews</div><div class="value">0</div></div>
+<div class="stat"><div class="label">Reddit</div><div class="value">0</div></div>
+</div>
+<div class="content">
+<div class="alert">
+<div class="label">🔑 KEY FINDING</div>
+<p>Andera has raised $37M from Lightspeed and BCV to rebuild internal audit with AI-native controls testing. The company has deployed the largest-scale AI control testing to date and partners with RSM (a top 10 accounting firm). Yet across all 5 audit-tech queries, Andera is invisible — AI engines cite only incumbent platforms (AuditBoard, Workiva, TeamMate). With 0 G2 reviews and 0 Reddit mentions, every piece of UGC about Andera would represent the entire AI-search narrative.</p>
+</div>
+<div class="section-title">📊 Company Overview</div>
+<div style="background:#161b3a;border-radius:10px;padding:16px 20px;margin-bottom:8px;border:1px solid #1e2456;">
+<p style="color:#90a4d4;font-size:13px;margin-bottom:6px;"><strong>Category:</strong> AI-Native Internal Audit & Controls Testing &nbsp;|&nbsp; <strong>HQ:</strong> San Francisco, CA &nbsp;|&nbsp; <strong>Founded:</strong> 2024 &nbsp;|&nbsp; <strong>Employees:</strong> 20</p>
+<p style="color:#90a4d4;font-size:13px;margin-bottom:6px;"><strong>Funding:</strong> $37M Series A led by Lightspeed Venture Partners, with participation from Bain Capital Ventures, A*, and Pear VC.</p>
+<p style="color:#90a4d4;font-size:13px;"><strong>CEO:</strong> Aryo Patel</p>
+</div>
+<div class="section-title">🔍 Category Query Analysis (5 Queries)</div>
+
+<div class="query-card">
+<div class="q-header">
+<span class="q-text">"best internal audit software 2026"</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">AI Overviews cite AuditBoard, Workiva, and TeamMate as leading internal audit platforms. Andera — an AI-native platform that automates control testing with AI agents — does not appear in any AI-generated or organic result for this category-defining query.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<span class="q-text">"AI for SOX compliance testing"</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">AI answers reference AuditBoard's AI features and Workiva's automation tools. Andera, which partners with RSM (top 10 accounting firm) for AI-driven SOX control testing, is entirely absent despite having the largest-scale AI control testing deployments to date.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<span class="q-text">"Andera AI audit review Reddit"</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">Zero Reddit threads mention Andera. No r/accounting, r/internalaudit, or r/Big4 discussions reference the company. Despite Lightspeed and BCV backing, there is no UGC for AI engines to index.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<span class="q-text">"AuditBoard vs alternatives audit management"</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">AI comparison answers name Workiva, TeamMate, and Galvanize as AuditBoard alternatives. Andera — which produces audit-ready workpapers with AI agents in 30% of the time — is invisible in every comparison query.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<span class="q-text">"how to automate internal audit controls testing"</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">AI-generated answers discuss RPA and AI-assisted testing conceptually but cite no specific vendors. This is Andera's exact value proposition — AI agents that read unstructured evidence, run testing, and produce audit-ready workpapers — yet the company receives zero AI citations.</div>
+</div>
+<div class="section-title">🏢 Top Competitors in AI Search Results</div>
+
+<div class="comp-card">
+<div class="comp-name">AuditBoard</div>
+<div class="comp-detail">1,500+ G2 reviews, market leader in audit management</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">Workiva</div>
+<div class="comp-detail">1,000+ G2 reviews, SOX/compliance platform</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">Galvanize/Diligent</div>
+<div class="comp-detail">800+ G2 reviews, GRC platform</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">TeamMate</div>
+<div class="comp-detail">300+ G2 reviews, Wolters Kluwer audit software</div>
+</div>
+<div class="cta">
+<h3>4 Ways genhance.ai Shifts Your AI Visibility</h3>
+<div class="plays">
+<div class="play">1. <strong>Reddit Thread Monitoring</strong> — Track every mention of your category and competitors across Reddit, identify sparse threads (<20 comments) where one contribution shapes the AI narrative</div>
+<div class="play">2. <strong>AI Answer Snapshots</strong> — Weekly before/after snapshots of what ChatGPT, Perplexity, and Google AI Overviews say about your company and category</div>
+<div class="play">3. <strong>UGC Gap Mapping</strong> — Map exactly which UGC sources (Reddit, YouTube, G2, Product Hunt, HN) feed AI answers for your top 20 queries</div>
+<div class="play">4. <strong>Engagement Playbook</strong> — For each sparse UGC surface: the 3-sentence contribution that gets indexed by AI engines within 48 hours</div>
+</div>
+</div>
+</div></div>
+<div class="footer">
+<div class="name">Rajesh Gautam, PhD</div>
+<div class="title">Founder and CEO, genhance.ai</div>
+<a class="link" href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <span class="link">genhance.ai</span>
+</div>
+</body>
+</html>

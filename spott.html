@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Spott</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e6f0; line-height: 1.6; }
+.container { max-width: 720px; margin: 0 auto; padding: 0; }
+.header { background: linear-gradient(135deg, #0d1b4a 0%, #1a237e 50%, #283593 100%); padding: 40px 32px 32px; text-align: center; }
+.header h1 { color: #ffffff; font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
+.header .subtitle { color: #90a4d4; font-size: 14px; margin-top: 8px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 24px 32px 0; background: linear-gradient(135deg, #0d1b4a 0%, #1a237e 50%, #283593 100%); }
+.stat { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 16px 10px; text-align: center; }
+.stat .label { color: #90a4d4; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.stat .value { color: #ffffff; font-size: 18px; font-weight: 700; }
+.content { padding: 28px 32px 40px; background: #111633; }
+.alert { background: linear-gradient(135deg, #3d2800, #5c3d00); border-left: 4px solid #ff9800; border-radius: 8px; padding: 18px 20px; margin-bottom: 28px; }
+.alert .label { color: #ff9800; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+.alert p { color: #ffe0a0; font-size: 14px; line-height: 1.6; }
+.section-title { color: #90a4d4; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin: 28px 0 14px; }
+.query-card { background: #161b3a; border-radius: 10px; padding: 18px 20px; margin-bottom: 12px; border: 1px solid #1e2456; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.query-card .q-text { color: #e0e6f0; font-size: 15px; font-weight: 600; flex: 1; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 10px; white-space: nowrap; }
+.badge-weak { background: rgba(244,67,54,0.15); color: #f44336; }
+.badge-present { background: rgba(76,175,80,0.15); color: #4caf50; }
+.query-card .q-analysis { color: #8899bc; font-size: 13px; line-height: 1.6; }
+.comp-card { background: #161b3a; border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; border: 1px solid #1e2456; display: flex; justify-content: space-between; align-items: center; }
+.comp-card .comp-name { color: #e0e6f0; font-size: 14px; font-weight: 600; }
+.comp-card .comp-detail { color: #8899bc; font-size: 12px; }
+.cta { background: linear-gradient(135deg, #0d1b4a 0%, #1a237e 50%, #283593 100%); border-radius: 12px; padding: 28px 24px; margin-top: 28px; text-align: center; }
+.cta h3 { color: #ffffff; font-size: 17px; font-weight: 700; margin-bottom: 12px; }
+.cta p { color: #90a4d4; font-size: 13px; margin-bottom: 8px; }
+.cta .plays { text-align: left; display: inline-block; }
+.cta .play { color: #64b5f6; font-size: 13px; padding: 4px 0; }
+.footer { background: #0a0e27; padding: 24px 32px; text-align: center; border-top: 1px solid #1e2456; }
+.footer .name { color: #e0e6f0; font-size: 14px; font-weight: 600; }
+.footer .title { color: #8899bc; font-size: 12px; }
+.footer .link { color: #64b5f6; font-size: 12px; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>AI SEARCH VISIBILITY AUDIT</h1>
+<div class="subtitle">How AI Search Engines See Spott — and Where They Don't</div>
+</div>
+<div class="stats">
+<div class="stat"><div class="label">Funding</div><div class="value">$21M Series A</div></div>
+<div class="stat"><div class="label">AI Visibility</div><div class="value">0/5</div></div>
+<div class="stat"><div class="label">G2 Reviews</div><div class="value">0</div></div>
+<div class="stat"><div class="label">Reddit</div><div class="value">0</div></div>
+</div>
+<div class="content">
+<div class="alert">
+<div class="label">🔑 KEY FINDING</div>
+<p>Spott has raised $24M from top-tier investors (Balderton, Base10, YC) to build an AI-native ATS/CRM for recruitment agencies. However, across all 5 key recruitment-tech queries, Spott appears in ZERO AI-generated answers. Its competitors (Bullhorn, Loxo, Gem, Ashby) dominate every AI overview, despite Spott being purpose-built for the exact queries where they appear. With 0 G2 reviews and 0 Reddit mentions, Spott's AI search presence is a blank slate — a single thoughtful presence on any UGC surface would represent 100% of the AI-cited conversation about their product.</p>
+</div>
+<div class="section-title">📊 Company Overview</div>
+<div style="background:#161b3a;border-radius:10px;padding:16px 20px;margin-bottom:8px;border:1px solid #1e2456;">
+<p style="color:#90a4d4;font-size:13px;margin-bottom:6px;"><strong>Category:</strong> AI-Native ATS/CRM for Recruitment Agencies &nbsp;|&nbsp; <strong>HQ:</strong> Leuven, Belgium &nbsp;|&nbsp; <strong>Founded:</strong> 2024 &nbsp;|&nbsp; <strong>Employees:</strong> 44</p>
+<p style="color:#90a4d4;font-size:13px;margin-bottom:6px;"><strong>Funding:</strong> $21M Series A led by Balderton Capital, with Base10 Partners, Y Combinator, Fortino. Total raised: $24M.</p>
+<p style="color:#90a4d4;font-size:13px;"><strong>CEO:</strong> Lander Degrève</p>
+</div>
+<div class="section-title">🔍 Category Query Analysis (5 Queries)</div>
+
+<div class="query-card">
+<div class="q-header">
+<span class="q-text">"best ATS for recruitment agencies 2026"</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">AI Overviews cite Bullhorn, Loxo, and Zoho Recruit as top picks. Spott does not appear in any AI-generated answer or organic result for this high-volume category-defining query.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<span class="q-text">"AI recruitment software for staffing firms"</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">AI Overview pulls from G2 comparison pages and vendor blogs. Loxo, Bullhorn, and Gem dominate every mention. Spott is entirely absent despite being purpose-built for this exact use case.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<span class="q-text">"Spott ATS review Reddit"</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">Zero Reddit threads mention Spott. No user reviews, no comparisons, no discussion. For a YC-backed company with $24M in funding, this is a complete UGC void — AI has nothing to cite.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<span class="q-text">"Bullhorn vs alternatives recruitment CRM"</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">AI comparison answers name Loxo, JobAdder, and PCRecruiter as Bullhorn alternatives. Spott — an AI-native challenger with Balderton/YC backing — is invisible in every comparison query.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<span class="q-text">"how to automate candidate sourcing with AI"</span>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">AI-generated answers cite LinkedIn Recruiter, SeekOut, and HireEZ as AI sourcing tools. Spott's vector-database-powered candidate matching and AI outreach workflows go entirely unmentioned.</div>
+</div>
+<div class="section-title">🏢 Top Competitors in AI Search Results</div>
+
+<div class="comp-card">
+<div class="comp-name">Bullhorn</div>
+<div class="comp-detail">1,200+ G2 reviews, dominates enterprise staffing CRM</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">Loxo</div>
+<div class="comp-detail">500+ G2 reviews, AI-powered ATS/CRM</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">Gem</div>
+<div class="comp-detail">200+ G2 reviews, sourcing-focused</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">Ashby</div>
+<div class="comp-detail">100+ G2 reviews, all-in-one ATS</div>
+</div>
+<div class="cta">
+<h3>4 Ways genhance.ai Shifts Your AI Visibility</h3>
+<div class="plays">
+<div class="play">1. <strong>Reddit Thread Monitoring</strong> — Track every mention of your category and competitors across Reddit, identify sparse threads (<20 comments) where one contribution shapes the AI narrative</div>
+<div class="play">2. <strong>AI Answer Snapshots</strong> — Weekly before/after snapshots of what ChatGPT, Perplexity, and Google AI Overviews say about your company and category</div>
+<div class="play">3. <strong>UGC Gap Mapping</strong> — Map exactly which UGC sources (Reddit, YouTube, G2, Product Hunt, HN) feed AI answers for your top 20 queries</div>
+<div class="play">4. <strong>Engagement Playbook</strong> — For each sparse UGC surface: the 3-sentence contribution that gets indexed by AI engines within 48 hours</div>
+</div>
+</div>
+</div></div>
+<div class="footer">
+<div class="name">Rajesh Gautam, PhD</div>
+<div class="title">Founder and CEO, genhance.ai</div>
+<a class="link" href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <span class="link">genhance.ai</span>
+</div>
+</body>
+</html>
