@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COR — AI Visibility Audit | genhance.ai</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  header {
+    background: linear-gradient(135deg, #0a1628 0%, #1a2740 40%, #1e3a5f 100%);
+    padding: 60px 0 50px;
+    text-align: center;
+    border-bottom: 3px solid #f0a030;
+  }
+  header h1 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(90deg, #e6edf3, #58a6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  header .subtitle { color: #8b949e; font-size: 1.05rem; }
+  .stats { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: -28px auto 30px; position: relative; z-index: 2; }
+  .stat-pill { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px 24px; text-align: center; min-width: 140px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+  .stat-pill .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #8b949e; margin-bottom: 4px; }
+  .stat-pill .value { font-size: 1.5rem; font-weight: 700; }
+  .stat-pill.funding .value { color: #3fb950; }
+  .stat-pill.ai .value { color: #f0a030; }
+  .stat-pill.g2 .value { color: #58a6ff; }
+  .stat-pill.reddit .value { color: #f78166; }
+  .alert {
+    background: linear-gradient(135deg, #2d1a0a, #3b250e);
+    border: 1px solid #f0a030;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 0 0 40px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .alert .icon { font-size: 1.5rem; flex-shrink: 0; }
+  .alert .text h3 { color: #f0a030; margin-bottom: 4px; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .alert .text p { color: #daaa6a; font-size: 0.95rem; }
+  section { margin-bottom: 40px; }
+  section h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 18px; color: #c9d1d9; border-bottom: 1px solid #21262d; padding-bottom: 10px; }
+  .query-cards { display: flex; flex-direction: column; gap: 14px; }
+  .query-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start; transition: border-color .2s; }
+  .query-card:hover { border-color: #30363d; }
+  .badge { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 6px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .badge.present { background: rgba(63,185,80,0.15); color: #3fb950; border: 1px solid rgba(63,185,80,0.3); }
+  .badge.weak { background: rgba(240,160,48,0.15); color: #f0a030; border: 1px solid rgba(240,160,48,0.3); }
+  .query-card .body h4 { font-size: 0.95rem; font-weight: 600; color: #e6edf3; margin-bottom: 4px; }
+  .query-card .body p { font-size: 0.875rem; color: #8b949e; margin: 0; }
+  .competitor-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .comp-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 18px 20px; text-align: center; transition: border-color .2s; }
+  .comp-card:hover { border-color: #f0a030; }
+  .comp-card .name { font-weight: 700; font-size: 1rem; color: #e6edf3; margin-bottom: 4px; }
+  .comp-card .desc { font-size: 0.8rem; color: #8b949e; }
+  .cta-section {
+    background: linear-gradient(135deg, #0a1628 0%, #1a2740 60%, #1e3a5f 100%);
+    border-radius: 14px;
+    padding: 40px 36px;
+    margin: 40px 0;
+    border: 1px solid #1a2740;
+    text-align: center;
+  }
+  .cta-section h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; color: #e6edf3; border: none; }
+  .cta-section .cta-sub { color: #8b949e; margin-bottom: 28px; font-size: 0.95rem; }
+  .plays { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; text-align: left; }
+  .play { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px 20px; }
+  .play .num { font-size: 0.7rem; font-weight: 800; color: #f0a030; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .play h4 { font-size: 0.95rem; font-weight: 700; color: #e6edf3; margin-bottom: 6px; }
+  .play p { font-size: 0.8rem; color: #8b949e; }
+  .signature { border-top: 1px solid #21262d; padding: 30px 0 20px; text-align: center; color: #8b949e; font-size: 0.85rem; line-height: 1.7; }
+  .signature .name { color: #e6edf3; font-weight: 700; }
+  .signature a { color: #58a6ff; text-decoration: none; }
+  .signature a:hover { text-decoration: underline; }
+  footer { text-align: center; padding: 0 0 30px; color: #484f58; font-size: 0.8rem; }
+  @media (max-width: 640px) {
+    header h1 { font-size: 2rem; }
+    .stats { gap: 8px; }
+    .stat-pill { min-width: 110px; padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>COR</h1>
+    <p class="subtitle">AI-Powered Project Profitability Platform for Agencies &amp; Professional Services</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="stats">
+    <div class="stat-pill funding"><div class="label">Funding</div><div class="value">$30M</div></div>
+    <div class="stat-pill ai"><div class="label">AI Visibility</div><div class="value">3/5</div></div>
+    <div class="stat-pill g2"><div class="label">G2 Reviews</div><div class="value">116</div></div>
+    <div class="stat-pill reddit"><div class="label">Reddit</div><div class="value">~0</div></div>
+  </div>
+
+  <div class="alert">
+    <span class="icon">⚠️</span>
+    <div class="text">
+      <h3>Key Finding — AI Search Gap</h3>
+      <p>COR has strong G2 traction with 116 reviews, yet their AI-search visibility score is only 3/5. They rank for broad agency-tool queries but are nearly invisible on high-intent purchase queries like "best PSA software for agencies" — exactly where AI chatbots and search engines send buyers. Competitors Kantata and Deltek dominate the AI-search landscape in their category, leaving COR's recent $30M growth story untold to algorithmically-curated audiences.</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>🔎 Branded &amp; Intent Queries — AI Visibility Audit</h2>
+    <div class="query-cards">
+      <div class="query-card">
+        <span class="badge present">PRESENT</span>
+        <div class="body">
+          <h4>"best agency project management software 2026"</h4>
+          <p>COR appears in AI-generated overviews for this query but is typically ranked 4th–5th behind Kantata, Scoro, and Monday.com. The platform's profitability focus is mentioned inconsistently; AI models fail to differentiate COR's margin-tracking capabilities from generic project management tools. A dedicated resource hub and structured FAQ page optimized for retrieval would strengthen position here.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge present">PRESENT</span>
+        <div class="body">
+          <h4>"professional services automation tools"</h4>
+          <p>COR is referenced alongside legacy PSA platforms. AI summaries acknowledge COR's modern UI but default to recommending Kantata/Mavenlink for enterprise buyers. The $30M FTV Capital investment is entirely absent from AI training data, missing a critical trust signal that would elevate COR's ranking on this high-volume category query.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"how to track agency profitability"</h4>
+          <p>This is COR's core value proposition, yet AI models respond with generic advice articles from blogs and consulting firms. COR's own content does not surface. The absence of a comprehensive "Agency Profitability Guide" or ROI calculator indexable by AI search engines represents a significant missed opportunity to intercept buyers at the problem-recognition stage of their journey.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"best PSA software for agencies"</h4>
+          <p>AI-generated results are dominated by Kantata, Deltek, and Scoro. COR is occasionally mentioned but never in the top-3 recommendations. Given COR's 116 G2 reviews — the strongest social proof signal in their category — the disconnect between review volume and AI visibility indicates a gap in structured data optimization for LLM consumption.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge present">PRESENT</span>
+        <div class="body">
+          <h4>"agency resource management tools"</h4>
+          <p>COR surfaces modestly on resource management queries, typically appearing when AI models aggregate comparison-style content. However, the platform's real-time utilization tracking and margin prediction features are under-represented. Competitors with thinner product capabilities but stronger content-IP moats outperform COR on this adjacency query, diluting the platform's differentiation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏢 Competitive Landscape</h2>
+    <div class="competitor-cards">
+      <div class="comp-card">
+        <div class="name">Kantata (Mavenlink)</div>
+        <div class="desc">Enterprise PSA leader; strong AI-search presence with deep content library and analyst citations</div>
+      </div>
+      <div class="comp-card">
+        <div class="name">Deltek</div>
+        <div class="desc">Government &amp; enterprise PSA giant; dominant in proposal-based professional services verticals</div>
+      </div>
+      <div class="comp-card">
+        <div class="name">Scoro</div>
+        <div class="desc">European PSA platform with strong SMB-agency positioning and aggressive content marketing</div>
+      </div>
+      <div class="comp-card">
+        <div class="name">Harvest / Forecast</div>
+        <div class="desc">Time-tracking-native PSA with strong mindshare among creative and digital agencies</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Close the AI Visibility Gap with Genhance</h2>
+    <p class="cta-sub">4 targeted plays to ensure COR wins AI-driven buying journeys</p>
+    <div class="plays">
+      <div class="play">
+        <div class="num">Play 01</div>
+        <h4>AI-Optimized Resource Hub</h4>
+        <p>Build a structured, schema-rich "Agency Profitability Hub" optimized for LLM retrieval — turning COR's product IP into AI-citable content that surfaces on high-intent queries.</p>
+      </div>
+      <div class="play">
+        <div class="num">Play 02</div>
+        <h4>Investment Story Amplification</h4>
+        <p>Publish and syndicate the $30M FTV Capital growth narrative across indexed sources (TechCrunch, VentureBeat, Crunchbase) to inject fresh trust signals into AI training pipelines.</p>
+      </div>
+      <div class="play">
+        <div class="num">Play 03</div>
+        <h4>G2 Review → LLM Bridge</h4>
+        <p>Leverage 116 G2 reviews by programmatically surfacing review-derived insights on COR's domain via structured comparison pages that AI crawlers ingest and cite.</p>
+      </div>
+      <div class="play">
+        <div class="num">Play 04</div>
+        <h4>PSA Category Authority Campaign</h4>
+        <p>Secure AI-sourced citations from analyst reports, SaaS review roundups, and community discussions to position COR as the modern PSA standard for agencies.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signature">
+    <span class="name">Rajesh Gautam, PhD</span><br>
+    Founder and CEO, <a href="https://genhance.ai" target="_blank">genhance.ai</a><br>
+    <a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+  </div>
+
+  <footer>
+    &copy; 2026 Genhance, Inc. All rights reserved. AI Visibility Audits powered by genhance.ai.
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genhance AI Visibility Audit — Easebuzz</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #080e1a; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+header { background: linear-gradient(135deg, #0a1628 0%, #1a2740 50%, #0d1f3c 100%); padding: 64px 0 48px; border-bottom: 3px solid #f59e0b; position: relative; overflow: hidden; }
+header::before { content: ''; position: absolute; top: -80px; right: -120px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%); pointer-events: none; }
+header::after { content: ''; position: absolute; bottom: -60px; left: -80px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%); pointer-events: none; }
+.header-content { position: relative; z-index: 1; }
+header h1 { font-size: 2.6rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.5px; margin-bottom: 8px; }
+header .subtitle { font-size: 1.15rem; color: #94a3b8; font-weight: 400; max-width: 640px; }
+header .meta { font-size: 0.9rem; color: #64748b; margin-top: 8px; }
+.stats-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 32px 0; }
+.stat-pill { background: linear-gradient(135deg, #1e293b, #1a2740); border: 1px solid #334155; border-radius: 12px; padding: 16px 24px; flex: 1; min-width: 140px; text-align: center; }
+.stat-pill .stat-value { font-size: 1.6rem; font-weight: 800; color: #f8fafc; }
+.stat-pill .stat-label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.stat-pill.highlight { border-color: #f59e0b; background: linear-gradient(135deg, #1e1b0e, #2a2410); }
+.stat-pill.highlight .stat-value { color: #f59e0b; }
+.key-finding { background: linear-gradient(135deg, #2a1f0a, #1e1608); border: 1px solid #f59e0b; border-left: 4px solid #f59e0b; border-radius: 10px; padding: 20px 24px; margin: 28px 0; }
+.key-finding h3 { color: #f59e0b; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+.key-finding p { color: #fcd34d; font-size: 0.95rem; }
+.section-title { font-size: 1.4rem; font-weight: 700; color: #f1f5f9; margin: 36px 0 20px; padding-bottom: 8px; border-bottom: 1px solid #1e293b; }
+.query-card { background: linear-gradient(135deg, #0f172a, #1a2740); border: 1px solid #1e293b; border-radius: 10px; padding: 20px; margin-bottom: 16px; transition: border-color 0.2s; }
+.query-card:hover { border-color: #334155; }
+.query-card .query-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+.query-card .query-text { font-weight: 700; color: #e2e8f0; font-size: 1.05rem; }
+.query-card .badge { display: inline-block; padding: 3px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-weak { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+.badge-present { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+.query-card .analysis { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+.competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 12px; }
+.competitor-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 18px; text-align: center; }
+.competitor-card .comp-name { font-weight: 700; color: #f1f5f9; font-size: 1.05rem; }
+.competitor-card .comp-desc { color: #64748b; font-size: 0.8rem; margin-top: 6px; }
+.cta-section { background: linear-gradient(135deg, #0a1628 0%, #152040 50%, #0d1f3c 100%); border: 1px solid #1e3a5f; border-radius: 14px; padding: 40px 32px; margin: 40px 0; text-align: center; }
+.cta-section h2 { font-size: 1.8rem; font-weight: 800; color: #f8fafc; margin-bottom: 12px; }
+.cta-section .cta-sub { color: #94a3b8; margin-bottom: 28px; font-size: 1rem; }
+.plays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; text-align: left; }
+.play-card { background: rgba(15,23,42,0.7); border: 1px solid #1e3a5f; border-radius: 10px; padding: 18px; }
+.play-card .play-num { color: #f59e0b; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.play-card .play-title { color: #f1f5f9; font-weight: 700; margin-top: 4px; font-size: 0.95rem; }
+.play-card .play-desc { color: #94a3b8; font-size: 0.8rem; margin-top: 6px; line-height: 1.5; }
+.signature { margin-top: 24px; padding-top: 24px; border-top: 1px solid #1e293b; color: #94a3b8; font-size: 0.85rem; }
+.signature strong { color: #f1f5f9; }
+.signature a { color: #f59e0b; text-decoration: none; }
+.signature a:hover { text-decoration: underline; }
+footer { text-align: center; padding: 24px 0; color: #475569; font-size: 0.78rem; border-top: 1px solid #0f172a; margin-top: 20px; }
+</style>
+</head>
+<body>
+<header>
+<div class="container header-content">
+<h1>Easebuzz</h1>
+<div class="subtitle">B2B Payments Platform with Vertical SaaS — AI Visibility Audit</div>
+<div class="meta">easebuzz.in &middot; Pune, India &middot; Fintech / B2B Payments / Vertical SaaS</div>
+</div>
+</header>
+
+<div class="container">
+<div class="stats-row">
+<div class="stat-pill highlight"><div class="stat-value">$30M</div><div class="stat-label">Series A Funding</div></div>
+<div class="stat-pill highlight"><div class="stat-value">0/5</div><div class="stat-label">AI Visibility Score</div></div>
+<div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">G2 Reviews</div></div>
+<div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div>
+</div>
+
+<div class="key-finding">
+<h3>&#9888;&#65039; Key Finding</h3>
+<p>Easebuzz has raised $30M from Bessemer Venture Partners and 8i Ventures to build a B2B payments and vertical SaaS platform for Indian SMBs, yet has zero AI discoverability. With 0 G2 reviews and 0 Reddit mentions, Easebuzz is invisible in the AI-driven search channels where Indian businesses now research payment gateways — a market where competitors Razorpay and Cashfree have built massive content moats and strong AI-search presence. This gap is particularly acute given Easebuzz's vertical SaaS differentiation, which is not being surfaced to AI-powered decision-makers.</p>
+</div>
+
+<h2 class="section-title">&#128269; AI Search Query Analysis</h2>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"best payment gateway India 2026"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">This is the single most valuable query in Easebuzz's market — and they are completely absent from AI-generated answers. Razorpay, Cashfree, PayU, and Stripe dominate with thousands of reviews, comparison blog posts, and technical documentation. Indian SMBs increasingly rely on AI search tools (ChatGPT, Perplexity, Google AI Overviews) to evaluate payment gateways, and Easebuzz's absence from these results means they are losing discovery at the most critical decision point.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"B2B payment solutions for SMBs"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">B2B SMB payments is Easebuzz's core market positioning, yet the company does not appear in AI search results for this category-defining query. Competitors like Razorpay have invested heavily in SMB-focused content marketing, developer documentation, and community engagement — building the citation footprint AI models use to rank solutions. Easebuzz's vertical SaaS angle (industry-specific payment workflows) is a powerful differentiator that remains completely hidden from AI search.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"UPI payment integration platform"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">UPI integration is a table-stakes capability for any Indian payment platform and a key search query for developers and businesses. AI search results feature Razorpay, Cashfree, and PhonePe's developer docs — not Easebuzz, despite their UPI and QR capabilities. The company's technical documentation is not sufficiently indexed or cited to register in AI models. Developer-focused content (API docs, integration guides, SDK comparisons) would directly improve visibility for this query family.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"vertical SaaS payments India"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">This query perfectly captures Easebuzz's unique value proposition — vertical SaaS payment solutions for specific industries like education, logistics, and retail. Yet the company is invisible. No competitor owns this niche query either, creating a significant first-mover opportunity. Easebuzz should build vertical-specific landing pages (e.g., "Payment Solutions for Education Businesses") with structured data to own this query before competitors recognize the gap.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"payment aggregator software comparison"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">Comparison queries represent high-intent purchase signals, but Easebuzz is absent from AI-generated payment aggregator comparisons. Razorpay vs. Cashfree comparisons dominate, with PayU and Stripe India also appearing. Easebuzz needs to publish structured comparison content — both on their own domain and through third-party fintech publications — to participate in the comparison dialogue that AI models synthesize into recommendations.</div>
+</div>
+
+<h2 class="section-title">&#9878;&#65039; Competitive Landscape</h2>
+<div class="competitor-grid">
+<div class="competitor-card">
+<div class="comp-name">Razorpay</div>
+<div class="comp-desc">India's dominant payment gateway with $3B+ valuation. Massive G2 presence (1,000+ reviews), strong developer community, and leading AI-search visibility.</div>
+</div>
+<div class="competitor-card">
+<div class="comp-name">Cashfree</div>
+<div class="comp-desc">Leading payout and payment gateway platform. Strong in B2B payments with extensive API documentation and growing AI visibility.</div>
+</div>
+<div class="competitor-card">
+<div class="comp-name">PayU India</div>
+<div class="comp-desc">Established payment gateway with large enterprise merchant base. Strong brand recognition and SEO presence in Indian payments ecosystem.</div>
+</div>
+<div class="competitor-card">
+<div class="comp-name">Stripe India</div>
+<div class="comp-desc">Global payments leader with growing India presence. World-class developer docs, massive content library, and unrivaled AI-search authority.</div>
+</div>
+</div>
+
+<div class="cta-section">
+<h2>&#128640; Genhance AI Visibility Playbook — Easebuzz</h2>
+<p class="cta-sub">Four high-impact plays to build AI search presence for Easebuzz within 90 days.</p>
+<div class="plays-grid">
+<div class="play-card">
+<div class="play-num">Play 1</div>
+<div class="play-title">G2 Category Onboarding</div>
+<div class="play-desc">Establish Easebuzz's presence on G2 in Payment Gateway and B2B Payments categories. Launch a customer review program targeting 100+ verified reviews from SMB merchants in 90 days.</div>
+</div>
+<div class="play-card">
+<div class="play-num">Play 2</div>
+<div class="play-title">Vertical SaaS Content Strategy</div>
+<div class="play-desc">Build dedicated vertical pages for education, logistics, and retail payments. Publish industry-specific payment guides, case studies, and integration tutorials optimized for AI ingestion.</div>
+</div>
+<div class="play-card">
+<div class="play-num">Play 3</div>
+<div class="play-title">Developer Documentation &amp; SEO</div>
+<div class="play-desc">Create comprehensive, publicly-indexed API docs, SDK comparisons, and integration guides. Developer content is the #1 source AI models cite for payment gateway recommendations.</div>
+</div>
+<div class="play-card">
+<div class="play-num">Play 4</div>
+<div class="play-title">Fintech Community &amp; Reddit Presence</div>
+<div class="play-desc">Activate in r/IndiaStartups, r/fintech, and Indian SaaS communities. Publish comparison content and founder-led thought leadership that AI models will reference in payment gateway discussions.</div>
+</div>
+</div>
+<div class="signature">
+<strong>Rajesh Gautam, PhD</strong><br>
+Founder and CEO, <a href="https://genhance.ai" target="_blank">genhance.ai</a><br>
+<a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+</div>
+</div>
+</div>
+
+<footer>
+&copy; 2026 genhance.ai — AI Visibility Audits for B2B SaaS. All rights reserved.
+</footer>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryft — AI Visibility Audit | genhance.ai</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  header {
+    background: linear-gradient(135deg, #0a1628 0%, #1a2740 40%, #1e3a5f 100%);
+    padding: 60px 0 50px;
+    text-align: center;
+    border-bottom: 3px solid #f0a030;
+  }
+  header h1 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(90deg, #e6edf3, #58a6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  header .subtitle { color: #8b949e; font-size: 1.05rem; }
+  .stats { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: -28px auto 30px; position: relative; z-index: 2; }
+  .stat-pill { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px 24px; text-align: center; min-width: 140px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+  .stat-pill .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #8b949e; margin-bottom: 4px; }
+  .stat-pill .value { font-size: 1.5rem; font-weight: 700; }
+  .stat-pill.funding .value { color: #3fb950; }
+  .stat-pill.ai .value { color: #f0a030; }
+  .stat-pill.g2 .value { color: #58a6ff; }
+  .stat-pill.reddit .value { color: #f78166; }
+  .alert {
+    background: linear-gradient(135deg, #2d1a0a, #3b250e);
+    border: 1px solid #f0a030;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 0 0 40px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .alert .icon { font-size: 1.5rem; flex-shrink: 0; }
+  .alert .text h3 { color: #f0a030; margin-bottom: 4px; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .alert .text p { color: #daaa6a; font-size: 0.95rem; }
+  section { margin-bottom: 40px; }
+  section h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 18px; color: #c9d1d9; border-bottom: 1px solid #21262d; padding-bottom: 10px; }
+  .query-cards { display: flex; flex-direction: column; gap: 14px; }
+  .query-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start; transition: border-color .2s; }
+  .query-card:hover { border-color: #30363d; }
+  .badge { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 6px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .badge.present { background: rgba(63,185,80,0.15); color: #3fb950; border: 1px solid rgba(63,185,80,0.3); }
+  .badge.weak { background: rgba(240,160,48,0.15); color: #f0a030; border: 1px solid rgba(240,160,48,0.3); }
+  .query-card .body h4 { font-size: 0.95rem; font-weight: 600; color: #e6edf3; margin-bottom: 4px; }
+  .query-card .body p { font-size: 0.875rem; color: #8b949e; margin: 0; }
+  .competitor-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .comp-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 18px 20px; text-align: center; transition: border-color .2s; }
+  .comp-card:hover { border-color: #f0a030; }
+  .comp-card .name { font-weight: 700; font-size: 1rem; color: #e6edf3; margin-bottom: 4px; }
+  .comp-card .desc { font-size: 0.8rem; color: #8b949e; }
+  .cta-section {
+    background: linear-gradient(135deg, #0a1628 0%, #1a2740 60%, #1e3a5f 100%);
+    border-radius: 14px;
+    padding: 40px 36px;
+    margin: 40px 0;
+    border: 1px solid #1a2740;
+    text-align: center;
+  }
+  .cta-section h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; color: #e6edf3; border: none; }
+  .cta-section .cta-sub { color: #8b949e; margin-bottom: 28px; font-size: 0.95rem; }
+  .plays { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; text-align: left; }
+  .play { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px 20px; }
+  .play .num { font-size: 0.7rem; font-weight: 800; color: #f0a030; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .play h4 { font-size: 0.95rem; font-weight: 700; color: #e6edf3; margin-bottom: 6px; }
+  .play p { font-size: 0.8rem; color: #8b949e; }
+  .signature { border-top: 1px solid #21262d; padding: 30px 0 20px; text-align: center; color: #8b949e; font-size: 0.85rem; line-height: 1.7; }
+  .signature .name { color: #e6edf3; font-weight: 700; }
+  .signature a { color: #58a6ff; text-decoration: none; }
+  .signature a:hover { text-decoration: underline; }
+  footer { text-align: center; padding: 0 0 30px; color: #484f58; font-size: 0.8rem; }
+  @media (max-width: 640px) {
+    header h1 { font-size: 2rem; }
+    .stats { gap: 8px; }
+    .stat-pill { min-width: 110px; padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Ryft</h1>
+    <p class="subtitle">B2B Payments Platform for Marketplaces, Platforms &amp; Omnichannel Businesses</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="stats">
+    <div class="stat-pill funding"><div class="label">Funding</div><div class="value">£20M</div></div>
+    <div class="stat-pill ai"><div class="label">AI Visibility</div><div class="value">1/5</div></div>
+    <div class="stat-pill g2"><div class="label">G2 Reviews</div><div class="value">4</div></div>
+    <div class="stat-pill reddit"><div class="label">Reddit</div><div class="value">~0</div></div>
+  </div>
+
+  <div class="alert">
+    <span class="icon">⚠️</span>
+    <div class="text">
+      <h3>Key Finding — AI Search Gap</h3>
+      <p>Ryft is virtually invisible to AI-powered search. Despite raising the largest UK payments Series B of 2026 (£20M from Gresham House Ventures), the platform returns zero AI-generated mentions on any of its five highest-value purchase-intent queries. Stripe Connect, Adyen, and Checkout.com completely dominate the AI-search landscape — Ryft's innovative marketplace payout engine and UK-regulated status remain unknown to the algorithms shaping buyer decisions.</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>🔎 Branded &amp; Intent Queries — AI Visibility Audit</h2>
+    <div class="query-cards">
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"best marketplace payment platform 2026"</h4>
+          <p>Ryft does not appear in any AI-generated summary for this query. Results are dominated by Stripe Connect (cited for developer ecosystem), Adyen (enterprise marketplaces), and Mangopay (European platforms). Ryft's purpose-built marketplace payout infrastructure and FCA-regulated status are entirely absent — a critical visibility gap for the company's primary buyer search.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"payment processing for platforms"</h4>
+          <p>AI models default to Stripe Connect and Adyen for Platform on this broad category query. Ryft's differentiated approach — combining automated payouts, split payments, and compliance-as-a-service — is not represented in any AI training corpus. The company's recent Series B press coverage has not yet been ingested by LLM training pipelines.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"Stripe Connect alternatives 2026"</h4>
+          <p>This high-intent competitive-alternative query should be Ryft's strongest entry point. Instead, AI models recommend Mangopay, Adyen, PayPal Commerce Platform, and sometimes even legacy processors. Ryft is not cited in any comparison. A dedicated comparison page with structured schema markup would dramatically improve LLM retrieval for this exact buyer journey.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"marketplace payout automation"</h4>
+          <p>Core to Ryft's value proposition, yet AI engines return generic fintech content and articles about Stripe's payout scheduling. Ryft's automated multi-currency, multi-party payout engine — a genuinely differentiated capability — has zero AI footprint. This represents the single largest missed opportunity in the company's search strategy.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"B2B payment infrastructure UK"</h4>
+          <p>Given Ryft's Manchester headquarters and UK market focus, this geo-qualified query should be a natural win. However, AI results point to Modulr, Form3, and traditional banking APIs. Ryft's FCA authorization and UK-built infrastructure story remain untold, ceding the domestic market narrative to competitors with stronger AI-optimized content strategies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏢 Competitive Landscape</h2>
+    <div class="competitor-cards">
+      <div class="comp-card">
+        <div class="name">Stripe Connect</div>
+        <div class="desc">Dominant marketplace payments API; overwhelming AI-search presence via developer docs and community content</div>
+      </div>
+      <div class="comp-card">
+        <div class="name">Adyen</div>
+        <div class="desc">Enterprise payments leader with deep AI-search penetration through analyst coverage and platform partnerships</div>
+      </div>
+      <div class="comp-card">
+        <div class="name">Mangopay</div>
+        <div class="desc">European marketplace payments specialist; strong AI visibility from niche positioning and API documentation</div>
+      </div>
+      <div class="comp-card">
+        <div class="name">Checkout.com</div>
+        <div class="desc">Global payment processor with $40B valuation; massive content footprint including developer hubs and case studies</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Close the AI Visibility Gap with Genhance</h2>
+    <p class="cta-sub">4 targeted plays to ensure Ryft wins AI-driven buying journeys</p>
+    <div class="plays">
+      <div class="play">
+        <div class="num">Play 01</div>
+        <h4>AI-First Comparison Pages</h4>
+        <p>Build structured "Ryft vs. Stripe Connect" and "Ryft vs. Mangopay" pages with JSON-LD schema, feature matrices, and FAQ sections optimized for LLM retrieval on competitive-alternative queries.</p>
+      </div>
+      <div class="play">
+        <div class="num">Play 02</div>
+        <h4>Series B Narrative Syndication</h4>
+        <p>Amplify the £20M Gresham House Ventures story across TechCrunch, Finextra, Sifted, and AltFi — ensuring AI training datasets capture the "largest UK payments Series B of 2026" trust signal.</p>
+      </div>
+      <div class="play">
+        <div class="num">Play 03</div>
+        <h4>Developer Documentation Indexing</h4>
+        <p>Publish API reference docs, integration guides, and marketplace-pattern content on a subdomain crawled by AI engines — mirroring Stripe's developer-content flywheel for technical buyer queries.</p>
+      </div>
+      <div class="play">
+        <div class="num">Play 04</div>
+        <h4>Geo-Qualified Thought Leadership</h4>
+        <p>Create "UK Payments Infrastructure" content series targeting AI models with location-qualified intent, positioning Ryft as the homegrown alternative to US/European incumbents for UK-based platforms.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signature">
+    <span class="name">Rajesh Gautam, PhD</span><br>
+    Founder and CEO, <a href="https://genhance.ai" target="_blank">genhance.ai</a><br>
+    <a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+  </div>
+
+  <footer>
+    &copy; 2026 Genhance, Inc. All rights reserved. AI Visibility Audits powered by genhance.ai.
+  </footer>
+
+</div>
+</body>
+</html>

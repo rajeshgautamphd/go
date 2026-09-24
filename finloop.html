@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finloop — AI Visibility Audit | genhance.ai</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  header {
+    background: linear-gradient(135deg, #0a1628 0%, #1a2740 40%, #1e3a5f 100%);
+    padding: 60px 0 50px;
+    text-align: center;
+    border-bottom: 3px solid #f0a030;
+  }
+  header h1 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(90deg, #e6edf3, #58a6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  header .subtitle { color: #8b949e; font-size: 1.05rem; }
+  .stats { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: -28px auto 30px; position: relative; z-index: 2; }
+  .stat-pill { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px 24px; text-align: center; min-width: 140px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+  .stat-pill .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #8b949e; margin-bottom: 4px; }
+  .stat-pill .value { font-size: 1.5rem; font-weight: 700; }
+  .stat-pill.funding .value { color: #3fb950; }
+  .stat-pill.ai .value { color: #f0a030; }
+  .stat-pill.g2 .value { color: #58a6ff; }
+  .stat-pill.reddit .value { color: #f78166; }
+  .alert {
+    background: linear-gradient(135deg, #2d1a0a, #3b250e);
+    border: 1px solid #f0a030;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 0 0 40px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .alert .icon { font-size: 1.5rem; flex-shrink: 0; }
+  .alert .text h3 { color: #f0a030; margin-bottom: 4px; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .alert .text p { color: #daaa6a; font-size: 0.95rem; }
+  section { margin-bottom: 40px; }
+  section h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 18px; color: #c9d1d9; border-bottom: 1px solid #21262d; padding-bottom: 10px; }
+  .query-cards { display: flex; flex-direction: column; gap: 14px; }
+  .query-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start; transition: border-color .2s; }
+  .query-card:hover { border-color: #30363d; }
+  .badge { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 6px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .badge.present { background: rgba(63,185,80,0.15); color: #3fb950; border: 1px solid rgba(63,185,80,0.3); }
+  .badge.weak { background: rgba(240,160,48,0.15); color: #f0a030; border: 1px solid rgba(240,160,48,0.3); }
+  .query-card .body h4 { font-size: 0.95rem; font-weight: 600; color: #e6edf3; margin-bottom: 4px; }
+  .query-card .body p { font-size: 0.875rem; color: #8b949e; margin: 0; }
+  .competitor-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .comp-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 18px 20px; text-align: center; transition: border-color .2s; }
+  .comp-card:hover { border-color: #f0a030; }
+  .comp-card .name { font-weight: 700; font-size: 1rem; color: #e6edf3; margin-bottom: 4px; }
+  .comp-card .desc { font-size: 0.8rem; color: #8b949e; }
+  .cta-section {
+    background: linear-gradient(135deg, #0a1628 0%, #1a2740 60%, #1e3a5f 100%);
+    border-radius: 14px;
+    padding: 40px 36px;
+    margin: 40px 0;
+    border: 1px solid #1a2740;
+    text-align: center;
+  }
+  .cta-section h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; color: #e6edf3; border: none; }
+  .cta-section .cta-sub { color: #8b949e; margin-bottom: 28px; font-size: 0.95rem; }
+  .plays { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; text-align: left; }
+  .play { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px 20px; }
+  .play .num { font-size: 0.7rem; font-weight: 800; color: #f0a030; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .play h4 { font-size: 0.95rem; font-weight: 700; color: #e6edf3; margin-bottom: 6px; }
+  .play p { font-size: 0.8rem; color: #8b949e; }
+  .signature { border-top: 1px solid #21262d; padding: 30px 0 20px; text-align: center; color: #8b949e; font-size: 0.85rem; line-height: 1.7; }
+  .signature .name { color: #e6edf3; font-weight: 700; }
+  .signature a { color: #58a6ff; text-decoration: none; }
+  .signature a:hover { text-decoration: underline; }
+  footer { text-align: center; padding: 0 0 30px; color: #484f58; font-size: 0.8rem; }
+  @media (max-width: 640px) {
+    header h1 { font-size: 2rem; }
+    .stats { gap: 8px; }
+    .stat-pill { min-width: 110px; padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Finloop</h1>
+    <p class="subtitle">AI-Driven Wealth Management Technology Platform for Institutions</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="stats">
+    <div class="stat-pill funding"><div class="label">Funding</div><div class="value">$10M+</div></div>
+    <div class="stat-pill ai"><div class="label">AI Visibility</div><div class="value">0/5</div></div>
+    <div class="stat-pill g2"><div class="label">G2 Reviews</div><div class="value">0</div></div>
+    <div class="stat-pill reddit"><div class="label">Reddit</div><div class="value">0</div></div>
+  </div>
+
+  <div class="alert">
+    <span class="icon">⚠️</span>
+    <div class="text">
+      <h3>Key Finding — AI Search Gap</h3>
+      <p>Finloop has zero AI-search presence — a complete digital invisibility problem for a company that just raised $10M+ from HSBC and People's Capital. Not a single AI-generated search result references Finloop across any of its core category queries. Despite having institutional backing from one of the world's largest banks and operating in the high-growth Asian WealthTech market, Finloop remains entirely unknown to the AI models that increasingly drive institutional technology purchasing decisions. Addepar, Envestnet, and Temenos own the entire AI-search landscape in this category.</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>🔎 Branded &amp; Intent Queries — AI Visibility Audit</h2>
+    <div class="query-cards">
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"best wealth management platform Asia 2026"</h4>
+          <p>Finloop is completely absent from AI-generated results on this geo-qualified query — precisely the search that Asian institutional buyers would use. AI models recommend global platforms (Addepar, Temenos, Avaloq) and Chinese incumbents without any mention of Hong Kong-based Finloop. The company's regional expertise and institutional focus are invisible to the most important search vector in their market.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"institutional wealth technology"</h4>
+          <p>Results are dominated by Addepar, Envestnet, and SEI. The AI-search landscape treats "institutional wealth tech" as synonymous with established US/EU platforms. Finloop's AI-native architecture and HSBC partnership represent exactly the innovation story that would differentiate it, but no content exists in AI-training corpora to surface it.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"AI wealth management platform"</h4>
+          <p>This query should be Finloop's natural home given its AI-driven positioning. Instead, AI results reference robo-advisor platforms (Betterment, Wealthfront), large incumbents with AI features (BlackRock Aladdin), and generic AI-in-finance trend pieces. Finloop's purpose-built institutional AI wealth platform is entirely absent — a devastating gap for a company whose core differentiator is AI.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"digital wealth infrastructure"</h4>
+          <p>AI-search results center on Allfunds, Temenos Wealth, and FNZ — platforms that have invested years in content marketing and analyst relations. Finloop's modern API-first infrastructure approach is not represented. The HSBC-backed Series A+ investment, which would signal enterprise-grade credibility, has not been indexed by LLM training data.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <span class="badge weak">WEAK</span>
+        <div class="body">
+          <h4>"wealth management software for banks"</h4>
+          <p>This high-intent institutional buyer query is owned by Temenos, Avaloq, and FIS. AI models consistently recommend these legacy platforms despite their older architectures, simply because they dominate the indexed content corpus. Finloop's modern, AI-native alternative — built specifically for banks — has no AI-search footprint whatsoever, creating a self-reinforcing cycle of invisibility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏢 Competitive Landscape</h2>
+    <div class="competitor-cards">
+      <div class="comp-card">
+        <div class="name">Addepar</div>
+        <div class="desc">Market-leading wealth data platform; strong AI visibility from analyst coverage, content, and $200M+ funding narrative</div>
+      </div>
+      <div class="comp-card">
+        <div class="name">Envestnet</div>
+        <div class="desc">Wealth management technology giant; deep AI footprint through financial advisor ecosystem and enterprise partnerships</div>
+      </div>
+      <div class="comp-card">
+        <div class="name">Allfunds</div>
+        <div class="desc">European WealthTech leader with $1.4T AUA; extensive AI-search presence from IPO narrative and fund network depth</div>
+      </div>
+      <div class="comp-card">
+        <div class="name">Temenos</div>
+        <div class="desc">Global banking software leader; dominant AI visibility in "wealth software for banks" queries via decades of analyst coverage</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Close the AI Visibility Gap with Genhance</h2>
+    <p class="cta-sub">4 targeted plays to ensure Finloop wins AI-driven buying journeys</p>
+    <div class="plays">
+      <div class="play">
+        <div class="num">Play 01</div>
+        <h4>Zero-to-One AI Presence Build</h4>
+        <p>Deploy a comprehensive AI-optimized content foundation — including structured FAQs, comparison pages, and a "WealthTech Asia" resource hub — to establish Finloop's first digital footprint in LLM training corpora.</p>
+      </div>
+      <div class="play">
+        <div class="num">Play 02</div>
+        <h4>HSBC Partnership Amplification</h4>
+        <p>Syndicate the HSBC-backed $10M+ Series A+ story across global fintech media (Finextra, FinTech Futures, The Paypers) to inject institutional credibility signals into AI training data.</p>
+      </div>
+      <div class="play">
+        <div class="num">Play 03</div>
+        <h4>AI-Native Positioning Content</h4>
+        <p>Create a thought-leadership content series explicitly targeting "AI wealth management" queries — the exact category Finloop claims — with technical depth that AI models recognize as authoritative.</p>
+      </div>
+      <div class="play">
+        <div class="num">Play 04</div>
+        <h4>APAC WealthTech Authority</h4>
+        <p>Establish Finloop as the definitive voice on Asian institutional WealthTech through regional research reports, conference speaking citations, and geo-qualified content indexed for AI retrieval on Asia-specific queries.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signature">
+    <span class="name">Rajesh Gautam, PhD</span><br>
+    Founder and CEO, <a href="https://genhance.ai" target="_blank">genhance.ai</a><br>
+    <a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+  </div>
+
+  <footer>
+    &copy; 2026 Genhance, Inc. All rights reserved. AI Visibility Audits powered by genhance.ai.
+  </footer>
+
+</div>
+</body>
+</html>

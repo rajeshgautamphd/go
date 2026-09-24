@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genhance AI Visibility Audit — Runware</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #080e1a; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+header { background: linear-gradient(135deg, #0a1628 0%, #1a2740 50%, #0d1f3c 100%); padding: 64px 0 48px; border-bottom: 3px solid #f59e0b; position: relative; overflow: hidden; }
+header::before { content: ''; position: absolute; top: -80px; right: -120px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%); pointer-events: none; }
+header::after { content: ''; position: absolute; bottom: -60px; left: -80px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%); pointer-events: none; }
+.header-content { position: relative; z-index: 1; }
+header h1 { font-size: 2.6rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.5px; margin-bottom: 8px; }
+header .subtitle { font-size: 1.15rem; color: #94a3b8; font-weight: 400; max-width: 640px; }
+header .meta { font-size: 0.9rem; color: #64748b; margin-top: 8px; }
+.stats-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 32px 0; }
+.stat-pill { background: linear-gradient(135deg, #1e293b, #1a2740); border: 1px solid #334155; border-radius: 12px; padding: 16px 24px; flex: 1; min-width: 140px; text-align: center; }
+.stat-pill .stat-value { font-size: 1.6rem; font-weight: 800; color: #f8fafc; }
+.stat-pill .stat-label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.stat-pill.highlight { border-color: #f59e0b; background: linear-gradient(135deg, #1e1b0e, #2a2410); }
+.stat-pill.highlight .stat-value { color: #f59e0b; }
+.key-finding { background: linear-gradient(135deg, #2a1f0a, #1e1608); border: 1px solid #f59e0b; border-left: 4px solid #f59e0b; border-radius: 10px; padding: 20px 24px; margin: 28px 0; }
+.key-finding h3 { color: #f59e0b; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+.key-finding p { color: #fcd34d; font-size: 0.95rem; }
+.section-title { font-size: 1.4rem; font-weight: 700; color: #f1f5f9; margin: 36px 0 20px; padding-bottom: 8px; border-bottom: 1px solid #1e293b; }
+.query-card { background: linear-gradient(135deg, #0f172a, #1a2740); border: 1px solid #1e293b; border-radius: 10px; padding: 20px; margin-bottom: 16px; transition: border-color 0.2s; }
+.query-card:hover { border-color: #334155; }
+.query-card .query-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+.query-card .query-text { font-weight: 700; color: #e2e8f0; font-size: 1.05rem; }
+.query-card .badge { display: inline-block; padding: 3px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-weak { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+.badge-present { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+.query-card .analysis { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+.competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 12px; }
+.competitor-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 18px; text-align: center; }
+.competitor-card .comp-name { font-weight: 700; color: #f1f5f9; font-size: 1.05rem; }
+.competitor-card .comp-desc { color: #64748b; font-size: 0.8rem; margin-top: 6px; }
+.cta-section { background: linear-gradient(135deg, #0a1628 0%, #152040 50%, #0d1f3c 100%); border: 1px solid #1e3a5f; border-radius: 14px; padding: 40px 32px; margin: 40px 0; text-align: center; }
+.cta-section h2 { font-size: 1.8rem; font-weight: 800; color: #f8fafc; margin-bottom: 12px; }
+.cta-section .cta-sub { color: #94a3b8; margin-bottom: 28px; font-size: 1rem; }
+.plays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; text-align: left; }
+.play-card { background: rgba(15,23,42,0.7); border: 1px solid #1e3a5f; border-radius: 10px; padding: 18px; }
+.play-card .play-num { color: #f59e0b; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.play-card .play-title { color: #f1f5f9; font-weight: 700; margin-top: 4px; font-size: 0.95rem; }
+.play-card .play-desc { color: #94a3b8; font-size: 0.8rem; margin-top: 6px; line-height: 1.5; }
+.signature { margin-top: 24px; padding-top: 24px; border-top: 1px solid #1e293b; color: #94a3b8; font-size: 0.85rem; }
+.signature strong { color: #f1f5f9; }
+.signature a { color: #f59e0b; text-decoration: none; }
+.signature a:hover { text-decoration: underline; }
+footer { text-align: center; padding: 24px 0; color: #475569; font-size: 0.78rem; border-top: 1px solid #0f172a; margin-top: 20px; }
+</style>
+</head>
+<body>
+<header>
+<div class="container header-content">
+<h1>Runware</h1>
+<div class="subtitle">Unified API for Generative AI — Image, Video &amp; Audio Inference — AI Visibility Audit</div>
+<div class="meta">runware.ai &middot; London, UK &middot; AI Infrastructure / B2D (Business-to-Developer) / API</div>
+</div>
+</header>
+
+<div class="container">
+<div class="stats-row">
+<div class="stat-pill highlight"><div class="stat-value">$50M</div><div class="stat-label">Series A Funding</div></div>
+<div class="stat-pill highlight"><div class="stat-value">1/5</div><div class="stat-label">AI Visibility Score</div></div>
+<div class="stat-pill"><div class="stat-value">~5</div><div class="stat-label">G2 Reviews</div></div>
+<div class="stat-pill"><div class="stat-value">~0</div><div class="stat-label">Reddit Threads</div></div>
+</div>
+
+<div class="key-finding">
+<h3>&#9888;&#65039; Key Finding</h3>
+<p>Runware has raised an impressive $50M Series A from Dawn Capital, Insight Partners, and a16z speedrun to build a unified generative AI API with proprietary inference hardware — yet its AI-search presence barely registers. With ~5 G2 reviews and near-zero Reddit mentions, Runware is virtually invisible to the developer community that represents its core buyer. In a market where Replicate and Hugging Face have built passionate developer ecosystems with thousands of community references and extensive documentation, Runware's hardware-accelerated inference advantage remains undiscoverable through the AI-powered search channels developers rely on daily.</p>
+</div>
+
+<h2 class="section-title">&#128269; AI Search Query Analysis</h2>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"best generative AI API 2026"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">Runware does not appear in AI-generated answers for this category-defining developer query. Replicate, Hugging Face Inference, Together AI, and Fal.ai dominate results through extensive GitHub stars, developer community discussions, and technical blog posts. Runware's proprietary inference hardware advantage and unified API model are not surfaced by AI models because the company lacks the developer ecosystem signals — GitHub discussions, Stack Overflow mentions, and community tutorials — that AI search algorithms weight heavily for B2D products.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"unified AI model API platform"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">Unified API access across image, video, and audio models is Runware's core value proposition, yet the company is absent from AI search results for this exact query. This is a significant gap because it's precisely the search a developer would make when looking to consolidate multiple model APIs into a single provider. Runware should create a definitive "Unified AI API" guide with benchmarks, code examples, and migration tutorials — content that directly answers the developer's question and earns citations.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"Stable Diffusion API comparison"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">Stable Diffusion API comparison is a high-intent developer query that directly aligns with Runware's image generation offering. AI search results feature Replicate, Fal.ai, and Stability AI's own API — but not Runware, despite the company's competitive pricing and hardware-accelerated inference speeds. Comparison content and independent benchmarks are the most-cited sources for this query type. Runware needs to publish transparent pricing comparisons, latency benchmarks, and quality evaluations to appear in AI-generated API comparisons.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"cheapest AI inference API"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">Cost efficiency is a core Runware selling point enabled by proprietary inference hardware, yet the company does not appear in AI search results for cost-focused queries. Together AI and Replicate capture this traffic through pricing pages that are well-indexed and frequently cited. Runware needs a transparent, well-structured pricing page with per-token and per-image benchmarks, plus independent third-party cost comparisons that AI models can reference as authoritative signals.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"AI image generation API for developers"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">This is the primary developer entry query for Runware's core product, yet AI search results feature Replicate, Fal.ai, and Leonardo.ai — not Runware. The company's developer documentation, quickstart guides, and SDK examples are not sufficiently discoverable. Runware should invest in an SEO-optimized developer portal with comprehensive docs, interactive API playgrounds, and multi-language SDK examples that establish the topical authority AI models need to recommend Runware to developers.</div>
+</div>
+
+<h2 class="section-title">&#9878;&#65039; Competitive Landscape</h2>
+<div class="competitor-grid">
+<div class="competitor-card">
+<div class="comp-name">Replicate</div>
+<div class="comp-desc">Leading model hosting platform with massive developer community. Thousands of GitHub stars, extensive documentation, and dominant AI-search presence for model inference.</div>
+</div>
+<div class="competitor-card">
+<div class="comp-name">Fal.ai</div>
+<div class="comp-desc">Fast-growing generative AI inference platform. Strong in image/video generation with optimized inference speeds and growing developer mindshare.</div>
+</div>
+<div class="competitor-card">
+<div class="comp-name">Hugging Face Inference</div>
+<div class="comp-desc">The dominant open-source AI platform. Massive model repository, unrivaled developer community, and the strongest AI-search authority in the AI infrastructure space.</div>
+</div>
+<div class="competitor-card">
+<div class="comp-name">Together AI</div>
+<div class="comp-desc">Leading AI inference and fine-tuning platform. Strong enterprise focus, competitive pricing, and growing AI-search presence through technical content and benchmarks.</div>
+</div>
+</div>
+
+<div class="cta-section">
+<h2>&#128640; Genhance AI Visibility Playbook — Runware</h2>
+<p class="cta-sub">Four high-impact plays to build AI search presence for Runware within 90 days.</p>
+<div class="plays-grid">
+<div class="play-card">
+<div class="play-num">Play 1</div>
+<div class="play-title">Developer Community Seeding</div>
+<div class="play-desc">Launch Runware's presence on GitHub with open-source SDKs, example projects, and integration templates. Seed Stack Overflow answers and r/StableDiffusion discussions — the primary sources AI models cite for developer tool recommendations.</div>
+</div>
+<div class="play-card">
+<div class="play-num">Play 2</div>
+<div class="play-title">Benchmark &amp; Comparison Content</div>
+<div class="play-desc">Publish independent latency, cost, and quality benchmarks comparing Runware vs. Replicate, Fal.ai, and Together AI. AI models heavily weight benchmark data when generating API recommendations for developers.</div>
+</div>
+<div class="play-card">
+<div class="play-num">Play 3</div>
+<div class="play-title">Developer Documentation Hub</div>
+<div class="play-desc">Build a world-class developer portal with interactive API playgrounds, multi-language SDK docs, and quickstart tutorials. Structure all docs with schema.org markup for optimal LLM ingestion and AI search indexing.</div>
+</div>
+<div class="play-card">
+<div class="play-num">Play 4</div>
+<div class="play-title">G2 &amp; Review Velocity Program</div>
+<div class="play-desc">Accelerate G2 review generation targeting 100+ reviews in 90 days across AI API and Generative AI categories. Combine with Product Hunt launches and developer newsletter features to build the review velocity AI models require.</div>
+</div>
+</div>
+<div class="signature">
+<strong>Rajesh Gautam, PhD</strong><br>
+Founder and CEO, <a href="https://genhance.ai" target="_blank">genhance.ai</a><br>
+<a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+</div>
+</div>
+</div>
+
+<footer>
+&copy; 2026 genhance.ai — AI Visibility Audits for B2B SaaS. All rights reserved.
+</footer>
+</body>
+</html>

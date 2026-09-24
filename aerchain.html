@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genhance AI Visibility Audit — Aerchain</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #080e1a; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+header { background: linear-gradient(135deg, #0a1628 0%, #1a2740 50%, #0d1f3c 100%); padding: 64px 0 48px; border-bottom: 3px solid #f59e0b; position: relative; overflow: hidden; }
+header::before { content: ''; position: absolute; top: -80px; right: -120px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%); pointer-events: none; }
+header::after { content: ''; position: absolute; bottom: -60px; left: -80px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%); pointer-events: none; }
+.header-content { position: relative; z-index: 1; }
+header h1 { font-size: 2.6rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.5px; margin-bottom: 8px; }
+header .subtitle { font-size: 1.15rem; color: #94a3b8; font-weight: 400; max-width: 640px; }
+header .meta { font-size: 0.9rem; color: #64748b; margin-top: 8px; }
+.stats-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 32px 0; }
+.stat-pill { background: linear-gradient(135deg, #1e293b, #1a2740); border: 1px solid #334155; border-radius: 12px; padding: 16px 24px; flex: 1; min-width: 140px; text-align: center; }
+.stat-pill .stat-value { font-size: 1.6rem; font-weight: 800; color: #f8fafc; }
+.stat-pill .stat-label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.stat-pill.highlight { border-color: #f59e0b; background: linear-gradient(135deg, #1e1b0e, #2a2410); }
+.stat-pill.highlight .stat-value { color: #f59e0b; }
+.key-finding { background: linear-gradient(135deg, #2a1f0a, #1e1608); border: 1px solid #f59e0b; border-left: 4px solid #f59e0b; border-radius: 10px; padding: 20px 24px; margin: 28px 0; }
+.key-finding h3 { color: #f59e0b; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+.key-finding p { color: #fcd34d; font-size: 0.95rem; }
+.section-title { font-size: 1.4rem; font-weight: 700; color: #f1f5f9; margin: 36px 0 20px; padding-bottom: 8px; border-bottom: 1px solid #1e293b; }
+.query-card { background: linear-gradient(135deg, #0f172a, #1a2740); border: 1px solid #1e293b; border-radius: 10px; padding: 20px; margin-bottom: 16px; transition: border-color 0.2s; }
+.query-card:hover { border-color: #334155; }
+.query-card .query-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+.query-card .query-text { font-weight: 700; color: #e2e8f0; font-size: 1.05rem; }
+.query-card .badge { display: inline-block; padding: 3px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-weak { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+.badge-present { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+.query-card .analysis { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+.competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 12px; }
+.competitor-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 18px; text-align: center; }
+.competitor-card .comp-name { font-weight: 700; color: #f1f5f9; font-size: 1.05rem; }
+.competitor-card .comp-desc { color: #64748b; font-size: 0.8rem; margin-top: 6px; }
+.cta-section { background: linear-gradient(135deg, #0a1628 0%, #152040 50%, #0d1f3c 100%); border: 1px solid #1e3a5f; border-radius: 14px; padding: 40px 32px; margin: 40px 0; text-align: center; }
+.cta-section h2 { font-size: 1.8rem; font-weight: 800; color: #f8fafc; margin-bottom: 12px; }
+.cta-section .cta-sub { color: #94a3b8; margin-bottom: 28px; font-size: 1rem; }
+.plays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; text-align: left; }
+.play-card { background: rgba(15,23,42,0.7); border: 1px solid #1e3a5f; border-radius: 10px; padding: 18px; }
+.play-card .play-num { color: #f59e0b; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.play-card .play-title { color: #f1f5f9; font-weight: 700; margin-top: 4px; font-size: 0.95rem; }
+.play-card .play-desc { color: #94a3b8; font-size: 0.8rem; margin-top: 6px; line-height: 1.5; }
+.signature { margin-top: 24px; padding-top: 24px; border-top: 1px solid #1e293b; color: #94a3b8; font-size: 0.85rem; }
+.signature strong { color: #f1f5f9; }
+.signature a { color: #f59e0b; text-decoration: none; }
+.signature a:hover { text-decoration: underline; }
+footer { text-align: center; padding: 24px 0; color: #475569; font-size: 0.78rem; border-top: 1px solid #0f172a; margin-top: 20px; }
+</style>
+</head>
+<body>
+<header>
+<div class="container header-content">
+<h1>Aerchain</h1>
+<div class="subtitle">AI-Powered Autonomous Procurement Platform — AI Visibility Audit</div>
+<div class="meta">aerchain.io &middot; Bangalore, India &middot; Procurement / Supply Chain SaaS</div>
+</div>
+</header>
+
+<div class="container">
+<div class="stats-row">
+<div class="stat-pill highlight"><div class="stat-value">$13M</div><div class="stat-label">Series A Funding</div></div>
+<div class="stat-pill highlight"><div class="stat-value">0/5</div><div class="stat-label">AI Visibility Score</div></div>
+<div class="stat-pill"><div class="stat-value">2</div><div class="stat-label">G2 Reviews</div></div>
+<div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div>
+</div>
+
+<div class="key-finding">
+<h3>&#9888;&#65039; Key Finding</h3>
+<p>Aerchain has raised $13M in Series A funding from Pavestone VC and IndiaMART, yet has virtually zero AI-search footprint. With only 2 G2 reviews, zero Reddit mentions, and no presence in AI-generated search results for procurement-related queries, Aerchain is completely invisible in the channels where modern B2B buyers — including procurement leaders evaluating autonomous sourcing tools — are now discovering vendors. This represents a critical missed opportunity given the rising demand for AI-native procurement solutions.</p>
+</div>
+
+<h2 class="section-title">&#128269; AI Search Query Analysis</h2>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"best procurement software 2026"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">Aerchain does not appear in AI-generated answers or traditional search results for this high-intent query. Dominated by Coupa, SAP Ariba, and Zip with extensive SEO, G2 review volume, and brand mentions. Aerchain lacks the review velocity and authoritative backlinks needed to compete for this top-of-funnel keyword. Without a presence here, Aerchain misses buyers at the earliest stage of the procurement software evaluation journey.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"AI procurement platform enterprise"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">Despite being purpose-built as an AI-native procurement platform, Aerchain is absent from AI search results for this exact-match query. Competitors like Zip and Coupa — who have invested heavily in AI messaging and content marketing — dominate. Aerchain's website content and technical documentation are not sufficiently indexed or referenced by AI models to surface as a recommended solution. This is a direct disconnect between product positioning and discoverability.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"autonomous sourcing tools"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">Autonomous sourcing is Aerchain's core differentiator, yet the company is invisible for this category-defining query. Buyers searching for tools that can autonomously execute sourcing events, negotiate with suppliers, and optimize spend find established players like Jaggaer and Coupa — not Aerchain. This represents a significant gap: Aerchain's most compelling product narrative has zero search equity.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"procurement automation software"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">This broad-category query generates AI overviews referencing Coupa, Tipalti, and Precoro — none mention Aerchain. The procurement automation space is crowded, and Aerchain's lack of third-party reviews, case studies, and independent analyst coverage means AI models have no signal to include them. Building review velocity on G2 and publishing customer success stories would directly improve ranking for this query family.</div>
+</div>
+
+<div class="query-card">
+<div class="query-header"><span class="query-text">"vendor management platform AI"</span><span class="badge badge-weak">WEAK</span></div>
+<div class="analysis">Vendor management is a core component of Aerchain's platform, but AI search results for this query are owned by SAP Ariba, Coupa, and niche VMS providers. Aerchain's vendor management capabilities are buried within the broader platform narrative and not surfaced as a standalone AI-powered solution. Creating dedicated landing pages and content clusters around AI-driven vendor management would help capture this valuable search intent.</div>
+</div>
+
+<h2 class="section-title">&#9878;&#65039; Competitive Landscape</h2>
+<div class="competitor-grid">
+<div class="competitor-card">
+<div class="comp-name">Coupa</div>
+<div class="comp-desc">Market-leading spend management platform. Massive G2 presence (~1,500+ reviews), dominant SEO, and strong AI-search visibility.</div>
+</div>
+<div class="competitor-card">
+<div class="comp-name">SAP Ariba</div>
+<div class="comp-desc">Enterprise procurement giant with the largest supplier network. Entrenched in Fortune 500 with decades of brand equity.</div>
+</div>
+<div class="competitor-card">
+<div class="comp-name">Jaggaer</div>
+<div class="comp-desc">End-to-end autonomous commerce platform. Strong in manufacturing, life sciences, and higher education verticals.</div>
+</div>
+<div class="competitor-card">
+<div class="comp-name">Zip</div>
+<div class="comp-desc">Fast-growing intake-to-procure platform. Aggressive content marketing, strong brand search, and growing AI visibility.</div>
+</div>
+</div>
+
+<div class="cta-section">
+<h2>&#128640; Genhance AI Visibility Playbook — Aerchain</h2>
+<p class="cta-sub">Four high-impact plays to build AI search presence for Aerchain within 90 days.</p>
+<div class="plays-grid">
+<div class="play-card">
+<div class="play-num">Play 1</div>
+<div class="play-title">G2 Review Acceleration</div>
+<div class="play-desc">Launch a structured G2 review generation campaign targeting 50+ reviews in 60 days. AI models weight verified third-party reviews heavily for B2B software rankings.</div>
+</div>
+<div class="play-card">
+<div class="play-num">Play 2</div>
+<div class="play-title">Technical Content Engine</div>
+<div class="play-desc">Publish deep-dive technical blogs on autonomous sourcing, AI procurement agents, and vendor intelligence — optimized for LLM ingestion with structured data markup.</div>
+</div>
+<div class="play-card">
+<div class="play-num">Play 3</div>
+<div class="play-title">Community &amp; Reddit Presence</div>
+<div class="play-desc">Activate founder-led engagement in r/procurement, r/supplychain, and r/SaaS. AI models increasingly cite Reddit discussions in procurement software recommendations.</div>
+</div>
+<div class="play-card">
+<div class="play-num">Play 4</div>
+<div class="play-title">AI-Native Landing Pages</div>
+<div class="play-desc">Build dedicated comparison pages (Aerchain vs. Coupa, Aerchain vs. Zip) and query-optimized landing pages that answer exact buyer questions AI models are trained on.</div>
+</div>
+</div>
+<div class="signature">
+<strong>Rajesh Gautam, PhD</strong><br>
+Founder and CEO, <a href="https://genhance.ai" target="_blank">genhance.ai</a><br>
+<a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+</div>
+</div>
+</div>
+
+<footer>
+&copy; 2026 genhance.ai — AI Visibility Audits for B2B SaaS. All rights reserved.
+</footer>
+</body>
+</html>
