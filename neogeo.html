@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genhance AI Visibility Audit — NeoGeo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0b0f19; color: #e2e8f0; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #0f1a3a 0%, #0d1b3e 30%, #13244a 60%, #0a1628 100%); padding: 60px 0 48px; border-bottom: 1px solid rgba(59, 130, 246, 0.15); }
+  .header .container { text-align: center; }
+  .badge-logo { display: inline-flex; align-items: center; gap: 10px; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 100px; padding: 8px 20px; margin-bottom: 24px; font-size: 14px; font-weight: 600; color: #60a5fa; letter-spacing: 0.5px; }
+  .badge-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: #3b82f6; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .header h1 { font-size: 42px; font-weight: 800; background: linear-gradient(135deg, #ffffff 0%, #93c5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+  .header .subtitle { font-size: 18px; color: #94a3b8; margin-bottom: 6px; }
+  .header .meta { font-size: 14px; color: #64748b; }
+
+  /* Stats Row */
+  .stats-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
+  .stat-pill { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.3); border-radius: 16px; padding: 20px 28px; text-align: center; min-width: 150px; }
+  .stat-pill .stat-value { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, #e2e8f0, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill .stat-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; margin-top: 4px; }
+  .stat-pill.funding .stat-value { background: linear-gradient(135deg, #34d399, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.ai-vis .stat-value { background: linear-gradient(135deg, #fb923c, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.g2 .stat-value { background: linear-gradient(135deg, #f87171, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.reddit .stat-value { background: linear-gradient(135deg, #a78bfa, #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* Sections */
+  section { padding: 48px 0; border-bottom: 1px solid rgba(71, 85, 105, 0.12); }
+  section h2 { font-size: 22px; font-weight: 700; color: #e2e8f0; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  section h2 .icon { font-size: 24px; }
+
+  /* Company Profile */
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .profile-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 24px; }
+  .profile-card h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 12px; }
+  .profile-card p { font-size: 15px; color: #cbd5e1; line-height: 1.7; }
+  .profile-card .tag { display: inline-block; background: rgba(59, 130, 246, 0.12); color: #60a5fa; font-size: 13px; padding: 4px 12px; border-radius: 8px; margin: 3px 4px 3px 0; }
+
+  /* Key Finding */
+  .key-finding { background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(251, 191, 36, 0.05) 100%); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 16px; padding: 28px 32px; }
+  .key-finding .kf-badge { display: inline-flex; align-items: center; gap: 8px; color: #f59e0b; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+  .key-finding .kf-badge::before { content: '⚠'; font-size: 16px; }
+  .key-finding p { color: #fcd34d; font-size: 16px; font-weight: 500; line-height: 1.7; }
+  .key-finding .kf-highlight { color: #fbbf24; font-weight: 700; }
+
+  /* Query Cards */
+  .query-grid { display: flex; flex-direction: column; gap: 16px; }
+  .query-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 24px; transition: border-color 0.2s; }
+  .query-card:hover { border-color: rgba(59, 130, 246, 0.25); }
+  .query-card .q-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 12px; }
+  .query-card .q-query { font-size: 16px; font-weight: 600; color: #e2e8f0; font-family: 'SF Mono', 'Fira Code', monospace; flex: 1; }
+  .query-card .q-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 12px; border-radius: 8px; white-space: nowrap; }
+  .q-badge.present { background: rgba(34, 197, 94, 0.12); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.2); }
+  .q-badge.weak { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
+  .q-badge.absent { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+  .query-card .q-analysis { font-size: 14px; color: #94a3b8; line-height: 1.65; }
+
+  /* Competitor Cards */
+  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .competitor-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 20px; text-align: center; transition: border-color 0.2s; }
+  .competitor-card:hover { border-color: rgba(239, 68, 68, 0.25); }
+  .competitor-card .comp-name { font-size: 16px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .competitor-card .comp-threat { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #f87171; font-weight: 600; }
+
+  /* CTA */
+  .cta-section { background: linear-gradient(135deg, #0f1a3a 0%, #0d1b3e 40%, #101e3f 70%, #0a1628 100%); padding: 56px 0; border-bottom: none; }
+  .cta-section h2 { font-size: 26px; text-align: center; background: linear-gradient(135deg, #ffffff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+  .cta-section .cta-sub { text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 36px; }
+  .plays-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .play-card { background: rgba(59, 130, 246, 0.06); border: 1px solid rgba(59, 130, 246, 0.18); border-radius: 14px; padding: 22px; }
+  .play-card .play-num { font-size: 12px; font-weight: 700; color: #3b82f6; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; }
+  .play-card .play-title { font-size: 16px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .play-card .play-desc { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+
+  /* Signature */
+  .signature { text-align: center; padding: 36px 0 48px; border-top: 1px solid rgba(71, 85, 105, 0.12); }
+  .signature .sig-name { font-size: 17px; font-weight: 700; color: #e2e8f0; }
+  .signature .sig-title { font-size: 13px; color: #64748b; margin-top: 2px; }
+  .signature .sig-link { font-size: 13px; color: #60a5fa; text-decoration: none; margin-top: 4px; display: inline-block; }
+  .signature .sig-link:hover { text-decoration: underline; }
+  .sig-line { width: 40px; height: 2px; background: rgba(59, 130, 246, 0.4); margin: 16px auto; border-radius: 2px; }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .profile-grid, .plays-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 30px; }
+    .stats-row { gap: 10px; }
+    .stat-pill { padding: 16px 18px; min-width: 120px; }
+    .stat-pill .stat-value { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="badge-logo"><span class="dot"></span> Genhance AI Visibility Audit</div>
+    <h1>NeoGeo</h1>
+    <p class="subtitle">AI Geospatial Intelligence Platform</p>
+    <p class="meta">Gurugram, India &nbsp;·&nbsp; CEO: Sreeramam G V &nbsp;·&nbsp; Audit Date: September 2026</p>
+
+    <div class="stats-row">
+      <div class="stat-pill funding">
+        <div class="stat-value">$20M</div>
+        <div class="stat-label">Funding (Series A)</div>
+      </div>
+      <div class="stat-pill ai-vis">
+        <div class="stat-value">1 / 5</div>
+        <div class="stat-label">AI Visibility</div>
+      </div>
+      <div class="stat-pill g2">
+        <div class="stat-value">0</div>
+        <div class="stat-label">G2 Reviews</div>
+      </div>
+      <div class="stat-pill reddit">
+        <div class="stat-value">0</div>
+        <div class="stat-label">Reddit Threads</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🏢</span> Company Profile</h2>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h3>About</h3>
+        <p>Full-stack geospatial intelligence platform for governments and businesses. Uses satellite imagery, LiDAR, and drones to deliver actionable insights. Expanding into the Middle East and Americas with GIS mapping, property tax solutions, and urban planning.</p>
+      </div>
+      <div class="profile-card">
+        <h3>Investors</h3>
+        <p>
+          <span class="tag">Neev II Fund (SBI Ventures)</span>
+          <span class="tag">Aavishkaar Capital</span>
+        </p>
+        <h3 style="margin-top:16px;">Funding Details</h3>
+        <p style="font-size:14px; color:#94a3b8;">$20M Series A raised August 2026. Total funding: $20M.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🔍</span> Key Finding</h2>
+    <div class="key-finding">
+      <div class="kf-badge">Key Finding</div>
+      <p>NeoGeo has <span class="kf-highlight">zero AI-driven discoverability</span> across the open web. Despite a strong $20M Series A and a compelling geospatial intelligence product, the company is <span class="kf-highlight">virtually invisible in AI-generated search results</span>, LLM recommendations, and community forums. Government-focused GTM is necessary but insufficient — enterprise and international buyers increasingly rely on AI-augmented search for vendor evaluation. Without a deliberate AI visibility strategy, NeoGeo risks ceding the conversation to well-indexed competitors like Maxar, Planet Labs, and ESRI who dominate both traditional and AI-driven search landscapes.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🎯</span> Query Landscape Analysis</h2>
+    <div class="query-grid">
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"best geospatial intelligence platform 2026"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">NeoGeo does not appear in AI-generated responses for this high-intent buyer query. Maxar, Planet Labs, and ESRI dominate results. NeoGeo lacks the structured web presence, comparison articles, and third-party citations needed for LLM inclusion. This query represents the highest-value search intent for enterprise buyers evaluating platforms.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"AI satellite imagery analytics enterprise"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">NeoGeo is missing from AI-generated results for satellite imagery analytics queries. Despite having LiDAR, drone, and satellite capabilities, the company has not established topical authority through technical content, case studies, or API documentation that LLMs can index and cite.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"geospatial technology for government urban planning"</span>
+          <span class="q-badge weak">WEAK</span>
+        </div>
+        <p class="q-analysis">NeoGeo's core government use case — urban planning and property tax — should make this a flagship query. However, the company's gov-focused content is not surfaced by AI models. ESRI and government-adjacent incumbents are cited instead. Government RFP documentation and municipal case studies would strengthen AI visibility here.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"GIS mapping AI platform India"</span>
+          <span class="q-badge weak">WEAK</span>
+        </div>
+        <p class="q-analysis">NeoGeo shows faint signals for India-specific geospatial queries but fails to rank authoritatively in AI results. Competitor SatSure captures more AI visibility for India-market queries. NeoGeo needs localized thought leadership content, gov-tech publications, and structured data markup to claim this niche.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"how to use geospatial intelligence for infrastructure planning"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Top-of-funnel educational content is completely absent. This long-tail, high-engagement query is captured by ESRI tutorials, Planet Labs blog posts, and academic sources. NeoGeo should publish how-to guides, infrastructure case studies, and geospatial methodology content to build AI-citable authority.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">⚔️</span> Competitive Landscape</h2>
+    <div class="competitor-grid">
+      <div class="competitor-card">
+        <div class="comp-name">Maxar Technologies</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Planet Labs</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">ESRI</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">SatSure</div>
+        <div class="comp-threat">Moderate Threat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Genhance Visibility Playbook</h2>
+    <p class="cta-sub">A tactical 4-play sequence to put NeoGeo on the AI map.</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="play-num">Play 01</div>
+        <div class="play-title">Seed Structured Authority Content</div>
+        <div class="play-desc">Publish comprehensive geo-platform comparison pages, technical architecture documentation, and satellite/ drone methodology whitepapers with schema.org markup. LLMs need citable, authoritative content to include NeoGeo in responses.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 02</div>
+        <div class="play-title">Build Community & Review Presence</div>
+        <div class="play-desc">Launch a G2 profile with verified customer testimonials from government clients. Seed technical discussions on GIS Stack Exchange, r/gis, and r/geospatial. Zero reviews and zero Reddit threads create a vacuum that competitors fill.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 03</div>
+        <div class="play-title">Publish Open Technical Content</div>
+        <div class="play-desc">Release geospatial analysis tutorials, sample datasets, and API quickstart guides. Infrastructure planning how-to content, urban-planning case studies, and property-tax methodology reports build the long-tail content footprint AI models index.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 04</div>
+        <div class="play-title">Distribute Across AI-Indexed Channels</div>
+        <div class="play-desc">Syndicate content to Medium, Dev.to, LinkedIn Articles, and industry publications like GIS Lounge and Geospatial World. Cross-link from the NeoGeo domain. Multi-channel distribution signals topical relevance to LLM training and retrieval pipelines.</div>
+      </div>
+    </div>
+
+    <div class="signature">
+      <div class="sig-line"></div>
+      <div class="sig-name">Rajesh Gautam, PhD</div>
+      <div class="sig-title">Founder & CEO, Genhance.ai</div>
+      <a class="sig-link" href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genhance AI Visibility Audit — Triomics</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0b0f19; color: #e2e8f0; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #0f1a3a 0%, #0d1b3e 30%, #13244a 60%, #0a1628 100%); padding: 60px 0 48px; border-bottom: 1px solid rgba(59, 130, 246, 0.15); }
+  .header .container { text-align: center; }
+  .badge-logo { display: inline-flex; align-items: center; gap: 10px; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 100px; padding: 8px 20px; margin-bottom: 24px; font-size: 14px; font-weight: 600; color: #60a5fa; letter-spacing: 0.5px; }
+  .badge-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: #3b82f6; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .header h1 { font-size: 42px; font-weight: 800; background: linear-gradient(135deg, #ffffff 0%, #93c5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+  .header .subtitle { font-size: 18px; color: #94a3b8; margin-bottom: 6px; }
+  .header .meta { font-size: 14px; color: #64748b; }
+
+  /* Stats Row */
+  .stats-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
+  .stat-pill { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.3); border-radius: 16px; padding: 20px 28px; text-align: center; min-width: 150px; }
+  .stat-pill .stat-value { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, #e2e8f0, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill .stat-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; margin-top: 4px; }
+  .stat-pill.funding .stat-value { background: linear-gradient(135deg, #34d399, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.ai-vis .stat-value { background: linear-gradient(135deg, #fb923c, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.g2 .stat-value { background: linear-gradient(135deg, #f87171, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.reddit .stat-value { background: linear-gradient(135deg, #a78bfa, #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* Sections */
+  section { padding: 48px 0; border-bottom: 1px solid rgba(71, 85, 105, 0.12); }
+  section h2 { font-size: 22px; font-weight: 700; color: #e2e8f0; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  section h2 .icon { font-size: 24px; }
+
+  /* Company Profile */
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .profile-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 24px; }
+  .profile-card h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 12px; }
+  .profile-card p { font-size: 15px; color: #cbd5e1; line-height: 1.7; }
+  .profile-card .tag { display: inline-block; background: rgba(59, 130, 246, 0.12); color: #60a5fa; font-size: 13px; padding: 4px 12px; border-radius: 8px; margin: 3px 4px 3px 0; }
+
+  /* Key Finding */
+  .key-finding { background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(251, 191, 36, 0.05) 100%); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 16px; padding: 28px 32px; }
+  .key-finding .kf-badge { display: inline-flex; align-items: center; gap: 8px; color: #f59e0b; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+  .key-finding .kf-badge::before { content: '⚠'; font-size: 16px; }
+  .key-finding p { color: #fcd34d; font-size: 16px; font-weight: 500; line-height: 1.7; }
+  .key-finding .kf-highlight { color: #fbbf24; font-weight: 700; }
+
+  /* Query Cards */
+  .query-grid { display: flex; flex-direction: column; gap: 16px; }
+  .query-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 24px; transition: border-color 0.2s; }
+  .query-card:hover { border-color: rgba(59, 130, 246, 0.25); }
+  .query-card .q-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 12px; }
+  .query-card .q-query { font-size: 16px; font-weight: 600; color: #e2e8f0; font-family: 'SF Mono', 'Fira Code', monospace; flex: 1; }
+  .query-card .q-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 12px; border-radius: 8px; white-space: nowrap; }
+  .q-badge.present { background: rgba(34, 197, 94, 0.12); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.2); }
+  .q-badge.weak { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
+  .q-badge.absent { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+  .query-card .q-analysis { font-size: 14px; color: #94a3b8; line-height: 1.65; }
+
+  /* Competitor Cards */
+  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .competitor-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 20px; text-align: center; transition: border-color 0.2s; }
+  .competitor-card:hover { border-color: rgba(239, 68, 68, 0.25); }
+  .competitor-card .comp-name { font-size: 16px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .competitor-card .comp-threat { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #f87171; font-weight: 600; }
+
+  /* CTA */
+  .cta-section { background: linear-gradient(135deg, #0f1a3a 0%, #0d1b3e 40%, #101e3f 70%, #0a1628 100%); padding: 56px 0; border-bottom: none; }
+  .cta-section h2 { font-size: 26px; text-align: center; background: linear-gradient(135deg, #ffffff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+  .cta-section .cta-sub { text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 36px; }
+  .plays-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .play-card { background: rgba(59, 130, 246, 0.06); border: 1px solid rgba(59, 130, 246, 0.18); border-radius: 14px; padding: 22px; }
+  .play-card .play-num { font-size: 12px; font-weight: 700; color: #3b82f6; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; }
+  .play-card .play-title { font-size: 16px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .play-card .play-desc { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+
+  /* Signature */
+  .signature { text-align: center; padding: 36px 0 48px; border-top: 1px solid rgba(71, 85, 105, 0.12); }
+  .signature .sig-name { font-size: 17px; font-weight: 700; color: #e2e8f0; }
+  .signature .sig-title { font-size: 13px; color: #64748b; margin-top: 2px; }
+  .signature .sig-link { font-size: 13px; color: #60a5fa; text-decoration: none; margin-top: 4px; display: inline-block; }
+  .signature .sig-link:hover { text-decoration: underline; }
+  .sig-line { width: 40px; height: 2px; background: rgba(59, 130, 246, 0.4); margin: 16px auto; border-radius: 2px; }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .profile-grid, .plays-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 30px; }
+    .stats-row { gap: 10px; }
+    .stat-pill { padding: 16px 18px; min-width: 120px; }
+    .stat-pill .stat-value { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="badge-logo"><span class="dot"></span> Genhance AI Visibility Audit</div>
+    <h1>Triomics</h1>
+    <p class="subtitle">AI Oncology Data & Clinical Trial Matching</p>
+    <p class="meta">San Francisco, CA &nbsp;·&nbsp; CEO: Sarim Khan &nbsp;·&nbsp; Audit Date: September 2026</p>
+
+    <div class="stats-row">
+      <div class="stat-pill funding">
+        <div class="stat-value">$36M+</div>
+        <div class="stat-label">Funding (Series B)</div>
+      </div>
+      <div class="stat-pill ai-vis">
+        <div class="stat-value">1 / 5</div>
+        <div class="stat-label">AI Visibility</div>
+      </div>
+      <div class="stat-pill g2">
+        <div class="stat-value">0</div>
+        <div class="stat-label">G2 Reviews</div>
+      </div>
+      <div class="stat-pill reddit">
+        <div class="stat-value">0</div>
+        <div class="stat-label">Reddit Threads</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🏢</span> Company Profile</h2>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h3>About</h3>
+        <p>Generative AI platform converting longitudinal EHR cancer data into structured outputs for clinical trial matching, visit preparation, registry curation, and oncology research. Deployed at leading cancer centers across the United States.</p>
+      </div>
+      <div class="profile-card">
+        <h3>Investors</h3>
+        <p>
+          <span class="tag">Battery Ventures</span>
+          <span class="tag">Lightspeed</span>
+          <span class="tag">Nexus Venture Partners</span>
+          <span class="tag">Y Combinator</span>
+          <span class="tag">Oncology Ventures</span>
+          <span class="tag">Precision Health Informatics</span>
+        </p>
+        <h3 style="margin-top:16px;">Funding Details</h3>
+        <p style="font-size:14px; color:#94a3b8;">$22M Series B raised May 2026. Total funding: $36M+.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🔍</span> Key Finding</h2>
+    <div class="key-finding">
+      <div class="kf-badge">Key Finding</div>
+      <p>Triomics has raised <span class="kf-highlight">$36M+ from top-tier investors</span> including Battery Ventures, Lightspeed, and Y Combinator, yet its AI visibility score is <span class="kf-highlight">1 out of 5</span> with zero G2 reviews and zero Reddit presence. In the high-stakes oncology SaaS market, oncologists and clinical operations leaders increasingly use AI-powered search and LLMs to evaluate clinical trial matching platforms. Competitors Flatiron Health, Tempus, and ConcertAI have built massive content moats — whitepapers, peer-reviewed publications, conference proceedings, and comparison pages — that position them as default AI recommendations. Triomics must urgently build structured, citable content or risk invisibility in the precise channels where cancer centers discover new technology.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🎯</span> Query Landscape Analysis</h2>
+    <div class="query-grid">
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"best oncology clinical trial matching AI 2026"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Triomics is entirely absent from AI-generated responses for this high-intent buyer query. Flatiron Health, Tempus, and ConcertAI dominate with structured comparison content, peer-reviewed publications, and press coverage. This query is the front door for cancer center decision-makers evaluating platforms.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"AI cancer data abstraction platform"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Despite Triomics' core value proposition being EHR cancer data abstraction via generative AI, the company has no AI-citable authority content covering this topic. AI models default to Tempus and Flatiron, which publish extensively on data abstraction methodologies and oncology NLP.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"oncology EHR data AI analytics"</span>
+          <span class="q-badge weak">WEAK</span>
+        </div>
+        <p class="q-analysis">Triomics shows very faint signals — possibly through Y Combinator directory listings or investor portfolio pages — but is not surfaced as a primary recommendation. Richer technical content around longitudinal EHR processing and oncology-specific AI analytics is needed to compete with Tempus' extensive publication record.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"clinical trial recruitment technology cancer centers"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Triomics is invisible for clinical trial recruitment queries despite this being its primary use case. Competitors have invested heavily in case studies, ROI calculators, and implementation guides for cancer centers. Triomics must publish deployment case studies and clinical workflow integration content.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"how to automate oncology chart review with AI"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Educational top-of-funnel content is completely missing. This long-tail query is ideal for Triomics to capture with how-to guides, methodology papers, and webinar summaries. AI models would cite Triomics if the company produced authoritative, structured content explaining oncology chart review automation.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">⚔️</span> Competitive Landscape</h2>
+    <div class="competitor-grid">
+      <div class="competitor-card">
+        <div class="comp-name">Flatiron Health</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">ConcertAI</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Tempus</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Syapse</div>
+        <div class="comp-threat">Moderate Threat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Genhance Visibility Playbook</h2>
+    <p class="cta-sub">A tactical 4-play sequence to put Triomics on the AI map.</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="play-num">Play 01</div>
+        <div class="play-title">Build Oncology Thought Leadership</div>
+        <div class="play-desc">Publish peer-reviewed methodology papers, oncology AI whitepapers, and clinical trial matching benchmarks on the Triomics domain with structured metadata. Partner with academic cancer centers for co-authored publications that LLMs will cite.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 02</div>
+        <div class="play-title">Launch G2 & Community Presence</div>
+        <div class="play-desc">Create verified G2 profiles and solicit reviews from cancer center clinical operations teams. Seed discussions on r/healthIT, r/medicine, and oncology-focused forums. Zero reviews and zero Reddit threads handicap AI-driven discovery.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 03</div>
+        <div class="play-title">Publish Clinical Deployment Case Studies</div>
+        <div class="play-desc">Document specific cancer center deployments with measurable outcomes — trial match rate improvements, chart review time reduction, registry completeness gains. These data-rich case studies provide the concrete citations AI models need.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 04</div>
+        <div class="play-title">Syndicate Across Healthcare AI Channels</div>
+        <div class="play-desc">Distribute content to ASCO publications, HealthIT Analytics, STAT News, and LinkedIn healthcare communities. Cross-link from domain for consolidated authority. Multi-channel distribution signals clinical relevance to AI retrieval engines.</div>
+      </div>
+    </div>
+
+    <div class="signature">
+      <div class="sig-line"></div>
+      <div class="sig-name">Rajesh Gautam, PhD</div>
+      <div class="sig-title">Founder & CEO, Genhance.ai</div>
+      <a class="sig-link" href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

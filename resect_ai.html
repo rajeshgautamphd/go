@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resect AI — genhance AI Visibility Audit</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #0a0e17; color: #e2e8f0; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .hero { background: linear-gradient(135deg, #0f1d3a 0%, #162a4f 30%, #1a365d 60%, #0f1d3a 100%); padding: 60px 0 48px; text-align: center; border-bottom: 3px solid #2d4a7a; }
+  .hero .logo-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px; }
+  .hero .genhance-badge { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #60a5fa; background: rgba(96,165,250,0.1); padding: 4px 14px; border-radius: 20px; border: 1px solid rgba(96,165,250,0.25); }
+  .hero h1 { font-size: 42px; font-weight: 800; color: #ffffff; margin: 16px 0 6px; letter-spacing: -0.5px; }
+  .hero .subtitle { font-size: 17px; color: #94a3b8; max-width: 640px; margin: 0 auto; }
+  .hero .company-meta { margin-top: 16px; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 24px; }
+  .hero .company-meta span { font-size: 14px; color: #94a3b8; }
+  .hero .company-meta strong { color: #cbd5e1; }
+  .stat-pills { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: -24px 0 36px; position: relative; z-index: 2; }
+  .stat-pill { background: linear-gradient(135deg, #1a2744, #16223a); border: 1px solid #2d4a7a; border-radius: 14px; padding: 18px 26px; text-align: center; min-width: 130px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  .stat-pill .stat-value { font-size: 26px; font-weight: 800; color: #ffffff; }
+  .stat-pill .stat-value.score-low { color: #f87171; }
+  .stat-pill .stat-value.zero { color: #64748b; }
+  .stat-pill .stat-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: #64748b; margin-top: 4px; }
+  .key-finding { background: linear-gradient(135deg, #3d2a0a, #2d1f07); border: 1px solid #b45309; border-left: 5px solid #f59e0b; border-radius: 10px; padding: 20px 24px; margin-bottom: 36px; }
+  .key-finding .badge { display: inline-block; background: #f59e0b; color: #0a0e17; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; margin-bottom: 10px; }
+  .key-finding p { font-size: 15px; color: #fcd34d; font-weight: 500; }
+  .section-title { font-size: 20px; font-weight: 700; color: #e2e8f0; margin: 36px 0 18px; display: flex; align-items: center; gap: 10px; }
+  .section-title::before { content: ''; width: 4px; height: 22px; background: #60a5fa; border-radius: 2px; display: inline-block; }
+  .query-card { background: linear-gradient(135deg, #111a2e, #0f172a); border: 1px solid #1e293b; border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; transition: border-color 0.2s; }
+  .query-card:hover { border-color: #334155; }
+  .query-card .query-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .query-card .query-text { font-size: 15px; font-weight: 600; color: #cbd5e1; }
+  .query-card .query-num { font-size: 12px; color: #64748b; }
+  .badge-presence { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; }
+  .badge-absent { background: rgba(248,113,113,0.15); color: #f87171; border: 1px solid rgba(248,113,113,0.3); }
+  .badge-weak { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .query-card .analysis { font-size: 13px; color: #94a3b8; line-height: 1.7; }
+  .comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 36px; }
+  .comp-card { background: #111a2e; border: 1px solid #1e293b; border-radius: 10px; padding: 16px; text-align: center; }
+  .comp-card .comp-name { font-size: 15px; font-weight: 700; color: #e2e8f0; }
+  .comp-card .comp-detail { font-size: 12px; color: #64748b; margin-top: 4px; }
+  .cta { background: linear-gradient(135deg, #0f1d3a 0%, #0a1628 50%, #0d1f3c 100%); border: 1px solid #2d4a7a; border-radius: 14px; padding: 32px; text-align: center; margin-bottom: 40px; }
+  .cta h3 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+  .cta .cta-sub { font-size: 14px; color: #94a3b8; margin-bottom: 20px; }
+  .cta-plays { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; text-align: left; }
+  .cta-play { background: rgba(96,165,250,0.06); border: 1px solid rgba(96,165,250,0.15); border-radius: 8px; padding: 14px; }
+  .cta-play .play-num { font-size: 11px; font-weight: 800; color: #60a5fa; letter-spacing: 1px; }
+  .cta-play .play-text { font-size: 13px; color: #cbd5e1; margin-top: 4px; }
+  .signature { text-align: center; margin-bottom: 50px; padding-top: 24px; border-top: 1px solid #1e293b; }
+  .signature .sig-name { font-size: 16px; font-weight: 700; color: #e2e8f0; }
+  .signature .sig-title { font-size: 13px; color: #60a5fa; }
+  .signature .sig-link { font-size: 12px; color: #64748b; }
+  .signature .sig-link a { color: #60a5fa; text-decoration: none; }
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 28px; }
+    .stat-pills { gap: 10px; }
+    .stat-pill { padding: 12px 16px; min-width: 100px; }
+    .stat-pill .stat-value { font-size: 20px; }
+    .cta-plays { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <div class="logo-row">
+      <span class="genhance-badge">genhance.ai Audit</span>
+    </div>
+    <h1>Resect AI</h1>
+    <p class="subtitle">Enterprise AI LLM Accountability &amp; Hallucination Detection</p>
+    <div class="company-meta">
+      <span>📍 <strong>Washougal, WA</strong> (Seattle area)</span>
+      <span>👤 CEO: <strong>Kevin Owens</strong></span>
+      <span>💰 <strong>$25M</strong> (Emerged from stealth, Sep 2026)</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="stat-pills">
+    <div class="stat-pill">
+      <div class="stat-value">$25M</div>
+      <div class="stat-label">Funding</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value score-low">1/5</div>
+      <div class="stat-label">AI Visibility</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value zero">0</div>
+      <div class="stat-label">G2 Reviews</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value zero">0</div>
+      <div class="stat-label">Reddit Threads</div>
+    </div>
+  </div>
+
+  <div class="key-finding">
+    <span class="badge">⚠ Key Finding</span>
+    <p>Resect AI just emerged from stealth with $25M to build an accountability layer for enterprise LLMs — a genuinely novel category. But as a newly public company, it has <strong>zero G2 reviews, zero Reddit presence, and minimal search visibility</strong>. The "LLM hallucination detection" problem is one of the most urgent pain points in enterprise AI adoption heading into 2027. Arize AI, WhyLabs, and Galileo already own observability queries. Resect must differentiate between "observability" (monitoring) and "accountability" (real-time hallucination interception) and own that distinction in search before competitors fold it into their own messaging.</p>
+  </div>
+
+  <div class="section-title">Search Query Analysis</div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"best AI model monitoring platform 2026"</span>
+      <span class="query-num">Q1</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">Arize AI, WhyLabs, and Fiddler AI dominate this query with comparison content, G2 category pages, and technical blogs. Resect does not appear — and for good reason: Resect is not "monitoring," it's "accountability." But buyers don't search for "LLM accountability platform" yet. Resect needs to seed the category while also inserting itself into existing monitoring queries via comparison content that reframes the problem.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"LLM hallucination detection enterprise tools"</span>
+      <span class="query-num">Q2</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">This is Resect's perfect query — high intent, exact use case. Yet the SERP is filled with academic papers, open-source libraries, and general AI safety articles. No commercial vendor owns this query. Resect has a first-mover advantage if it publishes a comprehensive guide to hallucination detection in production, framed around its open-source offering as an on-ramp to the enterprise suite.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"AI observability vs accountability platforms"</span>
+      <span class="query-num">Q3</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">No one owns this query — because no one has drawn this distinction yet. Resect could publish the definitive piece defining the difference between observing AI behavior and actively modifying it. This is a category-creation play: a pillar page that defines the "accountability layer" concept, ranks for a unique query, and serves as a linkable asset for every future mention of the category.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"enterprise AI risk management software"</span>
+      <span class="query-num">Q4</span>
+    </div>
+    <span class="badge-presence badge-weak">WEAK</span>
+    <p class="analysis">This is a broader category query where GRC platforms (ServiceNow, IBM OpenPages) and AI governance tools (Credo AI, Holistic AI) dominate. Resect may be adjacent but doesn't rank. A guest post or contributed article in an enterprise risk publication — framing hallucination detection as the missing piece of AI risk management — would bridge Resect into this higher-volume query space.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"how to detect AI hallucinations in production"</span>
+      <span class="query-num">Q5</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">A top-of-funnel educational query with strong commercial intent. Developers and ML engineers searching this are actively building solutions — exactly the audience for Resect's open-source offering. A technical tutorial series with code examples, benchmarks, and a link to Resect's open-source repo would convert this audience into community members and eventual enterprise buyers.</p>
+  </div>
+
+  <div class="section-title">Key Competitors</div>
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-name">Arize AI</div>
+      <div class="comp-detail">ML observability leader, strong content & G2 presence</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">WhyLabs</div>
+      <div class="comp-detail">AI observability, open-source LangKit, DataBricks partner</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Galileo</div>
+      <div class="comp-detail">Gen AI evaluation, hallucination index, fast-growing brand</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Fiddler AI</div>
+      <div class="comp-detail">AI observability with explainability focus, strong enterprise</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>Ready to define the LLM accountability category?</h3>
+    <p class="cta-sub">4 genhance plays to turn a novel category into search dominance</p>
+    <div class="cta-plays">
+      <div class="cta-play">
+        <span class="play-num">PLAY 01</span>
+        <p class="play-text">Publish the definitive "AI Observability vs. Accountability" pillar page — define the distinction, position Resect as the accountability layer — and seed it as the canonical reference for this emerging category taxonomy.</p>
+      </div>
+      <div class="cta-play">
+        <span class="play-num">PLAY 02</span>
+        <p class="play-text">Build a "Hallucination Detection in Production" technical guide series with open-source code examples, benchmarks against Galileo's hallucination index, and a clear path from open-source to enterprise.</p>
+      </div>
+      <div class="cta-play">
+        <span class="play-num">PLAY 03</span>
+        <p class="play-text">Create comparison pages (Resect AI vs Arize / WhyLabs / Fiddler) that reframe "monitoring" as passive and "accountability" as active. Use the $25M funding and stealth-to-public narrative as credibility.</p>
+      </div>
+      <div class="cta-play">
+        <span class="play-num">PLAY 04</span>
+        <p class="play-text">Activate Reddit in r/MachineLearning, r/LLMDevs, and r/LocalLLaMA with founder-led technical deep dives on hallucination detection. Launch a G2 category and seed 20+ reviews from early design partners.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signature">
+    <p class="sig-name">Rajesh Gautam, PhD</p>
+    <p class="sig-title">Founder &amp; CEO, genhance.ai</p>
+    <p class="sig-link"><a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a></p>
+  </div>
+</div>
+
+</body>
+</html>

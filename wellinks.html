@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genhance AI Visibility Audit — Wellinks</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0b0f19; color: #e2e8f0; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #0f1a3a 0%, #0d1b3e 30%, #13244a 60%, #0a1628 100%); padding: 60px 0 48px; border-bottom: 1px solid rgba(59, 130, 246, 0.15); }
+  .header .container { text-align: center; }
+  .badge-logo { display: inline-flex; align-items: center; gap: 10px; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 100px; padding: 8px 20px; margin-bottom: 24px; font-size: 14px; font-weight: 600; color: #60a5fa; letter-spacing: 0.5px; }
+  .badge-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: #3b82f6; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .header h1 { font-size: 42px; font-weight: 800; background: linear-gradient(135deg, #ffffff 0%, #93c5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+  .header .subtitle { font-size: 18px; color: #94a3b8; margin-bottom: 6px; }
+  .header .meta { font-size: 14px; color: #64748b; }
+
+  /* Stats Row */
+  .stats-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
+  .stat-pill { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.3); border-radius: 16px; padding: 20px 28px; text-align: center; min-width: 150px; }
+  .stat-pill .stat-value { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, #e2e8f0, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill .stat-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; margin-top: 4px; }
+  .stat-pill.funding .stat-value { background: linear-gradient(135deg, #34d399, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.ai-vis .stat-value { background: linear-gradient(135deg, #fb923c, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.g2 .stat-value { background: linear-gradient(135deg, #f87171, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.reddit .stat-value { background: linear-gradient(135deg, #a78bfa, #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* Sections */
+  section { padding: 48px 0; border-bottom: 1px solid rgba(71, 85, 105, 0.12); }
+  section h2 { font-size: 22px; font-weight: 700; color: #e2e8f0; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  section h2 .icon { font-size: 24px; }
+
+  /* Company Profile */
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .profile-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 24px; }
+  .profile-card h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 12px; }
+  .profile-card p { font-size: 15px; color: #cbd5e1; line-height: 1.7; }
+  .profile-card .tag { display: inline-block; background: rgba(59, 130, 246, 0.12); color: #60a5fa; font-size: 13px; padding: 4px 12px; border-radius: 8px; margin: 3px 4px 3px 0; }
+
+  /* Key Finding */
+  .key-finding { background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(251, 191, 36, 0.05) 100%); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 16px; padding: 28px 32px; }
+  .key-finding .kf-badge { display: inline-flex; align-items: center; gap: 8px; color: #f59e0b; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+  .key-finding .kf-badge::before { content: '⚠'; font-size: 16px; }
+  .key-finding p { color: #fcd34d; font-size: 16px; font-weight: 500; line-height: 1.7; }
+  .key-finding .kf-highlight { color: #fbbf24; font-weight: 700; }
+
+  /* Query Cards */
+  .query-grid { display: flex; flex-direction: column; gap: 16px; }
+  .query-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 24px; transition: border-color 0.2s; }
+  .query-card:hover { border-color: rgba(59, 130, 246, 0.25); }
+  .query-card .q-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 12px; }
+  .query-card .q-query { font-size: 16px; font-weight: 600; color: #e2e8f0; font-family: 'SF Mono', 'Fira Code', monospace; flex: 1; }
+  .query-card .q-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 12px; border-radius: 8px; white-space: nowrap; }
+  .q-badge.present { background: rgba(34, 197, 94, 0.12); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.2); }
+  .q-badge.weak { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
+  .q-badge.absent { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+  .query-card .q-analysis { font-size: 14px; color: #94a3b8; line-height: 1.65; }
+
+  /* Competitor Cards */
+  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .competitor-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 20px; text-align: center; transition: border-color 0.2s; }
+  .competitor-card:hover { border-color: rgba(239, 68, 68, 0.25); }
+  .competitor-card .comp-name { font-size: 16px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .competitor-card .comp-threat { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #f87171; font-weight: 600; }
+
+  /* CTA */
+  .cta-section { background: linear-gradient(135deg, #0f1a3a 0%, #0d1b3e 40%, #101e3f 70%, #0a1628 100%); padding: 56px 0; border-bottom: none; }
+  .cta-section h2 { font-size: 26px; text-align: center; background: linear-gradient(135deg, #ffffff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+  .cta-section .cta-sub { text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 36px; }
+  .plays-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .play-card { background: rgba(59, 130, 246, 0.06); border: 1px solid rgba(59, 130, 246, 0.18); border-radius: 14px; padding: 22px; }
+  .play-card .play-num { font-size: 12px; font-weight: 700; color: #3b82f6; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; }
+  .play-card .play-title { font-size: 16px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .play-card .play-desc { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+
+  /* Signature */
+  .signature { text-align: center; padding: 36px 0 48px; border-top: 1px solid rgba(71, 85, 105, 0.12); }
+  .signature .sig-name { font-size: 17px; font-weight: 700; color: #e2e8f0; }
+  .signature .sig-title { font-size: 13px; color: #64748b; margin-top: 2px; }
+  .signature .sig-link { font-size: 13px; color: #60a5fa; text-decoration: none; margin-top: 4px; display: inline-block; }
+  .signature .sig-link:hover { text-decoration: underline; }
+  .sig-line { width: 40px; height: 2px; background: rgba(59, 130, 246, 0.4); margin: 16px auto; border-radius: 2px; }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .profile-grid, .plays-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 30px; }
+    .stats-row { gap: 10px; }
+    .stat-pill { padding: 16px 18px; min-width: 120px; }
+    .stat-pill .stat-value { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="badge-logo"><span class="dot"></span> Genhance AI Visibility Audit</div>
+    <h1>Wellinks</h1>
+    <p class="subtitle">Virtual Cardiopulmonary Care Platform</p>
+    <p class="meta">New Haven, CT &nbsp;·&nbsp; CEO: Jennifer Barretta (Interim) &nbsp;·&nbsp; Audit Date: September 2026</p>
+
+    <div class="stats-row">
+      <div class="stat-pill funding">
+        <div class="stat-value">$10M+</div>
+        <div class="stat-label">Funding (Series B)</div>
+      </div>
+      <div class="stat-pill ai-vis">
+        <div class="stat-value">1 / 5</div>
+        <div class="stat-label">AI Visibility</div>
+      </div>
+      <div class="stat-pill g2">
+        <div class="stat-value">0</div>
+        <div class="stat-label">G2 Reviews</div>
+      </div>
+      <div class="stat-pill reddit">
+        <div class="stat-value">0</div>
+        <div class="stat-label">Reddit Threads</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🏢</span> Company Profile</h2>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h3>About</h3>
+        <p>Virtual cardiopulmonary care platform pairing chronic disease management with remote patient monitoring. Focused on COPD and respiratory care with an integrative approach to virtual pulmonary rehabilitation. Backed by UMass Memorial Health.</p>
+      </div>
+      <div class="profile-card">
+        <h3>Investors</h3>
+        <p>
+          <span class="tag">UMass Memorial Health</span>
+        </p>
+        <h3 style="margin-top:16px;">Funding Details</h3>
+        <p style="font-size:14px; color:#94a3b8;">$10M Series B (first close) raised August 2026. Total funding: $10M+. Strategic investment from a major health system validates clinical relevance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🔍</span> Key Finding</h2>
+    <div class="key-finding">
+      <div class="kf-badge">Key Finding</div>
+      <p>Wellinks has a <span class="kf-highlight">clinically compelling product</span> — virtual COPD care with remote monitoring — backed by a strategic UMass Memorial Health investment, yet its AI visibility score is <span class="kf-highlight">1 out of 5</span> with zero G2 reviews and zero Reddit threads. In the rapidly consolidating digital health market, competitors like Hinge Health and Omada Health have built enormous content moats spanning clinical evidence libraries, peer-reviewed publications, and community engagement. Pulmonary and respiratory care buyers — pulmonologists, health system administrators, and payer clinical teams — are increasingly influenced by AI-driven search when evaluating virtual care platforms. Wellinks' focused respiratory niche is a genuine advantage, but without an AI visibility strategy, the broader digital MSK players will capture the cardiopulmonary conversation by default.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🎯</span> Query Landscape Analysis</h2>
+    <div class="query-grid">
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"best virtual pulmonary rehabilitation platform 2026"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Wellinks is completely absent from AI-generated responses for this high-intent query. This should be Wellinks' flagship search term given its focused COPD and respiratory care positioning. Hinge Health and Omada Health, despite being MSK-focused, capture broader digital health queries through their massive content engines.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"remote patient monitoring COPD AI"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Wellinks' core value proposition — remote patient monitoring for COPD — should make this query a natural win. However, AI models surface generic RPM vendors and academic medical center programs instead. Dedicated RPM-for-COPD content, clinical protocols, and monitoring methodology documentation are missing.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"digital cardiopulmonary care platform enterprise"</span>
+          <span class="q-badge weak">WEAK</span>
+        </div>
+        <p class="q-analysis">Wellinks shows faint signals — possibly through the UMass Memorial Health partnership announcement or health system press coverage — but is not surfaced as a primary recommendation. The cardiopulmonary niche is relatively uncrowded in AI search, presenting a significant first-mover advantage if Wellinks acts quickly.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"virtual chronic disease management healthcare"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Wellinks is invisible for broad chronic disease management queries. While this is a competitive space dominated by Omada, Livongo, and Hinge Health, Wellinks' pulmonary specialization could differentiate it — but only if it publishes content connecting COPD care to broader chronic disease management outcomes.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"how to deliver COPD care remotely with technology"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Educational top-of-funnel content is absent. This query is ideal for Wellinks to capture with how-to guides, clinical workflow documentation, and remote spirometry integration content. Pulmonologists and care teams searching for practical COPD telehealth guidance find nothing from Wellinks.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">⚔️</span> Competitive Landscape</h2>
+    <div class="competitor-grid">
+      <div class="competitor-card">
+        <div class="comp-name">Hinge Health</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Omada Health</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Kaia Health</div>
+        <div class="comp-threat">Moderate Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Sword Health</div>
+        <div class="comp-threat">Moderate Threat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Genhance Visibility Playbook</h2>
+    <p class="cta-sub">A tactical 4-play sequence to put Wellinks on the AI map.</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="play-num">Play 01</div>
+        <div class="play-title">Own the Virtual Pulmonary Rehab Category</div>
+        <div class="play-desc">Publish the definitive guide to virtual pulmonary rehabilitation — clinical evidence, RPM protocols, COPD care pathways, and integration workflows. The cardiopulmonary digital health niche is contested by MSK players; Wellinks should own it in AI search before they do.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 02</div>
+        <div class="play-title">Build Clinical Community & G2 Presence</div>
+        <div class="play-desc">Launch verified G2 and Capterra profiles with reviews from pulmonologists and care coordinators. Seed respiratory care discussions on r/medicine, r/respiratorytherapy, and clinician forums. Zero reviews in a clinical market undermines AI credibility scores.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 03</div>
+        <div class="play-title">Publish Clinical Outcomes & Partnership Content</div>
+        <div class="play-desc">Document the UMass Memorial Health deployment with measurable outcomes — COPD readmission reduction, patient adherence rates, RPM utilization data. Clinical evidence with specific metrics is the highest-signal content for AI models in healthcare.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 04</div>
+        <div class="play-title">Syndicate Across Digital Health Channels</div>
+        <div class="play-desc">Distribute to Fierce Healthcare, MobiHealthNews, Telehealth and Medicine Today, ATS (American Thoracic Society) channels, and LinkedIn healthcare communities. Cross-link from wellinks.com. Multi-channel distribution builds the clinical authority footprint AI models prioritize.</div>
+      </div>
+    </div>
+
+    <div class="signature">
+      <div class="sig-line"></div>
+      <div class="sig-name">Rajesh Gautam, PhD</div>
+      <div class="sig-title">Founder & CEO, Genhance.ai</div>
+      <a class="sig-link" href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

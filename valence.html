@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valence — genhance AI Visibility Audit</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #0a0e17; color: #e2e8f0; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .hero { background: linear-gradient(135deg, #0f1d3a 0%, #162a4f 30%, #1a365d 60%, #0f1d3a 100%); padding: 60px 0 48px; text-align: center; border-bottom: 3px solid #2d4a7a; }
+  .hero .logo-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px; }
+  .hero .genhance-badge { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #60a5fa; background: rgba(96,165,250,0.1); padding: 4px 14px; border-radius: 20px; border: 1px solid rgba(96,165,250,0.25); }
+  .hero h1 { font-size: 42px; font-weight: 800; color: #ffffff; margin: 16px 0 6px; letter-spacing: -0.5px; }
+  .hero .subtitle { font-size: 17px; color: #94a3b8; max-width: 640px; margin: 0 auto; }
+  .hero .company-meta { margin-top: 16px; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 24px; }
+  .hero .company-meta span { font-size: 14px; color: #94a3b8; }
+  .hero .company-meta strong { color: #cbd5e1; }
+  .stat-pills { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: -24px 0 36px; position: relative; z-index: 2; }
+  .stat-pill { background: linear-gradient(135deg, #1a2744, #16223a); border: 1px solid #2d4a7a; border-radius: 14px; padding: 18px 26px; text-align: center; min-width: 130px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  .stat-pill .stat-value { font-size: 26px; font-weight: 800; color: #ffffff; }
+  .stat-pill .stat-value.score-low { color: #f87171; }
+  .stat-pill .stat-value.zero { color: #64748b; }
+  .stat-pill .stat-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: #64748b; margin-top: 4px; }
+  .key-finding { background: linear-gradient(135deg, #3d2a0a, #2d1f07); border: 1px solid #b45309; border-left: 5px solid #f59e0b; border-radius: 10px; padding: 20px 24px; margin-bottom: 36px; }
+  .key-finding .badge { display: inline-block; background: #f59e0b; color: #0a0e17; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; margin-bottom: 10px; }
+  .key-finding p { font-size: 15px; color: #fcd34d; font-weight: 500; }
+  .section-title { font-size: 20px; font-weight: 700; color: #e2e8f0; margin: 36px 0 18px; display: flex; align-items: center; gap: 10px; }
+  .section-title::before { content: ''; width: 4px; height: 22px; background: #60a5fa; border-radius: 2px; display: inline-block; }
+  .query-card { background: linear-gradient(135deg, #111a2e, #0f172a); border: 1px solid #1e293b; border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; transition: border-color 0.2s; }
+  .query-card:hover { border-color: #334155; }
+  .query-card .query-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .query-card .query-text { font-size: 15px; font-weight: 600; color: #cbd5e1; }
+  .query-card .query-num { font-size: 12px; color: #64748b; }
+  .badge-presence { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; }
+  .badge-absent { background: rgba(248,113,113,0.15); color: #f87171; border: 1px solid rgba(248,113,113,0.3); }
+  .badge-weak { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .query-card .analysis { font-size: 13px; color: #94a3b8; line-height: 1.7; }
+  .comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 36px; }
+  .comp-card { background: #111a2e; border: 1px solid #1e293b; border-radius: 10px; padding: 16px; text-align: center; }
+  .comp-card .comp-name { font-size: 15px; font-weight: 700; color: #e2e8f0; }
+  .comp-card .comp-detail { font-size: 12px; color: #64748b; margin-top: 4px; }
+  .cta { background: linear-gradient(135deg, #0f1d3a 0%, #0a1628 50%, #0d1f3c 100%); border: 1px solid #2d4a7a; border-radius: 14px; padding: 32px; text-align: center; margin-bottom: 40px; }
+  .cta h3 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+  .cta .cta-sub { font-size: 14px; color: #94a3b8; margin-bottom: 20px; }
+  .cta-plays { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; text-align: left; }
+  .cta-play { background: rgba(96,165,250,0.06); border: 1px solid rgba(96,165,250,0.15); border-radius: 8px; padding: 14px; }
+  .cta-play .play-num { font-size: 11px; font-weight: 800; color: #60a5fa; letter-spacing: 1px; }
+  .cta-play .play-text { font-size: 13px; color: #cbd5e1; margin-top: 4px; }
+  .signature { text-align: center; margin-bottom: 50px; padding-top: 24px; border-top: 1px solid #1e293b; }
+  .signature .sig-name { font-size: 16px; font-weight: 700; color: #e2e8f0; }
+  .signature .sig-title { font-size: 13px; color: #60a5fa; }
+  .signature .sig-link { font-size: 12px; color: #64748b; }
+  .signature .sig-link a { color: #60a5fa; text-decoration: none; }
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 28px; }
+    .stat-pills { gap: 10px; }
+    .stat-pill { padding: 12px 16px; min-width: 100px; }
+    .stat-pill .stat-value { font-size: 20px; }
+    .cta-plays { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <div class="logo-row">
+      <span class="genhance-badge">genhance.ai Audit</span>
+    </div>
+    <h1>Valence</h1>
+    <p class="subtitle">AI-powered Enterprise Leadership Coaching</p>
+    <div class="company-meta">
+      <span>📍 <strong>New York City Metropolitan Area</strong></span>
+      <span>👤 CEO: <strong>Parker Mitchell</strong></span>
+      <span>💰 <strong>$50M+ Series B</strong> (2026)</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="stat-pills">
+    <div class="stat-pill">
+      <div class="stat-value">$50M+</div>
+      <div class="stat-label">Funding</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value score-low">1/5</div>
+      <div class="stat-label">AI Visibility</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value zero">0</div>
+      <div class="stat-label">G2 Reviews</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value zero">0</div>
+      <div class="stat-label">Reddit Threads</div>
+    </div>
+  </div>
+
+  <div class="key-finding">
+    <span class="badge">⚠ Key Finding</span>
+    <p>Valence has raised $50M+ in Series B funding, earned ISO 42001 certification for responsible AI, and won Fast Company's 2026 Best Workplace for Innovators — yet it has <strong>zero G2 reviews and zero Reddit presence</strong>. BetterUp and CoachHub dominate every coaching-related query with years of content depth, thousands of G2 reviews, and aggressive SEO. Valence's AI coach "Nadia" and native Microsoft Teams integration are powerful differentiators, but they are invisible to prospects who start their buying journey on Google. The company needs to convert its enterprise credibility into search authority before the AI coaching window closes.</p>
+  </div>
+
+  <div class="section-title">Search Query Analysis</div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"best AI leadership coaching platform 2026"</span>
+      <span class="query-num">Q1</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">BetterUp and CoachHub dominate this query with G2 listicles, comparison pages, and sponsored content. Valence does not appear on page 1 or 2 — despite having a more advanced AI-native product. The ISO 42001 certification and Fast Company award are powerful trust signals that, if surfaced in content, could differentiate Valence from human-coach-first competitors. A dedicated landing page targeting "AI leadership coaching" is table stakes.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"enterprise AI coach for managers"</span>
+      <span class="query-num">Q2</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">This is Valence's sweet spot — "AI coach" + "managers" + "enterprise." BetterUp's AI offering is an add-on to its human coaching platform; Valence is AI-native. But the SERP doesn't reflect this distinction. A comparison page ("Valence vs BetterUp: AI-Native Coaching vs Human-First Coaching") would give buyers a framework for evaluating AI coaching platforms and position Valence as the purpose-built choice.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"AI coaching vs human coaching ROI"</span>
+      <span class="query-num">Q3</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">A high-intent research query from HR and L&D leaders evaluating whether to invest in AI coaching. Academic papers, consulting reports, and BetterUp's own ROI studies fill the SERP. Valence is perfectly positioned to own this query with original research — a "Valence ROI Report" comparing AI coaching outcomes to traditional coaching, backed by customer data and the ISO 42001 certification as a trust anchor.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"employee development AI tools enterprise"</span>
+      <span class="query-num">Q4</span>
+    </div>
+    <span class="badge-presence badge-weak">WEAK</span>
+    <p class="analysis">This broader category query is dominated by L&D platforms (Degreed, Docebo) and HR tech publications. Valence may appear in Fast Company coverage or earned media, but has no owned content ranking here. A contributed article or guest post positioning Valence as the "AI layer for employee development" — with the Teams integration as the distribution advantage — would bridge into this higher-volume space.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"how to scale leadership coaching with AI"</span>
+      <span class="query-num">Q5</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">An educational, top-of-funnel query from HR leaders who know coaching is valuable but can't afford 1:1 human coaching for every manager. This is Valence's core value proposition. A comprehensive guide — "How to Scale Leadership Coaching with AI: A Practical Guide for Enterprise HR" — with screenshots of Nadia in Teams, pricing context, and implementation timelines would convert this search traffic into qualified demos.</p>
+  </div>
+
+  <div class="section-title">Key Competitors</div>
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-name">BetterUp</div>
+      <div class="comp-detail">Market leader, 400+ G2 reviews, human-first + AI add-on</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">CoachHub</div>
+      <div class="comp-detail">Global digital coaching, strong European presence, 200+ G2 reviews</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Sounding Board</div>
+      <div class="comp-detail">Leadership coaching platform, enterprise-focused, measurable outcomes</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Torch</div>
+      <div class="comp-detail">Coaching + mentoring, integrated development, strong mid-market</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>Ready to own the AI coaching category?</h3>
+    <p class="cta-sub">4 genhance plays to turn $50M in funding into search authority</p>
+    <div class="cta-plays">
+      <div class="cta-play">
+        <span class="play-num">PLAY 01</span>
+        <p class="play-text">Publish comparison pages (Valence vs BetterUp / CoachHub / Torch) that frame the AI-native vs. human-first distinction. Use ISO 42001, Fast Company award, and Nadia's Teams integration as differentiators.</p>
+      </div>
+      <div class="cta-play">
+        <span class="play-num">PLAY 02</span>
+        <p class="play-text">Launch an aggressive G2 review campaign targeting 50+ reviews in 120 days. Leverage the Fast Company Best Workplace award to activate employee advocates and early enterprise customers.</p>
+      </div>
+      <div class="cta-play">
+        <span class="play-num">PLAY 03</span>
+        <p class="play-text">Produce the "Valence AI Coaching ROI Report" — original research comparing AI coaching outcomes to traditional coaching, with customer case studies and ISO 42001 as a trust anchor. Make it the definitive citation for AI coaching ROI.</p>
+      </div>
+      <div class="cta-play">
+        <span class="play-num">PLAY 04</span>
+        <p class="play-text">Activate Reddit communities (r/humanresources, r/leadership, r/IOPsychology) with founder-led AMAs and data-backed posts on coaching at scale. Seed the "AI coaching" category on G2 before BetterUp captures it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signature">
+    <p class="sig-name">Rajesh Gautam, PhD</p>
+    <p class="sig-title">Founder &amp; CEO, genhance.ai</p>
+    <p class="sig-link"><a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a></p>
+  </div>
+</div>
+
+</body>
+</html>

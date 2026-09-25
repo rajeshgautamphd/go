@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chamelio — genhance AI Visibility Audit</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #0a0e17; color: #e2e8f0; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  /* Gradient Header */
+  .hero { background: linear-gradient(135deg, #0f1d3a 0%, #162a4f 30%, #1a365d 60%, #0f1d3a 100%); padding: 60px 0 48px; text-align: center; border-bottom: 3px solid #2d4a7a; }
+  .hero .logo-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px; }
+  .hero .genhance-badge { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #60a5fa; background: rgba(96,165,250,0.1); padding: 4px 14px; border-radius: 20px; border: 1px solid rgba(96,165,250,0.25); }
+  .hero h1 { font-size: 42px; font-weight: 800; color: #ffffff; margin: 16px 0 6px; letter-spacing: -0.5px; }
+  .hero .subtitle { font-size: 17px; color: #94a3b8; max-width: 640px; margin: 0 auto; }
+  .hero .company-meta { margin-top: 16px; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 24px; }
+  .hero .company-meta span { font-size: 14px; color: #94a3b8; }
+  .hero .company-meta strong { color: #cbd5e1; }
+  /* Stat Pills */
+  .stat-pills { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: -24px 0 36px; position: relative; z-index: 2; }
+  .stat-pill { background: linear-gradient(135deg, #1a2744, #16223a); border: 1px solid #2d4a7a; border-radius: 14px; padding: 18px 26px; text-align: center; min-width: 130px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  .stat-pill .stat-value { font-size: 26px; font-weight: 800; color: #ffffff; }
+  .stat-pill .stat-value.score-low { color: #f87171; }
+  .stat-pill .stat-value.zero { color: #64748b; }
+  .stat-pill .stat-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: #64748b; margin-top: 4px; }
+  /* Key Finding */
+  .key-finding { background: linear-gradient(135deg, #3d2a0a, #2d1f07); border: 1px solid #b45309; border-left: 5px solid #f59e0b; border-radius: 10px; padding: 20px 24px; margin-bottom: 36px; }
+  .key-finding .badge { display: inline-block; background: #f59e0b; color: #0a0e17; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; margin-bottom: 10px; }
+  .key-finding p { font-size: 15px; color: #fcd34d; font-weight: 500; }
+  /* Section Headers */
+  .section-title { font-size: 20px; font-weight: 700; color: #e2e8f0; margin: 36px 0 18px; display: flex; align-items: center; gap: 10px; }
+  .section-title::before { content: ''; width: 4px; height: 22px; background: #60a5fa; border-radius: 2px; display: inline-block; }
+  /* Query Cards */
+  .query-card { background: linear-gradient(135deg, #111a2e, #0f172a); border: 1px solid #1e293b; border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; transition: border-color 0.2s; }
+  .query-card:hover { border-color: #334155; }
+  .query-card .query-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .query-card .query-text { font-size: 15px; font-weight: 600; color: #cbd5e1; }
+  .query-card .query-num { font-size: 12px; color: #64748b; }
+  .badge-presence { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; }
+  .badge-absent { background: rgba(248,113,113,0.15); color: #f87171; border: 1px solid rgba(248,113,113,0.3); }
+  .badge-weak { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .query-card .analysis { font-size: 13px; color: #94a3b8; line-height: 1.7; }
+  /* Competitor Cards */
+  .comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 36px; }
+  .comp-card { background: #111a2e; border: 1px solid #1e293b; border-radius: 10px; padding: 16px; text-align: center; }
+  .comp-card .comp-name { font-size: 15px; font-weight: 700; color: #e2e8f0; }
+  .comp-card .comp-detail { font-size: 12px; color: #64748b; margin-top: 4px; }
+  /* CTA */
+  .cta { background: linear-gradient(135deg, #0f1d3a 0%, #0a1628 50%, #0d1f3c 100%); border: 1px solid #2d4a7a; border-radius: 14px; padding: 32px; text-align: center; margin-bottom: 40px; }
+  .cta h3 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+  .cta .cta-sub { font-size: 14px; color: #94a3b8; margin-bottom: 20px; }
+  .cta-plays { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; text-align: left; }
+  .cta-play { background: rgba(96,165,250,0.06); border: 1px solid rgba(96,165,250,0.15); border-radius: 8px; padding: 14px; }
+  .cta-play .play-num { font-size: 11px; font-weight: 800; color: #60a5fa; letter-spacing: 1px; }
+  .cta-play .play-text { font-size: 13px; color: #cbd5e1; margin-top: 4px; }
+  /* Signature */
+  .signature { text-align: center; margin-bottom: 50px; padding-top: 24px; border-top: 1px solid #1e293b; }
+  .signature .sig-name { font-size: 16px; font-weight: 700; color: #e2e8f0; }
+  .signature .sig-title { font-size: 13px; color: #60a5fa; }
+  .signature .sig-link { font-size: 12px; color: #64748b; }
+  .signature .sig-link a { color: #60a5fa; text-decoration: none; }
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 28px; }
+    .stat-pills { gap: 10px; }
+    .stat-pill { padding: 12px 16px; min-width: 100px; }
+    .stat-pill .stat-value { font-size: 20px; }
+    .cta-plays { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero / Gradient Header -->
+<section class="hero">
+  <div class="container">
+    <div class="logo-row">
+      <span class="genhance-badge">genhance.ai Audit</span>
+    </div>
+    <h1>Chamelio</h1>
+    <p class="subtitle">AI-native Legal CLM Platform — In-House Contract Lifecycle Management</p>
+    <div class="company-meta">
+      <span>📍 <strong>New York, NY</strong></span>
+      <span>👤 CEO: <strong>Alex Zilberman</strong></span>
+      <span>💰 <strong>$26M Series A</strong> (Sep 2026)</span>
+    </div>
+  </div>
+</section>
+
+<!-- Stat Pills -->
+<div class="container">
+  <div class="stat-pills">
+    <div class="stat-pill">
+      <div class="stat-value">$26M</div>
+      <div class="stat-label">Funding</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value score-low">1/5</div>
+      <div class="stat-label">AI Visibility</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value zero">0</div>
+      <div class="stat-label">G2 Reviews</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value zero">0</div>
+      <div class="stat-label">Reddit Threads</div>
+    </div>
+  </div>
+
+  <!-- Key Finding -->
+  <div class="key-finding">
+    <span class="badge">⚠ Key Finding</span>
+    <p>Chamelio has raised $26M with ARR quadrupling in 5 months, yet has <strong>zero G2 reviews and zero Reddit presence</strong>. The company is invisible in AI-legal search queries. Competitors Ironclad and Icertis dominate every high-intent SERP. Without immediate content and review-generation investment, Chamelio risks ceding the AI-native CLM category to incumbents who are already publishing comparison pages and thought leadership.</p>
+  </div>
+
+  <!-- Query Analysis -->
+  <div class="section-title">Search Query Analysis</div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"best contract lifecycle management software 2026"</span>
+      <span class="query-num">Q1</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">Ironclad, Icertis, and LinkSquares dominate the SERP with comparison guides and G2 listicles. Chamelio does not appear anywhere on page 1. This is a high-volume, high-intent query — buyers at the top of funnel. Without a dedicated landing page or third-party listing, Chamelio is losing every prospect who starts their search here.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"AI legal CLM platform for in-house teams"</span>
+      <span class="query-num">Q2</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">This is Chamelio's ideal buyer-intent query — "AI" + "CLM" + "in-house teams." Yet the SERP is occupied by Ironclad's AI features page, ContractPodAi's blog, and generic legal-tech roundups. Chamelio's own website may rank for branded search, but it does not surface for this high-intent long-tail. A dedicated comparison and category-definition page is urgently needed.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"Ironclad vs alternatives AI contract management"</span>
+      <span class="query-num">Q3</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">Ironclad's competitors (Icertis, LinkSquares) appear in comparison articles, but Chamelio is missing. This query signals a buyer already evaluating Ironclad and looking for alternatives. A well-optimized "Chamelio vs Ironclad" comparison page — with feature tables, pricing context, and migration guidance — would intercept these prospects at the evaluation stage.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"legal technology trends 2026 enterprise"</span>
+      <span class="query-num">Q4</span>
+    </div>
+    <span class="badge-presence badge-weak">WEAK</span>
+    <p class="analysis">Chamelio may be tangentially mentioned in broader legal-tech trend pieces, but without a bylined thought-leadership article or contributed quote, it has no authoritative presence. Competitors like ContractPodAi and Ironclad publish annual "State of Legal AI" reports that earn backlinks and SERP real estate. Chamelio should produce its own trend report to build domain authority.</p>
+  </div>
+
+  <div class="query-card">
+    <div class="query-header">
+      <span class="query-text">"how to automate contract review with AI"</span>
+      <span class="query-num">Q5</span>
+    </div>
+    <span class="badge-presence badge-absent">ABSENT</span>
+    <p class="analysis">A high-volume educational query for legal and procurement professionals. Law firm blogs, Ironclad's resources, and generic AI vendors occupy the SERP. Chamelio's product is purpose-built for exactly this use case, yet it has no tutorial, guide, or demo content targeting this query. A step-by-step guide with embedded demo video would convert this traffic into pipeline.</p>
+  </div>
+
+  <!-- Competitors -->
+  <div class="section-title">Key Competitors</div>
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-name">Ironclad</div>
+      <div class="comp-detail">Market leader, strong AI positioning, G2 presence</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Icertis</div>
+      <div class="comp-detail">Enterprise CLM, extensive partner ecosystem</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">LinkSquares</div>
+      <div class="comp-detail">AI-powered, strong SMB/mid-market presence</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">ContractPodAi</div>
+      <div class="comp-detail">AI-first brand, established content marketing</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h3>Ready to own the AI-native CLM category?</h3>
+    <p class="cta-sub">4 genhance plays to capture the buyers your competitors are taking today</p>
+    <div class="cta-plays">
+      <div class="cta-play">
+        <span class="play-num">PLAY 01</span>
+        <p class="play-text">Publish comparison pages (Chamelio vs Ironclad / Icertis / LinkSquares) with feature matrices and migration guides to intercept evaluation-stage buyers.</p>
+      </div>
+      <div class="cta-play">
+        <span class="play-num">PLAY 02</span>
+        <p class="play-text">Launch a G2 review campaign — target 25+ reviews in 90 days. Incentivize recent customers with the narrative of quadrupling ARR in 5 months.</p>
+      </div>
+      <div class="cta-play">
+        <span class="play-num">PLAY 03</span>
+        <p class="play-text">Produce an annual "State of AI-Native Legal CLM" report with original data and CEO byline to build backlinks and topical authority.</p>
+      </div>
+      <div class="cta-play">
+        <span class="play-num">PLAY 04</span>
+        <p class="play-text">Seed Reddit communities (r/legaltech, r/CLM) with authentic founder posts and AMAs. Zero threads is a missed distribution channel for a technical audience.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signature -->
+  <div class="signature">
+    <p class="sig-name">Rajesh Gautam, PhD</p>
+    <p class="sig-title">Founder &amp; CEO, genhance.ai</p>
+    <p class="sig-link"><a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a></p>
+  </div>
+</div>
+
+</body>
+</html>

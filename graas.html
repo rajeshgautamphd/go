@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genhance AI Visibility Audit — Graas</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0b0f19; color: #e2e8f0; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #0f1a3a 0%, #0d1b3e 30%, #13244a 60%, #0a1628 100%); padding: 60px 0 48px; border-bottom: 1px solid rgba(59, 130, 246, 0.15); }
+  .header .container { text-align: center; }
+  .badge-logo { display: inline-flex; align-items: center; gap: 10px; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 100px; padding: 8px 20px; margin-bottom: 24px; font-size: 14px; font-weight: 600; color: #60a5fa; letter-spacing: 0.5px; }
+  .badge-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: #3b82f6; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .header h1 { font-size: 42px; font-weight: 800; background: linear-gradient(135deg, #ffffff 0%, #93c5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+  .header .subtitle { font-size: 18px; color: #94a3b8; margin-bottom: 6px; }
+  .header .meta { font-size: 14px; color: #64748b; }
+
+  /* Stats Row */
+  .stats-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
+  .stat-pill { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.3); border-radius: 16px; padding: 20px 28px; text-align: center; min-width: 150px; }
+  .stat-pill .stat-value { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, #e2e8f0, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill .stat-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; margin-top: 4px; }
+  .stat-pill.funding .stat-value { background: linear-gradient(135deg, #34d399, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.ai-vis .stat-value { background: linear-gradient(135deg, #fb923c, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.g2 .stat-value { background: linear-gradient(135deg, #f87171, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-pill.reddit .stat-value { background: linear-gradient(135deg, #a78bfa, #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* Sections */
+  section { padding: 48px 0; border-bottom: 1px solid rgba(71, 85, 105, 0.12); }
+  section h2 { font-size: 22px; font-weight: 700; color: #e2e8f0; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  section h2 .icon { font-size: 24px; }
+
+  /* Company Profile */
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .profile-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 24px; }
+  .profile-card h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 12px; }
+  .profile-card p { font-size: 15px; color: #cbd5e1; line-height: 1.7; }
+  .profile-card .tag { display: inline-block; background: rgba(59, 130, 246, 0.12); color: #60a5fa; font-size: 13px; padding: 4px 12px; border-radius: 8px; margin: 3px 4px 3px 0; }
+
+  /* Key Finding */
+  .key-finding { background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(251, 191, 36, 0.05) 100%); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 16px; padding: 28px 32px; }
+  .key-finding .kf-badge { display: inline-flex; align-items: center; gap: 8px; color: #f59e0b; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+  .key-finding .kf-badge::before { content: '⚠'; font-size: 16px; }
+  .key-finding p { color: #fcd34d; font-size: 16px; font-weight: 500; line-height: 1.7; }
+  .key-finding .kf-highlight { color: #fbbf24; font-weight: 700; }
+
+  /* Query Cards */
+  .query-grid { display: flex; flex-direction: column; gap: 16px; }
+  .query-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 24px; transition: border-color 0.2s; }
+  .query-card:hover { border-color: rgba(59, 130, 246, 0.25); }
+  .query-card .q-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 12px; }
+  .query-card .q-query { font-size: 16px; font-weight: 600; color: #e2e8f0; font-family: 'SF Mono', 'Fira Code', monospace; flex: 1; }
+  .query-card .q-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 12px; border-radius: 8px; white-space: nowrap; }
+  .q-badge.present { background: rgba(34, 197, 94, 0.12); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.2); }
+  .q-badge.weak { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
+  .q-badge.absent { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+  .query-card .q-analysis { font-size: 14px; color: #94a3b8; line-height: 1.65; }
+
+  /* Competitor Cards */
+  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .competitor-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 14px; padding: 20px; text-align: center; transition: border-color 0.2s; }
+  .competitor-card:hover { border-color: rgba(239, 68, 68, 0.25); }
+  .competitor-card .comp-name { font-size: 16px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .competitor-card .comp-threat { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #f87171; font-weight: 600; }
+
+  /* CTA */
+  .cta-section { background: linear-gradient(135deg, #0f1a3a 0%, #0d1b3e 40%, #101e3f 70%, #0a1628 100%); padding: 56px 0; border-bottom: none; }
+  .cta-section h2 { font-size: 26px; text-align: center; background: linear-gradient(135deg, #ffffff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+  .cta-section .cta-sub { text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 36px; }
+  .plays-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .play-card { background: rgba(59, 130, 246, 0.06); border: 1px solid rgba(59, 130, 246, 0.18); border-radius: 14px; padding: 22px; }
+  .play-card .play-num { font-size: 12px; font-weight: 700; color: #3b82f6; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; }
+  .play-card .play-title { font-size: 16px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .play-card .play-desc { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+
+  /* Signature */
+  .signature { text-align: center; padding: 36px 0 48px; border-top: 1px solid rgba(71, 85, 105, 0.12); }
+  .signature .sig-name { font-size: 17px; font-weight: 700; color: #e2e8f0; }
+  .signature .sig-title { font-size: 13px; color: #64748b; margin-top: 2px; }
+  .signature .sig-link { font-size: 13px; color: #60a5fa; text-decoration: none; margin-top: 4px; display: inline-block; }
+  .signature .sig-link:hover { text-decoration: underline; }
+  .sig-line { width: 40px; height: 2px; background: rgba(59, 130, 246, 0.4); margin: 16px auto; border-radius: 2px; }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .profile-grid, .plays-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 30px; }
+    .stats-row { gap: 10px; }
+    .stat-pill { padding: 16px 18px; min-width: 120px; }
+    .stat-pill .stat-value { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="badge-logo"><span class="dot"></span> Genhance AI Visibility Audit</div>
+    <h1>Graas</h1>
+    <p class="subtitle">AI Retail Commerce Platform</p>
+    <p class="meta">Singapore &nbsp;·&nbsp; CEO: Prem Bhatia &nbsp;·&nbsp; Audit Date: September 2026</p>
+
+    <div class="stats-row">
+      <div class="stat-pill funding">
+        <div class="stat-value">$17M+</div>
+        <div class="stat-label">Funding (Series B)</div>
+      </div>
+      <div class="stat-pill ai-vis">
+        <div class="stat-value">1 / 5</div>
+        <div class="stat-label">AI Visibility</div>
+      </div>
+      <div class="stat-pill g2">
+        <div class="stat-value">0</div>
+        <div class="stat-label">G2 Reviews</div>
+      </div>
+      <div class="stat-pill reddit">
+        <div class="stat-value">0</div>
+        <div class="stat-label">Reddit Threads</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🏢</span> Company Profile</h2>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h3>About</h3>
+        <p>System of Intelligence for Retail Commerce. The Commerce Knowledge Graph unifies fragmented product, customer, transaction, inventory, and operational data to power AI agents. Following the acquisition of Trustana, Graas is positioned as the agentic commerce category leader in Southeast Asia.</p>
+      </div>
+      <div class="profile-card">
+        <h3>Investors</h3>
+        <p>
+          <span class="tag">LemmaTree (Temasek-backed)</span>
+          <span class="tag">Integra Partners</span>
+          <span class="tag">Tin Men Capital</span>
+          <span class="tag">The Xander Group</span>
+        </p>
+        <h3 style="margin-top:16px;">Funding Details</h3>
+        <p style="font-size:14px; color:#94a3b8;">$17M Series B raised August 2026. Total funding: $17M+. Also acquired Trustana for product-data integration capabilities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🔍</span> Key Finding</h2>
+    <div class="key-finding">
+      <div class="kf-badge">Key Finding</div>
+      <p>Graas is pioneering the <span class="kf-highlight">agentic commerce</span> category in Southeast Asia with a Temasek-backed $17M+ Series B, yet its AI visibility is <span class="kf-highlight">virtually nonexistent</span>. Zero G2 reviews and zero Reddit threads mean Graas is invisible in both structured review platforms and community-driven discovery. Competitors like CommerceIQ, Syndigo, and Salsify have years of content accumulation — product comparison pages, thought leadership, and verified reviews — that make them default AI recommendations. Graas' Commerce Knowledge Graph is a genuinely differentiated asset, but without deliberate AI visibility engineering, the category it's creating may be attributed to louder competitors by the AI models that increasingly drive buyer research.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">🎯</span> Query Landscape Analysis</h2>
+    <div class="query-grid">
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"best AI retail commerce platform 2026"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Graas is entirely absent from AI-generated responses for this category-defining query. CommerceIQ, Syndigo, and Salsify dominate with structured comparison content and extensive G2 review profiles. This is the highest-value query for retail enterprise buyers and Graas has zero presence.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"retail commerce knowledge graph AI"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Despite the Commerce Knowledge Graph being Graas' core differentiator, AI models do not surface Graas for this query. The company needs dedicated technical content explaining knowledge graph architecture, data unification methodology, and retail-specific ontology design to claim this space.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"agentic commerce platform Southeast Asia"</span>
+          <span class="q-badge weak">WEAK</span>
+        </div>
+        <p class="q-analysis">Graas shows minimal signals for Southeast Asia commerce queries, likely through press coverage of the Trustana acquisition and Temasek connection. However, this should be a flagship query where Graas dominates. Regional thought leadership, SEA market reports, and localized case studies are urgently needed.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"AI product data management for ecommerce"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">Post-Trustana acquisition, Graas has enhanced product data capabilities but is invisible for product data management queries. Salsify and Syndigo dominate with comprehensive PIM/PXM content. Graas must publish product-data integration guides, API documentation, and data unification case studies.</p>
+      </div>
+
+      <div class="query-card">
+        <div class="q-header">
+          <span class="q-query">"how to unify retail data for AI agents"</span>
+          <span class="q-badge absent">ABSENT</span>
+        </div>
+        <p class="q-analysis">This educational query is perfectly aligned with Graas' value proposition but yields zero Graas content. The company should publish definitive guides on retail data unification, knowledge graph construction, and AI agent enablement. This is Graas' category to own — but it currently owns nothing in AI search.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="icon">⚔️</span> Competitive Landscape</h2>
+    <div class="competitor-grid">
+      <div class="competitor-card">
+        <div class="comp-name">CommerceIQ</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Syndigo</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Salsify</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Intelligence Node</div>
+        <div class="comp-threat">Moderate Threat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Genhance Visibility Playbook</h2>
+    <p class="cta-sub">A tactical 4-play sequence to put Graas on the AI map.</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="play-num">Play 01</div>
+        <div class="play-title">Define the Agentic Commerce Category</div>
+        <div class="play-desc">Publish the definitive guide to agentic commerce, knowledge graph methodology for retail, and AI-native commerce architecture. Own the category definition before CommerceIQ or Salsify claim it in AI search results.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 02</div>
+        <div class="play-title">Build Trust via Reviews & Community</div>
+        <div class="play-desc">Launch G2 and Capterra profiles with verified customer reviews from Southeast Asian retail brands. Seed r/ecommerce, r/retailtech, and Southeast Asia business forums. Zero reviews create a trust deficit AI models penalize.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 03</div>
+        <div class="play-title">Publish Regional Commerce Intelligence</div>
+        <div class="play-desc">Release Southeast Asia retail market reports, commerce data unification case studies, and Trustana integration success stories. Regional specificity is a moat — own the SEA commerce AI narrative with localized, data-rich content.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 04</div>
+        <div class="play-title">Syndicate Across Commerce & Tech Channels</div>
+        <div class="play-desc">Distribute to Retail Dive, Tech in Asia, e27, and LinkedIn commerce communities. Cross-link from graas.ai. Build a multi-channel footprint that signals category authority to AI retrieval systems scanning for commerce platform recommendations.</div>
+      </div>
+    </div>
+
+    <div class="signature">
+      <div class="sig-line"></div>
+      <div class="sig-name">Rajesh Gautam, PhD</div>
+      <div class="sig-title">Founder & CEO, Genhance.ai</div>
+      <a class="sig-link" href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
