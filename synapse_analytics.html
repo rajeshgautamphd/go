@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Synapse Analytics</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #162a5e 50%, #0d1b3e 100%); padding: 50px 0 40px; text-align: center; }
+.header h1 { font-size: 28px; color: #fff; margin-bottom: 8px; }
+.header .subtitle { font-size: 16px; color: #8892b0; margin-bottom: 24px; }
+.header .company-name { font-size: 36px; font-weight: 700; color: #64ffda; margin: 12px 0 4px; }
+
+.stats { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: 30px 0 20px; }
+.stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(100,255,218,0.2); border-radius: 12px; padding: 14px 20px; min-width: 130px; text-align: center; }
+.stat-pill .value { font-size: 22px; font-weight: 700; color: #64ffda; }
+.stat-pill .label { font-size: 11px; color: #8892b0; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+
+.key-finding { background: linear-gradient(135deg, rgba(255,165,0,0.15), rgba(255,140,0,0.05)); border: 1px solid rgba(255,165,0,0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+.key-finding .label { color: #ffa500; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.key-finding p { color: #d0d0d0; font-size: 15px; line-height: 1.7; }
+
+.section-title { font-size: 20px; font-weight: 700; color: #fff; margin: 40px 0 20px; border-bottom: 2px solid rgba(100,255,218,0.2); padding-bottom: 10px; }
+
+.query-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.query-card .q-text { color: #e0e0e0; font-size: 14px; font-weight: 500; flex: 1; }
+.query-card .badge { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; margin-left: 12px; }
+.badge-absent { background: rgba(255,80,80,0.15); color: #ff5050; border: 1px solid rgba(255,80,80,0.3); }
+.badge-weak { background: rgba(255,165,0,0.15); color: #ffa500; border: 1px solid rgba(255,165,0,0.3); }
+.query-card .analysis { color: #8892b0; font-size: 13px; line-height: 1.6; }
+
+.competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; margin-bottom: 30px; }
+.competitor-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px; text-align: center; }
+.competitor-card .c-name { font-size: 14px; color: #e0e0e0; font-weight: 600; }
+.competitor-card .c-reviews { font-size: 12px; color: #ffa500; margin-top: 4px; }
+
+.cta-section { background: linear-gradient(135deg, #0d1b3e 0%, #162a5e 100%); border: 1px solid rgba(100,255,218,0.15); border-radius: 14px; padding: 30px; margin: 30px 0; }
+.cta-section h3 { color: #64ffda; font-size: 20px; margin-bottom: 16px; }
+.play-item { display: flex; align-items: flex-start; margin-bottom: 14px; }
+.play-item .num { background: rgba(100,255,218,0.15); color: #64ffda; min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; margin-right: 12px; flex-shrink: 0; }
+.play-item .play-text { font-size: 14px; color: #c0c0c0; line-height: 1.6; }
+
+.footer { text-align: center; padding: 40px 0; color: #8892b0; font-size: 13px; border-top: 1px solid rgba(100,255,218,0.1); margin-top: 40px; }
+.footer a { color: #64ffda; text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+.company-info { display: flex; flex-wrap: wrap; gap: 20px; margin: 24px 0; }
+.info-item { font-size: 13px; color: #8892b0; }
+.info-item strong { color: #c0c0c0; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <div style="color:#64ffda;font-size:14px;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">AI Search Visibility Audit</div>
+    <div class="company-name">Synapse Analytics</div>
+    <div class="subtitle">Agentic decisioning infrastructure for regulated financial institutions</div>
+    <div class="stats">
+      <div class="stat-pill"><div class="value">$13M</div><div class="label">Series A</div></div>
+      <div class="stat-pill"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
+      <div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+      <div class="stat-pill"><div class="value">0</div><div class="label">Reddit</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="company-info">
+    <div class="info-item"><strong>Category:</strong> AI Decisioning Infrastructure / FinTech</div>
+    <div class="info-item"><strong>Location:</strong> Abu Dhabi, UAE</div>
+    <div class="info-item"><strong>Total Raised:</strong> $17M</div>
+    <div class="info-item"><strong>Investors:</strong> Partech, Y Combinator</div>
+  </div>
+
+  <div class="key-finding">
+    <div class="label">🔑 Key Finding</div>
+    <p>Synapse Analytics has raised $17M from Partech and Y Combinator yet has ZERO digital footprint on any financial technology review platform. FICO (232 G2 reviews) and Provenir (89 reviews) dominate AI answers for credit decisioning queries.</p>
+  </div>
+
+  <div class="section-title">📊 Category Query Analysis</div>
+    <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"best AI credit decisioning platform for banks 2026"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">Google AI Overviews cite FICO, Provenir, and Zest AI. Synapse Analytics is absent from all AI-generated answers.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"AI-powered lending risk assessment software comparison"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">G2's 'Credit Decisioning' category lists Provenir (89 reviews), FICO (232 reviews), and TurnKey Lender. No Synapse Analytics listing.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"financial institution AI decisioning infrastructure reviews"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">Capterra's lending software grid includes 20+ vendors. Synapse Analytics has no profile.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"best alternative credit scoring solutions for banks"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">Reddit r/fintech and r/banking threads mention Alloy and Socure for identity/risk. No mention of Synapse.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"regulated financial AI decisioning platform MENA"</div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="analysis">MENA-focused financial technology searches return regional banks' proprietary solutions. Synapse Analytics not cited.</div>
+  </div>
+
+  <div class="section-title">🏢 Competitors Dominating AI Answers</div>
+  <div class="competitor-grid">
+        <div class="competitor-card">
+      <div class="c-name">Provenir</div>
+      <div class="c-reviews">Dominant AI presence</div>
+    </div>
+    <div class="competitor-card">
+      <div class="c-name">FICO</div>
+      <div class="c-reviews">Dominant AI presence</div>
+    </div>
+    <div class="competitor-card">
+      <div class="c-name">Alloy</div>
+      <div class="c-reviews">Dominant AI presence</div>
+    </div>
+    <div class="competitor-card">
+      <div class="c-name">Socure</div>
+      <div class="c-reviews">Dominant AI presence</div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h3>🚀 4 Genhance Plays to Fix This</h3>
+        <div class="play-item">
+      <div class="num">1</div>
+      <div class="play-text">Create G2 profile under 'Credit Decisioning' and 'Risk Management' categories — solicit reviews from banking clients</div>
+    </div>
+    <div class="play-item">
+      <div class="num">2</div>
+      <div class="play-text">Engage in r/fintech and r/banking threads about AI lending — post as a decisioning infrastructure expert</div>
+    </div>
+    <div class="play-item">
+      <div class="num">3</div>
+      <div class="play-text">Publish technical content comparing agentic AI decisioning vs traditional rule-based systems on Synapse blog</div>
+    </div>
+    <div class="play-item">
+      <div class="num">4</div>
+      <div class="play-text">Submit to fintech analyst reports (Forrester, Gartner) for AI decisioning category inclusion</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Rajesh Gautam, PhD</strong><br>Founder and CEO, genhance.ai</p>
+    <p style="margin-top:8px;">
+      <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | 
+      <a href="https://genhance.ai">genhance.ai</a>
+    </p>
+    <p style="margin-top:12px;font-size:11px;color:#667;">genhance monitors what AI says about your company across Reddit, YouTube, G2, and 15+ surfaces — and helps you shape that narrative.</p>
+  </div>
+</div>
+
+</body>
+</html>
