@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Clarasight</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); padding: 3rem 2rem; text-align: center; border-bottom: 3px solid #3b82f6; }
+.header h1 { font-size: 2.2rem; color: #f8fafc; margin-bottom: 0.5rem; }
+.header .subtitle { color: #94a3b8; font-size: 1.1rem; }
+.container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+.stat-pills { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+.stat-pill { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.2rem 1.5rem; text-align: center; min-width: 140px; }
+.stat-pill .value { font-size: 1.8rem; font-weight: 700; color: #f8fafc; }
+.stat-pill .label { font-size: 0.75rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; margin-top: 0.25rem; }
+.key-finding { background: linear-gradient(135deg, #451a03, #78350f); border: 1px solid #f59e0b; border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+.key-finding h2 { color: #fbbf24; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.key-finding p { color: #fef3c7; font-size: 1.1rem; }
+.section-title { font-size: 1.3rem; color: #f8fafc; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #334155; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 1.2rem; margin-bottom: 1rem; }
+.query-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+.query-text { font-weight: 600; color: #e2e8f0; font-size: 0.95rem; }
+.badge { font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+.badge.present { background: #064e3b; color: #6ee7b7; }
+.badge.weak { background: #451a03; color: #fbbf24; }
+.query-analysis { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
+.competitors { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0; }
+.comp-card { background: #1e293b; border: 1px solid #475569; border-radius: 8px; padding: 0.6rem 1rem; }
+.comp-name { color: #cbd5e1; font-size: 0.9rem; font-weight: 500; }
+.cta { background: linear-gradient(135deg, #0f172a, #1e293b); border: 1px solid #3b82f6; border-radius: 12px; padding: 2rem; margin: 2.5rem 0; text-align: center; }
+.cta h2 { color: #f8fafc; font-size: 1.3rem; margin-bottom: 1rem; }
+.cta ul { text-align: left; color: #cbd5e1; font-size: 0.95rem; list-style: none; max-width: 500px; margin: 0 auto 1.5rem; }
+.cta ul li { padding: 0.3rem 0; }
+.cta ul li::before { content: '▸ '; color: #3b82f6; }
+.cta .cta-button { display: inline-block; background: #2563eb; color: white; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; }
+.footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.85rem; border-top: 1px solid #1e293b; margin-top: 2rem; }
+.footer a { color: #94a3b8; }
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>AI Search Visibility Audit</h1>
+    <div class="subtitle">Clarasight — AI Corporate Travel & Expense Management</div>
+</div>
+
+<div class="container">
+    <div class="stat-pills">
+        <div class="stat-pill">
+            <div class="value">$11.5M Series A</div>
+            <div class="label">Funding</div>
+        </div>
+        <div class="stat-pill">
+            <div class="value">0/5</div>
+            <div class="label">AI Visibility</div>
+        </div>
+        <div class="stat-pill">
+            <div class="value">0</div>
+            <div class="label">G2 Reviews</div>
+        </div>
+        <div class="stat-pill">
+            <div class="value">0</div>
+            <div class="label">Reddit</div>
+        </div>
+    </div>
+
+    <div class="key-finding">
+        <h2>⚠ Key Finding</h2>
+        <p>Clarasight raised <strong>$11.5M Series A</strong> and serves enterprise clients in ai corporate travel & expense management. But across 5 critical buyer queries, <strong>Clarasight appears in 0 of 5 AI-generated answers</strong>. AI search engines — ChatGPT, Google AI Overviews, Perplexity — cite competitors Navan, TravelPerk, SAP Concur instead. With <strong>0 G2 reviews</strong> and <strong>0 Reddit threads</strong>, Clarasight is AI-invisible in its own category.</p>
+    </div>
+
+    <div class="section-title">🔍 Query-by-Query Analysis</div>
+    
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"best corporate travel management software" 2026</span>
+                <span class="badge weak">WEAK</span>
+            </div>
+            <div class="query-analysis">AI Overviews cite Navan, TravelPerk, and SAP Concur — all with 500+ G2 reviews and active Reddit communities. Clarasight has zero presence across any UGC platform. Every review or mention shifts the AI narrative.</div>
+        </div>
+
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"enterprise travel expense AI platform"</span>
+                <span class="badge weak">WEAK</span>
+            </div>
+            <div class="query-analysis">This is an emerging sub-category where AI Overviews are still forming. Navan and Brex appear, but no vendor has established AI dominance. Clarasight's carbon-emission-aware approach is a unique angle that AI answers don't yet capture.</div>
+        </div>
+
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"business travel planning automation"</span>
+                <span class="badge weak">WEAK</span>
+            </div>
+            <div class="query-analysis">TravelPerk dominates with 1,400+ G2 reviews. Clarasight's 'mission control hub' concept — unifying travel + expense + carbon in one dashboard — has no UGC representation at all.</div>
+        </div>
+
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"corporate travel carbon management tool"</span>
+                <span class="badge weak">WEAK</span>
+            </div>
+            <div class="query-analysis">This niche query has almost no authoritative AI-cited UGC. Clarasight's built-in carbon tracking is a differentiator that could own this query with just 2-3 thoughtful Reddit or Quora contributions.</div>
+        </div>
+
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"travel spend optimization platform"</span>
+                <span class="badge weak">WEAK</span>
+            </div>
+            <div class="query-analysis">SAP Concur and Brex appear in AI-cited sources for spend optimization. Clarasight's AI-driven policy enforcement and automated savings identification — core features — are invisible to AI search engines.</div>
+        </div>
+
+    <div class="section-title">🏢 Named Competitors in AI Answers</div>
+    <div class="competitors"><div class="comp-card"><span class="comp-name">Navan</span></div>
+<div class="comp-card"><span class="comp-name">TravelPerk</span></div>
+<div class="comp-card"><span class="comp-name">SAP Concur</span></div>
+<div class="comp-card"><span class="comp-name">Brex (travel)</span></div></div>
+
+    <div class="cta">
+        <h2>How genhance fixes this</h2>
+        <ul>
+            <li><strong>Monitor</strong> — Real-time tracking of what AI answers say about Clarasight and competitors across 6 search engines</li>
+            <li><strong>Detect</strong> — Identify the exact Reddit threads, YouTube comments, and UGC sources feeding AI answers in the ai corporate travel & expense management category</li>
+            <li><strong>Engage</strong> — Strategic contribution to AI-indexed conversations so Clarasight gets cited</li>
+            <li><strong>Track</strong> — Before/after snapshots proving AI answer shift within 48 hours</li>
+        </ul>
+        <a href="https://genhance.ai" class="cta-button">See genhance in action →</a>
+    </div>
+</div>
+
+<div class="footer">
+    <p><strong>Rajesh Gautam, PhD</strong><br>Founder and CEO, genhance.ai</p>
+    <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+    <p style="margin-top:0.5rem">Generated clarasight.html — genhance batch 50</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Alex</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); padding: 3rem 2rem; text-align: center; border-bottom: 3px solid #3b82f6; }
+.header h1 { font-size: 2.2rem; color: #f8fafc; margin-bottom: 0.5rem; }
+.header .subtitle { color: #94a3b8; font-size: 1.1rem; }
+.container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+.stat-pills { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+.stat-pill { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.2rem 1.5rem; text-align: center; min-width: 140px; }
+.stat-pill .value { font-size: 1.8rem; font-weight: 700; color: #f8fafc; }
+.stat-pill .label { font-size: 0.75rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; margin-top: 0.25rem; }
+.key-finding { background: linear-gradient(135deg, #451a03, #78350f); border: 1px solid #f59e0b; border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+.key-finding h2 { color: #fbbf24; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.key-finding p { color: #fef3c7; font-size: 1.1rem; }
+.section-title { font-size: 1.3rem; color: #f8fafc; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #334155; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 1.2rem; margin-bottom: 1rem; }
+.query-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+.query-text { font-weight: 600; color: #e2e8f0; font-size: 0.95rem; }
+.badge { font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+.badge.present { background: #064e3b; color: #6ee7b7; }
+.badge.weak { background: #451a03; color: #fbbf24; }
+.query-analysis { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
+.competitors { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0; }
+.comp-card { background: #1e293b; border: 1px solid #475569; border-radius: 8px; padding: 0.6rem 1rem; }
+.comp-name { color: #cbd5e1; font-size: 0.9rem; font-weight: 500; }
+.cta { background: linear-gradient(135deg, #0f172a, #1e293b); border: 1px solid #3b82f6; border-radius: 12px; padding: 2rem; margin: 2.5rem 0; text-align: center; }
+.cta h2 { color: #f8fafc; font-size: 1.3rem; margin-bottom: 1rem; }
+.cta ul { text-align: left; color: #cbd5e1; font-size: 0.95rem; list-style: none; max-width: 500px; margin: 0 auto 1.5rem; }
+.cta ul li { padding: 0.3rem 0; }
+.cta ul li::before { content: '▸ '; color: #3b82f6; }
+.cta .cta-button { display: inline-block; background: #2563eb; color: white; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; }
+.footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.85rem; border-top: 1px solid #1e293b; margin-top: 2rem; }
+.footer a { color: #94a3b8; }
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>AI Search Visibility Audit</h1>
+    <div class="subtitle">Alex — AI Recruiting & Autonomous Interview Platform</div>
+</div>
+
+<div class="container">
+    <div class="stat-pills">
+        <div class="stat-pill">
+            <div class="value">$20M Series A</div>
+            <div class="label">Funding</div>
+        </div>
+        <div class="stat-pill">
+            <div class="value">0/5</div>
+            <div class="label">AI Visibility</div>
+        </div>
+        <div class="stat-pill">
+            <div class="value">0</div>
+            <div class="label">G2 Reviews</div>
+        </div>
+        <div class="stat-pill">
+            <div class="value">1</div>
+            <div class="label">Reddit</div>
+        </div>
+    </div>
+
+    <div class="key-finding">
+        <h2>⚠ Key Finding</h2>
+        <p>Alex raised <strong>$20M Series A</strong> and serves enterprise clients in ai recruiting & autonomous interview platform. But across 5 critical buyer queries, <strong>Alex appears in 0 of 5 AI-generated answers</strong>. AI search engines — ChatGPT, Google AI Overviews, Perplexity — cite competitors Mercor, Humanly, Paradox (Olivia) instead. With <strong>0 G2 reviews</strong> and <strong>1 Reddit threads</strong>, Alex is AI-invisible in its own category.</p>
+    </div>
+
+    <div class="section-title">🔍 Query-by-Query Analysis</div>
+    
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"best AI recruiting platform" 2026</span>
+                <span class="badge weak">WEAK</span>
+            </div>
+            <div class="query-analysis">AI Overviews cite HireVue and Paradox — both with 200+ G2 reviews and years of brand recognition. Alex has zero G2 presence despite conducting thousands of interviews daily for Fortune 500 clients.</div>
+        </div>
+
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"automated candidate screening software"</span>
+                <span class="badge weak">WEAK</span>
+            </div>
+            <div class="query-analysis">AI Overviews pull from G2's AI Recruiting grid: HireVue (4.3★, 200+ reviews), Paradox (4.7★, 150+ reviews), Humanly (4.5★, 12 reviews). Alex is not listed on G2 at all.</div>
+        </div>
+
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"AI phone interview platform hiring"</span>
+                <span class="badge weak">WEAK</span>
+            </div>
+            <div class="query-analysis">This is a narrower query where Alex's autonomous phone interviews are directly relevant. Humanly and Mercor appear but Alex — with YC W24 backing and Peak XV funding — is absent. One Reddit thread on r/ycombinator exists but isn't indexed for this query.</div>
+        </div>
+
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"recruitment automation AI comparison"</span>
+                <span class="badge weak">WEAK</span>
+            </div>
+            <div class="query-analysis">A high-intent buyer query. AI Overviews compare Paradox, HireVue, and Mercor. Alex's end-to-end approach (screening + interviewing + ATS integration) is a differentiator that AI answers don't capture.</div>
+        </div>
+
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"AI hiring assistant for enterprise"</span>
+                <span class="badge weak">WEAK</span>
+            </div>
+            <div class="query-analysis">Paradox and HireVue dominate with established enterprise relationships. Alex's Fortune 500 customer base and 1,000+ daily interviews — impressive metrics for a 2-year-old company — are invisible to AI search engines that have no UGC to cite.</div>
+        </div>
+
+    <div class="section-title">🏢 Named Competitors in AI Answers</div>
+    <div class="competitors"><div class="comp-card"><span class="comp-name">Mercor</span></div>
+<div class="comp-card"><span class="comp-name">Humanly</span></div>
+<div class="comp-card"><span class="comp-name">Paradox (Olivia)</span></div>
+<div class="comp-card"><span class="comp-name">HireVue</span></div></div>
+
+    <div class="cta">
+        <h2>How genhance fixes this</h2>
+        <ul>
+            <li><strong>Monitor</strong> — Real-time tracking of what AI answers say about Alex and competitors across 6 search engines</li>
+            <li><strong>Detect</strong> — Identify the exact Reddit threads, YouTube comments, and UGC sources feeding AI answers in the ai recruiting & autonomous interview platform category</li>
+            <li><strong>Engage</strong> — Strategic contribution to AI-indexed conversations so Alex gets cited</li>
+            <li><strong>Track</strong> — Before/after snapshots proving AI answer shift within 48 hours</li>
+        </ul>
+        <a href="https://genhance.ai" class="cta-button">See genhance in action →</a>
+    </div>
+</div>
+
+<div class="footer">
+    <p><strong>Rajesh Gautam, PhD</strong><br>Founder and CEO, genhance.ai</p>
+    <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+    <p style="margin-top:0.5rem">Generated alex_ai.html — genhance batch 50</p>
+</div>
+</body>
+</html>
