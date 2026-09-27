@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Nebulock</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f4f6f9;color:#1a1a2e;line-height:1.6}
+.header{background:linear-gradient(135deg,#0a1628 0%,#1a2a4a 100%);color:#fff;padding:60px 40px 50px;text-align:center;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 30% 50%,rgba(59,130,246,0.12) 0%,transparent 60%);pointer-events:none}
+.header-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.audit-label{font-size:13px;text-transform:uppercase;letter-spacing:3px;color:#60a5fa;margin-bottom:12px;font-weight:600}
+.header h1{font-size:42px;font-weight:800;margin-bottom:8px;letter-spacing:-0.5px}
+.header .company{font-size:24px;font-weight:600;color:#93c5fd;margin-bottom:4px}
+.header .category{font-size:16px;color:#94a3b8;font-weight:400}
+.stats-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:32px}
+.stat-pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:40px;padding:12px 24px;min-width:140px;backdrop-filter:blur(4px)}
+.stat-pill .value{font-size:22px;font-weight:700;color:#fbbf24}
+.stat-pill .label{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#94a3b8;margin-top:2px}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+.key-finding{background:linear-gradient(135deg,#fef3c7,#fde68a);border-left:5px solid #f59e0b;border-radius:10px;padding:24px 28px;margin:36px auto;max-width:960px;box-shadow:0 2px 12px rgba(245,158,11,0.15)}
+.key-finding .kf-label{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#b45309;font-weight:700;margin-bottom:8px}
+.key-finding p{font-size:17px;color:#78350f;line-height:1.65;font-weight:500}
+.section-title{font-size:22px;font-weight:700;color:#0a1628;margin:40px 0 20px;padding-bottom:10px;border-bottom:3px solid #1a2a4a;display:inline-block}
+.query-grid{display:flex;flex-direction:column;gap:20px;margin-bottom:40px}
+.query-card{background:#fff;border-radius:12px;padding:24px 28px;box-shadow:0 1px 6px rgba(0,0,0,0.07);border:1px solid #e2e8f0;transition:box-shadow .2s}
+.query-card:hover{box-shadow:0 4px 18px rgba(0,0,0,0.1)}
+.query-card .q-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.query-card .q-query{font-size:17px;font-weight:700;color:#1e293b}
+.badge{display:inline-block;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px}
+.badge-present{background:#dcfce7;color:#166534;border:1px solid #86efac}
+.badge-weak{background:#fef2f2;color:#991b1b;border:1px solid #fca5a5}
+.query-card .q-analysis{font-size:15px;color:#475569;line-height:1.65;margin-bottom:12px}
+.query-card .q-sources{font-size:13px;color:#64748b;margin-bottom:4px}
+.query-card .q-sources strong{color:#334155}
+.query-card .q-competitors{font-size:13px;color:#64748b}
+.query-card .q-competitors strong{color:#334155}
+.competitor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:48px}
+.comp-card{background:#fff;border-radius:10px;padding:20px 22px;box-shadow:0 1px 5px rgba(0,0,0,0.06);border:1px solid #e2e8f0;text-align:center}
+.comp-card .comp-name{font-size:16px;font-weight:700;color:#1e293b;margin-bottom:4px}
+.comp-card .comp-type{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#64748b;font-weight:600}
+.cta-section{background:linear-gradient(135deg,#0a1628,#1a2a4a);color:#fff;padding:50px 40px;text-align:center;margin-top:20px}
+.cta-section h2{font-size:26px;font-weight:700;margin-bottom:8px;color:#fbbf24}
+.cta-section .cta-sub{font-size:15px;color:#94a3b8;margin-bottom:32px}
+.plays-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;max-width:960px;margin:0 auto}
+.play-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:22px 20px;text-align:left;transition:background .2s}
+.play-card:hover{background:rgba(255,255,255,0.1)}
+.play-card .play-num{font-size:32px;font-weight:800;color:#fbbf24;margin-bottom:6px;opacity:0.7}
+.play-card h4{font-size:15px;font-weight:700;margin-bottom:6px;color:#e2e8f0}
+.play-card p{font-size:13px;color:#94a3b8;line-height:1.55}
+.footer{background:#060e1a;color:#64748b;text-align:center;padding:32px 24px;font-size:14px;line-height:1.7}
+.footer strong{color:#e2e8f0}
+.footer a{color:#60a5fa;text-decoration:none}
+.footer a:hover{text-decoration:underline}
+@media(max-width:640px){
+.header{padding:40px 20px 36px}
+.header h1{font-size:28px}
+.stats-row{gap:10px}
+.stat-pill{padding:10px 18px;min-width:120px}
+.stat-pill .value{font-size:18px}
+.key-finding{margin:24px 16px}
+.query-card{padding:18px 16px}
+}
+</style>
+</head>
+<body>
+
+<section class="header">
+<div class="header-inner">
+<div class="audit-label">AI Search Visibility Audit</div>
+<h1>Nebulock</h1>
+<div class="company">Nebulock — AI-Native Contextual Security &amp; Autonomous Threat Hunting</div>
+<div class="category">Cybersecurity · B2B SaaS · Boston, MA</div>
+<div class="stats-row">
+<div class="stat-pill"><div class="value">$25M</div><div class="label">Series A</div></div>
+<div class="stat-pill"><div class="value">1 / 5</div><div class="label">AI Visibility Score</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">Reddit Mentions</div></div>
+</div>
+</div>
+</section>
+
+<div class="key-finding">
+<div class="kf-label">🔍 Key Finding</div>
+<p>AI answers about threat hunting and contextual security cite CrowdStrike, SentinelOne, and Huntress — never Nebulock. Despite raising $25M in Series A from FirstMark, Bain Capital, Decibel, and Zetta, and building an autonomous agent architecture for contextual security, Nebulock is entirely absent from AI-generated responses. Incumbent endpoint security vendors dominate every query Nebulock should own.</p>
+</div>
+
+<div class="container">
+
+<h2 class="section-title">AI Query Deep-Dive</h2>
+<div class="query-grid">
+
+<div class="query-card">
+<div class="q-header">
+<div class="q-query">"best AI threat hunting platform 2026"</div>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">AI models overwhelmingly surface CrowdStrike Falcon, SentinelOne Singularity, and Darktrace as the leading AI-powered threat hunting platforms. These vendors have invested years in analyst relations, Gartner Magic Quadrant positioning, and content marketing that feeds directly into AI training corpora. Nebulock's purpose-built autonomous threat hunting agents receive zero citations despite architectural differentiation.</div>
+<div class="q-sources"><strong>Cited in AI answers:</strong> CrowdStrike Falcon, SentinelOne Singularity, Darktrace DETECT, Huntress</div>
+<div class="q-competitors"><strong>Competitors mentioned:</strong> CrowdStrike, SentinelOne, Darktrace</div>
+</div>
+
+<div class="query-card">
+<div class="q-header">
+<div class="q-query">"autonomous security operations AI agents"</div>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">This query is Nebulock's core value proposition, yet AI answers cite Dropzone AI and Radiant Security — two earlier-stage companies that have nonetheless built stronger AI answer visibility through aggressive content strategies and security community engagement. Nebulock's autonomous agent architecture is technically differentiated but invisible at the AI search layer.</div>
+<div class="q-sources"><strong>Cited in AI answers:</strong> Dropzone AI, Radiant Security, AirMDR</div>
+<div class="q-competitors"><strong>Competitors mentioned:</strong> Dropzone AI, Radiant Security, CrowdStrike Charlotte AI</div>
+</div>
+
+<div class="query-card">
+<div class="q-header">
+<div class="q-query">"contextual security analytics enterprise"</div>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">Vectra AI and ExtraHop dominate AI responses for contextual security analytics queries, leveraging long-established positions in network detection and response (NDR). Despite "contextual security" being Nebulock's defining category, the company has not yet built the content depth, authoritative backlinks, or structured data presence required for AI models to recognize it as a primary answer source.</div>
+<div class="q-sources"><strong>Cited in AI answers:</strong> Vectra AI, ExtraHop, Corelight</div>
+<div class="q-competitors"><strong>Competitors mentioned:</strong> Vectra AI, ExtraHop, SentinelOne</div>
+</div>
+
+<div class="query-card">
+<div class="q-header">
+<div class="q-query">"insider risk detection AI agent"</div>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">AI-generated answers for insider risk detection default to Microsoft Purview Insider Risk Management, Proofpoint ITM, and DTEX Systems — all established players with deep enterprise content libraries. Nebulock's contextual approach to insider risk detection could differentiate here, but without indexed case studies, whitepapers, or third-party validation content, it remains invisible.</div>
+<div class="q-sources"><strong>Cited in AI answers:</strong> Microsoft Purview, Proofpoint, DTEX Systems, Code42</div>
+<div class="q-competitors"><strong>Competitors mentioned:</strong> Microsoft Purview, Proofpoint, DTEX</div>
+</div>
+
+<div class="query-card">
+<div class="q-header">
+<div class="q-query">"shadow AI detection security platform"</div>
+<span class="badge badge-weak">WEAK</span>
+</div>
+<div class="q-analysis">Shadow AI detection is an emerging category where Zscaler and Netskope lead AI responses due to their dominance in SASE and CASB markets. Nebulock's agent-based approach to detecting unauthorized AI tool usage could carve a distinct position, but without dedicated content targeting this query intent, the opportunity is ceded to incumbents.</div>
+<div class="q-sources"><strong>Cited in AI answers:</strong> Zscaler, Netskope, Palo Alto Networks</div>
+<div class="q-competitors"><strong>Competitors mentioned:</strong> Zscaler, Netskope</div>
+</div>
+
+</div>
+
+<h2 class="section-title">Competitor Landscape</h2>
+<div class="competitor-grid">
+<div class="comp-card"><div class="comp-name">CrowdStrike</div><div class="comp-type">Endpoint Security</div></div>
+<div class="comp-card"><div class="comp-name">SentinelOne</div><div class="comp-type">AI Security Platform</div></div>
+<div class="comp-card"><div class="comp-name">Vectra AI</div><div class="comp-type">NDR &amp; AI Detection</div></div>
+<div class="comp-card"><div class="comp-name">Dropzone AI</div><div class="comp-type">SOC AI Agents</div></div>
+</div>
+
+</div>
+
+<section class="cta-section">
+<h2>Close the AI Visibility Gap</h2>
+<div class="cta-sub">Four genhance plays to dominate AI-generated answers</div>
+<div class="plays-grid">
+<div class="play-card">
+<div class="play-num">01</div>
+<h4>UGC Gap Detection</h4>
+<p>Identify exactly which user-generated content signals — Reddit threads, G2 reviews, Quora answers — your competitors are leveraging in AI training data, and deploy a targeted UGC acquisition strategy to close the gap.</p>
+</div>
+<div class="play-card">
+<div class="play-num">02</div>
+<h4>Narrative Flux Monitoring</h4>
+<p>Track real-time shifts in how AI models describe your category, so you can align your content and PR before competitors capture the evolving narrative.</p>
+</div>
+<div class="play-card">
+<div class="play-num">03</div>
+<h4>AI Answer Tracking</h4>
+<p>Monitor exactly which brands and products AI models cite for your top 50 commercial queries. Get weekly reports on presence/absence, sentiment, and competitor displacement.</p>
+</div>
+<div class="play-card">
+<div class="play-num">04</div>
+<h4>Engagement Automation</h4>
+<p>Automate the creation and distribution of AI-optimized content — structured FAQ pages, schema-rich product comparisons, and authoritative thought leadership that AI models preferentially ingest.</p>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<strong>Rajesh Gautam, PhD</strong><br>
+Founder and CEO, genhance.ai<br>
+<a href="https://linkedin.com/in/rajeshgautam" target="_blank" rel="noopener">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai" target="_blank" rel="noopener">genhance.ai</a>
+</footer>
+
+</body>
+</html>

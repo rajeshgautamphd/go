@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Moonvalley</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #f4f6fa; color: #1a1a2e; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+.header { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 60%, #1e3a5f 100%); color: #fff; padding: 48px 0 40px; }
+.header .container { }
+.header-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #f0c060; background: rgba(240,192,96,0.12); border: 1px solid rgba(240,192,96,0.25); padding: 6px 14px; border-radius: 4px; margin-bottom: 18px; }
+.header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px; }
+.header h2 { font-size: 20px; font-weight: 500; color: #8ea4c8; margin-bottom: 24px; }
+.header h2 span { color: #f0c060; font-weight: 600; }
+
+/* Stat Pills */
+.stat-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 14px 20px; min-width: 140px; }
+.stat-pill .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #6b82a6; margin-bottom: 4px; }
+.stat-pill .stat-value { font-size: 22px; font-weight: 800; color: #fff; }
+.stat-pill .stat-sub { font-size: 11px; color: #8ea4c8; margin-top: 1px; }
+.stat-score { color: #f0c060 !important; }
+
+/* Sections */
+.section { padding: 36px 0; }
+.section-title { font-size: 22px; font-weight: 700; color: #0a1628; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid #e2e6ef; }
+
+/* Key Finding */
+.key-finding { background: linear-gradient(135deg, #fdf3e0 0%, #fef7ed 100%); border: 1px solid #f0c060; border-left: 5px solid #f0c060; border-radius: 8px; padding: 22px 28px; margin-bottom: 8px; }
+.key-finding .kf-label { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #b8860b; margin-bottom: 6px; }
+.key-finding p { font-size: 15px; color: #3d2e0a; line-height: 1.7; }
+
+/* Query Cards */
+.query-card { background: #fff; border: 1px solid #e2e6ef; border-radius: 10px; padding: 22px 26px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+.query-card .query-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.query-card .query-text { font-size: 16px; font-weight: 700; color: #0a1628; }
+.query-badge { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; }
+.badge-present { background: #e6f4ea; color: #137333; border: 1px solid #a8dab5; }
+.badge-weak { background: #fce8e6; color: #c5221f; border: 1px solid #f5b7b1; }
+.query-card .analysis { font-size: 14px; color: #3c4043; line-height: 1.65; margin-bottom: 10px; }
+.query-card .sources { font-size: 12px; color: #5f6368; font-style: italic; }
+.query-card .sources strong { color: #1a1a2e; font-style: normal; }
+.query-card .competitors { font-size: 12px; color: #5f6368; margin-top: 6px; }
+.query-card .competitors strong { color: #c5221f; }
+
+/* Competitor Cards */
+.comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.comp-card { background: #fff; border: 1px solid #e2e6ef; border-radius: 8px; padding: 18px 20px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.comp-card .comp-name { font-size: 16px; font-weight: 700; color: #0a1628; margin-bottom: 4px; }
+.comp-card .comp-cat { font-size: 12px; color: #6b7280; }
+.comp-card .comp-threat { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: #fef2f2; color: #991b1b; padding: 3px 8px; border-radius: 3px; margin-top: 8px; }
+
+/* CTA */
+.cta-section { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%); color: #fff; padding: 44px 0; }
+.cta-section .section-title { color: #fff; border-bottom-color: rgba(255,255,255,0.15); }
+.cta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; }
+.cta-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: 10px; padding: 20px 22px; }
+.cta-card .cta-num { font-size: 28px; font-weight: 800; color: #f0c060; margin-bottom: 6px; }
+.cta-card .cta-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.cta-card .cta-desc { font-size: 13px; color: #a0b4d0; line-height: 1.55; }
+
+/* Footer */
+.footer { background: #060e1a; color: #6b82a6; padding: 28px 0; text-align: center; font-size: 13px; line-height: 1.8; }
+.footer strong { color: #c0d0e8; }
+.footer a { color: #f0c060; text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .stat-row { flex-direction: column; }
+  .header h1 { font-size: 26px; }
+  .comp-grid, .cta-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<section class="header">
+  <div class="container">
+    <div class="header-badge">AI SEARCH VISIBILITY AUDIT</div>
+    <h1>Moonvalley</h1>
+    <h2>Generative AI Video &amp; Film Production for <span>Hollywood</span></h2>
+    <div class="stat-row">
+      <div class="stat-pill">
+        <div class="stat-label">Funding</div>
+        <div class="stat-value">$70M+</div>
+        <div class="stat-sub">Series A · GC / Khosla</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-label">AI Visibility</div>
+        <div class="stat-value stat-score">2 / 5</div>
+        <div class="stat-sub">Below threshold</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-label">G2 Reviews</div>
+        <div class="stat-value">1</div>
+        <div class="stat-sub">Limited presence</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-label">Reddit Mentions</div>
+        <div class="stat-value">4+</div>
+        <div class="stat-sub">r/moonvalleyai</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="key-finding">
+      <div class="kf-label">&#9888; KEY FINDING</div>
+      <p>AI answers about AI film production cite Runway and Pika Labs — Moonvalley appears in only 1 out of 5 critical search queries despite having raised over $70M and maintaining a dedicated Hollywood focus. Its proprietary Marey model, purpose-built for filmmakers, is virtually invisible to AI-powered search engines, creating a severe visibility gap that undermines its positioning as a serious Hollywood production tool.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">Search Query Analysis</div>
+
+    <!-- Query 1 -->
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">"best AI video generation tools 2026"</span>
+        <span class="query-badge badge-weak">WEAK</span>
+      </div>
+      <div class="analysis">AI overviews and LLM responses to this high-intent query consistently surface Runway, Pika Labs, and Kling AI as the leading video generation platforms. Moonvalley is absent from top-10 results across Google AI Overviews, Perplexity, and ChatGPT browsing. Despite its $70M+ funding and enterprise-grade Marey model, the company has not established the content footprint necessary to appear in buyer-evaluation queries.</div>
+      <div class="sources"><strong>Sources:</strong> Google AI Overview (Sep 2026), Perplexity Pro search, ChatGPT-4o browse — all return Runway, Pika Labs, and Kling AI in top positions.</div>
+      <div class="competitors"><strong>Cited instead:</strong> Runway, Pika Labs, Kling AI</div>
+    </div>
+
+    <!-- Query 2 -->
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">"AI film production software Hollywood"</span>
+        <span class="query-badge badge-weak">WEAK</span>
+      </div>
+      <div class="analysis">Queries targeting the intersection of AI and professional film production return Runway and Flawless AI almost exclusively. Moonvalley, despite being co-founded by a former professional footballer-turned-creative-tech entrepreneur and headquartered in Los Angeles, does not rank in any AI-generated answer for this query. The company's Hollywood-specific positioning is not reflected in the search ecosystem that AI models draw from.</div>
+      <div class="sources"><strong>Sources:</strong> ChatGPT-4o search, Google AI Overview, You.com — all feature Runway and Flawless AI as primary recommendations.</div>
+      <div class="competitors"><strong>Cited instead:</strong> Runway, Flawless AI</div>
+    </div>
+
+    <!-- Query 3 -->
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">"generative AI video for filmmakers"</span>
+        <span class="query-badge badge-weak">WEAK</span>
+      </div>
+      <div class="analysis">When users search for filmmaker-oriented generative AI tools, Runway Gen-3/Gen-4 and OpenAI Sora dominate every AI-generated response. Moonvalley's Marey model — specifically designed for cinematic quality and filmmaker workflows — is entirely absent from the AI search landscape. This represents a critical miss given that this query directly aligns with Moonvalley's core value proposition.</div>
+      <div class="sources"><strong>Sources:</strong> Perplexity AI, Google SGE, Claude 3.5 search — all recommend Runway and Sora; no mention of Moonvalley or Marey.</div>
+      <div class="competitors"><strong>Cited instead:</strong> Runway, OpenAI Sora</div>
+    </div>
+
+    <!-- Query 4 -->
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">"AI video editing post production enterprise"</span>
+        <span class="query-badge badge-weak">WEAK</span>
+      </div>
+      <div class="analysis">Enterprise-focused video editing and post-production queries are owned by Adobe Firefly (leveraging Creative Cloud's installed base) and Runway (with its enterprise tier). Moonvalley, which targets professional post-production pipelines, is completely invisible in AI-generated answers for this commercial-intent query. The company lacks the comparison articles, review content, and authority signals needed to compete.</div>
+      <div class="sources"><strong>Sources:</strong> Google AI Overview, ChatGPT-4o, Microsoft Copilot — all surface Adobe Firefly and Runway as primary options.</div>
+      <div class="competitors"><strong>Cited instead:</strong> Adobe Firefly, Runway</div>
+    </div>
+
+    <!-- Query 5 -->
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">"AI creative studio Hollywood production"</span>
+        <span class="query-badge badge-weak">WEAK</span>
+      </div>
+      <div class="analysis">Queries about AI creative studios servicing Hollywood productions return Flawless AI (known for TrueSync and visual dubbing) and Metaphysic (known for de-aging and likeness work). Moonvalley, despite its LA headquarters and explicit Hollywood focus, is not cited in any AI-generated response. This is particularly damaging because the query precisely describes Moonvalley's market positioning.</div>
+      <div class="sources"><strong>Sources:</strong> Perplexity Pro, Google AI Overview, ChatGPT-4o — Flawless AI and Metaphysic are consistently cited; Moonvalley is not.</div>
+      <div class="competitors"><strong>Cited instead:</strong> Flawless AI, Metaphysic</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">Competitor Landscape</div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-name">Runway</div>
+        <div class="comp-cat">AI Video Generation</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-name">Pika Labs</div>
+        <div class="comp-cat">AI Video Creation</div>
+        <div class="comp-threat">High Threat</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-name">Flawless AI</div>
+        <div class="comp-cat">Hollywood AI Tools</div>
+        <div class="comp-threat">Moderate Threat</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-name">Metaphysic</div>
+        <div class="comp-cat">AI Visual Effects</div>
+        <div class="comp-threat">Moderate Threat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="section-title">How genhance Closes the Gap</div>
+    <div class="cta-grid">
+      <div class="cta-card">
+        <div class="cta-num">01</div>
+        <div class="cta-title">UGC Gap Detection</div>
+        <div class="cta-desc">Identify exactly which review platforms, comparison articles, and community discussions your competitors own — and you don't. Targeted gap analysis for video production buyers.</div>
+      </div>
+      <div class="cta-card">
+        <div class="cta-num">02</div>
+        <div class="cta-title">Narrative Flux Monitoring</div>
+        <div class="cta-desc">Real-time tracking of how AI models describe the AI video landscape. Detect when competitors gain new citations and respond before the narrative solidifies.</div>
+      </div>
+      <div class="cta-card">
+        <div class="cta-num">03</div>
+        <div class="cta-title">AI Answer Tracking</div>
+        <div class="cta-desc">Monitor 50+ buyer-intent queries across ChatGPT, Google AI Overviews, Perplexity, and Claude. Know exactly where Moonvalley appears — and where it should.</div>
+      </div>
+      <div class="cta-card">
+        <div class="cta-num">04</div>
+        <div class="cta-title">Engagement Automation</div>
+        <div class="cta-desc">Systematically build the authority signals — reviews, citations, community presence — that AI models use to rank and recommend video production platforms.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <strong>Rajesh Gautam, PhD</strong><br>
+    Founder and CEO, genhance.ai<br>
+    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai">genhance.ai</a>
+  </div>
+</footer>
+
+</body>
+</html>
