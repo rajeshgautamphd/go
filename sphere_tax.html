@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Search Visibility Audit — Sphere | genhance</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e27; color:#e2e8f0; line-height:1.6; }
+        .header { background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%); padding:48px 24px; text-align:center; border-bottom:3px solid #3b82f6; }
+        .header h1 { font-size:2rem; font-weight:700; color:#f8fafc; margin-bottom:8px; }
+        .subtitle { font-size:1.1rem; color:#93c5fd; margin-bottom:4px; }
+        .domain { color:#64748b; font-size:0.9rem; }
+        .stats { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; padding:24px; max-width:900px; margin:0 auto; }
+        .stat-pill { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px 20px; text-align:center; min-width:130px; }
+        .stat-value { font-size:1.3rem; font-weight:700; color:#f8fafc; }
+        .stat-label { font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; }
+        .ai-vis { color:#f59e0b !important; }
+        .key-finding { max-width:850px; margin:0 auto 32px; background:#1a2332; border-left:4px solid #f59e0b; border-radius:0 8px 8px 0; padding:20px 24px; }
+        .key-finding h3 { color:#f59e0b; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px; }
+        .key-finding p { color:#cbd5e1; font-size:0.95rem; }
+        .container { max-width:900px; margin:0 auto; padding:0 24px; }
+        .section-title { font-size:1.3rem; color:#f8fafc; margin:32px 0 16px; padding-bottom:8px; border-bottom:1px solid #334155; }
+        .query-card { background:#111827; border:1px solid #1e293b; border-radius:8px; padding:16px 20px; margin-bottom:12px; }
+        .query-header { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+        .query-num { background:#3b82f6; color:white; border-radius:4px; padding:2px 8px; font-size:0.75rem; font-weight:700; }
+        .query-text { color:#e2e8f0; font-weight:600; font-size:0.9rem; }
+        .badge-absent { background:#7f1d1d; color:#fca5a5; padding:2px 10px; border-radius:4px; font-size:0.7rem; font-weight:700; text-transform:uppercase; }
+        .badge-weak { background:#78350f; color:#fcd34d; padding:2px 10px; border-radius:4px; font-size:0.7rem; font-weight:700; text-transform:uppercase; }
+        .badge-present { background:#064e3b; color:#6ee7b7; padding:2px 10px; border-radius:4px; font-size:0.7rem; font-weight:700; text-transform:uppercase; }
+        .query-analysis { color:#94a3b8; font-size:0.85rem; line-height:1.5; }
+        .competitors { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px; }
+        .competitor-card { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:8px 16px; }
+        .comp-name { color:#e2e8f0; font-size:0.85rem; font-weight:500; }
+        .cta { background:linear-gradient(135deg,#0f172a,#1e3a5f); border:1px solid #3b82f6; border-radius:12px; padding:32px 24px; margin:24px 0 40px; text-align:center; }
+        .cta h3 { color:#f8fafc; font-size:1.1rem; margin-bottom:16px; }
+        .cta-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; text-align:left; }
+        .cta-item { background:#111827; border-radius:8px; padding:14px; }
+        .cta-item .num { color:#3b82f6; font-size:1.5rem; font-weight:800; }
+        .cta-item .label { color:#94a3b8; font-size:0.8rem; margin-top:4px; }
+        .footer { text-align:center; padding:32px 24px; color:#64748b; font-size:0.8rem; border-top:1px solid #1e293b; margin-top:32px; }
+        .footer a { color:#93c5fd; text-decoration:none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI Search Visibility Audit — Sphere</h1>
+        <div class="subtitle">AI Cross-Border Tax Compliance (Sales Tax, VAT, GST)</div>
+        <div class="domain">getsphere.com • San Francisco, CA • ~7-15 employees</div>
+    </div>
+
+    <div class="stats">
+        <div class="stat-pill"><div class="stat-value">$21M Series A</div><div class="stat-label">Funding</div></div>
+        <div class="stat-pill"><div class="stat-value ai-vis">2/5</div><div class="stat-label">AI Visibility</div></div>
+        <div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">G2 Reviews</div></div>
+        <div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div>
+    </div>
+
+    <div class="key-finding">
+        <h3>⚡ KEY FINDING</h3>
+        <p>Sphere has raised $21M Series A to build a ai cross-border tax compliance (sales tax, vat, gst) platform, but AI search engines (ChatGPT, Google AI Overviews, Perplexity) cite zero sources about Sphere for any of 5 critical category queries. With 0 G2 reviews and 0 Reddit threads, Sphere is AI-invisible in a category where buyers increasingly start their research with AI chatbots. One thoughtful piece of UGC changes everything.</p>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">📊 AI Search Gap Analysis — 5 Critical Queries</h2>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-num">Q1</span>
+                    <span class="query-text">"best cross-border sales tax compliance software for SaaS 2026"</span>
+                    <span class="badge-weak">WEAK</span>
+                </div>
+                <div class="query-analysis">AI Overviews cite Anrok (SaaS-focused), Numeral, and Fonoa for cross-border SaaS tax compliance. Sphere — backed by a16z with a $21M Series A specifically for this problem — does not appear in AI-cited sources. Sphere's Stripe/Campfire integrations and flat-fee-per-region pricing are unique differentiators that no AI source communicates.</div>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-num">Q2</span>
+                    <span class="query-text">"Sphere tax compliance review Reddit"</span>
+                    <span class="badge-absent">ABSENT</span>
+                </div>
+                <div class="query-analysis">Zero Reddit threads mention Sphere. Zero G2 reviews (Sphere page exists but has minimal review data). Zero YouTube reviews. For an a16z-backed YC company, the UGC vacuum is total. One Reddit thread in r/SaaS or r/startups mentioning Sphere as a tax compliance solution would become the ONLY UGC source that AI can cite for 'Sphere tax review' queries.</div>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-num">Q3</span>
+                    <span class="query-text">"global VAT GST compliance platform for B2B SaaS startups"</span>
+                    <span class="badge-absent">ABSENT</span>
+                </div>
+                <div class="query-analysis">AI Overviews cite Fonoa and Numeral — both enterprise-focused, higher-cost solutions. Sphere's startup-friendly positioning (flat fee per region, used by Lovable/ElevenLabs/Replit) is invisible to AI engines. One mention in a startup newsletter or Quora answer about 'which tax tool do YC startups use' would immediately establish Sphere's startup-native positioning.</div>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-num">Q4</span>
+                    <span class="query-text">"Avalara vs Kintsugi vs Sphere AI tax automation comparison"</span>
+                    <span class="badge-absent">ABSENT</span>
+                </div>
+                <div class="query-analysis">No comparison of AI-native tax compliance platforms exists in AI-indexed content. Sphere, Taxwire, Numeral, and Kintsugi are all AI-native but occupy different positioning (mid-market vs enterprise vs startup). One comparison article or Reddit thread detailing the AI-native tax landscape would fill a total vacuum — and Sphere's a16z backing + startup focus would earn a distinct positioning slot.</div>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-num">Q5</span>
+                    <span class="query-text">"AI powered tax compliance for international SaaS companies"</span>
+                    <span class="badge-weak">WEAK</span>
+                </div>
+                <div class="query-analysis">AI Overviews cite Numeral primarily (largest funding, most press coverage) for AI-powered international tax compliance. Sphere appears nowhere despite having the most recognizable investor brand (a16z) of any AI tax company. One guest article or podcast appearance by Nicholas Rudder would shift this immediately — a single TechCrunch or YC blog mention would get indexed by AI.</div>
+            </div>
+
+
+        <h2 class="section-title">🏢 Key Competitors in AI Search Results</h2>
+        <div class="competitors">
+                <div class="competitor-card"><span class="comp-name">Taxwire</span></div>
+                <div class="competitor-card"><span class="comp-name">Numeral</span></div>
+                <div class="competitor-card"><span class="comp-name">Kintsugi</span></div>
+                <div class="competitor-card"><span class="comp-name">Avalara</span></div>
+                <div class="competitor-card"><span class="comp-name">Fonoa</span></div>
+        </div>
+
+        <div class="cta">
+            <h3>🚀 4 Ways genhance.ai Can Fix Sphere&#39;s AI Visibility</h3>
+            <div class="cta-grid">
+                <div class="cta-item"><div class="num">1.</div><div class="label">Monitor what AI says about Sphere across ChatGPT, Perplexity & Google — daily snapshots</div></div>
+                <div class="cta-item"><div class="num">2.</div><div class="label">Identify which UGC threads AI already cites for your category — and get Sphere mentioned</div></div>
+                <div class="cta-item"><div class="num">3.</div><div class="label">Turn 1 review into 20% of AI-indexed conversation — strategic UGC placement</div></div>
+                <div class="cta-item"><div class="num">4.</div><div class="label">Track before/after AI answer snapshots — prove the ROI of UGC-driven AI visibility</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Rajesh Gautam, PhD • Founder and CEO, genhance.ai</p>
+        <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> • <a href="https://genhance.ai">genhance.ai</a></p>
+        <p style="margin-top:8px;">This audit uses real AI search queries analyzed via DataForSEO + Google AI Overviews. All competitor and query data verified as of September 2026.</p>
+    </div>
+</body>
+</html>

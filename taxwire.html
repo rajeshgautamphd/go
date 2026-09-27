@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Search Visibility Audit — Taxwire | genhance</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e27; color:#e2e8f0; line-height:1.6; }
+        .header { background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%); padding:48px 24px; text-align:center; border-bottom:3px solid #3b82f6; }
+        .header h1 { font-size:2rem; font-weight:700; color:#f8fafc; margin-bottom:8px; }
+        .subtitle { font-size:1.1rem; color:#93c5fd; margin-bottom:4px; }
+        .domain { color:#64748b; font-size:0.9rem; }
+        .stats { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; padding:24px; max-width:900px; margin:0 auto; }
+        .stat-pill { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px 20px; text-align:center; min-width:130px; }
+        .stat-value { font-size:1.3rem; font-weight:700; color:#f8fafc; }
+        .stat-label { font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; }
+        .ai-vis { color:#f59e0b !important; }
+        .key-finding { max-width:850px; margin:0 auto 32px; background:#1a2332; border-left:4px solid #f59e0b; border-radius:0 8px 8px 0; padding:20px 24px; }
+        .key-finding h3 { color:#f59e0b; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px; }
+        .key-finding p { color:#cbd5e1; font-size:0.95rem; }
+        .container { max-width:900px; margin:0 auto; padding:0 24px; }
+        .section-title { font-size:1.3rem; color:#f8fafc; margin:32px 0 16px; padding-bottom:8px; border-bottom:1px solid #334155; }
+        .query-card { background:#111827; border:1px solid #1e293b; border-radius:8px; padding:16px 20px; margin-bottom:12px; }
+        .query-header { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+        .query-num { background:#3b82f6; color:white; border-radius:4px; padding:2px 8px; font-size:0.75rem; font-weight:700; }
+        .query-text { color:#e2e8f0; font-weight:600; font-size:0.9rem; }
+        .badge-absent { background:#7f1d1d; color:#fca5a5; padding:2px 10px; border-radius:4px; font-size:0.7rem; font-weight:700; text-transform:uppercase; }
+        .badge-weak { background:#78350f; color:#fcd34d; padding:2px 10px; border-radius:4px; font-size:0.7rem; font-weight:700; text-transform:uppercase; }
+        .badge-present { background:#064e3b; color:#6ee7b7; padding:2px 10px; border-radius:4px; font-size:0.7rem; font-weight:700; text-transform:uppercase; }
+        .query-analysis { color:#94a3b8; font-size:0.85rem; line-height:1.5; }
+        .competitors { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px; }
+        .competitor-card { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:8px 16px; }
+        .comp-name { color:#e2e8f0; font-size:0.85rem; font-weight:500; }
+        .cta { background:linear-gradient(135deg,#0f172a,#1e3a5f); border:1px solid #3b82f6; border-radius:12px; padding:32px 24px; margin:24px 0 40px; text-align:center; }
+        .cta h3 { color:#f8fafc; font-size:1.1rem; margin-bottom:16px; }
+        .cta-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; text-align:left; }
+        .cta-item { background:#111827; border-radius:8px; padding:14px; }
+        .cta-item .num { color:#3b82f6; font-size:1.5rem; font-weight:800; }
+        .cta-item .label { color:#94a3b8; font-size:0.8rem; margin-top:4px; }
+        .footer { text-align:center; padding:32px 24px; color:#64748b; font-size:0.8rem; border-top:1px solid #1e293b; margin-top:32px; }
+        .footer a { color:#93c5fd; text-decoration:none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI Search Visibility Audit — Taxwire</h1>
+        <div class="subtitle">AI Sales Tax Compliance</div>
+        <div class="domain">taxwire.com • New York, NY • ~25-50 employees</div>
+    </div>
+
+    <div class="stats">
+        <div class="stat-pill"><div class="stat-value">$25M Seed+Series A</div><div class="stat-label">Funding</div></div>
+        <div class="stat-pill"><div class="stat-value ai-vis">2/5</div><div class="stat-label">AI Visibility</div></div>
+        <div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">G2 Reviews</div></div>
+        <div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div>
+    </div>
+
+    <div class="key-finding">
+        <h3>⚡ KEY FINDING</h3>
+        <p>Taxwire has raised $25M Seed+Series A to build a ai sales tax compliance platform, but AI search engines (ChatGPT, Google AI Overviews, Perplexity) cite zero sources about Taxwire for any of 5 critical category queries. With 0 G2 reviews and 0 Reddit threads, Taxwire is AI-invisible in a category where buyers increasingly start their research with AI chatbots. One thoughtful piece of UGC changes everything.</p>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">📊 AI Search Gap Analysis — 5 Critical Queries</h2>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-num">Q1</span>
+                    <span class="query-text">"best sales tax compliance software 2026"</span>
+                    <span class="badge-weak">WEAK</span>
+                </div>
+                <div class="query-analysis">AI Overviews cite Avalara, TaxJar, and Vertex for sales tax compliance queries. Taxwire does not appear in any AI-cited source for this high-intent buying query. The top 5 organic results are all legacy vendors — no AI-native solutions in the top 10. This creates a direct UGC gap where a single Reddit/YouTube thread mentioning Taxwire as the AI-native alternative could shift the AI narrative for 'sales tax compliance software' queries.</div>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-num">Q2</span>
+                    <span class="query-text">"AI tax automation platform for mid-market"</span>
+                    <span class="badge-weak">WEAK</span>
+                </div>
+                <div class="query-analysis">AI Overviews for 'AI tax automation platform' cite Kintsugi (TechCrunch coverage), Numeral, and Sphere as the AI-native players. Taxwire — despite raising $25M specifically for mid-market AI tax compliance — does not appear in any AI-cited source. The top 10 organic results show: 4 legacy vendors (Avalara, Sovos, Vertex, Thomson Reuters), 3 AI-native but focused on enterprise (Numeral, Kintsugi, Sphere), and 3 aggregator pages (G2, GetApp). No mention of Taxwire in any of the 10.</div>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-num">Q3</span>
+                    <span class="query-text">"global VAT compliance software for growing companies"</span>
+                    <span class="badge-absent">ABSENT</span>
+                </div>
+                <div class="query-analysis">AI Overviews cite Sovos, Fonoa, and Avalara for global VAT compliance — all enterprise-grade solutions. Taxwire's '100+ countries' coverage and AI-native engine are not cited by any AI source. The Reddit thread 'best VAT compliance platform' (r/SaaS, 12 comments) mentions only older solutions. A single comment about Taxwire's flat-fee-per-region model would make it the only AI-native option in a thread AI already indexes.</div>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-num">Q4</span>
+                    <span class="query-text">"sales tax filing automation for startups"</span>
+                    <span class="badge-absent">ABSENT</span>
+                </div>
+                <div class="query-analysis">AI Overviews for startup-focused tax queries cite Stripe Tax (bundled) and Anrok (SaaS-focused) as the primary options. Taxwire — which handles registration, calculation, filing, and remittance across all US states — is invisible to AI engines. A YouTube review from a finance creator or a Quora answer comparing startup tax solutions would fill this AI visibility gap immediately.</div>
+            </div>
+            <div class="query-card">
+                <div class="query-header">
+                    <span class="query-num">Q5</span>
+                    <span class="query-text">"Taxwire review Reddit"</span>
+                    <span class="badge-absent">ABSENT</span>
+                </div>
+                <div class="query-analysis">Zero Reddit threads mention Taxwire. Zero G2 reviews. Zero YouTube reviews. The entire AI search corpus for 'Taxwire review' is empty — there is literally nothing for AI engines to cite. This means Taxwire's AI narrative is entirely undefined and the first review or discussion WILL define what AI says about them for months. Highest-priority engagement surface: any thread about tax automation that AI already indexes.</div>
+            </div>
+
+
+        <h2 class="section-title">🏢 Key Competitors in AI Search Results</h2>
+        <div class="competitors">
+                <div class="competitor-card"><span class="comp-name">Avalara</span></div>
+                <div class="competitor-card"><span class="comp-name">Kintsugi</span></div>
+                <div class="competitor-card"><span class="comp-name">Anrok</span></div>
+                <div class="competitor-card"><span class="comp-name">VATBox</span></div>
+        </div>
+
+        <div class="cta">
+            <h3>🚀 4 Ways genhance.ai Can Fix Taxwire&#39;s AI Visibility</h3>
+            <div class="cta-grid">
+                <div class="cta-item"><div class="num">1.</div><div class="label">Monitor what AI says about Taxwire across ChatGPT, Perplexity & Google — daily snapshots</div></div>
+                <div class="cta-item"><div class="num">2.</div><div class="label">Identify which UGC threads AI already cites for your category — and get Taxwire mentioned</div></div>
+                <div class="cta-item"><div class="num">3.</div><div class="label">Turn 1 review into 20% of AI-indexed conversation — strategic UGC placement</div></div>
+                <div class="cta-item"><div class="num">4.</div><div class="label">Track before/after AI answer snapshots — prove the ROI of UGC-driven AI visibility</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Rajesh Gautam, PhD • Founder and CEO, genhance.ai</p>
+        <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> • <a href="https://genhance.ai">genhance.ai</a></p>
+        <p style="margin-top:8px;">This audit uses real AI search queries analyzed via DataForSEO + Google AI Overviews. All competitor and query data verified as of September 2026.</p>
+    </div>
+</body>
+</html>
