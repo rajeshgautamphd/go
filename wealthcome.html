@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Wealthcome</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+.header { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%); padding: 60px 0 48px; text-align: center; border-bottom: 1px solid #21262d; }
+.header h1 { font-size: 2.6rem; font-weight: 800; color: #ffffff; margin-bottom: 8px; letter-spacing: -0.5px; }
+.header .subtitle { font-size: 1.1rem; color: #8b949e; font-weight: 400; }
+.header .domain { color: #58a6ff; font-weight: 500; }
+
+/* Stat Pills */
+.stat-row { display: flex; justify-content: center; gap: 16px; margin: -28px auto 0; max-width: 960px; padding: 0 24px; flex-wrap: wrap; }
+.stat-pill { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 150px; flex-shrink: 0; }
+.stat-pill .stat-value { font-size: 1.6rem; font-weight: 700; color: #ffffff; }
+.stat-pill .stat-label { font-size: 0.8rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.stat-pill.score-weak .stat-value { color: #f0883e; }
+.stat-pill.score-zero .stat-value { color: #f85149; }
+
+/* Sections */
+.section { padding: 40px 0; }
+.section-title { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #21262d; }
+
+/* Key Finding */
+.key-finding { background: rgba(240, 136, 62, 0.1); border: 1px solid rgba(240, 136, 62, 0.3); border-left: 4px solid #f0883e; border-radius: 8px; padding: 20px 24px; margin-bottom: 32px; }
+.key-finding .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px; color: #f0883e; font-weight: 700; margin-bottom: 8px; }
+.key-finding p { color: #e6edf3; font-size: 1.05rem; }
+
+/* Query Cards */
+.query-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; }
+.query-card .query-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.query-card .query-text { font-size: 1.05rem; font-weight: 600; color: #ffffff; flex: 1; }
+.badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+.badge-weak { background: rgba(240, 136, 62, 0.15); color: #f0883e; border: 1px solid rgba(240, 136, 62, 0.3); }
+.badge-present { background: rgba(63, 185, 80, 0.15); color: #3fb950; border: 1px solid rgba(63, 185, 80, 0.3); }
+.query-card .analysis { color: #8b949e; font-size: 0.95rem; }
+
+/* Competitor Cards */
+.comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.comp-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px; text-align: center; }
+.comp-card .comp-name { font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+.comp-card .comp-type { font-size: 0.85rem; color: #8b949e; }
+
+/* CTA */
+.cta { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%); padding: 48px 0; border-top: 1px solid #21262d; }
+.cta-title { font-size: 1.7rem; font-weight: 800; color: #ffffff; text-align: center; margin-bottom: 8px; }
+.cta-subtitle { text-align: center; color: #8b949e; margin-bottom: 32px; }
+.plays-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; }
+.play-card { background: rgba(22, 27, 34, 0.6); border: 1px solid #30363d; border-radius: 10px; padding: 20px; }
+.play-card .play-num { font-size: 0.75rem; color: #58a6ff; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.play-card .play-title { font-size: 1.05rem; font-weight: 700; color: #ffffff; margin: 8px 0; }
+
+/* Footer */
+.footer { background: #0a1628; padding: 32px 0; text-align: center; border-top: 1px solid #21262d; }
+.footer .name { font-size: 1rem; font-weight: 700; color: #ffffff; }
+.footer .role { font-size: 0.85rem; color: #8b949e; margin-top: 4px; }
+.footer .links { font-size: 0.85rem; color: #58a6ff; margin-top: 8px; }
+.footer .links a { color: #58a6ff; text-decoration: none; }
+.footer .links a:hover { text-decoration: underline; }
+.footer .brand { font-size: 0.9rem; font-weight: 800; color: #58a6ff; margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="container">
+    <h1>AI SEARCH VISIBILITY AUDIT: <span style="color:#58a6ff;">Wealthcome</span></h1>
+    <p class="subtitle">AI-powered Wealth Management SaaS &bull; <span class="domain">wealthcome.com</span></p>
+  </div>
+</div>
+
+<!-- STAT PILLS -->
+<div class="stat-row">
+  <div class="stat-pill">
+    <div class="stat-value">&euro;15M</div>
+    <div class="stat-label">Funding (Series B, &euro;22M total)</div>
+  </div>
+  <div class="stat-pill score-weak">
+    <div class="stat-value">1/5</div>
+    <div class="stat-label">AI Visibility</div>
+  </div>
+  <div class="stat-pill score-zero">
+    <div class="stat-value">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill score-zero">
+    <div class="stat-value">0</div>
+    <div class="stat-label">Reddit Mentions</div>
+  </div>
+</div>
+
+<!-- KEY FINDING -->
+<div class="section">
+  <div class="container">
+    <div class="key-finding">
+      <div class="label">&#9888; KEY FINDING</div>
+      <p>AI search answers consistently cite competitors &mdash; <strong>Addepar, BlackRock Aladdin, InvestCloud, and Clearnomics</strong> &mdash; across all five major wealth-management queries, but <strong>Wealthcome is never mentioned</strong>. Despite raising &euro;22M total and being based in Bordeaux, France, Wealthcome has zero G2 reviews, zero Reddit threads, and is entirely invisible to AI search &mdash; even on French-language queries like <em>&ldquo;gestion de patrimoine logiciel SaaS&rdquo;</em> where Harvest and Fiduce dominate.</p>
+    </div>
+  </div>
+</div>
+
+<!-- QUERY CARDS -->
+<div class="section" style="padding-top:0;">
+  <div class="container">
+    <h2 class="section-title">Query-Level Visibility Analysis</h2>
+
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">&ldquo;best wealth management software 2026&rdquo;</span>
+        <span class="badge badge-weak">WEAK</span>
+      </div>
+      <p class="analysis">AI Overviews cite <strong>Addepar</strong>, <strong>BlackRock Aladdin</strong>, and <strong>InvestCloud</strong> &mdash; Wealthcome never appears.</p>
+    </div>
+
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">&ldquo;wealth management SaaS for European advisors&rdquo;</span>
+        <span class="badge badge-present">PRESENT</span>
+      </div>
+      <p class="analysis">Funding news appears in EU startup press (Breega, BlackFin-backed coverage), but <strong>zero UGC exists</strong> on G2 or Reddit to validate the product for AI models. Press alone is not enough.</p>
+    </div>
+
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">&ldquo;gestion de patrimoine logiciel SaaS 2026&rdquo;</span>
+        <span class="badge badge-weak">WEAK</span>
+      </div>
+      <p class="analysis">French-language AI answers cite <strong>Harvest</strong> and <strong>Fiduce</strong> &mdash; Wealthcome is absent despite being a Bordeaux-based company targeting the French market. A missed opportunity on home turf.</p>
+    </div>
+
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">&ldquo;wealth management platform reviews Reddit&rdquo;</span>
+        <span class="badge badge-weak">WEAK</span>
+      </div>
+      <p class="analysis"><strong>0 G2 reviews, 0 Reddit threads</strong> &mdash; no user-generated content exists for AI models to cite. Wealthcome is a ghost in the review ecosystem.</p>
+    </div>
+
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">&ldquo;best fintech for financial advisors Europe 2026&rdquo;</span>
+        <span class="badge badge-weak">WEAK</span>
+      </div>
+      <p class="analysis">AI Overviews pull from <strong>Addepar</strong> and <strong>InvestCloud</strong> &mdash; Wealthcome is completely unknown to AI-powered search results.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETITORS -->
+<div class="section" style="padding-top:0;">
+  <div class="container">
+    <h2 class="section-title">Competitors Dominating AI Search</h2>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-name">Addepar</div>
+        <div class="comp-type">Wealth Management Platform</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-name">BlackRock Aladdin</div>
+        <div class="comp-type">Institutional Platform</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-name">InvestCloud</div>
+        <div class="comp-type">Digital Wealth Solutions</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-name">Clearnomics</div>
+        <div class="comp-type">Market Intelligence</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="container">
+    <h2 class="cta-title">How Genhance Closes the Visibility Gap</h2>
+    <p class="cta-subtitle">4 targeted plays to get Wealthcome cited in AI search results</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="play-num">Play 01</div>
+        <div class="play-title">Monitor UGC Feeds</div>
+        <p style="color:#8b949e; font-size:0.9rem;">Track Reddit, G2, and European fintech forums for Wealthcome mentions &mdash; including French-language communities where competitors like Harvest and Fiduce dominate.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 02</div>
+        <div class="play-title">Contribute to Existing Threads</div>
+        <p style="color:#8b949e; font-size:0.9rem;">Seed authentic responses in wealth management and fintech discussions where Addepar, Aladdin, and InvestCloud are currently mentioned without European challenger alternatives.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 03</div>
+        <div class="play-title">Track AI Answer Shifts</div>
+        <p style="color:#8b949e; font-size:0.9rem;">Continuously monitor AI Overviews, ChatGPT, and Perplexity across both English and French queries as Wealthcome's UGC footprint expands.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 04</div>
+        <div class="play-title">Report Impact</div>
+        <p style="color:#8b949e; font-size:0.9rem;">Quantify UGC volume growth, track AI citation frequency, and correlate with inbound demo requests &mdash; proving ROI of the genhance methodology for B2B fintech.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container">
+    <p class="name">Rajesh Gautam, PhD</p>
+    <p class="role">Founder and CEO, genhance.ai</p>
+    <p class="links">
+      <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp;
+      <a href="https://genhance.ai">genhance.ai</a>
+    </p>
+    <p class="brand">genhance</p>
+  </div>
+</div>
+
+</body>
+</html>

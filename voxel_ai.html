@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Voxel AI</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #1e3a5f 100%); padding: 60px 40px; text-align: center; border-bottom: 3px solid #0366d6; position: relative; overflow: hidden; }
+.header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 50%, rgba(3, 102, 214, 0.15) 0%, transparent 70%); }
+.header h1 { font-size: 2.4rem; font-weight: 800; color: #ffffff; max-width: 900px; margin: 0 auto 10px; position: relative; z-index: 1; letter-spacing: -0.5px; }
+.header .subtitle { font-size: 1.1rem; color: #8b949e; position: relative; z-index: 1; }
+.header .domain { font-size: 0.95rem; color: #58a6ff; margin-top: 8px; position: relative; z-index: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+.stats-row { display: flex; gap: 20px; flex-wrap: wrap; margin: -30px auto 40px; max-width: 1100px; padding: 0 30px; position: relative; z-index: 2; }
+.stat-pill { flex: 1; min-width: 200px; background: linear-gradient(135deg, #161b22, #1c2333); border: 1px solid #30363d; border-radius: 12px; padding: 20px 24px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+.stat-pill .stat-number { font-size: 1.8rem; font-weight: 700; color: #58a6ff; }
+.stat-pill .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.section { margin: 40px auto; max-width: 1100px; padding: 0 30px; }
+.section-title { font-size: 1.4rem; font-weight: 700; color: #f0f6fc; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #21262d; }
+.alert { background: linear-gradient(135deg, rgba(210, 153, 34, 0.12), rgba(210, 153, 34, 0.06)); border: 1px solid rgba(210, 153, 34, 0.35); border-radius: 10px; padding: 20px 24px; margin-bottom: 30px; }
+.alert-title { font-size: 1.05rem; font-weight: 700; color: #d2991d; margin-bottom: 8px; }
+.alert-body { color: #c9d1d9; font-size: 0.95rem; line-height: 1.7; }
+.query-grid { display: flex; flex-direction: column; gap: 16px; }
+.query-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px 24px; transition: all 0.2s; }
+.query-card:hover { border-color: #58a6ff; box-shadow: 0 4px 20px rgba(3, 102, 214, 0.15); }
+.query-card .query-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+.query-card .query-text { font-size: 1.05rem; font-weight: 600; color: #f0f6fc; font-style: italic; }
+.badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-present { background: rgba(35, 134, 54, 0.18); color: #3fb950; border: 1px solid rgba(35, 134, 54, 0.35); }
+.badge-weak { background: rgba(210, 153, 34, 0.18); color: #d2991d; border: 1px solid rgba(210, 153, 34, 0.35); }
+.query-card .query-analysis { font-size: 0.9rem; color: #8b949e; line-height: 1.6; }
+.competitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.competitor-card { background: linear-gradient(135deg, #161b22, #1c2333); border: 1px solid #30363d; border-radius: 10px; padding: 20px; text-align: center; transition: all 0.2s; }
+.competitor-card:hover { border-color: #8b949e; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+.competitor-card .comp-name { font-size: 1.15rem; font-weight: 700; color: #f0f6fc; }
+.competitor-card .comp-note { font-size: 0.82rem; color: #8b949e; margin-top: 6px; }
+.cta-section { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%); padding: 60px 0; margin-top: 50px; border-top: 3px solid #0366d6; }
+.cta-inner { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+.cta-inner h2 { font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-bottom: 10px; }
+.cta-inner .cta-sub { color: #8b949e; margin-bottom: 30px; font-size: 1rem; }
+.plays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.play-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 24px; }
+.play-card .play-num { font-size: 0.75rem; font-weight: 700; color: #58a6ff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.play-card .play-title { font-size: 1.05rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+.play-card .play-desc { font-size: 0.85rem; color: #8b949e; line-height: 1.6; }
+.footer { background: #0a1628; padding: 30px 0; text-align: center; border-top: 1px solid #21262d; }
+.footer p { color: #8b949e; font-size: 0.85rem; margin: 4px 0; }
+.footer a { color: #58a6ff; text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+.company-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 30px; }
+.meta-item { background: #161b22; border: 1px solid #21262d; border-radius: 8px; padding: 14px 18px; }
+.meta-item .meta-label { font-size: 0.72rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
+.meta-item .meta-value { font-size: 0.95rem; color: #c9d1d9; font-weight: 600; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>AI SEARCH VISIBILITY AUDIT: Voxel AI</h1>
+  <p class="subtitle">How visible is Voxel AI in AI-powered search results? A comprehensive audit of AI Overviews, citations, and user-generated content presence.</p>
+  <p class="domain">voxelai.com</p>
+</header>
+
+<div class="stats-row">
+  <div class="stat-pill">
+    <div class="stat-number">$71M</div>
+    <div class="stat-label">Total Funding</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-number">2/5</div>
+    <div class="stat-label">AI Visibility Score</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-number">7</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-number">1</div>
+    <div class="stat-label">Reddit Mentions</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+    <div class="company-meta">
+      <div class="meta-item"><div class="meta-label">CEO</div><div class="meta-value">Alex Kaveh Senemar</div></div>
+      <div class="meta-item"><div class="meta-label">Category</div><div class="meta-value">AI Workplace Safety / Computer Vision</div></div>
+      <div class="meta-item"><div class="meta-label">Founded</div><div class="meta-value">2020 · San Francisco, CA</div></div>
+      <div class="meta-item"><div class="meta-label">Employees</div><div class="meta-value">50–100</div></div>
+      <div class="meta-item"><div class="meta-label">Latest Round</div><div class="meta-value">$44M Series B</div></div>
+      <div class="meta-item"><div class="meta-label">Key Investors</div><div class="meta-value">NewRoad Capital, Eclipse Ventures, Mtech, World Innovation Labs</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="alert">
+      <div class="alert-title">🔶 KEY FINDING: Competitors Dominate AI Search Citations</div>
+      <div class="alert-body">
+        Despite <strong>$71M in total funding</strong> and a compelling AI-powered workplace safety vision, Voxel AI is nearly invisible in AI-generated search results. AI Overviews and AI-cited sources consistently reference competitors — particularly <strong>Intenseye</strong>, <strong>Protex AI</strong>, and <strong>viAct</strong> — while Voxel appears in only 2 of 5 high-intent buyer queries. With just 7 G2 reviews and only 1 Reddit mention, Voxel lacks the user-generated content signals that modern AI search engines rely on for citation and trust. This represents a significant competitive blind spot in AI-driven discovery channels.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🔍 AI Search Query Analysis</h2>
+    <div class="query-grid">
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"best workplace safety AI software 2026"</span>
+          <span class="badge badge-present">✅ PRESENT</span>
+        </div>
+        <div class="query-analysis">Voxel appears in some editorial roundups and listicles, but AI Overviews cite <strong>Intenseye</strong> and <strong>Protex AI</strong> far more prominently, often as the primary recommendations. Voxel is mentioned only in passing, if at all, in the AI-generated summaries that buyers see first.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"computer vision for warehouse safety"</span>
+          <span class="badge badge-weak">⚠️ WEAK</span>
+        </div>
+        <div class="query-analysis">AI-generated answers consistently cite <strong>Protex AI</strong>, <strong>viAct</strong>, and <strong>Coram AI</strong> as the leading solutions for warehouse computer vision safety. Voxel is entirely absent from the sources that AI search engines reference, despite being purpose-built for this exact use case.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"AI safety monitoring platform reviews"</span>
+          <span class="badge badge-weak">⚠️ WEAK</span>
+        </div>
+        <div class="query-analysis">With only 7 G2 reviews compared to <strong>Intenseye's 50+</strong>, Voxel has minimal review-site presence. Reddit threads discussing AI safety monitoring cite competitors exclusively. AI search heavily weights review volume and UGC signals — areas where Voxel is critically underrepresented.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"how to prevent workplace injuries with AI"</span>
+          <span class="badge badge-present">✅ PRESENT</span>
+        </div>
+        <div class="query-analysis">Voxel appears in some editorial roundups about AI injury prevention. However, AI Overviews pull content primarily from workers' compensation publications and industry safety journals — not from Voxel's own content or product pages, limiting the depth of its presence in AI-cited results.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"best EHS software with AI 2026"</span>
+          <span class="badge badge-weak">⚠️ WEAK</span>
+        </div>
+        <div class="query-analysis">AI answers for EHS (Environmental, Health & Safety) software queries overwhelmingly cite traditional suites like <strong>Intelex</strong> and <strong>Cority</strong>. Voxel is not mentioned in any AI-cited source for this category, despite its AI-native approach that could differentiate it from legacy EHS platforms.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🏢 Key Competitors in AI Search</h2>
+    <div class="competitor-grid">
+      <div class="competitor-card">
+        <div class="comp-name">Protex AI</div>
+        <div class="comp-note">Dominates AI Overviews for warehouse & workplace safety computer vision queries. Strong UGC presence on G2 and Reddit.</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Intenseye</div>
+        <div class="comp-note">50+ G2 reviews; consistently cited as the top recommendation in AI Overviews for AI safety monitoring and EHS queries.</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">viAct</div>
+        <div class="comp-note">Frequently cited in AI-generated answers for construction and industrial worksite safety, with strong Asia-Pacific market visibility.</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Coram AI</div>
+        <div class="comp-note">Emerging competitor gaining traction in AI Overviews for warehouse and logistics safety monitoring use cases.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">📊 AI Visibility Score Breakdown: 2/5</h2>
+    <p style="color:#8b949e;font-size:0.95rem;line-height:1.7;">Voxel AI's low AI visibility score reflects a near-total absence from the user-generated content ecosystem that fuels modern AI search. While Voxel benefits from some editorial coverage and dealroom visibility, it lacks the review volume, community discussion, and AI-cited source presence needed to appear in AI-generated answers for its core buyer keywords. Competitors with stronger UGC footprints — particularly Intenseye and Protex AI — are capturing the AI search visibility that matters most for bottom-of-funnel buying intent.</p>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-inner">
+    <h2>Close the AI Visibility Gap with genhance</h2>
+    <p class="cta-sub">genhance helps B2B platforms like Voxel AI get cited by AI search engines — where your buyers are making decisions.</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="play-num">Play 01</div>
+        <div class="play-title">Monitor UGC Feeds</div>
+        <div class="play-desc">Continuously track Reddit, G2, TrustRadius, and niche safety-tech forums for threads where buyers ask "what's the best AI safety platform?" — and ensure Voxel is part of the conversation.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 02</div>
+        <div class="play-title">Contribute to Existing Threads</div>
+        <div class="play-desc">Engage authentically in discussions where Intenseye and Protex AI are recommended. Answer adjacent questions with Voxel's unique differentiators — video-based risk identification, real-time alerts — to earn citations in AI-generated answers.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 03</div>
+        <div class="play-title">Track AI Answer Shifts</div>
+        <div class="play-desc">Monitor how AI Overviews and AI-cited sources evolve week-over-week for your 5 core buyer queries. Measure when Voxel appears, what sources cite it, and how competitor citations trend — so you can prioritize plays that move the needle.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 04</div>
+        <div class="play-title">Report Impact</div>
+        <div class="play-desc">Quantify the revenue impact of AI search visibility: tie Voxel's AI citation share to pipeline and closed-won deals. Show the board why UGC presence is no longer a nice-to-have — it's the new SEO.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p style="font-weight:700;color:#f0f6fc;font-size:0.9rem;">Rajesh Gautam, PhD</p>
+  <p>Founder and CEO, genhance.ai</p>
+  <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+</footer>
+
+</body>
+</html>

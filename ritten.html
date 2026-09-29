@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Ritten</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #1e3a5f 100%); padding: 60px 40px; text-align: center; border-bottom: 3px solid #0366d6; position: relative; overflow: hidden; }
+.header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 50%, rgba(3, 102, 214, 0.15) 0%, transparent 70%); }
+.header h1 { font-size: 2.4rem; font-weight: 800; color: #ffffff; max-width: 900px; margin: 0 auto 10px; position: relative; z-index: 1; letter-spacing: -0.5px; }
+.header .subtitle { font-size: 1.1rem; color: #8b949e; position: relative; z-index: 1; }
+.header .domain { font-size: 0.95rem; color: #58a6ff; margin-top: 8px; position: relative; z-index: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+.stats-row { display: flex; gap: 20px; flex-wrap: wrap; margin: -30px auto 40px; max-width: 1100px; padding: 0 30px; position: relative; z-index: 2; }
+.stat-pill { flex: 1; min-width: 200px; background: linear-gradient(135deg, #161b22, #1c2333); border: 1px solid #30363d; border-radius: 12px; padding: 20px 24px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+.stat-pill .stat-number { font-size: 1.8rem; font-weight: 700; color: #58a6ff; }
+.stat-pill .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.section { margin: 40px auto; max-width: 1100px; padding: 0 30px; }
+.section-title { font-size: 1.4rem; font-weight: 700; color: #f0f6fc; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #21262d; }
+.alert { background: linear-gradient(135deg, rgba(210, 153, 34, 0.12), rgba(210, 153, 34, 0.06)); border: 1px solid rgba(210, 153, 34, 0.35); border-radius: 10px; padding: 20px 24px; margin-bottom: 30px; }
+.alert-title { font-size: 1.05rem; font-weight: 700; color: #d2991d; margin-bottom: 8px; }
+.alert-body { color: #c9d1d9; font-size: 0.95rem; line-height: 1.7; }
+.query-grid { display: flex; flex-direction: column; gap: 16px; }
+.query-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px 24px; transition: all 0.2s; }
+.query-card:hover { border-color: #58a6ff; box-shadow: 0 4px 20px rgba(3, 102, 214, 0.15); }
+.query-card .query-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+.query-card .query-text { font-size: 1.05rem; font-weight: 600; color: #f0f6fc; font-style: italic; }
+.badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-present { background: rgba(35, 134, 54, 0.18); color: #3fb950; border: 1px solid rgba(35, 134, 54, 0.35); }
+.badge-weak { background: rgba(210, 153, 34, 0.18); color: #d2991d; border: 1px solid rgba(210, 153, 34, 0.35); }
+.query-card .query-analysis { font-size: 0.9rem; color: #8b949e; line-height: 1.6; }
+.competitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.competitor-card { background: linear-gradient(135deg, #161b22, #1c2333); border: 1px solid #30363d; border-radius: 10px; padding: 20px; text-align: center; transition: all 0.2s; }
+.competitor-card:hover { border-color: #8b949e; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+.competitor-card .comp-name { font-size: 1.15rem; font-weight: 700; color: #f0f6fc; }
+.competitor-card .comp-note { font-size: 0.82rem; color: #8b949e; margin-top: 6px; }
+.cta-section { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%); padding: 60px 0; margin-top: 50px; border-top: 3px solid #0366d6; }
+.cta-inner { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+.cta-inner h2 { font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-bottom: 10px; }
+.cta-inner .cta-sub { color: #8b949e; margin-bottom: 30px; font-size: 1rem; }
+.plays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.play-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 24px; }
+.play-card .play-num { font-size: 0.75rem; font-weight: 700; color: #58a6ff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.play-card .play-title { font-size: 1.05rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+.play-card .play-desc { font-size: 0.85rem; color: #8b949e; line-height: 1.6; }
+.footer { background: #0a1628; padding: 30px 0; text-align: center; border-top: 1px solid #21262d; }
+.footer p { color: #8b949e; font-size: 0.85rem; margin: 4px 0; }
+.footer a { color: #58a6ff; text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+.company-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 30px; }
+.meta-item { background: #161b22; border: 1px solid #21262d; border-radius: 8px; padding: 14px 18px; }
+.meta-item .meta-label { font-size: 0.72rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
+.meta-item .meta-value { font-size: 0.95rem; color: #c9d1d9; font-weight: 600; margin-top: 2px; }
+.critical-badge { display: inline-block; background: rgba(248, 81, 73, 0.2); color: #f85149; border: 1px solid rgba(248, 81, 73, 0.4); border-radius: 4px; padding: 2px 8px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 6px; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>AI SEARCH VISIBILITY AUDIT: Ritten</h1>
+  <p class="subtitle">A purpose-built behavioral health EHR with strong funding — but can behavioral health providers find it through AI search? A comprehensive audit of AI Overviews, citations, and UGC presence.</p>
+  <p class="domain">ritten.io</p>
+</header>
+
+<div class="stats-row">
+  <div class="stat-pill">
+    <div class="stat-number">$35M</div>
+    <div class="stat-label">Total Funding</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-number">1/5</div>
+    <div class="stat-label">AI Visibility Score</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-number">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-number">0</div>
+    <div class="stat-label">Reddit Mentions</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+    <div class="company-meta">
+      <div class="meta-item"><div class="meta-label">CEO</div><div class="meta-value">Noah Whitehead</div></div>
+      <div class="meta-item"><div class="meta-label">Category</div><div class="meta-value">AI-Powered Behavioral Health EHR & Practice Management</div></div>
+      <div class="meta-item"><div class="meta-label">Founded</div><div class="meta-value">2020 · Philadelphia, PA</div></div>
+      <div class="meta-item"><div class="meta-label">Employees</div><div class="meta-value">50–100</div></div>
+      <div class="meta-item"><div class="meta-label">Latest Round</div><div class="meta-value">$35M Series B</div></div>
+      <div class="meta-item"><div class="meta-label">Key Investors</div><div class="meta-value">Five Elms Capital</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="alert">
+      <div class="alert-title">🔶 KEY FINDING: Complete UGC Vacuum in a Community-Driven Category</div>
+      <div class="alert-body">
+        Behavioral health is one of the most community-driven software categories — practitioners actively seek peer recommendations on Reddit (r/therapists, r/psychotherapy), G2, and professional forums. Yet Ritten has <strong>zero G2 reviews and zero Reddit mentions</strong>. With <strong>$35M in funding</strong> and a purpose-built platform for behavioral health and substance use disorder treatment, Ritten should be at the center of these conversations. Instead, AI Overviews consistently cite competitors — <strong>TherapyNotes</strong>, <strong>SimplePractice</strong>, <strong>Qualifacts</strong>, and <strong>Kipu Health</strong> — in every high-intent buyer query. Ritten appears in only 1 of 5 core queries, and even then only in dealroom/funding coverage, not in the UGC sources AI search trusts.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🔍 AI Search Query Analysis</h2>
+    <div class="query-grid">
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"best behavioral health EHR 2026"</span>
+          <span class="badge badge-weak">⚠️ WEAK</span>
+        </div>
+        <div class="query-analysis">This is the highest-volume, highest-intent query in Ritten's category. AI Overviews consistently cite <strong>TherapyNotes</strong>, <strong>SimplePractice</strong>, and <strong>Qualifacts</strong> as the top behavioral health EHR platforms. Ritten is entirely absent from all AI-cited sources — meaning buyers relying on AI search for their EHR decision will never encounter Ritten.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"EHR for substance use disorder treatment"</span>
+          <span class="badge badge-weak">⚠️ WEAK</span>
+        </div>
+        <div class="query-analysis">This is one of Ritten's core differentiators — a purpose-built platform for SUD treatment providers. Yet AI-generated answers cite <strong>Kipu Health</strong> and <strong>Qualifacts</strong> as the go-to solutions for substance use disorder EHR needs. Ritten is never mentioned, despite having a product specifically designed for this exact use case.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"behavioral health practice management software reviews"</span>
+          <span class="badge badge-weak">⚠️ WEAK <span class="critical-badge">CRITICAL</span></span>
+        </div>
+        <div class="query-analysis">This query targets buyers in the validation/evaluation phase — exactly when a strong review presence converts to pipeline. The result: <strong>0 G2 reviews, 0 Reddit threads</strong>. Ritten faces a complete UGC vacuum. Every competitor cited in AI Overviews has hundreds or thousands of reviews. Without review content, AI search has no signal to surface Ritten as a credible option.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"AI-powered mental health EHR platform"</span>
+          <span class="badge badge-present">✅ PRESENT</span>
+        </div>
+        <div class="query-analysis">Ritten appears in dealroom and funding news coverage, which surfaces when AI search indexes tech and VC publications. However, this is editorial visibility, not the practitioner UGC that drives buyer trust. AI Overviews looking for peer-validated recommendations do not cite Ritten — and zero Reddit or G2 presence means there is no UGC for AI search to discover.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"unified EHR for behavioral health providers"</span>
+          <span class="badge badge-weak">⚠️ WEAK</span>
+        </div>
+        <div class="query-analysis">AI Overviews for unified EHR queries overwhelmingly cite <strong>TherapyNotes</strong> and <strong>SimplePractice</strong>, which dominate the behavioral health EHR category narrative across all AI-cited sources. These incumbents have years of accumulated UGC, analyst coverage, and SEO authority that AI search engines inherit — effectively locking Ritten out of the AI-generated answers providers see first.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🏢 Key Competitors in AI Search</h2>
+    <div class="competitor-grid">
+      <div class="competitor-card">
+        <div class="comp-name">Qualifacts</div>
+        <div class="comp-note">Long-established behavioral health EHR vendor; cited in AI Overviews for SUD, mental health, and practice management queries. Strong G2 and Capterra review volume.</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">TherapyNotes</div>
+        <div class="comp-note">Dominates AI Overviews for "best behavioral health EHR" queries. Massive practitioner community and review footprint that AI search engines heavily weight.</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">SimplePractice</div>
+        <div class="comp-note">Category leader in AI-cited sources for unified EHR and practice management. Thousands of reviews across multiple platforms; dominant Reddit presence in therapist communities.</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Kipu Health</div>
+        <div class="comp-note">Strong AI Overview presence for substance use disorder treatment EHR queries. Well-established in the SUD provider community with growing UGC footprint.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">📊 AI Visibility Score Breakdown: 1/5</h2>
+    <p style="color:#8b949e;font-size:0.95rem;line-height:1.7;">Ritten's 1/5 AI visibility score reflects a paradox: strong editorial coverage from dealroom and funding news, but zero presence in the practitioner communities that actually drive EHR purchasing decisions. Behavioral health is an intrinsically peer-driven category — providers trust other providers' recommendations. AI search engines amplify this dynamic by citing UGC-heavy sources. With no G2 reviews, no Reddit threads, and no community presence, Ritten is invisible to the AI-powered discovery channels where its buyers are actively researching. Competitors with mature UGC strategies — particularly TherapyNotes, SimplePractice, and Qualifacts — have captured the AI visibility that Ritten needs to turn its purpose-built platform story into pipeline.</p>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-inner">
+    <h2>Close the AI Visibility Gap with genhance</h2>
+    <p class="cta-sub">genhance helps B2B platforms like Ritten get cited by AI search engines — where your buyers are making decisions.</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="play-num">Play 01</div>
+        <div class="play-title">Monitor UGC Feeds</div>
+        <div class="play-desc">Track Reddit communities like r/therapists, r/psychotherapy, r/socialwork, and behavioral health Facebook groups for threads where providers ask "which EHR should I use?" — and map where competitors are earning citations that Ritten should be capturing.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 02</div>
+        <div class="play-title">Contribute to Existing Threads</div>
+        <div class="play-desc">Engage authentically in discussions where TherapyNotes, SimplePractice, and Kipu Health are recommended. When providers ask about EHRs purpose-built for behavioral health or SUD treatment, contribute Ritten's unique value — unified platform, AI-powered workflows, SUD specialization — to earn citations in AI-generated answers.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 03</div>
+        <div class="play-title">Track AI Answer Shifts</div>
+        <div class="play-desc">Monitor how AI Overviews evolve for Ritten's 5 core buyer queries. Measure when Ritten first appears in AI-cited sources, which UGC channels drive that appearance, and how competitor citation share shifts — so every UGC investment is tied to measurable AI visibility gains.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 04</div>
+        <div class="play-title">Report Impact</div>
+        <div class="play-desc">Quantify the pipeline impact: when Ritten appears in AI Overviews for "best behavioral health EHR" or "EHR for substance use disorder treatment," how does demo request volume shift? Show the leadership team why AI search visibility is the new marketing frontier for behavioral health SaaS.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p style="font-weight:700;color:#f0f6fc;font-size:0.9rem;">Rajesh Gautam, PhD</p>
+  <p>Founder and CEO, genhance.ai</p>
+  <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+</footer>
+
+</body>
+</html>

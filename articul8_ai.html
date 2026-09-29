@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Articul8 AI</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #1e3a5f 100%); padding: 60px 40px; text-align: center; border-bottom: 3px solid #0366d6; position: relative; overflow: hidden; }
+.header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 50%, rgba(3, 102, 214, 0.15) 0%, transparent 70%); }
+.header h1 { font-size: 2.4rem; font-weight: 800; color: #ffffff; max-width: 900px; margin: 0 auto 10px; position: relative; z-index: 1; letter-spacing: -0.5px; }
+.header .subtitle { font-size: 1.1rem; color: #8b949e; position: relative; z-index: 1; }
+.header .domain { font-size: 0.95rem; color: #58a6ff; margin-top: 8px; position: relative; z-index: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+.stats-row { display: flex; gap: 20px; flex-wrap: wrap; margin: -30px auto 40px; max-width: 1100px; padding: 0 30px; position: relative; z-index: 2; }
+.stat-pill { flex: 1; min-width: 200px; background: linear-gradient(135deg, #161b22, #1c2333); border: 1px solid #30363d; border-radius: 12px; padding: 20px 24px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+.stat-pill .stat-number { font-size: 1.8rem; font-weight: 700; color: #58a6ff; }
+.stat-pill .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.section { margin: 40px auto; max-width: 1100px; padding: 0 30px; }
+.section-title { font-size: 1.4rem; font-weight: 700; color: #f0f6fc; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #21262d; }
+.alert { background: linear-gradient(135deg, rgba(210, 153, 34, 0.12), rgba(210, 153, 34, 0.06)); border: 1px solid rgba(210, 153, 34, 0.35); border-radius: 10px; padding: 20px 24px; margin-bottom: 30px; }
+.alert-title { font-size: 1.05rem; font-weight: 700; color: #d2991d; margin-bottom: 8px; }
+.alert-body { color: #c9d1d9; font-size: 0.95rem; line-height: 1.7; }
+.query-grid { display: flex; flex-direction: column; gap: 16px; }
+.query-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px 24px; transition: all 0.2s; }
+.query-card:hover { border-color: #58a6ff; box-shadow: 0 4px 20px rgba(3, 102, 214, 0.15); }
+.query-card .query-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+.query-card .query-text { font-size: 1.05rem; font-weight: 600; color: #f0f6fc; font-style: italic; }
+.badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-present { background: rgba(35, 134, 54, 0.18); color: #3fb950; border: 1px solid rgba(35, 134, 54, 0.35); }
+.badge-weak { background: rgba(210, 153, 34, 0.18); color: #d2991d; border: 1px solid rgba(210, 153, 34, 0.35); }
+.query-card .query-analysis { font-size: 0.9rem; color: #8b949e; line-height: 1.6; }
+.competitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.competitor-card { background: linear-gradient(135deg, #161b22, #1c2333); border: 1px solid #30363d; border-radius: 10px; padding: 20px; text-align: center; transition: all 0.2s; }
+.competitor-card:hover { border-color: #8b949e; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+.competitor-card .comp-name { font-size: 1.15rem; font-weight: 700; color: #f0f6fc; }
+.competitor-card .comp-note { font-size: 0.82rem; color: #8b949e; margin-top: 6px; }
+.cta-section { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%); padding: 60px 0; margin-top: 50px; border-top: 3px solid #0366d6; }
+.cta-inner { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+.cta-inner h2 { font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-bottom: 10px; }
+.cta-inner .cta-sub { color: #8b949e; margin-bottom: 30px; font-size: 1rem; }
+.plays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.play-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 24px; }
+.play-card .play-num { font-size: 0.75rem; font-weight: 700; color: #58a6ff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.play-card .play-title { font-size: 1.05rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+.play-card .play-desc { font-size: 0.85rem; color: #8b949e; line-height: 1.6; }
+.footer { background: #0a1628; padding: 30px 0; text-align: center; border-top: 1px solid #21262d; }
+.footer p { color: #8b949e; font-size: 0.85rem; margin: 4px 0; }
+.footer a { color: #58a6ff; text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+.company-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 30px; }
+.meta-item { background: #161b22; border: 1px solid #21262d; border-radius: 8px; padding: 14px 18px; }
+.meta-item .meta-label { font-size: 0.72rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
+.meta-item .meta-value { font-size: 0.95rem; color: #c9d1d9; font-weight: 600; margin-top: 2px; }
+.critical-badge { display: inline-block; background: rgba(248, 81, 73, 0.2); color: #f85149; border: 1px solid rgba(248, 81, 73, 0.4); border-radius: 4px; padding: 2px 8px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 6px; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>AI SEARCH VISIBILITY AUDIT: Articul8 AI</h1>
+  <p class="subtitle">An Intel spinout with a powerful enterprise GenAI story — but does AI search know it exists? A deep audit of AI Overviews, citations, and UGC presence.</p>
+  <p class="domain">articul8.ai</p>
+</header>
+
+<div class="stats-row">
+  <div class="stat-pill">
+    <div class="stat-number">$70M</div>
+    <div class="stat-label">Total Funding</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-number">1/5</div>
+    <div class="stat-label">AI Visibility Score</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-number">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-number">0</div>
+    <div class="stat-label">Reddit Mentions</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+    <div class="company-meta">
+      <div class="meta-item"><div class="meta-label">CEO</div><div class="meta-value">Arun K. Subramaniyan</div></div>
+      <div class="meta-item"><div class="meta-label">Category</div><div class="meta-value">Enterprise Generative AI Platform (Intel Spinout)</div></div>
+      <div class="meta-item"><div class="meta-label">Founded</div><div class="meta-value">2023 · Santa Clara, CA</div></div>
+      <div class="meta-item"><div class="meta-label">Employees</div><div class="meta-value">51–200</div></div>
+      <div class="meta-item"><div class="meta-label">Latest Round</div><div class="meta-value">$70M Series B</div></div>
+      <div class="meta-item"><div class="meta-label">Key Investors</div><div class="meta-value">Adara Ventures, DigitalBridge, NXC Corporation</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="alert">
+      <div class="alert-title">🔶 KEY FINDING: Complete UGC Vacuum — AI Search Has No Reason to Cite Articul8</div>
+      <div class="alert-body">
+        Articul8 AI faces one of the most severe AI visibility gaps in enterprise AI: <strong>zero G2 reviews, zero Reddit mentions</strong>. Despite a compelling story as an Intel spinout with <strong>$70M in Series B funding</strong>, Articul8 is entirely absent from the user-generated content ecosystem that AI search engines depend on. In every high-intent buyer query — from "best enterprise AI platform" to "secure AI deployment for regulated industries" — AI Overviews cite <strong>Dataiku</strong>, <strong>DataRobot</strong>, <strong>H2O.ai</strong>, and <strong>SambaNova</strong> instead. Without UGC signals, Articul8 is invisible where enterprise buyers are increasingly making decisions: AI-powered search.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🔍 AI Search Query Analysis</h2>
+    <div class="query-grid">
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"best enterprise AI platform 2026"</span>
+          <span class="badge badge-weak">⚠️ WEAK</span>
+        </div>
+        <div class="query-analysis">AI Overviews consistently cite <strong>Dataiku</strong>, <strong>DataRobot</strong>, and <strong>H2O.ai</strong> as the leading enterprise AI platforms. Articul8 never appears in AI-generated answers, AI-cited sources, or AI-curated comparison lists for this core category query — despite its vertically-optimized deployment capabilities that would differentiate it from horizontal platforms.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"generative AI deployment for regulated industries"</span>
+          <span class="badge badge-present">✅ PRESENT</span>
+        </div>
+        <div class="query-analysis">Articul8 appears in TechCrunch and dealroom coverage, which gives it some editorial footprint. However, AI search engines pull citations primarily from UGC sources (G2, Reddit, Stack Overflow, niche forums), where Articul8 has zero presence. AI Overviews looking for practical deployment guidance cite competitor platforms instead.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"Intel AI spinout enterprise platform review"</span>
+          <span class="badge badge-weak">⚠️ WEAK <span class="critical-badge">CRITICAL</span></span>
+        </div>
+        <div class="query-analysis">This query represents the highest-intent buyer segment — someone who already knows about Articul8 and is seeking validation. The result: <strong>0 G2 reviews, 0 Reddit threads</strong>. No user-generated content exists anywhere for AI search to surface. A prospect searching for real-world validation finds nothing, dramatically increasing the risk of lost deals to competitors with established review profiles.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"secure enterprise AI deployment on-premises"</span>
+          <span class="badge badge-weak">⚠️ WEAK</span>
+        </div>
+        <div class="query-analysis">AI-generated answers for on-premises and secure AI deployment cite <strong>NVIDIA</strong>, <strong>IBM watsonx</strong>, and <strong>SambaNova</strong> — all companies with strong content marketing and community presence. Articul8, despite its hybrid deployment capabilities for regulated industries, is entirely absent from AI-cited sources for this query.</div>
+      </div>
+      <div class="query-card">
+        <div class="query-top">
+          <span class="query-text">"best AI platform for financial services compliance"</span>
+          <span class="badge badge-weak">⚠️ WEAK</span>
+        </div>
+        <div class="query-analysis">AI Overviews pull heavily from Gartner and Forrester reports, which cite <strong>DataRobot</strong> and <strong>H2O.ai</strong> as top picks for financial services AI. With no analyst coverage footprint visible to AI search and no UGC to fill the gap, Articul8 is completely unknown to AI-powered search for this high-value vertical use case.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🏢 Key Competitors in AI Search</h2>
+    <div class="competitor-grid">
+      <div class="competitor-card">
+        <div class="comp-name">Dataiku</div>
+        <div class="comp-note">Hundreds of G2 reviews; consistently top-cited in AI Overviews for enterprise AI platform queries. Strong analyst coverage from Gartner/Forrester.</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">H2O.ai</div>
+        <div class="comp-note">Large open-source community footprint drives UGC mentions on Reddit, Stack Overflow, and GitHub — all indexed by AI search engines.</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">DataRobot</div>
+        <div class="comp-note">Dominates AI Overviews for vertical-specific queries like financial services and healthcare; strong G2 review volume and analyst citations.</div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">SambaNova</div>
+        <div class="comp-note">Well-funded competitor with strong content marketing and community engagement; regularly cited in AI Overviews for on-premises and secure deployment queries.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">📊 AI Visibility Score Breakdown: 1/5</h2>
+    <p style="color:#8b949e;font-size:0.95rem;line-height:1.7;">Articul8 AI's 1/5 visibility score is driven by a near-total absence from every signal AI search engines use to determine relevance and trust. The Intel spinout story provides strong editorial coverage (TechCrunch, dealroom), but without G2 reviews, Reddit discussions, analyst citations in AI-accessible formats, or community engagement, Articul8 is effectively invisible to the AI-powered search channels that enterprise buyers increasingly rely on. Competitors with mature UGC strategies — Dataiku, DataRobot, H2O.ai — have captured the AI visibility that Articul8 needs to convert awareness into pipeline.</p>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-inner">
+    <h2>Close the AI Visibility Gap with genhance</h2>
+    <p class="cta-sub">genhance helps B2B platforms like Articul8 AI get cited by AI search engines — where your buyers are making decisions.</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="play-num">Play 01</div>
+        <div class="play-title">Monitor UGC Feeds</div>
+        <div class="play-desc">Track Reddit communities like r/MLOps, r/enterpriseAI, and r/datascience for threads where buyers compare enterprise AI platforms. Identify every conversation where Articul8 should be part of the discussion but isn't — and where competitors are earning citations unchallenged.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 02</div>
+        <div class="play-title">Contribute to Existing Threads</div>
+        <div class="play-desc">Authentically engage in discussions about on-premises AI, regulated industry deployment, and financial services AI — areas where Articul8's Intel heritage and security-first architecture provide genuine differentiation. Seed the UGC ecosystem that AI search engines index.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 03</div>
+        <div class="play-title">Track AI Answer Shifts</div>
+        <div class="play-desc">Monitor how AI Overviews evolve for Articul8's core buyer queries. Measure when Articul8 first appears, which sources drive its appearance, and how competitor citation share trends — so you can attribute UGC investment to AI visibility gains.</div>
+      </div>
+      <div class="play-card">
+        <div class="play-num">Play 04</div>
+        <div class="play-title">Report Impact</div>
+        <div class="play-desc">Connect AI search visibility to revenue: when Articul8 appears in AI Overviews for "enterprise AI platform" queries, what happens to demo requests and pipeline? Arm the executive team with data that justifies sustained investment in AI-native discovery.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p style="font-weight:700;color:#f0f6fc;font-size:0.9rem;">Rajesh Gautam, PhD</p>
+  <p>Founder and CEO, genhance.ai</p>
+  <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+</footer>
+
+</body>
+</html>
