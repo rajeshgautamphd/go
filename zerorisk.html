@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Search Visibility Audit — ZeroRisk</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0a0e1a; color: #e2e8f0; line-height: 1.6; }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+        .header { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #1a2d4a 70%, #0f172a 100%); padding: 48px 0 36px; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%); pointer-events: none; }
+        .header .container { position: relative; z-index: 1; }
+        .header-badge { display: inline-block; background: rgba(59,130,246,0.15); color: #93c5fd; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 30px; border: 1px solid rgba(59,130,246,0.3); margin-bottom: 18px; }
+        .header h1 { font-size: 2.4rem; font-weight: 800; color: #f1f5f9; letter-spacing: -0.5px; margin-bottom: 6px; }
+        .header h2 { font-size: 1.5rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px; }
+        .header p { font-size: 0.95rem; color: #94a3b8; max-width: 600px; }
+        .header-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; font-size: 0.85rem; color: #94a3b8; }
+        .header-meta span { display: flex; align-items: center; gap: 6px; }
+
+        .stats-row { display: flex; gap: 16px; flex-wrap: wrap; padding: 28px 0; }
+        .stat-pill { flex: 1; min-width: 180px; background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 16px; padding: 20px; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+        .stat-pill:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,0.1); }
+        .stat-pill .stat-value { font-size: 1.8rem; font-weight: 800; color: #60a5fa; margin-bottom: 2px; }
+        .stat-pill .stat-label { font-size: 0.78rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-pill .stat-sub { font-size: 0.72rem; color: #64748b; margin-top: 2px; }
+
+        .key-finding { background: linear-gradient(135deg, #451a03, #78350f); border: 1px solid #f59e0b; border-radius: 16px; padding: 24px 28px; margin-bottom: 32px; position: relative; }
+        .key-finding::before { content: '⚠ KEY FINDING'; position: absolute; top: -12px; left: 24px; background: #f59e0b; color: #0c0a09; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.2px; padding: 4px 14px; border-radius: 20px; }
+        .key-finding p { margin-top: 4px; font-size: 0.95rem; color: #fcd34d; line-height: 1.65; }
+
+        .section-title { font-size: 1.3rem; font-weight: 700; color: #e2e8f0; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #1e3a5f; }
+        .query-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+        .query-card { background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: border-color 0.2s; }
+        .query-card:hover { border-color: #475569; }
+        .query-card .query-text { flex: 1; font-size: 0.92rem; font-weight: 500; color: #cbd5e1; }
+        .query-card .query-note { font-size: 0.78rem; color: #94a3b8; margin-top: 2px; }
+        .badge { padding: 5px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; white-space: nowrap; }
+        .badge-present { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.35); }
+        .badge-weak { background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+        .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 36px; }
+        .competitor-card { background: linear-gradient(135deg, #1e293b, #162032); border: 1px solid #334155; border-radius: 14px; padding: 18px; text-align: center; transition: transform 0.2s, border-color 0.2s; }
+        .competitor-card:hover { transform: translateY(-2px); border-color: #f59e0b; }
+        .competitor-card .comp-name { font-size: 1rem; font-weight: 700; color: #f1f5f9; margin-bottom: 2px; }
+        .competitor-card .comp-desc { font-size: 0.75rem; color: #94a3b8; }
+
+        .cta-section { background: linear-gradient(135deg, #0f172a 0%, #1a1025 40%, #0f172a 100%); border: 1px solid #1e293b; border-radius: 20px; padding: 36px 32px; margin: 32px 0 40px; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; top: -30%; right: -15%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%); pointer-events: none; }
+        .cta-section h3 { font-size: 1.3rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; position: relative; }
+        .cta-section .cta-subtitle { font-size: 0.85rem; color: #94a3b8; margin-bottom: 20px; position: relative; }
+        .plays-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; position: relative; }
+        .play-card { background: rgba(30,41,59,0.7); border: 1px solid #334155; border-radius: 12px; padding: 18px; }
+        .play-card .play-num { font-size: 0.65rem; font-weight: 800; color: #a78bfa; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+        .play-card .play-title { font-size: 0.9rem; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
+        .play-card .play-desc { font-size: 0.75rem; color: #94a3b8; line-height: 1.5; }
+
+        .signature { text-align: center; padding: 20px 0 40px; border-top: 1px solid #1e293b; margin-top: 16px; }
+        .signature .sig-name { font-size: 1rem; font-weight: 700; color: #e2e8f0; }
+        .signature .sig-title { font-size: 0.78rem; color: #94a3b8; }
+        .signature a { color: #60a5fa; text-decoration: none; font-size: 0.78rem; }
+        .signature a:hover { text-decoration: underline; }
+        .sig-sep { color: #475569; margin: 0 8px; }
+
+        @media (max-width: 640px) {
+            .header h1 { font-size: 1.6rem; }
+            .query-card { flex-direction: column; align-items: flex-start; }
+            .stats-row { flex-direction: column; }
+            .stat-pill { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-badge">AI SEARCH VISIBILITY AUDIT</div>
+            <h1>ZeroRisk</h1>
+            <h2>Payment Risk Made Invisible — ZeroFootprint in AI Search</h2>
+            <p>A comprehensive audit of ZeroRisk's presence across AI-powered search engines, LLM citations, and discoverability surfaces — analyzing how this specialized merchant cybersecurity platform stacks up against generic competitors in the age of generative AI search.</p>
+            <div class="header-meta">
+                <span>📍 Dublin, Ireland</span>
+                <span>🌐 zerorisk.io</span>
+                <span>👨‍💼 CEO: Gary Nolan</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="stats-row">
+            <div class="stat-pill">
+                <div class="stat-value">$10M</div>
+                <div class="stat-label">Series A Funding</div>
+                <div class="stat-sub">MiddleGame Ventures · Elkstone · Sep 2026</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-value">0 / 5</div>
+                <div class="stat-label">AI Visibility Score</div>
+                <div class="stat-sub">Completely absent from AI-generated answers</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-value">0</div>
+                <div class="stat-label">G2 Reviews</div>
+                <div class="stat-sub">No review presence on any major UGC platform</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Reddit Threads</div>
+                <div class="stat-sub">No organic community discussions whatsoever</div>
+            </div>
+        </div>
+
+        <div class="key-finding">
+            <p><strong>ZeroRisk helps payment providers manage cyber risk across merchant portfolios — but has ZERO AI search presence.</strong> In a world where "merchant cybersecurity platform" queries increasingly go to ChatGPT first, the absence of UGC means AI defaults to citing generic cybersecurity vendors rather than ZeroRisk's specialized payment-risk platform.</p>
+        </div>
+
+        <h2 class="section-title">🔍 AI Search Query Analysis</h2>
+        <div class="query-cards">
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"best merchant cybersecurity platform 2026"</div>
+                    <div class="query-note">AI cites SISA, Trustwave, SecurityMetrics; ZeroRisk not found</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"payment provider cyber risk management 2026"</div>
+                    <div class="query-note">AI cites general risk tools; ZeroRisk invisible despite specialized focus</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"PCI compliance merchant portfolio monitoring 2026"</div>
+                    <div class="query-note">AI cites Qualys, Rapid7, Tenable; ZeroRisk absent</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"ZeroRisk review cybersecurity Reddit"</div>
+                    <div class="query-note">Zero mentions, zero threads</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"cybersecurity platform payment processors 2026"</div>
+                    <div class="query-note">AI cites general tools; ZeroRisk's specific use case unrepresented</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+        </div>
+
+        <h2 class="section-title">🏢 Competitors Dominating AI Search</h2>
+        <div class="competitor-grid">
+            <div class="competitor-card">
+                <div class="comp-name">CyberGRX</div>
+                <div class="comp-desc">Third-party risk platform with extensive content and AI presence</div>
+            </div>
+            <div class="competitor-card">
+                <div class="comp-name">BitSight</div>
+                <div class="comp-desc">Security ratings leader dominating cybersecurity AI queries</div>
+            </div>
+            <div class="competitor-card">
+                <div class="comp-name">SecurityScorecard</div>
+                <div class="comp-desc">Broad cybersecurity ratings platform with strong LLM citation footprint</div>
+            </div>
+            <div class="competitor-card">
+                <div class="comp-name">RiskRecon</div>
+                <div class="comp-desc">Mastercard-owned; benefits from enterprise content ecosystem</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h3>🚀 genhance Plays to Win AI Search Visibility</h3>
+            <p class="cta-subtitle">Four strategic moves to put ZeroRisk on the AI search map — before CyberGRX and BitSight claim the payment-risk niche entirely.</p>
+            <div class="plays-grid">
+                <div class="play-card">
+                    <div class="play-num">Play 01</div>
+                    <div class="play-title">Niche Authority Content Engine</div>
+                    <div class="play-desc">Publish deep-dive technical content on "merchant portfolio cyber risk," "payment provider PCI compliance," and "acquiring bank risk monitoring" — topics where ZeroRisk can own the AI answer space uncontested.</div>
+                </div>
+                <div class="play-card">
+                    <div class="play-num">Play 02</div>
+                    <div class="play-title">Comparison & Category-Definition Pages</div>
+                    <div class="play-desc">Create "ZeroRisk vs CyberGRX / BitSight / SecurityScorecard" pages and a definitive "Merchant Cybersecurity Platform" category guide to define the space AI models will cite.</div>
+                </div>
+                <div class="play-card">
+                    <div class="play-num">Play 03</div>
+                    <div class="play-title">Regulatory & Standards Content</div>
+                    <div class="play-desc">Build authoritative content around PCI DSS 4.0, PSD2, and merchant monitoring compliance — regulatory frameworks AI models treat as high-authority sources.</div>
+                </div>
+                <div class="play-card">
+                    <div class="play-num">Play 04</div>
+                    <div class="play-title">Partner Co-Citation Strategy</div>
+                    <div class="play-desc">Publish joint content with payment providers, acquirers, and gateways to generate co-citation signals that AI models use to establish domain relevance.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="signature">
+            <div class="sig-name">Rajesh Gautam, PhD</div>
+            <div class="sig-title">AI Search Visibility Strategist · genhance</div>
+            <div>
+                <a href="https://linkedin.com/in/rajeshgautam" target="_blank" rel="noopener">linkedin.com/in/rajeshgautam</a>
+                <span class="sig-sep">|</span>
+                <a href="https://genhance.ai" target="_blank" rel="noopener">genhance.ai</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Search Visibility Audit — Erad</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0a0e1a; color: #e2e8f0; line-height: 1.6; }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+        .header { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #1a2d4a 70%, #0f172a 100%); padding: 48px 0 36px; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%); pointer-events: none; }
+        .header .container { position: relative; z-index: 1; }
+        .header-badge { display: inline-block; background: rgba(59,130,246,0.15); color: #93c5fd; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 30px; border: 1px solid rgba(59,130,246,0.3); margin-bottom: 18px; }
+        .header h1 { font-size: 2.4rem; font-weight: 800; color: #f1f5f9; letter-spacing: -0.5px; margin-bottom: 6px; }
+        .header h2 { font-size: 1.5rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px; }
+        .header p { font-size: 0.95rem; color: #94a3b8; max-width: 600px; }
+        .header-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; font-size: 0.85rem; color: #94a3b8; }
+        .header-meta span { display: flex; align-items: center; gap: 6px; }
+
+        .stats-row { display: flex; gap: 16px; flex-wrap: wrap; padding: 28px 0; }
+        .stat-pill { flex: 1; min-width: 180px; background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 16px; padding: 20px; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+        .stat-pill:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,0.1); }
+        .stat-pill .stat-value { font-size: 1.8rem; font-weight: 800; color: #60a5fa; margin-bottom: 2px; }
+        .stat-pill .stat-label { font-size: 0.78rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-pill .stat-sub { font-size: 0.72rem; color: #64748b; margin-top: 2px; }
+
+        .key-finding { background: linear-gradient(135deg, #451a03, #78350f); border: 1px solid #f59e0b; border-radius: 16px; padding: 24px 28px; margin-bottom: 32px; position: relative; }
+        .key-finding::before { content: '⚠ KEY FINDING'; position: absolute; top: -12px; left: 24px; background: #f59e0b; color: #0c0a09; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.2px; padding: 4px 14px; border-radius: 20px; }
+        .key-finding p { margin-top: 4px; font-size: 0.95rem; color: #fcd34d; line-height: 1.65; }
+
+        .section-title { font-size: 1.3rem; font-weight: 700; color: #e2e8f0; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #1e3a5f; }
+        .query-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+        .query-card { background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: border-color 0.2s; }
+        .query-card:hover { border-color: #475569; }
+        .query-card .query-text { flex: 1; font-size: 0.92rem; font-weight: 500; color: #cbd5e1; }
+        .query-card .query-note { font-size: 0.78rem; color: #94a3b8; margin-top: 2px; }
+        .badge { padding: 5px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; white-space: nowrap; }
+        .badge-present { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.35); }
+        .badge-weak { background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+        .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 36px; }
+        .competitor-card { background: linear-gradient(135deg, #1e293b, #162032); border: 1px solid #334155; border-radius: 14px; padding: 18px; text-align: center; transition: transform 0.2s, border-color 0.2s; }
+        .competitor-card:hover { transform: translateY(-2px); border-color: #f59e0b; }
+        .competitor-card .comp-name { font-size: 1rem; font-weight: 700; color: #f1f5f9; margin-bottom: 2px; }
+        .competitor-card .comp-desc { font-size: 0.75rem; color: #94a3b8; }
+
+        .cta-section { background: linear-gradient(135deg, #0f172a 0%, #1a1025 40%, #0f172a 100%); border: 1px solid #1e293b; border-radius: 20px; padding: 36px 32px; margin: 32px 0 40px; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; top: -30%; right: -15%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%); pointer-events: none; }
+        .cta-section h3 { font-size: 1.3rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; position: relative; }
+        .cta-section .cta-subtitle { font-size: 0.85rem; color: #94a3b8; margin-bottom: 20px; position: relative; }
+        .plays-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; position: relative; }
+        .play-card { background: rgba(30,41,59,0.7); border: 1px solid #334155; border-radius: 12px; padding: 18px; }
+        .play-card .play-num { font-size: 0.65rem; font-weight: 800; color: #a78bfa; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+        .play-card .play-title { font-size: 0.9rem; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
+        .play-card .play-desc { font-size: 0.75rem; color: #94a3b8; line-height: 1.5; }
+
+        .signature { text-align: center; padding: 20px 0 40px; border-top: 1px solid #1e293b; margin-top: 16px; }
+        .signature .sig-name { font-size: 1rem; font-weight: 700; color: #e2e8f0; }
+        .signature .sig-title { font-size: 0.78rem; color: #94a3b8; }
+        .signature a { color: #60a5fa; text-decoration: none; font-size: 0.78rem; }
+        .signature a:hover { text-decoration: underline; }
+        .sig-sep { color: #475569; margin: 0 8px; }
+
+        @media (max-width: 640px) {
+            .header h1 { font-size: 1.6rem; }
+            .query-card { flex-direction: column; align-items: flex-start; }
+            .stats-row { flex-direction: column; }
+            .stat-pill { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-badge">AI SEARCH VISIBILITY AUDIT</div>
+            <h1>Erad</h1>
+            <h2>Saudi Arabia's Fastest-Growing SME Fintech — Zero AI Footprint</h2>
+            <p>A comprehensive audit of Erad's presence across AI-powered search engines, LLM citations, and discoverability surfaces — analyzing how the MEVP-backed Shariah-compliant financing platform stacks up against competitors in the age of generative AI search.</p>
+            <div class="header-meta">
+                <span>📍 Riyadh, Saudi Arabia</span>
+                <span>🌐 erad.sa</span>
+                <span>👨‍💼 CEO: Salem Abu-Hammour</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="stats-row">
+            <div class="stat-pill">
+                <div class="stat-value">$32M</div>
+                <div class="stat-label">Total Funding</div>
+                <div class="stat-sub">Series A · MEVP, 500 Global, SVC · Sep 2026</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-value">0 / 5</div>
+                <div class="stat-label">AI Visibility Score</div>
+                <div class="stat-sub">Completely absent from AI-generated answers</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-value">0</div>
+                <div class="stat-label">G2 Reviews</div>
+                <div class="stat-sub">No review presence on any major UGC platform</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Reddit Threads</div>
+                <div class="stat-sub">No organic community discussions whatsoever</div>
+            </div>
+        </div>
+
+        <div class="key-finding">
+            <p><strong>Erad is one of Saudi Arabia's fastest-growing fintech platforms ($133M+ in SME financing deployed) but has ZERO AI search footprint.</strong> In a region where "business financing Saudi Arabia" queries are surging, AI answers default to Tamweel, Beehive, and Lendo — Erad is invisible despite being backed by MEVP and 500 Global.</p>
+        </div>
+
+        <h2 class="section-title">🔍 AI Search Query Analysis</h2>
+        <div class="query-cards">
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"best SME financing platform Saudi Arabia 2026"</div>
+                    <div class="query-note">AI cites Lendo, Beehive, Tamweel; Erad not found</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"Shariah-compliant business financing GCC 2026"</div>
+                    <div class="query-note">AI cites Islamic banks, Lendo, Forus; Erad absent</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"revenue-based financing Saudi Arabia startup 2026"</div>
+                    <div class="query-note">AI cites Flow Capital, Lighter Capital but nothing regional</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"Erad review fintech Reddit"</div>
+                    <div class="query-note">Zero mentions, zero threads, zero organic UGC</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"alternative SME lending Middle East 2026"</div>
+                    <div class="query-note">AI cites Beehive, Liwwa, Lendo; Erad entirely invisible</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+        </div>
+
+        <h2 class="section-title">🏢 Competitors Dominating AI Search</h2>
+        <div class="competitor-grid">
+            <div class="competitor-card">
+                <div class="comp-name">Lendo</div>
+                <div class="comp-desc">Leading Saudi P2P lending platform with strong AI search presence</div>
+            </div>
+            <div class="competitor-card">
+                <div class="comp-name">Forus</div>
+                <div class="comp-desc">GCC alternative lender with growing content footprint</div>
+            </div>
+            <div class="competitor-card">
+                <div class="comp-name">Funding Souq</div>
+                <div class="comp-desc">UAE-based crowdfunding platform cited in regional queries</div>
+            </div>
+            <div class="competitor-card">
+                <div class="comp-name">Tabby (BNPL)</div>
+                <div class="comp-desc">Adjacent fintech with massive brand awareness and AI citations</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h3>🚀 genhance Plays to Win AI Search Visibility</h3>
+            <p class="cta-subtitle">Four strategic moves to put Erad on the AI search map — before Lendo and Beehive lock in their positions across GCC queries.</p>
+            <div class="plays-grid">
+                <div class="play-card">
+                    <div class="play-num">Play 01</div>
+                    <div class="play-title">Arabic-English Bilingual Content Engine</div>
+                    <div class="play-desc">Build a dual-language content hub covering SME financing, Shariah compliance, and revenue-based lending — optimized for AI extraction in both Arabic and English queries.</div>
+                </div>
+                <div class="play-card">
+                    <div class="play-num">Play 02</div>
+                    <div class="play-title">Trust Signal Acceleration</div>
+                    <div class="play-desc">Publish $133M+ financing milestone data as structured case studies with verifiable metrics that AI models can cite directly in answers.</div>
+                </div>
+                <div class="play-card">
+                    <div class="play-num">Play 03</div>
+                    <div class="play-title">Regional PR & Wikipedia Presence</div>
+                    <div class="play-desc">Secure coverage in Wamda, MAGNiTT, and MENA fintech publications — plus a Wikipedia entry — as AI models rely heavily on these sources for regional authority.</div>
+                </div>
+                <div class="play-card">
+                    <div class="play-num">Play 04</div>
+                    <div class="play-title">Comparison Content Offensive</div>
+                    <div class="play-desc">Launch "Erad vs Lendo/Forus/Beehive" comparison pages in both Arabic and English to capture comparison-intent queries that AI search engines surface.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="signature">
+            <div class="sig-name">Rajesh Gautam, PhD</div>
+            <div class="sig-title">AI Search Visibility Strategist · genhance</div>
+            <div>
+                <a href="https://linkedin.com/in/rajeshgautam" target="_blank" rel="noopener">linkedin.com/in/rajeshgautam</a>
+                <span class="sig-sep">|</span>
+                <a href="https://genhance.ai" target="_blank" rel="noopener">genhance.ai</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

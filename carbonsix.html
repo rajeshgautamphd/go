@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: CarbonSix</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .header { background: linear-gradient(135deg, #0a1628 0%, #162d50 40%, #1e3a6e 70%, #1b3b5c 100%); padding: 60px 0 48px; text-align: center; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, rgba(59,130,246,0.12) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(99,102,241,0.08) 0%, transparent 60%); }
+  .header .container { position: relative; z-index: 1; }
+  .header .badge { display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 50px; padding: 6px 18px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #94a3b8; margin-bottom: 20px; }
+  .header h1 { font-size: 2.4rem; font-weight: 800; color: #ffffff; margin-bottom: 6px; letter-spacing: -0.5px; }
+  .header h1 span { background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .header h2 { font-size: 1.25rem; font-weight: 400; color: #94a3b8; margin-bottom: 4px; }
+  .header .domain { font-size: 0.95rem; color: #64748b; font-family: 'SF Mono', 'Fira Code', monospace; }
+  .header .ceo-line { margin-top: 16px; font-size: 0.9rem; color: #94a3b8; }
+  .header .ceo-line a { color: #60a5fa; text-decoration: none; border-bottom: 1px dotted rgba(96,165,250,0.4); }
+  .stats-row { display: flex; gap: 16px; justify-content: center; margin: -28px auto 0; position: relative; z-index: 10; flex-wrap: wrap; }
+  .stat-pill { background: #ffffff; border-radius: 14px; padding: 18px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); min-width: 160px; text-align: center; transition: transform 0.2s; }
+  .stat-pill:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+  .stat-pill .stat-value { font-size: 1.6rem; font-weight: 800; color: #0a1628; }
+  .stat-pill .stat-label { font-size: 0.72rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+  .stat-pill.score .stat-value { color: #e67e22; }
+  .main { padding: 48px 0; }
+  .section-title { font-size: 1.15rem; font-weight: 700; color: #0a1628; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+  .key-finding { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 2px solid #f59e0b; border-radius: 14px; padding: 24px 28px; margin-bottom: 36px; position: relative; }
+  .key-finding::before { content: '🔑 KEY FINDING'; position: absolute; top: -11px; left: 24px; background: #f59e0b; color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 12px; border-radius: 50px; letter-spacing: 0.08em; }
+  .key-finding p { font-size: 0.98rem; color: #78350f; line-height: 1.7; margin-top: 4px; }
+  .query-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+  .query-card { background: #ffffff; border-radius: 12px; padding: 18px 22px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border-left: 4px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .query-card.present { border-left-color: #22c55e; }
+  .query-card.weak { border-left-color: #ef4444; }
+  .query-card .query-text { font-size: 0.92rem; font-weight: 500; color: #1e293b; font-style: italic; flex: 1; }
+  .query-card .query-note { font-size: 0.78rem; color: #64748b; max-width: 380px; text-align: right; line-height: 1.5; }
+  .badge { display: inline-block; padding: 4px 12px; border-radius: 50px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .badge.present { background: #dcfce7; color: #15803d; }
+  .badge.weak { background: #fef2f2; color: #dc2626; }
+  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 36px; }
+  .competitor-card { background: #ffffff; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; transition: transform 0.2s, box-shadow 0.2s; }
+  .competitor-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+  .competitor-card .comp-name { font-size: 1rem; font-weight: 700; color: #0a1628; margin-bottom: 4px; }
+  .competitor-card .comp-threat { font-size: 0.75rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; }
+  .competitor-card .comp-bar { height: 4px; border-radius: 2px; margin-top: 10px; }
+  .comp-bar.high { background: #ef4444; width: 85%; }
+  .comp-bar.med { background: #f59e0b; width: 60%; }
+  .comp-bar.low { background: #22c55e; width: 30%; }
+  .cta-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #162d50 100%); padding: 52px 0; margin-top: 24px; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 30%, rgba(168,85,247,0.06) 0%, transparent 50%); }
+  .cta-section .container { position: relative; z-index: 1; }
+  .cta-section h3 { font-size: 1.5rem; font-weight: 700; color: #fff; text-align: center; margin-bottom: 8px; }
+  .cta-section .cta-sub { text-align: center; color: #94a3b8; font-size: 0.9rem; margin-bottom: 32px; }
+  .plays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin-bottom: 32px; }
+  .play-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+  .play-card .play-icon { font-size: 1.4rem; margin-bottom: 10px; }
+  .play-card h4 { font-size: 0.9rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .play-card p { font-size: 0.78rem; color: #94a3b8; line-height: 1.5; }
+  .cta-btn { display: block; width: fit-content; margin: 0 auto 32px; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; border: none; border-radius: 50px; padding: 14px 36px; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: opacity 0.2s; }
+  .cta-btn:hover { opacity: 0.9; }
+  .signature { text-align: center; padding: 32px 0 16px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .signature .sig-name { font-size: 1rem; font-weight: 700; color: #e2e8f0; }
+  .signature .sig-cred { font-size: 0.78rem; color: #64748b; margin-top: 2px; }
+  .signature .sig-links { font-size: 0.78rem; margin-top: 6px; }
+  .signature .sig-links a { color: #60a5fa; text-decoration: none; margin: 0 8px; }
+  .signature .sig-links span { color: #475569; }
+  @media (max-width: 640px) {
+    .header h1 { font-size: 1.6rem; }
+    .stats-row { flex-direction: column; align-items: center; }
+    .query-card { flex-direction: column; align-items: flex-start; }
+    .query-card .query-note { text-align: left; max-width: 100%; }
+    .competitor-grid { grid-template-columns: 1fr 1fr; }
+    .plays-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="badge">AI Search Visibility Audit</div>
+    <h1><span>CarbonSix</span></h1>
+    <h2>Physical AI for Manufacturing &amp; Factory Floor Robotics</h2>
+    <p class="domain">carbon6robotics.com &bull; San Francisco / Seoul</p>
+    <p class="ceo-line">Co-CEO: Terry Moon &mdash; <a href="https://kr.linkedin.com/in/terry-moon-34702968" target="_blank">kr.linkedin.com/in/terry-moon-34702968</a></p>
+  </div>
+</header>
+
+<div class="container">
+  <div class="stats-row">
+    <div class="stat-pill">
+      <div class="stat-value">$44M</div>
+      <div class="stat-label">Total Funding</div>
+    </div>
+    <div class="stat-pill score">
+      <div class="stat-value">0.5 / 5</div>
+      <div class="stat-label">AI Visibility Score</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value">0</div>
+      <div class="stat-label">G2 Reviews</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value">0</div>
+      <div class="stat-label">Reddit Threads</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="container">
+
+    <div class="key-finding">
+      <p>CarbonSix is building the future of physical AI for manufacturing with SigmaKit's imitation learning platform — but has <strong>ZERO footprint</strong> in AI search. No G2 reviews, no Reddit threads, no comparison articles. The entire category narrative is shaped by what competitors (Tulip, Augury) publish themselves.</p>
+    </div>
+
+    <div class="section-title">🔍 AI Search Query Analysis</div>
+    <div class="query-cards">
+      <div class="query-card weak">
+        <span class="badge weak">WEAK</span>
+        <span class="query-text">"physical AI for manufacturing 2026"</span>
+        <span class="query-note">AI cites Bright Machines, Covariant, Symbio; CarbonSix absent</span>
+      </div>
+      <div class="query-card weak">
+        <span class="badge weak">WEAK</span>
+        <span class="query-text">"AI robotics factory floor automation platform 2026"</span>
+        <span class="query-note">AI cites Tulip, Augury, Elementary ML; CarbonSix not found</span>
+      </div>
+      <div class="query-card present">
+        <span class="badge present">PRESENT</span>
+        <span class="query-text">"robot imitation learning manufacturing platform 2026"</span>
+        <span class="query-note">CarbonSix's SigmaKit is new enough that AI has limited competitive context</span>
+      </div>
+      <div class="query-card weak">
+        <span class="badge weak">WEAK</span>
+        <span class="query-text">"best manufacturing operations AI software 2026"</span>
+        <span class="query-note">AI cites Tulip, PTC ThingWorx, Augury; CarbonSix invisible</span>
+      </div>
+      <div class="query-card weak">
+        <span class="badge weak">WEAK</span>
+        <span class="query-text">"CarbonSix review G2 Reddit"</span>
+        <span class="query-note">Zero reviews, zero threads, zero organic UGC</span>
+      </div>
+    </div>
+
+    <div class="section-title">🏢 Competitor AI Search Footprint</div>
+    <div class="competitor-grid">
+      <div class="competitor-card">
+        <div class="comp-name">Tulip</div>
+        <div class="comp-threat">Category Leader in AI</div>
+        <div class="comp-bar high"></div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Augury</div>
+        <div class="comp-threat">Strong G2+Reddit</div>
+        <div class="comp-bar high"></div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Elementary ML</div>
+        <div class="comp-threat">Growing Citations</div>
+        <div class="comp-bar med"></div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Instrumental</div>
+        <div class="comp-threat">Niche Enterprise UGC</div>
+        <div class="comp-bar low"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="container">
+    <h3>📈 Genhance Visibility Plays for CarbonSix</h3>
+    <p class="cta-sub">Four high-leverage moves to capture AI-generated answers in physical AI &amp; manufacturing</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="play-icon">🤖</div>
+        <h4>Define the "Physical AI for Manufacturing" Category</h4>
+        <p>Publish a definitive thought-leadership piece defining "Physical AI for Manufacturing" as a category. Being first to define the category gives CarbonSix anchor status in all future AI answers.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-icon">🏭</div>
+        <h4>Factory Case Study Content Blitz</h4>
+        <p>Publish 3&#8211;5 detailed case studies with named manufacturing customers, ROI data, and deployment timelines. Structured case studies are primary AI training data for enterprise queries.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-icon">📹</div>
+        <h4>YouTube Technical Demo Library</h4>
+        <p>Create 8&#8211;10 technical demo videos of SigmaKit in action on factory floors. YouTube is the second-largest AI training corpus and critical for "how it works" queries.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-icon">🌐</div>
+        <h4>Bilingual Content Strategy (EN + KO)</h4>
+        <p>Publish technical content in both English and Korean, leveraging Seoul/SF dual presence. Bilingual content captures AI answers in two distinct search ecosystems simultaneously.</p>
+      </div>
+    </div>
+    <a href="https://genhance.ai" class="cta-btn" target="_blank">Get a Custom Genhance Strategy →</a>
+    <div class="signature">
+      <div class="sig-name">Rajesh Gautam, PhD</div>
+      <div class="sig-cred">AI Search Visibility Research &bull; Genhance</div>
+      <div class="sig-links">
+        <a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a>
+        <span>|</span>
+        <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Search Visibility Audit — Topsort</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0a0e1a; color: #e2e8f0; line-height: 1.6; }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+        /* Gradient Navy Header */
+        .header { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #1a2d4a 70%, #0f172a 100%); padding: 48px 0 36px; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%); pointer-events: none; }
+        .header .container { position: relative; z-index: 1; }
+        .header-badge { display: inline-block; background: rgba(59,130,246,0.15); color: #93c5fd; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 30px; border: 1px solid rgba(59,130,246,0.3); margin-bottom: 18px; }
+        .header h1 { font-size: 2.4rem; font-weight: 800; color: #f1f5f9; letter-spacing: -0.5px; margin-bottom: 6px; }
+        .header h2 { font-size: 1.5rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px; }
+        .header p { font-size: 0.95rem; color: #94a3b8; max-width: 600px; }
+        .header-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; font-size: 0.85rem; color: #94a3b8; }
+        .header-meta span { display: flex; align-items: center; gap: 6px; }
+
+        /* Stat Pills */
+        .stats-row { display: flex; gap: 16px; flex-wrap: wrap; padding: 28px 0; }
+        .stat-pill { flex: 1; min-width: 180px; background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 16px; padding: 20px; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+        .stat-pill:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,0.1); }
+        .stat-pill .stat-value { font-size: 1.8rem; font-weight: 800; color: #60a5fa; margin-bottom: 2px; }
+        .stat-pill .stat-label { font-size: 0.78rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-pill .stat-sub { font-size: 0.72rem; color: #64748b; margin-top: 2px; }
+
+        /* Key Finding Alert */
+        .key-finding { background: linear-gradient(135deg, #451a03, #78350f); border: 1px solid #f59e0b; border-radius: 16px; padding: 24px 28px; margin-bottom: 32px; position: relative; }
+        .key-finding::before { content: '⚠ KEY FINDING'; position: absolute; top: -12px; left: 24px; background: #f59e0b; color: #0c0a09; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.2px; padding: 4px 14px; border-radius: 20px; }
+        .key-finding p { margin-top: 4px; font-size: 0.95rem; color: #fcd34d; line-height: 1.65; }
+
+        /* Query Cards */
+        .section-title { font-size: 1.3rem; font-weight: 700; color: #e2e8f0; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #1e3a5f; }
+        .query-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+        .query-card { background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: border-color 0.2s; }
+        .query-card:hover { border-color: #475569; }
+        .query-card .query-text { flex: 1; font-size: 0.92rem; font-weight: 500; color: #cbd5e1; }
+        .query-card .query-note { font-size: 0.78rem; color: #94a3b8; margin-top: 2px; }
+        .badge { padding: 5px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; white-space: nowrap; }
+        .badge-present { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.35); }
+        .badge-weak { background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+        /* Competitor Cards */
+        .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 36px; }
+        .competitor-card { background: linear-gradient(135deg, #1e293b, #162032); border: 1px solid #334155; border-radius: 14px; padding: 18px; text-align: center; transition: transform 0.2s, border-color 0.2s; }
+        .competitor-card:hover { transform: translateY(-2px); border-color: #f59e0b; }
+        .competitor-card .comp-name { font-size: 1rem; font-weight: 700; color: #f1f5f9; margin-bottom: 2px; }
+        .competitor-card .comp-desc { font-size: 0.75rem; color: #94a3b8; }
+
+        /* CTA Section */
+        .cta-section { background: linear-gradient(135deg, #0f172a 0%, #1a1025 40%, #0f172a 100%); border: 1px solid #1e293b; border-radius: 20px; padding: 36px 32px; margin: 32px 0 40px; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; top: -30%; right: -15%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%); pointer-events: none; }
+        .cta-section h3 { font-size: 1.3rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; position: relative; }
+        .cta-section .cta-subtitle { font-size: 0.85rem; color: #94a3b8; margin-bottom: 20px; position: relative; }
+        .plays-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; position: relative; }
+        .play-card { background: rgba(30,41,59,0.7); border: 1px solid #334155; border-radius: 12px; padding: 18px; }
+        .play-card .play-num { font-size: 0.65rem; font-weight: 800; color: #a78bfa; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+        .play-card .play-title { font-size: 0.9rem; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
+        .play-card .play-desc { font-size: 0.75rem; color: #94a3b8; line-height: 1.5; }
+
+        /* Signature */
+        .signature { text-align: center; padding: 20px 0 40px; border-top: 1px solid #1e293b; margin-top: 16px; }
+        .signature .sig-name { font-size: 1rem; font-weight: 700; color: #e2e8f0; }
+        .signature .sig-title { font-size: 0.78rem; color: #94a3b8; }
+        .signature a { color: #60a5fa; text-decoration: none; font-size: 0.78rem; }
+        .signature a:hover { text-decoration: underline; }
+        .sig-sep { color: #475569; margin: 0 8px; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .header h1 { font-size: 1.6rem; }
+            .query-card { flex-direction: column; align-items: flex-start; }
+            .stats-row { flex-direction: column; }
+            .stat-pill { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Gradient Navy Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-badge">AI SEARCH VISIBILITY AUDIT</div>
+            <h1>Topsort</h1>
+            <h2>Retail Media Infrastructure, Invisible to AI Search</h2>
+            <p>A comprehensive audit of Topsort's presence across AI-powered search engines, LLM citations, and discoverability surfaces — analyzing how the $35.8M-funded commerce monetization platform stacks up against competitors in the age of generative AI search.</p>
+            <div class="header-meta">
+                <span>📍 San Francisco, CA</span>
+                <span>🌐 topsort.com</span>
+                <span>👩‍💼 CEO: Regina Ye</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Stat Pills -->
+        <div class="stats-row">
+            <div class="stat-pill">
+                <div class="stat-value">$35.8M</div>
+                <div class="stat-label">Total Funding</div>
+                <div class="stat-sub">Series A · Upload Ventures, Quiet Capital, Pear</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-value">0 / 5</div>
+                <div class="stat-label">AI Visibility Score</div>
+                <div class="stat-sub">Zero presence across AI search engines</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-value">13</div>
+                <div class="stat-label">G2 Reviews</div>
+                <div class="stat-sub">Low UGC density; insufficient for AI citation</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-value">~3</div>
+                <div class="stat-label">Reddit Threads</div>
+                <div class="stat-sub">Negligible organic community presence</div>
+            </div>
+        </div>
+
+        <!-- Key Finding -->
+        <div class="key-finding">
+            <p><strong>Topsort is building the AI-native commerce monetization layer — but across 5 retail media queries, AI search engines cite Criteo, PromoteIQ, and Epsilon while Topsort appears in ZERO answers.</strong> Even the 13 G2 reviews are invisible to AI Overviews because they lack the UGC density to trigger citation.</p>
+        </div>
+
+        <!-- Query Cards -->
+        <h2 class="section-title">🔍 AI Search Query Analysis</h2>
+        <div class="query-cards">
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"best retail media platform 2026"</div>
+                    <div class="query-note">AI cites Criteo, PromoteIQ, Epsilon, Microsoft; Topsort absent</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"commerce monetization AI platform 2026"</div>
+                    <div class="query-note">AI cites Criteo Commerce Max, Koddi, Epsilon; Topsort not found</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"Topsort vs Criteo retail media"</div>
+                    <div class="query-note">No comparison content exists in AI-cited sources</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"retail media infrastructure API marketplace 2026"</div>
+                    <div class="query-note">AI cites Epsilon, PromoteIQ; Topsort invisible despite being API-first</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-card">
+                <div>
+                    <div class="query-text">"sponsored listings auction platform 2026"</div>
+                    <div class="query-note">AI cites Google Ad Manager, Criteo; Topsort's core differentiator invisible to AI</div>
+                </div>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+        </div>
+
+        <!-- Competitor Cards -->
+        <h2 class="section-title">🏢 Competitors Dominating AI Search</h2>
+        <div class="competitor-grid">
+            <div class="competitor-card">
+                <div class="comp-name">Criteo</div>
+                <div class="comp-desc">Commerce media leader with massive AI citation footprint</div>
+            </div>
+            <div class="competitor-card">
+                <div class="comp-name">Microsoft Retail Media</div>
+                <div class="comp-desc">Enterprise retail media with deep AI integration</div>
+            </div>
+            <div class="competitor-card">
+                <div class="comp-name">Epsilon (Publicis)</div>
+                <div class="comp-desc">Data-driven retail media with extensive content ecosystem</div>
+            </div>
+            <div class="competitor-card">
+                <div class="comp-name">PromoteIQ</div>
+                <div class="comp-desc">Microsoft-owned; strong AI search presence via enterprise content</div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3>🚀 genhance Plays to Win AI Search Visibility</h3>
+            <p class="cta-subtitle">Four strategic moves to put Topsort on the AI search map — before competitors lock in their positions.</p>
+            <div class="plays-grid">
+                <div class="play-card">
+                    <div class="play-num">Play 01</div>
+                    <div class="play-title">UGC Density Engine</div>
+                    <div class="play-desc">Launch a structured G2 & Capterra review program targeting 500+ verified reviews within 90 days to reach AI citation threshold.</div>
+                </div>
+                <div class="play-card">
+                    <div class="play-num">Play 02</div>
+                    <div class="play-title">Comparison Content Blitz</div>
+                    <div class="play-desc">Publish 20+ "Topsort vs Criteo/PromoteIQ/Epsilon" comparison pages optimized for AI extraction and featured snippet capture.</div>
+                </div>
+                <div class="play-card">
+                    <div class="play-num">Play 03</div>
+                    <div class="play-title">Technical Thought Leadership</div>
+                    <div class="play-desc">Deploy API-first technical deep dives, auction mechanism explainers, and retail media infrastructure guides targeting developer & CTO audiences.</div>
+                </div>
+                <div class="play-card">
+                    <div class="play-num">Play 04</div>
+                    <div class="play-title">Reddit & Community Seeding</div>
+                    <div class="play-desc">Seed authentic discussions in r/adops, r/programmatic, and r/ecommerce to build organic mention density that AI models scrape.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signature -->
+        <div class="signature">
+            <div class="sig-name">Rajesh Gautam, PhD</div>
+            <div class="sig-title">AI Search Visibility Strategist · genhance</div>
+            <div>
+                <a href="https://linkedin.com/in/rajeshgautam" target="_blank" rel="noopener">linkedin.com/in/rajeshgautam</a>
+                <span class="sig-sep">|</span>
+                <a href="https://genhance.ai" target="_blank" rel="noopener">genhance.ai</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Synthesized</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .header { background: linear-gradient(135deg, #0a1628 0%, #162d50 40%, #1e3a6e 70%, #1b3b5c 100%); padding: 60px 0 48px; text-align: center; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, rgba(59,130,246,0.12) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(99,102,241,0.08) 0%, transparent 60%); }
+  .header .container { position: relative; z-index: 1; }
+  .header .badge { display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 50px; padding: 6px 18px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #94a3b8; margin-bottom: 20px; }
+  .header h1 { font-size: 2.4rem; font-weight: 800; color: #ffffff; margin-bottom: 6px; letter-spacing: -0.5px; }
+  .header h1 span { background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .header h2 { font-size: 1.25rem; font-weight: 400; color: #94a3b8; margin-bottom: 4px; }
+  .header .domain { font-size: 0.95rem; color: #64748b; font-family: 'SF Mono', 'Fira Code', monospace; }
+  .header .ceo-line { margin-top: 16px; font-size: 0.9rem; color: #94a3b8; }
+  .header .ceo-line a { color: #60a5fa; text-decoration: none; border-bottom: 1px dotted rgba(96,165,250,0.4); }
+  .stats-row { display: flex; gap: 16px; justify-content: center; margin: -28px auto 0; position: relative; z-index: 10; flex-wrap: wrap; }
+  .stat-pill { background: #ffffff; border-radius: 14px; padding: 18px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); min-width: 160px; text-align: center; transition: transform 0.2s; }
+  .stat-pill:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+  .stat-pill .stat-value { font-size: 1.6rem; font-weight: 800; color: #0a1628; }
+  .stat-pill .stat-label { font-size: 0.72rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+  .stat-pill.score .stat-value { color: #e67e22; }
+  .main { padding: 48px 0; }
+  .section-title { font-size: 1.15rem; font-weight: 700; color: #0a1628; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+  .key-finding { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 2px solid #f59e0b; border-radius: 14px; padding: 24px 28px; margin-bottom: 36px; position: relative; }
+  .key-finding::before { content: '🔑 KEY FINDING'; position: absolute; top: -11px; left: 24px; background: #f59e0b; color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 12px; border-radius: 50px; letter-spacing: 0.08em; }
+  .key-finding p { font-size: 0.98rem; color: #78350f; line-height: 1.7; margin-top: 4px; }
+  .query-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+  .query-card { background: #ffffff; border-radius: 12px; padding: 18px 22px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border-left: 4px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .query-card.present { border-left-color: #22c55e; }
+  .query-card.weak { border-left-color: #ef4444; }
+  .query-card .query-text { font-size: 0.92rem; font-weight: 500; color: #1e293b; font-style: italic; flex: 1; }
+  .query-card .query-note { font-size: 0.78rem; color: #64748b; max-width: 380px; text-align: right; line-height: 1.5; }
+  .badge { display: inline-block; padding: 4px 12px; border-radius: 50px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .badge.present { background: #dcfce7; color: #15803d; }
+  .badge.weak { background: #fef2f2; color: #dc2626; }
+  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 36px; }
+  .competitor-card { background: #ffffff; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; transition: transform 0.2s, box-shadow 0.2s; }
+  .competitor-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+  .competitor-card .comp-name { font-size: 1rem; font-weight: 700; color: #0a1628; margin-bottom: 4px; }
+  .competitor-card .comp-threat { font-size: 0.75rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; }
+  .competitor-card .comp-bar { height: 4px; border-radius: 2px; margin-top: 10px; }
+  .comp-bar.high { background: #ef4444; width: 85%; }
+  .comp-bar.med { background: #f59e0b; width: 60%; }
+  .comp-bar.low { background: #22c55e; width: 30%; }
+  .cta-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #162d50 100%); padding: 52px 0; margin-top: 24px; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 30%, rgba(168,85,247,0.06) 0%, transparent 50%); }
+  .cta-section .container { position: relative; z-index: 1; }
+  .cta-section h3 { font-size: 1.5rem; font-weight: 700; color: #fff; text-align: center; margin-bottom: 8px; }
+  .cta-section .cta-sub { text-align: center; color: #94a3b8; font-size: 0.9rem; margin-bottom: 32px; }
+  .plays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin-bottom: 32px; }
+  .play-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+  .play-card .play-icon { font-size: 1.4rem; margin-bottom: 10px; }
+  .play-card h4 { font-size: 0.9rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .play-card p { font-size: 0.78rem; color: #94a3b8; line-height: 1.5; }
+  .cta-btn { display: block; width: fit-content; margin: 0 auto 32px; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; border: none; border-radius: 50px; padding: 14px 36px; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: opacity 0.2s; }
+  .cta-btn:hover { opacity: 0.9; }
+  .signature { text-align: center; padding: 32px 0 16px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .signature .sig-name { font-size: 1rem; font-weight: 700; color: #e2e8f0; }
+  .signature .sig-cred { font-size: 0.78rem; color: #64748b; margin-top: 2px; }
+  .signature .sig-links { font-size: 0.78rem; margin-top: 6px; }
+  .signature .sig-links a { color: #60a5fa; text-decoration: none; margin: 0 8px; }
+  .signature .sig-links span { color: #475569; }
+  @media (max-width: 640px) {
+    .header h1 { font-size: 1.6rem; }
+    .stats-row { flex-direction: column; align-items: center; }
+    .query-card { flex-direction: column; align-items: flex-start; }
+    .query-card .query-note { text-align: left; max-width: 100%; }
+    .competitor-grid { grid-template-columns: 1fr 1fr; }
+    .plays-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="badge">AI Search Visibility Audit</div>
+    <h1><span>Synthesized</span></h1>
+    <h2>AI for Software QA &amp; Automated Testing</h2>
+    <p class="domain">synthesized.io &bull; London / New York</p>
+    <p class="ceo-line">CEO: Nicolai Baldin &mdash; <a href="https://linkedin.com/in/nbaldin" target="_blank">linkedin.com/in/nbaldin</a></p>
+  </div>
+</header>
+
+<div class="container">
+  <div class="stats-row">
+    <div class="stat-pill">
+      <div class="stat-value">$20M+</div>
+      <div class="stat-label">Total Funding</div>
+    </div>
+    <div class="stat-pill score">
+      <div class="stat-value">1.0 / 5</div>
+      <div class="stat-label">AI Visibility Score</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value">1</div>
+      <div class="stat-label">G2 Reviews</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-value">2</div>
+      <div class="stat-label">Reddit Threads</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="container">
+
+    <div class="key-finding">
+      <p>Synthesized brings automated QA to enterprise "vibe coding" workflows but has <strong>near-zero AI-cited presence</strong>. In a category where developers actively search "best AI testing tool 2026" on Reddit and ChatGPT, the absence of organic UGC means AI engines default to mentioning Momentic, Mabl, and Testim.</p>
+    </div>
+
+    <div class="section-title">🔍 AI Search Query Analysis</div>
+    <div class="query-cards">
+      <div class="query-card weak">
+        <span class="badge weak">WEAK</span>
+        <span class="query-text">"best AI software testing platform 2026"</span>
+        <span class="query-note">AI cites Tricentis, Mabl, Testim, QA Wolf; Synthesized absent</span>
+      </div>
+      <div class="query-card weak">
+        <span class="badge weak">WEAK</span>
+        <span class="query-text">"AI test data generation platform enterprise 2026"</span>
+        <span class="query-note">AI cites Tonic.ai, Mostly AI, Gretel; Synthesized not found</span>
+      </div>
+      <div class="query-card weak">
+        <span class="badge weak">WEAK</span>
+        <span class="query-text">"automated QA testing tools Reddit 2026"</span>
+        <span class="query-note">Reddit threads cite Playwright, Cypress, Selenium; Synthesized unmentioned</span>
+      </div>
+      <div class="query-card weak">
+        <span class="badge weak">WEAK</span>
+        <span class="query-text">"Synthesized vs Momentic QA automation"</span>
+        <span class="query-note">No comparison content exists; AI has zero data to reference</span>
+      </div>
+      <div class="query-card weak">
+        <span class="badge weak">WEAK</span>
+        <span class="query-text">"AI-native test infrastructure enterprise 2026"</span>
+        <span class="query-note">AI cites LambdaTest, BrowserStack, Sauce Labs; Synthesized invisible</span>
+      </div>
+    </div>
+
+    <div class="section-title">🏢 Competitor AI Search Footprint</div>
+    <div class="competitor-grid">
+      <div class="competitor-card">
+        <div class="comp-name">Momentic</div>
+        <div class="comp-threat">Dominant AI Presence</div>
+        <div class="comp-bar high"></div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">QA Wolf</div>
+        <div class="comp-threat">Reddit Favorite</div>
+        <div class="comp-bar high"></div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Mabl</div>
+        <div class="comp-threat">Enterprise Citations</div>
+        <div class="comp-bar med"></div>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Tricentis</div>
+        <div class="comp-threat">Legacy G2 Dominance</div>
+        <div class="comp-bar med"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="container">
+    <h3>📈 Genhance Visibility Plays for Synthesized</h3>
+    <p class="cta-sub">Four high-leverage moves to capture AI-generated answers in software QA &amp; testing</p>
+    <div class="plays-grid">
+      <div class="play-card">
+        <div class="play-icon">🧪</div>
+        <h4>Developer Community Activation</h4>
+        <p>Seed 3&#8211;5 authentic Reddit threads in r/softwaretesting and r/devops comparing QA tools. Developer Reddit UGC is the #1 training source for AI coding queries.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-icon">📋</div>
+        <h4>G2 Category Takeover</h4>
+        <p>Mobilize 20+ enterprise QA engineers to publish detailed G2 reviews with specific use cases. G2 review volume directly correlates with AI citation in testing tool queries.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-icon">⚔️</div>
+        <h4>Build Comparison Content Moat</h4>
+        <p>Publish "Synthesized vs Momentic," "Synthesized vs QA Wolf," "Synthesized vs Tricentis" pages with feature matrices. AI engines use comparison content for vs-queries.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-icon">🎤</div>
+        <h4>Dev Conference &amp; Podcast Circuit</h4>
+        <p>Present at 3&#8211;4 major QA/testing conferences with published talks. Conference videos and transcripts create durable, high-authority AI citations.</p>
+      </div>
+    </div>
+    <a href="https://genhance.ai" class="cta-btn" target="_blank">Get a Custom Genhance Strategy →</a>
+    <div class="signature">
+      <div class="sig-name">Rajesh Gautam, PhD</div>
+      <div class="sig-cred">AI Search Visibility Research &bull; Genhance</div>
+      <div class="sig-links">
+        <a href="https://linkedin.com/in/rajeshgautam" target="_blank">linkedin.com/in/rajeshgautam</a>
+        <span>|</span>
+        <a href="https://genhance.ai" target="_blank">genhance.ai</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
