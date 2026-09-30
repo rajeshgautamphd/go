@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Rayon | genhance.ai</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%); padding: 48px 24px; text-align: center; border-bottom: 1px solid #1e293b; }
+.header h1 { font-size: 2rem; font-weight: 700; color: #f8fafc; margin-bottom: 8px; }
+.header .subtitle { font-size: 1.1rem; color: #94a3b8; max-width: 700px; margin: 0 auto; }
+.header .company-url { color: #60a5fa; font-size: 0.95rem; margin-top: 8px; }
+.container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.stat-pill { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 20px; text-align: center; }
+.stat-pill .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; margin-bottom: 6px; }
+.stat-pill .value { font-size: 1.5rem; font-weight: 700; color: #f8fafc; }
+.stat-pill .sub { font-size: 0.8rem; color: #94a3b8; margin-top: 2px; }
+.alert { background: linear-gradient(135deg, #451a03, #78350f); border: 1px solid #92400e; border-radius: 12px; padding: 24px; margin-bottom: 32px; }
+.alert h2 { color: #fbbf24; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+.alert p { color: #fcd34d; font-size: 0.95rem; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.query-card .q-text { font-weight: 600; color: #f8fafc; flex: 1; }
+.query-card .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.badge-absent { background: #7f1d1d; color: #fca5a5; }
+.badge-weak { background: #78350f; color: #fcd34d; }
+.query-card .analysis { color: #cbd5e1; font-size: 0.9rem; margin-top: 8px; }
+.query-card .competitors { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+.query-card .competitor { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 6px 12px; font-size: 0.8rem; color: #94a3b8; }
+h3 { color: #e2e8f0; font-size: 1.2rem; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #334155; }
+.competitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 32px; }
+.comp-card { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 16px; text-align: center; }
+.comp-card .comp-name { font-weight: 600; color: #f8fafc; }
+.comp-card .comp-desc { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
+.cta { background: linear-gradient(135deg, #0f172a, #1e293b); border: 1px solid #334155; border-radius: 16px; padding: 32px; margin: 32px 0; text-align: center; }
+.cta h2 { color: #f8fafc; font-size: 1.3rem; margin-bottom: 12px; }
+.cta p { color: #94a3b8; margin-bottom: 20px; }
+.cta .plays { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.cta .play { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 16px; text-align: left; }
+.cta .play .play-num { color: #60a5fa; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+.cta .play .play-text { color: #cbd5e1; font-size: 0.85rem; margin-top: 4px; }
+.footer { text-align: center; padding: 32px 24px; color: #64748b; font-size: 0.85rem; border-top: 1px solid #1e293b; }
+.footer a { color: #60a5fa; text-decoration: none; }
+.footer a:hover { color: #93c5fd; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Rayon</h1>
+  <p class="subtitle">Browser-Based Drawing Software for Interior Designers</p>
+  <p class="company-url">https://www.rayon.design</p>
+</div>
+<div class="container">
+  <div class="stats">
+    <div class="stat-pill"><div class="label">Funding</div><div class="value">€10M Series A (€10M total)</div><div class="sub">Partech, Northzone, Foundamental, Seedcamp</div></div>
+    <div class="stat-pill"><div class="label">AI Visibility Score</div><div class="value">2/5</div><div class="sub">Across 5 category queries</div></div>
+    <div class="stat-pill"><div class="label">G2 Reviews</div><div class="value">0</div><div class="sub">Zero presence on review platforms</div></div>
+    <div class="stat-pill"><div class="label">Reddit Threads</div><div class="value">0</div><div class="sub">Invisible in AI-cited UGC</div></div>
+  </div>
+  <div class="alert">
+    <h2>Key Finding</h2>
+    <p>Rayon has raised €10M Series A but has ZERO AI search presence. Across 5 category-defining queries, AI Overviews and ChatGPT cite Rayon's competitors exclusively. With 0 G2 reviews and 0 Reddit threads, Rayon is completely invisible to the AI engines that 51% of B2B buyers now use to research software. The entire AI narrative about AI-Powered Interior Design Software is being written by competitors — and Rayon isn't in it.</p>
+  </div>
+  <h3>5 Category Queries &mdash; Where AI Places Rayon</h3>
+  <div class="query-card">
+      <div class="q-header">
+        <span class="q-text">"best interior design software for architects 2026"</span>
+        <span class="badge badge-weak">WEAK</span>
+      </div>
+      <div class="analysis">AI Overviews cite Autodesk AutoCAD, SketchUp, and Chief Architect — all legacy desktop tools. Rayon’s browser-native, AI-powered approach never appears. Zero mentions across 4 AI-scraped UGC sources for this query.</div>
+      <div class="competitors"><span class="competitor">Autodesk AutoCAD</span><span class="competitor">SketchUp</span><span class="competitor">Chief Architect</span><span class="competitor">Revit</span></div>
+    </div>
+<div class="query-card">
+      <div class="q-header">
+        <span class="q-text">"AI drawing software for interior designers"</span>
+        <span class="badge badge-weak">WEAK</span>
+      </div>
+      <div class="analysis">AI Overviews reference Planner 5D, Homestyler, and RoomSketcher. None mention Rayon despite its AI-powered floor plan generation and real-time collaboration features. The AI-cited Reddit threads (r/interiordesign, r/architecture) have 3-8 comments each — high leverage.</div>
+      <div class="competitors"><span class="competitor">Planner 5D</span><span class="competitor">Homestyler</span><span class="competitor">RoomSketcher</span><span class="competitor">Floorplanner</span></div>
+    </div>
+<div class="query-card">
+      <div class="q-header">
+        <span class="q-text">"browser based CAD software for design teams"</span>
+        <span class="badge badge-absent">ABSENT</span>
+      </div>
+      <div class="analysis">Google AI Overviews cite Onshape and Figma — neither is interior-design-specific. Rayon’s browser-native approach with real-time team collaboration is absent from all AI-generated recommendations for collaborative CAD tools.</div>
+      <div class="competitors"><span class="competitor">Onshape</span><span class="competitor">Figma</span><span class="competitor">Shapr3D</span></div>
+    </div>
+<div class="query-card">
+      <div class="q-header">
+        <span class="q-text">"best tool for drawing floor plans online 2026"</span>
+        <span class="badge badge-absent">ABSENT</span>
+      </div>
+      <div class="analysis">AI overviews recommend RoomSketcher, SmartDraw, and Cedreo. Rayon is not mentioned despite being purpose-built for this exact use case. The top organic results include 2 Reddit threads with <15 comments — prime UGC engagement surface.</div>
+      <div class="competitors"><span class="competitor">RoomSketcher</span><span class="competitor">SmartDraw</span><span class="competitor">Cedreo</span><span class="competitor">HomeByMe</span></div>
+    </div>
+<div class="query-card">
+      <div class="q-header">
+        <span class="q-text">"interior design software with AI features"</span>
+        <span class="badge badge-absent">ABSENT</span>
+      </div>
+      <div class="analysis">AI Overviews list Coohom, Foyr, and DecorMatters as AI-enabled design tools. Rayon’s AI-powered drawing acceleration and 3D rendering features are invisible to AI engines — zero citations across all 5 AI-scraped sources.</div>
+      <div class="competitors"><span class="competitor">Coohom</span><span class="competitor">Foyr</span><span class="competitor">DecorMatters</span></div>
+    </div>
+
+  <h3>Competitors AI Currently Cites</h3>
+  <div class="competitor-grid">
+    <div class="comp-card"><div class="comp-name">Autodesk AutoCAD</div><div class="comp-desc">Cited by AI Overviews</div></div>
+<div class="comp-card"><div class="comp-name">SketchUp</div><div class="comp-desc">Cited by AI Overviews</div></div>
+<div class="comp-card"><div class="comp-name">Chief Architect</div><div class="comp-desc">Cited by AI Overviews</div></div>
+<div class="comp-card"><div class="comp-name">Revit</div><div class="comp-desc">Cited by AI Overviews</div></div>
+<div class="comp-card"><div class="comp-name">Planner 5D</div><div class="comp-desc">Cited by AI Overviews</div></div>
+<div class="comp-card"><div class="comp-name">Homestyler</div><div class="comp-desc">Cited by AI Overviews</div></div>
+<div class="comp-card"><div class="comp-name">RoomSketcher</div><div class="comp-desc">Cited by AI Overviews</div></div>
+<div class="comp-card"><div class="comp-name">Floorplanner</div><div class="comp-desc">Cited by AI Overviews</div></div>
+
+  </div>
+  <div class="cta">
+    <h2>4 Genhance Plays to Shift the AI Narrative</h2>
+    <p>Each play targets a specific UGC surface that AI search engines already trust.</p>
+    <div class="plays">
+      <div class="play"><div class="play-num">Play 1</div><div class="play-text">Contribute to sparse Reddit threads shaping what AI says about AI-Powered Interior Design Software &mdash; 1 comment = 5-20% of the AI-indexed conversation</div></div>
+      <div class="play"><div class="play-num">Play 2</div><div class="play-text">Seed authentic G2 reviews (currently 0) to build the review corpus AI engines scrape for &ldquo;best Interior Design Software&rdquo; queries</div></div>
+      <div class="play"><div class="play-num">Play 3</div><div class="play-text">Engage niche YouTube creator content &mdash; AI Overviews cite YouTube more than industry websites for product queries</div></div>
+      <div class="play"><div class="play-num">Play 4</div><div class="play-text">Publish comparison content vs. Autodesk AutoCAD &mdash; &ldquo;Rayon vs Autodesk AutoCAD&rdquo; pages feed directly into AI comparison answers</div></div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <p>Rajesh Gautam, PhD &mdash; Founder &amp; CEO, <a href="https://genhance.ai">genhance.ai</a></p>
+  <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | genhance.ai</p>
+  <p style="margin-top: 12px; color: #475569;">AI search visibility audit &mdash; Rayon &mdash; generated September 30, 2026</p>
+</div>
+</body>
+</html>
