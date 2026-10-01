@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitfount — genhance AI Visibility Audit</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height:1.6; }
+.header { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1f3c 100%); padding: 48px 32px; text-align:center; border-bottom: 3px solid #f0a500; }
+.header h1 { font-size: 2rem; color: #fff; margin-bottom: 6px; }
+.header .subtitle { font-size: 1.1rem; color: #a0b4d0; opacity:0.85; }
+.container { max-width: 900px; margin:0 auto; padding: 24px 20px; }
+.stats { display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin: -30px auto 32px; max-width: 800px; position:relative; z-index:1; }
+.stat { background: #141e38; border: 1px solid #2a3a5a; border-radius: 12px; padding: 16px 20px; text-align:center; min-width:120px; flex:1; }
+.stat .value { font-size: 1.5rem; font-weight:700; color: #f0a500; }
+.stat .label { font-size: 0.75rem; color: #8899bb; text-transform:uppercase; letter-spacing:0.5px; margin-top:4px; }
+.alert { background: linear-gradient(135deg, #3d2a00, #4a3000); border: 1px solid #f0a500; border-radius: 12px; padding: 20px 24px; margin-bottom: 28px; }
+.alert h3 { color: #f0a500; font-size:0.95rem; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px; }
+.alert p { color: #d4c090; font-size:0.95rem; }
+.queries h2 { color: #fff; font-size:1.3rem; margin-bottom:16px; }
+.query-card { background: #111a30; border: 1px solid #2a3a5a; border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; display:flex; align-items:center; gap:14px; }
+.query-card .badge { font-size:0.7rem; font-weight:700; text-transform:uppercase; padding:4px 10px; border-radius:6px; white-space:nowrap; }
+.badge-WEAK { background:#2a1510; color:#ff6b4a; border:1px solid #4a3020; }
+.badge-PRESENT { background:#0a2a10; color:#4aff6b; border:1px solid #1a4a20; }
+.query-card .qtext { flex:1; font-size:0.9rem; color:#c0d0e0; }
+.competitors h2 { color:#fff; font-size:1.3rem; margin:28px 0 16px; }
+.comp-cards { display:flex; gap:12px; flex-wrap:wrap; }
+.comp-card { background:#111a30; border:1px solid #2a3a5a; border-radius:10px; padding:14px 18px; flex:1; min-width:150px; text-align:center; }
+.comp-card .cname { font-weight:700; color:#ddd; font-size:0.95rem; }
+.cta { background:linear-gradient(135deg, #0a1628, #152040); border:1px solid #2a3a5a; border-radius:14px; padding:28px 24px; margin-top:28px; text-align:center; }
+.cta h3 { color:#f0a500; font-size:1.2rem; margin-bottom:16px; }
+.cta .plays { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+.cta .play { background:#0d1528; border:1px solid #2a3a5a; border-radius:8px; padding:12px 16px; flex:1; min-width:170px; max-width:210px; }
+.cta .play .pnum { color:#f0a500; font-weight:700; font-size:0.85rem; }
+.cta .play .pdesc { color:#8899bb; font-size:0.8rem; margin-top:4px; }
+.footer { text-align:center; padding:32px 20px 40px; color:#667799; font-size:0.85rem; border-top:1px solid #1a2a4a; margin-top:32px; }
+.footer a { color:#8899cc; text-decoration:none; }
+@media(max-width:600px){ .stats{flex-direction:column;} .stat{min-width:100%;} }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>AI Search Visibility Audit</h1>
+<div class="subtitle">Bitfount — Federated AI Platform — Clinical Trials & Life Sciences</div>
+</div>
+<div class="container">
+<div class="stats">
+<div class="stat"><div class="value">$8M Series A</div><div class="label">Funding</div></div>
+<div class="stat"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
+<div class="stat"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+<div class="stat"><div class="value">0</div><div class="label">Reddit Threads</div></div>
+</div>
+<div class="alert">
+<h3>KEY FINDING</h3>
+<p>Bitfount's federated AI platform has zero presence in AI-generated answers about clinical trial data platforms — despite raising $8M and operating in a category where AI search is reshaping how pharma companies evaluate vendors.</p>
+</div>
+<div class="queries">
+<h2>AI Search Query Analysis</h2>
+<div class="query-card"><span class="badge badge-WEAK">WEAK</span><span class="qtext">"best federated learning platform clinical trials 2026"</span></div>
+<div class="query-card"><span class="badge badge-WEAK">WEAK</span><span class="qtext">"clinical trial data integration software"</span></div>
+<div class="query-card"><span class="badge badge-WEAK">WEAK</span><span class="qtext">"AI clinical research platform for pharma"</span></div>
+<div class="query-card"><span class="badge badge-WEAK">WEAK</span><span class="qtext">"privacy preserving AI healthcare"</span></div>
+<div class="query-card"><span class="badge badge-WEAK">WEAK</span><span class="qtext">"federated data platform life sciences"</span></div>
+</div>
+<div class="competitors">
+<h2>Competitors Dominating AI Answers</h2>
+<div class="comp-cards">
+<div class="comp-card"><div class="cname">Datavant</div></div>
+<div class="comp-card"><div class="cname">Owkin</div></div>
+<div class="comp-card"><div class="cname">Rhino Health</div></div>
+<div class="comp-card"><div class="cname">Apheris</div></div>
+</div>
+</div>
+<div class="cta">
+<h3>4 Ways Genhance Can Help Bitfount</h3>
+<div class="plays">
+<div class="play"><div class="pnum">1. Reddit UGC</div><div class="pdesc">Place Bitfount in AI-cited Reddit threads your prospects already read</div></div>
+<div class="play"><div class="pnum">2. YouTube Comments</div><div class="pdesc">Contribute to niche creator videos that feed Google AI Overviews</div></div>
+<div class="play"><div class="pnum">3. Review Seeding</div><div class="pdesc">Build G2 presence so AI answers cite real user experiences</div></div>
+<div class="play"><div class="pnum">4. AI Monitoring</div><div class="pdesc">Track AI answer changes as your UGC presence grows — before/after proof</div></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<p><strong>Rajesh Gautam, PhD</strong><br>Founder and CEO, genhance.ai<br><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+</div>
+</body>
+</html>
