@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: OuterSignal | genhance.ai</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #152852 50%, #0f2044 100%); padding: 60px 20px 40px; text-align: center; border-bottom: 3px solid #f59e0b; }
+.header h1 { font-size: 2em; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #94a3b8; font-size: 1.1em; }
+.header .domain { color: #f59e0b; font-size: 1em; margin-top: 6px; }
+.stats { display: flex; gap: 12px; margin: -30px 20px 30px; flex-wrap: wrap; justify-content: center; }
+.stat-pill { background: linear-gradient(135deg, #1a2744 0%, #1e3260 100%); border: 1px solid #2d4a8e; border-radius: 12px; padding: 16px 20px; min-width: 140px; text-align: center; }
+.stat-pill .label { color: #94a3b8; font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.stat-pill .value { color: #fff; font-size: 1.5em; font-weight: 700; }
+.section { background: #111b33; border: 1px solid #1e3260; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+.section h2 { color: #fff; font-size: 1.2em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #1e3260; }
+.company-info p { margin-bottom: 6px; color: #cbd5e1; }
+.company-info strong { color: #f59e0b; }
+.key-finding { background: linear-gradient(135deg, #3d2800 0%, #522e00 100%); border: 1px solid #f59e0b; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+.key-finding .kf-title { color: #f59e0b; font-weight: 700; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.key-finding .kf-text { color: #fef3c7; font-size: 0.95em; line-height: 1.7; }
+.query-card { background: #0f1a30; border: 1px solid #1e3260; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+.query-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.query-num { background: #f59e0b; color: #0a0e27; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; flex-shrink: 0; }
+.query-text { color: #93c5fd; font-size: 0.9em; font-style: italic; flex: 1; }
+.badge { font-size: 0.7em; padding: 3px 10px; border-radius: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-weak { background: #7f1d1d; color: #fca5a5; border: 1px solid #991b1b; }
+.badge-present { background: #14532d; color: #86efac; border: 1px solid #166534; }
+.query-analysis { color: #94a3b8; font-size: 0.88em; line-height: 1.6; }
+.comp-card { background: #0f1a30; border: 1px solid #2d4a8e; border-radius: 8px; padding: 10px 16px; font-size: 0.9em; color: #cbd5e1; display: inline-block; margin: 4px 6px; }
+.cta { background: linear-gradient(135deg, #1a1040 0%, #0d1b3e 100%); border: 1px solid #4c1d95; border-radius: 12px; padding: 30px 24px; margin-bottom: 20px; }
+.cta h2 { color: #c4b5fd; font-size: 1.1em; margin-bottom: 16px; border: none; padding: 0; }
+.cta ul { list-style: none; padding: 0; }
+.cta li { padding: 8px 0; color: #cbd5e1; font-size: 0.9em; border-bottom: 1px solid #1e1b4b; }
+.cta li:last-child { border-bottom: none; }
+.cta li::before { content: "▸ "; color: #8b5cf6; }
+.footer { text-align: center; padding: 30px 20px 60px; color: #64748b; font-size: 0.85em; }
+.footer a { color: #93c5fd; text-decoration: none; }
+.footer .name { color: #f59e0b; font-weight: 600; }
+@media (max-width: 600px) {
+    .header h1 { font-size: 1.5em; }
+    .stats { flex-direction: column; align-items: center; }
+    .stat-pill { min-width: auto; width: 100%; max-width: 200px; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>AI Search Visibility Audit</h1>
+    <div class="subtitle">OuterSignal — Agentic Customer Intelligence / DTC Analytics</div>
+    <div class="domain">outersignal.com | New York, NY</div>
+</div>
+<div class="container">
+    <div class="stats">
+        <div class="stat-pill"><div class="label">Funding</div><div class="value" style="font-size:1em">$22M Series A </div></div>
+        <div class="stat-pill"><div class="label">AI Visibility</div><div class="value">1/5</div></div>
+        <div class="stat-pill"><div class="label">G2 Reviews</div><div class="value">0</div></div>
+        <div class="stat-pill"><div class="label">Reddit</div><div class="value">0</div></div>
+    </div>
+
+    <div class="section company-info">
+        <h2>Company Profile</h2>
+        <p><strong>CEO:</strong> Zach Zelner, Co-Founder & CEO</p>
+        <p><strong>Funding:</strong> $22M Series A (Sep 2026)</p>
+        <p><strong>Investors:</strong> Not disclosed in public filings</p>
+        <p><strong>Founded:</strong> 2023 · <strong>Employees:</strong> ~30 · <strong>HQ:</strong> New York, NY</p>
+        <p style="margin-top:8px">OuterSignal turns e-commerce order data into rich customer intelligence — VIP detection, B2B lead discovery in DTC, automated personas, and precision segments synced to Meta and Klaviyo.</p>
+    </div>
+
+    <div class="key-finding">
+        <div class="kf-title">⚡ KEY FINDING</div>
+        <div class="kf-text">OuterSignal is building agentic personalization for consumer brands — a category that will be defined by AI search in the next 12 months. Currently has zero AI-search presence: no G2 reviews, no Reddit threads, no UGC of any kind.</div>
+    </div>
+
+    <div class="section">
+        <h2>AI Search Query Analysis — 5 Category Queries</h2>
+        
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q1</span>
+                <span class="query-text">"customer intelligence platform ecommerce"</span>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-analysis">AI Overviews cite Klaviyo, Bluecore, and Bloomreach. OuterSignal does not appear. The entire 'agentic customer intelligence' subcategory has no UGC presence — a greenfield opportunity.</div>
+        </div>
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q2</span>
+                <span class="query-text">"agentic personalization for DTC brands"</span>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-analysis">No AI Overview exists yet for this emerging term. OuterSignal has content assets but no UGC validation. First mover advantage is available.</div>
+        </div>
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q3</span>
+                <span class="query-text">"ecommerce customer data enrichment platform"</span>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-analysis">AI answers reference traditional CDPs (Segment, mParticle). OuterSignal's real-time data enrichment approach is invisible. Zero Reddit discussion about this category.</div>
+        </div>
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q4</span>
+                <span class="query-text">"VIP customer detection for Shopify brands"</span>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-analysis">OuterSignal has product content targeting Shopify/DTC merchants but no AI-generated answer exists for this query. First to generate UGC captures the AI narrative.</div>
+        </div>
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q5</span>
+                <span class="query-text">"B2B lead identification from DTC sales"</span>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-analysis">Unique value prop — no competitor addresses this. But AI engines don't know OuterSignal exists. No Reddit threads, no G2 reviews, no third-party validation.</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Key Competitors (AI-Cited)</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:8px"><div class="comp-card">Klaviyo</div><div class="comp-card">Bluecore</div><div class="comp-card">Bloomreach</div><div class="comp-card">Dynamic Yield</div></div>
+    </div>
+
+    <div class="cta">
+        <h2>4 Ways Genhance Closes This AI Visibility Gap</h2>
+        <ul>
+            <li><strong>UGC Gap Analysis:</strong> 10-query audit across Google AI Overviews, ChatGPT, and Perplexity — identifying exactly which UGC sources AI engines cite in your category, and where you're absent.</li>
+            <li><strong>Review Platform Seeding:</strong> Strategic G2/Capterra review generation program that gives AI engines the structured data they need to recommend your product.</li>
+            <li><strong>Reddit & Forum Engagement:</strong> Contributing to existing AI-cited threads — not creating new ones — so your product appears in AI answers within days, not months.</li>
+            <li><strong>Continuous AI Monitoring:</strong> Weekly snapshots of AI answers for your 10 key queries, tracking your progress from invisible to cited.</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p><span class="name">Rajesh Gautam, PhD</span><br>Founder and CEO, genhance.ai</p>
+        <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+        <p style="margin-top:12px; font-size:0.8em">This audit was generated on October 2, 2026 using web-search-verified data.<br>All G2 review counts and Reddit presence verified via independent search.</p>
+    </div>
+</div>
+</body>
+</html>

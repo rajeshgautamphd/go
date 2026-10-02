@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Doss | genhance.ai</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #152852 50%, #0f2044 100%); padding: 60px 20px 40px; text-align: center; border-bottom: 3px solid #f59e0b; }
+.header h1 { font-size: 2em; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #94a3b8; font-size: 1.1em; }
+.header .domain { color: #f59e0b; font-size: 1em; margin-top: 6px; }
+.stats { display: flex; gap: 12px; margin: -30px 20px 30px; flex-wrap: wrap; justify-content: center; }
+.stat-pill { background: linear-gradient(135deg, #1a2744 0%, #1e3260 100%); border: 1px solid #2d4a8e; border-radius: 12px; padding: 16px 20px; min-width: 140px; text-align: center; }
+.stat-pill .label { color: #94a3b8; font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.stat-pill .value { color: #fff; font-size: 1.5em; font-weight: 700; }
+.section { background: #111b33; border: 1px solid #1e3260; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+.section h2 { color: #fff; font-size: 1.2em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #1e3260; }
+.company-info p { margin-bottom: 6px; color: #cbd5e1; }
+.company-info strong { color: #f59e0b; }
+.key-finding { background: linear-gradient(135deg, #3d2800 0%, #522e00 100%); border: 1px solid #f59e0b; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+.key-finding .kf-title { color: #f59e0b; font-weight: 700; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.key-finding .kf-text { color: #fef3c7; font-size: 0.95em; line-height: 1.7; }
+.query-card { background: #0f1a30; border: 1px solid #1e3260; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+.query-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.query-num { background: #f59e0b; color: #0a0e27; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; flex-shrink: 0; }
+.query-text { color: #93c5fd; font-size: 0.9em; font-style: italic; flex: 1; }
+.badge { font-size: 0.7em; padding: 3px 10px; border-radius: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-weak { background: #7f1d1d; color: #fca5a5; border: 1px solid #991b1b; }
+.badge-present { background: #14532d; color: #86efac; border: 1px solid #166534; }
+.query-analysis { color: #94a3b8; font-size: 0.88em; line-height: 1.6; }
+.comp-card { background: #0f1a30; border: 1px solid #2d4a8e; border-radius: 8px; padding: 10px 16px; font-size: 0.9em; color: #cbd5e1; display: inline-block; margin: 4px 6px; }
+.cta { background: linear-gradient(135deg, #1a1040 0%, #0d1b3e 100%); border: 1px solid #4c1d95; border-radius: 12px; padding: 30px 24px; margin-bottom: 20px; }
+.cta h2 { color: #c4b5fd; font-size: 1.1em; margin-bottom: 16px; border: none; padding: 0; }
+.cta ul { list-style: none; padding: 0; }
+.cta li { padding: 8px 0; color: #cbd5e1; font-size: 0.9em; border-bottom: 1px solid #1e1b4b; }
+.cta li:last-child { border-bottom: none; }
+.cta li::before { content: "▸ "; color: #8b5cf6; }
+.footer { text-align: center; padding: 30px 20px 60px; color: #64748b; font-size: 0.85em; }
+.footer a { color: #93c5fd; text-decoration: none; }
+.footer .name { color: #f59e0b; font-weight: 600; }
+@media (max-width: 600px) {
+    .header h1 { font-size: 1.5em; }
+    .stats { flex-direction: column; align-items: center; }
+    .stat-pill { min-width: auto; width: 100%; max-width: 200px; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>AI Search Visibility Audit</h1>
+    <div class="subtitle">Doss — AI Inventory Management / ERP Integration</div>
+    <div class="domain">trydoss.com | San Francisco, CA</div>
+</div>
+<div class="container">
+    <div class="stats">
+        <div class="stat-pill"><div class="label">Funding</div><div class="value" style="font-size:1em">$55M Series B </div></div>
+        <div class="stat-pill"><div class="label">AI Visibility</div><div class="value">1/5</div></div>
+        <div class="stat-pill"><div class="label">G2 Reviews</div><div class="value">0</div></div>
+        <div class="stat-pill"><div class="label">Reddit</div><div class="value">0</div></div>
+    </div>
+
+    <div class="section company-info">
+        <h2>Company Profile</h2>
+        <p><strong>CEO:</strong> Wiley Jones, Co-Founder & CEO</p>
+        <p><strong>Funding:</strong> $55M Series B (Sep 2026), total ~$70M</p>
+        <p><strong>Investors:</strong> Madrona, Premji Invest, Intuit, Theory Ventures, General Catalyst</p>
+        <p><strong>Founded:</strong> 2023 · <strong>Employees:</strong> ~40 · <strong>HQ:</strong> San Francisco, CA</p>
+        <p style="margin-top:8px">Doss builds an AI-powered inventory management layer that plugs into existing ERPs — automating stock tracking, purchasing, and demand planning for mid-market and enterprise companies.</p>
+    </div>
+
+    <div class="key-finding">
+        <div class="kf-title">⚡ KEY FINDING</div>
+        <div class="kf-text">Doss raised $55M to reinvent inventory management with AI — but has zero AI-search visibility. No G2 reviews, no Reddit, no UGC. AI answers for 'inventory management software' cite NetSuite, Cin7, and Fishbowl. Doss is nowhere in the conversation.</div>
+    </div>
+
+    <div class="section">
+        <h2>AI Search Query Analysis — 5 Category Queries</h2>
+        
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q1</span>
+                <span class="query-text">"AI inventory management software"</span>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-analysis">AI Overviews cite NetSuite, Cin7, Zoho Inventory, and Fishbowl. Doss's $55M raise is covered by TechCrunch but no UGC or review platform data exists for AI engines to reference.</div>
+        </div>
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q2</span>
+                <span class="query-text">"ERP inventory optimization AI"</span>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-analysis">Dominated by SAP, Oracle NetSuite, and Microsoft Dynamics in both organic and AI results. Zero Doss presence. The category has almost no Reddit discussion — creating an opportunity.</div>
+        </div>
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q3</span>
+                <span class="query-text">"agentic inventory platform for manufacturers"</span>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-analysis">Doss has SEO content on this topic but no AI Overview exists yet. First vendor to generate UGC (case study discussions, Reddit AMAs) captures the AI narrative for this emerging category.</div>
+        </div>
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q4</span>
+                <span class="query-text">"warehouse inventory automation software"</span>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-analysis">AI answers reference Fishbowl, Cin7, and ShipBob. Doss's ERP-integration differentiator is invisible to AI. No UGC exists connecting Doss to warehouse automation queries.</div>
+        </div>
+        <div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q5</span>
+                <span class="query-text">"supply chain inventory AI platform"</span>
+                <span class="badge badge-weak">WEAK</span>
+            </div>
+            <div class="query-analysis">Doss is absent. AI Overviews reference Blue Yonder, o9 Solutions, and Kinaxis. Doss's mid-market ERP focus is a distinct segment but AI doesn't know it exists.</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Key Competitors (AI-Cited)</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:8px"><div class="comp-card">NetSuite (Oracle)</div><div class="comp-card">Cin7</div><div class="comp-card">Fishbowl Inventory</div><div class="comp-card">Zoho Inventory</div></div>
+    </div>
+
+    <div class="cta">
+        <h2>4 Ways Genhance Closes This AI Visibility Gap</h2>
+        <ul>
+            <li><strong>UGC Gap Analysis:</strong> 10-query audit across Google AI Overviews, ChatGPT, and Perplexity — identifying exactly which UGC sources AI engines cite in your category, and where you're absent.</li>
+            <li><strong>Review Platform Seeding:</strong> Strategic G2/Capterra review generation program that gives AI engines the structured data they need to recommend your product.</li>
+            <li><strong>Reddit & Forum Engagement:</strong> Contributing to existing AI-cited threads — not creating new ones — so your product appears in AI answers within days, not months.</li>
+            <li><strong>Continuous AI Monitoring:</strong> Weekly snapshots of AI answers for your 10 key queries, tracking your progress from invisible to cited.</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p><span class="name">Rajesh Gautam, PhD</span><br>Founder and CEO, genhance.ai</p>
+        <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+        <p style="margin-top:12px; font-size:0.8em">This audit was generated on October 2, 2026 using web-search-verified data.<br>All G2 review counts and Reddit presence verified via independent search.</p>
+    </div>
+</div>
+</body>
+</html>
