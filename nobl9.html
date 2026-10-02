@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Nobl9 | genhance</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 680px; margin: 0 auto; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
+.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
+.header .sub { font-size: 14px; color: #7eb8ff; }
+.header .domain { font-size: 15px; color: #a0c4ff; }
+.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
+.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
+.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
+.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
+.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
+.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
+.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
+.query-cards { padding: 0 28px; }
+.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
+.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
+.badge-absent { background: #3d1515; color: #f87171; }
+.badge-weak { background: #2a1d00; color: #fbbf24; }
+.badge-present { background: #0a2d1a; color: #34d399; }
+.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
+.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
+.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
+.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
+.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
+.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
+.cta .plays { list-style: none; }
+.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
+.cta .plays li:last-child { border-bottom: none; }
+.cta .plays li::before { content: '\\25B8 '; color: #5b9eff; }
+.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
+.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
+.footer .title { font-size: 12px; color: #6b7d95; }
+.footer a { color: #5b9eff; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <div class="sub">Nobl9</div>
+  <div class="domain">nobl9.com — Service Level Objective (SLO) Platform</div>
+</div>
+<div class="stats">
+  <div class="stat-pill"><div class="num">$21M Series B ($44M total)</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="num">1/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="num">2</div><div class="label">Reddit</div></div>
+</div>
+<div class="key-finding">
+  <div class="label">KEY FINDING</div>
+  <div class="text">Nobl9 pioneered the SLO-as-a-platform category with $44M from Battery Ventures and Cisco Investments. Yet G2 shows zero reviews and Reddit has just 2 threads — one asking "what am I missing here?" about its market value. AI answers for "SLO platform" cite Datadog and Grafana, which offer SLO as a feature, not a dedicated platform. Nobl9's category-defining story is invisible to AI.</div>
+</div>
+<div class="section-title">Category Query Analysis</div>
+<div class="query-cards">
+<div class="query-card">
+  <div class="q-header"><span class="query-text">"best service level objective platform 2026"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">Datadog SLO, Grafana, and New Relic dominate because they offer SLO features within broader observability suites. Nobl9 — the only pure-play SLO platform — is never cited.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"SLO management software for SRE teams"</span><span class="badge badge-weak">WEAK</span></div>
+  <div class="analysis">The r/sre subreddit mentions Nobl9 in 1 thread asking about its value proposition. Google SRE handbook citations dominate AI answers. Nobl9 needs more UGC from practitioners.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"error budget tracking tool for DevOps"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">PagerDuty and Datadog are cited for error budgets. Nobl9 is missing. Error budget tracking is the exact feature Nobl9 was built for — yet no AI source connects them.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"software reliability platform for SRE"</span><span class="badge badge-absent">ABSENT</span></div>
+  <div class="analysis">Blameless and incident.io dominate reliability-focused queries. Nobl9's SLO-first approach is more foundational but less discussed in AI-cited forums.</div>
+</div><div class="query-card">
+  <div class="q-header"><span class="query-text">"OpenSLO vs commercial SLO platforms"</span><span class="badge badge-weak">WEAK</span></div>
+  <div class="analysis">Nobl9 created the OpenSLO standard — yet when people search for OpenSLO comparisons, they find the GitHub repo, not Nobl9. One Reddit comment connecting OpenSLO to Nobl9 would bridge this gap.</div>
+</div>
+</div>
+<div class="section-title">Competitive Landscape</div>
+<div class="competitor-cards">
+<div class="comp-card"><div class="comp-name">Datadog SLO</div><div class="comp-desc">SLO as feature in observability suite</div></div><div class="comp-card"><div class="comp-name">Grafana</div><div class="comp-desc">Open-source SLO dashboards</div></div><div class="comp-card"><div class="comp-name">PagerDuty</div><div class="comp-desc">Incident & reliability ops</div></div><div class="comp-card"><div class="comp-name">Blameless</div><div class="comp-desc">SRE incident management</div></div>
+</div>
+<div class="cta">
+  <h3>4 Genhance Plays for Nobl9</h3>
+  <ul class="plays">
+    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for site reliability engineering / SLO management — identify which Reddit/YouTube threads shape the answers.</li>
+    <li><strong>Review Velocity:</strong> Seed G2 &amp; Capterra reviews to establish presence before competitors saturate the category.</li>
+    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing Nobl9 to Datadog SLO — shape the narrative before it hardens.</li>
+    <li><strong>Narrative Monitoring:</strong> Real-time alerts when Nobl9 is mentioned in AI-cited UGC threads — engage within hours, not weeks.</li>
+  </ul>
+</div>
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder &amp; CEO, genhance.ai</div>
+  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+</div>
+</div>
+</body>
+</html>
