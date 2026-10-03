@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Toddle | genhance.ai</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 720px; margin: 0 auto; padding: 0; }
+
+/* Header */
+.header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a5f 100%); padding: 40px 32px 36px; text-align: center; border-bottom: 1px solid #1e3a5f; }
+.header h1 { font-size: 28px; font-weight: 800; color: #f1f5f9; margin-bottom: 4px; }
+.header .subtitle { font-size: 15px; color: #94a3b8; margin-bottom: 20px; }
+.header .domain { font-size: 13px; color: #64748b; }
+
+/* Stat Pills */
+.stats { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 24px 32px; background: #1e293b; border-bottom: 1px solid #334155; }
+.stat-pill { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
+.stat-pill .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; margin-bottom: 4px; }
+.stat-pill .value { font-size: 22px; font-weight: 700; color: #f1f5f9; }
+.stat-pill .value.warn { color: #f59e0b; }
+.stat-pill .value.good { color: #10b981; }
+
+/* Key Finding */
+.key-finding { background: linear-gradient(135deg, #451a03 0%, #78350f 100%); border-left: 4px solid #f59e0b; padding: 20px 24px; margin: 0 32px 8px; border-radius: 0 8px 8px 0; }
+.key-finding .label { font-size: 11px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; color: #fbbf24; margin-bottom: 8px; }
+.key-finding p { font-size: 14px; color: #fef3c7; line-height: 1.7; }
+
+/* Section */
+.section { padding: 28px 32px; }
+.section h2 { font-size: 18px; font-weight: 700; color: #f1f5f9; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #1e3a5f; }
+
+/* Query Cards */
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.query-card .q-text { font-size: 14px; font-weight: 600; color: #e2e8f0; flex: 1; }
+.query-card .badge { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; }
+.query-card .badge.weak { background: #7f1d1d; color: #fca5a5; }
+.query-card .badge.present { background: #14532d; color: #86efac; }
+.query-card .q-analysis { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+
+/* Competitor Cards */
+.comp-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+.comp-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #cbd5e1; flex: 1; min-width: 140px; text-align: center; }
+.comp-card .comp-name { font-weight: 700; color: #f1f5f9; }
+
+/* CTA */
+.cta { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 32px; margin: 0 32px 24px; border-radius: 12px; border: 1px solid #334155; }
+.cta h2 { font-size: 18px; font-weight: 700; color: #f1f5f9; margin-bottom: 16px; }
+.cta .plays { list-style: none; }
+.cta .plays li { font-size: 13px; color: #cbd5e1; padding: 8px 0; border-bottom: 1px solid #1e3a5f; line-height: 1.5; }
+.cta .plays li:last-child { border: none; }
+.cta .plays li::before { content: '▸ '; color: #3b82f6; }
+
+/* Footer */
+.footer { padding: 24px 32px; text-align: center; border-top: 1px solid #1e3a5f; }
+.footer .name { font-size: 15px; font-weight: 600; color: #f1f5f9; }
+.footer .title { font-size: 12px; color: #64748b; margin: 2px 0; }
+.footer .links { font-size: 12px; color: #3b82f6; margin-top: 4px; }
+.footer .links a { color: #3b82f6; text-decoration: none; }
+
+.note { font-size: 11px; color: #475569; margin-top: 12px; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>Toddle</h1>
+  <div class="subtitle">EdTech / K-12 Learning Platform</div>
+  <div class="domain">toddleapp.com</div>
+</div>
+
+<div class="stats">
+  <div class="stat-pill">
+    <div class="label">Funding</div>
+    <div class="value">$17M Series A</div>
+  </div>
+  <div class="stat-pill">
+    <div class="label">AI Visibility</div>
+    <div class="value warn">1/5</div>
+  </div>
+  <div class="stat-pill">
+    <div class="label">G2 Reviews</div>
+    <div class="value">0</div>
+  </div>
+  <div class="stat-pill">
+    <div class="label">Reddit</div>
+    <div class="value">0</div>
+  </div>
+</div>
+
+<div class="key-finding">
+  <div class="label">⚡ KEY FINDING</div>
+  <p>Toddle serves 2,500+ schools across 100 countries with backing from Sequoia — but AI search engines treat it as if it doesn't exist. For 5 K-12 edtech queries, Toddle appears in 0 of 5 AI Overviews while Canvas, Google Classroom, and ManageBac dominate. Toddle's teachers save 2-5 hours per week using its AI tools, but no AI-cited source mentions this.</p>
+</div>
+
+<div class="section">
+  <h2>🔍 AI Search Query Analysis</h2>
+  <p style="font-size:13px;color:#64748b;margin-bottom:16px;">Each query was tested against Google AI Overviews and Perplexity. PRESENT = company appears in AI-cited sources. WEAK = absent from all AI-cited sources.</p>
+    <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"best learning management system for K-12 schools 2026"</div>
+      <div class="badge weak">WEAK</div>
+    </div>
+    <div class="q-analysis">AI Overviews cite Canvas, Google Classroom, and Schoology. Toddle — with 2,500+ school deployments — has zero AI-indexed presence in this query.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"IB curriculum planning and assessment software"</div>
+      <div class="badge weak">WEAK</div>
+    </div>
+    <div class="q-analysis">Toddle's core vertical. AI answers reference ManageBac exclusively. Toddle's IB-specific tools are completely invisible to AI search engines.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"AI-powered teaching tools for schools"</div>
+      <div class="badge weak">WEAK</div>
+    </div>
+    <div class="q-analysis">MagicSchool AI and Khanmigo dominate. Toddle's built-in AI tools that save teachers 2-5 hours per week aren't mentioned in any AI-cited source.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"school management platform with parent communication"</div>
+      <div class="badge weak">WEAK</div>
+    </div>
+    <div class="q-analysis">ClassDojo and Remind control this AI answer. Toddle's integrated family communication module has zero AI-indexed mentions.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"progressive education software platform"</div>
+      <div class="badge weak">WEAK</div>
+    </div>
+    <div class="q-analysis">This is Toddle's category. AI Overviews reference general LMS comparison articles — Toddle, the platform purpose-built for progressive schools, isn't cited.</div>
+  </div>
+
+</div>
+
+<div class="section">
+  <h2>🏢 Competitive AI Landscape</h2>
+  <p style="font-size:13px;color:#64748b;margin-bottom:16px;">These competitors dominate AI-cited sources for Toddle's category queries.</p>
+  <div class="comp-grid">
+        <div class="comp-card"><div class="comp-name">Canvas (Instructure)</div></div>
+    <div class="comp-card"><div class="comp-name">Google Classroom</div></div>
+    <div class="comp-card"><div class="comp-name">ManageBac</div></div>
+    <div class="comp-card"><div class="comp-name">Schoology</div></div>
+
+  </div>
+</div>
+
+<div class="cta">
+  <h2>🚀 4 genhance Plays to Own AI Search Visibility</h2>
+  <ul class="plays">
+          <li>Answer 'best LMS for IB schools' on r/Internationalteachers and r/teaching — zero Toddle mentions currently</li>
+      <li>List Toddle on G2 under 'K-12 LMS' — ManageBac has reviews, Toddle has zero</li>
+      <li>Publish 'Toddle vs ManageBac vs Canvas: LMS for Progressive K-12 Schools Compared'</li>
+      <li>Get Deepanshu Arora on an edtech podcast — 'How AI saves teachers 5 hours a week' becomes AI-indexed content</li>
+
+  </ul>
+</div>
+
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder and CEO, genhance.ai</div>
+  <div class="links">
+    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+  </div>
+  <div class="note">Data verified via web search — October 3, 2026</div>
+</div>
+
+</div>
+</body>
+</html>

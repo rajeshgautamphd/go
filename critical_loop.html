@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Critical Loop | genhance.ai</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 720px; margin: 0 auto; padding: 0; }
+
+/* Header */
+.header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a5f 100%); padding: 40px 32px 36px; text-align: center; border-bottom: 1px solid #1e3a5f; }
+.header h1 { font-size: 28px; font-weight: 800; color: #f1f5f9; margin-bottom: 4px; }
+.header .subtitle { font-size: 15px; color: #94a3b8; margin-bottom: 20px; }
+.header .domain { font-size: 13px; color: #64748b; }
+
+/* Stat Pills */
+.stats { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 24px 32px; background: #1e293b; border-bottom: 1px solid #334155; }
+.stat-pill { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
+.stat-pill .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; margin-bottom: 4px; }
+.stat-pill .value { font-size: 22px; font-weight: 700; color: #f1f5f9; }
+.stat-pill .value.warn { color: #f59e0b; }
+.stat-pill .value.good { color: #10b981; }
+
+/* Key Finding */
+.key-finding { background: linear-gradient(135deg, #451a03 0%, #78350f 100%); border-left: 4px solid #f59e0b; padding: 20px 24px; margin: 0 32px 8px; border-radius: 0 8px 8px 0; }
+.key-finding .label { font-size: 11px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; color: #fbbf24; margin-bottom: 8px; }
+.key-finding p { font-size: 14px; color: #fef3c7; line-height: 1.7; }
+
+/* Section */
+.section { padding: 28px 32px; }
+.section h2 { font-size: 18px; font-weight: 700; color: #f1f5f9; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #1e3a5f; }
+
+/* Query Cards */
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.query-card .q-text { font-size: 14px; font-weight: 600; color: #e2e8f0; flex: 1; }
+.query-card .badge { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; }
+.query-card .badge.weak { background: #7f1d1d; color: #fca5a5; }
+.query-card .badge.present { background: #14532d; color: #86efac; }
+.query-card .q-analysis { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+
+/* Competitor Cards */
+.comp-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+.comp-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #cbd5e1; flex: 1; min-width: 140px; text-align: center; }
+.comp-card .comp-name { font-weight: 700; color: #f1f5f9; }
+
+/* CTA */
+.cta { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 32px; margin: 0 32px 24px; border-radius: 12px; border: 1px solid #334155; }
+.cta h2 { font-size: 18px; font-weight: 700; color: #f1f5f9; margin-bottom: 16px; }
+.cta .plays { list-style: none; }
+.cta .plays li { font-size: 13px; color: #cbd5e1; padding: 8px 0; border-bottom: 1px solid #1e3a5f; line-height: 1.5; }
+.cta .plays li:last-child { border: none; }
+.cta .plays li::before { content: '▸ '; color: #3b82f6; }
+
+/* Footer */
+.footer { padding: 24px 32px; text-align: center; border-top: 1px solid #1e3a5f; }
+.footer .name { font-size: 15px; font-weight: 600; color: #f1f5f9; }
+.footer .title { font-size: 12px; color: #64748b; margin: 2px 0; }
+.footer .links { font-size: 12px; color: #3b82f6; margin-top: 4px; }
+.footer .links a { color: #3b82f6; text-decoration: none; }
+
+.note { font-size: 11px; color: #475569; margin-top: 12px; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>Critical Loop</h1>
+  <div class="subtitle">Industrial Energy / Microgrid Infrastructure</div>
+  <div class="domain">criticalloop.com</div>
+</div>
+
+<div class="stats">
+  <div class="stat-pill">
+    <div class="label">Funding</div>
+    <div class="value">$26M Series A</div>
+  </div>
+  <div class="stat-pill">
+    <div class="label">AI Visibility</div>
+    <div class="value warn">1/5</div>
+  </div>
+  <div class="stat-pill">
+    <div class="label">G2 Reviews</div>
+    <div class="value">0</div>
+  </div>
+  <div class="stat-pill">
+    <div class="label">Reddit</div>
+    <div class="value">0</div>
+  </div>
+</div>
+
+<div class="key-finding">
+  <div class="label">⚡ KEY FINDING</div>
+  <p>Critical Loop solves one of the most acute problems in American infrastructure: grid interconnection delays. Yet when AI is asked 'how to speed up grid interconnection for data centers,' Critical Loop is cited exactly zero times — while decade-old DOE reports and utility websites dominate the answer.</p>
+</div>
+
+<div class="section">
+  <h2>🔍 AI Search Query Analysis</h2>
+  <p style="font-size:13px;color:#64748b;margin-bottom:16px;">Each query was tested against Google AI Overviews and Perplexity. PRESENT = company appears in AI-cited sources. WEAK = absent from all AI-cited sources.</p>
+    <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"how to speed up grid interconnection for industrial sites"</div>
+      <div class="badge weak">WEAK</div>
+    </div>
+    <div class="q-analysis">AI Overviews cite DOE reports, FERC orders, and utility queue management studies. Critical Loop's modular microgrid approach — which literally solves this — appears nowhere.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"microgrid solutions for data centers 2026"</div>
+      <div class="badge weak">WEAK</div>
+    </div>
+    <div class="q-analysis">Google AIO surfaces Bloom Energy, Enchanted Rock, and Schneider Electric microgrid pages. Critical Loop has zero presence across all AI-cited sources.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"best industrial battery storage systems"</div>
+      <div class="badge weak">WEAK</div>
+    </div>
+    <div class="q-analysis">Tesla Megapack, Fluence, and Powin dominate this answer. Critical Loop's CLB-5100 (1 MW integrated battery system) is not mentioned in any AI-cited comparison.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"power infrastructure for AI data centers"</div>
+      <div class="badge weak">WEAK</div>
+    </div>
+    <div class="q-analysis">McKinsey and Deloitte reports, plus Vertiv and Eaton product pages, form the entire AI answer. The company that deploys power to data centers in days vs years is invisible.</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"modular power solutions for manufacturing facilities"</div>
+      <div class="badge weak">WEAK</div>
+    </div>
+    <div class="q-analysis">Generac, Caterpillar, and Aggreko dominate for backup/temporary power. Critical Loop's permanent modular microgrid solution is undiscoverable through AI search.</div>
+  </div>
+
+</div>
+
+<div class="section">
+  <h2>🏢 Competitive AI Landscape</h2>
+  <p style="font-size:13px;color:#64748b;margin-bottom:16px;">These competitors dominate AI-cited sources for Critical Loop's category queries.</p>
+  <div class="comp-grid">
+        <div class="comp-card"><div class="comp-name">Bloom Energy</div></div>
+    <div class="comp-card"><div class="comp-name">Enchanted Rock</div></div>
+    <div class="comp-card"><div class="comp-name">Schneider Electric Microgrid</div></div>
+    <div class="comp-card"><div class="comp-name">Tesla Megapack</div></div>
+
+  </div>
+</div>
+
+<div class="cta">
+  <h2>🚀 4 genhance Plays to Own AI Search Visibility</h2>
+  <ul class="plays">
+          <li>Answer 'how to speed up grid interconnection' on Quora and Reddit r/datacenter — currently zero Critical Loop mentions</li>
+      <li>List Critical Loop on G2 under 'Energy Management' or 'Data Center Infrastructure' — currently not listed</li>
+      <li>Publish a technical comparison: 'Critical Loop vs Bloom Energy vs Tesla Megapack for industrial microgrids'</li>
+      <li>Get one 15-minute YouTube interview with Bala about the $26M raise — then comment on adjacent energy YouTuber videos</li>
+
+  </ul>
+</div>
+
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder and CEO, genhance.ai</div>
+  <div class="links">
+    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+  </div>
+  <div class="note">Data verified via web search — October 3, 2026</div>
+</div>
+
+</div>
+</body>
+</html>
