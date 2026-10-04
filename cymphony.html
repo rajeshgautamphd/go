@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Cymphony</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0a1628, #1a2744); padding: 48px 24px; text-align: center; border-bottom: 3px solid #2a4a8c; }
+.header h1 { font-size: 2rem; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #8892b0; font-size: 1.1rem; }
+.container { max-width: 900px; margin: 0 auto; padding: 24px; }
+.stats { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+.stat-pill { background: linear-gradient(135deg, #1a2744, #1e3160); border: 1px solid #2a4a8c; border-radius: 12px; padding: 16px 20px; flex: 1; min-width: 130px; text-align: center; }
+.stat-pill .label { font-size: 0.7rem; text-transform: uppercase; color: #8892b0; letter-spacing: 1px; }
+.stat-pill .value { font-size: 1.4rem; font-weight: 700; color: #fff; margin-top: 4px; }
+.alert { background: linear-gradient(135deg, #3d2a00, #5a3e00); border: 1px solid #ff9800; border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
+.alert .title { color: #ff9800; font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+.alert .body { color: #e0c080; font-size: 0.95rem; }
+.section-title { font-size: 1.2rem; font-weight: 700; color: #fff; margin: 32px 0 16px; border-bottom: 2px solid #2a4a8c; padding-bottom: 8px; }
+.query-card { background: #111a2e; border: 1px solid #1e3160; border-radius: 10px; padding: 20px; margin: 12px 0; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.query-card .q-text { color: #c0d0ff; font-weight: 600; font-size: 0.95rem; }
+.badge { font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-absent { background: #3d1a1a; color: #ff6b6b; border: 1px solid #8c2a2a; }
+.badge-weak { background: #3d2a00; color: #ffb74d; border: 1px solid #8c5a00; }
+.query-card .analysis { color: #8892b0; font-size: 0.9rem; margin-top: 8px; }
+.comp-card { background: #111a2e; border: 1px solid #1e3160; border-radius: 8px; padding: 12px 16px; margin: 6px 0; display: flex; justify-content: space-between; align-items: center; }
+.comp-card .comp-name { color: #c0d0ff; font-weight: 600; }
+.comp-card .comp-presence { color: #ff6b6b; font-size: 0.8rem; }
+.cta { background: linear-gradient(135deg, #0a1628, #1a2744); border: 2px solid #2a4a8c; border-radius: 14px; padding: 32px; margin: 32px 0; text-align: center; }
+.cta h2 { color: #fff; margin-bottom: 16px; }
+.cta .plays { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+.cta .play { background: #1a2744; border-radius: 8px; padding: 14px; text-align: left; }
+.cta .play .num { color: #4a8cf0; font-weight: 700; font-size: 0.8rem; }
+.cta .play .desc { color: #b0c0e0; font-size: 0.85rem; margin-top: 4px; }
+.footer { text-align: center; color: #667a9e; font-size: 0.85rem; padding: 32px 24px; border-top: 1px solid #1e3160; margin-top: 40px; }
+.footer a { color: #4a8cf0; text-decoration: none; }
+@media (max-width: 600px) { .stats { flex-direction: column; } }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>AI SEARCH VISIBILITY AUDIT</h1>
+<div class="subtitle">Cymphony — Cybersecurity / AI Security</div>
+</div>
+<div class="container">
+<div class="stats">
+<div class="stat-pill"><div class="label">Funding</div><div class="value">$25M Series A (Sep 2026)</div></div>
+<div class="stat-pill"><div class="label">AI Visibility</div><div class="value" style="color:#ff6b6b">0/5</div></div>
+<div class="stat-pill"><div class="label">G2 Reviews</div><div class="value">0</div></div>
+<div class="stat-pill"><div class="label">Reddit</div><div class="value">0</div></div>
+</div>
+<div class="alert">
+<div class="title">🔑 KEY FINDING</div>
+<div class="body">Cymphony has raised <strong>$30M total</strong> from Sequoia Capital, SMBC Fin Atlas Beyond Fund — yet appears in <strong>0 of 5</strong> critical AI search queries in its category. With 0 G2 reviews and 0 Reddit threads, Cymphony is virtually invisible to AI-powered search engines (ChatGPT, Google AI Overviews, Perplexity) that buyers increasingly use to evaluate cybersecurity / ai security solutions.</div>
+</div>
+<div class="section-title">📊 5 AI-Search Query Analysis</div>
+<div class="query-card">
+<div class="q-header">
+<div class="q-text">"best AI agent security platform 2026"</div>
+<span class="badge badge-absent">ABSENT</span>
+</div>
+<div class="analysis">AI Overviews cite general cybersecurity platforms. Cymphony — Sequoia-backed at $30M — is emerging but has zero AI-cited UGC 4 weeks post-launch.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<div class="q-text">"non-human identity security management"</div>
+<span class="badge badge-absent">ABSENT</span>
+</div>
+<div class="analysis">AI answers pull from Wiz and CyberArk content. Cymphony's purpose-built AI agent governance graph is not mentioned in any AI-indexed source.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<div class="q-text">"enterprise AI workforce security tools"</div>
+<span class="badge badge-absent">ABSENT</span>
+</div>
+<div class="analysis">AI Overviews cite Gartner and Forrester reports on AI security trends. Cymphony's workforce graph approach has zero Reddit discussions or review comparisons.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<div class="q-text">"identity governance for AI agents"</div>
+<span class="badge badge-absent">ABSENT</span>
+</div>
+<div class="analysis">No AI-cited source addresses this emerging category specifically. Cymphony is defining the category but has no AI-indexed content.</div>
+</div>
+<div class="query-card">
+<div class="q-header">
+<div class="q-text">"Sequoia cybersecurity investments 2026"</div>
+<span class="badge badge-absent">ABSENT</span>
+</div>
+<div class="analysis">Cymphony appears in Sequoia's portfolio page but not in AI-generated cybersecurity investment roundups — a gap between funding signal and AI visibility.</div>
+</div>
+
+<div class="section-title">🏢 Named Competitors in AI Answers</div>
+<div class="comp-card">
+<div class="comp-name">Wiz</div>
+<div class="comp-presence">Cited in AI Overviews</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">Cyera</div>
+<div class="comp-presence">Cited in AI Overviews</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">Varonis</div>
+<div class="comp-presence">Cited in AI Overviews</div>
+</div>
+<div class="comp-card">
+<div class="comp-name">CrowdStrike</div>
+<div class="comp-presence">Cited in AI Overviews</div>
+</div>
+
+<div class="cta">
+<h2>4 Genhance Plays for Cymphony</h2>
+<div class="plays">
+<div class="play"><div class="num">01</div><div class="desc">Monitor 5 category queries via DataForSEO — track when Cymphony gets cited in AI Overviews</div></div>
+<div class="play"><div class="num">02</div><div class="desc">Seed Reddit & YouTube UGC — contribute to threads AI already indexes for 'cybersecurity / ai security' queries</div></div>
+<div class="play"><div class="num">03</div><div class="desc">G2 listing optimization — grow from 0 to 20+ verified reviews with authentic customer programs</div></div>
+<div class="play"><div class="num">04</div><div class="desc">Competitor gap content — publish comparison pages that AI search engines can index and cite</div></div>
+</div>
+<p style="color:#8892b0;font-size:0.9rem;margin-top:16px;">Estimated time to first AI citation: <strong style="color:#4a8cf0">4–6 weeks</strong></p>
+</div>
+<div class="footer">
+<p>Rajesh Gautam, PhD</p>
+<p>Founder and CEO, genhance.ai</p>
+<p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+</div>
+</div>
+</body>
+</html>
