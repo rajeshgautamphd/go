@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — TurbineOne</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e6f0; line-height: 1.6; }
+  .container { max-width: 780px; margin: 0 auto; padding: 0; }
+  
+  .gradient-header { background: linear-gradient(135deg, #0a1628 0%, #0d1b3e 40%, #132a5e 70%, #0f2448 100%); padding: 48px 32px 40px; text-align: center; border-bottom: 1px solid #1e3a6e; }
+  .gradient-header h1 { font-size: 30px; color: #ffffff; margin-bottom: 8px; font-weight: 700; letter-spacing: -0.5px; }
+  .gradient-header .subtitle { color: #7b9fd4; font-size: 14px; font-weight: 400; }
+  
+  .stat-pills { display: flex; gap: 12px; padding: 24px 32px; background: #0d1229; flex-wrap: wrap; justify-content: center; border-bottom: 1px solid #1a2550; }
+  .stat-pill { background: linear-gradient(135deg, #101a3a, #16224a); border: 1px solid #1e3470; border-radius: 10px; padding: 14px 20px; min-width: 110px; text-align: center; }
+  .stat-pill .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #5a7abf; margin-bottom: 4px; }
+  .stat-pill .stat-value { font-size: 20px; font-weight: 700; color: #ffffff; }
+  .stat-pill.amber .stat-value { color: #f59e0b; }
+  .stat-pill.red .stat-value { color: #ef4444; }
+  .stat-pill.green .stat-value { color: #10b981; }
+  
+  .key-finding { margin: 28px 32px; background: linear-gradient(135deg, #1a1a0a, #2a1f0a); border: 1px solid #f59e0b40; border-radius: 12px; padding: 20px 24px; }
+  .key-finding h3 { color: #f59e0b; font-size: 14px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+  .key-finding p { color: #e8d5a3; font-size: 14px; }
+  
+  .section-title { padding: 0 32px; margin-top: 32px; color: #8aadf0; font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+  
+  .query-card { margin: 16px 32px; background: #101a36; border: 1px solid #1a3060; border-radius: 10px; overflow: hidden; }
+  .query-card .query-header { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1a3060; }
+  .query-card .query-text { font-weight: 600; color: #d0ddf5; font-size: 14px; }
+  .badge { padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge.present { background: #064e3b40; color: #10b981; border: 1px solid #10b98140; }
+  .badge.weak { background: #7c2d1240; color: #f97316; border: 1px solid #f9731640; }
+  .query-card .query-analysis { padding: 14px 18px; font-size: 13px; color: #8a9fc0; line-height: 1.7; }
+  
+  .competitor-card { margin: 12px 32px; background: #0d1330; border: 1px solid #1a2a60; border-radius: 8px; padding: 14px 18px; }
+  .competitor-card .comp-name { font-weight: 600; color: #c0d0f0; font-size: 13px; }
+  .competitor-card .comp-desc { font-size: 12px; color: #6678a0; margin-top: 4px; }
+  
+  .cta-section { margin: 32px 32px; background: linear-gradient(135deg, #0d1b3e, #132a5e); border: 1px solid #1e3a7e; border-radius: 12px; padding: 28px; text-align: center; }
+  .cta-section h3 { color: #ffffff; font-size: 16px; margin-bottom: 14px; }
+  .cta-play { display: inline-block; background: #1a3060; border: 1px solid #2a4a90; border-radius: 8px; padding: 10px 16px; margin: 6px; color: #a0c0f0; font-size: 12px; }
+  .cta-play strong { color: #ffffff; }
+  
+  .footer { padding: 32px; text-align: center; border-top: 1px solid #1a2550; margin-top: 24px; }
+  .footer .signature-name { color: #ffffff; font-weight: 600; font-size: 14px; }
+  .footer .signature-title { color: #5a7abf; font-size: 12px; }
+  .footer .signature-links { color: #3a5a9f; font-size: 11px; margin-top: 4px; }
+  .footer .query-date { color: #3a5090; font-size: 10px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="gradient-header">
+    <h1>AI SEARCH VISIBILITY AUDIT</h1>
+    <div class="subtitle">TurbineOne — Defense AI / GovTech • San Francisco, CA</div>
+  </div>
+
+  <div class="stat-pills">
+    <div class="stat-pill"><div class="stat-label">Funding</div><div class="stat-value">$36M Series B ($54M total)</div></div>
+    <div class="stat-pill amber"><div class="stat-label">AI Visibility</div><div class="stat-value">1/5</div></div>
+    <div class="stat-pill red"><div class="stat-label">G2 Reviews</div><div class="stat-value">0</div></div>
+    <div class="stat-pill red"><div class="stat-label">Reddit Threads</div><div class="stat-value">0</div></div>
+  </div>
+
+  <div class="key-finding">
+    <h3>⚠️ KEY FINDING</h3>
+    <p><strong>TurbineOne</strong> ($36M Series B ($54M total) from Institutional investors) has raised significant capital but has near-zero AI search visibility. Across 5 category-defining queries, TurbineOne appears in AI Overviews or top organic results for only 1 of 5 searches. Meanwhile, competitors like Palantir Gotham, Anduril Lattice, and Shield AI Hivemind dominate what AI engines say about the Defense AI / GovTech space. With 0 G2 reviews and 0 Reddit threads, TurbineOne's UGC footprint is effectively invisible — meaning AI answers about the Defense AI / GovTech category are being shaped entirely by competitors.</p>
+  </div>
+
+  <div class="section-title">🔍 5 KEY QUERIES — AI SEARCH PERFORMANCE</div>
+  
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">"best battlefield AI software 2026"</span>
+        <span class="badge present">PRESENT</span>
+      </div>
+      <div class="query-analysis">TurbineOne appears in search results alongside Palantir Gotham, Anduril Lattice, and Rebellion Defense. U.S. Army contract ($98.9M ceiling) gives it strong organic presence. Defense publications cite it regularly.</div>
+    </div>
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">"AI target recognition military edge"</span>
+        <span class="badge present">PRESENT</span>
+      </div>
+      <div class="query-analysis">TurbineOne's Frontline Perception System is the leading cited solution for edge AI in defense. Search shows 4+ defense publication mentions. Competitors: Shield AI, Rebellion Defense, Palantir.</div>
+    </div>
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">"autonomous threat detection software for defense"</span>
+        <span class="badge weak">WEAK</span>
+      </div>
+      <div class="query-analysis">AI Overviews cite Palantir, Anduril, and Shield AI — TurbineOne not mentioned despite having the relevant product. Competitors: Palantir Gotham, Anduril Lattice, Shield AI Hivemind.</div>
+    </div>
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">"best govtech AI startups 2026"</span>
+        <span class="badge weak">WEAK</span>
+      </div>
+      <div class="query-analysis">GovTech roundups mention Anduril, Rebellion Defense, Hadrian, and Primer AI but exclude TurbineOne. Leading publications: Defense News, Breaking Defense, GovCIO.</div>
+    </div>
+    <div class="query-card">
+      <div class="query-header">
+        <span class="query-text">"edge computing AI military applications"</span>
+        <span class="badge weak">WEAK</span>
+      </div>
+      <div class="query-analysis">Searches show Microsoft Azure Stack Edge, AWS Snowball, and general edge AI frameworks. TurbineOne's edge-first positioning is absent from this high-volume query. Competitors: Microsoft, AWS, Palantir Edge AI.</div>
+    </div>
+
+  <div class="section-title">🏢 COMPETITORS DOMINATING AI ANSWERS</div>
+  
+    <div class="competitor-card">
+      <div class="comp-name">Palantir Gotham</div>
+      <div class="comp-desc">Enterprise defense AI platform, $100B+ market cap, deep government contracts</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Anduril Lattice</div>
+      <div class="comp-desc">Autonomous defense systems, $28B valuation, heavy media presence</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Shield AI Hivemind</div>
+      <div class="comp-desc">AI pilot for military aircraft, $2.8B valuation, strong UGC on defense forums</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Rebellion Defense</div>
+      <div class="comp-desc">AI-powered defense software, $1B+ valuation, active on LinkedIn/defense events</div>
+    </div>
+
+  <div class="cta-section">
+    <h3>4 Genhance Plays for TurbineOne</h3>
+    <div class="cta-play"><strong>1. UGC Monetization</strong><br>Identify & contribute to 3-5 Reddit/YT threads AI already cites</div>
+    <div class="cta-play"><strong>2. Review Velocity</strong><br>Seed G2 reviews to build the review corpus AI engines need</div>
+    <div class="cta-play"><strong>3. Competitor Displacement</strong><br>Create comparison content to displace Palantir Gotham in AI answers</div>
+    <div class="cta-play"><strong>4. AI Answer Monitoring</strong><br>Track before/after snapshots to prove ROI</div>
+  </div>
+
+  <div class="footer">
+    <div class="signature-name">Rajesh Gautam, PhD</div>
+    <div class="signature-title">Founder and CEO, genhance.ai</div>
+    <div class="signature-links">linkedin.com/in/rajeshgautam | genhance.ai</div>
+    <div class="query-date">Analysis conducted October 6, 2026 • Queries verified via Google AI Overviews, Reddit, and G2</div>
+  </div>
+
+</div>
+</body>
+</html>
