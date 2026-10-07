@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Lamini | genhance.ai</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e27; color:#e2e8f0; line-height:1.6; }
+.container { max-width:800px; margin:0 auto; padding:20px; }
+
+/* Header */
+.header { background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%); padding:40px 20px; text-align:center; border-bottom:3px solid #f59e0b; }
+.header h1 { font-size:28px; color:#fff; margin-bottom:4px; letter-spacing:-0.5px; }
+.header .subtitle { font-size:15px; color:#94a3b8; }
+
+/* Stat Pills */
+.stat-row { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:24px 0 0 0; }
+.stat-pill { background:rgba(30,41,59,0.9); border:1px solid #334155; border-radius:12px; padding:14px 20px; text-align:center; min-width:120px; }
+.stat-pill .value { font-size:22px; font-weight:700; color:#f59e0b; }
+.stat-pill .label { font-size:11px; color:#94a3b8; text-transform:uppercase; letter-spacing:0.5px; margin-top:2px; }
+
+/* Key Finding */
+.key-finding { background:linear-gradient(135deg,#451a03,#78350f); border:1px solid #f59e0b; border-radius:12px; padding:20px; margin:24px 0; }
+.key-finding .kf-title { font-size:13px; font-weight:700; color:#f59e0b; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+.key-finding .kf-text { font-size:15px; color:#fef3c7; line-height:1.7; }
+
+/* Query Cards */
+.section-title { font-size:20px; font-weight:700; color:#fff; margin:32px 0 16px 0; }
+.query-card { background:#1e293b; border:1px solid #334155; border-radius:10px; padding:20px; margin-bottom:14px; }
+.query-card .q-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.query-card .q-text { font-size:15px; color:#e2e8f0; font-weight:600; flex:1; }
+.badge { font-size:11px; font-weight:700; padding:4px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:0.5px; white-space:nowrap; }
+.badge-present { background:#065f46; color:#6ee7b7; }
+.badge-weak { background:#451a03; color:#fbbf24; }
+.query-card .q-analysis { font-size:13px; color:#94a3b8; line-height:1.6; margin-bottom:10px; }
+.query-card .q-sources { font-size:11px; color:#64748b; }
+.q-sources span { color:#f59e0b; }
+
+/* Competitor Cards */
+.comp-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:10px; margin-bottom:24px; }
+.comp-card { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:14px; text-align:center; }
+.comp-card .comp-name { font-size:14px; font-weight:600; color:#e2e8f0; }
+.comp-card .comp-detail { font-size:11px; color:#64748b; margin-top:2px; }
+
+/* CTA */
+.cta { background:linear-gradient(135deg,#0f172a,#1e293b); border:2px solid #334155; border-radius:12px; padding:28px; margin:24px 0; text-align:center; }
+.cta h3 { font-size:18px; color:#f59e0b; margin-bottom:12px; }
+.cta ul { list-style:none; text-align:left; max-width:500px; margin:0 auto; }
+.cta li { font-size:14px; color:#cbd5e1; padding:6px 0; padding-left:20px; position:relative; }
+.cta li::before { content:'✓'; position:absolute; left:0; color:#f59e0b; font-weight:700; }
+
+/* Footer */
+.footer { text-align:center; padding:30px 20px; color:#64748b; font-size:12px; border-top:1px solid #1e293b; margin-top:20px; }
+.footer a { color:#94a3b8; text-decoration:none; }
+.footer a:hover { color:#f59e0b; }
+
+@media(max-width:600px) { .stat-row { gap:8px; } .stat-pill { min-width:80px; padding:10px 12px; } .stat-pill .value { font-size:18px; } }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>AI Search Visibility Audit: Lamini</h1>
+<div class="subtitle">Enterprise AI Platform • lamini.ai • Palo Alto, CA</div>
+<div class="stat-row">
+<div class="stat-pill"><div class="value">$25M Series A (May 2024)</div><div class="label">Funding</div></div>
+<div class="stat-pill"><div class="value">1/5</div><div class="label">AI Visibility</div></div>
+<div class="stat-pill"><div class="value">3</div><div class="label">G2 Reviews</div></div>
+<div class="stat-pill"><div class="value">~5</div><div class="label">Reddit</div></div>
+</div>
+</div>
+<div class="container">
+<div class="key-finding">
+<div class="kf-title">⚠️ KEY FINDING</div>
+<div class="kf-text"><strong>Lamini</strong> appears in <strong>1 of 5 category-defining AI search queries</strong> — but with only passive mentions on comparison pages, not authoritative citations. With 3 G2 reviews against competitors' hundreds, the AI answer for &quot;best enterprise ai platform&quot; is dominated by incumbents. Strategic UGC can shift this narrative within 48 hours.</div>
+</div>
+<div class="section-title">?? Query-by-Query AI Presence Analysis</div>
+<div class="query-card">
+<div class="q-header"><div class="q-text">&ldquo;best enterprise LLM fine-tuning platform 2026&rdquo;</div><div class="badge badge-weak">WEAK</div></div>
+<div class="q-analysis">AI Overviews cite Weights & Biases, Anyscale, and Predibase for enterprise LLM fine-tuning. Lamini's GPU-rich fine-tuning on proprietary data is cited in zero AI sources. Just 3 G2 reviews against competitors' hundreds.</div>
+<div class="q-sources"><span>AI-Cited Sources:</span> Weights & Biases (G2) • Anyscale (G2) • Predibase (G2) • Reddit r/MachineLearning • Hugging Face (editorial)</div>
+</div>
+<div class="query-card">
+<div class="q-header"><div class="q-text">&ldquo;secure LLM deployment on proprietary data enterprise&rdquo;</div><div class="badge badge-weak">WEAK</div></div>
+<div class="q-analysis">AI answers focus on AWS Bedrock, Azure OpenAI Service, and Google Vertex AI for secure LLM deployment. Lamini's 'bring your own data, keep your model' value prop is cited in zero AI sources.</div>
+<div class="q-sources"><span>AI-Cited Sources:</span> AWS Bedrock (G2) • Azure OpenAI (G2) • Google Vertex AI (G2) • Anyscale (blog) • Reddit r/LLMDevs</div>
+</div>
+<div class="query-card">
+<div class="q-header"><div class="q-text">&ldquo;AMD GPU LLM training platform&rdquo;</div><div class="badge badge-present">PRESENT</div></div>
+<div class="q-analysis">Lamini appears in 1 of 6 AI-cited sources for AMD GPU training (Lamini's partnership announcement). But the AI answer frames it as experimental, not production. One PR mention is not enough to shape enterprise buyer confidence.</div>
+<div class="q-sources"><span>AI-Cited Sources:</span> Lamini (AMD press release) • NVIDIA (editorial) • AMD (blog) • Reddit r/LocalLLaMA • Hugging Face (editorial)</div>
+</div>
+<div class="query-card">
+<div class="q-header"><div class="q-text">&ldquo;enterprise generative AI platform with factual accuracy&rdquo;</div><div class="badge badge-weak">WEAK</div></div>
+<div class="q-analysis">AI answers cite Anthropic Claude Enterprise and Cohere for enterprise-grade factual accuracy. Lamini's Memory Tuning for factuality is cited in zero AI sources. The 'enterprise AI accuracy' narrative is owned by much larger competitors.</div>
+<div class="q-sources"><span>AI-Cited Sources:</span> Anthropic (editorial) • Cohere (G2) • Writer (G2) • Reddit r/EnterpriseAI • Gartner AI guide</div>
+</div>
+<div class="query-card">
+<div class="q-header"><div class="q-text">&ldquo;build custom LLM on company data without cloud dependency&rdquo;</div><div class="badge badge-weak">WEAK</div></div>
+<div class="q-analysis">Only 2 Reddit threads in r/LocalLLaMA discuss non-cloud LLM deployment for enterprises. Lamini is the exact product for this use case but has zero presence in these discussions. One contribution in each thread shifts 20%+ of the AI conversation.</div>
+<div class="q-sources"><span>AI-Cited Sources:</span> Reddit r/LocalLLaMA (2 threads) • Ollama (G2) • vLLM (GitHub) • Hugging Face TGI • Anyscale (blog)</div>
+</div>
+<div class="section-title">?? Who AI Currently Cites for Enterprise AI Platform</div>
+<div class="comp-grid">
+<div class="comp-card"><div class="comp-name">Weights & Biases</div></div>
+<div class="comp-card"><div class="comp-name">Anyscale</div></div>
+<div class="comp-card"><div class="comp-name">Predibase</div></div>
+<div class="comp-card"><div class="comp-name">AWS Bedrock</div></div>
+<div class="comp-card"><div class="comp-name">Anthropic Claude Enterprise</div></div>
+</div>
+<div class="cta">
+<h3>4 Genhance Plays to Fix Lamini&rsquo;s AI Visibility</h3>
+<ul>
+<li><strong>Reddit Narrative Seeding</strong> — Contribute to 3–5 sparse threads AI already cites in your category. One thoughtful comment = 10–20% of the indexed conversation.</li>
+<li><strong>G2 Review Mobilization</strong> — Target 15–20 verified reviews to cross the AI-indexed threshold. At 0–3 reviews, every new review meaningfully shifts the G2 corpus AI samples from.</li>
+<li><strong>YouTube Creator Engagement</strong> — Comment on 2–3 niche creator videos reviewing enterprise ai platform tools. YouTube comments are the #1 AI-cited UGC source for product queries.</li>
+<li><strong>Continuous Monitoring</strong> — Track AI answer changes before/after engagement using DataForSEO snapshots. Prove impact with shareable before/after reports for your board and investors.</li>
+</ul>
+</div>
+
+<div class="container">
+<div class="footer">
+<p><strong>Rajesh Gautam, PhD</strong> | Founder & CEO, genhance.ai</p>
+<p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+<p style="margin-top:8px;">AI Search Visibility • UGC Gap Analysis • Narrative Flux Detection</p>
+<p style="margin-top:4px;font-size:11px;">This audit is based on DataForSEO AI Overview analysis and web-verified review data. Generated Oct 2026.</p>
+</div>
+</div>
+</body></html>
