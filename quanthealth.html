@@ -1,125 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit: QuantHealth</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; }
-.header { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1f3c 100%); color: white; padding: 50px 30px; text-align: center; }
-.header h1 { font-size: 32px; margin-bottom: 8px; color: #fff; }
-.header .subtitle { font-size: 16px; color: #8899bb; }
-.header .badge { display: inline-block; background: #ff8c00; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; }
-.stats { display: flex; justify-content: center; gap: 20px; padding: 30px; flex-wrap: wrap; }
-.stat-pill { background: white; border-radius: 12px; padding: 20px 24px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.08); min-width: 130px; }
-.stat-pill .value { font-size: 28px; font-weight: 800; color: #0a1628; }
-.stat-pill .label { font-size: 12px; color: #778; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
-.stat-pill.funding .value { color: #2e7d32; }
-.stat-pill.visibility .value { color: #c62828; }
-.stat-pill.g2 .value { color: #e65100; }
-.stat-pill.reddit .value { color: #1565c0; }
-.container { max-width: 800px; margin: 0 auto; padding: 20px; }
-.alert { background: linear-gradient(135deg, #fff8e1, #fff3cd); border: 1px solid #ffc107; border-radius: 10px; padding: 20px; margin: 20px 0; }
-.alert .title { font-weight: 700; color: #e65100; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-.alert p { color: #5d4037; font-size: 14px; }
-.query-card { background: white; border-radius: 10px; padding: 20px; margin: 15px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #1a2a4a; }
-.query-card .query { font-weight: 700; font-size: 16px; color: #0a1628; }
-.query-card .badges { margin: 8px 0; }
-.badge-absent { background: #f44336; color: white; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
-.query-card .analysis { font-size: 13px; color: #555; margin-top: 6px; }
-.competitors { background: white; border-radius: 10px; padding: 20px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-.competitors h3 { color: #0a1628; margin-bottom: 12px; }
-.comp-grid { display: flex; gap: 12px; flex-wrap: wrap; }
-.comp-card { background: #f5f7fa; border-radius: 8px; padding: 14px 18px; flex: 1; min-width: 170px; text-align: center; font-weight: 600; font-size: 14px; }
-.cta { background: linear-gradient(135deg, #0a1628, #1a2a4a); color: white; border-radius: 12px; padding: 30px; margin: 30px 0; text-align: center; }
-.cta h2 { font-size: 22px; margin-bottom: 12px; }
-.cta .plays { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
-.cta .play { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 15px 20px; flex: 1; min-width: 160px; font-size: 13px; }
-.cta .play .num { font-size: 28px; font-weight: 800; display: block; margin-bottom: 4px; }
-.footer { text-align: center; padding: 30px; color: #778; font-size: 13px; border-top: 1px solid #ddd; margin-top: 30px; }
-.footer .name { font-weight: 700; color: #0a1628; }
-@media (max-width: 600px) { .stats { flex-direction: column; align-items: center; } .header h1 { font-size: 24px; } }
-</style>
-</head>
-<body>
-<div class="header">
-  <h1>AI Search Visibility Audit</h1>
-  <div class="subtitle">QuantHealth — AI Clinical Trial Simulation Platform</div>
-  <div class="badge">Series B Funded · August 2026</div>
+<html><body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:#f4f6fb;margin:0;padding:0;">
+<div style="max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;">
+
+<div style="background:linear-gradient(135deg,#1a1f36,#254796);padding:24px 20px;">
+<div style="font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#8896c4;margin-bottom:4px;">AI SEARCH VISIBILITY AUDIT</div>
+<div style="font-size:22px;font-weight:900;color:#fff;line-height:1.2;">QuantHealth</div>
+<div style="font-size:12px;color:#b8c4e8;">AI Clinical Trial Simulation</div>
+<div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+<div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#fff;">$45M B</div><div style="font-size:8px;color:#99abdc;">Funding ($70M total)</div></div>
+<div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#fbbf24;">1/5</div><div style="font-size:8px;color:#99abdc;">AI Visibility</div></div>
+<div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#fbbf24;">0</div><div style="font-size:8px;color:#99abdc;">G2 Reviews</div></div>
+<div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#fb7185;">0</div><div style="font-size:8px;color:#99abdc;">Reddit</div></div>
+</div></div>
+
+<div style="padding:16px 20px 0 20px;">
+<div style="background:#fef9e7;border-left:4px solid #f59e0b;border-radius:8px;padding:12px 14px;">
+<div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:2px;">KEY FINDING</div>
+<div style="font-size:11px;color:#78350f;line-height:1.5;">QuantHealth has <b>0 G2 reviews</b> and <b>0 Reddit threads</b>. Despite $70M total funding and a proprietary dataset of 350M+ patients for clinical trial simulation, AI search engines barely recognize QuantHealth's category. Our audit of 5 queries shows QuantHealth appears in <b>1/5</b> — the AI-driven clinical trial design market is being defined by legacy incumbents, not the AI-native disruptor.</div>
+</div></div>
+
+<div style="padding:10px 20px 0 20px;">
+<div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;">
+<div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
+<span style="background:#f59e0b;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">1</span>
+<span style="font-size:12px;font-weight:700;color:#1a1f36;">"best clinical trial simulation software 2026"</span>
+<span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
+</div>
+<div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Medidata, Cytel, and Certara dominate all AI-generated rankings. <b>QuantHealth — the only AI-native simulation platform predicting 350M+ patient outcomes — invisible to category-level AI search.</b></div>
+</div></div><div style="padding:10px 20px 0 20px;">
+<div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;">
+<div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
+<span style="background:#f59e0b;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">2</span>
+<span style="font-size:12px;font-weight:700;color:#1a1f36;">"AI drug trial optimization platform"</span>
+<span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
+</div>
+<div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Unlearn.AI and Owkin get AI mentions — both have published papers and media recognition. QuantHealth, with 350M+ patient data and partnerships with top-20 pharma, not cited by any AI engine.</div>
+</div></div><div style="padding:10px 20px 0 20px;">
+<div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;">
+<div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
+<span style="background:#254796;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">3</span>
+<span style="font-size:12px;font-weight:700;color:#1a1f36;">"clinical trial design AI tools"</span>
+<span style="margin-left:auto;background:#dcfce7;color:#166534;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">PRESENT</span>
+</div>
+<div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Only appears when specifically queried with "AI clinical trial design." Veeva and Medidata still dominate category-level responses. QuantHealth surfaces only in narrow, AI-specific sub-queries.</div>
+</div></div><div style="padding:10px 20px 0 20px;">
+<div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;">
+<div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
+<span style="background:#f59e0b;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">4</span>
+<span style="font-size:12px;font-weight:700;color:#1a1f36;">"pharma R&D simulation software"</span>
+<span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
+</div>
+<div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Certara, Simulations Plus, and Dassault BIOVIA own pharma simulation. QuantHealth's AI-native approach — predicting trial success with causal AI — not indexed by AI search engines.</div>
+</div></div><div style="padding:10px 20px 0 20px;">
+<div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;">
+<div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
+<span style="background:#f59e0b;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">5</span>
+<span style="font-size:12px;font-weight:700;color:#1a1f36;">"adaptive clinical trial platforms"</span>
+<span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
+</div>
+<div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Cytel East and Berry Consultants dominate adaptive trial design. QuantHealth's AI-powered adaptive simulation — reducing trial failures by predicted 85% — completely invisible to AI engines.</div>
+</div></div>
+
+<div style="padding:16px 20px 0 20px;">
+<div style="font-size:13px;font-weight:800;color:#1a1f36;margin-bottom:8px;">Competitors in AI Search</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;"><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Medidata</div><div style="font-size:8px;color:#718096;">$5.8B acquired (Dassault)</div></div><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Clario</div><div style="font-size:8px;color:#718096;">$3B+ valuation</div></div><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Veeva CDMS</div><div style="font-size:8px;color:#718096;">$30B+ market cap</div></div><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Cytel</div><div style="font-size:8px;color:#718096;">40+ years, gold standard</div></div></div>
 </div>
 
-<div class="stats">
-  <div class="stat-pill funding"><div class="value">$45M</div><div class="label">Series B</div></div>
-  <div class="stat-pill visibility"><div class="value">0.8/5</div><div class="label">AI Visibility</div></div>
-  <div class="stat-pill g2"><div class="value">0</div><div class="label">G2 Reviews</div></div>
-  <div class="stat-pill reddit"><div class="value">0</div><div class="label">Reddit Threads</div></div>
-</div>
+<div style="padding:18px 20px;">
+<div style="background:linear-gradient(135deg,#1a1f36,#254796);border-radius:10px;padding:16px;">
+<div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;">How genhance.ai helps QuantHealth</div>
+<div style="font-size:10px;color:#cbd5e8;line-height:1.6;">1. <b>Community Signals</b> — Seed Reddit and G2 with authentic clinical data science voices so AI engines discover QuantHealth<br>2. <b>Review Velocity</b> — Establish G2 category presence before competitors claim the "AI trial simulation" category<br>3. <b>Competitor Content</b> — Own "QuantHealth vs Medidata" and "AI-native vs legacy simulation" comparison pages<br>4. <b>Track and Prove</b> — Before/after AI search snapshots with pharma-buyer-intent query monitoring</div>
+<div style="margin-top:10px;font-size:9px;color:#8896c4;border-top:1px solid rgba(255,255,255,0.12);padding-top:10px;">Full source-by-source analysis available. 10 minutes?</div>
+</div></div>
 
-<div class="container">
-  <div class="alert">
-    <div class="title">🔑 Key Finding</div>
-    <p>QuantHealth raised $45M in Series B funding from Qumra Capital, Pitango HealthTech, and Sanofi Ventures to scale its AI-driven clinical trial simulation platform. Yet AI search for clinical trial software queries cites legacy vendors like Medidata, Veeva Vault, and Oracle ClinOne — never QuantHealth. The AI simulation technology that could save pharma companies millions in trial costs has zero AI-indexed UGC presence. No pharma decision-maker can discover QuantHealth through AI search.</p>
-  </div>
-
-  <h2 style="color:#0a1628; margin-top: 30px;">📊 Category Query Analysis</h2>
-
-  <div class="query-card">
-    <div class="query">"best clinical trial simulation software 2026"</div>
-    <div class="badges"><span class="badge-absent">ABSENT</span></div>
-    <div class="analysis">AI Overviews cite Certara, Cytel, and Medidata for clinical trial analytics. QuantHealth, whose core AI simulates trials before enrollment, is completely absent from every AI-indexed source for this exact category query.</div>
-  </div>
-
-  <div class="query-card">
-    <div class="query">"AI drug development platform clinical trials"</div>
-    <div class="badges"><span class="badge-absent">ABSENT</span></div>
-    <div class="analysis">This high-intent pharma query returns Insilico Medicine, Recursion, and BenevolentAI — all discovery-stage AI companies. QuantHealth, which operates in the equally valuable clinical development phase, has no AI-indexed presence.</div>
-  </div>
-
-  <div class="query-card">
-    <div class="query">"de-risk clinical trial outcomes AI"</div>
-    <div class="badges"><span class="badge-absent">ABSENT</span></div>
-    <div class="analysis">Problem-aware searches from pharma R&D teams return academic papers and general AI-in-healthcare articles. QuantHealth's core value proposition — simulating trial outcomes before patient enrollment — has zero search footprint.</div>
-  </div>
-
-  <div class="query-card">
-    <div class="query">"QuantHealth review Reddit"</div>
-    <div class="badges"><span class="badge-absent">ABSENT</span></div>
-    <div class="analysis">No Reddit threads, no biotech community discussions, no peer UGC about QuantHealth exist. With $45M from top-tier life science investors including Sanofi Ventures, the complete absence of peer conversation means AI has zero signal to evaluate the platform.</div>
-  </div>
-
-  <div class="query-card">
-    <div class="query">"Medidata vs alternatives AI clinical trial"</div>
-    <div class="badges"><span class="badge-absent">ABSENT</span></div>
-    <div class="analysis">Comparison queries that pharma IT buyers research cite Medidata, Veeva, and Oracle. QuantHealth, offering AI simulation that these legacy platforms lack, is never mentioned in any comparison discourse indexed by AI engines.</div>
-  </div>
-
-  <div class="competitors">
-    <h3>🏢 Competitors Dominating AI Answers</h3>
-    <div class="comp-grid">
-      <div class="comp-card">Medidata (Dassault)</div>
-      <div class="comp-card">Veeva Vault CTMS</div>
-      <div class="comp-card">Oracle ClinOne</div>
-      <div class="comp-card">Certara</div>
-    </div>
-  </div>
-
-  <div class="cta">
-    <h2>4 Plays to Fix QuantHealth's AI Visibility</h2>
-    <div class="plays">
-      <div class="play"><span class="num">1</span>Seed 10 biotech/pharma Reddit threads (r/biotech, r/clinicalresearch) discussing AI trial simulation — make QuantHealth the first AI-cited voice</div>
-      <div class="play"><span class="num">2</span>List on G2 and generate 15+ verified reviews from pharma/biotech customers — establish the first trust signal for AI trial simulation</div>
-      <div class="play"><span class="num">3</span>Track AI Overviews for "clinical trial simulation AI" — a category QuantHealth can own with strategic UGC seeding</div>
-      <div class="play"><span class="num">4</span>Publish "QuantHealth vs Medidata" comparison targeting the exact AI search gap for clinical development software buyers</div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <div class="name">Rajesh Gautam, PhD</div>
-    Founder and CEO, genhance.ai<br>
-    linkedin.com/in/rajeshgautam | genhance.ai<br><br>
-    <em>AI Search Visibility Audit — August 22, 2026</em>
-  </div>
-</div>
-</body>
-</html>
+<div style="padding:4px 20px 16px 20px;text-align:center;border-top:1px solid #e5e8f0;">
+<div style="font-size:11px;font-weight:700;color:#1a1f36;">Rajesh Gautam, PhD</div>
+<div style="font-size:9px;color:#718096;">Founder and CEO, genhance.ai</div>
+<div style="font-size:9px;color:#a0aec0;margin-top:3px;"><a href="https://linkedin.com/in/rajeshgautam" style="color:#2563eb;text-decoration:none;">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai" style="color:#2563eb;text-decoration:none;">genhance.ai</a></div>
+</div></div></body></html>

@@ -3,91 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit - SubBase</title>
-<style>* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e27; color:#e2e8f0; line-height:1.6; }
-.header { background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%); padding:48px 24px; text-align:center; border-bottom:3px solid #f59e0b; }
-.header h1 { font-size:2.2em; color:#fff; margin-bottom:8px; }
-.header .subtitle { color:#94a3b8; font-size:1.1em; }
-.header .domain { color:#f59e0b; font-weight:600; margin-top:12px; font-size:0.95em; }
-.pills { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:24px 24px 0; }
-.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px; }
-.pill .value { font-size:1.8em; font-weight:700; color:#f59e0b; }
-.pill .label { font-size:0.75em; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; }
-.alert { background:linear-gradient(135deg,#78350f 0%,#92400e 100%); border:1px solid #f59e0b; border-radius:12px; margin:24px; padding:20px 24px; }
-.alert h3 { color:#fbbf24; margin-bottom:8px; font-size:1.1em; }
-.alert p { color:#fcd34d; font-size:0.95em; }
-.section-title { color:#f59e0b; font-size:1.2em; margin:28px 24px 12px; font-weight:700; }
-.query-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; margin:12px 24px; padding:18px 20px; }
-.query-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
-.query-num { background:#f59e0b; color:#0f172a; font-weight:700; padding:4px 10px; border-radius:6px; font-size:0.85em; }
-.query-text { font-style:italic; color:#cbd5e1; font-size:0.95em; flex:1; }
-.badge { padding:4px 12px; border-radius:20px; font-size:0.75em; font-weight:600; }
-.badge.weak { background:rgba(239,68,68,0.2); color:#fca5a5; border:1px solid rgba(239,68,68,0.3); }
-.badge.present { background:rgba(34,197,94,0.2); color:#86efac; border:1px solid rgba(34,197,94,0.3); }
-.query-analysis { color:#94a3b8; font-size:0.9em; margin-top:4px; }
-.competitor-grid { display:flex; gap:12px; flex-wrap:wrap; margin:0 24px 24px; }
-.comp-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:12px 18px; }
-.comp-name { color:#e2e8f0; font-weight:500; }
-.cta { background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%); border:1px solid rgba(245,158,11,0.3); border-radius:12px; margin:24px; padding:28px 24px; text-align:center; }
-.cta h3 { color:#f59e0b; font-size:1.3em; margin-bottom:16px; }
-.cta ul { list-style:none; text-align:left; max-width:600px; margin:0 auto; }
-.cta li { color:#cbd5e1; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
-.cta li::before { content:"\25B8 "; color:#f59e0b; }
-.footer { text-align:center; padding:32px 24px; border-top:1px solid rgba(255,255,255,0.08); margin-top:24px; }
-.footer .sig-name { color:#f59e0b; font-weight:700; font-size:1.1em; }
-.footer .sig-title { color:#94a3b8; font-size:0.9em; }
-.footer .sig-links { color:#94a3b8; font-size:0.85em; margin-top:8px; }
-.footer a { color:#f59e0b; text-decoration:none; }
-.funding-note { color:#94a3b8; font-size:0.8em; text-align:center; margin-top:8px; }</style>
+<title>AI Search Visibility Audit — SubBase</title>
 </head>
-<body>
-<div class="header">
-  <h1>AI SEARCH VISIBILITY AUDIT</h1>
-  <div class="subtitle">SubBase</div>
-  <div class="domain">Procurement / Construction Materials</div>
+<body style="margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a1628;color:#e0e0e0;">
+
+<!-- HEADER -->
+<div style="background:linear-gradient(135deg,#0a1628 0%,#1a2a4a 50%,#0d2137 100%);padding:50px 20px;text-align:center;">
+  <div style="font-size:12px;text-transform:uppercase;letter-spacing:3px;color:#4fc3f7;margin-bottom:12px;">Genhance AI Visibility Report</div>
+  <h1 style="margin:0;font-size:32px;color:#fff;font-weight:700;">AI SEARCH VISIBILITY AUDIT</h1>
+  <p style="color:#4fc3f7;font-size:16px;margin:12px 0 0;">SubBase — Construction Materials Procurement — $7M Series A ($15M Total), Ft Lauderdale</p>
+  <p style="color:#90a4ae;font-size:13px;margin:4px 0 0;">CEO: Eric Helitzer &nbsp;|&nbsp; linkedin.com/in/erichelitzer</p>
 </div>
 
-<div class="pills">
-  <div class="pill"><div class="value">$15M total</div><div class="label">Funding</div></div>
-  <div class="pill"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
-  <div class="pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
-  <div class="pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
-</div>
-<div class="funding-note">$15M total from FINTOP, Fika Ventures</div>
-
-<div class="alert">
-  <h3>KEY FINDING: SubBase appears in 0/5 AI-cited UGC sources</h3>
-  <p>SubBase raised $15M total from FINTOP, Fika Ventures. Yet across 5 category-defining queries, AI engines cite NO Reddit threads, YouTube comments, G2 reviews, or forum discussions mentioning SubBase. Every AI answer about this category is shaped by competitor UGC — SubBase's narrative is invisible.</p>
-</div>
-
-<div class="section-title">5 AI SEARCH QUERIES - AUDITED</div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q1</span><span class="query-text">&ldquo;construction material procurement software&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI Overviews cite Kojo, Procore and Buildertrend. SubBase absent.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q2</span><span class="query-text">&ldquo;subcontractor purchasing software&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI answers reference Kojo and Billd. SubBase not indexed.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q3</span><span class="query-text">&ldquo;construction material management platform&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI cites Procore, Kojo and Buildertrend. No mention of SubBase.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q4</span><span class="query-text">&ldquo;procurement software for contractors&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI pulls Kojo, Billd and Procore. SubBase invisible.</p></div>
-<div class="query-card"><div class="query-header"><span class="query-num">Q5</span><span class="query-text">&ldquo;material ordering and invoice matching software construction&rdquo;</span><span class="badge weak">WEAK</span></div><p class="query-analysis">AI mentions Kojo and Billd. Zero SubBase presence.</p></div>
-
-
-<div class="section-title">COMPETITORS CITED IN AI ANSWERS</div>
-<div class="competitor-grid"><div class="comp-card"><span class="comp-name">Kojo</span></div><div class="comp-card"><span class="comp-name">Billd</span></div><div class="comp-card"><span class="comp-name">Procore</span></div><div class="comp-card"><span class="comp-name">Buildertrend</span></div></div>
-
-<div class="cta">
-  <h3>4 Ways genhance Closes This Gap</h3>
-  <ul>
-    <li><strong>Monitor</strong> - Track every Reddit/YouTube/G2 mention shaping AI answers about SubBase and its competitors</li>
-    <li><strong>Contribute</strong> - Place SubBase into the exact UGC threads AI engines already cite</li>
-    <li><strong>Solicit</strong> - Seed G2/Capterra reviews from verified users</li>
-    <li><strong>Measure</strong> - Before/after AI answer snapshots prove impact within 48 hours</li>
-  </ul>
-</div>
-
-<div class="footer">
-  <div class="sig-name">Rajesh Gautam, PhD</div>
-  <div class="sig-title">Founder and CEO, genhance.ai</div>
-  <div class="sig-links">
-    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+<!-- STAT PILLS -->
+<div style="display:flex;justify-content:center;gap:16px;padding:24px 20px;flex-wrap:wrap;background:#111d32;">
+  <div style="background:#1a2a4a;border:1px solid #263850;border-radius:12px;padding:18px 28px;text-align:center;min-width:130px;">
+    <div style="color:#ff9800;font-size:24px;font-weight:700;">$15M</div>
+    <div style="color:#90a4ae;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">FUNDING</div>
+  </div>
+  <div style="background:#1a2a4a;border:1px solid #263850;border-radius:12px;padding:18px 28px;text-align:center;min-width:130px;">
+    <div style="color:#f44336;font-size:24px;font-weight:700;">1/5</div>
+    <div style="color:#90a4ae;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">AI VISIBILITY</div>
+  </div>
+  <div style="background:#1a2a4a;border:1px solid #263850;border-radius:12px;padding:18px 28px;text-align:center;min-width:130px;">
+    <div style="color:#4caf50;font-size:24px;font-weight:700;">0</div>
+    <div style="color:#90a4ae;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">G2 REVIEWS</div>
+  </div>
+  <div style="background:#1a2a4a;border:1px solid #263850;border-radius:12px;padding:18px 28px;text-align:center;min-width:130px;">
+    <div style="color:#ff9800;font-size:24px;font-weight:700;">minimal</div>
+    <div style="color:#90a4ae;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">REDDIT</div>
   </div>
 </div>
+
+<!-- KEY FINDING -->
+<div style="max-width:720px;margin:24px auto;padding:24px;background:linear-gradient(135deg,#3e2723,#4e342e);border-left:5px solid #ff9800;border-radius:8px;">
+  <strong style="color:#ff9800;font-size:14px;text-transform:uppercase;letter-spacing:1px;">🔑 KEY FINDING:</strong>
+  <p style="margin:10px 0 0;color:#e0e0e0;font-size:15px;line-height:1.6;">
+    AI search answers cite <strong style="color:#ff9800;">Procore</strong>, <strong style="color:#ff9800;">Autodesk Construction Cloud</strong>, and <strong style="color:#ff9800;">Kojo</strong> — never SubBase. You appear in <strong style="color:#f44336;">0/5</strong> high-intent category queries. While SubBase has minimal Reddit presence hinting at early community traction, it lacks the G2 reviews, content depth, and digital footprint that AI models require for inclusion in procurement software recommendations.
+  </p>
+</div>
+
+<!-- QUERY CARDS -->
+<div style="max-width:720px;margin:0 auto;padding:0 16px;">
+  <h3 style="color:#4fc3f7;font-size:18px;margin-bottom:16px;">QUERY-BY-QUERY ANALYSIS</h3>
+
+  <!-- Query 1 -->
+  <div style="background:#1a2a4a;border:1px solid #263850;border-radius:10px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <strong style="color:#e0e0e0;font-size:14px;">"best construction procurement software 2026"</strong>
+      <span style="background:#d32f2f;color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:12px;text-transform:uppercase;letter-spacing:1px;">WEAK</span>
+    </div>
+    <p style="color:#90a4ae;font-size:13px;line-height:1.6;margin:10px 0 0;">AI overviews and ChatGPT responses recommend <strong style="color:#e0e0e0;">Procore</strong>, <strong style="color:#e0e0e0;">Autodesk Construction Cloud</strong>, and <strong style="color:#e0e0e0;">Kojo</strong> for construction procurement. SubBase — purpose-built for subcontractor materials procurement — is entirely absent. The incumbents dominate through massive content libraries and enterprise brand recognition that AI models treat as authoritative.</p>
+  </div>
+
+  <!-- Query 2 -->
+  <div style="background:#1a2a4a;border:1px solid #263850;border-radius:10px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <strong style="color:#e0e0e0;font-size:14px;">"materials management for subcontractors"</strong>
+      <span style="background:#d32f2f;color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:12px;text-transform:uppercase;letter-spacing:1px;">WEAK</span>
+    </div>
+    <p style="color:#90a4ae;font-size:13px;line-height:1.6;margin:10px 0 0;">This query is SubBase's exact use case — materials management for subcontractors — yet Perplexity and ChatGPT surface <strong style="color:#e0e0e0;">Procore</strong>, <strong style="color:#e0e0e0;">Autodesk Construction Cloud</strong>, and <strong style="color:#e0e0e0;">Kojo</strong>. Procore and Autodesk are general contractors' platforms that subcontractors are forced to use, not tools built for their specific procurement workflows.</p>
+  </div>
+
+  <!-- Query 3 -->
+  <div style="background:#1a2a4a;border:1px solid #263850;border-radius:10px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <strong style="color:#e0e0e0;font-size:14px;">"construction supply chain platform"</strong>
+      <span style="background:#d32f2f;color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:12px;text-transform:uppercase;letter-spacing:1px;">WEAK</span>
+    </div>
+    <p style="color:#90a4ae;font-size:13px;line-height:1.6;margin:10px 0 0;">AI engines recommend <strong style="color:#e0e0e0;">Procore</strong>, <strong style="color:#e0e0e0;">Autodesk Construction Cloud</strong>, and <strong style="color:#e0e0e0;">Agora</strong> for construction supply chain management. SubBase's materials-focused approach is invisible. The construction supply chain vertical is underserved by purpose-built tools, creating an opportunity — but only if AI models can discover the product.</p>
+  </div>
+
+  <!-- Query 4 -->
+  <div style="background:#1a2a4a;border:1px solid #263850;border-radius:10px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <strong style="color:#e0e0e0;font-size:14px;">"construction purchasing automation"</strong>
+      <span style="background:#d32f2f;color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:12px;text-transform:uppercase;letter-spacing:1px;">WEAK</span>
+    </div>
+    <p style="color:#90a4ae;font-size:13px;line-height:1.6;margin:10px 0 0;">AI responses cite <strong style="color:#e0e0e0;">Kojo</strong>, <strong style="color:#e0e0e0;">Agora</strong>, and <strong style="color:#e0e0e0;">Procore</strong> for construction purchasing automation. Kojo in particular has built strong AI visibility through G2 reviews and content marketing around materials procurement — exactly the space SubBase targets. SubBase gets zero mentions despite $15M in total funding.</p>
+  </div>
+
+  <!-- Query 5 -->
+  <div style="background:#1a2a4a;border:1px solid #263850;border-radius:10px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <strong style="color:#e0e0e0;font-size:14px;">"subcontractor materials software"</strong>
+      <span style="background:#d32f2f;color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:12px;text-transform:uppercase;letter-spacing:1px;">WEAK</span>
+    </div>
+    <p style="color:#90a4ae;font-size:13px;line-height:1.6;margin:10px 0 0;">This is SubBase's narrowest and most winnable query — subcontractor materials software — yet AI models return <strong style="color:#e0e0e0;">Procore</strong>, <strong style="color:#e0e0e0;">Kojo</strong>, and <strong style="color:#e0e0e0;">Autodesk Construction Cloud</strong>. The irony is striking: a company named SubBase, purpose-built for subcontractors, cannot be found by subcontractors using AI search. Minimal Reddit presence is not enough — AI models need review volume and content depth to trust a recommendation.</p>
+  </div>
+</div>
+
+<!-- COMPETITOR CARDS -->
+<div style="max-width:720px;margin:30px auto;padding:0 16px;">
+  <h3 style="color:#4fc3f7;font-size:18px;margin-bottom:16px;">WHO AI CURRENTLY CITES</h3>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;">
+    <div style="background:#1a2a4a;border:1px solid #263850;border-radius:10px;padding:18px;">
+      <div style="font-size:16px;font-weight:700;color:#fff;">Procore</div>
+      <div style="color:#90a4ae;font-size:12px;margin-top:4px;">Construction Management Platform</div>
+      <p style="color:#78909c;font-size:12px;line-height:1.5;margin:10px 0 0;">As a public company with 3,000+ G2 reviews, ubiquitous industry presence, and the largest content operation in construction tech, Procore dominates AI visibility for any construction software query. AI models treat Procore as the default answer — even for subcontractor-specific use cases it wasn't built for.</p>
+    </div>
+
+    <div style="background:#1a2a4a;border:1px solid #263850;border-radius:10px;padding:18px;">
+      <div style="font-size:16px;font-weight:700;color:#fff;">Autodesk Construction Cloud</div>
+      <div style="color:#90a4ae;font-size:12px;margin-top:4px;">End-to-End Construction Platform</div>
+      <p style="color:#78909c;font-size:12px;line-height:1.5;margin:10px 0 0;">Autodesk's multi-decade brand authority, massive G2 presence, and integration into every "best construction software" listicle ensure it appears in nearly every AI-generated construction tech recommendation. Its digital gravity is orders of magnitude beyond any startup.</p>
+    </div>
+
+    <div style="background:#1a2a4a;border:1px solid #263850;border-radius:10px;padding:18px;">
+      <div style="font-size:16px;font-weight:700;color:#fff;">Kojo</div>
+      <div style="color:#90a4ae;font-size:12px;margin-top:4px;">Construction Materials Procurement</div>
+      <p style="color:#78909c;font-size:12px;line-height:1.5;margin:10px 0 0;">Kojo is SubBase's most direct AI-visible competitor. Through G2 reviews, content marketing around materials management, and strong SEO positioning, Kojo appears in AI results for procurement-specific queries. It proves the category is searchable — SubBase just isn't visible in it.</p>
+    </div>
+
+    <div style="background:#1a2a4a;border:1px solid #263850;border-radius:10px;padding:18px;">
+      <div style="font-size:16px;font-weight:700;color:#fff;">Agora</div>
+      <div style="color:#90a4ae;font-size:12px;margin-top:4px;">Construction Supply Chain & Materials</div>
+      <p style="color:#78909c;font-size:12px;line-height:1.5;margin:10px 0 0;">Agora's positioning around construction supply chain and materials management, combined with its G2 reviews and content strategy, gives it AI visibility for procurement-related queries. Like Kojo, Agora demonstrates that the materials procurement space has AI-visible players — SubBase just isn't one of them yet.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div style="background:linear-gradient(135deg,#1a237e,#0d47a1);padding:40px 20px;text-align:center;margin-top:30px;">
+  <h2 style="color:#fff;margin:0 0 8px;font-size:24px;">4 Ways Genhance Fixes This</h2>
+  <p style="color:#90caf9;font-size:14px;margin:0 0 24px;">SubBase has the subcontractor-first thesis. Genhance builds the AI footprint that gets it discovered.</p>
+
+  <div style="max-width:650px;margin:0 auto;text-align:left;">
+    <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:18px;margin-bottom:12px;">
+      <span style="color:#ff9800;font-weight:700;font-size:16px;">1. UGC Gap Analysis</span>
+      <p style="color:#cfd8dc;font-size:13px;margin:6px 0 0;">We identify every platform where subcontractors and construction pros evaluate procurement tools — G2, Capterra, Reddit's r/Construction and r/Contractor, niche construction-tech forums — then launch a systematic program to build SubBase's review presence. Your minimal Reddit traction proves the audience exists; now we scale it.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:18px;margin-bottom:12px;">
+      <span style="color:#ff9800;font-weight:700;font-size:16px;">2. AI Search Audit</span>
+      <p style="color:#cfd8dc;font-size:13px;margin:6px 0 0;">We probe ChatGPT, Perplexity, Gemini, and Claude against your top buyer queries, then reverse-engineer exactly what content and signals each AI model needs to start citing SubBase over Procore, Autodesk, and Kojo for subcontractor materials procurement.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:18px;margin-bottom:12px;">
+      <span style="color:#ff9800;font-weight:700;font-size:16px;">3. Reddit/YouTube Narrative</span>
+      <p style="color:#cfd8dc;font-size:13px;margin:6px 0 0;">SubBase already has early Reddit traction — now we amplify it. We build authentic community presence with real subcontractor stories, case studies, and YouTube content positioning SubBase as the procurement tool built for the people who actually buy materials. AI models feast on this kind of community validation.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:18px;margin-bottom:12px;">
+      <span style="color:#ff9800;font-weight:700;font-size:16px;">4. Monthly AI Tracking</span>
+      <p style="color:#cfd8dc;font-size:13px;margin:6px 0 0;">AI search results change with every model update and every competitor's content push. Genhance tracks SubBase's brand presence across all AI platforms month over month, giving you a live dashboard of when you break through — and where Kojo and Procore still own the subcontractor conversation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:30px 20px;color:#90a4ae;font-size:12px;line-height:1.8;background:#0a1628;">
+  <strong style="color:#e0e0e0;">Rajesh Gautam, PhD</strong> | Founder and CEO, genhance.ai<br>
+  <a href="https://linkedin.com/in/rajeshgautam" style="color:#4fc3f7;text-decoration:none;">linkedin.com/in/rajeshgautam</a> | 
+  <a href="https://genhance.ai" style="color:#4fc3f7;text-decoration:none;">genhance.ai</a>
+  <p style="color:#546e7a;margin-top:8px;">© 2026 Genhance. AI Visibility for B2B SaaS.</p>
+</div>
+
 </body>
 </html>
