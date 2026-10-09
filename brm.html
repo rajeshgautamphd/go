@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRM — AI Search Visibility Audit | genhance.ai</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a5f 100%); padding: 48px 24px; text-align: center; border-bottom: 1px solid #334155; }
+.header h1 { font-size: 2rem; color: #f8fafc; margin-bottom: 8px; }
+.header p { color: #94a3b8; font-size: 1.05rem; }
+.header .badge { display: inline-block; background: rgba(59, 130, 246, 0.15); color: #60a5fa; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
+.stats { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; padding: 32px 24px; max-width: 900px; margin: 0 auto; }
+.stat-pill { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px 24px; text-align: center; min-width: 160px; flex: 1; }
+.stat-pill .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; margin-bottom: 6px; }
+.stat-pill .value { font-size: 1.5rem; font-weight: 700; color: #f8fafc; }
+.alert { max-width: 900px; margin: 0 auto 32px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 24px; }
+.alert h3 { color: #f59e0b; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.alert p { color: #fbbf24; font-size: 0.95rem; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px 48px; }
+.section-title { font-size: 1.2rem; color: #f8fafc; margin: 32px 0 16px; border-bottom: 1px solid #334155; padding-bottom: 8px; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+.query-card .q-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.query-card .q-text { font-size: 0.95rem; color: #e2e8f0; font-weight: 600; flex: 1; }
+.badge-present { background: rgba(34, 197, 94, 0.15); color: #4ade80; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+.badge-weak { background: rgba(245, 158, 11, 0.15); color: #f59e0b; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+.badge-absent { background: rgba(239, 68, 68, 0.15); color: #f87171; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+.query-card .analysis { font-size: 0.88rem; color: #94a3b8; margin-bottom: 8px; line-height: 1.5; }
+.query-card .sources { font-size: 0.78rem; color: #64748b; }
+.comp-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+.comp-card .comp-name { font-weight: 600; color: #e2e8f0; }
+.comp-card .comp-g2 { font-size: 0.82rem; color: #64748b; }
+.cta { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-radius: 16px; padding: 36px; text-align: center; margin-top: 36px; }
+.cta h3 { font-size: 1.3rem; color: #f8fafc; margin-bottom: 12px; }
+.cta p { color: #94a3b8; font-size: 0.92rem; margin-bottom: 24px; }
+.plays { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 24px; }
+.play { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 8px; padding: 12px 18px; font-size: 0.85rem; color: #93c5fd; text-align: center; min-width: 180px; }
+.sig { margin-top: 40px; padding-top: 24px; border-top: 1px solid #334155; color: #64748b; font-size: 0.82rem; text-align: center; line-height: 1.8; }
+.sig a { color: #60a5fa; text-decoration: none; }
+.ai-vis { color: #f87171; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <p>BRM — Procurement / Vendor Management AI</p>
+  <span class="badge">New York, NY</span>
+</div>
+<div class="stats">
+  <div class="stat-pill"><div class="label">Funding</div><div class="value">$21.6M</div></div>
+  <div class="stat-pill"><div class="label">AI Visibility</div><div class="value ai-vis">0/5</div></div>
+  <div class="stat-pill"><div class="label">G2 Reviews</div><div class="value">2</div></div>
+  <div class="stat-pill"><div class="label">Reddit</div><div class="value">0</div></div>
+</div>
+<div class="alert">
+  <h3>🔍 KEY FINDING</h3>
+  <p>BRM has raised $21.6M from Caffeinated Capital — but AI search engines (ChatGPT, Google AI Overviews, Perplexity) cite ZERO sources about BRM for its top 5 category queries. BRM appears in 0/5 of the queries that define its market. With only 2 G2 reviews and 0 Reddit threads, BRM is completely invisible to AI-powered buyers — who now start 51% of B2B software searches in chatbots.</p>
+</div>
+<div class="container">
+  <div class="section-title">📋 Query-by-Query Analysis</div>
+  
+  <div class="query-card">
+    <div class="q-header">
+      <span class="q-text">"best vendor management software"</span>
+      <span class="badge-absent">ABSENT</span>
+    </div>
+    <div class="analysis">Zip (150 G2 reviews) and Vendr (250 G2) dominate AI answers. BRM has ZERO presence in any AI-cited source for this high-volume query.</div>
+    <div class="sources">AI-cited sources: Zip (150 G2), Vendr (250 G2), Tropic (85 G2), Levelpath (15 G2)</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <span class="q-text">"AI procurement platform for enterprises"</span>
+      <span class="badge-absent">ABSENT</span>
+    </div>
+    <div class="analysis">Zip holds the top AI-cited position. BRM's AI-native approach (agents that negotiate vendor contracts) is not reflected in any search result — AI doesn't know BRM exists for this category.</div>
+    <div class="sources">AI-cited sources: Zip, Vendr, SAP Ariba, Coupa</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <span class="q-text">"vendor relationship management tools"</span>
+      <span class="badge-absent">ABSENT</span>
+    </div>
+    <div class="analysis">Tropic (85 G2) and Levelpath (15 G2) dominate with established review moats. BRM has 2 G2 reviews — 8 more would put it on the Grid. Zero Reddit threads exist about vendor management tools.</div>
+    <div class="sources">AI-cited sources: Tropic (85 G2), Levelpath (15 G2), Gatekeeper, Precoro</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <span class="q-text">"SaaS procurement automation software"</span>
+      <span class="badge-absent">ABSENT</span>
+    </div>
+    <div class="analysis">Vendr's 250 G2 reviews create a deep content moat. BRM's AI agent approach (bidding, negotiating, renewing) is a narrative not yet captured by ANY AI search engine.</div>
+    <div class="sources">AI-cited sources: Vendr (250 G2), Tropic (85 G2), Zylo, Productiv</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <span class="q-text">"best vendor contract management AI"</span>
+      <span class="badge-absent">ABSENT</span>
+    </div>
+    <div class="analysis">Zip and Ironclad dominate this AI query. Zero UGC surfaces feed this answer — a Reddit thread comparing AI-first vendor tools would be instantly indexable by Google AI Overviews.</div>
+    <div class="sources">AI-cited sources: Zip (150 G2), Ironclad, Agiloft, Conga</div>
+  </div>
+  <div class="section-title">🏢 Competitor Landscape</div>
+  <div class="comp-card"><span class="comp-name">Zip</span><span class="comp-g2">150 G2 reviews</span></div>
+<div class="comp-card"><span class="comp-name">Vendr</span><span class="comp-g2">250 G2 reviews</span></div>
+<div class="comp-card"><span class="comp-name">Tropic</span><span class="comp-g2">85 G2 reviews</span></div>
+<div class="comp-card"><span class="comp-name">Levelpath</span><span class="comp-g2">15 G2 reviews</span></div>
+
+  <div class="cta">
+    <h3>BRM has the funding. It needs the AI story.</h3>
+    <p>Every week, hundreds of buyers ask AI chatbots 'best procurement / vendor management ai tools.' BRM is not in those answers — but it can be. genhance monitors the UGC surfaces that feed AI search, tracks review velocity on G2, and shows you exactly what AI says about your category before and after engagement.</p>
+    <div class="plays">
+      <div class="play">📊 Reddit & YouTube<br>UGC Gap Monitor</div>
+      <div class="play">📝 G2 Review<br>Velocity Tracker</div>
+      <div class="play">🤖 AI Answer<br>Before/After Snapshots</div>
+      <div class="play">🎯 Category Query<br>Ranking Dashboard</div>
+    </div>
+    <p style="color:#64748b;font-size:0.82rem;">genhance.ai — AI Search Visibility for B2B SaaS</p>
+  </div>
+  <div class="sig">
+    Rajesh Gautam, PhD<br>
+    Founder &amp; CEO, genhance.ai<br>
+    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+  </div>
+</div>
+</body>
+</html>

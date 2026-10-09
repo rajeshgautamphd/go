@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trunk Tools — AI Search Visibility Audit | genhance.ai</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a5f 100%); padding: 48px 24px; text-align: center; border-bottom: 1px solid #334155; }
+.header h1 { font-size: 2rem; color: #f8fafc; margin-bottom: 8px; }
+.header p { color: #94a3b8; font-size: 1.05rem; }
+.header .badge { display: inline-block; background: rgba(59, 130, 246, 0.15); color: #60a5fa; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
+.stats { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; padding: 32px 24px; max-width: 900px; margin: 0 auto; }
+.stat-pill { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px 24px; text-align: center; min-width: 160px; flex: 1; }
+.stat-pill .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; margin-bottom: 6px; }
+.stat-pill .value { font-size: 1.5rem; font-weight: 700; color: #f8fafc; }
+.alert { max-width: 900px; margin: 0 auto 32px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 24px; }
+.alert h3 { color: #f59e0b; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.alert p { color: #fbbf24; font-size: 0.95rem; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px 48px; }
+.section-title { font-size: 1.2rem; color: #f8fafc; margin: 32px 0 16px; border-bottom: 1px solid #334155; padding-bottom: 8px; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+.query-card .q-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.query-card .q-text { font-size: 0.95rem; color: #e2e8f0; font-weight: 600; flex: 1; }
+.badge-present { background: rgba(34, 197, 94, 0.15); color: #4ade80; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+.badge-weak { background: rgba(245, 158, 11, 0.15); color: #f59e0b; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+.badge-absent { background: rgba(239, 68, 68, 0.15); color: #f87171; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+.query-card .analysis { font-size: 0.88rem; color: #94a3b8; margin-bottom: 8px; line-height: 1.5; }
+.query-card .sources { font-size: 0.78rem; color: #64748b; }
+.comp-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+.comp-card .comp-name { font-weight: 600; color: #e2e8f0; }
+.comp-card .comp-g2 { font-size: 0.82rem; color: #64748b; }
+.cta { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-radius: 16px; padding: 36px; text-align: center; margin-top: 36px; }
+.cta h3 { font-size: 1.3rem; color: #f8fafc; margin-bottom: 12px; }
+.cta p { color: #94a3b8; font-size: 0.92rem; margin-bottom: 24px; }
+.plays { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 24px; }
+.play { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 8px; padding: 12px 18px; font-size: 0.85rem; color: #93c5fd; text-align: center; min-width: 180px; }
+.sig { margin-top: 40px; padding-top: 24px; border-top: 1px solid #334155; color: #64748b; font-size: 0.82rem; text-align: center; line-height: 1.8; }
+.sig a { color: #60a5fa; text-decoration: none; }
+.ai-vis { color: #f87171; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <p>Trunk Tools — Construction Tech / AI</p>
+  <span class="badge">New York, NY</span>
+</div>
+<div class="stats">
+  <div class="stat-pill"><div class="label">Funding</div><div class="value">$70M</div></div>
+  <div class="stat-pill"><div class="label">AI Visibility</div><div class="value ai-vis">0/5</div></div>
+  <div class="stat-pill"><div class="label">G2 Reviews</div><div class="value">0</div></div>
+  <div class="stat-pill"><div class="label">Reddit</div><div class="value">0</div></div>
+</div>
+<div class="alert">
+  <h3>🔍 KEY FINDING</h3>
+  <p>Trunk Tools has raised $70M from Insight Partners — but AI search engines (ChatGPT, Google AI Overviews, Perplexity) cite ZERO sources about Trunk Tools for its top 5 category queries. Trunk Tools appears in 0/5 of the queries that define its market. With only 0 G2 reviews and 0 Reddit threads, Trunk Tools is completely invisible to AI-powered buyers — who now start 51% of B2B software searches in chatbots.</p>
+</div>
+<div class="container">
+  <div class="section-title">📋 Query-by-Query Analysis</div>
+  
+  <div class="query-card">
+    <div class="q-header">
+      <span class="q-text">"AI construction document management platform"</span>
+      <span class="badge-absent">ABSENT</span>
+    </div>
+    <div class="analysis">Procore (2,400+ G2) and Autodesk Construction Cloud (1,100+ G2) dominate AI search with massive review moats. Trunk Tools has 0 G2 reviews — AI has never heard of it despite $70M in funding from Insight Partners.</div>
+    <div class="sources">AI-cited sources: Procore (2,400+ G2), Autodesk Construction Cloud (1,100+ G2), BuildOps (45 G2), Assignar (12 G2)</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <span class="q-text">"construction project management software with AI agents"</span>
+      <span class="badge-absent">ABSENT</span>
+    </div>
+    <div class="analysis">Procore holds the top AI-cited position on volume alone. Trunk Tools' AI agents (for submittals, RFIs, bids) is a fundamentally different approach that AI search does not reflect.</div>
+    <div class="sources">AI-cited sources: Procore (2,400+ G2), Autodesk (1,100+ G2), Fieldwire, PlanGrid</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <span class="q-text">"automate construction submittals and RFIs"</span>
+      <span class="badge-absent">ABSENT</span>
+    </div>
+    <div class="analysis">Procore and Autodesk dominate this query with established product pages. Trunk Tools is purpose-built for exactly this — and AI search has no record of it. Zero UGC surfaces discuss submittal automation.</div>
+    <div class="sources">AI-cited sources: Procore, Autodesk, Newforma, Bluebeam</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <span class="q-text">"reduce construction rework with AI"</span>
+      <span class="badge-absent">ABSENT</span>
+    </div>
+    <div class="analysis">ALICE Technologies and Buildots get cited for AI construction optimization. Trunk Tools' document-AI approach to reducing rework is uncaptured — one Reddit post in r/construction would fix this.</div>
+    <div class="sources">AI-cited sources: ALICE Technologies (8 G2), Buildots (15 G2), Doxel (12 G2), OpenSpace (180+ G2)</div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <span class="q-text">"construction field productivity AI tools"</span>
+      <span class="badge-absent">ABSENT</span>
+    </div>
+    <div class="analysis">OpenSpace (180+ G2) owns this AI query with its review moat. Trunk Tools has a differentiated product (AI that reads every jobsite document) but zero AI search presence.</div>
+    <div class="sources">AI-cited sources: OpenSpace (180+ G2), Buildots (15 G2), Doxel (12 G2), DroneDeploy (100+ G2)</div>
+  </div>
+  <div class="section-title">🏢 Competitor Landscape</div>
+  <div class="comp-card"><span class="comp-name">Procore Technologies</span><span class="comp-g2">2400 G2 reviews</span></div>
+<div class="comp-card"><span class="comp-name">Autodesk Construction Cloud</span><span class="comp-g2">1100 G2 reviews</span></div>
+<div class="comp-card"><span class="comp-name">BuildOps</span><span class="comp-g2">45 G2 reviews</span></div>
+<div class="comp-card"><span class="comp-name">Assignar</span><span class="comp-g2">12 G2 reviews</span></div>
+
+  <div class="cta">
+    <h3>Trunk Tools has the funding. It needs the AI story.</h3>
+    <p>Every week, hundreds of buyers ask AI chatbots 'best construction tech / ai tools.' Trunk Tools is not in those answers — but it can be. genhance monitors the UGC surfaces that feed AI search, tracks review velocity on G2, and shows you exactly what AI says about your category before and after engagement.</p>
+    <div class="plays">
+      <div class="play">📊 Reddit & YouTube<br>UGC Gap Monitor</div>
+      <div class="play">📝 G2 Review<br>Velocity Tracker</div>
+      <div class="play">🤖 AI Answer<br>Before/After Snapshots</div>
+      <div class="play">🎯 Category Query<br>Ranking Dashboard</div>
+    </div>
+    <p style="color:#64748b;font-size:0.82rem;">genhance.ai — AI Search Visibility for B2B SaaS</p>
+  </div>
+  <div class="sig">
+    Rajesh Gautam, PhD<br>
+    Founder &amp; CEO, genhance.ai<br>
+    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a>
+  </div>
+</div>
+</body>
+</html>
