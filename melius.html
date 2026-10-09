@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Melius | genhance</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e4e8f1; line-height: 1.6; }
+.container { max-width: 720px; margin: 0 auto; padding: 0; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #162d5a 50%, #1a3a6b 100%); padding: 48px 32px 36px; text-align: center; border-bottom: 3px solid #2d4a8e; }
+.header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #ffffff; }
+.header .subtitle { font-size: 15px; color: #8ca3d3; margin-bottom: 24px; }
+.stats { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+.stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 110px; }
+.stat-pill .val { font-size: 22px; font-weight: 700; color: #7eb8ff; }
+.stat-pill .label { font-size: 11px; color: #8ca3d3; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.key-finding { background: linear-gradient(135deg, #3d2e0a 0%, #5a3e10 100%); border: 1px solid #8b6914; border-radius: 12px; padding: 24px 32px; margin: 32px; }
+.key-finding h2 { font-size: 18px; color: #f0c040; margin-bottom: 12px; }
+.key-finding p { color: #d4b860; font-size: 14px; }
+.section { padding: 0 32px 32px; }
+.section h2 { font-size: 20px; color: #7eb8ff; margin-bottom: 16px; border-bottom: 1px solid #1a3050; padding-bottom: 8px; }
+.query-card { background: #111833; border: 1px solid #1a3050; border-radius: 10px; padding: 18px 20px; margin-bottom: 12px; }
+.query-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.query-text { font-weight: 600; font-size: 15px; color: #c8d6f0; }
+.badge { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-absent { background: #3d1a1a; color: #f06060; border: 1px solid #5a2a2a; }
+.badge-present { background: #1a3d1a; color: #60d060; border: 1px solid #2a5a2a; }
+.query-analysis { font-size: 13px; color: #8a9bb5; line-height: 1.5; }
+.comp-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.comp-card { background: #1a2540; border: 1px solid #243555; border-radius: 8px; padding: 12px 18px; font-size: 14px; color: #a0b4d0; }
+.cta { background: linear-gradient(135deg, #0d1a2e 0%, #111f3a 100%); border-top: 2px solid #2d4a8e; padding: 40px 32px; text-align: center; }
+.cta h3 { font-size: 20px; color: #7eb8ff; margin-bottom: 16px; }
+.cta-plays { text-align: left; max-width: 500px; margin: 0 auto; }
+.cta-plays li { color: #a0b4d0; font-size: 14px; margin-bottom: 10px; padding-left: 20px; position: relative; list-style: none; }
+.cta-plays li::before { content: '▸'; position: absolute; left: 0; color: #7eb8ff; }
+.footer { padding: 32px; text-align: center; border-top: 1px solid #1a3050; font-size: 13px; color: #6a7b95; }
+.footer a { color: #7eb8ff; text-decoration: none; }
+.published { font-size: 11px; color: #4a5b75; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>AI Search Visibility Audit</h1>
+    <div class="subtitle">Melius — AI Ad Creative &amp; Content Generation Platform</div>
+    <div class="stats">
+        <div class="stat-pill"><div class="val">$25M total ($20M Series A)</div><div class="label">Funding</div></div>
+        <div class="stat-pill"><div class="val">2/5</div><div class="label">AI Visibility</div></div>
+        <div class="stat-pill"><div class="val">10</div><div class="label">G2 Reviews</div></div>
+        <div class="stat-pill"><div class="val">0</div><div class="label">Reddit</div></div>
+    </div>
+</div>
+
+<div class="key-finding">
+    <h2>&#x26a0; KEY FINDING</h2>
+    <p>Melius, backed by CRV and General Catalyst, is building an AI agent lab for creative work — but AI search engines don't know about it. Queries for "AI ad creative generator" and "AI content creation platform" return Canva, Adobe Firefly, and Runway consistently. Melius appears in 1 of 5 category queries and has zero Reddit/community discussion. With 10 G2 reviews vs Canva's thousands, the AI-generated answer to "best AI creative tools" will not include Melius until its UGC presence grows.</p>
+</div>
+
+<div class="section">
+    <h2>Category Query Analysis</h2>
+    <div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"AI ad creative generator for marketing teams"</span>
+                <span class="badge badge-absent">WEAK</span>
+            </div>
+            <p class="query-analysis">SERP dominated by Creatify AI, Canva, and Adobe Express. Melius does not appear. No Reddit threads cited — AI answer built from vendor pages.</p>
+        </div><div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"AI content creation platform for brands"</span>
+                <span class="badge badge-absent">WEAK</span>
+            </div>
+            <p class="query-analysis">Canva, Runway, and Adobe Firefly dominate both AI Overviews and organic results. Melius not found in top 10. Community discussion threads about Canva/Adobe appear in related searches but not about Melius.</p>
+        </div><div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"creative operating system for ad campaigns"</span>
+                <span class="badge badge-absent">WEAK</span>
+            </div>
+            <p class="query-analysis">Very sparse SERP — mostly agency blog posts. Zero UGC sources. Melius's "creative OS" positioning has no AI-indexed presence for this query despite it being their core value proposition.</p>
+        </div><div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"AI video and image ad maker for performance marketing"</span>
+                <span class="badge badge-present">PRESENT</span>
+            </div>
+            <p class="query-analysis">Melius appears in editorial lists alongside Creatify AI. 10 G2 reviews give some presence, but competitor Creatify has 200+ reviews — Melius is invisible in AI-generated comparison summaries.</p>
+        </div><div class="query-card">
+            <div class="query-header">
+                <span class="query-text">"automated ad campaign production tool enterprise"</span>
+                <span class="badge badge-absent">WEAK</span>
+            </div>
+            <p class="query-analysis">Enterprise-focused query returns Adobe Firefly and custom agency solutions. Melius's agentic approach to creative production is not indexed. No UGC content about enterprise creative automation.</p>
+        </div>
+</div>
+
+<div class="section">
+    <h2>Competitors in AI Search Results</h2>
+    <div class="comp-grid">
+        <div class="comp-card"><span class="comp-name">Canva</span></div><div class="comp-card"><span class="comp-name">Adobe Firefly</span></div><div class="comp-card"><span class="comp-name">Runway</span></div><div class="comp-card"><span class="comp-name">Creatify AI</span></div><div class="comp-card"><span class="comp-name">Bynder</span></div>
+    </div>
+</div>
+
+<div class="cta">
+    <h3>Four Ways genhance Can Help</h3>
+    <ol class="cta-plays">
+        <li><strong>UGC Gap Monitoring</strong> — Track every Reddit, YouTube, and forum thread that AI search engines cite for your category. Get alerts when sparse threads create engagement opportunities.</li>
+        <li><strong>G2 & Review Platform Strategy</strong> — Seed and manage reviews on G2, Capterra, and Product Hunt to build the review corpus AI engines need to cite you.</li>
+        <li><strong>AI Answer Optimization</strong> — Identify exactly which sources feed AI Overviews and chatbot answers for your target queries, then ensure your narrative appears in those sources.</li>
+        <li><strong>Competitor Intelligence</strong> — Monitor which competitors appear in AI answers and which UGC surfaces they own — so you can target the gaps.</li>
+    </ol>
+</div>
+
+<div class="footer">
+    <p><strong>Rajesh Gautam, PhD</strong><br>Founder &amp; CEO, genhance.ai</p>
+    <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+    <p class="published">AI Search Visibility Audit — Published October 9, 2026</p>
+</div>
+</div>
+</body>
+</html>
