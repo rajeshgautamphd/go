@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Air</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #1e3a5f, #0f172a); padding: 48px 24px; text-align: center; border-bottom: 3px solid #f59e0b; }
+.header h1 { font-size: 28px; font-weight: 800; color: #fff; }
+.header h2 { font-size: 18px; color: #94a3b8; margin-top: 8px; }
+.header .domain { color: #f59e0b; font-weight: 600; }
+.stats { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; padding: 24px; max-width: 900px; margin: 0 auto; }
+.stat-pill { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 16px 24px; min-width: 140px; text-align: center; }
+.stat-pill .label { font-size: 11px; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; }
+.stat-pill .value { font-size: 24px; font-weight: 700; color: #f8fafc; margin-top: 4px; }
+.stat-pill .sublabel { font-size: 11px; color: #64748b; }
+.key-finding { max-width: 900px; margin: 0 auto 24px; padding: 20px; background: linear-gradient(135deg, #78350f, #451a03); border: 1px solid #f59e0b; border-radius: 12px; }
+.key-finding h3 { color: #f59e0b; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.key-finding p { color: #fef3c7; font-size: 14px; line-height: 1.7; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px 48px; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.query-card .q-text { font-size: 15px; font-weight: 600; color: #f1f5f9; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-present { background: #065f46; color: #6ee7b7; }
+.badge-weak { background: #78350f; color: #fbbf24; }
+.query-card .analysis { font-size: 13px; color: #94a3b8; margin-bottom: 10px; line-height: 1.6; }
+.query-card .competitors { display: flex; flex-wrap: wrap; gap: 6px; }
+.comp-tag { background: #334155; color: #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 12px; }
+.cta-section { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 28px; margin-top: 24px; text-align: center; }
+.cta-section h3 { color: #f59e0b; font-size: 16px; margin-bottom: 16px; }
+.cta-plays { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.cta-play { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px; text-align: left; }
+.cta-play .play-num { color: #f59e0b; font-size: 20px; font-weight: 800; }
+.cta-play .play-title { color: #f1f5f9; font-size: 13px; font-weight: 600; margin: 4px 0; }
+.cta-play .play-desc { color: #94a3b8; font-size: 11px; }
+.footer { margin-top: 24px; padding-top: 20px; border-top: 1px solid #334155; text-align: center; color: #64748b; font-size: 12px; }
+.footer a { color: #94a3b8; }
+.footer .name { font-weight: 600; color: #cbd5e1; }
+.footer .cta-button { display: inline-block; background: linear-gradient(135deg, #f59e0b, #d97706); color: #0f172a; padding: 12px 32px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 14px; margin-top: 16px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>AI SEARCH VISIBILITY AUDIT</h1>
+  <h2><span class="domain">Air</span> — Creative Operations & DAM</h2>
+</div>
+<div class="stats">
+  <div class="stat-pill"><div class="label">Funding</div><div class="value">$35M Series B ($50M+ total)</div><div class="sublabel">Avenir Growth, XFund, Good Friends</div></div>
+  <div class="stat-pill"><div class="label">AI Visibility</div><div class="value">3/5</div><div class="sublabel">out of 5 queries</div></div>
+  <div class="stat-pill"><div class="label">G2 Reviews</div><div class="value">30+</div><div class="sublabel">review platform</div></div>
+  <div class="stat-pill"><div class="label">Reddit</div><div class="value">~8 threads (marketing/creative subs)</div><div class="sublabel">UGC mentions</div></div>
+</div>
+<div class="key-finding">
+  <h3>⚠️ KEY FINDING</h3>
+  <p>Air built a beloved creative ops platform with 30+ G2 reviews — yet AI Overviews default to Bynder ($450M+ raised) for every DAM/creative ops query. Air's Reddit presence is thin (<10 threads) and there is zero YouTube review content, meaning AI search has almost no independent UGC to surface about the platform.</p>
+</div>
+<div class="container">
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"best digital asset management software 2026"</div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="analysis">AI Overviews cite Bynder, Brandfolder, and Canto. Air appears in G2 grids but not in AI-generated answers about DAM platforms.</div>
+    <div class="competitors"><span class="comp-tag">Bynder</span><span class="comp-tag">Brandfolder</span><span class="comp-tag">Canto</span><span class="comp-tag">Frontify</span></div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"creative operations platform for marketing teams"</div>
+      <span class="badge badge-present">PRESENT</span>
+    </div>
+    <div class="analysis">Air appears in 1/5 AI-cited sources (marketing blog roundup). However, AI Overviews still default to Bynder and Frontify for creative ops queries.</div>
+    <div class="competitors"><span class="comp-tag">Bynder</span><span class="comp-tag">Frontify</span><span class="comp-tag">Wrike</span></div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"best tools for managing creative assets and feedback"</div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="analysis">AI answers reference Frame.io, Figma, and Notion. Air's creative feedback and approval workflow is not cited by any AI Overviews.</div>
+    <div class="competitors"><span class="comp-tag">Frame.io</span><span class="comp-tag">Figma</span><span class="comp-tag">Ziflow</span></div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"marketing asset management platform for agencies"</div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="analysis">AI search returns Canto, Brandfolder, and Google Drive. Air — designed for fast-moving creative teams — does not appear.</div>
+    <div class="competitors"><span class="comp-tag">Canto</span><span class="comp-tag">Brandfolder</span><span class="comp-tag">Bynder</span></div>
+  </div>
+  <div class="query-card">
+    <div class="q-header">
+      <div class="q-text">"Bynder vs alternatives creative operations"</div>
+      <span class="badge badge-weak">WEAK</span>
+    </div>
+    <div class="analysis">G2 comparison pages list Air but AI Overviews only mention Frontify and Canto as Bynder alternatives. Air's modern UX is not reflected in AI answers.</div>
+    <div class="competitors"><span class="comp-tag">Bynder</span><span class="comp-tag">Frontify</span><span class="comp-tag">Canto</span></div>
+  </div>
+  <div class="cta-section">
+    <h3>4 genhance Plays to Close the AI Visibility Gap</h3>
+    <div class="cta-plays">
+      <div class="cta-play"><div class="play-num">01</div><div class="play-title">UGC Gap Analysis</div><div class="play-desc">Identify exactly which Reddit, YouTube, and forum threads AI Overviews cite for your category queries.</div></div>
+      <div class="cta-play"><div class="play-num">02</div><div class="play-title">Narrative Seeding</div><div class="play-desc">Contribute to existing sparse discussions that AI already indexes — your voice becomes the AI's source.</div></div>
+      <div class="cta-play"><div class="play-num">03</div><div class="play-title">Review Velocity</div><div class="play-desc">Systematically build G2, Capterra, and Product Hunt presence — 10 reviews can shift AI answers.</div></div>
+      <div class="cta-play"><div class="play-num">04</div><div class="play-title">AI Answer Tracking</div><div class="play-desc">Before/after snapshots of AI Overviews for your 5 key queries — prove the ROI of visibility.</div></div>
+    </div>
+    <a href="https://genhance.ai" class="cta-button">Learn More at genhance.ai</a>
+  </div>
+  <div class="footer">
+    <p><span class="name">Rajesh Gautam, PhD</span><br>Founder and CEO, genhance.ai</p>
+    <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+  </div>
+</div>
+</body>
+</html>
