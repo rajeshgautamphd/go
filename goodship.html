@@ -3,129 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — GoodShip</title>
+<title>GoodShip — AI Search Visibility Audit</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
-.header { background: linear-gradient(135deg, #0a1628, #1a2744); padding: 48px 24px; text-align: center; border-bottom: 3px solid #2a4a8c; }
-.header h1 { font-size: 2rem; color: #fff; margin-bottom: 8px; }
-.header .subtitle { color: #8892b0; font-size: 1.1rem; }
-.container { max-width: 900px; margin: 0 auto; padding: 24px; }
-.stats { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
-.stat-pill { background: linear-gradient(135deg, #1a2744, #1e3160); border: 1px solid #2a4a8c; border-radius: 12px; padding: 16px 20px; flex: 1; min-width: 130px; text-align: center; }
-.stat-pill .label { font-size: 0.7rem; text-transform: uppercase; color: #8892b0; letter-spacing: 1px; }
-.stat-pill .value { font-size: 1.4rem; font-weight: 700; color: #fff; margin-top: 4px; }
-.alert { background: linear-gradient(135deg, #3d2a00, #5a3e00); border: 1px solid #ff9800; border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
-.alert .title { color: #ff9800; font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
-.alert .body { color: #e0c080; font-size: 0.95rem; }
-.section-title { font-size: 1.2rem; font-weight: 700; color: #fff; margin: 32px 0 16px; border-bottom: 2px solid #2a4a8c; padding-bottom: 8px; }
-.query-card { background: #111a2e; border: 1px solid #1e3160; border-radius: 10px; padding: 20px; margin: 12px 0; }
-.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.query-card .q-text { color: #c0d0ff; font-weight: 600; font-size: 0.95rem; }
-.badge { font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-.badge-absent { background: #3d1a1a; color: #ff6b6b; border: 1px solid #8c2a2a; }
-.badge-weak { background: #3d2a00; color: #ffb74d; border: 1px solid #8c5a00; }
-.query-card .analysis { color: #8892b0; font-size: 0.9rem; margin-top: 8px; }
-.comp-card { background: #111a2e; border: 1px solid #1e3160; border-radius: 8px; padding: 12px 16px; margin: 6px 0; display: flex; justify-content: space-between; align-items: center; }
-.comp-card .comp-name { color: #c0d0ff; font-weight: 600; }
-.comp-card .comp-presence { color: #ff6b6b; font-size: 0.8rem; }
-.cta { background: linear-gradient(135deg, #0a1628, #1a2744); border: 2px solid #2a4a8c; border-radius: 14px; padding: 32px; margin: 32px 0; text-align: center; }
-.cta h2 { color: #fff; margin-bottom: 16px; }
-.cta .plays { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
-.cta .play { background: #1a2744; border-radius: 8px; padding: 14px; text-align: left; }
-.cta .play .num { color: #4a8cf0; font-weight: 700; font-size: 0.8rem; }
-.cta .play .desc { color: #b0c0e0; font-size: 0.85rem; margin-top: 4px; }
-.footer { text-align: center; color: #667a9e; font-size: 0.85rem; padding: 32px 24px; border-top: 1px solid #1e3160; margin-top: 40px; }
-.footer a { color: #4a8cf0; text-decoration: none; }
-@media (max-width: 600px) { .stats { flex-direction: column; } }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; color: #1a1f36; line-height: 1.6; }
+.container { max-width: 600px; margin: 0 auto; padding: 0; }
+.header { background: linear-gradient(135deg, #1a1f36 0%, #254796 100%); padding: 40px 30px; text-align: center; color: #fff; }
+.header-label { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+.header h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+.header .category { font-size: 14px; color: rgba(255,255,255,0.75); font-weight: 400; }
+.stats { display: flex; flex-wrap: wrap; gap: 10px; padding: 20px 30px; background: #fff; border-bottom: 1px solid #e8ecf1; }
+.stat-pill { flex: 1 1 calc(50% - 10px); min-width: 120px; background: #f7f9fc; border-radius: 10px; padding: 14px 12px; text-align: center; }
+.stat-value { font-size: 20px; font-weight: 700; color: #1a1f36; }
+.stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; margin-top: 2px; }
+.key-finding { margin: 20px 30px; padding: 20px; background: #fff8e6; border-left: 4px solid #f59e0b; border-radius: 8px; }
+.key-finding h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #b45309; margin-bottom: 8px; }
+.key-finding p { font-size: 14px; color: #78350f; line-height: 1.7; }
+.queries-section { padding: 20px 30px; background: #fff; margin: 0; }
+.queries-section h2 { font-size: 18px; font-weight: 700; color: #1a1f36; margin-bottom: 16px; }
+.query-card { background: #f7f9fc; border-radius: 10px; padding: 16px; margin-bottom: 12px; border: 1px solid #e8ecf1; }
+.query-text { font-size: 14px; font-weight: 600; color: #1a1f36; margin-bottom: 10px; }
+.badge { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 20px; font-weight: 700; margin-right: 6px; }
+.badge-weak { background: #fef3c7; color: #b45309; }
+.query-note { font-size: 12px; color: #6b7280; margin-top: 8px; font-style: italic; }
+.competitors-section { padding: 20px 30px; background: #fff; border-top: 1px solid #e8ecf1; }
+.competitors-section h2 { font-size: 18px; font-weight: 700; color: #1a1f36; margin-bottom: 16px; }
+.comp-card { background: #f7f9fc; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; border: 1px solid #e8ecf1; display: flex; justify-content: space-between; align-items: center; }
+.comp-name { font-weight: 600; color: #1a1f36; font-size: 14px; }
+.comp-meta { font-size: 12px; color: #6b7280; }
+.cta { background: linear-gradient(135deg, #1a1f36 0%, #254796 100%); padding: 36px 30px; text-align: center; color: #fff; margin-top: 20px; }
+.cta h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.cta .subtitle { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.play-card { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; text-align: left; border: 1px solid rgba(255,255,255,0.1); }
+.play-num { font-size: 11px; font-weight: 700; color: #60a5fa; text-transform: uppercase; letter-spacing: 1px; }
+.play-title { font-size: 15px; font-weight: 600; color: #fff; margin: 4px 0; }
+.play-desc { font-size: 12px; color: rgba(255,255,255,0.65); }
+.cta-button { display: inline-block; margin-top: 20px; padding: 14px 36px; background: #f59e0b; color: #1a1f36; font-weight: 700; font-size: 14px; border-radius: 30px; text-decoration: none; }
+.footer { padding: 30px; text-align: center; border-top: 1px solid #e8ecf1; background: #fff; }
+.footer .name { font-weight: 700; color: #1a1f36; font-size: 14px; }
+.footer .title { font-size: 12px; color: #6b7280; margin: 4px 0; }
+.footer .link { font-size: 12px; color: #254796; text-decoration: none; }
 </style>
 </head>
 <body>
-<div class="header">
-<h1>AI SEARCH VISIBILITY AUDIT</h1>
-<div class="subtitle">GoodShip — Supply Chain / Freight Tech</div>
-</div>
 <div class="container">
-<div class="stats">
-<div class="stat-pill"><div class="label">Funding</div><div class="value">$25M Series B (Aug 2025)</div></div>
-<div class="stat-pill"><div class="label">AI Visibility</div><div class="value" style="color:#ff6b6b">0/5</div></div>
-<div class="stat-pill"><div class="label">G2 Reviews</div><div class="value">1</div></div>
-<div class="stat-pill"><div class="label">Reddit</div><div class="value">0</div></div>
-</div>
-<div class="alert">
-<div class="title">🔑 KEY FINDING</div>
-<div class="body">GoodShip has raised <strong>$40.4M total</strong> from Greenfield Partners, Bessemer Venture Partners, Ironspring Ventures — yet appears in <strong>0 of 5</strong> critical AI search queries in its category. With 1 G2 review and 0 Reddit threads, GoodShip is virtually invisible to AI-powered search engines (ChatGPT, Google AI Overviews, Perplexity) that buyers increasingly use to evaluate supply chain / freight tech solutions.</div>
-</div>
-<div class="section-title">📊 5 AI-Search Query Analysis</div>
-<div class="query-card">
-<div class="q-header">
-<div class="q-text">"best freight orchestration platform 2026"</div>
-<span class="badge badge-absent">ABSENT</span>
-</div>
-<div class="analysis">AI Overviews cite Uber Freight, Flexport, and project44. GoodShip — with 1 G2 review — is invisible in AI-generated freight tech recommendations.</div>
-</div>
-<div class="query-card">
-<div class="q-header">
-<div class="q-text">"transportation procurement software"</div>
-<span class="badge badge-absent">ABSENT</span>
-</div>
-<div class="analysis">AI answers pull from logistics trade publications and Flexport. GoodShip's unified procurement+orchestration approach has zero AI-cited mentions.</div>
-</div>
-<div class="query-card">
-<div class="q-header">
-<div class="q-text">"freight data analytics platform"</div>
-<span class="badge badge-absent">ABSENT</span>
-</div>
-<div class="analysis">FourKites and project44 dominate AI Overviews. GoodShip's real-time market benchmark data is not referenced in any AI-indexed comparison.</div>
-</div>
-<div class="query-card">
-<div class="q-header">
-<div class="q-text">"shipper TMS optimization tools"</div>
-<span class="badge badge-absent">ABSENT</span>
-</div>
-<div class="analysis">AI results cite legacy TMS providers and Uber Freight. GoodShip's post-TMS orchestration layer is absent from AI-generated supply chain discussions.</div>
-</div>
-<div class="query-card">
-<div class="q-header">
-<div class="q-text">"AI freight management software"</div>
-<span class="badge badge-absent">ABSENT</span>
-</div>
-<div class="analysis">AI Overviews cite recent logistics AI articles. GoodShip — Bessemer-backed at $40M — has no Reddit threads, no G2 presence, and zero AI visibility.</div>
+
+<div class="header">
+  <div class="header-label">AI Search Visibility Audit</div>
+  <h1>GoodShip</h1>
+  <div class="category">Freight Orchestration</div>
 </div>
 
-<div class="section-title">🏢 Named Competitors in AI Answers</div>
-<div class="comp-card">
-<div class="comp-name">Uber Freight</div>
-<div class="comp-presence">Cited in AI Overviews</div>
+<div class="stats">
+  <div class="stat-pill">
+    <div class="stat-value">$40.4M</div>
+    <div class="stat-label">Funding</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0/5</div>
+    <div class="stat-label">AI Visibility</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">Reddit</div>
+  </div>
 </div>
-<div class="comp-card">
-<div class="comp-name">Flexport</div>
-<div class="comp-presence">Cited in AI Overviews</div>
+
+<div class="key-finding">
+  <h3>⚠ Key Finding</h3>
+  <p>GoodShip has secured <strong>$40.4M</strong> in funding yet maintains <strong>zero AI search presence</strong> — a severe sparsity gap in the freight orchestration category. With no G2 reviews, no Reddit mentions, and complete absence from AI-generated search results for core buyer queries, GoodShip is invisible to logistics professionals researching procurement and analytics solutions. Meanwhile, competitors like project44 ($500M) and FourKites ($200M) have built massive review moats and dominate every relevant search surface.</p>
 </div>
-<div class="comp-card">
-<div class="comp-name">project44</div>
-<div class="comp-presence">Cited in AI Overviews</div>
+
+<div class="queries-section">
+  <h2>Top 5 Target Queries</h2>
+
+  <div class="query-card">
+    <div class="query-text">"best freight management software 2026"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">project44, FourKites, and FreightWaves dominate AI search results. GoodShip entirely absent.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"AI freight procurement platform"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">AI overviews reference project44's procurement module. GoodShip's core value prop goes unmentioned.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"freight orchestration vs TMS"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">Comparison content focuses on traditional TMS vendors. GoodShip's orchestration angle missing from AI results.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"freight analytics software Reddit"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">Reddit threads in r/supplychain and r/logistics reference project44, FourKites. Zero GoodShip mentions.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"supply chain cost optimization AI 2026"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">Enterprise thought leadership content from FourKites and McKinsey dominates. GoodShip not cited.</div>
+  </div>
 </div>
-<div class="comp-card">
-<div class="comp-name">FourKites</div>
-<div class="comp-presence">Cited in AI Overviews</div>
+
+<div class="competitors-section">
+  <h2>Competitor Landscape</h2>
+
+  <div class="comp-card">
+    <span class="comp-name">project44</span>
+    <span class="comp-meta">$500M funding · 200+ G2 reviews</span>
+  </div>
+  <div class="comp-card">
+    <span class="comp-name">FourKites</span>
+    <span class="comp-meta">$200M funding · 150+ G2 reviews</span>
+  </div>
+  <div class="comp-card">
+    <span class="comp-name">FreightWaves</span>
+    <span class="comp-meta">$100M funding · 100+ G2 reviews</span>
+  </div>
 </div>
 
 <div class="cta">
-<h2>4 Genhance Plays for GoodShip</h2>
-<div class="plays">
-<div class="play"><div class="num">01</div><div class="desc">Monitor 5 category queries via DataForSEO — track when GoodShip gets cited in AI Overviews</div></div>
-<div class="play"><div class="num">02</div><div class="desc">Seed Reddit & YouTube UGC — contribute to threads AI already indexes for 'supply chain / freight tech' queries</div></div>
-<div class="play"><div class="num">03</div><div class="desc">G2 listing optimization — grow from 1 to 20+ verified reviews with authentic customer programs</div></div>
-<div class="play"><div class="num">04</div><div class="desc">Competitor gap content — publish comparison pages that AI search engines can index and cite</div></div>
+  <h2>Ready to Own Your AI Visibility?</h2>
+  <div class="subtitle">4 genhance plays to close the sparsity gap</div>
+
+  <div class="play-card">
+    <div class="play-num">Play 1</div>
+    <div class="play-title">Seed Review Velocity</div>
+    <div class="play-desc">Launch a G2 campaign to generate 50+ verified reviews within 90 days, establishing the social proof that AI crawlers and buyers demand.</div>
+  </div>
+  <div class="play-card">
+    <div class="play-num">Play 2</div>
+    <div class="play-title">Build Query-Specific Landing Pages</div>
+    <div class="play-desc">Create dedicated pages targeting each of the top 5 buyer queries with structured content optimized for AI-generated search results.</div>
+  </div>
+  <div class="play-card">
+    <div class="play-num">Play 3</div>
+    <div class="play-title">Activate Reddit & Community Presence</div>
+    <div class="play-desc">Build authentic engagement in r/supplychain, r/logistics, and relevant subreddits to create the community signal AI search engines look for.</div>
+  </div>
+  <div class="play-card">
+    <div class="play-num">Play 4</div>
+    <div class="play-title">Publish Authoritative Comparison Content</div>
+    <div class="play-desc">Create head-to-head comparison pages (GoodShip vs project44, GoodShip vs FourKites) that AI crawlers will surface when buyers research alternatives.</div>
+  </div>
+
+  <a href="https://genhance.ai" class="cta-button">Get a Custom Visibility Plan →</a>
 </div>
-<p style="color:#8892b0;font-size:0.9rem;margin-top:16px;">Estimated time to first AI citation: <strong style="color:#4a8cf0">4–6 weeks</strong></p>
-</div>
+
 <div class="footer">
-<p>Rajesh Gautam, PhD</p>
-<p>Founder and CEO, genhance.ai</p>
-<p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder &amp; CEO, genhance.ai</div>
+  <a href="https://linkedin.com/in/rajeshgautam" class="link">linkedin.com/in/rajeshgautam</a>
+  <span style="color:#6b7280;font-size:12px;"> · </span>
+  <a href="https://genhance.ai" class="link">genhance.ai</a>
 </div>
+
 </div>
 </body>
 </html>

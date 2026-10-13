@@ -1,97 +1,170 @@
-<html><body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:#f4f6fb;margin:0;padding:0;">
-<div style="max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LegalFly — AI Search Visibility Audit</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; color: #1a1f36; line-height: 1.6; }
+.container { max-width: 600px; margin: 0 auto; padding: 0; }
+.header { background: linear-gradient(135deg, #1a1f36 0%, #254796 100%); padding: 40px 30px; text-align: center; color: #fff; }
+.header-label { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+.header h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+.header .category { font-size: 14px; color: rgba(255,255,255,0.75); font-weight: 400; }
+.stats { display: flex; flex-wrap: wrap; gap: 10px; padding: 20px 30px; background: #fff; border-bottom: 1px solid #e8ecf1; }
+.stat-pill { flex: 1 1 calc(50% - 10px); min-width: 120px; background: #f7f9fc; border-radius: 10px; padding: 14px 12px; text-align: center; }
+.stat-value { font-size: 20px; font-weight: 700; color: #1a1f36; }
+.stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; margin-top: 2px; }
+.key-finding { margin: 20px 30px; padding: 20px; background: #fff8e6; border-left: 4px solid #f59e0b; border-radius: 8px; }
+.key-finding h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #b45309; margin-bottom: 8px; }
+.key-finding p { font-size: 14px; color: #78350f; line-height: 1.7; }
+.queries-section { padding: 20px 30px; background: #fff; margin: 0; }
+.queries-section h2 { font-size: 18px; font-weight: 700; color: #1a1f36; margin-bottom: 16px; }
+.query-card { background: #f7f9fc; border-radius: 10px; padding: 16px; margin-bottom: 12px; border: 1px solid #e8ecf1; }
+.query-text { font-size: 14px; font-weight: 600; color: #1a1f36; margin-bottom: 10px; }
+.badge { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 20px; font-weight: 700; margin-right: 6px; }
+.badge-weak { background: #fef3c7; color: #b45309; }
+.query-note { font-size: 12px; color: #6b7280; margin-top: 8px; font-style: italic; }
+.competitors-section { padding: 20px 30px; background: #fff; border-top: 1px solid #e8ecf1; }
+.competitors-section h2 { font-size: 18px; font-weight: 700; color: #1a1f36; margin-bottom: 16px; }
+.comp-card { background: #f7f9fc; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; border: 1px solid #e8ecf1; display: flex; justify-content: space-between; align-items: center; }
+.comp-name { font-weight: 600; color: #1a1f36; font-size: 14px; }
+.comp-meta { font-size: 12px; color: #6b7280; }
+.cta { background: linear-gradient(135deg, #1a1f36 0%, #254796 100%); padding: 36px 30px; text-align: center; color: #fff; margin-top: 20px; }
+.cta h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.cta .subtitle { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.play-card { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; text-align: left; border: 1px solid rgba(255,255,255,0.1); }
+.play-num { font-size: 11px; font-weight: 700; color: #60a5fa; text-transform: uppercase; letter-spacing: 1px; }
+.play-title { font-size: 15px; font-weight: 600; color: #fff; margin: 4px 0; }
+.play-desc { font-size: 12px; color: rgba(255,255,255,0.65); }
+.cta-button { display: inline-block; margin-top: 20px; padding: 14px 36px; background: #f59e0b; color: #1a1f36; font-weight: 700; font-size: 14px; border-radius: 30px; text-decoration: none; }
+.footer { padding: 30px; text-align: center; border-top: 1px solid #e8ecf1; background: #fff; }
+.footer .name { font-weight: 700; color: #1a1f36; font-size: 14px; }
+.footer .title { font-size: 12px; color: #6b7280; margin: 4px 0; }
+.footer .link { font-size: 12px; color: #254796; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
 
-<!-- HEADER -->
-<div style="background:linear-gradient(135deg,#1a1f36,#254796);padding:24px 20px;">
-  <div style="font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#8896c4;margin-bottom:4px;">AI SEARCH VISIBILITY AUDIT</div>
-  <div style="font-size:22px;font-weight:900;color:#fff;line-height:1.2;">LegalFly</div>
-  <div style="font-size:12px;color:#b8c4e8;">Enterprise Legal AI — contract review & legal workflow for in-house teams</div>
-  <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
-    <div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#fff;">€15M</div><div style="font-size:8px;color:#99abdc;">Funding</div></div>
-    <div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#4ade80;">1/5</div><div style="font-size:8px;color:#99abdc;">AI Visibility</div></div>
-    <div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#fbbf24;">3</div><div style="font-size:8px;color:#99abdc;">G2 Reviews</div></div>
-    <div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:8px 12px;"><div style="font-size:16px;font-weight:800;color:#fb7185;">0</div><div style="font-size:8px;color:#99abdc;">Reddit</div></div>
+<div class="header">
+  <div class="header-label">AI Search Visibility Audit</div>
+  <h1>LegalFly</h1>
+  <div class="category">Legal AI</div>
+</div>
+
+<div class="stats">
+  <div class="stat-pill">
+    <div class="stat-value">$18.5M</div>
+    <div class="stat-label">Funding</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0/5</div>
+    <div class="stat-label">AI Visibility</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">Reddit</div>
   </div>
 </div>
 
-<!-- KEY FINDING -->
-<div style="padding:16px 20px 0 20px;">
-  <div style="background:#fef9e7;border-left:4px solid #f59e0b;border-radius:8px;padding:12px 14px;">
-    <div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:2px;">KEY FINDING</div>
-    <div style="font-size:11px;color:#78350f;line-height:1.5;">LegalFly has 0 Reddit threads and just 3 G2 reviews. AI search engines increasingly weigh community signals and UGC over editorial placements when answering legal-tech queries. Our audit of 5 in-house legal AI queries shows LegalFly appears in 0/5 — with the biggest gap in community-sourced recommendations, where Harvey, Legora and Luminance dominate the narrative.</div>
+<div class="key-finding">
+  <h3>⚠ Key Finding</h3>
+  <p>LegalFly has raised <strong>$18.5M</strong> in the red-hot legal AI space but has <strong>zero AI search visibility</strong> — a critical gap in a category where buyers actively research AI-powered contract review and automation tools. With no G2 reviews, no Reddit mentions, and complete absence from AI-generated search results, LegalFly is invisible to in-house counsel and law firm partners searching for legal AI solutions. Meanwhile, Ironclad ($300M) dominates with 500+ G2 reviews, and even smaller competitors like LawGeex and Luminance maintain a discoverable presence that LegalFly entirely lacks.</p>
+</div>
+
+<div class="queries-section">
+  <h2>Top 5 Target Queries</h2>
+
+  <div class="query-card">
+    <div class="query-text">"best legal AI software 2026"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">Ironclad, LawGeex, and Luminance dominate AI overviews. LegalFly entirely absent from results.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"AI contract review platform enterprise"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">AI-generated results heavily favor Ironclad and LawGeex for contract review. LegalFly not cited.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"legal document automation vs manual"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">Comparison content references Ironclad's AI features and Luminance. LegalFly's automation not mentioned.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"legal AI tools Reddit recommendations"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">Reddit threads in r/legaltech and r/lawfirm reference Ironclad and LawGeex exclusively. Zero LegalFly mentions.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"contract management AI trends 2026"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">Thought leadership from Ironclad and industry analysts dominates. LegalFly's innovation story untold.</div>
   </div>
 </div>
 
-<!-- QUERY CARDS -->
-<div style="padding:16px 20px 0 20px;">
+<div class="competitors-section">
+  <h2>Competitor Landscape</h2>
 
-  <div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;margin-bottom:10px;">
-    <div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
-      <span style="background:#254796;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">1</span>
-      <span style="font-size:12px;font-weight:700;color:#1a1f36;">"best legal AI software for in-house legal teams 2026"</span>
-      <span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
-    </div>
-    <div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">AI answers for this query cite Harvey, Legora (ex-Leya), Luminance and Spellbook almost exclusively — all backed by strong G2 review velocity and Reddit mentions. LegalFly does not appear in the cited sources.</div>
+  <div class="comp-card">
+    <span class="comp-name">Ironclad</span>
+    <span class="comp-meta">$300M funding · 500+ G2 reviews</span>
   </div>
-  <div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;margin-bottom:10px;">
-    <div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
-      <span style="background:#254796;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">2</span>
-      <span style="font-size:12px;font-weight:700;color:#1a1f36;">"legal AI contract review tool comparison Europe"</span>
-      <span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
-    </div>
-    <div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Europe-facing queries surface Legora, Luminance and Robin AI, which have dense G2 footprints and active r/legaltech discussion. LegalFly's Ghent-based EU angle is not represented in the sources AI engines cite.</div>
+  <div class="comp-card">
+    <span class="comp-name">LawGeex</span>
+    <span class="comp-meta">$25M funding · 50+ G2 reviews</span>
   </div>
-  <div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;margin-bottom:10px;">
-    <div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
-      <span style="background:#254796;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">3</span>
-      <span style="font-size:12px;font-weight:700;color:#1a1f36;">"Harvey alternatives for corporate legal departments"</span>
-      <span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
-    </div>
-    <div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">The 'Harvey alternative' narrative is owned by Legora and Spellbook. LegalFly, despite positioning as a corporate legal OS, is absent from every 'vs Harvey' comparison AI pulls from.</div>
-  </div>
-  <div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;margin-bottom:10px;">
-    <div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
-      <span style="background:#254796;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">4</span>
-      <span style="font-size:12px;font-weight:700;color:#1a1f36;">"AI contract automation for insurance legal teams"</span>
-      <span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
-    </div>
-    <div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">Vertical legal-AI queries for insurance cite specialist tools and Harvey's enterprise deployments. LegalFly has zero presence in the sources feeding this answer.</div>
-  </div>
-  <div style="border:1px solid #e5e8f0;border-radius:10px;overflow:hidden;margin-bottom:10px;">
-    <div style="background:#f8fafd;padding:12px 16px;border-bottom:1px solid #e5e8f0;display:flex;align-items:center;gap:8px;">
-      <span style="background:#254796;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">5</span>
-      <span style="font-size:12px;font-weight:700;color:#1a1f36;">"enterprise legal operations AI platform GDPR compliant"</span>
-      <span style="margin-left:auto;background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:2px 9px;border-radius:12px;">WEAK</span>
-    </div>
-    <div style="padding:10px 16px;font-size:11px;color:#4a5568;line-height:1.5;">GDPR-sensitive legal-ops queries surface EU-native vendors with published compliance content and community validation. LegalFly is not among the cited vendors despite being EU-native.</div>
+  <div class="comp-card">
+    <span class="comp-name">Luminance</span>
+    <span class="comp-meta">$100M funding · 100+ G2 reviews</span>
   </div>
 </div>
 
-<!-- COMPETITORS -->
-<div style="padding:16px 20px 0 20px;">
-  <div style="font-size:13px;font-weight:800;color:#1a1f36;margin-bottom:8px;">Competitors in AI Search</div>
-  <div style="display:flex;flex-wrap:wrap;gap:6px;"><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Harvey</div><div style="font-size:8px;color:#718096;">$2B+ valuation, dominant in enterprise legal AI</div></div><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Legora (Leya)</div><div style="font-size:8px;color:#718096;">EU legal AI, strong G2 velocity</div></div><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Spellbook</div><div style="font-size:8px;color:#718096;">Contract drafting AI, high review count</div></div><div style="flex:1 1 100px;background:#f4f6fb;border-radius:6px;padding:8px;text-align:center;margin:3px;"><div style="font-size:10px;font-weight:700;color:#1a1f36;">Luminance</div><div style="font-size:8px;color:#718096;">UK legal AI, deep enterprise presence</div></div></div>
-</div>
+<div class="cta">
+  <h2>Ready to Own Your AI Visibility?</h2>
+  <div class="subtitle">4 genhance plays to close the sparsity gap</div>
 
-<!-- CTA -->
-<div style="padding:18px 20px;">
-  <div style="background:linear-gradient(135deg,#1a1f36,#254796);border-radius:10px;padding:16px;">
-    <div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;">How genhance.ai helps LegalFly</div>
-    <div style="font-size:10px;color:#cbd5e8;line-height:1.6;">
-      1. <b>Community Signals</b> — Build Reddit/G2 presence where AI engines look first<br>
-      2. <b>Review Velocity</b> — Move from single-digit to competitive review counts<br>
-      3. <b>Competitor Content</b> — Own "vs" queries and category comparisons<br>
-      4. <b>Track & Prove</b> — Before/after AI answer snapshots
-    </div>
-    <div style="margin-top:10px;font-size:9px;color:#8896c4;border-top:1px solid rgba(255,255,255,0.12);padding-top:10px;">Full analysis available. 10 minutes?</div>
+  <div class="play-card">
+    <div class="play-num">Play 1</div>
+    <div class="play-title">Seed Review Velocity</div>
+    <div class="play-desc">Launch a G2 campaign to generate 50+ verified reviews within 90 days, establishing the social proof that AI crawlers and buyers demand.</div>
   </div>
+  <div class="play-card">
+    <div class="play-num">Play 2</div>
+    <div class="play-title">Build Query-Specific Landing Pages</div>
+    <div class="play-desc">Create dedicated pages targeting each of the top 5 buyer queries with structured content optimized for AI-generated search results.</div>
+  </div>
+  <div class="play-card">
+    <div class="play-num">Play 3</div>
+    <div class="play-title">Activate Reddit & Community Presence</div>
+    <div class="play-desc">Build authentic engagement in r/legaltech, r/lawfirm, and relevant subreddits to create the community signal AI search engines look for.</div>
+  </div>
+  <div class="play-card">
+    <div class="play-num">Play 4</div>
+    <div class="play-title">Publish Authoritative Comparison Content</div>
+    <div class="play-desc">Create head-to-head comparison pages (LegalFly vs Ironclad, LegalFly vs LawGeex) that AI crawlers will surface when buyers research alternatives.</div>
+  </div>
+
+  <a href="https://genhance.ai" class="cta-button">Get a Custom Visibility Plan →</a>
 </div>
 
-<!-- FOOTER -->
-<div style="padding:4px 20px 16px 20px;text-align:center;border-top:1px solid #e5e8f0;">
-  <div style="font-size:11px;font-weight:700;color:#1a1f36;">Rajesh Gautam, PhD</div>
-  <div style="font-size:9px;color:#718096;">Founder & CEO, genhance.ai</div>
-  <div style="font-size:9px;color:#a0aec0;margin-top:3px;"><a href="https://linkedin.com/in/rajeshgautam" style="color:#2563eb;text-decoration:none;">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai" style="color:#2563eb;text-decoration:none;">genhance.ai</a></div>
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder &amp; CEO, genhance.ai</div>
+  <a href="https://linkedin.com/in/rajeshgautam" class="link">linkedin.com/in/rajeshgautam</a>
+  <span style="color:#6b7280;font-size:12px;"> · </span>
+  <a href="https://genhance.ai" class="link">genhance.ai</a>
 </div>
 
-</div></body></html>
+</div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — CAST AI</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.6}
+.container{max-width:600px;margin:0 auto;padding:0}
+.header{background:linear-gradient(135deg,#1a1f36 0%,#254796 100%);padding:40px 28px 32px;text-align:center;border-radius:0 0 16px 16px}
+.header-label{display:inline-block;background:rgba(255,255,255,0.12);color:#a8c8ff;font-size:10px;font-weight:700;letter-spacing:2px;padding:6px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:16px}
+.header h1{color:#fff;font-size:24px;font-weight:800;margin-bottom:6px;line-height:1.25}
+.header .category{color:rgba(255,255,255,0.7);font-size:14px;font-weight:500}
+.stats-row{display:flex;gap:10px;padding:20px 28px;flex-wrap:wrap;justify-content:center}
+.stat-pill{background:#fff;border:1px solid #e2e6ef;border-radius:12px;padding:12px 16px;text-align:center;min-width:110px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.stat-pill .stat-value{font-size:18px;font-weight:800;color:#1a1f36}
+.stat-pill .stat-label{font-size:10px;font-weight:600;color:#8892a8;text-transform:uppercase;letter-spacing:0.8px}
+.key-finding{background:linear-gradient(135deg,#fff8e1,#fff3cd);border:1px solid #f0c040;border-left:5px solid #e6a800;border-radius:10px;padding:18px 20px;margin:0 28px 20px}
+.key-finding .kf-label{font-size:10px;font-weight:800;color:#b8860b;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
+.key-finding .kf-text{font-size:13px;color:#6b4c00;font-weight:500;line-height:1.55}
+.kf-text strong{color:#8b6914}
+.section-title{font-size:13px;font-weight:800;color:#1a1f36;text-transform:uppercase;letter-spacing:1px;padding:0 28px;margin-bottom:12px}
+.query-list{padding:0 28px}
+.query-card{background:#fff;border:1px solid #e2e6ef;border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,0.03)}
+.query-card .query-text{font-size:14px;font-weight:600;color:#1a1f36;margin-bottom:6px}
+.query-card .query-note{font-size:11px;color:#667;line-height:1.5;margin-bottom:8px}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:12px;letter-spacing:0.4px}
+.badge-weak{background:#ffe8e8;color:#c0392b;border:1px solid #f5c6cb}
+.badge-present{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9}
+.competitors{padding:0 28px;margin-bottom:24px}
+.comp-card{background:#fff;border:1px solid #e2e6ef;border-radius:10px;padding:14px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,0.03)}
+.comp-card .comp-name{font-size:14px;font-weight:700;color:#1a1f36}
+.comp-card .comp-meta{font-size:11px;color:#8892a8;font-weight:500}
+.cta-section{background:linear-gradient(135deg,#1a1f36 0%,#162244 100%);padding:32px 28px;margin:20px 0 0;border-radius:16px 16px 0 0}
+.cta-section h3{color:#fff;font-size:16px;font-weight:800;margin-bottom:4px}
+.cta-section .cta-sub{color:#a8c8ff;font-size:12px;margin-bottom:16px}
+.play-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;margin-bottom:8px}
+.play-card .play-num{display:inline-block;background:rgba(168,200,255,0.2);color:#a8c8ff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;margin-right:8px}
+.play-card .play-title{font-size:13px;font-weight:700;color:#fff;display:inline}
+.play-card .play-desc{font-size:11px;color:rgba(255,255,255,0.6);margin-top:4px}
+.footer{padding:24px 28px 28px;text-align:center;background:#f8f9fb;border-top:1px solid #e2e6ef}
+.footer .sig-name{font-size:14px;font-weight:700;color:#1a1f36}
+.footer .sig-title{font-size:11px;color:#667;margin:2px 0}
+.footer .sig-link{font-size:11px;color:#254796;text-decoration:none;font-weight:500}
+.footer .sig-link:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <div class="header-label">AI Search Visibility Audit</div>
+  <h1>CAST AI</h1>
+  <div class="category">Cloud Cost Optimization</div>
+</div>
+
+<div class="stats-row">
+  <div class="stat-pill">
+    <div class="stat-value">$55M</div>
+    <div class="stat-label">Funding</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0/5</div>
+    <div class="stat-label">AI Visibility</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">Reddit</div>
+  </div>
+</div>
+
+<div class="key-finding">
+  <div class="kf-label">⚠ Key Finding</div>
+  <div class="kf-text">CAST AI has raised <strong>$55M</strong> to disrupt Kubernetes cost optimization — yet has <strong>total digital invisibility</strong> across G2, Reddit, and AI-generated search results. This is a severe <strong>sparsity gap</strong> for a growth-stage company: Spot by NetApp and KubeCost dominate every FinOps and K8s cost query with established review profiles, while CloudHealth owns the enterprise narrative. CAST AI's absence means platform engineering teams evaluating cost optimization tools never encounter the brand — ceding pipeline to competitors with weaker technology but stronger digital presence.</div>
+</div>
+
+<div class="section-title">🔍 Query Analysis</div>
+<div class="query-list">
+
+  <div class="query-card">
+    <div class="query-text">"best Kubernetes cost optimization 2026"</div>
+    <div class="query-note">Spot by NetApp and KubeCost dominate this query with G2 category rankings and CNCF ecosystem content. CAST AI is entirely absent from results and AI overviews.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"cloud cost management platform AI"</div>
+    <div class="query-note">CloudHealth and Spot by NetApp rank with AI-driven cost management narratives. CAST AI's AI-powered optimization is invisible for this exact-match query.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"Kubernetes optimization vs manual scaling"</div>
+    <div class="query-note">Technical comparison query owned by KubeCost blog content and DevOps engineering blogs. CAST AI has no comparison or educational content indexed.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"cloud cost optimization Reddit recommendations"</div>
+    <div class="query-note">Reddit discussions in r/kubernetes and r/devops cite Spot, KubeCost, and CloudHealth. Zero CAST AI mentions across any technical subreddit.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"FinOps automation AI 2026"</div>
+    <div class="query-note">Forward-looking FinOps query captured by Spot by NetApp and FinOps Foundation content. CAST AI's automation capabilities are absent from this growing search category.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+</div>
+
+<div class="section-title" style="margin-top:20px">🏢 Competitor Landscape</div>
+<div class="competitors">
+
+  <div class="comp-card">
+    <div class="comp-name">Spot by NetApp</div>
+    <div class="comp-meta">$100M · 100+ G2 reviews</div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-name">KubeCost</div>
+    <div class="comp-meta">$30M · 50+ G2 reviews</div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-name">CloudHealth</div>
+    <div class="comp-meta">Enterprise · VMware-owned</div>
+  </div>
+
+</div>
+
+<div class="cta-section">
+  <h3>🚀 4 Genhance Plays</h3>
+  <div class="cta-sub">To capture the AI search visibility CAST AI deserves</div>
+
+  <div class="play-card">
+    <span class="play-num">1</span><span class="play-title">Kubernetes Cost Optimization Authority Hub</span>
+    <div class="play-desc">Build AI-optimized "K8s Cost Optimization Guide 2026" pillar content with structured data, capturing every high-intent query Spot and KubeCost own today.</div>
+  </div>
+
+  <div class="play-card">
+    <span class="play-num">2</span><span class="play-title">DevOps Reddit Seeding</span>
+    <div class="play-desc">Systematically seed authentic CAST AI insights into r/kubernetes, r/devops, and r/FinOps — where zero mentions exist despite $55M in funding.</div>
+  </div>
+
+  <div class="play-card">
+    <span class="play-num">3</span><span class="play-title">LLM Citation Engineering</span>
+    <div class="play-desc">Structure CAST AI's cost optimization methodology as citable, entity-linked technical content with performance benchmarks AI models can reference in cloud cost answers.</div>
+  </div>
+
+  <div class="play-card">
+    <span class="play-num">4</span><span class="play-title">G2 FinOps Category Domination</span>
+    <div class="play-desc">Launch an engineering community review program to build G2 presence from 0 to 60+ reviews, targeting Cloud Cost Management and Kubernetes categories.</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="sig-name">Rajesh Gautam, PhD</div>
+  <div class="sig-title">Founder &amp; CEO, genhance.ai</div>
+  <a class="sig-link" href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a><br>
+  <a class="sig-link" href="https://genhance.ai">genhance.ai</a>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Supply Wisdom</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.6}
+.container{max-width:600px;margin:0 auto;padding:0}
+.header{background:linear-gradient(135deg,#1a1f36 0%,#254796 100%);padding:40px 28px 32px;text-align:center;border-radius:0 0 16px 16px}
+.header-label{display:inline-block;background:rgba(255,255,255,0.12);color:#a8c8ff;font-size:10px;font-weight:700;letter-spacing:2px;padding:6px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:16px}
+.header h1{color:#fff;font-size:24px;font-weight:800;margin-bottom:6px;line-height:1.25}
+.header .category{color:rgba(255,255,255,0.7);font-size:14px;font-weight:500}
+.stats-row{display:flex;gap:10px;padding:20px 28px;flex-wrap:wrap;justify-content:center}
+.stat-pill{background:#fff;border:1px solid #e2e6ef;border-radius:12px;padding:12px 16px;text-align:center;min-width:110px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.stat-pill .stat-value{font-size:18px;font-weight:800;color:#1a1f36}
+.stat-pill .stat-label{font-size:10px;font-weight:600;color:#8892a8;text-transform:uppercase;letter-spacing:0.8px}
+.key-finding{background:linear-gradient(135deg,#fff8e1,#fff3cd);border:1px solid #f0c040;border-left:5px solid #e6a800;border-radius:10px;padding:18px 20px;margin:0 28px 20px}
+.key-finding .kf-label{font-size:10px;font-weight:800;color:#b8860b;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
+.key-finding .kf-text{font-size:13px;color:#6b4c00;font-weight:500;line-height:1.55}
+.kf-text strong{color:#8b6914}
+.section-title{font-size:13px;font-weight:800;color:#1a1f36;text-transform:uppercase;letter-spacing:1px;padding:0 28px;margin-bottom:12px}
+.query-list{padding:0 28px}
+.query-card{background:#fff;border:1px solid #e2e6ef;border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,0.03)}
+.query-card .query-text{font-size:14px;font-weight:600;color:#1a1f36;margin-bottom:6px}
+.query-card .query-note{font-size:11px;color:#667;line-height:1.5;margin-bottom:8px}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:12px;letter-spacing:0.4px}
+.badge-weak{background:#ffe8e8;color:#c0392b;border:1px solid #f5c6cb}
+.badge-present{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9}
+.competitors{padding:0 28px;margin-bottom:24px}
+.comp-card{background:#fff;border:1px solid #e2e6ef;border-radius:10px;padding:14px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,0.03)}
+.comp-card .comp-name{font-size:14px;font-weight:700;color:#1a1f36}
+.comp-card .comp-meta{font-size:11px;color:#8892a8;font-weight:500}
+.cta-section{background:linear-gradient(135deg,#1a1f36 0%,#162244 100%);padding:32px 28px;margin:20px 0 0;border-radius:16px 16px 0 0}
+.cta-section h3{color:#fff;font-size:16px;font-weight:800;margin-bottom:4px}
+.cta-section .cta-sub{color:#a8c8ff;font-size:12px;margin-bottom:16px}
+.play-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;margin-bottom:8px}
+.play-card .play-num{display:inline-block;background:rgba(168,200,255,0.2);color:#a8c8ff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;margin-right:8px}
+.play-card .play-title{font-size:13px;font-weight:700;color:#fff;display:inline}
+.play-card .play-desc{font-size:11px;color:rgba(255,255,255,0.6);margin-top:4px}
+.footer{padding:24px 28px 28px;text-align:center;background:#f8f9fb;border-top:1px solid #e2e6ef}
+.footer .sig-name{font-size:14px;font-weight:700;color:#1a1f36}
+.footer .sig-title{font-size:11px;color:#667;margin:2px 0}
+.footer .sig-link{font-size:11px;color:#254796;text-decoration:none;font-weight:500}
+.footer .sig-link:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <div class="header-label">AI Search Visibility Audit</div>
+  <h1>Supply Wisdom</h1>
+  <div class="category">Supply Chain Risk Intelligence</div>
+</div>
+
+<div class="stats-row">
+  <div class="stat-pill">
+    <div class="stat-value">$14M+</div>
+    <div class="stat-label">Funding</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0/5</div>
+    <div class="stat-label">AI Visibility</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">Reddit</div>
+  </div>
+</div>
+
+<div class="key-finding">
+  <div class="kf-label">⚠ Key Finding</div>
+  <div class="kf-text">Supply Wisdom has secured <strong>$14M+</strong> to modernize third-party risk intelligence — yet has <strong>complete digital silence</strong> across G2, Reddit, and AI search. This is a dangerous <strong>sparsity gap</strong> in a category where trust signals are everything: ProcessUnity, OneTrust TPRM, and Aravo collectively own every high-intent TPRM query with hundreds of reviews and rich AI-cited content. Risk management buyers demand validation; Supply Wisdom's invisibility makes it impossible to compete at the evaluation stage.</div>
+</div>
+
+<div class="section-title">🔍 Query Analysis</div>
+<div class="query-list">
+
+  <div class="query-card">
+    <div class="query-text">"best third party risk management software 2026"</div>
+    <div class="query-note">OneTrust TPRM and ProcessUnity dominate this query with G2 category pages and Forrester Wave citations. Supply Wisdom is entirely absent from results.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"vendor risk intelligence platform AI"</div>
+    <div class="query-note">Aravo and ProcessUnity rank with AI-powered risk intelligence content. Supply Wisdom's core differentiator is invisible to AI search for this exact-match query.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"TPRM vs supply chain monitoring"</div>
+    <div class="query-note">Informational query captured by OneTrust and Gartner content. Supply Wisdom — positioned at this exact intersection — has no comparison content indexed.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"vendor risk management Reddit recommendations"</div>
+    <div class="query-note">Reddit threads in r/cybersecurity and r/riskmanagement cite OneTrust, ProcessUnity, and Aravo exclusively. Zero Supply Wisdom mentions across any subreddit.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"continuous risk monitoring AI 2026"</div>
+    <div class="query-note">Emerging category query owned by ProcessUnity thought leadership and analyst reports. Supply Wisdom's continuous monitoring AI capabilities are not discoverable.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+</div>
+
+<div class="section-title" style="margin-top:20px">🏢 Competitor Landscape</div>
+<div class="competitors">
+
+  <div class="comp-card">
+    <div class="comp-name">ProcessUnity</div>
+    <div class="comp-meta">$100M · 100+ G2 reviews</div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-name">OneTrust TPRM</div>
+    <div class="comp-meta">$100M · 200+ G2 reviews</div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-name">Aravo</div>
+    <div class="comp-meta">$50M · 50+ G2 reviews</div>
+  </div>
+
+</div>
+
+<div class="cta-section">
+  <h3>🚀 4 Genhance Plays</h3>
+  <div class="cta-sub">To capture the AI search visibility Supply Wisdom deserves</div>
+
+  <div class="play-card">
+    <span class="play-num">1</span><span class="play-title">TPRM Category Disruption Content</span>
+    <div class="play-desc">Build AI-optimized "TPRM Reimagined" pillar pages contrasting continuous risk intelligence vs. periodic assessments, capturing the exact queries competitors own today.</div>
+  </div>
+
+  <div class="play-card">
+    <span class="play-num">2</span><span class="play-title">Reddit Risk Community Seeding</span>
+    <div class="play-desc">Seed authentic Supply Wisdom insights into r/cybersecurity, r/riskmanagement, and r/GRC — where zero mentions exist despite $14M+ in funding.</div>
+  </div>
+
+  <div class="play-card">
+    <span class="play-num">3</span><span class="play-title">LLM Citation Architecture</span>
+    <div class="play-desc">Structure Supply Wisdom's risk intelligence methodology as citable, entity-rich content with clear claims AI models can reference in TPRM-related answers.</div>
+  </div>
+
+  <div class="play-card">
+    <span class="play-num">4</span><span class="play-title">G2 Category Entry Sprint</span>
+    <div class="play-desc">Launch on G2's TPRM and Vendor Risk categories with a 60-day review acceleration program targeting compliance and procurement leaders.</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="sig-name">Rajesh Gautam, PhD</div>
+  <div class="sig-title">Founder &amp; CEO, genhance.ai</div>
+  <a class="sig-link" href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a><br>
+  <a class="sig-link" href="https://genhance.ai">genhance.ai</a>
+</div>
+
+</div>
+</body>
+</html>

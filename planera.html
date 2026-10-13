@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planera — AI Search Visibility Audit</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; color: #1a1f36; line-height: 1.6; }
+.container { max-width: 600px; margin: 0 auto; padding: 0; }
+.header { background: linear-gradient(135deg, #1a1f36 0%, #254796 100%); padding: 40px 30px; text-align: center; color: #fff; }
+.header-label { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+.header h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+.header .category { font-size: 14px; color: rgba(255,255,255,0.75); font-weight: 400; }
+.stats { display: flex; flex-wrap: wrap; gap: 10px; padding: 20px 30px; background: #fff; border-bottom: 1px solid #e8ecf1; }
+.stat-pill { flex: 1 1 calc(50% - 10px); min-width: 120px; background: #f7f9fc; border-radius: 10px; padding: 14px 12px; text-align: center; }
+.stat-value { font-size: 20px; font-weight: 700; color: #1a1f36; }
+.stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; margin-top: 2px; }
+.key-finding { margin: 20px 30px; padding: 20px; background: #fff8e6; border-left: 4px solid #f59e0b; border-radius: 8px; }
+.key-finding h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #b45309; margin-bottom: 8px; }
+.key-finding p { font-size: 14px; color: #78350f; line-height: 1.7; }
+.queries-section { padding: 20px 30px; background: #fff; margin: 0; }
+.queries-section h2 { font-size: 18px; font-weight: 700; color: #1a1f36; margin-bottom: 16px; }
+.query-card { background: #f7f9fc; border-radius: 10px; padding: 16px; margin-bottom: 12px; border: 1px solid #e8ecf1; }
+.query-text { font-size: 14px; font-weight: 600; color: #1a1f36; margin-bottom: 10px; }
+.badge { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 20px; font-weight: 700; margin-right: 6px; }
+.badge-weak { background: #fef3c7; color: #b45309; }
+.query-note { font-size: 12px; color: #6b7280; margin-top: 8px; font-style: italic; }
+.competitors-section { padding: 20px 30px; background: #fff; border-top: 1px solid #e8ecf1; }
+.competitors-section h2 { font-size: 18px; font-weight: 700; color: #1a1f36; margin-bottom: 16px; }
+.comp-card { background: #f7f9fc; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; border: 1px solid #e8ecf1; display: flex; justify-content: space-between; align-items: center; }
+.comp-name { font-weight: 600; color: #1a1f36; font-size: 14px; }
+.comp-meta { font-size: 12px; color: #6b7280; }
+.cta { background: linear-gradient(135deg, #1a1f36 0%, #254796 100%); padding: 36px 30px; text-align: center; color: #fff; margin-top: 20px; }
+.cta h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.cta .subtitle { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.play-card { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; text-align: left; border: 1px solid rgba(255,255,255,0.1); }
+.play-num { font-size: 11px; font-weight: 700; color: #60a5fa; text-transform: uppercase; letter-spacing: 1px; }
+.play-title { font-size: 15px; font-weight: 600; color: #fff; margin: 4px 0; }
+.play-desc { font-size: 12px; color: rgba(255,255,255,0.65); }
+.cta-button { display: inline-block; margin-top: 20px; padding: 14px 36px; background: #f59e0b; color: #1a1f36; font-weight: 700; font-size: 14px; border-radius: 30px; text-decoration: none; }
+.footer { padding: 30px; text-align: center; border-top: 1px solid #e8ecf1; background: #fff; }
+.footer .name { font-weight: 700; color: #1a1f36; font-size: 14px; }
+.footer .title { font-size: 12px; color: #6b7280; margin: 4px 0; }
+.footer .link { font-size: 12px; color: #254796; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <div class="header-label">AI Search Visibility Audit</div>
+  <h1>Planera</h1>
+  <div class="category">Construction Scheduling</div>
+</div>
+
+<div class="stats">
+  <div class="stat-pill">
+    <div class="stat-value">$26.5M</div>
+    <div class="stat-label">Funding</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0/5</div>
+    <div class="stat-label">AI Visibility</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">Reddit</div>
+  </div>
+</div>
+
+<div class="key-finding">
+  <h3>⚠ Key Finding</h3>
+  <p>Planera has raised <strong>$26.5M</strong> to modernize construction scheduling yet has <strong>zero AI search visibility</strong> across all channels. The construction tech space is dominated by Procore ($500M, 2,000+ G2 reviews) and entrenched enterprise tools like Oracle Primavera and Microsoft Project. With no reviews, no community mentions, and complete absence from AI-generated search results for CPM and scheduling queries, Planera faces a critical <strong>sparsity gap</strong> — construction project managers searching for scheduling innovation simply cannot find them.</p>
+</div>
+
+<div class="queries-section">
+  <h2>Top 5 Target Queries</h2>
+
+  <div class="query-card">
+    <div class="query-text">"best construction scheduling software 2026"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">Procore, Oracle Primavera, and Microsoft Project dominate AI results. Planera not listed.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"CPM scheduling platform AI"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">AI overviews reference Oracle Primavera Cloud and Procore scheduling. Planera's CPM innovation goes unseen.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"construction project management vs scheduling"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">Comparison content focuses on Procore vs Primavera. Planera's scheduling specialization not mentioned.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"construction scheduling software Reddit recommendations"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">Reddit threads in r/construction and r/projectmanagement reference Procore and MS Project exclusively. Zero Planera mentions.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"construction planning automation AI 2026"</div>
+    <span class="badge badge-weak">WEAK</span>
+    <div class="query-note">Thought leadership from Procore and Autodesk dominates AI search. Planera's automation story absent.</div>
+  </div>
+</div>
+
+<div class="competitors-section">
+  <h2>Competitor Landscape</h2>
+
+  <div class="comp-card">
+    <span class="comp-name">Procore</span>
+    <span class="comp-meta">$500M funding · 2,000+ G2 reviews</span>
+  </div>
+  <div class="comp-card">
+    <span class="comp-name">Oracle Primavera</span>
+    <span class="comp-meta">Enterprise · Dominates CPM space</span>
+  </div>
+  <div class="comp-card">
+    <span class="comp-name">Microsoft Project</span>
+    <span class="comp-meta">Enterprise · Ubiquitous in planning</span>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>Ready to Own Your AI Visibility?</h2>
+  <div class="subtitle">4 genhance plays to close the sparsity gap</div>
+
+  <div class="play-card">
+    <div class="play-num">Play 1</div>
+    <div class="play-title">Seed Review Velocity</div>
+    <div class="play-desc">Launch a G2 campaign to generate 50+ verified reviews within 90 days, establishing the social proof that AI crawlers and buyers demand.</div>
+  </div>
+  <div class="play-card">
+    <div class="play-num">Play 2</div>
+    <div class="play-title">Build Query-Specific Landing Pages</div>
+    <div class="play-desc">Create dedicated pages targeting each of the top 5 buyer queries with structured content optimized for AI-generated search results.</div>
+  </div>
+  <div class="play-card">
+    <div class="play-num">Play 3</div>
+    <div class="play-title">Activate Reddit & Community Presence</div>
+    <div class="play-desc">Build authentic engagement in r/construction, r/projectmanagement, and relevant subreddits to create the community signal AI search engines look for.</div>
+  </div>
+  <div class="play-card">
+    <div class="play-num">Play 4</div>
+    <div class="play-title">Publish Authoritative Comparison Content</div>
+    <div class="play-desc">Create head-to-head comparison pages (Planera vs Procore, Planera vs Primavera) that AI crawlers will surface when buyers research alternatives.</div>
+  </div>
+
+  <a href="https://genhance.ai" class="cta-button">Get a Custom Visibility Plan →</a>
+</div>
+
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  <div class="title">Founder &amp; CEO, genhance.ai</div>
+  <a href="https://linkedin.com/in/rajeshgautam" class="link">linkedin.com/in/rajeshgautam</a>
+  <span style="color:#6b7280;font-size:12px;"> · </span>
+  <a href="https://genhance.ai" class="link">genhance.ai</a>
+</div>
+
+</div>
+</body>
+</html>

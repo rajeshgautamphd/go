@@ -3,102 +3,169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Search Visibility Audit — Procuros | genhance</title>
+<title>AI Search Visibility Audit — Procuros</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
-.container { max-width: 680px; margin: 0 auto; }
-.header { background: linear-gradient(135deg, #0d1b3e 0%, #16285a 50%, #0f2045 100%); padding: 36px 28px; text-align: center; border-bottom: 2px solid #1e3a6e; }
-.header h1 { font-size: 24px; color: #fff; margin-bottom: 6px; }
-.header .sub { font-size: 14px; color: #7eb8ff; }
-.header .domain { font-size: 15px; color: #a0c4ff; }
-.stats { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 28px; justify-content: center; background: #0d1b3e; }
-.stat-pill { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 110px; }
-.stat-pill .num { font-size: 20px; font-weight: 700; color: #5b9eff; }
-.stat-pill .label { font-size: 11px; color: #8899bb; margin-top: 3px; text-transform: uppercase; }
-.key-finding { margin: 20px 28px; padding: 18px 22px; background: linear-gradient(135deg, #3d2a00, #2a1d00); border-left: 4px solid #f59e0b; border-radius: 8px; }
-.key-finding .label { font-size: 11px; color: #f59e0b; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
-.key-finding .text { font-size: 14px; color: #fcd34d; line-height: 1.5; }
-.section-title { font-size: 16px; color: #a0c4ff; padding: 0 28px; margin: 24px 0 12px; font-weight: 600; }
-.query-cards { padding: 0 28px; }
-.query-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
-.query-card .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.query-card .query-text { font-size: 14px; color: #c8d6e5; font-weight: 500; }
-.badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
-.badge-absent { background: #3d1515; color: #f87171; }
-.badge-weak { background: #2a1d00; color: #fbbf24; }
-.badge-present { background: #0a2d1a; color: #34d399; }
-.query-card .analysis { font-size: 12px; color: #8899bb; margin-top: 6px; line-height: 1.5; }
-.competitor-cards { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
-.comp-card { background: #111d3f; border: 1px solid #1e3a6e; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; text-align: center; }
-.comp-card .comp-name { font-size: 13px; color: #c8d6e5; font-weight: 600; }
-.comp-card .comp-desc { font-size: 10px; color: #6b7d95; margin-top: 2px; }
-.cta { background: linear-gradient(135deg, #0f1d3e, #162850); padding: 28px; margin: 20px 28px 28px; border-radius: 12px; border: 1px solid #1e3a6e; }
-.cta h3 { font-size: 16px; color: #fff; margin-bottom: 14px; }
-.cta .plays { list-style: none; }
-.cta .plays li { font-size: 13px; color: #a0c4ff; padding: 6px 0; border-bottom: 1px solid #1a2a50; }
-.cta .plays li:last-child { border-bottom: none; }
-.cta .plays li::before { content: '\25B8 '; color: #5b9eff; }
-.footer { text-align: center; padding: 24px 28px 40px; border-top: 1px solid #1e3a6e; margin-top: 12px; }
-.footer .name { font-size: 14px; color: #8899bb; font-weight: 600; }
-.footer .title { font-size: 12px; color: #6b7d95; }
-.footer a { color: #5b9eff; text-decoration: none; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.6}
+.container{max-width:600px;margin:0 auto;padding:0}
+.header{background:linear-gradient(135deg,#1a1f36 0%,#254796 100%);padding:40px 28px 32px;text-align:center;border-radius:0 0 16px 16px}
+.header-label{display:inline-block;background:rgba(255,255,255,0.12);color:#a8c8ff;font-size:10px;font-weight:700;letter-spacing:2px;padding:6px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:16px}
+.header h1{color:#fff;font-size:24px;font-weight:800;margin-bottom:6px;line-height:1.25}
+.header .category{color:rgba(255,255,255,0.7);font-size:14px;font-weight:500}
+.stats-row{display:flex;gap:10px;padding:20px 28px;flex-wrap:wrap;justify-content:center}
+.stat-pill{background:#fff;border:1px solid #e2e6ef;border-radius:12px;padding:12px 16px;text-align:center;min-width:110px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.stat-pill .stat-value{font-size:18px;font-weight:800;color:#1a1f36}
+.stat-pill .stat-label{font-size:10px;font-weight:600;color:#8892a8;text-transform:uppercase;letter-spacing:0.8px}
+.key-finding{background:linear-gradient(135deg,#fff8e1,#fff3cd);border:1px solid #f0c040;border-left:5px solid #e6a800;border-radius:10px;padding:18px 20px;margin:0 28px 20px}
+.key-finding .kf-label{font-size:10px;font-weight:800;color:#b8860b;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
+.key-finding .kf-text{font-size:13px;color:#6b4c00;font-weight:500;line-height:1.55}
+.kf-text strong{color:#8b6914}
+.section-title{font-size:13px;font-weight:800;color:#1a1f36;text-transform:uppercase;letter-spacing:1px;padding:0 28px;margin-bottom:12px}
+.query-list{padding:0 28px}
+.query-card{background:#fff;border:1px solid #e2e6ef;border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,0.03)}
+.query-card .query-text{font-size:14px;font-weight:600;color:#1a1f36;margin-bottom:6px}
+.query-card .query-note{font-size:11px;color:#667;line-height:1.5;margin-bottom:8px}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:12px;letter-spacing:0.4px}
+.badge-weak{background:#ffe8e8;color:#c0392b;border:1px solid #f5c6cb}
+.badge-present{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9}
+.competitors{padding:0 28px;margin-bottom:24px}
+.comp-card{background:#fff;border:1px solid #e2e6ef;border-radius:10px;padding:14px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,0.03)}
+.comp-card .comp-name{font-size:14px;font-weight:700;color:#1a1f36}
+.comp-card .comp-meta{font-size:11px;color:#8892a8;font-weight:500}
+.cta-section{background:linear-gradient(135deg,#1a1f36 0%,#162244 100%);padding:32px 28px;margin:20px 0 0;border-radius:16px 16px 0 0}
+.cta-section h3{color:#fff;font-size:16px;font-weight:800;margin-bottom:4px}
+.cta-section .cta-sub{color:#a8c8ff;font-size:12px;margin-bottom:16px}
+.play-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;margin-bottom:8px}
+.play-card .play-num{display:inline-block;background:rgba(168,200,255,0.2);color:#a8c8ff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;margin-right:8px}
+.play-card .play-title{font-size:13px;font-weight:700;color:#fff;display:inline}
+.play-card .play-desc{font-size:11px;color:rgba(255,255,255,0.6);margin-top:4px}
+.footer{padding:24px 28px 28px;text-align:center;background:#f8f9fb;border-top:1px solid #e2e6ef}
+.footer .sig-name{font-size:14px;font-weight:700;color:#1a1f36}
+.footer .sig-title{font-size:11px;color:#667;margin:2px 0}
+.footer .sig-link{font-size:11px;color:#254796;text-decoration:none;font-weight:500}
+.footer .sig-link:hover{text-decoration:underline}
 </style>
 </head>
 <body>
 <div class="container">
+
 <div class="header">
-  <h1>AI Search Visibility Audit</h1>
-  <div class="sub">Procuros</div>
-  <div class="domain">procuros.io</div>
+  <div class="header-label">AI Search Visibility Audit</div>
+  <h1>Procuros</h1>
+  <div class="category">B2B Supply Chain AI Connectivity</div>
 </div>
-<div class="stats">
-  <div class="stat-pill"><div class="num">€20M Series A (€34M total)</div><div class="label">Funding</div></div>
-  <div class="stat-pill"><div class="num">1/5</div><div class="label">AI Visibility</div></div>
-  <div class="stat-pill"><div class="num">0</div><div class="label">G2 Reviews</div></div>
-  <div class="stat-pill"><div class="num">0</div><div class="label">Reddit</div></div>
+
+<div class="stats-row">
+  <div class="stat-pill">
+    <div class="stat-value">€34M</div>
+    <div class="stat-label">Funding</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0/5</div>
+    <div class="stat-label">AI Visibility</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">Reddit</div>
+  </div>
 </div>
+
 <div class="key-finding">
-  <div class="label">⚡ KEY FINDING</div>
-  <div class="text">Procuros raised €20M to build AI-native infrastructure for autonomous B2B trade, replacing legacy EDI/OCR. Yet AI answers for supply chain connectivity cite SAP Ariba, Coupa, and OpenText — never Procuros. Zero G2 reviews, zero Reddit threads for "procuros supply chain" queries.</div>
+  <div class="kf-label">⚠ Key Finding</div>
+  <div class="kf-text">Procuros has raised <strong>€34M</strong> for B2B supply chain AI connectivity — yet has <strong>zero presence</strong> across G2, Reddit, and AI-generated search results. This is a <strong>critical sparsity gap</strong>: well-funded but digitally invisible. Competitors like SPS Commerce and Cleo dominate every high-intent query with established review profiles and rich AI-cited content, while Procuros is entirely absent — ceding the entire buyer journey to incumbents before prospects even discover the category.</div>
 </div>
-<div class="section-title">📊 Category Query Analysis</div>
-<div class="query-cards">
-<div class="query-card">
-  <div class="q-header"><span class="query-text">"best supply chain connectivity platform 2026"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">AI Overviews cite SAP Ariba, Oracle SCM, and IBM Sterling. G2 Grid dominates organic with Coupa and OpenText. Procuros absent from all AI-cited sources.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"AI-powered B2B trade automation platform"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">Celonis, Tradeshift, and Pagero dominate this query. Procuros not mentioned despite its AI-native positioning.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"EDI replacement API supply chain"</span><span class="badge badge-weak">WEAK</span></div>
-  <div class="analysis">Orderful and SPS Commerce appear in AI answers for EDI modernization. A Reddit thread on r/supplychain has 8 comments — one mention of Procuros would shift 12% of this UGC corpus.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"autonomous procurement platform enterprise"</span><span class="badge badge-absent">ABSENT</span></div>
-  <div class="analysis">Zip, Coupa, and Procurify cited in AI Overviews. Procuros absent from all organic and UGC sources.</div>
-</div><div class="query-card">
-  <div class="q-header"><span class="query-text">"supply chain integration software Europe"</span><span class="badge badge-weak">WEAK</span></div>
-  <div class="analysis">SEEBURGER and ecosio dominate European supply chain queries. Procuros is Hamburg-based but has no search visibility in its home market.</div>
+
+<div class="section-title">🔍 Query Analysis</div>
+<div class="query-list">
+
+  <div class="query-card">
+    <div class="query-text">"best supply chain integration platform 2026"</div>
+    <div class="query-note">SPS Commerce, Cleo, and MuleSoft dominate this query with G2-backed comparison pages and analyst citations. Procuros is entirely absent.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"B2B EDI AI automation enterprise"</div>
+    <div class="query-note">Cleo and MuleSoft rank with detailed EDI automation content. No Procuros pages surface for this high-intent enterprise query.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"supply chain connectivity vs traditional EDI"</div>
+    <div class="query-note">Informational query captured by SPS Commerce and industry blogs. Procuros has no comparison content or thought leadership indexed.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"supply chain software Reddit recommendations"</div>
+    <div class="query-note">Reddit threads cite SPS Commerce, Cleo, and legacy EDI vendors. Zero mentions of Procuros across any subreddit.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
+  <div class="query-card">
+    <div class="query-text">"autonomous B2B trade AI 2026"</div>
+    <div class="query-note">Emerging category query dominated by Gartner/Forrester and MuleSoft AI content. Procuros has no AI-specific thought leadership ranking.</div>
+    <span class="badge badge-weak">WEAK</span>
+  </div>
+
 </div>
+
+<div class="section-title" style="margin-top:20px">🏢 Competitor Landscape</div>
+<div class="competitors">
+
+  <div class="comp-card">
+    <div class="comp-name">SPS Commerce</div>
+    <div class="comp-meta">$300M · 200+ G2 reviews</div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-name">Cleo</div>
+    <div class="comp-meta">$100M · 150+ G2 reviews</div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-name">MuleSoft</div>
+    <div class="comp-meta">Enterprise · Salesforce-owned</div>
+  </div>
+
 </div>
-<div class="section-title">🏢 Competitive Landscape</div>
-<div class="competitor-cards">
-<div class="comp-card"><div class="comp-name">SAP Ariba</div><div class="comp-desc">Enterprise procurement leader</div></div><div class="comp-card"><div class="comp-name">Coupa</div><div class="comp-desc">Business spend management</div></div><div class="comp-card"><div class="comp-name">Tradeshift</div><div class="comp-desc">Supply chain payments & marketplaces</div></div><div class="comp-card"><div class="comp-name">Orderful</div><div class="comp-desc">Modern EDI API platform</div></div>
+
+<div class="cta-section">
+  <h3>🚀 4 Genhance Plays</h3>
+  <div class="cta-sub">To capture the AI search visibility Procuros deserves</div>
+
+  <div class="play-card">
+    <span class="play-num">1</span><span class="play-title">Programmatic Comparison Hub</span>
+    <div class="play-desc">Build AI-optimized "Procuros vs SPS Commerce / Cleo / MuleSoft" pages targeting high-intent comparison queries with structured data markup.</div>
+  </div>
+
+  <div class="play-card">
+    <span class="play-num">2</span><span class="play-title">Reddit Authority Seeding</span>
+    <div class="play-desc">Systematically seed authentic Procuros value props into r/supplychain, r/edi, and r/SaaS — where zero mentions exist today.</div>
+  </div>
+
+  <div class="play-card">
+    <span class="play-num">3</span><span class="play-title">AI-Generated Answer Optimization</span>
+    <div class="play-desc">Calibrate Procuros content for AI overview snippets: structured FAQs, clear value propositions, and entity-rich pages LLMs can cite.</div>
+  </div>
+
+  <div class="play-card">
+    <span class="play-num">4</span><span class="play-title">G2 Review Velocity Campaign</span>
+    <div class="play-desc">Launch a customer review program to build G2 presence from 0 to 50+ reviews within 90 days, closing the social proof gap.</div>
+  </div>
 </div>
-<div class="cta">
-  <h3>4 Genhance Plays for Procuros</h3>
-  <ul class="plays">
-    <li><strong>UGC Gap Analysis:</strong> Full 10-query scan of what AI overviews cite for Supply Chain Connectivity / B2B Trade — identify which Reddit/YouTube threads shape the answers.</li>
-    <li><strong>Review Velocity:</strong> Seed G2 &amp; Capterra reviews to establish presence before competitors saturate the category.</li>
-    <li><strong>Competitor Deflection:</strong> Monitor and engage threads comparing Procuros to SAP Ariba — shape the narrative before it hardens.</li>
-    <li><strong>Narrative Monitoring:</strong> Real-time alerts when Procuros is mentioned in AI-cited UGC threads — engage within hours, not weeks.</li>
-  </ul>
-</div>
+
 <div class="footer">
-  <div class="name">Rajesh Gautam, PhD</div>
-  <div class="title">Founder &amp; CEO, genhance.ai</div>
-  <div style="margin-top:8px;"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></div>
+  <div class="sig-name">Rajesh Gautam, PhD</div>
+  <div class="sig-title">Founder &amp; CEO, genhance.ai</div>
+  <a class="sig-link" href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a><br>
+  <a class="sig-link" href="https://genhance.ai">genhance.ai</a>
 </div>
+
 </div>
 </body>
 </html>
