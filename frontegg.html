@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Frontegg</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 750px; margin: 0 auto; padding: 20px; }
+
+.header { background: linear-gradient(135deg, #1e3a5f 0%, #0f2744 50%, #1a2a4a 100%); border-radius: 16px; padding: 40px 30px; margin-bottom: 24px; text-align: center; border: 1px solid rgba(59,130,246,0.2); }
+.header h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.header .subtitle { font-size: 15px; color: #93c5fd; margin-bottom: 24px; }
+.header .subtitle a { color: #93c5fd; }
+
+.stats { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.stat-pill { background: rgba(15,23,42,0.6); border: 1px solid rgba(59,130,246,0.3); border-radius: 12px; padding: 14px 20px; min-width: 130px; }
+.stat-pill .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; margin-bottom: 4px; }
+.stat-pill .value { font-size: 22px; font-weight: 700; color: #60a5fa; }
+.stat-pill .detail { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+
+.key-finding { background: linear-gradient(135deg, #451a03, #78350f); border: 1px solid #f59e0b; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+.key-finding h3 { color: #fbbf24; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; }
+.key-finding p { color: #fde68a; font-size: 14px; margin-top: 8px; }
+
+.section-title { font-size: 18px; font-weight: 700; color: #e2e8f0; margin: 28px 0 16px 0; padding-bottom: 8px; border-bottom: 1px solid rgba(59,130,246,0.2); }
+
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; }
+.query-card .q { font-size: 14px; color: #e2e8f0; font-weight: 600; margin-bottom: 6px; }
+.query-card .q .badge { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; margin-left: 8px; }
+.query-card .q .badge.absent { background: #7f1d1d; color: #fca5a5; }
+.query-card .q .badge.weak { background: #78350f; color: #fbbf24; }
+.query-card .analysis { font-size: 13px; color: #94a3b8; }
+
+.competitor-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.competitor-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 14px 16px; flex: 1; min-width: 140px; }
+.competitor-card .name { font-size: 14px; font-weight: 600; color: #e2e8f0; }
+.competitor-card .detail { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+
+.cta { background: linear-gradient(135deg, #1e3a5f, #0f2744); border: 1px solid rgba(59,130,246,0.3); border-radius: 16px; padding: 30px; margin: 28px 0; }
+.cta h3 { color: #93c5fd; font-size: 16px; margin-bottom: 14px; }
+.cta ol { color: #cbd5e1; font-size: 13px; padding-left: 20px; }
+.cta ol li { margin-bottom: 8px; }
+
+.footer { text-align: center; padding: 24px 0; border-top: 1px solid #1e293b; margin-top: 16px; }
+.footer .name { color: #e2e8f0; font-size: 14px; font-weight: 600; }
+.footer .title { color: #94a3b8; font-size: 12px; }
+.footer a { color: #60a5fa; font-size: 12px; text-decoration: none; }
+
+@media (max-width: 600px) {
+    .stats { gap: 10px; }
+    .stat-pill { min-width: 100px; padding: 10px 14px; }
+    .stat-pill .value { font-size: 18px; }
+    .competitor-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>AI SEARCH VISIBILITY AUDIT</h1>
+    <div class="subtitle"><a href="https://frontegg.com" target="_blank">frontegg.com</a> — User Management Platform for B2B SaaS Applications</div>
+    <div class="stats">
+        <div class="stat-pill"><div class="label">Funding</div><div class="value">$40M</div><div class="detail">Series B</div></div>
+        <div class="stat-pill"><div class="label">AI Visibility</div><div class="value">1/5</div><div class="detail">5 queries tested</div></div>
+        <div class="stat-pill"><div class="label">G2 Reviews</div><div class="value">12</div><div class="detail">verified</div></div>
+        <div class="stat-pill"><div class="label">Reddit</div><div class="value">0</div><div class="detail">threads</div></div>
+    </div>
+</div>
+
+<div class="key-finding">
+    <h3>⚠ KEY FINDING</h3>
+    <p>A search for <strong>"user management platform for B2B SaaS"</strong> returns zero mentions of Frontegg. Instead, AI answers for the DevTools / User Management category cite Auth0 (Okta), Clerk. Frontegg has <strong>12 G2 reviews</strong> and <strong>0 Reddit threads</strong> feeding AI models — a near-<strong>total AI invisibility gap</strong> despite raising $40M.</p>
+</div>
+
+<div class="section-title">🔍 5 Category Queries — AI Search Results</div>
+
+<div class="query-card">
+    <div class="q">"user management platform for B2B SaaS"<span class="badge absent">ABSENT</span></div>
+    <div class="analysis">AI overviews and SERP results for this query cite established competitors like Auth0 (Okta). Frontegg does not appear in the top 10 results.</div>
+</div>
+<div class="query-card">
+    <div class="q">"customer identity and access management CIAM"<span class="badge absent">ABSENT</span></div>
+    <div class="analysis">AI overviews and SERP results for this query cite established competitors like Clerk. Frontegg does not appear in the top 10 results.</div>
+</div>
+<div class="query-card">
+    <div class="q">"Auth0 alternative for B2B applications"<span class="badge absent">ABSENT</span></div>
+    <div class="analysis">AI overviews and SERP results for this query cite established competitors like WorkOS. Frontegg does not appear in the top 10 results.</div>
+</div>
+<div class="query-card">
+    <div class="q">"enterprise SSO multi-tenant platform"<span class="badge absent">ABSENT</span></div>
+    <div class="analysis">AI overviews and SERP results for this query cite established competitors like Stytch. Frontegg does not appear in the top 10 results.</div>
+</div>
+<div class="query-card">
+    <div class="q">"API-first user management and authentication"<span class="badge weak">WEAK</span></div>
+    <div class="analysis">One niche mention of Frontegg may appear in specialized results, but AI answers still default to Auth0 (Okta) and Clerk.</div>
+</div>
+
+<div class="section-title">🏢 Competitors Dominating AI Answers</div>
+<div class="competitor-row">
+<div class="competitor-card"><div class="name">Auth0 (Okta)</div><div class="detail">Dominant in AI answers</div></div>
+<div class="competitor-card"><div class="name">Clerk</div><div class="detail">Dominant in AI answers</div></div>
+<div class="competitor-card"><div class="name">WorkOS</div><div class="detail">Dominant in AI answers</div></div>
+<div class="competitor-card"><div class="name">Stytch</div><div class="detail">Dominant in AI answers</div></div>
+
+</div>
+
+<div class="cta">
+    <h3>🚀 How genhance Fixes This</h3>
+    <ol>
+        <li><strong>UGC Monitoring:</strong> Track Reddit, YouTube, and forum mentions as they appear — before they harden into AI training data.</li>
+        <li><strong>Review Platform Optimization:</strong> Strategic G2/Capterra review placement targeting the 5 queries where Frontegg is invisible.</li>
+        <li><strong>Self-Contributed UGC:</strong> Identify and engage in existing AI-cited threads — one thoughtful post shifts 10-20% of the AI corpus.</li>
+        <li><strong>AI Answer Tracking:</strong> Weekly before/after snapshots proving your AI search presence is growing across ChatGPT, Perplexity, and Google AI Overviews.</li>
+    </ol>
+</div>
+
+<div class="footer">
+    <div class="name">Rajesh Gautam, PhD</div>
+    <div class="title">Founder &amp; CEO, genhance.ai</div>
+    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> · <a href="https://genhance.ai">genhance.ai</a>
+</div>
+
+</div>
+</body>
+</html>
