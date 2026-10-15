@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Pace</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0e27;color:#e0e0e0;line-height:1.6}
+.header{background:linear-gradient(135deg,#0d1b4a 0%,#1a2d6d 40%,#0d1b4a 100%);padding:50px 30px;text-align:center;border-bottom:3px solid #2d4aa8}
+.header h1{font-size:2.2em;color:#fff;margin-bottom:8px}
+.header .subtitle{color:#7b9fff;font-size:1.1em;margin-bottom:20px}
+.stats{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:30px 0}
+.stat-pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:16px 24px;min-width:140px;text-align:center}
+.stat-pill .value{font-size:2em;font-weight:700;color:#fff}
+.stat-pill .label{font-size:0.75em;color:#8899cc;text-transform:uppercase;letter-spacing:1px}
+.stat-pill.highlight .value{color:#ffb347}
+.container{max-width:900px;margin:0 auto;padding:30px 20px}
+.key-finding{background:linear-gradient(135deg,#3d2a00 0%,#5a3e00 100%);border:1px solid #ffb347;border-radius:12px;padding:24px;margin:25px 0}
+.key-finding .label{color:#ffb347;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:0.85em;margin-bottom:8px}
+.key-finding p{color:#ffe0a0;font-size:1.05em}
+.query-cards{display:flex;flex-direction:column;gap:16px;margin:25px 0}
+.query-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:20px}
+.query-card .q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.query-card .q-query{font-weight:600;color:#fff;font-size:0.95em}
+.query-card .badge{padding:4px 12px;border-radius:20px;font-size:0.75em;font-weight:700;text-transform:uppercase}
+.badge.weak{background:rgba(255,80,80,0.2);color:#ff6b6b;border:1px solid rgba(255,80,80,0.3)}
+.badge.present{background:rgba(80,200,120,0.2);color:#5cdb5c;border:1px solid rgba(80,200,120,0.3)}
+.query-card .q-analysis{color:#aabbcc;font-size:0.9em}
+.competitor-section{margin:25px 0}
+.competitor-section h3{color:#fff;margin-bottom:16px;font-size:1.1em}
+.competitor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.comp-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px;text-align:center}
+.comp-card .comp-name{font-weight:700;color:#fff;font-size:0.95em}
+.comp-card .comp-desc{color:#8899aa;font-size:0.8em;margin-top:4px}
+.cta{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border:1px solid #2d4aa8;border-radius:12px;padding:30px;margin:30px 0;text-align:center}
+.cta h2{color:#fff;font-size:1.3em;margin-bottom:16px}
+.cta-plays{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
+.cta-play{background:rgba(45,74,168,0.15);border:1px solid rgba(45,74,168,0.3);border-radius:8px;padding:14px}
+.cta-play .play-num{color:#ffb347;font-weight:700;font-size:0.8em;text-transform:uppercase;letter-spacing:1px}
+.cta-play .play-text{color:#ccd4e8;font-size:0.85em;margin-top:6px}
+.footer{text-align:center;padding:30px;color:#667799;font-size:0.85em;border-top:1px solid rgba(255,255,255,0.06);margin-top:40px}
+.footer a{color:#7b9fff;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>AI SEARCH VISIBILITY AUDIT</h1>
+<div class="subtitle">Pace — AI Insurance Back-Office Operations</div>
+<div class="stats">
+<div class="stat-pill"><div class="value">$56M</div><div class="label">Total Funding</div></div>
+<div class="stat-pill highlight"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+<div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
+</div>
+</div>
+
+<div class="container">
+<div class="key-finding">
+<div class="label">⚠ KEY FINDING</div>
+<p>Pace has raised $56M from Sequoia and Thrive to build AI agents for insurance back-office operations — but AI search engines cite EXL, Genpact, and WNS when users ask about insurance automation. Zero of the top AI-cited sources mention Pace. With 0 G2 reviews, 0 Reddit threads, and complete AI-search invisibility, every new piece of UGC about Pace becomes the dominant signal for AI answers.</p>
+</div>
+
+<div class="query-cards">
+<div class="query-card">
+<div class="q-header"><span class="q-query">"AI insurance claims processing"</span><span class="badge weak">WEAK</span></div>
+<div class="q-analysis">AI Overviews cite Accenture and McKinsey whitepapers — no mention of Pace or any AI-native claims processor. Zero UGC sources in top results.</div>
+</div>
+<div class="query-card">
+<div class="q-header"><span class="q-query">"automated underwriting software"</span><span class="badge weak">WEAK</span></div>
+<div class="q-analysis">Google SERP dominated by legacy vendors (Duck Creek, Guidewire) and G2 category pages. Pace's agentic AI approach is invisible.</div>
+</div>
+<div class="query-card">
+<div class="q-header"><span class="q-query">"insurance back-office automation"</span><span class="badge weak">WEAK</span></div>
+<div class="q-analysis">AI Overviews reference BPO firms and RPA tools. No AI-native insurance operators cited. Reddit has one sparse thread about insurance automation with 8 comments.</div>
+</div>
+<div class="query-card">
+<div class="q-header"><span class="q-query">"agentic AI for insurance operations"</span><span class="badge weak">WEAK</span></div>
+<div class="q-analysis">Category-defining query with almost no established answers. First movers here will shape AI answers for years. Currently zero Reddit/HN threads exist.</div>
+</div>
+<div class="query-card">
+<div class="q-header"><span class="q-query">"BPO alternative for insurance"</span><span class="badge weak">WEAK</span></div>
+<div class="q-analysis">AI Overviews list traditional BPO firms. No mention of AI agent alternatives. The Reddit thread "outsourcing vs AI for insurance ops" has 6 comments — none mention Pace.</div>
+</div>
+</div>
+
+<div class="competitor-section">
+<h3>🏢 Competitors Cited by AI Search</h3>
+<div class="competitor-grid">
+<div class="comp-card"><div class="comp-name">EXL Service</div><div class="comp-desc">BPO giant, $1.6B revenue</div></div>
+<div class="comp-card"><div class="comp-name">Genpact</div><div class="comp-desc">$4.5B BPO, 125K employees</div></div>
+<div class="comp-card"><div class="comp-name">WNS</div><div class="comp-desc">$1.3B BPO, insurance specialist</div></div>
+<div class="comp-card"><div class="comp-name">Sutherland</div><div class="comp-desc">Digital transformation BPO</div></div>
+</div>
+</div>
+
+<div class="cta">
+<h2>🚀 How genhance Can Fix This</h2>
+<div class="cta-plays">
+<div class="cta-play"><div class="play-num">Play 1</div><div class="play-text">Monitor what AI search engines say about insurance automation — and which UGC sources they cite</div></div>
+<div class="cta-play"><div class="play-num">Play 2</div><div class="play-text">Contribute to the 4 sparse Reddit/forum threads that AI already uses for insurance ops queries</div></div>
+<div class="cta-play"><div class="play-num">Play 3</div><div class="play-text">Shape the "agentic AI for insurance" category narrative before it hardens — first movers own this query</div></div>
+<div class="cta-play"><div class="play-num">Play 4</div><div class="play-text">Track before/after AI answer snapshots — prove the ROI of AI search visibility to your Sequoia/Thrive board</div></div>
+</div>
+</div>
+
+<div class="footer">
+<p><strong>Rajesh Gautam, PhD</strong><br>
+Founder and CEO, genhance.ai<br>
+<a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+</div>
+</div>
+</body>
+</html>
