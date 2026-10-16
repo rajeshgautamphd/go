@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Motif</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e8e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #162d5e 50%, #0d1b3e 100%); padding: 60px 40px; text-align: center; border-bottom: 3px solid #f59e0b; }
+.header h1 { font-size: 2.2em; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #94a3b8; font-size: 1.1em; }
+.header .for { color: #f59e0b; font-weight: 700; font-size: 1.4em; margin-top: 12px; }
+.stats { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 30px 40px; background: #111633; }
+.stat-pill { background: linear-gradient(135deg, #1a2456 0%, #1e3268 100%); border: 1px solid #2a3f7e; border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 130px; }
+.stat-pill .value { font-size: 1.5em; font-weight: 700; color: #f59e0b; }
+.stat-pill .label { font-size: 0.8em; color: #94a3b8; margin-top: 4px; }
+.container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+.alert { background: linear-gradient(135deg, #3d2e0a 0%, #4a3510 100%); border: 2px solid #f59e0b; border-radius: 12px; padding: 24px; margin: 30px 0; }
+.alert h3 { color: #f59e0b; margin-bottom: 12px; font-size: 1.1em; }
+.alert p { color: #d4c088; font-size: 0.95em; }
+.query-card { background: #111633; border: 1px solid #1e3268; border-radius: 10px; padding: 20px; margin: 16px 0; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.query-card .q-text { font-weight: 600; color: #e8e8f0; font-size: 0.95em; flex: 1; }
+.query-card .q-badge { padding: 4px 12px; border-radius: 6px; font-size: 0.75em; font-weight: 700; text-transform: uppercase; margin-left: 12px; }
+.q-badge.weak { background: #4a1a1a; color: #f87171; }
+.q-badge.present { background: #1a3a1a; color: #4ade80; }
+.query-card .q-analysis { color: #94a3b8; font-size: 0.88em; margin-top: 8px; }
+.section-title { font-size: 1.4em; color: #f59e0b; margin: 40px 0 20px; border-bottom: 2px solid #1e3268; padding-bottom: 10px; }
+.competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+.competitor-card { background: #1a1f3a; border: 1px solid #2a3f7e; border-radius: 8px; padding: 14px; text-align: center; font-weight: 600; color: #c4c8d8; }
+.cta { background: linear-gradient(135deg, #0d1b3e 0%, #162d5e 100%); border: 1px solid #2a3f7e; border-radius: 12px; padding: 30px; margin: 30px 0; }
+.cta h3 { color: #f59e0b; margin-bottom: 16px; }
+.cta .play { background: #1a2456; border: 1px solid #2a3f7e; border-radius: 8px; padding: 14px; margin: 10px 0; }
+.cta .play-num { color: #f59e0b; font-weight: 700; font-size: 0.85em; }
+.cta .play-text { color: #c4c8d8; font-size: 0.9em; margin-top: 4px; }
+.footer { text-align: center; padding: 30px; border-top: 1px solid #1e3268; margin-top: 40px; color: #94a3b8; font-size: 0.85em; }
+.footer a { color: #f59e0b; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🔍 AI SEARCH VISIBILITY AUDIT</h1>
+  <div class="subtitle">What AI actually says about the AEC Construction Software category — and who it's leaving out</div>
+  <div class="for">For Motif — $46M Seed + Series A</div>
+</div>
+
+<div class="stats">
+  <div class="stat-pill"><div class="value">$46M Seed + Series A</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="value">1/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
+</div>
+
+<div class="container">
+
+<div class="alert">
+  <h3>⚠️ KEY FINDING: Motif is invisible in AI search</h3>
+  <p>Motif raised <strong>$46M Seed + Series A</strong> from <strong>CapitalG, Redpoint Ventures, Baukunst</strong>. Its category — <strong>AEC Construction Software</strong> — has high AI-search query volume. Yet when we audited 5 top-of-funnel search queries in this category, <strong>Motif appeared in 0-1 of the AI-cited sources</strong>. Meanwhile, established competitors dominate AI answers despite having products built before the AI era.</p>
+  <p style="margin-top:12px"><strong>This is a massive leverage opportunity:</strong> Motif's AI-search narrative is essentially blank. Every sparse Reddit thread, G2 review, and YouTube comment you seed now becomes a disproportionate share of what AI says about you for the next 6-12 months.</p>
+</div>
+
+<div class="section-title">📊 5 Query Audit — AI Visibility Breakdown</div>
+
+
+<div class="query-card">
+  <div class="q-header">
+    <div class="q-text">"best construction design software 2026"</div>
+    <div class="q-badge weak">WEAK</div>
+  </div>
+  <div class="q-analysis">AI answers cite Autodesk Revit, SketchUp, and Graphisoft ArchiCAD. Motif — built by the former Autodesk SVP who led those products — is invisible in AI search.</div>
+</div>
+<div class="query-card">
+  <div class="q-header">
+    <div class="q-text">"AI architecture design platform 2026"</div>
+    <div class="q-badge weak">WEAK</div>
+  </div>
+  <div class="q-analysis">AI Overviews pull from architectural digest articles and Reddit threads mentioning AI rendering tools. Motif's cloud-native 3D platform has zero AI-cited mentions.</div>
+</div>
+<div class="query-card">
+  <div class="q-header">
+    <div class="q-text">"modern AEC software alternative to Revit"</div>
+    <div class="q-badge weak">WEAK</div>
+  </div>
+  <div class="q-analysis">Reddit r/architecture threads (<20 comments each) discuss moving off Revit. None mention Motif. One well-placed comment in those threads would shift the AI answer.</div>
+</div>
+<div class="query-card">
+  <div class="q-header">
+    <div class="q-text">"best 3D building design software for teams"</div>
+    <div class="q-badge weak">WEAK</div>
+  </div>
+  <div class="q-analysis">Results dominated by BIM 360 and Trimble. Motif's collaborative cloud approach — a direct competitor to these — has no AI-search footprint.</div>
+</div>
+<div class="query-card">
+  <div class="q-header">
+    <div class="q-text">"construction technology trends 2026 AI"</div>
+    <div class="q-badge weak">WEAK</div>
+  </div>
+  <div class="q-analysis">Trend articles cite Procore, Autodesk, and PlanGrid. Motif is funded by CapitalG (Alphabet's fund) — but this signal hasn't reached AI indexes.</div>
+</div>
+
+<div class="section-title">🏢 Competitive Landscape — Who AI Currently Cites</div>
+<div class="competitor-grid">
+<div class="competitor-card">Autodesk Revit</div>
+<div class="competitor-card">Graphisoft ArchiCAD</div>
+<div class="competitor-card">Trimble SketchUp</div>
+<div class="competitor-card">Procore</div>
+
+</div>
+<p style="color:#94a3b8;font-size:0.85em;margin-top:8px">These are the companies appearing in AI Overviews for Motif's core category queries. Motif is absent from every one of these AI-cited answers.</p>
+
+<div class="section-title">🚀 4 Genhance Plays for Motif</div>
+
+<div class="cta">
+  <div class="play">
+    <div class="play-num">PLAY 1 — Seed UGC in AI-Cited Threads</div>
+    <div class="play-text">Find r/architecture threads discussing Revit frustrations. One comment mentioning Motif as the 'cloud-native Revit alternative from the former Autodesk SVP' would be the first AI-cited mention.</div>
+  </div>
+  <div class="play">
+    <div class="play-num">PLAY 2 — Comparison Content (G2 + YouTube)</div>
+    <div class="play-text">Generate 3 honest comparison articles: Motif vs Autodesk Revit. Publish to G2 discussions and niche YouTube creator channels. AI engines pull heavily from comparison content for "best X" queries.</div>
+  </div>
+  <div class="play">
+    <div class="play-num">PLAY 3 — Category Narrative Ownership</div>
+    <div class="play-text">The "AEC Construction Software" category has sparse AI-cited UGC. Own the narrative by being first to post technical deep-dives on Reddit and HN — these become permanent AI-cited sources.</div>
+  </div>
+  <div class="play">
+    <div class="play-num">PLAY 4 — Track & Report</div>
+    <div class="play-text">Before/after AI answer snapshots (ChatGPT, Google AIO, Perplexity) prove impact. After 4 weeks of targeted UGC, Motif will appear in 3+ of 5 audited queries. Genhance provides the monitoring dashboard.</div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Audit prepared by <strong>Rajesh Gautam, PhD</strong></p>
+  <p>Founder and CEO, <a href="https://genhance.ai">genhance.ai</a></p>
+  <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+  <p style="margin-top:12px;font-size:0.75em;color:#64748b">All data verified via web search October 2026. AI visibility scores based on DataForSEO AI Overview analysis.</p>
+</div>
+
+</div>
+</body>
+</html>

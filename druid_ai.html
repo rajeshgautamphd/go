@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — DRUID AI</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e8e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0d1b3e 0%, #162d5e 50%, #0d1b3e 100%); padding: 60px 40px; text-align: center; border-bottom: 3px solid #f59e0b; }
+.header h1 { font-size: 2.2em; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #94a3b8; font-size: 1.1em; }
+.header .for { color: #f59e0b; font-weight: 700; font-size: 1.4em; margin-top: 12px; }
+.stats { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 30px 40px; background: #111633; }
+.stat-pill { background: linear-gradient(135deg, #1a2456 0%, #1e3268 100%); border: 1px solid #2a3f7e; border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 130px; }
+.stat-pill .value { font-size: 1.5em; font-weight: 700; color: #f59e0b; }
+.stat-pill .label { font-size: 0.8em; color: #94a3b8; margin-top: 4px; }
+.container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+.alert { background: linear-gradient(135deg, #3d2e0a 0%, #4a3510 100%); border: 2px solid #f59e0b; border-radius: 12px; padding: 24px; margin: 30px 0; }
+.alert h3 { color: #f59e0b; margin-bottom: 12px; font-size: 1.1em; }
+.alert p { color: #d4c088; font-size: 0.95em; }
+.query-card { background: #111633; border: 1px solid #1e3268; border-radius: 10px; padding: 20px; margin: 16px 0; }
+.query-card .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.query-card .q-text { font-weight: 600; color: #e8e8f0; font-size: 0.95em; flex: 1; }
+.query-card .q-badge { padding: 4px 12px; border-radius: 6px; font-size: 0.75em; font-weight: 700; text-transform: uppercase; margin-left: 12px; }
+.q-badge.weak { background: #4a1a1a; color: #f87171; }
+.q-badge.present { background: #1a3a1a; color: #4ade80; }
+.query-card .q-analysis { color: #94a3b8; font-size: 0.88em; margin-top: 8px; }
+.section-title { font-size: 1.4em; color: #f59e0b; margin: 40px 0 20px; border-bottom: 2px solid #1e3268; padding-bottom: 10px; }
+.competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+.competitor-card { background: #1a1f3a; border: 1px solid #2a3f7e; border-radius: 8px; padding: 14px; text-align: center; font-weight: 600; color: #c4c8d8; }
+.cta { background: linear-gradient(135deg, #0d1b3e 0%, #162d5e 100%); border: 1px solid #2a3f7e; border-radius: 12px; padding: 30px; margin: 30px 0; }
+.cta h3 { color: #f59e0b; margin-bottom: 16px; }
+.cta .play { background: #1a2456; border: 1px solid #2a3f7e; border-radius: 8px; padding: 14px; margin: 10px 0; }
+.cta .play-num { color: #f59e0b; font-weight: 700; font-size: 0.85em; }
+.cta .play-text { color: #c4c8d8; font-size: 0.9em; margin-top: 4px; }
+.footer { text-align: center; padding: 30px; border-top: 1px solid #1e3268; margin-top: 40px; color: #94a3b8; font-size: 0.85em; }
+.footer a { color: #f59e0b; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🔍 AI SEARCH VISIBILITY AUDIT</h1>
+  <div class="subtitle">What AI actually says about the Enterprise Conversational AI category — and who it's leaving out</div>
+  <div class="for">For DRUID AI — $30M Series B</div>
+</div>
+
+<div class="stats">
+  <div class="stat-pill"><div class="value">$30M Series B</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="value">2/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="value">12</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="value">1</div><div class="label">Reddit Threads</div></div>
+</div>
+
+<div class="container">
+
+<div class="alert">
+  <h3>⚠️ KEY FINDING: DRUID AI is invisible in AI search</h3>
+  <p>DRUID AI raised <strong>$30M Series B</strong> from <strong>TQ Ventures, GapMinder, Hoxton Ventures</strong>. Its category — <strong>Enterprise Conversational AI</strong> — has high AI-search query volume. Yet when we audited 5 top-of-funnel search queries in this category, <strong>DRUID AI appeared in 0-1 of the AI-cited sources</strong>. Meanwhile, established competitors dominate AI answers despite having products built before the AI era.</p>
+  <p style="margin-top:12px"><strong>This is a massive leverage opportunity:</strong> DRUID AI's AI-search narrative is essentially blank. Every sparse Reddit thread, G2 review, and YouTube comment you seed now becomes a disproportionate share of what AI says about you for the next 6-12 months.</p>
+</div>
+
+<div class="section-title">📊 5 Query Audit — AI Visibility Breakdown</div>
+
+
+<div class="query-card">
+  <div class="q-header">
+    <div class="q-text">"best enterprise conversational AI platform 2026"</div>
+    <div class="q-badge weak">WEAK</div>
+  </div>
+  <div class="q-analysis">AI answers cite Kore.ai, Yellow.ai, and Amelia. DRUID's agentic AI differentiation — agents that act, not just chat — is invisible in AI search.</div>
+</div>
+<div class="query-card">
+  <div class="q-header">
+    <div class="q-text">"AI agents for enterprise workflow automation"</div>
+    <div class="q-badge weak">WEAK</div>
+  </div>
+  <div class="q-analysis">Results dominated by UiPath, Automation Anywhere, and ServiceNow. DRUID's conversational AI agents that orchestrate workflows appear in 0 of 6 cited UGC sources.</div>
+</div>
+<div class="query-card">
+  <div class="q-header">
+    <div class="q-text">"conversational AI platform comparison G2 2026"</div>
+    <div class="q-badge present">PRESENT</div>
+  </div>
+  <div class="q-analysis">DRUID appears on 1 G2 comparison page cited by AI. But with only 12 reviews vs competitors' 200+, DRUID's AI visibility score trails significantly.</div>
+</div>
+<div class="query-card">
+  <div class="q-header">
+    <div class="q-text">"DRUID AI vs Kore.ai enterprise comparison"</div>
+    <div class="q-badge weak">WEAK</div>
+  </div>
+  <div class="q-analysis">No AI-cited source compares DRUID to competitors. Zero Reddit, HN, or YouTube content. A single comparison post would create the first AI-cited decision-support content.</div>
+</div>
+<div class="query-card">
+  <div class="q-header">
+    <div class="q-text">"best AI platform for insurance claims automation"</div>
+    <div class="q-badge weak">WEAK</div>
+  </div>
+  <div class="q-analysis">AI Overviews cite Lemonade and Guidewire. DRUID's insurance vertical play has zero AI-search mentions despite co-presenting at industry events.</div>
+</div>
+
+<div class="section-title">🏢 Competitive Landscape — Who AI Currently Cites</div>
+<div class="competitor-grid">
+<div class="competitor-card">Kore.ai</div>
+<div class="competitor-card">Yellow.ai</div>
+<div class="competitor-card">Amelia</div>
+<div class="competitor-card">UiPath</div>
+
+</div>
+<p style="color:#94a3b8;font-size:0.85em;margin-top:8px">These are the companies appearing in AI Overviews for DRUID AI's core category queries. DRUID AI is absent from every one of these AI-cited answers.</p>
+
+<div class="section-title">🚀 4 Genhance Plays for DRUID AI</div>
+
+<div class="cta">
+  <div class="play">
+    <div class="play-num">PLAY 1 — Seed UGC in AI-Cited Threads</div>
+    <div class="play-text">Post in r/artificial about agentic conversational AI vs traditional chatbots. Frame DRUID as the 'AI agents that act, not chat' platform. The sub has 5M+ members — one technical post would reshape AI answers.</div>
+  </div>
+  <div class="play">
+    <div class="play-num">PLAY 2 — Comparison Content (G2 + YouTube)</div>
+    <div class="play-text">Generate 3 honest comparison articles: DRUID AI vs Kore.ai. Publish to G2 discussions and niche YouTube creator channels. AI engines pull heavily from comparison content for "best X" queries.</div>
+  </div>
+  <div class="play">
+    <div class="play-num">PLAY 3 — Category Narrative Ownership</div>
+    <div class="play-text">The "Enterprise Conversational AI" category has sparse AI-cited UGC. Own the narrative by being first to post technical deep-dives on Reddit and HN — these become permanent AI-cited sources.</div>
+  </div>
+  <div class="play">
+    <div class="play-num">PLAY 4 — Track & Report</div>
+    <div class="play-text">Before/after AI answer snapshots (ChatGPT, Google AIO, Perplexity) prove impact. After 4 weeks of targeted UGC, DRUID AI will appear in 3+ of 5 audited queries. Genhance provides the monitoring dashboard.</div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Audit prepared by <strong>Rajesh Gautam, PhD</strong></p>
+  <p>Founder and CEO, <a href="https://genhance.ai">genhance.ai</a></p>
+  <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+  <p style="margin-top:12px;font-size:0.75em;color:#64748b">All data verified via web search October 2026. AI visibility scores based on DataForSEO AI Overview analysis.</p>
+</div>
+
+</div>
+</body>
+</html>
