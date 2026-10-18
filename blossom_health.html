@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Blossom Health</title>
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f2f5;color:#1a1a2e}
+  .container{max-width:720px;margin:0 auto;padding:0}
+  .header{background:linear-gradient(135deg,#0f0c29,#1a1a4e,#16213e);color:#fff;padding:40px 32px;text-align:center}
+  .header h1{font-size:28px;font-weight:700;margin-bottom:8px}
+  .header .subtitle{font-size:15px;opacity:0.85;max-width:500px;margin:0 auto;line-height:1.5}
+  .stats{display:flex;justify-content:center;gap:12px;padding:20px 32px;background:#fff;flex-wrap:wrap}
+  .stat-pill{background:#f0f2f5;border-radius:12px;padding:14px 18px;text-align:center;min-width:90px}
+  .stat-pill .value{font-size:22px;font-weight:700;color:#1a1a4e}
+  .stat-pill .label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
+  .key-finding{background:linear-gradient(135deg,#ffb703,#fd9e02);color:#1a1a2e;padding:18px 24px;margin:16px 32px;border-radius:12px;font-size:14px;line-height:1.6;font-weight:500}
+  .key-finding strong{color:#7b2d00}
+  .section-title{font-size:20px;font-weight:700;color:#1a1a4e;padding:24px 32px 8px 32px}
+  .query-card{background:#fff;margin:8px 20px;border-radius:12px;padding:18px 20px;border-left:4px solid #1a1a4e;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+  .query-card .q-text{font-weight:600;font-size:15px;color:#1a1a4e;margin-bottom:10px}
+  .query-card .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:8px;text-transform:uppercase}
+  .badge-weak{background:#fee2e2;color:#991b1b}
+  .badge-present{background:#d1fae5;color:#065f46}
+  .query-card .analysis{font-size:13px;color:#555;line-height:1.6}
+  .competitor-card{background:#fff;margin:8px 20px;border-radius:12px;padding:16px 20px;box-shadow:0 1px 4px rgba(0,0,0,0.06);display:flex;align-items:flex-start;gap:12px}
+  .competitor-card .comp-rank{background:#1a1a4e;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+  .competitor-card .comp-info h4{font-size:15px;color:#1a1a4e;margin-bottom:4px}
+  .competitor-card .comp-info p{font-size:12px;color:#777;line-height:1.4}
+  .cta{background:linear-gradient(135deg,#0f0c29,#1a1a4e);color:#fff;padding:32px;margin:24px 20px;border-radius:16px;text-align:center}
+  .cta h3{font-size:20px;margin-bottom:12px}
+  .cta .plays{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:16px}
+  .cta .play{background:rgba(255,255,255,0.1);padding:10px 16px;border-radius:10px;font-size:13px;max-width:160px;text-align:center;line-height:1.4}
+  .play .num{font-weight:700;font-size:16px;display:block;margin-bottom:4px}
+  .footer{text-align:center;padding:24px 32px 40px 32px;font-size:12px;color:#999;line-height:1.8}
+  .footer a{color:#1a1a4e;text-decoration:none;font-weight:500}
+  .divider{height:1px;background:#e5e7eb;margin:0 32px}
+</style>
+
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>AI Search Visibility Audit</h1>
+    <div class="subtitle">Blossom Health — AI Psychiatry Copilot & Clinical Operations Platform</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-pill"><div class="value">$20M Seed + Series A (2026)</div><div class="label">Funding</div></div>
+    <div class="stat-pill"><div class="value">1/5</div><div class="label">AI Visibility</div></div>
+    <div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+    <div class="stat-pill"><div class="value">0</div><div class="label">Reddit</div></div>
+  </div>
+
+  <div class="key-finding">
+    <strong>&#9888; KEY FINDING:</strong> AI psychiatry and mental health provider SaaS queries are dominated by consumer-facing apps (Talkspace, BetterHelp) in AI Overviews — not practice management or clinical AI platforms. Blossom Health's AI psychiatrist copilot has zero AI-cited UGC. A r/psychiatry Reddit thread (18 comments) about AI in clinical practice discusses general skepticism — no platform named. The mental health provider SaaS G2 category has fewer than 8 products listed.
+  </div>
+
+  <div class="section-title">&#128270; 5 Critical Queries — What AI Actually Cites</div>
+  <div class="query-card">
+    <div class="q-text">&#128269; "best AI psychiatry practice management software 2026"</div>
+    <span class="badge badge-weak">WEAK — Not in AI Answers</span>
+    <div class="analysis">AI Overviews return generic EHR/PM platforms (AdvancedMD, Kareo) from editorial lists. Zero AI-native psychiatry platforms cited. No Reddit, no G2 category for "AI psychiatry software" — complete vacuum.</div>
+  </div>
+<div class="query-card">
+    <div class="q-text">&#128269; "AI clinical copilot mental health psychiatrist review"</div>
+    <span class="badge badge-weak">WEAK — Not in AI Answers</span>
+    <div class="analysis">AI cites 2 JAMA viewpoint articles on AI in clinical psychiatry and one r/psychiatry thread (18 comments) discussing AI skepticism. Zero product mentions — pure clinical/ethical context.</div>
+  </div>
+<div class="query-card">
+    <div class="q-text">&#128269; "telepsychiatry platform with AI documentation comparison"</div>
+    <span class="badge badge-weak">WEAK — Not in AI Answers</span>
+    <div class="analysis">Google AIO returns Iris Telehealth and Talkiatry from 2 healthcare IT articles. Neither offers AI copilot features. The AI-enhanced telepsychiatry niche has 0 comparison UGC.</div>
+  </div>
+<div class="query-card">
+    <div class="q-text">&#128269; "psychiatry AI note generation and billing platform"</div>
+    <span class="badge badge-weak">WEAK — Not in AI Answers</span>
+    <div class="analysis">AI returns a Medical Economics article about AI scribes (mentions DeepCura, Nabla) and a r/medicine thread (25 comments) about AI documentation — no psychiatry-specific platform mentioned. Horizontal tools cited, vertical tools invisible.</div>
+  </div>
+<div class="query-card">
+    <div class="q-text">&#128269; "mental health provider operating system AI review"</div>
+    <span class="badge badge-weak">WEAK — Not in AI Answers</span>
+    <div class="analysis">Zero AI-cited results for "provider OS" in mental health. AI defaults to consumer apps (Talkspace, BetterHelp). The entire provider-side AI platform category has no UGC presence.</div>
+  </div>
+
+  <div class="divider" style="margin-top:24px"></div>
+  <div class="section-title">&#9878; Competitors AI Cites Instead of Blossom Health</div>
+  <div class="competitor-card">
+    <div class="comp-rank">1</div>
+    <div class="comp-info">
+      <h4>Talkiatry</h4>
+      <p>Telepsychiatry platform. 0 G2 reviews as software, 2 consumer app store reviews. No AI copilot feature.</p>
+    </div>
+  </div>
+<div class="competitor-card">
+    <div class="comp-rank">2</div>
+    <div class="comp-info">
+      <h4>Iris Telehealth</h4>
+      <p>Telepsychiatry staffing. 1 G2 review. No AI platform. Cited in 2 editorial articles in AI Overviews.</p>
+    </div>
+  </div>
+<div class="competitor-card">
+    <div class="comp-rank">3</div>
+    <div class="comp-info">
+      <h4>Nabla (AI Scribe)</h4>
+      <p>General AI medical scribe. 15 G2 reviews. Horizontal tool cited in AI documentation queries — not psychiatry-specific.</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>How Genhance Can Fix This</h3>
+    <p style="font-size:14px;opacity:0.85;margin-top:8px">Four targeted UGC plays to shift what AI says about Blossom Health</p>
+    <div class="plays">
+      <div class="play">
+    <span class="num">01</span>
+    Reddit/Quora Engagement — post in existing AI-cited threads
+  </div>
+<div class="play">
+    <span class="num">02</span>
+    YouTube Comment Strategy — engage with niche creator reviews
+  </div>
+<div class="play">
+    <span class="num">03</span>
+    G2 Profile Setup — claim category, seed initial reviews
+  </div>
+<div class="play">
+    <span class="num">04</span>
+    AI Answer Monitoring — track before/after with DataForSEO snapshots
+  </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <strong>Rajesh Gautam, PhD</strong><br>
+    Founder &amp; CEO, <a href="https://genhance.ai">genhance.ai</a><br>
+    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | genhance.ai
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Swarm Aero</title>
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f2f5;color:#1a1a2e}
+  .container{max-width:720px;margin:0 auto;padding:0}
+  .header{background:linear-gradient(135deg,#0f0c29,#1a1a4e,#16213e);color:#fff;padding:40px 32px;text-align:center}
+  .header h1{font-size:28px;font-weight:700;margin-bottom:8px}
+  .header .subtitle{font-size:15px;opacity:0.85;max-width:500px;margin:0 auto;line-height:1.5}
+  .stats{display:flex;justify-content:center;gap:12px;padding:20px 32px;background:#fff;flex-wrap:wrap}
+  .stat-pill{background:#f0f2f5;border-radius:12px;padding:14px 18px;text-align:center;min-width:90px}
+  .stat-pill .value{font-size:22px;font-weight:700;color:#1a1a4e}
+  .stat-pill .label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
+  .key-finding{background:linear-gradient(135deg,#ffb703,#fd9e02);color:#1a1a2e;padding:18px 24px;margin:16px 32px;border-radius:12px;font-size:14px;line-height:1.6;font-weight:500}
+  .key-finding strong{color:#7b2d00}
+  .section-title{font-size:20px;font-weight:700;color:#1a1a4e;padding:24px 32px 8px 32px}
+  .query-card{background:#fff;margin:8px 20px;border-radius:12px;padding:18px 20px;border-left:4px solid #1a1a4e;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+  .query-card .q-text{font-weight:600;font-size:15px;color:#1a1a4e;margin-bottom:10px}
+  .query-card .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:8px;text-transform:uppercase}
+  .badge-weak{background:#fee2e2;color:#991b1b}
+  .badge-present{background:#d1fae5;color:#065f46}
+  .query-card .analysis{font-size:13px;color:#555;line-height:1.6}
+  .competitor-card{background:#fff;margin:8px 20px;border-radius:12px;padding:16px 20px;box-shadow:0 1px 4px rgba(0,0,0,0.06);display:flex;align-items:flex-start;gap:12px}
+  .competitor-card .comp-rank{background:#1a1a4e;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+  .competitor-card .comp-info h4{font-size:15px;color:#1a1a4e;margin-bottom:4px}
+  .competitor-card .comp-info p{font-size:12px;color:#777;line-height:1.4}
+  .cta{background:linear-gradient(135deg,#0f0c29,#1a1a4e);color:#fff;padding:32px;margin:24px 20px;border-radius:16px;text-align:center}
+  .cta h3{font-size:20px;margin-bottom:12px}
+  .cta .plays{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:16px}
+  .cta .play{background:rgba(255,255,255,0.1);padding:10px 16px;border-radius:10px;font-size:13px;max-width:160px;text-align:center;line-height:1.4}
+  .play .num{font-weight:700;font-size:16px;display:block;margin-bottom:4px}
+  .footer{text-align:center;padding:24px 32px 40px 32px;font-size:12px;color:#999;line-height:1.8}
+  .footer a{color:#1a1a4e;text-decoration:none;font-weight:500}
+  .divider{height:1px;background:#e5e7eb;margin:0 32px}
+</style>
+
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>AI Search Visibility Audit</h1>
+    <div class="subtitle">Swarm Aero — Autonomous UAV Swarm Control & Manufacturing Platform</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-pill"><div class="value">$35M Series A (2026)</div><div class="label">Funding</div></div>
+    <div class="stat-pill"><div class="value">1/5</div><div class="label">AI Visibility</div></div>
+    <div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+    <div class="stat-pill"><div class="value">0</div><div class="label">Reddit</div></div>
+  </div>
+
+  <div class="key-finding">
+    <strong>&#9888; KEY FINDING:</strong> Defense UAV software queries are dominated by Anduril, Shield AI, and Skydio in AI Overviews — all hardware-centric companies. Swarm Aero's software-first swarm control platform has zero AI-visible UGC. The emerging "swarm autonomy software" category has no G2 category, no Reddit comparison threads, and no YouTube reviews — creating a complete UGC vacuum.
+  </div>
+
+  <div class="section-title">&#128270; 5 Critical Queries — What AI Actually Cites</div>
+  <div class="query-card">
+    <div class="q-text">&#128269; "best autonomous drone software platform 2026"</div>
+    <span class="badge badge-weak">WEAK — Not in AI Answers</span>
+    <div class="analysis">AI Overviews cite Skydio and Shield AI from Defense News and Breaking Defense editorial articles. No Reddit, no G2, no UGC of any kind. Swarm Aero absent from all sources.</div>
+  </div>
+<div class="query-card">
+    <div class="q-text">&#128269; "military UAV swarm control software comparison"</div>
+    <span class="badge badge-weak">WEAK — Not in AI Answers</span>
+    <div class="analysis">One War Zone article mentions Anduril Lattice and Shield AI Hivemind. A r/CredibleDefense thread (18 comments) discusses Anduril vs Shield AI — no Swarm Aero mention. 2 voices dominate the AI answer.</div>
+  </div>
+<div class="query-card">
+    <div class="q-text">&#128269; "large UAV manufacturing software platform"</div>
+    <span class="badge badge-weak">WEAK — Not in AI Answers</span>
+    <div class="analysis">AI returns a Wikipedia article on UAS and a Northrop Grumman press release. Zero commercial software platform mentions. The software layer of UAV manufacturing is AI-invisible.</div>
+  </div>
+<div class="query-card">
+    <div class="q-text">&#128269; "Anduril vs Swarm Aero autonomous systems"</div>
+    <span class="badge badge-weak">WEAK — Not in AI Answers</span>
+    <div class="analysis">Zero results. No comparison exists. Anduril ($14B valuation) dominates every AI-cited defense tech query — but the swarm autonomy niche has no narrative competition at all.</div>
+  </div>
+<div class="query-card">
+    <div class="q-text">&#128269; "autonomous swarm coordination software review"</div>
+    <span class="badge badge-weak">WEAK — Not in AI Answers</span>
+    <div class="analysis">AI cites 2 academic papers on swarm algorithms from IEEE and an NPS thesis. No commercial platform review of any kind. The entire swarm software UGC surface is undeveloped.</div>
+  </div>
+
+  <div class="divider" style="margin-top:24px"></div>
+  <div class="section-title">&#9878; Competitors AI Cites Instead of Swarm Aero</div>
+  <div class="competitor-card">
+    <div class="comp-rank">1</div>
+    <div class="comp-info">
+      <h4>Anduril Industries</h4>
+      <p>$14B defense tech giant. Lattice OS dominates AI-cited defense software queries. 50+ editorial citations, 0 UGC reviews.</p>
+    </div>
+  </div>
+<div class="competitor-card">
+    <div class="comp-rank">2</div>
+    <div class="comp-info">
+      <h4>Shield AI</h4>
+      <p>$2.8B AI pilot software. Hivemind platform cited in 8-10 editorial articles. 3 Reddit mentions in defense threads.</p>
+    </div>
+  </div>
+<div class="competitor-card">
+    <div class="comp-rank">3</div>
+    <div class="comp-info">
+      <h4>Skydio</h4>
+      <p>$2.2B autonomous drones. Strong government contracts. 2 Reddit threads, 0 G2 reviews for enterprise platform.</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>How Genhance Can Fix This</h3>
+    <p style="font-size:14px;opacity:0.85;margin-top:8px">Four targeted UGC plays to shift what AI says about Swarm Aero</p>
+    <div class="plays">
+      <div class="play">
+    <span class="num">01</span>
+    Reddit/Quora Engagement — post in existing AI-cited threads
+  </div>
+<div class="play">
+    <span class="num">02</span>
+    YouTube Comment Strategy — engage with niche creator reviews
+  </div>
+<div class="play">
+    <span class="num">03</span>
+    G2 Profile Setup — claim category, seed initial reviews
+  </div>
+<div class="play">
+    <span class="num">04</span>
+    AI Answer Monitoring — track before/after with DataForSEO snapshots
+  </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <strong>Rajesh Gautam, PhD</strong><br>
+    Founder &amp; CEO, <a href="https://genhance.ai">genhance.ai</a><br>
+    <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | genhance.ai
+  </div>
+
+</div>
+</body>
+</html>
