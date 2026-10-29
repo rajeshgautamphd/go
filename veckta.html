@@ -2,49 +2,107 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI Search Visibility Audit — VECKTA | genhance</title>
-<style>*{{box-sizing:border-box;margin:0;padding:0}}body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0e27;color:#e2e8f0;line-height:1.6}}.container{{max-width:720px;margin:0 auto;padding:0}}.header{{background:linear-gradient(135deg,#0f1535 0%,#1a1040 50%,#0d1b3e 100%);padding:48px 32px 36px;text-align:center;border-bottom:3px solid #f59e0b}}.header h1{{font-size:28px;font-weight:800;color:#fff;letter-spacing:-0.5px}}.header .subtitle{{font-size:15px;color:#94a3b8;margin-top:8px;font-weight:400}}.stats{{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:28px 0 0}}.stat-pill{{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 18px;text-align:center;min-width:100px}}.stat-pill .num{{font-size:22px;font-weight:800;color:#fff;display:block}}.stat-pill .label{{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}}.key-finding{{background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(245,158,11,0.05));border:1px solid rgba(245,158,11,0.3);border-radius:12px;padding:20px 24px;margin:32px 32px 0}}.key-finding h3{{font-size:13px;text-transform:uppercase;letter-spacing:0.5px;color:#f59e0b;margin-bottom:8px}}.key-finding p{{font-size:14px;color:#e2e8f0;line-height:1.7}}.queries{{padding:32px}}.queries h2{{font-size:20px;font-weight:700;color:#fff;margin-bottom:20px}}.query-card{{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:18px 20px;margin-bottom:14px}}.query-card .q-header{{display:flex;align-items:center;gap:10px;margin-bottom:10px}}.query-card .q-text{{font-size:14px;font-weight:600;color:#e2e8f0;flex:1}}.badge{{font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:0.5px}}.badge-weak{{background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3)}}.badge-present{{background:rgba(34,197,94,0.15);color:#22c55e;border:1px solid rgba(34,197,94,0.3)}}.query-card .analysis{{font-size:13px;color:#94a3b8;line-height:1.6}}.competitors{{padding:0 32px 32px}}.competitors h2{{font-size:20px;font-weight:700;color:#fff;margin-bottom:16px}}.comp-grid{{display:flex;flex-wrap:wrap;gap:8px}}.comp-tag{{background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.25);border-radius:8px;padding:8px 14px;font-size:13px;color:#a5b4fc;font-weight:500}}.cta{{background:linear-gradient(135deg,#0f1535 0%,#1a1040 100%);padding:36px 32px;text-align:center;border-top:3px solid #6366f1}}.cta h2{{font-size:22px;font-weight:800;color:#fff;margin-bottom:12px}}.cta .plays{{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:20px 0}}.play-card{{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px;text-align:left;max-width:300px}}.play-card .emoji{{font-size:20px}}.play-card h4{{font-size:14px;color:#fff;margin:8px 0 4px}}.play-card p{{font-size:12px;color:#94a3b8;line-height:1.5}}.cta-btn{{display:inline-block;background:#6366f1;color:#fff;padding:14px 32px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;margin-top:16px;border:none;cursor:pointer}}.footer{{padding:24px 32px;text-align:center;border-top:1px solid rgba(255,255,255,0.06);font-size:12px;color:#64748b}}.footer a{{color:#6366f1;text-decoration:none}}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — VECKTA</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif; background:#0d1117; color:#e0e0e0; line-height:1.6; }
+.container { max-width:700px; margin:0 auto; padding:0 20px 40px; }
+.hero { background:linear-gradient(135deg, #0a1628 0%, #132347 50%, #1a1a4e 100%); padding:40px 20px; text-align:center; border-bottom:3px solid #2563eb; }
+.hero h1 { font-size:28px; color:#fff; margin-bottom:6px; }
+.hero .subtitle { color:#93a3cf; font-size:15px; }
+.stat-pills { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; padding:24px 20px 0; }
+.pill { background:rgba(37,99,235,0.15); border:1px solid rgba(37,99,235,0.3); border-radius:10px; padding:12px 18px; text-align:center; min-width:100px; }
+.pill .val { font-size:22px; font-weight:700; color:#60a5fa; }
+.pill .lbl { font-size:11px; color:#93a3cf; text-transform:uppercase; letter-spacing:0.5px; }
+.key-finding { background:linear-gradient(135deg,#3b2f0e,#4a3510); border:1px solid #f59e0b; border-radius:10px; padding:20px; margin:24px 0; }
+.key-finding .label { color:#f59e0b; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+.key-finding p { color:#fef3c7; font-size:14px; line-height:1.6; }
+.section-title { color:#c0d0f0; font-size:16px; font-weight:700; margin:28px 0 14px; padding-bottom:6px; border-bottom:1px solid #2a2a4a; }
+.competitors-box { background:#12121f; border:1px solid #2a2a4a; border-radius:8px; padding:16px; margin-bottom:20px; text-align:center; }
+.cta { background:linear-gradient(135deg,#0f172a,#1e1b4b); border:2px solid #4f46e5; border-radius:12px; padding:28px 20px; margin-top:28px; text-align:center; }
+.cta h3 { color:#a5b4fc; font-size:18px; margin-bottom:14px; }
+.cta .plays { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px; }
+.cta .play { background:rgba(79,70,229,0.1); border:1px solid rgba(79,70,229,0.2); border-radius:8px; padding:12px; font-size:13px; color:#c7d2fe; }
+.footer { text-align:center; padding:24px 0 0; color:#6b7280; font-size:13px; border-top:1px solid #1f2937; margin-top:24px; }
+.footer a { color:#93a3cf; text-decoration:none; }
+</style>
 </head>
 <body>
+<div class="hero">
+    <h1>AI Search Visibility Audit</h1>
+    <div class="subtitle">VECKTA — Climate/Energy Procurement</div>
+    <div class="stat-pills">
+        <div class="pill"><div class="val">$11M A</div><div class="lbl">Funding</div></div>
+        <div class="pill"><div class="val">0/5</div><div class="lbl">AI Visibility</div></div>
+        <div class="pill"><div class="val">0</div><div class="lbl">G2 Reviews</div></div>
+        <div class="pill"><div class="val">1</div><div class="lbl">Reddit</div></div>
+    </div>
+</div>
 <div class="container">
-<div class="header">
-<h1>AI Search Visibility Audit</h1>
-<div class="subtitle">Onsite Energy Planning & Procurement Platform — San Diego, CA</div>
-<div class="stats">
-<div class="stat-pill"><span class="num">$11M Series A</span><span class="label">Funding</span></div>
-<div class="stat-pill"><span class="num">1/5</span><span class="label">AI Visibility</span></div>
-<div class="stat-pill"><span class="num">0</span><span class="label">G2 Reviews</span></div>
-<div class="stat-pill"><span class="num">0</span><span class="label">Reddit</span></div>
-</div>
-</div>
-<div class="key-finding">
-<h3>⚡ Key Finding</h3>
-<p>VECKTA appears in ZERO AI Overviews for energy procurement queries. Solar/battery procurement searches are dominated by general solar marketplaces (EnergySage) and consultancies (Wood Mackenzie), not software platforms. No Reddit threads mention VECKTA. The company has zero G2 reviews despite having enterprise customers like Enterprise Mobility and Regency Centers.</p>
-</div>
-<div class="queries">
-<h2>5 Category Queries — AI Search Analysis</h2>
-<div class="query-card"><div class="q-header"><span class="q-text">"best onsite energy procurement platform 2026"</span><span class="badge badge-weak">WEAK</span></div><div class="analysis">AI Overview cites EnergySage, Aurora Solar, and NREL resources. VECKTA not mentioned. No UGC sources cited.</div></div><div class="query-card"><div class="q-header"><span class="q-text">"commercial solar battery planning software"</span><span class="badge badge-weak">WEAK</span></div><div class="analysis">Results dominated by Aurora Solar, HelioScope, and Energy Toolbase. VECKTA absent from both AI Overview and organic top 10.</div></div><div class="query-card"><div class="q-header"><span class="q-text">"how to procure onsite solar for business"</span><span class="badge badge-weak">WEAK</span></div><div class="analysis">AI answer pulls from DOE guides, EnergySage articles, and NREL. No mention of procurement platforms. Reddit threads (r/solar, r/energy) focus on residential.</div></div><div class="query-card"><div class="q-header"><span class="q-text">"corporate renewable energy procurement platform comparison"</span><span class="badge badge-weak">WEAK</span></div><div class="analysis">LevelTen Energy, Enel X, and Schneider Electric dominate. VECKTA not cited. G2 category "Energy Management" lists competitors only.</div></div><div class="query-card"><div class="q-header"><span class="q-text">"best solar storage marketplace for commercial properties"</span><span class="badge badge-weak">WEAK</span></div><div class="analysis">EnergySage and Pick My Solar lead. VECKTA entirely absent. Zero UGC surfaces for commercial procurement software in this category.</div></div>
-</div>
-<div class="competitors">
-<h2>Named Competitors in AI Answers</h2>
-<div class="comp-grid"><span class="comp-tag">EnergySage</span><span class="comp-tag">Aurora Solar</span><span class="comp-tag">Station A</span><span class="comp-tag">Terabase Energy</span><span class="comp-tag">Wood Mackenzie</span></div>
-</div>
-<div class="cta">
-<h2>4 Ways genhance Fixes This</h2>
-<div class="plays">
-<div class="play-card"><div class="emoji">🔍</div><h4>AI Answer Monitoring</h4><p>Track every AI Overview, ChatGPT, and Perplexity answer for your category — daily snapshots of what AI says about you vs competitors.</p></div>
-<div class="play-card"><div class="emoji">📊</div><h4>UGC Gap Analysis</h4><p>Identify EXACTLY which Reddit threads, YouTube comments, and forum posts feed AI answers — and where you're absent.</p></div>
-<div class="play-card"><div class="emoji">✍️</div><h4>Strategic UGC Deployment</h4><p>Contribute to the sparse conversations AI already cites. One thoughtful comment in a 7-comment thread shifts what AI says for months.</p></div>
-<div class="play-card"><div class="emoji">📈</div><h4>Before/After Tracking</h4><p>Measure AI answer delta. Prove your investment works with timestamped snapshots showing your category presence before and after engagement.</p></div>
-</div>
-<a href="https://genhance.ai" class="cta-btn">See genhance in Action →</a>
-</div>
-<div class="footer">
-<p><strong>Rajesh Gautam, PhD</strong><br>Founder &amp; CEO, genhance.ai</p>
-<p style="margin-top:8px"><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
-<p style="margin-top:12px;color:#475569">AI visibility audit for VECKTA — generated by genhance</p>
-</div>
+    <div class="key-finding">
+        <div class="label">🔍 KEY FINDING</div>
+        <p>VECKTA raised $11M to build an onsite energy planning and procurement platform for commercial buildings — but across 5 energy procurement queries, AI search results cite Station A, LevelTen Energy, and EnergySage instead. VECKTA has exactly 0 G2 reviews and 1 Reddit thread that AI engines don't index.</p>
+    </div>
+
+    <div class="section-title">📊 AI Search Query Analysis</div>
+    <p style="color:#9e9eb0; font-size:13px; margin-bottom:16px">We audited 5 category-defining queries and analyzed whether VECKTA appears in AI search results or the UGC sources that feed them.</p>
+    
+        <div style="background:#1a1a2e; border:1px solid #2a2a4a; border-radius:8px; padding:16px; margin-bottom:12px">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px">
+                <span style="color:#e0e0e0; font-weight:600; font-size:14px">onsite energy planning and procurement platform enterprise</span>
+                <span style="background:#d4edda;color:#155724; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600">WEAK</span>
+            </div>
+            <p style="color:#9e9eb0; font-size:13px; margin:0; line-height:1.5">AI Overviews cite Station A and EnergySage for commercial solar/storage procurement. VECKTA not mentioned in any indexed source despite its distributed energy resource marketplace.</p>
+        </div>
+        <div style="background:#1a1a2e; border:1px solid #2a2a4a; border-radius:8px; padding:16px; margin-bottom:12px">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px">
+                <span style="color:#e0e0e0; font-weight:600; font-size:14px">distributed energy resource marketplace B2B</span>
+                <span style="background:#d4edda;color:#155724; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600">WEAK</span>
+            </div>
+            <p style="color:#9e9eb0; font-size:13px; margin:0; line-height:1.5">AI answers pull from DOE reports and utility-facing DERMS vendors. VECKTA's marketplace for matching businesses with energy solutions is absent from AI-cited results.</p>
+        </div>
+        <div style="background:#1a1a2e; border:1px solid #2a2a4a; border-radius:8px; padding:16px; margin-bottom:12px">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px">
+                <span style="color:#e0e0e0; font-weight:600; font-size:14px">solar and battery storage procurement software commercial</span>
+                <span style="background:#d4edda;color:#155724; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600">WEAK</span>
+            </div>
+            <p style="color:#9e9eb0; font-size:13px; margin:0; line-height:1.5">AI search consistently cites EnergySage, Aurora Solar, and Station A. VECKTA has no comparison articles, no G2 presence, and no Reddit threads in AI indexes.</p>
+        </div>
+        <div style="background:#1a1a2e; border:1px solid #2a2a4a; border-radius:8px; padding:16px; margin-bottom:12px">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px">
+                <span style="color:#e0e0e0; font-weight:600; font-size:14px">renewable energy RFP management platform 2026</span>
+                <span style="background:#d4edda;color:#155724; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600">WEAK</span>
+            </div>
+            <p style="color:#9e9eb0; font-size:13px; margin:0; line-height:1.5">AI Overviews reference LevelTen Energy and traditional RFP platforms. VECKTA's RFP automation for onsite energy projects is not mentioned in any AI-cited source.</p>
+        </div>
+        <div style="background:#1a1a2e; border:1px solid #2a2a4a; border-radius:8px; padding:16px; margin-bottom:12px">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px">
+                <span style="color:#e0e0e0; font-weight:600; font-size:14px">commercial energy system deployment software B2B</span>
+                <span style="background:#d4edda;color:#155724; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600">WEAK</span>
+            </div>
+            <p style="color:#9e9eb0; font-size:13px; margin:0; line-height:1.5">Sparse AI coverage overall — mostly consulting firms and equipment vendors. VECKTA has zero UGC or editorial mentions in AI-cited sources for this query.</p>
+        </div>
+
+    <div class="section-title">🏢 Who AI Currently Cites</div>
+    <p style="color:#9e9eb0; font-size:13px; margin-bottom:12px">For "Climate/Energy Procurement" queries, AI search engines consistently cite these competitors — never VECKTA.</p>
+    <div class="competitors-box"><span style="display:inline-block; background:#2a1f3d; color:#c4b5fd; padding:6px 14px; border-radius:6px; margin:4px; font-size:13px">Station A</span><span style="display:inline-block; background:#2a1f3d; color:#c4b5fd; padding:6px 14px; border-radius:6px; margin:4px; font-size:13px">EnergySage</span><span style="display:inline-block; background:#2a1f3d; color:#c4b5fd; padding:6px 14px; border-radius:6px; margin:4px; font-size:13px">LevelTen Energy</span><span style="display:inline-block; background:#2a1f3d; color:#c4b5fd; padding:6px 14px; border-radius:6px; margin:4px; font-size:13px">Reonic</span></div>
+
+    <div class="cta">
+        <h3>4 Ways genhance Can Fix This</h3>
+        <div class="plays">
+            <div class="play">🎯 <strong>AI Search Monitor</strong><br><span style="font-size:11px;color:#94a3b8">Track all 5 queries. Get alerts when AI answers change.</span></div>
+            <div class="play">💬 <strong>UGC Gap Fill</strong><br><span style="font-size:11px;color:#94a3b8">Contribute to sparse Reddit/G2/YouTube threads AI already cites.</span></div>
+            <div class="play">📈 <strong>Review Velocity</strong><br><span style="font-size:11px;color:#94a3b8">Seed authentic G2 & Capterra reviews from real users.</span></div>
+            <div class="play">📋 <strong>Competitor Intel</strong><br><span style="font-size:11px;color:#94a3b8">Weekly reports on competitors' AI visibility moves.</span></div>
+        </div>
+        <p style="color:#94a3b8; font-size:13px">Book a 10-min audit call: <a href="https://genhance.ai" style="color:#818cf8">genhance.ai</a></p>
+    </div>
+
+    <div class="footer">
+        <p>Rajesh Gautam, PhD<br>Founder & CEO, genhance.ai</p>
+        <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+    </div>
 </div>
 </body>
 </html>
