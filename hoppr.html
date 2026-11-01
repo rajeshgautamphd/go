@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOPPR — AI Search Visibility Audit | genhance.ai</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 720px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); border-radius: 16px; padding: 32px 24px; margin-bottom: 24px; text-align: center; border: 1px solid #334155; }
+.header h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #94a3b8; font-size: 14px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+.stat { background: #1e293b; border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #334155; }
+.stat .value { font-size: 24px; font-weight: 700; color: #38bdf8; }
+.stat .label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.key-finding { background: linear-gradient(135deg, #78350f 0%, #451a03 100%); border: 1px solid #d97706; border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+.key-finding .label { color: #fbbf24; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.key-finding .text { color: #fef3c7; font-size: 15px; }
+.section-title { font-size: 18px; font-weight: 700; color: #fff; margin: 28px 0 16px 0; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+.query-card .q { font-weight: 600; color: #e2e8f0; margin-bottom: 6px; font-size: 15px; }
+.query-card .q::before { content: '"'; color: #38bdf8; }
+.query-card .q::after { content: '"'; color: #38bdf8; }
+.query-card .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-right: 8px; }
+.badge-absent { background: #7f1d1d; color: #fca5a5; }
+.badge-weak { background: #78350f; color: #fbbf24; }
+.query-card .analysis { font-size: 13px; color: #94a3b8; margin-top: 6px; }
+.comp-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+.comp-card .name { font-weight: 600; color: #e2e8f0; }
+.comp-card .cites { font-size: 11px; color: #94a3b8; }
+.cta { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); border: 1px solid #334155; border-radius: 16px; padding: 28px 24px; margin: 28px 0; }
+.cta h3 { color: #fff; font-size: 18px; margin-bottom: 12px; }
+.cta ul { list-style: none; }
+.cta li { padding: 8px 0; border-bottom: 1px solid #1e293b; color: #94a3b8; font-size: 14px; }
+.cta li::before { content: "▸ "; color: #38bdf8; }
+.cta li:last-child { border-bottom: none; }
+.footer { text-align: center; padding: 24px 0; color: #64748b; font-size: 13px; border-top: 1px solid #1e293b; margin-top: 32px; }
+.footer a { color: #38bdf8; text-decoration: none; }
+.footer .name { color: #e2e8f0; font-weight: 600; }
+@media (max-width: 600px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <div class="subtitle">HOPPR · Medical Imaging AI Infrastructure<br>Prepared by genhance.ai · November 01, 2026</div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="value">$31M Series A</div><div class="label">Funding</div></div>
+  <div class="stat"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+  <div class="stat"><div class="value">0</div><div class="label">Reddit Threads</div></div>
+</div>
+
+<div class="key-finding">
+  <div class="label">🔑 KEY FINDING</div>
+  <div class="text">HOPPR has raised <strong>$31M Series A</strong> and serves the <strong>Medical Imaging AI Infrastructure</strong> market. Yet across 5 category-defining queries, <strong>HOPPR appears in ZERO AI-cited sources</strong>. Zero G2 reviews. Zero Reddit discussions. Every AI answer about medical software is shaped entirely by competitors — HOPPR has no voice in the conversation.</div>
+</div>
+
+<h2 class="section-title">📊 Category Query Analysis</h2>
+<p style="color: #94a3b8; font-size: 13px; margin-bottom: 16px;">We ran 5 natural search queries in HOPPR's category. Here's what AI search engines (ChatGPT, Google AI Overviews, Perplexity) currently cite — and whether HOPPR appears.</p>
+<div class="query-card"><span class="badge badge-absent">ABSENT</span><span class="q">best medical imaging AI platform 2026</span><div class="analysis">HOPPR does not appear in AI Overview or top organic results. AI engines cite Aidoc and Viz.ai instead.</div></div>
+<div class="query-card"><span class="badge badge-absent">ABSENT</span><span class="q">AI foundation models for radiology comparison</span><div class="analysis">No mention of HOPPR. AI-cited sources reference Aidoc, Qure.ai, and editorial comparison articles.</div></div>
+<div class="query-card"><span class="badge badge-absent">ABSENT</span><span class="q">medical imaging validation and fine-tuning platform</span><div class="analysis">HOPPR absent from AI answers. Results dominated by Viz.ai and Qure.ai with G2-sourced comparison pages.</div></div>
+<div class="query-card"><span class="badge badge-absent">ABSENT</span><span class="q">healthcare AI development infrastructure</span><div class="analysis">HOPPR not indexed for this query. AI pulls from Aidoc case studies and Zebra Medical Vision product pages.</div></div>
+<div class="query-card"><span class="badge badge-weak">WEAK</span><span class="q">FDA-ready medical imaging AI sandbox</span><div class="analysis">HOPPR has weak presence — may appear in some SERP results but is never cited in AI Overviews or ChatGPT answers.</div></div>
+
+<h2 class="section-title">🏢 Who AI Cites Instead</h2>
+<p style="color: #94a3b8; font-size: 13px; margin-bottom: 16px;">These are the companies that currently dominate AI search results for HOPPR's category queries. Each represents a source that feeds AI answers — and a competitor HOPPR isn't being cited alongside.</p>
+<div class="comp-card"><span class="name">Aidoc</span><span class="cites">Cited in AI answers</span></div>
+<div class="comp-card"><span class="name">Viz.ai</span><span class="cites">Cited in AI answers</span></div>
+<div class="comp-card"><span class="name">Qure.ai</span><span class="cites">Cited in AI answers</span></div>
+<div class="comp-card"><span class="name">Zebra Medical Vision</span><span class="cites">Cited in AI answers</span></div>
+
+<div class="cta">
+  <h3>🚀 What genhance.ai Can Do</h3>
+  <ul>
+    <li><strong>UGC Gap Analysis:</strong> Identify which Reddit threads, YouTube comments, and forum discussions AI engines already cite for your category — and get your product mentioned in them.</li>
+    <li><strong>Review Platform Strategy:</strong> Build authentic G2, Capterra, and Product Hunt presence that AI search engines index as authority signals.</li>
+    <li><strong>AI Answer Monitoring:</strong> Track exactly what ChatGPT, Google AI Overviews, and Perplexity say about your category — with before/after snapshots.</li>
+    <li><strong>Competitor Displacement:</strong> Systematically replace competitor citations with your product's presence in the UGC sources AI trusts most.</li>
+  </ul>
+</div>
+
+<div class="footer">
+  <div class="name">Rajesh Gautam, PhD</div>
+  Founder and CEO, genhance.ai<br>
+  <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> · <a href="https://genhance.ai">genhance.ai</a>
+</div>
+</div>
+</body>
+</html>

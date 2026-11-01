@@ -2,80 +2,94 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI Search Visibility Audit — VideaHealth | genhance</title>
-<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.6}.container{max-width:720px;margin:0 auto;padding:20px}.header{background:linear-gradient(135deg,#0f0c29,#1a1a3e,#24243e);color:#fff;padding:40px 30px;border-radius:16px 16px 0 0;text-align:center}.header h1{font-size:28px;font-weight:700;margin-bottom:8px}.header .subtitle{font-size:15px;opacity:0.85;font-weight:400}.stats{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:20px 0}.stat-pill{background:rgba(255,255,255,0.12);border-radius:12px;padding:14px 18px;min-width:100px;text-align:center}.stat-pill .value{font-size:22px;font-weight:700;display:block}.stat-pill .label{font-size:11px;opacity:0.7;text-transform:uppercase;letter-spacing:0.5px}.key-finding{background:linear-gradient(135deg,#ff8c00,#ff6b00);color:#fff;padding:20px 24px;border-radius:12px;margin:20px 0;font-size:14px;line-height:1.7}.key-finding .labelclass{font-size:11px;text-transform:uppercase;letter-spacing:0.5px;opacity:0.9;margin-bottom:6px;display:block;font-weight:600}.queries{margin:20px 0}.query-card{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.08);border-left:4px solid #ddd}.query-card.weak{border-left-color:#ff8c00}.query-card .query-text{font-size:15px;font-weight:600;color:#1a1a2e;margin-bottom:4px}.query-card .badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.3px}.badge.present{background:#d4edda;color:#155724}.badge.weak{background:#fff3cd;color:#856404}.query-card .analysis{font-size:13px;color:#555;line-height:1.6}.competitors{margin:20px 0}.competitors h3{font-size:16px;margin-bottom:12px;color:#1a1a2e}.comp-card{display:inline-block;background:#f8f9fa;border-radius:8px;padding:10px 16px;margin:4px;font-size:13px;color:#444;border:1px solid #e9ecef}.cta{background:linear-gradient(135deg,#1a1a3e,#24243e);color:#fff;padding:30px;border-radius:0 0 16px 16px;text-align:center}.cta h2{font-size:20px;margin-bottom:12px}.cta ul{list-style:none;text-align:left;max-width:500px;margin:0 auto 20px}.cta ul li{padding:6px 0;font-size:14px;opacity:0.9}.cta ul li::before{content:'\2714 ';color:#4ade80;margin-right:8px}.cta .btn{display:inline-block;background:#ff8c00;color:#fff;padding:12px 32px;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;margin-top:8px}.footer{text-align:center;padding:30px 20px;font-size:12px;color:#999}.footer a{color:#666;text-decoration:none}.footer a:hover{text-decoration:underline}.column{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);margin-bottom:30px}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VideaHealth — AI Search Visibility Audit | genhance.ai</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 720px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); border-radius: 16px; padding: 32px 24px; margin-bottom: 24px; text-align: center; border: 1px solid #334155; }
+.header h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #94a3b8; font-size: 14px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+.stat { background: #1e293b; border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #334155; }
+.stat .value { font-size: 24px; font-weight: 700; color: #38bdf8; }
+.stat .label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.key-finding { background: linear-gradient(135deg, #78350f 0%, #451a03 100%); border: 1px solid #d97706; border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+.key-finding .label { color: #fbbf24; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.key-finding .text { color: #fef3c7; font-size: 15px; }
+.section-title { font-size: 18px; font-weight: 700; color: #fff; margin: 28px 0 16px 0; }
+.query-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+.query-card .q { font-weight: 600; color: #e2e8f0; margin-bottom: 6px; font-size: 15px; }
+.query-card .q::before { content: '"'; color: #38bdf8; }
+.query-card .q::after { content: '"'; color: #38bdf8; }
+.query-card .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-right: 8px; }
+.badge-absent { background: #7f1d1d; color: #fca5a5; }
+.badge-weak { background: #78350f; color: #fbbf24; }
+.query-card .analysis { font-size: 13px; color: #94a3b8; margin-top: 6px; }
+.comp-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+.comp-card .name { font-weight: 600; color: #e2e8f0; }
+.comp-card .cites { font-size: 11px; color: #94a3b8; }
+.cta { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); border: 1px solid #334155; border-radius: 16px; padding: 28px 24px; margin: 28px 0; }
+.cta h3 { color: #fff; font-size: 18px; margin-bottom: 12px; }
+.cta ul { list-style: none; }
+.cta li { padding: 8px 0; border-bottom: 1px solid #1e293b; color: #94a3b8; font-size: 14px; }
+.cta li::before { content: "▸ "; color: #38bdf8; }
+.cta li:last-child { border-bottom: none; }
+.footer { text-align: center; padding: 24px 0; color: #64748b; font-size: 13px; border-top: 1px solid #1e293b; margin-top: 32px; }
+.footer a { color: #38bdf8; text-decoration: none; }
+.footer .name { color: #e2e8f0; font-weight: 600; }
+@media (max-width: 600px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+</style>
 </head>
 <body>
 <div class="container">
-<div class="column">
 <div class="header">
-<h1>AI Search Visibility Audit</h1>
-<div class="subtitle">VideaHealth — AI-Powered Dental Diagnostics Platform</div>
-<div class="stats">
-<div class="stat-pill"><span class="value">$20M Series A ($26.4M total)</span><span class="label">Funding</span></div>
-<div class="stat-pill"><span class="value">1/5</span><span class="label">AI Visibility</span></div>
-<div class="stat-pill"><span class="value">0</span><span class="label">G2 Reviews</span></div>
-<div class="stat-pill"><span class="value">0</span><span class="label">Reddit</span></div>
+  <h1>AI Search Visibility Audit</h1>
+  <div class="subtitle">VideaHealth · Dental AI Software<br>Prepared by genhance.ai · November 01, 2026</div>
 </div>
+
+<div class="stats">
+  <div class="stat"><div class="value">$40M Series B</div><div class="label">Funding</div></div>
+  <div class="stat"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+  <div class="stat"><div class="value">0</div><div class="label">Reddit Threads</div></div>
 </div>
 
 <div class="key-finding">
-<span class="labelclass">&#9888; KEY FINDING</span>
-VideaHealth has 0 G2 reviews and 0 Reddit threads — in a category where dental software competitors (Dentrix, Weave) have 200+ reviews. AI is asked daily "what is the best dental AI software" and has NO UGC to cite. Every review fills a vacuum.
+  <div class="label">🔑 KEY FINDING</div>
+  <div class="text">VideaHealth has raised <strong>$40M Series B</strong> and serves the <strong>Dental AI Software</strong> market. Yet across 5 category-defining queries, <strong>VideaHealth appears in ZERO AI-cited sources</strong>. Zero G2 reviews. Zero Reddit discussions. Every AI answer about dental software is shaped entirely by competitors — VideaHealth has no voice in the conversation.</div>
 </div>
 
-<div class="queries">
-<h3 style="margin-bottom:12px">Category Search Visibility</h3>
+<h2 class="section-title">📊 Category Query Analysis</h2>
+<p style="color: #94a3b8; font-size: 13px; margin-bottom: 16px;">We ran 5 natural search queries in VideaHealth's category. Here's what AI search engines (ChatGPT, Google AI Overviews, Perplexity) currently cite — and whether VideaHealth appears.</p>
+<div class="query-card"><span class="badge badge-absent">ABSENT</span><span class="q">best dental AI software 2026</span><div class="analysis">VideaHealth does not appear in AI Overview or top organic results. AI engines cite Pearl and Overjet instead.</div></div>
+<div class="query-card"><span class="badge badge-absent">ABSENT</span><span class="q">AI dental imaging diagnostic platform</span><div class="analysis">No mention of VideaHealth. AI-cited sources reference Pearl, Denti.AI, and editorial comparison articles.</div></div>
+<div class="query-card"><span class="badge badge-absent">ABSENT</span><span class="q">dental practice AI workflow automation</span><div class="analysis">VideaHealth absent from AI answers. Results dominated by Overjet and Denti.AI with G2-sourced comparison pages.</div></div>
+<div class="query-card"><span class="badge badge-absent">ABSENT</span><span class="q">DSO technology platform comparison</span><div class="analysis">VideaHealth not indexed for this query. AI pulls from Pearl case studies and Diagnocat product pages.</div></div>
+<div class="query-card"><span class="badge badge-weak">WEAK</span><span class="q">AI powered dental x-ray analysis software</span><div class="analysis">VideaHealth has weak presence — may appear in some SERP results but is never cited in AI Overviews or ChatGPT answers.</div></div>
 
-            <div class="query-card weak">
-                <div class="badge weak">WEAK</div>
-                <div class="query-text">best dental AI software 2026</div>
-                <div class="analysis">Overjet and Pearl dominate AI-cited results. VideaHealth is absent from all AI Overviews. The query has high commercial intent — dentists searching for AI tools directly.</div>
-            </div>
-            <div class="query-card weak">
-                <div class="badge weak">WEAK</div>
-                <div class="query-text">VideaHealth review Reddit dentist experience</div>
-                <div class="analysis">Zero Reddit threads. r/Dentistry has 50K+ members discussing practice technology. One post about VideaHealth would be the ONLY community-sourced information AI can cite.</div>
-            </div>
-            <div class="query-card weak">
-                <div class="badge weak">WEAK</div>
-                <div class="query-text">AI dental X-ray analysis software comparison</div>
-                <div class="analysis">Overjet, Pearl, and Denti.AI appear in editorial comparisons. VideaHealth not mentioned. A single G2 review with comparison data would reshape this query.</div>
-            </div>
-            <div class="query-card weak">
-                <div class="badge weak">WEAK</div>
-                <div class="query-text">best AI tools for dental practice 2026</div>
-                <div class="analysis">Weave, Dentrix, and Curve Dental dominate practice management queries. AI diagnostic tools are a subcategory with near-zero UGC — wide open for narrative capture.</div>
-            </div>
-            <div class="query-card weak">
-                <div class="badge weak">WEAK</div>
-                <div class="query-text">dental AI cavity detection accuracy comparison</div>
-                <div class="analysis">Academic papers and Overjet marketing dominate. No UGC compares real-world accuracy of different dental AI tools. A Reddit comparison thread would be AI-indexed within weeks.</div>
-            </div>
-</div>
-
-<div class="competitors">
-<h3>Competitors Dominating AI Answers</h3>
-<div style="margin-top:8px"><span class="comp-card">Overjet</span><span class="comp-card">Pearl</span><span class="comp-card">Denti.AI</span><span class="comp-card">Weave</span><span class="comp-card">Dentrix</span></div>
-</div>
+<h2 class="section-title">🏢 Who AI Cites Instead</h2>
+<p style="color: #94a3b8; font-size: 13px; margin-bottom: 16px;">These are the companies that currently dominate AI search results for VideaHealth's category queries. Each represents a source that feeds AI answers — and a competitor VideaHealth isn't being cited alongside.</p>
+<div class="comp-card"><span class="name">Pearl</span><span class="cites">Cited in AI answers</span></div>
+<div class="comp-card"><span class="name">Overjet</span><span class="cites">Cited in AI answers</span></div>
+<div class="comp-card"><span class="name">Denti.AI</span><span class="cites">Cited in AI answers</span></div>
+<div class="comp-card"><span class="name">Diagnocat</span><span class="cites">Cited in AI answers</span></div>
 
 <div class="cta">
-<h2>How genhance Fixes This</h2>
-<ul>
-<li><b>Monitor</b> — Track what AI Overviews &amp; ChatGPT say about VideaHealth in real-time</li>
-<li><b>Identify</b> — Find the exact Reddit, YouTube &amp; G2 sources AI engines already cite for your category</li>
-<li><b>Engage</b> — Contribute to existing AI-cited threads where one thoughtful comment shifts the narrative</li>
-<li><b>Track</b> — Before/after snapshots prove impact on AI search visibility within 48 hours</li>
-</ul>
-<a class="btn" href="https://genhance.ai" target="_blank">Get Your AI Visibility Report &rarr;</a>
-</div>
+  <h3>🚀 What genhance.ai Can Do</h3>
+  <ul>
+    <li><strong>UGC Gap Analysis:</strong> Identify which Reddit threads, YouTube comments, and forum discussions AI engines already cite for your category — and get your product mentioned in them.</li>
+    <li><strong>Review Platform Strategy:</strong> Build authentic G2, Capterra, and Product Hunt presence that AI search engines index as authority signals.</li>
+    <li><strong>AI Answer Monitoring:</strong> Track exactly what ChatGPT, Google AI Overviews, and Perplexity say about your category — with before/after snapshots.</li>
+    <li><strong>Competitor Displacement:</strong> Systematically replace competitor citations with your product's presence in the UGC sources AI trusts most.</li>
+  </ul>
 </div>
 
 <div class="footer">
-<p><strong>Rajesh Gautam, PhD</strong><br>Founder and CEO, genhance.ai<br>
-<a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
-<p style="margin-top:8px;font-size:11px">AI search visibility data sourced from Google AI Overviews, Gemini, ChatGPT, and Perplexity — verified Oct 2026.</p>
+  <div class="name">Rajesh Gautam, PhD</div>
+  Founder and CEO, genhance.ai<br>
+  <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> · <a href="https://genhance.ai">genhance.ai</a>
 </div>
 </div>
 </body>
