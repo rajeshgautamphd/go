@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graphon Labs — AI Search Visibility Audit | genhance.ai</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e2e8f0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0a0e27 0%, #1a1f4e 50%, #162047 100%); padding: 48px 24px; text-align: center; border-bottom: 3px solid #f59e0b; }
+.header h1 { font-size: 2rem; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: #94a3b8; font-size: 1rem; }
+.stats { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; padding: 24px; max-width: 900px; margin: 0 auto; }
+.stat-pill { background: linear-gradient(135deg, #1e2549, #1a1f45); border: 1px solid #2d3560; border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 120px; }
+.stat-pill .value { font-size: 1.4rem; font-weight: 700; color: #fff; }
+.stat-pill .label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+.container { max-width: 900px; margin: 0 auto; padding: 24px; }
+.key-finding { background: linear-gradient(135deg, #3d2e0a, #2d2008); border: 1px solid #f59e0b44; border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
+.key-finding h2 { color: #f59e0b; font-size: 1.1rem; margin-bottom: 8px; }
+.key-finding p { color: #fcd34d; font-size: 0.95rem; }
+.query-cards { display: grid; gap: 12px; margin: 24px 0; }
+.query-card { background: #111640; border: 1px solid #2d3560; border-radius: 10px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+.query-card .query-text { font-size: 0.95rem; color: #cbd5e1; }
+.query-card .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.badge-weak { background: #3d2e0a; color: #f59e0b; border: 1px solid #f59e0b44; }
+.badge-absent { background: #3a1010; color: #ef4444; border: 1px solid #ef444444; }
+.competitors { margin: 24px 0; }
+.competitors h2 { font-size: 1.1rem; color: #f59e0b; margin-bottom: 12px; }
+.comp-card { background: #111640; border: 1px solid #2d3560; border-radius: 10px; padding: 12px 20px; margin: 8px 0; }
+.comp-card .comp-name { font-weight: 600; color: #e2e8f0; }
+.comp-card .comp-desc { font-size: 0.85rem; color: #94a3b8; }
+.cta { background: linear-gradient(135deg, #1a1040, #0d0828); border: 1px solid #8b5cf644; border-radius: 12px; padding: 32px 24px; margin: 32px 0; text-align: center; }
+.cta h2 { color: #a78bfa; font-size: 1.2rem; margin-bottom: 16px; }
+.cta .plays { display: grid; gap: 10px; text-align: left; max-width: 600px; margin: 0 auto; }
+.cta .play { background: #1a1040; border: 1px solid #4c3a80; border-radius: 8px; padding: 12px 16px; font-size: 0.9rem; color: #c4b5fd; }
+.footer { text-align: center; padding: 32px 24px; border-top: 1px solid #1e2549; color: #64748b; font-size: 0.85rem; margin-top: 32px; }
+.footer a { color: #94a3b8; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Graphon Labs — AI Search Visibility Audit</h1>
+  <div class="subtitle">Powered by genhance.ai · November 2026</div>
+</div>
+
+<div class="stats">
+  <div class="stat-pill"><div class="value">$35M Series A ($43M total)</div><div class="label">Funding</div></div>
+  <div class="stat-pill"><div class="value">0/5</div><div class="label">AI Visibility</div></div>
+  <div class="stat-pill"><div class="value">0</div><div class="label">G2 Reviews</div></div>
+  <div class="stat-pill"><div class="value">0</div><div class="label">Reddit Threads</div></div>
+</div>
+
+<div class="container">
+  <div class="key-finding">
+    <h2>⚠ KEY FINDING</h2>
+    <p>Graphon Labs raised $35M from RRE Ventures and Hitachi to build persistent memory for AI agents — a critical piece of the AGI infrastructure stack. But AI search engines have no idea. For 'best AI agent memory platform' and related queries, competitors like Mem0, Letta (MemGPT), and Zep dominate. With 0 G2 reviews and 0 Reddit threads, the AI narrative is entirely competitor-owned — despite Graphon's backing from HP, Hitachi, and Energy Impact Partners.</p>
+  </div>
+
+  <h2 style="color:#e2e8f0;margin-bottom:12px">Category Query Analysis</h2>
+  <div class="query-cards">
+    <div class="query-card">
+      <div class="query-text"><strong>"best AI agent memory platform 2026"</strong><br><small style="color:#64748b">Mem0, Letta dominate AI Overviews</small></div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="query-card">
+      <div class="query-text"><strong>"persistent AI memory for enterprise agents"</strong><br><small style="color:#64748b">LangMem, Zep cited in AI answers</small></div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="query-card">
+      <div class="query-text"><strong>"Graphon Labs vs Mem0 comparison"</strong><br><small style="color:#64748b">No comparison content exists</small></div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="query-card">
+      <div class="query-text"><strong>"top AI memory infrastructure tools"</strong><br><small style="color:#64748b">Mem0, Cognee, LangMem dominate</small></div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    <div class="query-card">
+      <div class="query-text"><strong>"long-term agent memory for AGI systems"</strong><br><small style="color:#64748b">Category emerging — wide open</small></div>
+      <div class="badge badge-absent">ABSENT</div>
+    </div>
+    
+  </div>
+
+  <div class="competitors">
+    <h2>🏢 Competitors Dominating AI Answers</h2>
+    <div class="comp-card">
+      <div class="comp-name">Mem0</div>
+      <div class="comp-desc">AI memory layer, strong dev community + Reddit</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Letta (MemGPT)</div>
+      <div class="comp-desc">Open-source agent memory, active GitHub + HN</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Zep</div>
+      <div class="comp-desc">Long-term memory for AI assistants, G2 presence</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Cognee</div>
+      <div class="comp-desc">AI memory infrastructure, growing Reddit presence</div>
+    </div>
+    
+  </div>
+
+  <div class="cta">
+    <h2>🚀 4 Ways Genhance Changes This</h2>
+    <div class="plays">
+      <div class="play">1. <strong>AI Answer Monitoring</strong> — Track what ChatGPT, Google AI Overviews, and Perplexity say about AI agent memory infrastructure queries in real-time, with before/after snapshots.</div>
+      <div class="play">2. <strong>UGC Gap Mapping</strong> — Identify exactly which Reddit threads, G2 reviews, and YouTube comments feed AI answers — then contribute to them strategically.</div>
+      <div class="play">3. <strong>Review Velocity Engineering</strong> — Systematic G2/Capterra review generation that shifts AI-sourced narratives within 30 days.</div>
+      <div class="play">4. <strong>Competitor Displacement</strong> — For every query Mem0 dominates, we build the content and UGC that gets YOUR brand cited instead.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Rajesh Gautam, PhD<br>Founder & CEO, genhance.ai</p>
+  <p><a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | <a href="https://genhance.ai">genhance.ai</a></p>
+</div>
+</body>
+</html>
