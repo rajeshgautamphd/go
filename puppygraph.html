@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: PuppyGraph</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0d1b4a 0%, #162d6e 50%, #1a3a8a 100%); padding: 48px 32px; text-align: center; border-bottom: 3px solid #f59e0b; }
+.header h1 { font-size: 2.2em; color: #fff; margin-bottom: 8px; }
+.header .subtitle { font-size: 1.1em; color: #93b4f5; }
+.header .meta { margin-top: 12px; color: #7b93c9; font-size: 0.9em; }
+.stats { display: flex; justify-content: center; gap: 16px; padding: 24px 32px; flex-wrap: wrap; }
+.stat-pill { background: linear-gradient(135deg, #14204a 0%, #1e3068 100%); border: 1px solid #2a3f7a; border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 130px; }
+.stat-pill .stat-value { font-size: 1.5em; font-weight: 700; color: #f59e0b; }
+.stat-pill .stat-label { font-size: 0.75em; color: #7b93c9; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+.alert { background: linear-gradient(135deg, #3d2e0a 0%, #5a3d10 100%); border: 1px solid #f59e0b; border-radius: 12px; padding: 20px 28px; margin: 0 32px 24px; }
+.alert h3 { color: #f59e0b; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.alert p { color: #e8c74a; font-size: 0.95em; }
+.content { max-width: 1000px; margin: 0 auto; padding: 0 32px 48px; }
+.section-title { font-size: 1.3em; color: #93b4f5; margin: 32px 0 16px; border-bottom: 1px solid #1e3068; padding-bottom: 8px; }
+.query-card { background: #111a33; border: 1px solid #1e3068; border-radius: 10px; padding: 18px 22px; margin-bottom: 14px; }
+.query-card .query-text { font-size: 1.05em; color: #fff; margin-bottom: 8px; font-weight: 600; }
+.query-card .badge { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.7em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-right: 8px; }
+.badge-weak { background: #5a1a1a; color: #f87171; border: 1px solid #7f1d1d; }
+.badge-present { background: #1a5a2a; color: #4ade80; border: 1px solid #1d7f2d; }
+.query-card .analysis { font-size: 0.88em; color: #93a3c4; line-height: 1.5; margin-top: 6px; }
+.competitor-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.competitor-card { background: #1a2548; border: 1px solid #2a3f7a; border-radius: 8px; padding: 12px 18px; flex: 1; min-width: 140px; text-align: center; }
+.competitor-card .comp-name { font-weight: 600; color: #e0e0e0; }
+.competitor-card .comp-note { font-size: 0.75em; color: #7b93c9; margin-top: 4px; }
+.cta { background: linear-gradient(135deg, #0d1b4a 0%, #101e3d 100%); border: 1px solid #2a3f7a; border-radius: 14px; padding: 28px 32px; margin-top: 32px; text-align: center; }
+.cta h3 { color: #f59e0b; font-size: 1.1em; margin-bottom: 12px; }
+.cta ul { list-style: none; text-align: left; max-width: 550px; margin: 0 auto 20px; }
+.cta ul li { padding: 6px 0; color: #93b4f5; font-size: 0.9em; }
+.cta ul li::before { content: "▸ "; color: #f59e0b; }
+.cta-btn { display: inline-block; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #0a0e27; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1em; }
+.footer { text-align: center; padding: 32px; color: #5a6e9e; font-size: 0.85em; border-top: 1px solid #1e3068; margin-top: 24px; }
+.footer strong { color: #93b4f5; }
+.footer a { color: #f59e0b; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <div class="subtitle">PuppyGraph — Graph Query Engine / Data Infrastructure</div>
+  <div class="meta">puppygraph.com · Santa Clara, CA · Founded 2023 · 15-25 employees</div>
+</div>
+
+<div class="stats">
+  <div class="stat-pill">
+    <div class="stat-value">$10M Series A ($15M total)</div>
+    <div class="stat-label">Funding (Particle Future, defy.vc)</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0/5</div>
+    <div class="stat-label">AI Visibility Score</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">Reddit Threads</div>
+  </div>
+</div>
+
+<div class="alert">
+  <h3>🔍 KEY FINDING</h3>
+  <p>PuppyGraph appears in <strong>0 out of 5</strong> category-defining search queries. Despite $10M Series A ($15M total) in funding and backing from Particle Future, defy.vc, the company has zero presence in the sources that feed AI answers (ChatGPT, Google AI Overviews, Perplexity) for its core category. Every competitor cited below already has an AI voice — PuppyGraph does not.</p>
+</div>
+
+<div class="content">
+  <h2 class="section-title">5 Category Queries — AI Search Analysis</h2>
+  <div class="query-card">
+    <div class="query-text"><span class="badge badge-weak">WEAK</span> "best graph database for AI agents 2026"</div>
+    <div class="analysis">PuppyGraph absent from AI agent data infrastructure discussions. Neo4j and TigerGraph dominate the graph database conversation, with Amazon Neptune capturing cloud-native mindshare. PuppyGraph's zero-ETL differentiator is invisible to AI search engines.</div>
+  </div>
+<div class="query-card">
+    <div class="query-text"><span class="badge badge-weak">WEAK</span> "query relational data as graph without ETL"</div>
+    <div class="analysis">This is PuppyGraph's core value prop — yet AI answers cite Dgraph, Apache TinkerPop, and Neo4j's virtual graphs. PuppyGraph's zero-ETL message never surfaces. One Reddit comment in r/dataengineering could change this within 48 hours.</div>
+  </div>
+<div class="query-card">
+    <div class="query-text"><span class="badge badge-weak">WEAK</span> "graph query engine Snowflake Databricks integration"</div>
+    <div class="analysis">AI Overviews reference RelationalAI and Kùzu for graph-over-lakehouse queries. PuppyGraph's direct integration with Snowflake, Databricks, and Apache Iceberg is completely absent from AI-indexed sources.</div>
+  </div>
+<div class="query-card">
+    <div class="query-text"><span class="badge badge-weak">WEAK</span> "enterprise data infrastructure for AI agents 2026"</div>
+    <div class="analysis">Category dominated by Databricks, Snowflake, and emerging agent-native tools. PuppyGraph's graph query layer for AI agents — the exact use case they raised $10M to serve — gets zero AI citations.</div>
+  </div>
+<div class="query-card">
+    <div class="query-text"><span class="badge badge-weak">WEAK</span> "real-time graph analytics zero ETL"</div>
+    <div class="analysis">AI answers cite stream processing tools (Kafka, Flink) and graph databases (Neo4j) separately. PuppyGraph's unified real-time graph-over-relational approach doesn't appear in any indexed source.</div>
+  </div>
+
+
+  <h2 class="section-title">Competitors Already Cited by AI</h2>
+  <div class="competitor-row">
+    <div class="competitor-card">
+      <div class="comp-name">Neo4j</div>
+      <div class="comp-note">Cited in AI results</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">TigerGraph</div>
+      <div class="comp-note">Cited in AI results</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Dgraph</div>
+      <div class="comp-note">Cited in AI results</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Amazon Neptune</div>
+      <div class="comp-note">Cited in AI results</div>
+    </div>
+    
+  </div>
+
+  <div class="cta">
+    <h3>What genhance Would Do</h3>
+    <ul>
+      <li><strong>UGC Gap Analysis</strong> — Map every Reddit, G2, YouTube, and forum thread feeding AI answers about this category</li>
+      <li><strong>AI Answer Monitoring</strong> — Track what ChatGPT, Google AIO, and Perplexity say about PuppyGraph vs competitors in real-time</li>
+      <li><strong>Strategic UGC Engagement</strong> — Deploy thoughtful contributions to the sparse conversations already indexed by AI engines</li>
+      <li><strong>Before/After Verification</strong> — Screenshot-based proof that PuppyGraph's AI search visibility improved within 48 hours</li>
+    </ul>
+    <p style="color:#93b4f5;font-size:0.9em;margin-bottom:16px;">One Reddit comment or G2 review can shift 20% of the AI-indexed conversation when the conversation is this sparse.</p>
+    <a href="https://genhance.ai" class="cta-btn">Get an AI Visibility Audit →</a>
+  </div>
+</div>
+
+<div class="footer">
+  <strong>Rajesh Gautam, PhD</strong><br>
+  Founder & CEO, <a href="https://genhance.ai">genhance.ai</a><br>
+  <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | genhance.ai<br>
+  <span style="font-size:0.8em;color:#3a4e7a;">AI search visibility monitoring for B2B SaaS companies</span>
+</div>
+
+</body>
+</html>

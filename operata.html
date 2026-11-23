@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit: Operata</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0d1b4a 0%, #162d6e 50%, #1a3a8a 100%); padding: 48px 32px; text-align: center; border-bottom: 3px solid #f59e0b; }
+.header h1 { font-size: 2.2em; color: #fff; margin-bottom: 8px; }
+.header .subtitle { font-size: 1.1em; color: #93b4f5; }
+.header .meta { margin-top: 12px; color: #7b93c9; font-size: 0.9em; }
+.stats { display: flex; justify-content: center; gap: 16px; padding: 24px 32px; flex-wrap: wrap; }
+.stat-pill { background: linear-gradient(135deg, #14204a 0%, #1e3068 100%); border: 1px solid #2a3f7a; border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 130px; }
+.stat-pill .stat-value { font-size: 1.5em; font-weight: 700; color: #f59e0b; }
+.stat-pill .stat-label { font-size: 0.75em; color: #7b93c9; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+.alert { background: linear-gradient(135deg, #3d2e0a 0%, #5a3d10 100%); border: 1px solid #f59e0b; border-radius: 12px; padding: 20px 28px; margin: 0 32px 24px; }
+.alert h3 { color: #f59e0b; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.alert p { color: #e8c74a; font-size: 0.95em; }
+.content { max-width: 1000px; margin: 0 auto; padding: 0 32px 48px; }
+.section-title { font-size: 1.3em; color: #93b4f5; margin: 32px 0 16px; border-bottom: 1px solid #1e3068; padding-bottom: 8px; }
+.query-card { background: #111a33; border: 1px solid #1e3068; border-radius: 10px; padding: 18px 22px; margin-bottom: 14px; }
+.query-card .query-text { font-size: 1.05em; color: #fff; margin-bottom: 8px; font-weight: 600; }
+.query-card .badge { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.7em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-right: 8px; }
+.badge-weak { background: #5a1a1a; color: #f87171; border: 1px solid #7f1d1d; }
+.badge-present { background: #1a5a2a; color: #4ade80; border: 1px solid #1d7f2d; }
+.query-card .analysis { font-size: 0.88em; color: #93a3c4; line-height: 1.5; margin-top: 6px; }
+.competitor-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.competitor-card { background: #1a2548; border: 1px solid #2a3f7a; border-radius: 8px; padding: 12px 18px; flex: 1; min-width: 140px; text-align: center; }
+.competitor-card .comp-name { font-weight: 600; color: #e0e0e0; }
+.competitor-card .comp-note { font-size: 0.75em; color: #7b93c9; margin-top: 4px; }
+.cta { background: linear-gradient(135deg, #0d1b4a 0%, #101e3d 100%); border: 1px solid #2a3f7a; border-radius: 14px; padding: 28px 32px; margin-top: 32px; text-align: center; }
+.cta h3 { color: #f59e0b; font-size: 1.1em; margin-bottom: 12px; }
+.cta ul { list-style: none; text-align: left; max-width: 550px; margin: 0 auto 20px; }
+.cta ul li { padding: 6px 0; color: #93b4f5; font-size: 0.9em; }
+.cta ul li::before { content: "▸ "; color: #f59e0b; }
+.cta-btn { display: inline-block; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #0a0e27; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1em; }
+.footer { text-align: center; padding: 32px; color: #5a6e9e; font-size: 0.85em; border-top: 1px solid #1e3068; margin-top: 24px; }
+.footer strong { color: #93b4f5; }
+.footer a { color: #f59e0b; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI Search Visibility Audit</h1>
+  <div class="subtitle">Operata — CX Observability / Contact Center AI</div>
+  <div class="meta">operata.com · Melbourne, Australia / US · Founded 2019 · 20-50 employees</div>
+</div>
+
+<div class="stats">
+  <div class="stat-pill">
+    <div class="stat-value">$11M Series A ($100M valuation)</div>
+    <div class="stat-label">Funding (Tidal Ventures, Glitch Capital, Black Nova, Flying Fox)</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0/5</div>
+    <div class="stat-label">AI Visibility Score</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">G2 Reviews</div>
+  </div>
+  <div class="stat-pill">
+    <div class="stat-value">0</div>
+    <div class="stat-label">Reddit Threads</div>
+  </div>
+</div>
+
+<div class="alert">
+  <h3>🔍 KEY FINDING</h3>
+  <p>Operata appears in <strong>0 out of 5</strong> category-defining search queries. Despite $11M Series A ($100M valuation) in funding and backing from Tidal Ventures, Glitch Capital, Black Nova, Flying Fox, the company has zero presence in the sources that feed AI answers (ChatGPT, Google AI Overviews, Perplexity) for its core category. Every competitor cited below already has an AI voice — Operata does not.</p>
+</div>
+
+<div class="content">
+  <h2 class="section-title">5 Category Queries — AI Search Analysis</h2>
+  <div class="query-card">
+    <div class="query-text"><span class="badge badge-weak">WEAK</span> "best contact center observability platform 2026"</div>
+    <div class="analysis">AI answers cite NICE, Genesys, and Five9 analytics — never Operata. Despite being the world's first purpose-built CX Observability platform covering 50+ integrations (Amazon Connect, Genesys, PolyAI), Operata is invisible.</div>
+  </div>
+<div class="query-card">
+    <div class="query-text"><span class="badge badge-weak">WEAK</span> "monitor AI agents in contact center performance"</div>
+    <div class="analysis">This is Operata's core value prop — CX observability across AI and human agents. Yet AI Overviews reference general call monitoring tools. Operata's AI-to-human observability gets zero mentions.</div>
+  </div>
+<div class="query-card">
+    <div class="query-text"><span class="badge badge-weak">WEAK</span> "contact center AI quality monitoring CX"</div>
+    <div class="analysis">Results cite NICE Enlighten and Genesys AI. Operata's real-time insights across 50+ telephony and CX platforms — the exact solution for fragmented contact center environments — never surfaces.</div>
+  </div>
+<div class="query-card">
+    <div class="query-text"><span class="badge badge-weak">WEAK</span> "call center observability AI performance analytics"</div>
+    <div class="analysis">AI answers list traditional WFO/WEM tools. Operata — raising at a $100M valuation specifically to solve this problem — is completely absent from AI-indexed sources.</div>
+  </div>
+<div class="query-card">
+    <div class="query-text"><span class="badge badge-weak">WEAK</span> "customer experience observability platform enterprise"</div>
+    <div class="analysis">Results cite general APM tools (Datadog, New Relic) and CX platforms. Operata's dedicated CX observability layer — connecting technical, operational, and experience data — is invisible to AI search.</div>
+  </div>
+
+
+  <h2 class="section-title">Competitors Already Cited by AI</h2>
+  <div class="competitor-row">
+    <div class="competitor-card">
+      <div class="comp-name">NICE CXone</div>
+      <div class="comp-note">Cited in AI results</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Genesys</div>
+      <div class="comp-note">Cited in AI results</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Five9</div>
+      <div class="comp-note">Cited in AI results</div>
+    </div>
+    <div class="competitor-card">
+      <div class="comp-name">Talkdesk</div>
+      <div class="comp-note">Cited in AI results</div>
+    </div>
+    
+  </div>
+
+  <div class="cta">
+    <h3>What genhance Would Do</h3>
+    <ul>
+      <li><strong>UGC Gap Analysis</strong> — Map every Reddit, G2, YouTube, and forum thread feeding AI answers about this category</li>
+      <li><strong>AI Answer Monitoring</strong> — Track what ChatGPT, Google AIO, and Perplexity say about Operata vs competitors in real-time</li>
+      <li><strong>Strategic UGC Engagement</strong> — Deploy thoughtful contributions to the sparse conversations already indexed by AI engines</li>
+      <li><strong>Before/After Verification</strong> — Screenshot-based proof that Operata's AI search visibility improved within 48 hours</li>
+    </ul>
+    <p style="color:#93b4f5;font-size:0.9em;margin-bottom:16px;">One Reddit comment or G2 review can shift 20% of the AI-indexed conversation when the conversation is this sparse.</p>
+    <a href="https://genhance.ai" class="cta-btn">Get an AI Visibility Audit →</a>
+  </div>
+</div>
+
+<div class="footer">
+  <strong>Rajesh Gautam, PhD</strong><br>
+  Founder & CEO, <a href="https://genhance.ai">genhance.ai</a><br>
+  <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> | genhance.ai<br>
+  <span style="font-size:0.8em;color:#3a4e7a;">AI search visibility monitoring for B2B SaaS companies</span>
+</div>
+
+</body>
+</html>
