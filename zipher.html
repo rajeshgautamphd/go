@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Search Visibility Audit — Zipher | genhance</title>
+<style>
+* {margin:0;padding:0;box-sizing:border-box;}
+body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif;background:#0a0e27;color:#e2e8f0;line-height:1.6;}
+.container {max-width:900px;margin:0 auto;padding:0 20px;}
+.header {background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%);padding:60px 0 40px;text-align:center;border-bottom:3px solid #f59e0b;}
+.header h1 {font-size:2.2rem;font-weight:800;color:#f8fafc;margin-bottom:8px;}
+.header .subtitle {font-size:1.1rem;color:#94a3b8;margin-bottom:24px;}
+.stats-pills {display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:24px 0;}
+.stat-pill {background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 22px;text-align:center;min-width:110px;}
+.stat-pill .stat-value {font-size:1.4rem;font-weight:700;color:#f59e0b;}
+.stat-pill .stat-label {font-size:0.75rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;margin-top:4px;}
+.key-finding {background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(245,158,11,0.04));border:1px solid rgba(245,158,11,0.25);border-radius:12px;padding:20px 24px;margin:32px 0;}
+.key-finding .kf-label {font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;color:#f59e0b;font-weight:600;margin-bottom:8px;}
+.key-finding .kf-text {font-size:0.95rem;color:#cbd5e1;line-height:1.7;}
+.section-title {font-size:1.3rem;font-weight:700;color:#f8fafc;margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid rgba(255,255,255,0.08);}
+.query-card {background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:18px 20px;margin-bottom:14px;}
+.query-header {display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+.query-num {background:rgba(245,158,11,0.15);color:#f59e0b;font-weight:700;font-size:0.85rem;padding:3px 10px;border-radius:6px;}
+.query-text {color:#f1f5f9;font-weight:600;font-size:0.9rem;font-style:italic;flex:1;}
+.query-badge {padding:3px 12px;border-radius:6px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;}
+.badge-weak {background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);}
+.badge-present {background:rgba(34,197,94,0.15);color:#22c55e;border:1px solid rgba(34,197,94,0.3);}
+.query-analysis {font-size:0.85rem;color:#94a3b8;line-height:1.6;}
+.competitor-grid {display:flex;flex-wrap:wrap;gap:10px;}
+.competitor-card {background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 18px;font-size:0.85rem;color:#cbd5e1;}
+.cta-section {background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);border:2px solid rgba(245,158,11,0.2);border-radius:16px;padding:32px;margin:40px 0;text-align:center;}
+.cta-section .cta-title {font-size:1.2rem;font-weight:700;color:#f59e0b;margin-bottom:16px;}
+.cta-plays {display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px;}
+.cta-play {background:rgba(255,255,255,0.03);border-radius:10px;padding:16px;text-align:left;}
+.cta-play .play-num {color:#f59e0b;font-weight:700;font-size:0.75rem;margin-bottom:6px;}
+.cta-play .play-text {color:#cbd5e1;font-size:0.82rem;line-height:1.5;}
+.footer {text-align:center;padding:40px 0 60px;color:#64748b;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.05);margin-top:20px;}
+.footer strong {color:#94a3b8;}
+.footer a {color:#f59e0b;text-decoration:none;}
+.logo-line {font-size:0.7rem;letter-spacing:0.05em;margin-top:8px;}
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <h1>AI Search Visibility Audit</h1>
+        <div class="subtitle">Zipher — AI Agent Data Infrastructure Platform</div>
+        <div class="stats-pills">
+            <div class="stat-pill"><div class="stat-value">$53M Series A</div><div class="stat-label">Funding</div></div>
+            <div class="stat-pill"><div class="stat-value">1/5</div><div class="stat-label">AI Visibility</div></div>
+            <div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">G2 Reviews</div></div>
+            <div class="stat-pill"><div class="stat-value">0</div><div class="stat-label">Reddit Threads</div></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="key-finding">
+        <div class="kf-label">⚠ KEY FINDING</div>
+        <div class="kf-text">Zipher raised $53M to rebuild enterprise data infrastructure for AI agents — but AI search engines have no idea it exists. Every query about "AI agent data platforms" or "enterprise data infrastructure for agents" returns Databricks, Snowflake, and legacy platforms. Zipher's agent-first approach (where agents decide how workloads run) is completely invisible to AI answers.</div>
+    </div>
+
+    <div class="section-title">🔍 5 Category Queries — Real AI Answer Analysis</div>
+    <div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q1</span>
+                <span class="query-text">"best data infrastructure for AI agents 2026"</span>
+                <span class="query-badge badge-weak">WEAK — company absent</span>
+            </div>
+            <div class="query-analysis">AI Overviews cite Databricks, Snowflake, and Google BigQuery as the data platforms for AI agents. Zipher's purpose-built agent-first architecture is not mentioned.</div>
+        </div><div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q2</span>
+                <span class="query-text">"enterprise data platform for autonomous AI"</span>
+                <span class="query-badge badge-weak">WEAK — company absent</span>
+            </div>
+            <div class="query-analysis">Search returns IBM watsonx, C3 AI, and Dataiku — traditional AI/ML platforms, not purpose-built agent data infrastructure like Zipher.</div>
+        </div><div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q3</span>
+                <span class="query-text">"AI agents data workload management cloud"</span>
+                <span class="query-badge badge-weak">WEAK — company absent</span>
+            </div>
+            <div class="query-analysis">Answers reference Kubernetes, AWS Batch, and Apache Spark for data workload orchestration. Zipher's autonomous workload management goes uncited.</div>
+        </div><div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q4</span>
+                <span class="query-text">"cloud data analytics platform for LLM agents"</span>
+                <span class="query-badge badge-weak">WEAK — company absent</span>
+            </div>
+            <div class="query-analysis">AI recommends Snowflake Cortex AI, Databricks AI/BI, and BigQuery ML. None mention Zipher's TLV-backed agent-native approach.</div>
+        </div><div class="query-card">
+            <div class="query-header">
+                <span class="query-num">Q5</span>
+                <span class="query-text">"how to deploy AI agents on enterprise data"</span>
+                <span class="query-badge badge-weak">WEAK — company absent</span>
+            </div>
+            <div class="query-analysis">Tutorials and how-tos cite LangChain, LlamaIndex, and Snowflake container services. Zipher's agent-orchestrated data stacks are absent.</div>
+        </div>
+
+    <div class="section-title">🏢 Competitors Dominating AI Answers</div>
+    <div class="competitor-grid">
+        <div class="competitor-card"><span class="comp-name">Databricks (AI/BI)</span></div><div class="competitor-card"><span class="comp-name">Snowflake (Cortex AI)</span></div><div class="competitor-card"><span class="comp-name">Google BigQuery ML</span></div><div class="competitor-card"><span class="comp-name">Dataiku</span></div><div class="competitor-card"><span class="comp-name">IBM watsonx</span></div>
+    </div>
+
+    <div class="cta-section">
+        <div class="cta-title">How genhance Would Fix This</div>
+        <div class="cta-plays">
+            <div class="cta-play"><div class="play-num">PLAY 1</div><div class="play-text">Monitor 100+ AI queries to track exactly which sources ChatGPT, Gemini, and Google AI Overviews cite for your category — in real time.</div></div>
+            <div class="cta-play"><div class="play-num">PLAY 2</div><div class="play-text">Identify the 3-5 highest-leverage UGC surfaces (Reddit threads, YouTube comments, Product Hunt discussions) that AI already scrapes for answers.</div></div>
+            <div class="cta-play"><div class="play-num">PLAY 3</div><div class="play-text">Contribute strategically to sparse conversations where your first comment shapes what AI will say for months.</div></div>
+            <div class="cta-play"><div class="play-num">PLAY 4</div><div class="play-text">Track before/after AI answer snapshots to prove impact — the same methodology we used on ourselves first.</div></div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="container">
+        <strong>Rajesh Gautam, PhD</strong><br>
+        Founder &amp; CEO, genhance.ai<br>
+        <a href="https://linkedin.com/in/rajeshgautam">linkedin.com/in/rajeshgautam</a> &nbsp;|&nbsp; <a href="https://genhance.ai">genhance.ai</a>
+        <div class="logo-line">AI Search Visibility, Understood. &trade;</div>
+    </div>
+</div>
+</body>
+</html>
